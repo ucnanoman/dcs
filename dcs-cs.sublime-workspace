@@ -1,0 +1,559 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"add_cus",
+				"add_custom_command"
+			],
+			[
+				"table",
+				"tablestr	param"
+			],
+			[
+				"root",
+				"rootname	param"
+			],
+			[
+				"opt",
+				"option	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "dcscs.py",
+			"settings":
+			{
+				"buffer_size": 808,
+				"line_ending": "Unix",
+				"name": "#!/bin/python"
+			}
+		},
+		{
+			"file": "dcs/mission.py",
+			"settings":
+			{
+				"buffer_size": 931,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lua/__init__.py",
+			"settings":
+			{
+				"buffer_size": 2826,
+				"line_ending": "Unix",
+				"name": "# lua table serialization"
+			}
+		},
+		{
+			"file": "dcs/terrain.py",
+			"settings":
+			{
+				"buffer_size": 97,
+				"line_ending": "Unix",
+				"name": "# terrain module"
+			}
+		},
+		{
+			"file": "missions/test/mission",
+			"settings":
+			{
+				"buffer_size": 109644,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Anaconda Python Builder",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Anaconda Python Builder",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Anaconda Python Builder",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 192.0,
+		"last_filter": "error",
+		"selected_items":
+		[
+			[
+				"error",
+				"Anaconda: Show error list"
+			],
+			[
+				"cmake",
+				"Set Syntax: CMakeEditor"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"show",
+				"Anaconda: Show error list"
+			],
+			[
+				"set lua",
+				"Set Syntax: Lua"
+			],
+			[
+				"anacon",
+				"Anaconda: Show error list"
+			],
+			[
+				"setlu",
+				"Set Syntax: Lua"
+			],
+			[
+				"color",
+				"Color Picker"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: lis",
+				"Package Control: List Packages"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"set pyt",
+				"Set Syntax: Python"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/rp/work/coding/dcs-cs",
+		"/home/rp/work/coding/dcs-cs/lua",
+		"/home/rp/work/coding/dcs-cs/missions",
+		"/home/rp/work/coding/dcs-cs/missions/test",
+		"/home/rp/work/coding/dcs-cs/missions/test/l10n",
+		"/home/rp/work/coding/dcs-cs/missions/test2",
+		"/home/rp/work/coding/dcs-cs/missions/test2/l10n",
+		"/home/rp/work/coding/dcs-cs/missions/test2/l10n/DEFAULT"
+	],
+	"file_history":
+	[
+		"/home/rp/work/coding/dcs-cs/dcs-cs.sublime-project",
+		"/home/rp/.config/sublime-text-3/Packages/User/JSON.sublime-settings",
+		"/home/rp/work/coding/Movetracker/CMakeLists.txt",
+		"/home/rp/.config/sublime-text-3/Packages/Anaconda/README.md",
+		"/home/rp/work/coding/dcs-cs/missions/test2/mission",
+		"/home/rp/work/coding/dcs-cs/missions/test2/options",
+		"/home/rp/work/coding/dcs-cs/missions/test2/l10n/DEFAULT/dictionary",
+		"/home/rp/work/coding/dcs-cs/missions/test2/l10n/DEFAULT/mapResource",
+		"/home/rp/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/rp/.config/sublime-text-3/Packages/User/Python.sublime-settings",
+		"/home/rp/.config/sublime-text-3/Packages/ColorPicker/ColorPicker.sublime-settings",
+		"/home/rp/work/coding/dcs-cs/missions/test/mission",
+		"/home/rp/.config/sublime-text-3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/home/rp/work/coding/Movetracker/src/mainwindow.ui",
+		"/etc/openvpn/client.conf",
+		"/home/rp/work/coding/Movetracker/mapprovider/50_esriworldimagery.json",
+		"/home/rp/work/coding/Movetracker/mapprovider/25_hikebikemap.json",
+		"/home/rp/work/coding/Movetracker/mapprovider/10_ocmmap.json",
+		"/home/rp/work/coding/Movetracker/src/qt/mapview.h",
+		"/home/rp/src/openambit/src/openambit/movescount/movescount.cpp",
+		"/home/rp/src/openambit/src/openambit/movescount/movescountjson.h",
+		"/home/rp/work/coding/sqlitebrowser/src/grammar/sqlite3.",
+		"/tmp/server.py",
+		"/tmp/client.py",
+		"/home/rp/src/smartsvn/PKGBUILD",
+		"/usr/bin/xflock4",
+		"/home/rp/tmp/dust/edit.html",
+		"/home/rp/tmp/dust/index.php",
+		"/home/rp/tmp/dust/.htaccess",
+		"/home/rp/work/coding/android-ws/Logbook/res/layout/addentry.xml",
+		"/home/rp/work/coding/android-ws/Logbook/res/layout/gasstation_adapter_view.xml",
+		"/home/rp/dump.csv",
+		"/home/rp/work/coding/sqlitebrowser/tests/bla.csv"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"COPYDEBUGDLLs",
+			"sqldriver",
+			"selement",
+			".git",
+			"git",
+			"route",
+			"asyncGet",
+			"checkAuthorizationInThread",
+			"/private",
+			"auth",
+			"setUserKey",
+			"userkey",
+			"asyncGET",
+			"checkAuthorizationInThread",
+			"login",
+			"asyncGET",
+			"workerThread",
+			"authorized",
+			"Auth",
+			"movescountUserkey",
+			"setUserkey",
+			"userkey",
+			"private",
+			"members/private",
+			"checkAuthorization",
+			"checkAuthorizationInThread",
+			"authCheckFinished",
+			"checkReplyAuthorization",
+			"authorized",
+			"asyncGet",
+			"finished",
+			"syncGet",
+			"manager",
+			"moveToThread",
+			"setAppkey",
+			"moveToThread",
+			"QNetWorkAcc",
+			"httpresponse",
+			"UPDATE",
+			"DEFAULT",
+			"ID",
+			"literalvalue",
+			"STRINGLITERAL",
+			"PC",
+			"DEFAULT",
+			"RC_LOGEN",
+			"DIALOG_FIRST_START_ID",
+			"mCarSpinner"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"COPY_DEBUG_DLLs",
+			"selem"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "dcscs.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 808,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								598,
+								598
+							]
+						],
+						"settings":
+						{
+							"auto_name": "#!/bin/python",
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 152.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "dcs/mission.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 931,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								89,
+								89
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "lua/__init__.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2826,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								755,
+								755
+							]
+						],
+						"settings":
+						{
+							"auto_name": "# lua table serialization",
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 188.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "dcs/terrain.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 97,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								17,
+								17
+							]
+						],
+						"settings":
+						{
+							"auto_name": "# terrain module",
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "missions/test/mission",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 109644,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								182,
+								182
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.707956600362,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 244.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "My Builder",
+	"project": "dcs-cs.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"data",
+				"data.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 52.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"html",
+				"Html"
+			]
+		],
+		"width": 392.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 260.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
