@@ -32,6 +32,8 @@ def dumps(value, varname=None, indent=None):
         s += NL + '\t' * (indentcount-1) + "}"
     elif isinstance(value, str):
         s += '"{val}"'.format(val=value.replace('"', '\\"'))
+    elif isinstance(value, bool):
+        s += "true" if value else "false"
     else:
         s += str(value)
 
