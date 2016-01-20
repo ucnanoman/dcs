@@ -2,7 +2,7 @@ import zipfile
 import lua
 
 
-class Options():
+class Options:
     difficulty = {}
     playerName = ""
     graphics = {}
@@ -12,17 +12,30 @@ class Options():
     miscellaneous = {}
 
 
-class Weather():
+class Weather:
     pass
 
 
-class Coalition():
+class Coalition:
     blue = {}
     red = {}
     neutral = {}
 
 
-class Mission():
+class String:
+
+    def __init__(self, s, lang='DEFAULT'):
+        self.string = {}
+        self.string[lang] = s
+
+    def get(self, lang='DEFAULT'):
+        return self.string[lang]
+
+    def __str__(self):
+        return self.get()
+
+
+class Mission:
     trig = []
     triggers = {}
     result = []
@@ -49,33 +62,27 @@ class Mission():
     forcedOptions = {}
     failures = {}
 
-    def __init__(self, filename):
-        self.loadFile(filename)
+    def __init__(self):
+        pass
 
     def loadFile(self, filename):
         mission_dict = {}
         options_dict = {}
         warehouse_dict = {}
-        with zipfile.ZipFile(filename, 'r') as miz:
+        dictionary_dict = {}
+
+        def loaddict(fname, miz):
             with miz.open('mission') as mfile:
-                mission_data = mfile.read()
+                data = mfile.read()
+                data = data.decode()
+                return lua.loads(data)
 
-                mission_data = mission_data.decode()
-                mission_dict = lua.loads(mission_data)
-                print(mission_dict)
+        with zipfile.ZipFile(filename, 'r') as miz:
+            mission_dict = loaddict('mission', miz)
+            options_dict = loaddict('options', miz)
+            warehouse_dict = loaddict('warehouses', miz)
+            dictionary_dict = loaddict('DEFAULT/dictionary', miz)
 
-            with miz.open('options') as optfile:
-                opt_data = optfile.read()
-
-                opt_data = opt_data.decode()
-                options_dict = lua.loads(opt_data)
-                print(options_dict)
-
-            with miz.open('warehouses') as warefile:
-                ware_data = warefile.read()
-
-                ware_data = ware_data.decode()
-                warehouse_dict = lua.loads(ware_data)
-                print(warehouse_dict)
+        print(mission_dict["mission"]["descriptionText"])
 
         return True
