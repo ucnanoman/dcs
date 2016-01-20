@@ -47,6 +47,13 @@ mission=
         r = loads(luas)
         self.assertEqual(r, ref)
 
+    def test_syntaxerr(self):
+        with self.assertRaises(SyntaxError):
+            loads("""m=
+            {
+                ["x"] 12
+            }""")
+
 
 if __name__ == '__main__':
     unittest.main()

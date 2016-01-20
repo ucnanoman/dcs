@@ -6,6 +6,7 @@ def loads(tablestr):
             self.buffer = buffer
             self.buflen = len(buffer)
             self.pos = 0
+            self.lineno = 1
 
         def value(self):
             self.eatWS()
@@ -25,21 +26,27 @@ def loads(tablestr):
                     self.pos += 1
                     return {varname: self.value()}
                 else:
-                    print("syntax ERROR:", varname, self.buffer[self.pos])
+                    se = SyntaxError()
+                    se.text = varname + " '" + self.char() + "'"
+                    se.lineno = self.lineno
+                    se.offset = self.pos
+                    raise se
 
             return {}
 
         def string(self):
             if self.char() != '"':
-                print('string parse error not starting with "')
-                return ''
+                se = SyntaxError()
+                se.lineno = self.lineno
+                se.offset = self.pos
+                se.text = "Expected character '\"', got '{char}'".format(char=self.char())
+                raise se
 
             state = 0
             s = ''
             while state != 1:
                 if self.advance():
-                    print('unexpected end of buffer')
-                    return ''
+                    raise self.eobException()
 
                 c = self.char()
                 if state == 0:
@@ -61,7 +68,7 @@ def loads(tablestr):
             if self.char() == '-':
                 sign = -1
                 if self.advance():
-                    print("unexpected end of buffer")
+                    raise self.eobException()
 
             while (not self.eob() and
                     (self.char().isnumeric() or self.char() == '.' or
@@ -74,11 +81,14 @@ def loads(tablestr):
         def object(self):
             d = {}
             if self.char() != '{':
-                print('object not starting with {')
-                return {}
+                se = SyntaxError()
+                se.lineno = self.lineno
+                se.offset = self.pos
+                se.text = "Expected character '{', got '{char}'".format(char=self.char())
+                raise se
 
             if self.advance():
-                print("unexpected end of buffer")
+                raise self.eobException()
 
             self.eatWS()
 
@@ -88,12 +98,14 @@ def loads(tablestr):
                 self.eatWS()
 
                 if self.char() != '[':
-                    print("object expected '[' got {char}'".format(char=self.char()))
-                    return {}
+                    se = SyntaxError()
+                    se.lineno = self.lineno
+                    se.offset = self.pos
+                    se.text = "Expected character '[', got '{char}'".format(char=self.char())
+                    raise se
 
                 if self.advance():
-                    print("unexpected end of buffer")
-                    return {}
+                    raise self.eobException()
 
                 self.eatWS()
                 if self.char() == '"':
@@ -103,28 +115,31 @@ def loads(tablestr):
                     array = True
 
                 if self.eob():
-                    print("unexpected end of buffer")
-                    return {}
+                    raise self.eobException()
 
                 self.eatWS()
 
                 if self.char() != ']':
-                    print("object unexpected '{char}'".format(char=self.char()))
-                    return {}
+                    se = SyntaxError()
+                    se.lineno = self.lineno
+                    se.offset = self.pos
+                    se.text = "Expected character ']', got '{char}'".format(char=self.char())
+                    raise se
 
                 if self.advance():
-                    print("unexpected end of buffer")
-                    return {}
+                    raise self.eobException()
 
                 self.eatWS()
 
                 if self.char() != '=':
-                    print("object expected '=' got '{char}'".format(char=self.char()))
-                    return {}
+                    se = SyntaxError()
+                    se.lineno = self.lineno
+                    se.offset = self.pos
+                    se.text = "Expected character '=', got '{char}'".format(char=self.char())
+                    raise se
 
                 if self.advance():
-                    print("unexpected end of buffer")
-                    return {}
+                    raise self.eobException()
 
                 val = self.value()
 
@@ -137,12 +152,14 @@ def loads(tablestr):
                     break
                 elif self.char() == ',':
                     if self.advance():
-                        print("unexpected end of buffer")
-                        return {}
+                        raise self.eobException()
                     self.eatWS()
                 else:
-                    print("object unexpected '{char}'".format(char=self.char()))
-                    return {}
+                    se = SyntaxError()
+                    se.lineno = self.lineno
+                    se.offset = self.pos
+                    se.text = "Unexpected character '{char}'".format(char=self.char())
+                    raise se
 
             self.advance()
 
@@ -160,18 +177,29 @@ def loads(tablestr):
             return varname
 
         def eatComment(self):
-            if self.char() == '-' and self.pos + 1 < self.buflen and self.buffer[self.pos + 1] == '-':
+            if (self.char() == '-' and
+                self.pos + 1 < self.buflen and
+                self.buffer[self.pos + 1] == '-'):
                 while not self.eob() and self.char() != '\n':
                     self.advance()
 
         def eatWS(self):
             self.eatComment()
-            while not self.eob() and self.buffer[self.pos].isspace():
+            while not self.eob() and self.char().isspace():
+                if self.char() == '\n':
+                    self.lineno += 1
                 self.pos += 1
                 self.eatComment()
 
         def eob(self):
             return self.pos >= self.buflen
+
+        def eobException(self):
+            se = SyntaxError()
+            se.lineno = self.lineno
+            se.offset = self.pos
+            se.text = "Unexpected end of buffer"
+            return se
 
         def char(self):
             return self.buffer[self.pos]
