@@ -76,7 +76,10 @@ def loads(tablestr):
                 n += self.char()
                 self.advance()
 
-            return float(n) * sign
+            num = float(n) * sign
+            if num.is_integer():
+                return int(num)
+            return num
 
         def object(self):
             d = {}
