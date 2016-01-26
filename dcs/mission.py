@@ -105,28 +105,32 @@ class Group:
 
 
 class Country:
-    def __init__(self, _id, name, vehicle=[], plane=[], static=[]):
+    def __init__(self, _id, name, vehicle_group=[], plane_group=[], static_group=[]):
         self.id = _id
         self.name = name
 
     def name(self):
         return self.name
 
+    def dict(self):
+        d = {}
+        d["name"] = self.name
+        d["id"] = self.id
+        return d
+
 
 class Coalition:
-    def __init__(self, name):
+    def __init__(self, name, bullseye=None):
         self.name = name
         self.countries = []
-        self.bulls_x = 0
-        self.bulls_y = 0
+        self.bullseye = bullseye
         self.nav_points = []
 
-    def set_bullseye(self, x, y):
-        self.bulls_x = x
-        self.bulls_y = y
+    def set_bullseye(self, bulls):
+        self.bullseye = bulls
 
     def add_country(self, country):
-        self.countries[country.name()] = country
+        self.countries.append(country)
 
     def remove_country(self, name):
         return self.countries.pop(name)
@@ -134,12 +138,13 @@ class Coalition:
     def dict(self):
         d = {}
         d["name"] = self.name
-        if self.bulls_y and self.bulls_x:
-            d["bullseye"] = {"x": self.bulls_x, "y": self.bulls_y}
+        if self.bullseye:
+            d["bullseye"] = self.bullseye
         d["country"] = {}
-        i = 0
+        i = 1
         for country in self.countries:
             d["country"][i] = country.dict()
+            i += 1
         d["nav_points"] = {}
         return d
 
@@ -167,6 +172,7 @@ class String:
 class Translation:
     def __init__(self):
         self.strings = {}
+        self.maxDictId = 0
 
     def set_string(self, _id, string, lang='DEFAULT'):
         if lang not in self.strings:
@@ -176,6 +182,12 @@ class Translation:
 
     def get_string(self, _id, lang='DEFAULT'):
         return String(_id, self, lang)
+
+    def set_max_dict_id(self, dict_id):
+        self.maxDictId = dict_id
+
+    def max_dict_id(self):
+        return self.maxDictId
 
     def __str__(self):
         return str(self.strings)
@@ -188,18 +200,12 @@ class Mission:
     trig = {}
     triggers = {}
     result = {}
-    maxDictId = 0
     groundControl = {}
     usedModules = {}
     resourceCounter = {}
     weather = Weather()
-    theatre = "Caucasus"
     needModules = {}
-    coalition = Coalition("Blue")  # unit descriptions
-    version = 9
-    goals = {}
-    currentKey = 0
-    start_time = 43200
+    COUNTRY_IDS = [x for x in range(0, 47)]
 
     options = Options()
     forcedOptions = {}
@@ -207,6 +213,19 @@ class Mission:
 
     def __init__(self):
         self.translation = Translation()
+
+        self.description_text = String()
+        self.description_bluetask = String()
+        self.description_redtask = String()
+        self.sortie = String()
+        self.pictureFileNameR = ""
+        self.pictureFileNameB = ""
+        self.version = 9
+        self.currentKey = 0
+        self.start_time = 43200
+        self.theatre = "Caucasus"
+        self.goals = {}
+        self.coalition = {}
 
         self.usedModules = {
             'Su-25A by Eagle Dynamics': True,
@@ -268,45 +287,64 @@ class Mission:
         for sid in translation_dict:
             self.translation.set_string(sid, translation_dict[sid], 'DEFAULT')
 
+        self.translation.set_max_dict_id(imp_mission["maxDictId"])
+
         # print(self.translation)
 
         # import options
         self.options = Options(options_dict["options"])
 
         # import base values
-        self.values = {}
-        self.values["descriptionText"] = self.translation.get_string(imp_mission["descriptionText"])
-        self.values["descriptionBlueTask"] = self.translation.get_string(imp_mission["descriptionBlueTask"])
-        self.values["descriptionRedTask"] = self.translation.get_string(imp_mission["descriptionRedTask"])
-        self.values["sortie"] = self.translation.get_string(imp_mission["sortie"])
-        self.values["pictureFileNameR"] = imp_mission["pictureFileNameR"]
-        self.values["pictureFileNameB"] = imp_mission["pictureFileNameB"]
-        self.values["version"] = imp_mission["version"]
-        self.values["currentKey"] = imp_mission["currentKey"]
-        self.values["start_time"] = imp_mission["start_time"]
-        self.values["maxDictId"] = imp_mission["maxDictId"]
+        self.description_text = self.translation.get_string(imp_mission["descriptionText"])
+        self.description_bluetask = self.translation.get_string(imp_mission["descriptionBlueTask"])
+        self.description_redtask = self.translation.get_string(imp_mission["descriptionRedTask"])
+        self.sortie = self.translation.get_string(imp_mission["sortie"])
+        self.pictureFileNameR = imp_mission["pictureFileNameR"]
+        self.pictureFileNameB = imp_mission["pictureFileNameB"]
+        self.version = imp_mission["version"]
+        self.currentKey = imp_mission["currentKey"]
+        self.start_time = imp_mission["start_time"]
         self.usedModules = imp_mission["usedModules"]
-        print(self.usedModules)
+
+        # import coalition
+        def imp_coalition(coalition, key):
+            if key not in coalition:
+                return None
+            imp_col = coalition[key]
+            col = Coalition(key, imp_col["bullseye"])
+            for country_idx in imp_col["country"]:
+                imp_country = imp_col["country"][country_idx]
+                if "vehicle" in imp_country:
+                    for vgroup in imp_country["vehicle"]["group"]:
+                        print(vgroup)
+                col.add_country(Country(imp_country["id"], imp_country["name"]))
+            return col
+        # blue
+        self.coalition["blue"] = imp_coalition(imp_mission["coalition"], "blue")
+        self.coalition["red"] = imp_coalition(imp_mission["coalition"], "red")
+        neutral_col = imp_coalition(imp_mission["coalition"], "neutral")
+        if neutral_col:
+            self.coalition["neutral"] = imp_coalition(imp_mission["coalition"], "neutral")
 
         return True
 
     def description_text(self):
-        return str(self.values["descriptionText"])
+        return str(self.description_text)
 
     def set_description_text(self, text):
-        self.values["descriptionText"].set(text)
+        self.description_text.set(text)
 
     def description_bluetask_text(self):
-        return str(self.values["descriptionBlueTask"])
+        return str(self.description_bluetask)
 
     def set_description_bluetask_text(self, text):
-        self.values["descriptionBlueTask"].set(text)
+        self.description_bluetask.set(text)
 
     def description_redtask_text(self):
-        return str(self.values["descriptionRedTask"])
+        return str(self.description_redtask)
 
     def set_description_redtask_text(self, text):
-        self.values["descriptionRedTask"].set(text)
+        self.description_redtask.set(text)
 
     def string(self, s):
         return "not implemented"
@@ -318,7 +356,7 @@ class Mission:
         m = {}
         m["trig"] = self.trig
         m["result"] = self.result
-        m["grounControl"] = self.groundControl
+        m["groundControl"] = self.groundControl
         m["usedModules"] = self.usedModules
         m["resourceCounter"] = self.resourceCounter
         m["triggers"] = self.triggers
@@ -326,16 +364,18 @@ class Mission:
         m["theatre"] = self.theatre
         m["needModules"] = self.needModules
         m["map"] = {}
-        m["descriptionText"] = self.values["descriptionText"].id()
-        m["pictureFileNameR"] = self.values["pictureFileNameR"]
-        m["pictureFileNameB"] = self.values["pictureFileNameB"]
-        m["descriptionBlueTask"] = self.values["descriptionBlueTask"].id()
-        m["descriptionRedTask"] = self.values["descriptionRedTask"].id()
+        m["descriptionText"] = self.description_text.id()
+        m["pictureFileNameR"] = self.pictureFileNameR
+        m["pictureFileNameB"] = self.pictureFileNameB
+        m["descriptionBlueTask"] = self.description_bluetask.id()
+        m["descriptionRedTask"] = self.description_redtask.id()
         m["trigrules"] = {}
-        m["coalition"] = self.coalition.dict()
+        m["coalition"] = {}
+        for col in self.coalition.keys():
+            m["coalition"][col] = self.coalition[col].dict()
         m["coalitions"] = {}  # generate from coalition
-        m["sortie"] = self.values["sortie"].id()
-        m["version"] = self.values["version"]
+        m["sortie"] = self.sortie.id()
+        m["version"] = self.version
         m["goals"] = self.goals
         m["currentKey"] = self.currentKey
         m["start_time"] = self.start_time
