@@ -95,8 +95,6 @@ def loads(tablestr):
 
             self.eatWS()
 
-            array = False
-
             while self.char() != '}':
                 self.eatWS()
 
@@ -114,8 +112,7 @@ def loads(tablestr):
                 if self.char() == '"':
                     key = self.string()
                 else:
-                    key = str(self.number())
-                    array = True
+                    key = self.number()
 
                 if self.eob():
                     raise self.eobException()
@@ -165,9 +162,6 @@ def loads(tablestr):
                     raise se
 
             self.advance()
-
-            if array:
-                return [d[k] for k in sorted(d)]
 
             return d
 

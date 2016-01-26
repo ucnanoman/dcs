@@ -40,10 +40,34 @@ mission=
 }
 """
         ref = {'mission': {
-            'coalitions': {'blue': [11.0, 4.0, 6.0]},
+            'coalitions': {'blue': {1: 11.0, 2: 4.0, 3: 6.0}},
             'descriptionBlueTask': 'DictKey_descriptionBlueTask_3',
             'trig': {},
             'maxDictId': 18.0}}
+        r = loads(luas)
+        self.assertEqual(r, ref)
+
+    def test_dictmix(self):
+        luas = """
+o =
+{
+    ["callsign"] =
+    {
+        [1] = 1,
+        [2] = 1,
+        [3] = 1,
+        ["name"] = "Enfield11",
+    } -- end of ["callsign"]
+}
+"""
+        ref = {"o": {
+            'callsign': {
+                1: 1,
+                2: 1,
+                3: 1,
+                "name": "Enfield11"
+            }
+        }}
         r = loads(luas)
         self.assertEqual(r, ref)
 
