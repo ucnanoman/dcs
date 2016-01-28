@@ -104,8 +104,6 @@ class Unit:
         self.heading = 0
         self.id = id
         self.skill = Skill.AVERAGE
-        self.player_can_drive = False
-        self.transportable = {"randomTransportable": False}
         self.name = name if name else String()
 
     def set_position(self, pos):
@@ -121,8 +119,20 @@ class Unit:
         d["skill"] = self.skill
         d["unitId"] = self.id
         d["name"] = self.name.id()
-        d["transportable"] = self.transportable
+        return d
+
+
+class Vehicle(Unit):
+    def __init__(self, id=None, name=None, type=""):
+        super(Vehicle, self).__init__(id, name, type)
+        self.player_can_drive = False
+        self.transportable = {"randomTransportable": False}
+
+    def dict(self):
+        d = super(Vehicle, self).dict()
+        print(self.player_can_drive)
         d["playerCanDrive"] = self.player_can_drive
+        d["transportable"] = self.transportable
         return d
 
 
@@ -132,17 +142,37 @@ class Plane(Unit):
         self.livery_id = ""
         self.parking = None
         self.psi = ""
-        self.callsign = {}
         self.onboard_num = "010"
         self.alt = 0
         self.alt_type = "BARO"
-        self.payload = {}
+        self.flare = 0
+        self.chaff = 0
+        self.fuel = 0
+        self.gun = 0
+        self.ammo_type = 0
+        self.pylons = {}
+        self.callsign_name = ""
+        self.callsign = [1, 1, 1]
 
     def dict(self):
         d = super(Plane, self).dict()
         d["livery_id"] = self.livery_id
         d["psi"] = self.psi
         d["onboard_num"] = self.onboard_num
+        d["payload"] = {
+            "flare": self.flare,
+            "chaff": self.chaff,
+            "fuel": self.fuel,
+            "gun": self.gun,
+            "ammo_type": self.ammo_type,
+            "pylons": self.pylons
+        }
+        d["callsign"] = {
+            "name": self.callsign_name,
+            1: self.callsign[0],
+            2: self.callsign[1],
+            3: self.callsign[2]
+        }
         return d
 
 
@@ -529,13 +559,15 @@ class Mission:
                         # units
                         for imp_unit_idx in vgroup["units"]:
                             imp_unit = vgroup["units"][imp_unit_idx]
-                            unit = Unit(id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]))
+                            unit = Vehicle(id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]))
                             unit.set_position(MapPosition(imp_unit["x"], imp_unit["y"]))
                             unit.heading = imp_unit["heading"]
                             unit.type = imp_unit["type"]
                             unit.skill = imp_unit["skill"]
                             unit.x = imp_unit["x"]
                             unit.y = imp_unit["y"]
+                            unit.player_can_drive = imp_unit["playerCanDrive"]
+                            unit.transportable = imp_unit["transportable"]
                             vg.add_unit(unit)
                         country.add_vehicle_group(vg)
 
@@ -563,7 +595,15 @@ class Mission:
                             plane.y = imp_unit["y"]
                             plane.alt_type = imp_unit["alt_type"]
                             plane.alt = imp_unit["alt"]
-                            plane_group.add_unit(unit)
+                            plane.psi = imp_unit["psi"]
+                            plane.speed = imp_unit["speed"]
+                            plane.fuel = imp_unit["payload"]["fuel"]
+                            plane.gun = imp_unit["payload"]["gun"]
+                            plane.flare = imp_unit["payload"]["flare"]
+                            plane.chaff = imp_unit["payload"]["chaff"]
+                            plane.ammo_type = imp_unit["payload"]["ammo_type"]
+                            plane.pylons = imp_unit["payload"]["pylons"]
+                            plane_group.add_unit(plane)
                         country.add_plane_group(plane_group)
                 col.add_country(country)
             return col
