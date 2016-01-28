@@ -5,7 +5,7 @@ def dumps(value, varname=None, indent=None):
 
     if isinstance(value, dict):
         e = []
-        for key in sorted(value.keys()):
+        for key in sorted(value.keys(), key=str):
             child = value[key]
             KNL = "\n" if indent and isinstance(child, (dict, list)) else ""
             selem = '\t' * indentcount
