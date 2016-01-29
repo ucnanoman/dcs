@@ -103,14 +103,15 @@ class Unit:
         self.y = pos.y()
 
     def dict(self):
-        d = {}
-        d["type"] = self.type
-        d["x"] = self.x
-        d["y"] = self.y
-        d["heading"] = self.heading
-        d["skill"] = self.skill
-        d["unitId"] = self.id
-        d["name"] = self.name.id()
+        d = {
+            "type": self.type,
+            "x": self.x,
+            "y": self.y,
+            "heading": self.heading,
+            "skill": self.skill,
+            "unitId": self.id,
+            "name": self.name.id()
+        }
         return d
 
 
