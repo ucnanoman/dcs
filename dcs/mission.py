@@ -66,6 +66,27 @@ class Wind:
         return {"speed": self.speed, "dir": self.direction}
 
 
+class Cyclone:
+    def __init__(self):
+        self.pressure_spread = 0.0
+        self.centerZ = 0.0
+        self.ellipticity = 0.0
+        self.rotation = 0.0
+        self.pressure_excess = 0
+        self.centerX = 0.0
+
+    def dict(self):
+        d = {
+            "pressure_spread": self.pressure_spread,
+            "pressure_excess": self.pressure_excess,
+            "centerZ": self.centerZ,
+            "ellipticity": self.ellipticity,
+            "rotation": self.rotation,
+            "centerX": self.centerX
+        }
+        return d
+
+
 class Weather:
     def __init__(self):
         self.atmosphere_type = 0
@@ -80,7 +101,7 @@ class Weather:
         self.season_iseason = 1
         self.type_weather = 0
         self.qnh = 760
-        self.cyclones = {}
+        self.cyclones = []
         self.name = "Summer, clean sky"
         self.fog_thickness = 0
         self.fog_visibility = 25
@@ -104,7 +125,7 @@ class Weather:
         d["season"] = {"iseason": self.season_iseason, "temperature": self.season_temperature}
         d["type_weather"] = self.type_weather
         d["qnh"] = self.qnh
-        d["cyclones"] = self.cyclones
+        d["cyclones"] = {x: self.cyclones[x] for x in range(0, len(self.cyclones))}
         d["name"] = self.name
         d["fog"] = {"thickness": self.fog_thickness, "visibility": self.fog_visibility, "density": self.fog_density}
         d["visibility"] = {"distance": self.visibility_distance}
