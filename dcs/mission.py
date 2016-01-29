@@ -376,7 +376,7 @@ class Coalition:
         self.name = name
         self.countries = []
         self.bullseye = bullseye
-        self.nav_points = []
+        self.nav_points = []  # TODO
 
     def set_bullseye(self, bulls):
         self.bullseye = bulls
@@ -410,7 +410,7 @@ class Mission:
     resourceCounter = {}
     weather = Weather()
     needModules = {}
-    COUNTRY_IDS = [x for x in range(0, 47)]
+    COUNTRY_IDS = {x for x in range(0, 47)}
 
     options = Options()
     forcedOptions = {}
@@ -722,7 +722,10 @@ class Mission:
         m["coalition"] = {}
         for col in self.coalition.keys():
             m["coalition"][col] = self.coalition[col].dict()
-        m["coalitions"] = {}  # generate from coalition
+        col_blue = {x.id for x in self.coalition["blue"].countries}
+        col_red = {x.id for x in self.coalition["red"].countries}
+        col_neutral = list(Mission.COUNTRY_IDS - col_blue - col_red)
+        m["coalitions"] = {x: col_neutral[x] for x in range(0,len(col_neutral))}
         m["sortie"] = self.sortie.id()
         m["version"] = self.version
         m["goals"] = self.goals
