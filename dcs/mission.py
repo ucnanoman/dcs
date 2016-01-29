@@ -531,6 +531,30 @@ class Mission:
         self.start_time = imp_mission["start_time"]
         self.usedModules = imp_mission["usedModules"]
 
+        # groundControl
+        self.groundControl = imp_mission["groundControl"]  # TODO
+
+        # result
+        self.result = imp_mission["result"]  # TODO
+
+        # goals
+        self.goals = imp_mission["goals"]  # TODO
+
+        # trig
+        self.trig = imp_mission["trig"]  # TODO
+
+        # triggers
+        self.triggers = imp_mission["triggers"]  # TODO
+
+        # trigrules
+        self.trigrules = imp_mission["trigrules"]  # TODO
+
+        # failures
+        self.failures = imp_mission["failures"]  # TODO
+
+        # forced options
+        self.forcedOptions = imp_mission["forcedOptions"]  # TODO
+
         # weather
         imp_weather = imp_mission["weather"]
         self.weather = Weather()
