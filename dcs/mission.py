@@ -1,5 +1,6 @@
 import zipfile
 import lua
+import copy
 from .weather import *
 
 
@@ -87,7 +88,10 @@ class PlaneType:
 
 class Skill:
     AVERAGE = "Average"
+    GOOD = "Good"
     HIGH = "High"
+    EXCELLENT = "Excellent"
+    RANDOM = "Random"
 
 
 class MapPosition:
@@ -103,18 +107,23 @@ class MapPosition:
 
 
 class Unit:
-    def __init__(self, id=None, name=None, type=""):
+    def __init__(self, _id, name=None, type=""):
         self.type = type
         self.x = 0
         self.y = 0
         self.heading = 0
-        self.id = id
+        self.id = _id
         self.skill = Skill.AVERAGE
         self.name = name if name else String()
 
     def set_position(self, pos):
         self.x = pos.x()
         self.y = pos.y()
+
+    def clone(self, _id):
+        new = copy.copy(self)
+        new.id = _id
+        return new
 
     def dict(self):
         d = {
@@ -165,7 +174,8 @@ class Plane(Unit):
         d = super(Plane, self).dict()
         d["alt"] = self.alt
         d["alt_type"] = self.alt_type
-        d["parking"] = self.parking
+        if self.parking is not None:
+            d["parking"] = self.parking
         d["livery_id"] = self.livery_id
         d["psi"] = self.psi
         d["onboard_num"] = self.onboard_num
@@ -260,11 +270,9 @@ class Group:
     def __init__(self, name=None):
         self.id = 0
         self.hidden = False
-        self.units = []
-        self.x = 0
-        self.y = 0  # for now take pos from first unit
+        self.units = []  # type: List[Unit]
         self.spans = []
-        self.points = []
+        self.points = []  # type: List[MovingPoint]
         self.name = name if name else String()
 
     def add_unit(self, unit: Unit):
@@ -275,6 +283,16 @@ class Group:
 
     def add_span(self, pos):
         self.spans.append({"x": pos.x, "y": pos.y})
+
+    def x(self):
+        if len(self.units) > 0:
+            return self.units[0].x
+        return None
+
+    def y(self):
+        if len(self.units) > 0:
+            return self.units[0].y
+        return None
 
     def dict(self):
         d = {}
@@ -288,6 +306,7 @@ class Group:
             i = 1
             for unit in self.units:
                 d["units"][i] = unit.dict()
+                i += 1
         if self.points:
             d["route"] = {"points": {}}
             i = 1
@@ -364,12 +383,12 @@ class StaticGroup(Group):
 
 
 class Country:
-    def __init__(self, _id, name, vehicle_group=None, plane_group=None, static_group=None):
+    def __init__(self, _id, name):
         self.id = _id
         self.name = name
-        self.vehicle_group = vehicle_group if vehicle_group else []
-        self.plane_group = plane_group if plane_group else []
-        self.static_group = static_group if static_group else []
+        self.vehicle_group = []  # type: List[VehicleGroup]
+        self.plane_group = []  # type: List[PlaneGroup]
+        self.static_group = []  # type: List[StaticGroup]
 
     def name(self):
         return self.name
@@ -444,20 +463,11 @@ class Coalition:
 
 
 class Mission:
-    trig = {}
-    triggers = {}
-    result = {}
-    groundControl = {}
-    usedModules = {}
-    resourceCounter = {}
-    weather = Weather()
-    needModules = {}
     COUNTRY_IDS = {x for x in range(0, 13)} | {x for x in range(15, 47)}
 
-    forcedOptions = {}
-    failures = {}
-
     def __init__(self):
+        self.current_unit_id = 1
+
         self.translation = Translation()
 
         self.description_text = String()
@@ -476,11 +486,20 @@ class Mission:
         self.warehouses = Warehouses()
         self.mapresource = {}
         self.goals = {}
-        self.coalition = {}
+        self.coalition = {}  # type: dict[str, Coalition]
         self.map = {
             "zoom": 50000
         }
 
+        self.groundControl = {}
+        self.failures = {}
+        self.trig = {}
+        self.result = {}
+        self.groundControl = {}
+        self.forcedOptions = {}
+        self.resourceCounter = {}
+        self.needModules = {}
+        self.weather = Weather()
         self.usedModules = {
             'Su-25A by Eagle Dynamics': True,
             'MiG-21Bis AI by Leatherneck Simulations': True,
@@ -702,6 +721,8 @@ class Mission:
                             unit.y = imp_unit["y"]
                             unit.player_can_drive = imp_unit["playerCanDrive"]
                             unit.transportable = imp_unit["transportable"]
+
+                            self.current_unit_id = max(self.current_unit_id, unit.id)
                             vg.add_unit(unit)
                         country.add_vehicle_group(vg)
 
@@ -739,9 +760,11 @@ class Mission:
                             plane.ammo_type = imp_unit["payload"]["ammo_type"]
                             plane.pylons = imp_unit["payload"]["pylons"]
                             plane.callsign_name = imp_unit["callsign"]["name"]
-                            plane.parking = imp_unit["parking"]
+                            plane.parking = imp_unit.get("parking", None)
                             plane.speed = imp_unit["speed"]
                             plane.callsign = [imp_unit["callsign"][1], imp_unit["callsign"][2], imp_unit["callsign"][3]]
+
+                            self.current_unit_id = max(self.current_unit_id, plane.id)
                             plane_group.add_unit(plane)
                         country.add_plane_group(plane_group)
 
@@ -766,6 +789,8 @@ class Mission:
                             static.y = imp_unit["y"]
                             static.category = imp_unit["category"]
                             static.shape_name = imp_unit["shape_name"]
+
+                            self.current_unit_id = max(self.current_unit_id, static.id)
                             static_group.add_unit(static)
                         country.add_static_group(static_group)
                 col.add_country(country)
@@ -796,6 +821,12 @@ class Mission:
 
     def set_description_redtask_text(self, text):
         self.description_redtask.set(text)
+
+    def next_unit_id(self):
+        _id = self.current_unit_id + 1
+        self.current_unit_id += 1
+        return _id
+
 
     def string(self, s):
         return "not implemented"
