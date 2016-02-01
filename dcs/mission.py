@@ -1,61 +1,14 @@
 import zipfile
 import lua
-import copy
 from .weather import *
-
-
-class String:
-    def __init__(self, _id='', translation=None):
-        self.translation = translation
-        self.id = _id
-
-    def set(self, text, lang='DEFAULT'):
-        self.translation.set_string(self.id, text, lang)
-        return str(self)
-
-    def str(self, lang='DEFAULT'):
-        return self.translation.strings[lang][self.id]
-
-    def __str__(self):
-        return self.str('DEFAULT')
-
-    def __repr__(self):
-        return self.id + ":" + str(self)
-
-
-class Translation:
-    def __init__(self):
-        self.strings = {}  # type: dict[str,dict[str,str]]
-        self.max_dict_id = 0
-
-    def set_string(self, _id, string, lang='DEFAULT'):
-        if lang not in self.strings:
-            self.strings[lang] = {}
-        self.strings[lang][_id] = string
-        return _id
-
-    def get_string(self, _id):
-        return String(_id, self)
-
-    def create_string(self, s, lang='DEFAULT'):
-        _id = 'DictKey_Translation_{dict_id}'.format(dict_id=self.max_dict_id)
-        self.max_dict_id += 1
-        self.set_string(_id, s, lang)
-        return String(_id, self)
-
-    def languages(self) -> [str]:
-        return self.strings.keys()
-
-    def dict(self, lang='DEFAULT'):
-        if lang in self.strings:
-            return {x: self.strings[lang][x] for x in self.strings[lang]}
-        return {}
-
-    def __str__(self):
-        return str(self.strings)
-
-    def __repr__(self):
-        return repr(self.strings)
+from .group import *
+from .country import Country
+from . import country
+from .point import Point, MovingPoint
+from .vehicle import Vehicle
+from .plane import Plane
+from .static import Static
+from .translation import Translation, String
 
 
 class Options:
@@ -77,22 +30,6 @@ class Warehouses:
         return lua.dumps(self.data, "warehouses", 1)
 
 
-class VehicleType:
-    M818 = "M 818"
-
-
-class PlaneType:
-    A10C = "A-10C"
-
-
-class Skill:
-    AVERAGE = "Average"
-    GOOD = "Good"
-    HIGH = "High"
-    EXCELLENT = "Excellent"
-    RANDOM = "Random"
-
-
 class MapPosition:
     def __init__(self, x, y):
         self._x = x
@@ -103,341 +40,6 @@ class MapPosition:
 
     def y(self):
         return self._y
-
-
-class Unit:
-    def __init__(self, _id, name=None, type=""):
-        self.type = type
-        self.x = 0
-        self.y = 0
-        self.heading = 0
-        self.id = _id
-        self.skill = Skill.AVERAGE
-        self.name = name if name else String()
-
-    def set_position(self, pos):
-        self.x = pos.x()
-        self.y = pos.y()
-
-    def clone(self, _id):
-        new = copy.copy(self)
-        new.id = _id
-        return new
-
-    def dict(self):
-        d = {
-            "type": self.type,
-            "x": self.x,
-            "y": self.y,
-            "heading": self.heading,
-            "skill": self.skill,
-            "unitId": self.id,
-            "name": self.name.id
-        }
-        return d
-
-
-class Vehicle(Unit):
-    def __init__(self, id=None, name=None, _type=VehicleType.M818):
-        super(Vehicle, self).__init__(id, name, _type)
-        self.player_can_drive = False
-        self.transportable = {"randomTransportable": False}
-
-    def dict(self):
-        d = super(Vehicle, self).dict()
-        d["playerCanDrive"] = self.player_can_drive
-        d["transportable"] = self.transportable
-        return d
-
-
-class Plane(Unit):
-    def __init__(self, id=None, name=None, type=""):
-        super(Plane, self).__init__(id, name, type)
-        self.livery_id = ""
-        self.parking = None
-        self.psi = ""
-        self.onboard_num = "010"
-        self.alt = 0
-        self.alt_type = "BARO"
-        self.flare = 0
-        self.chaff = 0
-        self.fuel = 0
-        self.gun = 0
-        self.ammo_type = 0
-        self.pylons = {}
-        self.callsign_name = ""
-        self.callsign = [1, 1, 1]
-        self.speed = 0
-
-    def dict(self):
-        d = super(Plane, self).dict()
-        d["alt"] = self.alt
-        d["alt_type"] = self.alt_type
-        if self.parking is not None:
-            d["parking"] = self.parking
-        d["livery_id"] = self.livery_id
-        d["psi"] = self.psi
-        d["onboard_num"] = self.onboard_num
-        d["speed"] = self.speed
-        d["payload"] = {
-            "flare": self.flare,
-            "chaff": self.chaff,
-            "fuel": self.fuel,
-            "gun": self.gun,
-            "ammo_type": self.ammo_type,
-            "pylons": self.pylons
-        }
-        d["callsign"] = {
-            "name": self.callsign_name,
-            1: self.callsign[0],
-            2: self.callsign[1],
-            3: self.callsign[2]
-        }
-        return d
-
-
-class StaticType:
-    AMMUNITION_DEPOT = ".Ammunition depot"
-
-
-class Static(Unit):
-    def __init__(self, id=None, name=None, type=""):
-        super(Static, self).__init__(id, name, type)
-        self.category = "Warehouses"
-        self.can_cargo = False
-        self.shape_name = ""
-
-    def dict(self):
-        d = super(Static, self).dict()
-        d["category"] = self.category
-        d["canCargo"] = self.can_cargo
-        d["shape_name"] = self.shape_name
-        return d
-
-
-class Point:
-    def __init__(self):
-        self.alt = 0
-        self.type = ""
-        self.name = String()
-        self.x = 0
-        self.y = 0
-        self.speed = 0
-        self.formation_template = ""
-        self.action = ""
-
-    def dict(self):
-        return {
-            "alt": self.alt,
-            "type": self.type,
-            "name": self.name.id,
-            "x": self.x,
-            "y": self.y,
-            "speed": self.speed,
-            "formation_template": self.formation_template,
-            "action": self.action
-        }
-
-
-class MovingPoint(Point):
-    def __init__(self):
-        super(MovingPoint, self).__init__()
-        self.alt_type = "BARO"
-        self.ETA = 0
-        self.ETA_locked = True
-        self.speed_locked = True
-        self.task = {}
-        self.properties = None
-        self.airdrome_id = None
-
-    def dict(self):
-        d = super(MovingPoint, self).dict()
-        d["alt"] = self.alt
-        d["alt_type"] = self.alt_type
-        d["ETA"] = self.ETA
-        d["ETA_locked"] = self.ETA_locked
-        d["speed_locked"] = self.speed_locked
-        d["task"] = self.task
-        if self.airdrome_id is not None:
-            d["airdromeId"] = self.airdrome_id
-        if self.properties is not None:
-            d["properties"] = self.properties
-        return d
-
-
-class Group:
-    def __init__(self, name=None):
-        self.id = 0
-        self.hidden = False
-        self.units = []  # type: List[Unit]
-        self.spans = []
-        self.points = []  # type: List[MovingPoint]
-        self.name = name if name else String()
-
-    def add_unit(self, unit: Unit):
-        self.units.append(unit)
-
-    def add_point(self, point: Point):
-        self.points.append(point)
-
-    def add_span(self, pos):
-        self.spans.append({"x": pos.x, "y": pos.y})
-
-    def x(self):
-        if len(self.units) > 0:
-            return self.units[0].x
-        return None
-
-    def y(self):
-        if len(self.units) > 0:
-            return self.units[0].y
-        return None
-
-    def dict(self):
-        d = {}
-        d["hidden"] = self.hidden
-        d["name"] = self.name.id
-        d["groupId"] = self.id
-        if self.units:
-            d["x"] = self.units[0].x
-            d["y"] = self.units[0].y
-            d["units"] = {}
-            i = 1
-            for unit in self.units:
-                d["units"][i] = unit.dict()
-                i += 1
-        if self.points:
-            d["route"] = {"points": {}}
-            i = 1
-            for point in self.points:
-                d["route"]["points"][i] = point.dict()
-                i += 1
-        if self.spans:
-            d["route"]["spans"] = {}
-            i = 1
-            for spawn in self.spans:
-                d["route"]["spans"][i] = spawn
-                i += 1
-        return d
-
-
-class MovingGroup(Group):
-    def __init__(self, name=None, start_time=0):
-        super(MovingGroup, self).__init__(name)
-        self.task = ""
-        self.tasks = {}
-        self.start_time = start_time
-        self.visible = False
-        self.frequency = 251
-
-    def dict(self):
-        d = super(MovingGroup, self).dict()
-        d["task"] = self.task
-        d["tasks"] = self.tasks
-        d["start_time"] = self.start_time
-        d["visible"] = self.visible
-        d["frequency"] = self.frequency
-        return d
-
-
-class VehicleGroup(MovingGroup):
-    class Task:
-        GROUND = "Ground Nothing"
-
-    def __init__(self, name=None, start_time=0):
-        super(VehicleGroup, self).__init__(name, start_time)
-        self.modulation = 0
-        self.communication = True
-        self.task = VehicleGroup.Task.GROUND
-
-    def dict(self):
-        d = super(VehicleGroup, self).dict()
-        d["modulation"] = self.modulation
-        d["communication"] = self.communication
-        return d
-
-
-class PlaneGroup(MovingGroup):
-    class Task:
-        CAS = "CAS"
-        CAP = "CAP"
-
-    def __init__(self, name=None, start_time=0):
-        super(PlaneGroup, self).__init__(name, start_time)
-        self.modulation = 0
-        self.communication = True
-        self.uncontrolled = False
-        self.task = ""
-
-    def dict(self):
-        d = super(PlaneGroup, self).dict()
-        d["modulation"] = self.modulation
-        d["communication"] = self.communication
-        d["uncontrolled"] = self.uncontrolled
-        return d
-
-
-class StaticGroup(Group):
-    def __init__(self, name=None):
-        super(StaticGroup, self).__init__(name)
-        self.dead = False
-        self.heading = 0
-
-    def dict(self):
-        d = super(StaticGroup, self).dict()
-        d["dead"] = self.dead
-        d["heading"] = self.heading
-        return d
-
-
-class Country:
-    def __init__(self, _id, name):
-        self.id = _id
-        self.name = name
-        self.vehicle_group = []  # type: List[VehicleGroup]
-        self.plane_group = []  # type: List[PlaneGroup]
-        self.static_group = []  # type: List[StaticGroup]
-
-    def name(self):
-        return self.name
-
-    def add_vehicle_group(self, vgroup):
-        self.vehicle_group.append(vgroup)
-
-    def add_plane_group(self, pgroup):
-        self.plane_group.append(pgroup)
-
-    def add_static_group(self, sgroup):
-        self.static_group.append(sgroup)
-
-    def dict(self):
-        d = {}
-        d["name"] = self.name
-        d["id"] = self.id
-
-        if self.vehicle_group:
-            d["vehicle"] = {"group": {}}
-            i = 1
-            for vgroup in self.vehicle_group:
-                d["vehicle"]["group"][i] = vgroup.dict()
-                i += 1
-        if self.plane_group:
-            d["plane"] = {"group": {}}
-            i = 1
-            for plane_group in self.plane_group:
-                d["plane"]["group"][i] = plane_group.dict()
-                i += 1
-
-        if self.static_group:
-            d["static"] = {"group": {}}
-            i = 1
-            for static_group in self.static_group:
-                d["static"]["group"][i] = static_group.dict()
-                i += 1
-        return d
-
-    def __str__(self):
-        return str(self.id) + "," + self.name + "," + str(self.vehicle_group)
 
 
 class Coalition:
@@ -499,9 +101,45 @@ class Mission:
         self.warehouses = Warehouses()
         self.mapresource = {}
         self.goals = {}
-        self.coalition = {"blue": Coalition("blue"), "red": Coalition("red")}  # type: dict[str, Coalition]
+        blue = Coalition("blue")
+        blue.add_country(country.Australia())
+        blue.add_country(country.Belgium())
+        blue.add_country(country.Canada())
+        blue.add_country(country.Croatia())
+        blue.add_country(country.CzechRepublic())
+        blue.add_country(country.Denmark())
+        blue.add_country(country.France())
+        blue.add_country(country.Georgia())
+        blue.add_country(country.Germany())
+        blue.add_country(country.Israel())
+        blue.add_country(country.Italy())
+        blue.add_country(country.Norway())
+        blue.add_country(country.Poland())
+        blue.add_country(country.SouthKorea())
+        blue.add_country(country.Spain())
+        blue.add_country(country.Netherlands())
+        blue.add_country(country.UK())
+        blue.add_country(country.USA())
+        blue.add_country(country.Turkey())
+
+        red = Coalition("red")
+        red.add_country(country.Abkhazia())
+        red.add_country(country.Belarus())
+        red.add_country(country.China())
+        red.add_country(country.Iran())
+        red.add_country(country.Kazakhstan())
+        red.add_country(country.NorthKorea())
+        red.add_country(country.Russia())
+        red.add_country(country.Serbia())
+        red.add_country(country.SouthOssetia())
+        red.add_country(country.Syria())
+        red.add_country(country.Ukraine())
+
+        self.coalition = {"blue": blue, "red": red}  # type: dict[str, Coalition]
         self.map = {
-            "zoom": 50000
+            "zoom": 1000000,
+            "centerY": 680000,
+            "centerX": -250000
         }
 
         self.groundControl = {}
