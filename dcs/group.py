@@ -43,13 +43,13 @@ class Group:
                 d["units"][i] = unit.dict()
                 i += 1
         if self.points:
-            d["route"] = {"points": {}}
+            d["route"] = {"points": {}, "spans": {}}
             i = 1
             for point in self.points:
                 d["route"]["points"][i] = point.dict()
                 i += 1
-        if self.spans:
-            d["route"]["spans"] = {}
+
+            # spans
             i = 1
             for spawn in self.spans:
                 d["route"]["spans"][i] = spawn
