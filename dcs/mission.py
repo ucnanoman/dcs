@@ -5,29 +5,28 @@ from .weather import *
 
 
 class String:
-    def __init__(self, _id='', translation=None, lang='DEFAULT'):
+    def __init__(self, _id='', translation=None):
         self.translation = translation
-        self.lang = lang
-        self._id = _id
+        self.id = _id
 
-    def set(self, text):
-        self.translation.set_string(self._id, text, self.lang)
+    def set(self, text, lang='DEFAULT'):
+        self.translation.set_string(self.id, text, lang)
         return str(self)
 
-    def id(self):
-        return self._id
+    def str(self, lang='DEFAULT'):
+        return self.translation.strings[lang][self.id]
 
     def __str__(self):
-        return self.translation.strings[self.lang][self._id]
+        return self.str('DEFAULT')
 
     def __repr__(self):
-        return self._id + ":" + str(self)
+        return self.id + ":" + str(self)
 
 
 class Translation:
     def __init__(self):
-        self.strings = {}
-        self.maxDictId = 0
+        self.strings = {}  # type: dict[str,dict[str,str]]
+        self.max_dict_id = 0
 
     def set_string(self, _id, string, lang='DEFAULT'):
         if lang not in self.strings:
@@ -35,17 +34,22 @@ class Translation:
         self.strings[lang][_id] = string
         return _id
 
-    def get_string(self, _id, lang='DEFAULT'):
-        return String(_id, self, lang)
+    def get_string(self, _id):
+        return String(_id, self)
 
-    def set_max_dict_id(self, dict_id):
-        self.maxDictId = dict_id
+    def create_string(self, s, lang='DEFAULT'):
+        _id = 'DictKey_Translation_{dict_id}'.format(dict_id=self.max_dict_id)
+        self.max_dict_id += 1
+        self.set_string(_id, s, lang)
+        return String(_id, self)
 
-    def max_dict_id(self):
-        return self.maxDictId
+    def languages(self) -> [str]:
+        return self.strings.keys()
 
     def dict(self, lang='DEFAULT'):
-        return {x: self.strings[lang][x] for x in self.strings[lang]}
+        if lang in self.strings:
+            return {x: self.strings[lang][x] for x in self.strings[lang]}
+        return {}
 
     def __str__(self):
         return str(self.strings)
@@ -71,11 +75,6 @@ class Warehouses:
 
     def __str__(self):
         return lua.dumps(self.data, "warehouses", 1)
-
-
-class Task:
-    CAS = "CAS"
-    CAP = "CAP"
 
 
 class VehicleType:
@@ -133,14 +132,14 @@ class Unit:
             "heading": self.heading,
             "skill": self.skill,
             "unitId": self.id,
-            "name": self.name.id()
+            "name": self.name.id
         }
         return d
 
 
 class Vehicle(Unit):
-    def __init__(self, id=None, name=None, type=""):
-        super(Vehicle, self).__init__(id, name, type)
+    def __init__(self, id=None, name=None, _type=VehicleType.M818):
+        super(Vehicle, self).__init__(id, name, _type)
         self.player_can_drive = False
         self.transportable = {"randomTransportable": False}
 
@@ -231,7 +230,7 @@ class Point:
         return {
             "alt": self.alt,
             "type": self.type,
-            "name": self.name.id(),
+            "name": self.name.id,
             "x": self.x,
             "y": self.y,
             "speed": self.speed,
@@ -297,7 +296,7 @@ class Group:
     def dict(self):
         d = {}
         d["hidden"] = self.hidden
-        d["name"] = self.name.id()
+        d["name"] = self.name.id
         d["groupId"] = self.id
         if self.units:
             d["x"] = self.units[0].x
@@ -323,9 +322,9 @@ class Group:
 
 
 class MovingGroup(Group):
-    def __init__(self, task="", name=None, start_time=0):
+    def __init__(self, name=None, start_time=0):
         super(MovingGroup, self).__init__(name)
-        self.task = task
+        self.task = ""
         self.tasks = {}
         self.start_time = start_time
         self.visible = False
@@ -342,10 +341,14 @@ class MovingGroup(Group):
 
 
 class VehicleGroup(MovingGroup):
-    def __init__(self, task="", name=None, start_time=0):
-        super(VehicleGroup, self).__init__(task, name, start_time)
+    class Task:
+        GROUND = "Ground Nothing"
+
+    def __init__(self, name=None, start_time=0):
+        super(VehicleGroup, self).__init__(name, start_time)
         self.modulation = 0
         self.communication = True
+        self.task = VehicleGroup.Task.GROUND
 
     def dict(self):
         d = super(VehicleGroup, self).dict()
@@ -355,11 +358,16 @@ class VehicleGroup(MovingGroup):
 
 
 class PlaneGroup(MovingGroup):
-    def __init__(self, task="", name=None, start_time=0):
-        super(PlaneGroup, self).__init__(task, name, start_time)
+    class Task:
+        CAS = "CAS"
+        CAP = "CAP"
+
+    def __init__(self, name=None, start_time=0):
+        super(PlaneGroup, self).__init__(name, start_time)
         self.modulation = 0
         self.communication = True
         self.uncontrolled = False
+        self.task = ""
 
     def dict(self):
         d = super(PlaneGroup, self).dict()
@@ -435,7 +443,7 @@ class Country:
 class Coalition:
     def __init__(self, name, bullseye=None):
         self.name = name
-        self.countries = []
+        self.countries = {}  # type: dict[str, Country]
         self.bullseye = bullseye
         self.nav_points = []  # TODO
 
@@ -443,10 +451,15 @@ class Coalition:
         self.bullseye = bulls
 
     def add_country(self, country):
-        self.countries.append(country)
+        self.countries[country.name] = country
 
     def remove_country(self, name):
-        return self.countries.pop(name)
+        country = self.country(name)
+        del self.countries[name]
+        return country
+
+    def country(self, country_name: str):
+        return self.countries[country_name]
 
     def dict(self):
         d = {}
@@ -455,8 +468,8 @@ class Coalition:
             d["bullseye"] = self.bullseye
         d["country"] = {}
         i = 1
-        for country in self.countries:
-            d["country"][i] = country.dict()
+        for country in self.countries.keys():
+            d["country"][i] = self.country(country).dict()
             i += 1
         d["nav_points"] = {}
         return d
@@ -486,7 +499,7 @@ class Mission:
         self.warehouses = Warehouses()
         self.mapresource = {}
         self.goals = {}
-        self.coalition = {}  # type: dict[str, Coalition]
+        self.coalition = {"blue": Coalition("blue"), "red": Coalition("red")}  # type: dict[str, Coalition]
         self.map = {
             "zoom": 50000
         }
@@ -571,6 +584,112 @@ class Mission:
             group.add_point(point)
         return group
 
+    def _imp_coalition(self, coalition, key):
+        if key not in coalition:
+            return None
+        imp_col = coalition[key]
+        col = Coalition(key, imp_col["bullseye"])
+        for country_idx in imp_col["country"]:
+            imp_country = imp_col["country"][country_idx]
+            country = Country(imp_country["id"], imp_country["name"])
+
+            if "vehicle" in imp_country:
+                for vgroup_idx in imp_country["vehicle"]["group"]:
+                    vgroup = imp_country["vehicle"]["group"][vgroup_idx]
+                    vg = VehicleGroup(self.translation.get_string(vgroup["name"]), vgroup["start_time"])
+                    vg.task = vgroup["task"]
+                    vg.id = vgroup["groupId"]
+
+                    self._import_moving_point(vg, vgroup)
+
+                    # units
+                    for imp_unit_idx in vgroup["units"]:
+                        imp_unit = vgroup["units"][imp_unit_idx]
+                        unit = Vehicle(id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]))
+                        unit.set_position(MapPosition(imp_unit["x"], imp_unit["y"]))
+                        unit.heading = imp_unit["heading"]
+                        unit.type = imp_unit["type"]
+                        unit.skill = imp_unit["skill"]
+                        unit.x = imp_unit["x"]
+                        unit.y = imp_unit["y"]
+                        unit.player_can_drive = imp_unit["playerCanDrive"]
+                        unit.transportable = imp_unit["transportable"]
+
+                        self.current_unit_id = max(self.current_unit_id, unit.id)
+                        vg.add_unit(unit)
+                    country.add_vehicle_group(vg)
+
+            if "plane" in imp_country:
+                for pgroup_idx in imp_country["plane"]["group"]:
+                    pgroup = imp_country["plane"]["group"][pgroup_idx]
+                    plane_group = PlaneGroup(self.translation.get_string(pgroup["name"]), pgroup["start_time"])
+                    plane_group.task = pgroup["task"]
+                    plane_group.frequency = pgroup["frequency"]
+                    plane_group.modulation = pgroup["modulation"]
+                    plane_group.communication = pgroup["communication"]
+                    plane_group.uncontrolled = pgroup["uncontrolled"]
+                    plane_group.id = pgroup["groupId"]
+
+                    self._import_moving_point(plane_group, pgroup)
+
+                    # units
+                    for imp_unit_idx in pgroup["units"]:
+                        imp_unit = pgroup["units"][imp_unit_idx]
+                        plane = Plane(id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]))
+                        plane.set_position(MapPosition(imp_unit["x"], imp_unit["y"]))
+                        plane.heading = imp_unit["heading"]
+                        plane.type = imp_unit["type"]
+                        plane.skill = imp_unit["skill"]
+                        plane.livery_id = imp_unit["livery_id"]
+                        plane.x = imp_unit["x"]
+                        plane.y = imp_unit["y"]
+                        plane.alt_type = imp_unit["alt_type"]
+                        plane.alt = imp_unit["alt"]
+                        plane.psi = imp_unit["psi"]
+                        plane.speed = imp_unit["speed"]
+                        plane.fuel = imp_unit["payload"]["fuel"]
+                        plane.gun = imp_unit["payload"]["gun"]
+                        plane.flare = imp_unit["payload"]["flare"]
+                        plane.chaff = imp_unit["payload"]["chaff"]
+                        plane.ammo_type = imp_unit["payload"]["ammo_type"]
+                        plane.pylons = imp_unit["payload"]["pylons"]
+                        plane.callsign_name = imp_unit["callsign"]["name"]
+                        plane.parking = imp_unit.get("parking", None)
+                        plane.speed = imp_unit["speed"]
+                        plane.callsign = [imp_unit["callsign"][1], imp_unit["callsign"][2], imp_unit["callsign"][3]]
+
+                        self.current_unit_id = max(self.current_unit_id, plane.id)
+                        plane_group.add_unit(plane)
+                    country.add_plane_group(plane_group)
+
+            if "static" in imp_country:
+                for sgroup_idx in imp_country["static"]["group"]:
+                    sgroup = imp_country["static"]["group"][sgroup_idx]
+                    static_group = StaticGroup(self.translation.get_string(sgroup["name"]))
+                    static_group.heading = sgroup["heading"]
+                    static_group.id = sgroup["groupId"]
+                    static_group.hidden = sgroup["hidden"]
+                    static_group.dead = sgroup["dead"]
+
+                    self._import_static_point(static_group, sgroup)
+
+                    # units
+                    for imp_unit_idx in sgroup["units"]:
+                        imp_unit = sgroup["units"][imp_unit_idx]
+                        static = Static(id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]), type=imp_unit["type"])
+                        static.can_cargo = imp_unit["canCargo"]
+                        static.heading = imp_unit["heading"]
+                        static.x = imp_unit["x"]
+                        static.y = imp_unit["y"]
+                        static.category = imp_unit["category"]
+                        static.shape_name = imp_unit["shape_name"]
+
+                        self.current_unit_id = max(self.current_unit_id, static.id)
+                        static_group.add_unit(static)
+                    country.add_static_group(static_group)
+            col.add_country(country)
+        return col
+
     def load_file(self, filename):
         mission_dict = {}
         options_dict = {}
@@ -597,7 +716,7 @@ class Mission:
         for sid in translation_dict:
             self.translation.set_string(sid, translation_dict[sid], 'DEFAULT')
 
-        self.translation.set_max_dict_id(imp_mission["maxDictId"])
+        self.translation.max_dict_id = imp_mission["maxDictId"]
 
         # print(self.translation)
 
@@ -691,116 +810,12 @@ class Mission:
         self.weather.clouds_base = clouds.get("base", 300)
         self.weather.clouds_iprecptns = clouds.get("iprecptns", 0)
 
-        # import coalition
-        def imp_coalition(coalition, key):
-            if key not in coalition:
-                return None
-            imp_col = coalition[key]
-            col = Coalition(key, imp_col["bullseye"])
-            for country_idx in imp_col["country"]:
-                imp_country = imp_col["country"][country_idx]
-                country = Country(imp_country["id"], imp_country["name"])
-
-                if "vehicle" in imp_country:
-                    for vgroup_idx in imp_country["vehicle"]["group"]:
-                        vgroup = imp_country["vehicle"]["group"][vgroup_idx]
-                        vg = VehicleGroup(vgroup["task"], self.translation.get_string(vgroup["name"]), vgroup["start_time"])
-                        vg.id = vgroup["groupId"]
-
-                        self._import_moving_point(vg, vgroup)
-
-                        # units
-                        for imp_unit_idx in vgroup["units"]:
-                            imp_unit = vgroup["units"][imp_unit_idx]
-                            unit = Vehicle(id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]))
-                            unit.set_position(MapPosition(imp_unit["x"], imp_unit["y"]))
-                            unit.heading = imp_unit["heading"]
-                            unit.type = imp_unit["type"]
-                            unit.skill = imp_unit["skill"]
-                            unit.x = imp_unit["x"]
-                            unit.y = imp_unit["y"]
-                            unit.player_can_drive = imp_unit["playerCanDrive"]
-                            unit.transportable = imp_unit["transportable"]
-
-                            self.current_unit_id = max(self.current_unit_id, unit.id)
-                            vg.add_unit(unit)
-                        country.add_vehicle_group(vg)
-
-                if "plane" in imp_country:
-                    for pgroup_idx in imp_country["plane"]["group"]:
-                        pgroup = imp_country["plane"]["group"][pgroup_idx]
-                        plane_group = PlaneGroup(pgroup["task"], self.translation.get_string(pgroup["name"]), pgroup["start_time"])
-                        plane_group.frequency = pgroup["frequency"]
-                        plane_group.modulation = pgroup["modulation"]
-                        plane_group.communication = pgroup["communication"]
-                        plane_group.uncontrolled = pgroup["uncontrolled"]
-                        plane_group.id = pgroup["groupId"]
-
-                        self._import_moving_point(plane_group, pgroup)
-
-                        # units
-                        for imp_unit_idx in pgroup["units"]:
-                            imp_unit = pgroup["units"][imp_unit_idx]
-                            plane = Plane(id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]))
-                            plane.set_position(MapPosition(imp_unit["x"], imp_unit["y"]))
-                            plane.heading = imp_unit["heading"]
-                            plane.type = imp_unit["type"]
-                            plane.skill = imp_unit["skill"]
-                            plane.livery_id = imp_unit["livery_id"]
-                            plane.x = imp_unit["x"]
-                            plane.y = imp_unit["y"]
-                            plane.alt_type = imp_unit["alt_type"]
-                            plane.alt = imp_unit["alt"]
-                            plane.psi = imp_unit["psi"]
-                            plane.speed = imp_unit["speed"]
-                            plane.fuel = imp_unit["payload"]["fuel"]
-                            plane.gun = imp_unit["payload"]["gun"]
-                            plane.flare = imp_unit["payload"]["flare"]
-                            plane.chaff = imp_unit["payload"]["chaff"]
-                            plane.ammo_type = imp_unit["payload"]["ammo_type"]
-                            plane.pylons = imp_unit["payload"]["pylons"]
-                            plane.callsign_name = imp_unit["callsign"]["name"]
-                            plane.parking = imp_unit.get("parking", None)
-                            plane.speed = imp_unit["speed"]
-                            plane.callsign = [imp_unit["callsign"][1], imp_unit["callsign"][2], imp_unit["callsign"][3]]
-
-                            self.current_unit_id = max(self.current_unit_id, plane.id)
-                            plane_group.add_unit(plane)
-                        country.add_plane_group(plane_group)
-
-                if "static" in imp_country:
-                    for sgroup_idx in imp_country["static"]["group"]:
-                        sgroup = imp_country["static"]["group"][sgroup_idx]
-                        static_group = StaticGroup(self.translation.get_string(sgroup["name"]))
-                        static_group.heading = sgroup["heading"]
-                        static_group.id = sgroup["groupId"]
-                        static_group.hidden = sgroup["hidden"]
-                        static_group.dead = sgroup["dead"]
-
-                        self._import_static_point(static_group, sgroup)
-
-                        # units
-                        for imp_unit_idx in sgroup["units"]:
-                            imp_unit = sgroup["units"][imp_unit_idx]
-                            static = Static(id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]), type=imp_unit["type"])
-                            static.can_cargo = imp_unit["canCargo"]
-                            static.heading = imp_unit["heading"]
-                            static.x = imp_unit["x"]
-                            static.y = imp_unit["y"]
-                            static.category = imp_unit["category"]
-                            static.shape_name = imp_unit["shape_name"]
-
-                            self.current_unit_id = max(self.current_unit_id, static.id)
-                            static_group.add_unit(static)
-                        country.add_static_group(static_group)
-                col.add_country(country)
-            return col
-        # blue
-        self.coalition["blue"] = imp_coalition(imp_mission["coalition"], "blue")
-        self.coalition["red"] = imp_coalition(imp_mission["coalition"], "red")
-        neutral_col = imp_coalition(imp_mission["coalition"], "neutral")
+        # import coalition with countries and units
+        self.coalition["blue"] = self._imp_coalition(imp_mission["coalition"], "blue")
+        self.coalition["red"] = self._imp_coalition(imp_mission["coalition"], "red")
+        neutral_col = self._imp_coalition(imp_mission["coalition"], "neutral")
         if neutral_col:
-            self.coalition["neutral"] = imp_coalition(imp_mission["coalition"], "neutral")
+            self.coalition["neutral"] = neutral_col
 
         return True
 
@@ -827,25 +842,31 @@ class Mission:
         self.current_unit_id += 1
         return _id
 
+    def string(self, s, lang='DEFAULT'):
+        """Create a new String() object for translation"""
+        return self.translation.create_string(s, lang)
 
-    def string(self, s):
-        return "not implemented"
+    def vehicle_group(self, name):
+        return VehicleGroup(self.string(name))
+
+    def vehicle(self, name, _type):
+        return Vehicle(self.next_unit_id(), self.string(name), _type)
 
     def save(self, filename):
-        with zipfile.ZipFile(filename, 'w', compression=zipfile.ZIP_DEFLATED) as zip:
+        with zipfile.ZipFile(filename, 'w', compression=zipfile.ZIP_DEFLATED) as zipf:
             # options
-            zip.writestr('options', str(self.options))
+            zipf.writestr('options', str(self.options))
 
             # warehouses
-            zip.writestr('warehouses', str(self.warehouses))
+            zipf.writestr('warehouses', str(self.warehouses))
 
             # translation files
             dicttext = lua.dumps(self.translation.dict('DEFAULT'), "dictionary", 1)
-            zip.writestr('l10n/DEFAULT/dictionary', dicttext)
+            zipf.writestr('l10n/DEFAULT/dictionary', dicttext)
 
-            zip.writestr('l10n/DEFAULT/mapResource', lua.dumps(self.mapresource, "mapResource", 1))
+            zipf.writestr('l10n/DEFAULT/mapResource', lua.dumps(self.mapresource, "mapResource", 1))
 
-            zip.writestr('mission', str(self))
+            zipf.writestr('mission', str(self))
         return True
 
     def __str__(self):
@@ -860,17 +881,17 @@ class Mission:
         m["theatre"] = self.theatre
         m["needModules"] = self.needModules
         m["map"] = self.map
-        m["descriptionText"] = self.description_text.id()
+        m["descriptionText"] = self.description_text.id
         m["pictureFileNameR"] = self.pictureFileNameR
         m["pictureFileNameB"] = self.pictureFileNameB
-        m["descriptionBlueTask"] = self.description_bluetask.id()
-        m["descriptionRedTask"] = self.description_redtask.id()
+        m["descriptionBlueTask"] = self.description_bluetask.id
+        m["descriptionRedTask"] = self.description_redtask.id
         m["trigrules"] = {}
         m["coalition"] = {}
         for col in self.coalition.keys():
             m["coalition"][col] = self.coalition[col].dict()
-        col_blue = {x.id for x in self.coalition["blue"].countries}
-        col_red = {x.id for x in self.coalition["red"].countries}
+        col_blue = {self.coalition["blue"].country(x).id for x in self.coalition["blue"].countries.keys()}
+        col_red = {self.coalition["red"].country(x).id for x in self.coalition["red"].countries.keys()}
         col_neutral = list(Mission.COUNTRY_IDS - col_blue - col_red)
         col_blue = list(col_blue)
         col_red = list(col_red)
@@ -879,7 +900,7 @@ class Mission:
             "blue": {x + 1: col_blue[x] for x in range(0, len(col_blue))},
             "red": {x + 1: col_red[x] for x in range(0, len(col_red))}
         }
-        m["sortie"] = self.sortie.id()
+        m["sortie"] = self.sortie.id
         m["version"] = self.version
         m["goals"] = self.goals
         m["currentKey"] = self.currentKey
