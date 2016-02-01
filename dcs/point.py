@@ -35,6 +35,7 @@ class MovingPoint(Point):
         self.task = {"id": "ComboTask", "params": {"tasks": {}}}
         self.properties = None
         self.airdrome_id = None
+        self.action = "Off Road"
 
     def dict(self):
         d = super(MovingPoint, self).dict()
