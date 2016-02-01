@@ -4,7 +4,7 @@ from .translation import String
 class Point:
     def __init__(self):
         self.alt = 0
-        self.type = ""
+        self.type = "Turning Point"
         self.name = String()
         self.x = 0
         self.y = 0
@@ -32,7 +32,7 @@ class MovingPoint(Point):
         self.ETA = 0
         self.ETA_locked = True
         self.speed_locked = True
-        self.task = {}
+        self.task = {"id": "ComboTask", "params": {"tasks": {}}}
         self.properties = None
         self.airdrome_id = None
 
