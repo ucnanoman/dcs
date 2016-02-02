@@ -6,9 +6,9 @@ class PlaneType:
 
 
 class Plane(Unit):
-    def __init__(self, id=None, name=None, type=""):
-        super(Plane, self).__init__(id, name, type)
-        self.livery_id = ""
+    def __init__(self, _id=None, name=None, type=""):
+        super(Plane, self).__init__(_id, name, type)
+        self.livery_id = None
         self.parking = None
         self.psi = ""
         self.onboard_num = "010"
@@ -30,7 +30,8 @@ class Plane(Unit):
         d["alt_type"] = self.alt_type
         if self.parking is not None:
             d["parking"] = self.parking
-        d["livery_id"] = self.livery_id
+        if self.livery_id:
+            d["livery_id"] = self.livery_id
         d["psi"] = self.psi
         d["onboard_num"] = self.onboard_num
         d["speed"] = self.speed

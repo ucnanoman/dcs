@@ -278,12 +278,12 @@ class Mission:
                     # units
                     for imp_unit_idx in pgroup["units"]:
                         imp_unit = pgroup["units"][imp_unit_idx]
-                        plane = Plane(id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]))
+                        plane = Plane(_id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]))
                         plane.set_position(MapPosition(imp_unit["x"], imp_unit["y"]))
                         plane.heading = imp_unit["heading"]
                         plane.type = imp_unit["type"]
                         plane.skill = imp_unit["skill"]
-                        plane.livery_id = imp_unit["livery_id"]
+                        plane.livery_id = imp_unit.get("livery_id")
                         plane.x = imp_unit["x"]
                         plane.y = imp_unit["y"]
                         plane.alt_type = imp_unit["alt_type"]
@@ -294,7 +294,7 @@ class Mission:
                         plane.gun = imp_unit["payload"]["gun"]
                         plane.flare = imp_unit["payload"]["flare"]
                         plane.chaff = imp_unit["payload"]["chaff"]
-                        plane.ammo_type = imp_unit["payload"]["ammo_type"]
+                        plane.ammo_type = imp_unit["payload"].get("ammo_type")
                         plane.pylons = imp_unit["payload"]["pylons"]
                         plane.callsign_name = imp_unit["callsign"]["name"]
                         plane.parking = imp_unit.get("parking", None)
