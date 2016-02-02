@@ -80,8 +80,9 @@ class Coalition:
 class Mission:
     COUNTRY_IDS = {x for x in range(0, 13)} | {x for x in range(15, 47)}
 
-    def __init__(self):
-        self.current_unit_id = 1
+    def __init__(self, terrain: Terrain = Caucasus()):
+        self.current_unit_id = 0
+        self.current_group_id = 0
 
         self.translation = Translation()
 
@@ -234,9 +235,9 @@ class Mission:
             if "vehicle" in imp_country:
                 for vgroup_idx in imp_country["vehicle"]["group"]:
                     vgroup = imp_country["vehicle"]["group"][vgroup_idx]
-                    vg = VehicleGroup(self.translation.get_string(vgroup["name"]), vgroup["start_time"])
+                    vg = VehicleGroup(vgroup["groupId"], self.translation.get_string(vgroup["name"]), vgroup["start_time"])
                     vg.task = vgroup["task"]
-                    vg.id = vgroup["groupId"]
+                    self.current_group_id = max(self.current_group_id, vg.id)
 
                     self._import_moving_point(vg, vgroup)
 
@@ -260,13 +261,13 @@ class Mission:
             if "plane" in imp_country:
                 for pgroup_idx in imp_country["plane"]["group"]:
                     pgroup = imp_country["plane"]["group"][pgroup_idx]
-                    plane_group = PlaneGroup(self.translation.get_string(pgroup["name"]), pgroup["start_time"])
+                    plane_group = PlaneGroup(pgroup["groupId"], self.translation.get_string(pgroup["name"]), pgroup["start_time"])
                     plane_group.task = pgroup["task"]
                     plane_group.frequency = pgroup["frequency"]
                     plane_group.modulation = pgroup["modulation"]
                     plane_group.communication = pgroup["communication"]
                     plane_group.uncontrolled = pgroup["uncontrolled"]
-                    plane_group.id = pgroup["groupId"]
+                    self.current_group_id = max(self.current_group_id, plane_group.id)
 
                     self._import_moving_point(plane_group, pgroup)
 
@@ -303,11 +304,11 @@ class Mission:
             if "static" in imp_country:
                 for sgroup_idx in imp_country["static"]["group"]:
                     sgroup = imp_country["static"]["group"][sgroup_idx]
-                    static_group = StaticGroup(self.translation.get_string(sgroup["name"]))
+                    static_group = StaticGroup(sgroup["groupId"], self.translation.get_string(sgroup["name"]))
                     static_group.heading = sgroup["heading"]
-                    static_group.id = sgroup["groupId"]
                     static_group.hidden = sgroup["hidden"]
                     static_group.dead = sgroup["dead"]
+                    self.current_group_id = max(self.current_group_id, static_group.id)
 
                     self._import_static_point(static_group, sgroup)
 
@@ -475,17 +476,20 @@ class Mission:
     def set_description_redtask_text(self, text):
         self.description_redtask.set(text)
 
+    def next_group_id(self):
+        self.current_group_id += 1
+        return self.current_group_id
+
     def next_unit_id(self):
-        _id = self.current_unit_id + 1
         self.current_unit_id += 1
-        return _id
+        return self.current_unit_id
 
     def string(self, s, lang='DEFAULT'):
         """Create a new String() object for translation"""
         return self.translation.create_string(s, lang)
 
     def vehicle_group(self, name):
-        return VehicleGroup(self.string(name))
+        return VehicleGroup(self.next_group_id(), self.string(name))
 
     def vehicle(self, name, _type):
         return Vehicle(self.next_unit_id(), self.string(name), _type)

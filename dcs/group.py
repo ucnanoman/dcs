@@ -1,9 +1,13 @@
 from .unit import Unit
 from .point import Point
+from .translation import String
+
 
 class Group:
-    def __init__(self, name=None):
-        self.id = 0
+    def __init__(self, _id: int, name=None):
+        if not isinstance(_id, int):
+            raise TypeError("id must be an integer")
+        self.id = _id
         self.hidden = False
         self.units = []  # type: List[Unit]
         self.spans = []
@@ -58,8 +62,8 @@ class Group:
 
 
 class MovingGroup(Group):
-    def __init__(self, name=None, start_time=0):
-        super(MovingGroup, self).__init__(name)
+    def __init__(self, _id, name=None, start_time=0):
+        super(MovingGroup, self).__init__(_id, name)
         self.task = ""
         self.tasks = {}
         self.start_time = start_time
@@ -80,8 +84,8 @@ class VehicleGroup(MovingGroup):
     class Task:
         GROUND = "Ground Nothing"
 
-    def __init__(self, name=None, start_time=0):
-        super(VehicleGroup, self).__init__(name, start_time)
+    def __init__(self, _id, name=None, start_time=0):
+        super(VehicleGroup, self).__init__(_id, name, start_time)
         self.modulation = 0
         self.communication = True
         self.task = VehicleGroup.Task.GROUND
@@ -98,8 +102,8 @@ class PlaneGroup(MovingGroup):
         CAS = "CAS"
         CAP = "CAP"
 
-    def __init__(self, name=None, start_time=0):
-        super(PlaneGroup, self).__init__(name, start_time)
+    def __init__(self, _id, name=None, start_time=0):
+        super(PlaneGroup, self).__init__(_id, name, start_time)
         self.modulation = 0
         self.communication = True
         self.uncontrolled = False
@@ -114,8 +118,8 @@ class PlaneGroup(MovingGroup):
 
 
 class StaticGroup(Group):
-    def __init__(self, name=None):
-        super(StaticGroup, self).__init__(name)
+    def __init__(self, _id, name=None):
+        super(StaticGroup, self).__init__(_id, name)
         self.dead = False
         self.heading = 0
 
