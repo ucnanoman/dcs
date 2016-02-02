@@ -9,6 +9,7 @@ from .vehicle import Vehicle
 from .plane import Plane
 from .static import Static
 from .translation import Translation, String
+from .terrain import Terrain, Caucasus
 
 
 class Options:
@@ -95,7 +96,8 @@ class Mission:
         self.version = 9
         self.currentKey = 0
         self.start_time = 43200
-        self.theatre = "Caucasus"
+        self.terrain = terrain
+        self.theatre = terrain.name
         self.trigrules = {}
         self.triggers = {}
         self.options = Options()
@@ -136,7 +138,11 @@ class Mission:
         red.add_country(country.Syria())
         red.add_country(country.Ukraine())
 
+        blue.bullseye = terrain.bullseye_blue
+        red.bullseye = terrain.bullseye_red
+
         self.coalition = {"blue": blue, "red": red}  # type: dict[str, Coalition]
+
         self.map = {
             "zoom": 1000000,
             "centerY": 680000,
