@@ -57,9 +57,7 @@ class Coalition:
         self.countries[country.name] = country
 
     def remove_country(self, name):
-        country = self.country(name)
-        del self.countries[name]
-        return country
+        return self.countries.pop(name)
 
     def country(self, country_name: str):
         return self.countries[country_name]
