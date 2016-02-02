@@ -21,6 +21,21 @@ class Country:
     def add_static_group(self, sgroup):
         self.static_group.append(sgroup)
 
+    def find_vehicle_group(self, name: str):
+        for vgroup in self.vehicle_group:
+            if name in vgroup.name.str():
+                return vgroup
+
+    def find_plane_group(self, name: str):
+        for group in self.plane_group:
+            if name in group.name.str():
+                return group
+
+    def find_static_group(self, name: str):
+        for group in self.static_group_group:
+            if name in group.name.str():
+                return group
+
     def dict(self):
         d = {}
         d["name"] = self.name
