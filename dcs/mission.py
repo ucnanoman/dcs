@@ -498,6 +498,12 @@ class Mission:
     def vehicle(self, name, _type):
         return Vehicle(self.next_unit_id(), self.string(name), _type)
 
+    def plane_group(self, name):
+        return PlaneGroup(self.next_group_id(), self.string(name))
+
+    def plane(self, name, _type):
+        return Plane(self.next_unit_id(), self.string(name), _type)
+
     def save(self, filename):
         with zipfile.ZipFile(filename, 'w', compression=zipfile.ZIP_DEFLATED) as zipf:
             # options

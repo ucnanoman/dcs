@@ -1,6 +1,7 @@
 from .unit import Unit
-from .point import Point
+from .point import Point, MovingPoint
 from .translation import String
+from .terrain import Airport
 
 
 class Group:
@@ -107,7 +108,26 @@ class PlaneGroup(MovingGroup):
         self.modulation = 0
         self.communication = True
         self.uncontrolled = False
-        self.task = ""
+        self.task = "CAS"
+
+    def takeoff_from_ramp(self, airport: Airport, parking=None):
+        for p in self.units:
+            parking_idx = parking if parking else list(airport.parking_positions.keys())[0]
+            parking_slot = airport.parking_positions[parking_idx]
+            p.x = parking_slot["x"]
+            p.y = parking_slot["y"]
+            p.parking = parking_idx
+
+        mp = MovingPoint()
+        mp.type = "TakeOffParking"
+        mp.action = "From Parking Area"
+        mp.x = self.units[0].x
+        mp.y = self.units[0].y
+
+        if self.points:
+            self.points[0] = mp
+        else:
+            self.add_point(mp)
 
     def dict(self):
         d = super(PlaneGroup, self).dict()
