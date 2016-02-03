@@ -90,6 +90,7 @@ class Airport:
     def __init__(self, _id: int, name: str, frequency: float, pos: dict, tacan: str =None, ils=None):
         self.id = _id
         self.name = name
+        self.coalition = "NEUTRAL"
         self.tacan = tacan
         self.ils = ils
         self.frequency = frequency
@@ -97,5 +98,5 @@ class Airport:
         self.parking_slots = {}  # type: dict[str:ParkingSlot]
 
     def free_parking_slot(self, plane_type):
-        parking_idx = list(self.parking_slots.keys())[0]
-        return self.parking_slots[parking_idx]
+        free_slots = [x for x in sorted(self.parking_slots) if self.parking_slots[x].unit_id is None]
+        return self.parking_slots[free_slots[0]]

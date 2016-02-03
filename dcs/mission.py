@@ -551,7 +551,7 @@ class Mission:
         p = self.plane(name + " Pilot #1", plane_type)
         p.x = parking_slot.x
         p.y = parking_slot.y
-        p.parking = parking_slot.id
+        p.set_parking(parking_slot)
         pg.add_unit(p)
 
         mp = MovingPoint()

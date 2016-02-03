@@ -1,4 +1,5 @@
 from .unit import Unit
+from .terrain import ParkingSlot
 
 
 class PlaneType:
@@ -23,6 +24,10 @@ class Plane(Unit):
         self.callsign_name = ""
         self.callsign = [1, 1, 1]
         self.speed = 0
+
+    def set_parking(self, parking_slot: ParkingSlot):
+        parking_slot.unit_id = self.id
+        self.parking = parking_slot.id
 
     def dict(self):
         d = super(Plane, self).dict()
