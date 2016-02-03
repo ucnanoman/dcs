@@ -20,48 +20,48 @@ class Caucasus(Terrain):
         self.bullseye_red = {"x": 371700, "y": 11557}
 
         kobuleti = Airport(13, "Kobuleti", 133.0, {"x": -317874.9375, "y": 635000.375}, "67X", 111.5)
-        kobuleti.parking_positions[22] = {"x": -317899.40625, "y": 636670.4375}
-        kobuleti.parking_positions[23] = {"x": -317680.78125, "y": 636917.5625}
-        kobuleti.parking_positions[24] = {"x": -317870.0625, "y": 636859.8125}
-        kobuleti.parking_positions[25] = {"x": -317874.9375, "y": 635000.375}
-        kobuleti.parking_positions[26] = {"x": -317740.6875, "y": 635084.25}
-        kobuleti.parking_positions[28] = {"x": -318024.84375, "y": 636164.5625}
-        kobuleti.parking_positions[30] = {"x": -318097.4375, "y": 636237.875}
-        kobuleti.parking_positions[31] = {"x": -318026.75, "y": 636258.8125}
-        kobuleti.parking_positions[33] = {"x": -317938.25, "y": 636402.5}
-        kobuleti.parking_positions[35] = {"x": -318010.84375, "y": 636475.875}
-        kobuleti.parking_positions[36] = {"x": -317940.15625, "y": 636496.8125}
-        kobuleti.parking_positions[37] = {"x": -317787.46875, "y": 635295.8125}
-        kobuleti.parking_positions[38] = {"x": -317697.21875, "y": 635543.6875}
-        kobuleti.parking_positions[39] = {"x": -317584.375, "y": 635853.8125}
-        kobuleti.parking_positions[40] = {"x": -317621.96875, "y": 635750.4375}
-        kobuleti.parking_positions[41] = {"x": -317471.53125, "y": 635753.3125}
-        kobuleti.parking_positions[42] = {"x": -317509.15625, "y": 635649.9375}
-        kobuleti.parking_positions[43] = {"x": -317546.78125, "y": 635546.5625}
-        kobuleti.parking_positions[44] = {"x": -317641.71875, "y": 635285.6875}
-        kobuleti.parking_positions[45] = {"x": -317584.40625, "y": 635443.1875}
-        kobuleti.parking_positions[47] = {"x": -318319.71875, "y": 635219.75}
-        kobuleti.parking_positions[48] = {"x": -318326.46875, "y": 635190.4375}
-        kobuleti.parking_positions[53] = {"x": -318272.5, "y": 635424.3125}
-        kobuleti.parking_positions[54] = {"x": -318279.21875, "y": 635395.0625}
-        kobuleti.parking_positions[57] = {"x": -318286, "y": 635365.8125}
-        kobuleti.parking_positions[58] = {"x": -318312.96875, "y": 635248.9375}
-        kobuleti.parking_positions[60] = {"x": -318292.71875, "y": 635336.625}
-        kobuleti.parking_positions[62] = {"x": -318299.46875, "y": 635307.4375}
-        kobuleti.parking_positions[63] = {"x": -318306.21875, "y": 635278.125}
-        kobuleti.parking_positions[66] = {"x": -318189.96875, "y": 635662.6875}
-        kobuleti.parking_positions[68] = {"x": -318200.21875, "y": 635634.5}
-        kobuleti.parking_positions[70] = {"x": -318210.5, "y": 635606.3125}
-        kobuleti.parking_positions[72] = {"x": -318220.75, "y": 635578.125}
-        kobuleti.parking_positions[74] = {"x": -318231, "y": 635549.9375}
-        kobuleti.parking_positions[75] = {"x": -318241.28125, "y": 635521.75}
-        kobuleti.parking_positions[76] = {"x": -318251.53125, "y": 635493.5625}
-        kobuleti.parking_positions[78] = {"x": -318102, "y": 635959.75}
-        kobuleti.parking_positions[80] = {"x": -318122.53125, "y": 635903.375}
-        kobuleti.parking_positions[82] = {"x": -318143.03125, "y": 635847}
-        kobuleti.parking_positions[84] = {"x": -318163.5625, "y": 635790.625}
-        kobuleti.parking_positions[85] = {"x": -317659.59375, "y": 635647.0625}
-        kobuleti.parking_positions[86] = {"x": -318184.09375, "y": 635734.25}
+        kobuleti.parking_slots[22] = ParkingSlot(22, -317899.40625, 636670.4375, False)
+        kobuleti.parking_slots[23] = ParkingSlot(23, -317680.78125, 636917.5625, False)
+        kobuleti.parking_slots[24] = ParkingSlot(24, -317870.0625, 636859.8125, False)
+        kobuleti.parking_slots[25] = ParkingSlot(25, -317874.9375, 635000.375, False)
+        kobuleti.parking_slots[26] = ParkingSlot(26, -317740.6875, 635084.25, False)
+        kobuleti.parking_slots[28] = ParkingSlot(28, -318024.84375, 636164.5625, False)
+        kobuleti.parking_slots[30] = ParkingSlot(30, -318097.4375, 636237.875, False)
+        kobuleti.parking_slots[31] = ParkingSlot(31, -318026.75, 636258.8125, False)
+        kobuleti.parking_slots[33] = ParkingSlot(33, -317938.25, 636402.5, False)
+        kobuleti.parking_slots[35] = ParkingSlot(35, -318010.84375, 636475.875, False)
+        kobuleti.parking_slots[36] = ParkingSlot(36, -317940.15625, 636496.8125, False)
+        kobuleti.parking_slots[37] = ParkingSlot(37, -317787.46875, 635295.8125, False)
+        kobuleti.parking_slots[38] = ParkingSlot(38, -317697.21875, 635543.6875, False)
+        kobuleti.parking_slots[39] = ParkingSlot(39, -317584.375, 635853.8125, False)
+        kobuleti.parking_slots[40] = ParkingSlot(40, -317621.96875, 635750.4375, False)
+        kobuleti.parking_slots[41] = ParkingSlot(41, -317471.53125, 635753.3125, False)
+        kobuleti.parking_slots[42] = ParkingSlot(42, -317509.15625, 635649.9375, False)
+        kobuleti.parking_slots[43] = ParkingSlot(43, -317546.78125, 635546.5625, False)
+        kobuleti.parking_slots[44] = ParkingSlot(44, -317641.71875, 635285.6875, False)
+        kobuleti.parking_slots[45] = ParkingSlot(45, -317584.40625, 635443.1875, False)
+        kobuleti.parking_slots[47] = ParkingSlot(47, -318319.71875, 635219.75, False)
+        kobuleti.parking_slots[48] = ParkingSlot(48, -318326.46875, 635190.4375, False)
+        kobuleti.parking_slots[53] = ParkingSlot(53, -318272.5, 635424.3125, False)
+        kobuleti.parking_slots[54] = ParkingSlot(54, -318279.21875, 635395.0625, False)
+        kobuleti.parking_slots[57] = ParkingSlot(57, -318286, 635365.8125, False)
+        kobuleti.parking_slots[58] = ParkingSlot(58, -318312.96875, 635248.9375, False)
+        kobuleti.parking_slots[60] = ParkingSlot(60, -318292.71875, 635336.625, False)
+        kobuleti.parking_slots[62] = ParkingSlot(62, -318299.46875, 635307.4375, False)
+        kobuleti.parking_slots[63] = ParkingSlot(63, -318306.21875, 635278.125, False)
+        kobuleti.parking_slots[66] = ParkingSlot(66, -318189.96875, 635662.6875, False)
+        kobuleti.parking_slots[68] = ParkingSlot(68, -318200.21875, 635634.5, False)
+        kobuleti.parking_slots[70] = ParkingSlot(70, -318210.5, 635606.3125, False)
+        kobuleti.parking_slots[72] = ParkingSlot(72, -318220.75, 635578.125, False)
+        kobuleti.parking_slots[74] = ParkingSlot(74, -318231, 635549.9375, False)
+        kobuleti.parking_slots[75] = ParkingSlot(75, -318241.28125, 635521.75, False)
+        kobuleti.parking_slots[76] = ParkingSlot(76, -318251.53125, 635493.5625, False)
+        kobuleti.parking_slots[78] = ParkingSlot(78, -318102, 635959.75, False)
+        kobuleti.parking_slots[80] = ParkingSlot(80, -318122.53125, 635903.375, False)
+        kobuleti.parking_slots[82] = ParkingSlot(82, -318143.03125, 635847, False)
+        kobuleti.parking_slots[84] = ParkingSlot(84, -318163.5625, 635790.625, False)
+        kobuleti.parking_slots[85] = ParkingSlot(85, -317659.59375, 635647.0625, False)
+        kobuleti.parking_slots[86] = ParkingSlot(86, -318184.09375, 635734.25, False)
         self.airports[kobuleti.name] = kobuleti
 
         self.airports["Batumi"] = Airport(11, "Batumi", 131.0, {"x": -293933, "y": 540000}, "16X", 110.3)
@@ -77,6 +77,15 @@ class Nevada(Terrain):
         self.bullseye_red = {"x": -288293.969, "y": -88022.641}
 
 
+class ParkingSlot:
+    def __init__(self, _id, x, y, large=False):
+        self.id = _id
+        self.x = x
+        self.y = y
+        self.large = large
+        self.unit_id = None  # type: int
+
+
 class Airport:
     def __init__(self, _id: int, name: str, frequency: float, pos: dict, tacan: str =None, ils=None):
         self.id = _id
@@ -85,4 +94,8 @@ class Airport:
         self.ils = ils
         self.frequency = frequency
         self.position = pos
-        self.parking_positions = {}  # type: dict[str:dict]
+        self.parking_slots = {}  # type: dict[str:ParkingSlot]
+
+    def free_parking_slot(self, plane_type):
+        parking_idx = list(self.parking_slots.keys())[0]
+        return self.parking_slots[parking_idx]
