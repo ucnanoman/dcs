@@ -19,12 +19,12 @@ class Caucasus(Terrain):
         self.bullseye_blue = {"x": -291014, "y": 617414}
         self.bullseye_red = {"x": 371700, "y": 11557}
 
-        kobuleti = Airport(13, "Kobuleti", 133.0, {"x": -317874.9375, "y": 635000.375}, "67X", 111.5)
-        kobuleti.parking_slots[22] = ParkingSlot(22, -317899.40625, 636670.4375, False)
-        kobuleti.parking_slots[23] = ParkingSlot(23, -317680.78125, 636917.5625, False)
-        kobuleti.parking_slots[24] = ParkingSlot(24, -317870.0625, 636859.8125, False)
-        kobuleti.parking_slots[25] = ParkingSlot(25, -317874.9375, 635000.375, False)
-        kobuleti.parking_slots[26] = ParkingSlot(26, -317740.6875, 635084.25, False)
+        kobuleti = Airport(24, "Kobuleti", 133.0, {"x": -317948.32727306, "y": 635639.37385346}, "67X", 111.5)
+        kobuleti.parking_slots[22] = ParkingSlot(22, -317899.40625, 636670.4375, True)
+        kobuleti.parking_slots[23] = ParkingSlot(23, -317680.78125, 636917.5625, True)
+        kobuleti.parking_slots[24] = ParkingSlot(24, -317870.0625, 636859.8125, True)
+        kobuleti.parking_slots[25] = ParkingSlot(25, -317874.9375, 635000.375, True)
+        kobuleti.parking_slots[26] = ParkingSlot(26, -317740.6875, 635084.25, True)
         kobuleti.parking_slots[28] = ParkingSlot(28, -318024.84375, 636164.5625, False)
         kobuleti.parking_slots[30] = ParkingSlot(30, -318097.4375, 636237.875, False)
         kobuleti.parking_slots[31] = ParkingSlot(31, -318026.75, 636258.8125, False)
@@ -56,15 +56,19 @@ class Caucasus(Terrain):
         kobuleti.parking_slots[74] = ParkingSlot(74, -318231, 635549.9375, False)
         kobuleti.parking_slots[75] = ParkingSlot(75, -318241.28125, 635521.75, False)
         kobuleti.parking_slots[76] = ParkingSlot(76, -318251.53125, 635493.5625, False)
-        kobuleti.parking_slots[78] = ParkingSlot(78, -318102, 635959.75, False)
-        kobuleti.parking_slots[80] = ParkingSlot(80, -318122.53125, 635903.375, False)
-        kobuleti.parking_slots[82] = ParkingSlot(82, -318143.03125, 635847, False)
-        kobuleti.parking_slots[84] = ParkingSlot(84, -318163.5625, 635790.625, False)
+        kobuleti.parking_slots[78] = ParkingSlot(78, -318102, 635959.75, True)
+        kobuleti.parking_slots[80] = ParkingSlot(80, -318122.53125, 635903.375, True)
+        kobuleti.parking_slots[82] = ParkingSlot(82, -318143.03125, 635847, True)
+        kobuleti.parking_slots[84] = ParkingSlot(84, -318163.5625, 635790.625, True)
         kobuleti.parking_slots[85] = ParkingSlot(85, -317659.59375, 635647.0625, False)
-        kobuleti.parking_slots[86] = ParkingSlot(86, -318184.09375, 635734.25, False)
+        kobuleti.parking_slots[86] = ParkingSlot(86, -318184.09375, 635734.25, True)
         self.airports[kobuleti.name] = kobuleti
 
-        self.airports["Batumi"] = Airport(11, "Batumi", 131.0, {"x": -293933, "y": 540000}, "16X", 110.3)
+        senaki = Airport(23, "Senaki-Kolkhi", 132.0, {"x": -281619.03125, "y": 646385.625}, "31X", 108.9)
+        self.airports[senaki.name] = senaki
+
+        batumi = Airport(22, "Batumi", 131.0, {"x": -293933, "y": 540000}, "16X", 110.3)
+        self.airports[batumi.name] = batumi
 
 
 class Nevada(Terrain):
@@ -95,6 +99,8 @@ class Airport:
         self.ils = ils
         self.frequency = frequency
         self.position = pos
+        self.x = pos["x"]
+        self.y = pos["y"]
         self.parking_slots = {}  # type: dict[str:ParkingSlot]
 
     def free_parking_slot(self, plane_type):
