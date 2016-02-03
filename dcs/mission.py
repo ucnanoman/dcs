@@ -6,7 +6,7 @@ from .country import Country
 from . import country
 from .point import Point, MovingPoint
 from .vehicle import Vehicle
-from .plane import Plane
+from .plane import Plane, PlaneInfo
 from .static import Static
 from .translation import Translation, String
 from .terrain import Terrain, Caucasus, ParkingSlot
@@ -522,19 +522,25 @@ class Mission:
         _country.add_plane_group(pg)
         return pg
 
-    def plane_group_from_runway(self, _country, name, task, plane_type, airport: Airport):
+    def plane_group_from_runway(self, _country, name, task, plane_type, airport: Airport, group_size=1):
         pg = self.plane_group(name)
         pg.task = task
-        p = self.plane(name + " Pilot #1", plane_type)
-        p.x = airport.x
-        p.y = airport.y
-        pg.add_unit(p)
+
+        for i in range(1, group_size + 1):
+            p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type)
+            p.x = airport.x
+            p.y = airport.y
+            callsign = _country.callsign.get(PlaneInfo.airrole(plane_type))[0]
+            if callsign:
+                p.callsign_name = callsign
+            pg.add_unit(p)
 
         mp = MovingPoint()
-        mp.type = "TakeOffRunway"
+        mp.type = "TakeOff"
         mp.action = "From Runway"
         mp.x = pg.units[0].x
         mp.y = pg.units[0].y
+        mp.airdrome_id = airport.id
         mp.alt = p.alt
 
         pg.add_point(mp)
@@ -542,23 +548,28 @@ class Mission:
         _country.add_plane_group(pg)
         return pg
 
-    def plane_group_from_parking(self, _country, name, task, plane_type, airport: Airport, coldstart=True, parking_slot: ParkingSlot=None):
-        if not parking_slot:
-            parking_slot = airport.free_parking_slot(plane_type)
-
+    def plane_group_from_parking(self, _country, name, task, plane_type, airport: Airport, coldstart=True, parking_slot: ParkingSlot=None, group_size=1):
         pg = self.plane_group(name)
         pg.task = task
-        p = self.plane(name + " Pilot #1", plane_type)
-        p.x = parking_slot.x
-        p.y = parking_slot.y
-        p.set_parking(parking_slot)
-        pg.add_unit(p)
+
+        callsign = _country.callsign.get(PlaneInfo.airrole(plane_type))[0]
+
+        for i in range(1, group_size + 1):
+            p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type)
+            parking_slot = airport.free_parking_slot(plane_type)
+            p.x = parking_slot.x
+            p.y = parking_slot.y
+            p.set_parking(parking_slot)
+            if callsign:
+                p.callsign_name = callsign
+            pg.add_unit(p)
 
         mp = MovingPoint()
-        mp.type = "TakeOffParking"
-        mp.action = "From Parking Area"
+        mp.type = "TakeOffParking" if coldstart else "TakeOffParkingHot"
+        mp.action = "From Parking Area" if coldstart else "From Parking Area Hot"
         mp.x = pg.units[0].x
         mp.y = pg.units[0].y
+        mp.airdrome_id = airport.id
         mp.alt = p.alt
 
         pg.add_point(mp)
