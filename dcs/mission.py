@@ -9,7 +9,7 @@ from .vehicle import Vehicle
 from .plane import Plane
 from .static import Static
 from .translation import Translation, String
-from .terrain import Terrain, Caucasus
+from .terrain import Terrain, Caucasus, ParkingSlot
 
 
 class Options:
@@ -500,6 +500,71 @@ class Mission:
 
     def plane_group(self, name):
         return PlaneGroup(self.next_group_id(), self.string(name))
+
+    def plane_group_inflight(self, _country, name, task, x, y, altitude, plane_type):
+        pg = self.plane_group(name)
+        pg.task = task
+        p = self.plane(name + " Pilot #1", plane_type)
+        p.x = x
+        p.y = y
+        p.alt = altitude
+        pg.add_unit(p)
+
+        mp = MovingPoint()
+        mp.type = "Turning Point"
+        mp.action = mp.type
+        mp.x = pg.units[0].x
+        mp.y = pg.units[0].y
+        mp.alt = p.alt
+
+        pg.add_point(mp)
+
+        _country.add_plane_group(pg)
+        return pg
+
+    def plane_group_from_runway(self, _country, name, task, plane_type, airport: Airport):
+        pg = self.plane_group(name)
+        pg.task = task
+        p = self.plane(name + " Pilot #1", plane_type)
+        p.x = airport.x
+        p.y = airport.y
+        pg.add_unit(p)
+
+        mp = MovingPoint()
+        mp.type = "TakeOffRunway"
+        mp.action = "From Runway"
+        mp.x = pg.units[0].x
+        mp.y = pg.units[0].y
+        mp.alt = p.alt
+
+        pg.add_point(mp)
+
+        _country.add_plane_group(pg)
+        return pg
+
+    def plane_group_from_parking(self, _country, name, task, plane_type, airport: Airport, coldstart=True, parking_slot: ParkingSlot=None):
+        if not parking_slot:
+            parking_slot = airport.free_parking_slot(plane_type)
+
+        pg = self.plane_group(name)
+        pg.task = task
+        p = self.plane(name + " Pilot #1", plane_type)
+        p.x = parking_slot.x
+        p.y = parking_slot.y
+        p.parking = parking_slot.id
+        pg.add_unit(p)
+
+        mp = MovingPoint()
+        mp.type = "TakeOffParking"
+        mp.action = "From Parking Area"
+        mp.x = pg.units[0].x
+        mp.y = pg.units[0].y
+        mp.alt = p.alt
+
+        pg.add_point(mp)
+
+        _country.add_plane_group(pg)
+        return pg
 
     def plane(self, name, _type):
         return Plane(self.next_unit_id(), self.string(name), _type)
