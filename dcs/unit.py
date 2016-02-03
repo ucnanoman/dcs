@@ -7,6 +7,8 @@ class Skill:
     HIGH = "High"
     EXCELLENT = "Excellent"
     RANDOM = "Random"
+    PLAYER = "Player"
+    CLIENT = "Client"
 
 
 class Unit:
