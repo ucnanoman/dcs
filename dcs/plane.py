@@ -6,6 +6,13 @@ class PlaneType:
     A10C = "A-10C"
 
 
+class PlaneInfo:
+
+    @classmethod
+    def airrole(cls, plane_type):
+        return "air"
+
+
 class Plane(Unit):
     def __init__(self, _id=None, name=None, type=""):
         super(Plane, self).__init__(_id, name, type)
