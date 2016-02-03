@@ -2,6 +2,8 @@ from .group import VehicleGroup, PlaneGroup, StaticGroup
 
 
 class Country:
+    callsign = {}
+
     def __init__(self, _id, name):
         self.id = _id
         self.name = name
@@ -153,6 +155,26 @@ class Ukraine(Country):
 
 
 class USA(Country):
+    class CallsignAir:
+        Enfield = "Enfield"
+        Springfield = "Springfield"
+        Uzi = "Uzi"
+        Colt = "Colt"
+        Dodge = "Dodge"
+        Ford = "Ford"
+        Chevy = "Chevy"
+        Pontiac = "Pontiac"
+
+    callsign = {"air": [CallsignAir.Enfield,
+                        CallsignAir.Springfield,
+                        CallsignAir.Uzi,
+                        CallsignAir.Colt,
+                        CallsignAir.Dodge,
+                        CallsignAir.Ford,
+                        CallsignAir.Chevy,
+                        CallsignAir.Pontiac]
+                }
+
     def __init__(self):
         super(USA, self).__init__(2, "USA")
 
