@@ -6,10 +6,10 @@ from .country import Country
 from . import country
 from .point import Point, MovingPoint
 from .vehicle import Vehicle
-from .plane import Plane, PlaneInfo
+from .plane import Plane, PlaneType
 from .static import Static
 from .translation import Translation, String
-from .terrain import Terrain, Caucasus, ParkingSlot
+from .terrain import Terrain, Caucasus, Nevada, ParkingSlot
 
 
 class Options:
@@ -24,11 +24,21 @@ class Options:
 
 
 class Warehouses:
-    def __init__(self, data={}):
-        self.data = data
+    def __init__(self, terrain: Terrain):
+        self.terrain = terrain
+        self.warehouses = {}
+
+    def load_dict(self, data):
+        for x in data.get("airports", {}):
+            self.terrain.airport_by_id(x).load_from_dict(data["airports"][x])
 
     def __str__(self):
-        return lua.dumps(self.data, "warehouses", 1)
+        airports = self.terrain.airports
+        d = {
+            "warehouses": self.warehouses,
+            "airports": {airports[x].id: airports[x].dict() for x in airports}
+        }
+        return lua.dumps(d, "warehouses", 1)
 
 
 class MapPosition:
@@ -95,11 +105,10 @@ class Mission:
         self.currentKey = 0
         self.start_time = 43200
         self.terrain = terrain
-        self.theatre = terrain.name
         self.trigrules = {}
         self.triggers = {}
         self.options = Options()
-        self.warehouses = Warehouses()
+        self.warehouses = Warehouses(self.terrain)
         self.mapresource = {}
         self.goals = {}
         blue = Coalition("blue")
@@ -234,7 +243,7 @@ class Mission:
         col = Coalition(key, imp_col["bullseye"])
         for country_idx in imp_col["country"]:
             imp_country = imp_col["country"][country_idx]
-            country = Country(imp_country["id"], imp_country["name"])
+            _country = country.get_by_id(imp_country["id"])
 
             if "vehicle" in imp_country:
                 for vgroup_idx in imp_country["vehicle"]["group"]:
@@ -260,7 +269,7 @@ class Mission:
 
                         self.current_unit_id = max(self.current_unit_id, unit.id)
                         vg.add_unit(unit)
-                    country.add_vehicle_group(vg)
+                    _country.add_vehicle_group(vg)
 
             if "plane" in imp_country:
                 for pgroup_idx in imp_country["plane"]["group"]:
@@ -303,7 +312,7 @@ class Mission:
 
                         self.current_unit_id = max(self.current_unit_id, plane.id)
                         plane_group.add_unit(plane)
-                    country.add_plane_group(plane_group)
+                    _country.add_plane_group(plane_group)
 
             if "static" in imp_country:
                 for sgroup_idx in imp_country["static"]["group"]:
@@ -329,8 +338,8 @@ class Mission:
 
                         self.current_unit_id = max(self.current_unit_id, static.id)
                         static_group.add_unit(static)
-                    country.add_static_group(static_group)
-            col.add_country(country)
+                    _country.add_static_group(static_group)
+            col.add_country(_country)
         return col
 
     def load_file(self, filename):
@@ -363,11 +372,20 @@ class Mission:
 
         # print(self.translation)
 
+        # setup terrain
+        if imp_mission["theatre"] == 'Caucasus':
+            self.terrain = Caucasus()
+        elif imp_mission["theatre"] == 'Nevada':
+            self.terrain = Nevada()
+        else:
+            raise RuntimeError("Unknown theatre: '{theatre}'".format(theatre=imp_mission["theatre"]))
+
         # import options
         self.options = Options(options_dict["options"])
 
         # import warehouses
-        self.warehouses = Warehouses(warehouse_dict["warehouses"])
+        self.warehouses = Warehouses(self.terrain)
+        self.warehouses.load_dict(warehouse_dict["warehouses"])
 
         # import base values
         self.description_text = self.translation.get_string(imp_mission["descriptionText"])
@@ -380,7 +398,6 @@ class Mission:
         self.currentKey = imp_mission["currentKey"]
         self.start_time = imp_mission["start_time"]
         self.usedModules = imp_mission["usedModules"]
-        self.theatre = imp_mission["theatre"]
 
         # groundControl
         self.groundControl = imp_mission["groundControl"]  # TODO
@@ -522,7 +539,7 @@ class Mission:
         _country.add_plane_group(pg)
         return pg
 
-    def plane_group_from_runway(self, _country, name, task, plane_type, airport: Airport, group_size=1):
+    def plane_group_from_runway(self, _country, name, task, plane_type: PlaneType, airport: Airport, group_size=1):
         pg = self.plane_group(name)
         pg.task = task
 
@@ -530,7 +547,7 @@ class Mission:
             p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type)
             p.x = airport.x
             p.y = airport.y
-            callsign = _country.callsign.get(PlaneInfo.airrole(plane_type))[0]
+            callsign = _country.callsign.get(plane_type.role)[0]
             if callsign:
                 p.callsign_name = callsign
             pg.add_unit(p)
@@ -548,15 +565,35 @@ class Mission:
         _country.add_plane_group(pg)
         return pg
 
-    def plane_group_from_parking(self, _country, name, task, plane_type, airport: Airport, coldstart=True, parking_slot: ParkingSlot=None, group_size=1):
+    def plane_group_from_parking(self,
+                                 _country: Country,
+                                 name,
+                                 task,
+                                 plane_type: PlaneType,
+                                 airport: Airport,
+                                 coldstart=True,
+                                 parking_slots: ParkingSlot=None,
+                                 group_size=1) -> PlaneGroup:
+        """
+        Add a new PlaneGroup at parking position on the given airport.
+        :param _country: Country object the plane group belongs to
+        :param name: Name of the plane group
+        :param task: Task of the plane group
+        :param plane_type: PlaneType object representing the plane
+        :param airport: Airport object on which to spawn the plane
+        :param coldstart: Coldstart yes or no
+        :param parking_slots: List of parking slots to use for planes
+        :param group_size: Group size 1-4
+        :return: the new PlaneGroup
+        """
         pg = self.plane_group(name)
         pg.task = task
 
-        callsign = _country.callsign.get(PlaneInfo.airrole(plane_type))[0]
+        callsign = _country.callsign.get(plane_type.role)[0]
 
         for i in range(1, group_size + 1):
             p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type)
-            parking_slot = airport.free_parking_slot(plane_type)
+            parking_slot = parking_slots.pop(i) if parking_slots else airport.free_parking_slot(plane_type.large_parking_slot)
             p.x = parking_slot.x
             p.y = parking_slot.y
             p.set_parking(parking_slot)
@@ -577,7 +614,7 @@ class Mission:
         _country.add_plane_group(pg)
         return pg
 
-    def plane(self, name, _type):
+    def plane(self, name, _type: PlaneType):
         return Plane(self.next_unit_id(), self.string(name), _type)
 
     def save(self, filename):
@@ -606,7 +643,7 @@ class Mission:
         m["resourceCounter"] = self.resourceCounter
         m["triggers"] = self.triggers
         m["weather"] = self.weather.dict()
-        m["theatre"] = self.theatre
+        m["theatre"] = self.terrain.name
         m["needModules"] = self.needModules
         m["map"] = self.map
         m["descriptionText"] = self.description_text.id
