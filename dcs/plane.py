@@ -3,30 +3,42 @@ from .terrain import ParkingSlot
 
 
 class PlaneType:
-    A10C = "A-10C"
+    id = ""
+    large_parking_slot = False
+    fuel_max = 0
+    ammo_type = []
+    gun_max = 100
+    chaff_flare_max = 0
+    chaff = 0
+    flare = 0
+    role = "air"
 
 
-class PlaneInfo:
-
-    @classmethod
-    def airrole(cls, plane_type):
-        return "air"
+class A10C(PlaneType):
+    id = "A-10C"
+    fuel_max = 5029
+    ammo_type = [1, 2]
+    gun_max = 100
+    chaff_flare_max = 360
+    chaff = 240
+    flare = 120
+    role = "air"
 
 
 class Plane(Unit):
-    def __init__(self, _id=None, name=None, type=""):
-        super(Plane, self).__init__(_id, name, type)
+    def __init__(self, _id=None, name=None, _type: PlaneType=A10C):
+        super(Plane, self).__init__(_id, name, _type.id)
         self.livery_id = None
         self.parking = None
         self.psi = ""
         self.onboard_num = "010"
         self.alt = 0
         self.alt_type = "BARO"
-        self.flare = 0
-        self.chaff = 0
-        self.fuel = 0
-        self.gun = 0
-        self.ammo_type = 0
+        self.flare = _type.flare
+        self.chaff = _type.chaff
+        self.fuel = _type.fuel_max
+        self.gun = _type.gun_max
+        self.ammo_type = _type.ammo_type
         self.pylons = {}
         self.callsign_name = ""
         self.callsign = [1, 1, 1]
