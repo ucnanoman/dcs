@@ -69,6 +69,8 @@ class Country:
 
 
 class Russia(Country):
+    id = 0
+
     Vehicle_BTR80 = "BTR-80"
     Vehicle_1L13EWR = "1L13 EWR"
     Vehicle_55G6EWR = "55G6 EWR"
@@ -150,11 +152,15 @@ class Russia(Country):
 
 
 class Ukraine(Country):
+    id = 1
+
     def __init__(self):
         super(Ukraine, self).__init__(1, "Ukraine")
 
 
 class USA(Country):
+    id = 2
+
     class CallsignAir:
         Enfield = "Enfield"
         Springfield = "Springfield"
@@ -177,223 +183,366 @@ class USA(Country):
 
     def __init__(self):
         super(USA, self).__init__(2, "USA")
+        self.callsign = USA.callsign
 
 
 class Turkey(Country):
+    id = 3
+
     def __init__(self):
         super(Turkey, self).__init__(3, "Turkey")
 
 
 class UK(Country):
+    id = 4
+
     def __init__(self):
         super(UK, self).__init__(4, "UK")
 
 
 class France(Country):
+    id = 5
+
     def __init__(self):
         super(France, self).__init__(5, "France")
 
 
 class Germany(Country):
+    id = 6
+
     def __init__(self):
         super(Germany, self).__init__(6, "Germany")
 
 
 class USAFAggressors(Country):
+    id = 7
+
     def __init__(self):
         super(USAFAggressors, self).__init__(7, "USAF Aggressors")
 
 
 class Canada(Country):
+    id = 8
+
     def __init__(self):
         super(Canada, self).__init__(8, "Canada")
 
 
 class Spain(Country):
+    id = 9
+
     def __init__(self):
         super(Spain, self).__init__(9, "Spain")
 
 
 class Netherlands(Country):
+    id = 10
+
     def __init__(self):
         super(Netherlands, self).__init__(10, "Netherlands")
 
 
 class Belgium(Country):
+    id = 11
+
     def __init__(self):
         super(Belgium, self).__init__(11, "Belgium")
 
 
 class Norway(Country):
+    id = 12
+
     def __init__(self):
         super(Norway, self).__init__(12, "Norway")
 
 
 class Denmark(Country):
+    id = 13
+
     def __init__(self):
         super(Denmark, self).__init__(13, "Denmark")
 
 
 class Israel(Country):
+    id = 15
+
     def __init__(self):
         super(Israel, self).__init__(15, "Israel")
 
 
 class Georgia(Country):
+    id = 16
+
     def __init__(self):
         super(Georgia, self).__init__(16, "Georgia")
 
 
 class Insurgents(Country):
+    id = 17
+
     def __init__(self):
         super(Insurgents, self).__init__(17, "Insurgents")
 
 
 class Abkhazia(Country):
+    id = 18
+
     def __init__(self):
         super(Abkhazia, self).__init__(18, "Abkhazia")
 
 
 class SouthOssetia(Country):
+    id = 19
+
     def __init__(self):
         super(SouthOssetia, self).__init__(19, "South Ossetia")
 
 
 class Italy(Country):
+    id = 20
+
     def __init__(self):
         super(Italy, self).__init__(20, "Italy")
 
 
 class Australia(Country):
+    id = 21
+
     def __init__(self):
         super(Australia, self).__init__(21, "Australia")
 
 
 class Switzerland(Country):
+    id = 22
+
     def __init__(self):
         super(Switzerland, self).__init__(22, "Switzerland")
 
 
 class Austria(Country):
+    id = 23
+
     def __init__(self):
         super(Austria, self).__init__(23, "Austria")
 
 
 class Belarus(Country):
+    id = 24
+
     def __init__(self):
         super(Belarus, self).__init__(24, "Belarus")
 
 
 class Bulgaria(Country):
+    id = 25
+
     def __init__(self):
         super(Bulgaria, self).__init__(25, "Bulgaria")
 
 
 class CzechRepublic(Country):
+    id = 26
+
     def __init__(self):
         super(CzechRepublic, self).__init__(26, "Czech Republic")
 
 
 class China(Country):
+    id = 27
+
     def __init__(self):
         super(China, self).__init__(27, "China")
 
 
 class Croatia(Country):
+    id = 28
+
     def __init__(self):
         super(Croatia, self).__init__(28, "Croatia")
 
 
 class Egypt(Country):
+    id = 29
+
     def __init__(self):
         super(Egypt, self).__init__(29, "Egypt")
 
 
 class Finland(Country):
+    id = 30
+
     def __init__(self):
         super(Finland, self).__init__(30, "Finland")
 
 
 class Greece(Country):
+    id = 31
+
     def __init__(self):
         super(Greece, self).__init__(31, "Greece")
 
 
 class Hungary(Country):
+    id = 32
+
     def __init__(self):
         super(Hungary, self).__init__(32, "Hungary")
 
 
 class India(Country):
+    id = 33
+
     def __init__(self):
         super(India, self).__init__(33, "India")
 
 
 class Iran(Country):
+    id = 34
+
     def __init__(self):
         super(Iran, self).__init__(34, "Iran")
 
 
 class Iraq(Country):
+    id = 35
+
     def __init__(self):
         super(Iraq, self).__init__(35, "Iraq")
 
 
 class Japan(Country):
+    id = 36
+
     def __init__(self):
         super(Japan, self).__init__(36, "Japan")
 
 
 class Kazakhstan(Country):
+    id = 37
+
     def __init__(self):
         super(Kazakhstan, self).__init__(37, "Kazakhstan")
 
 
 class NorthKorea(Country):
+    id = 38
+
     def __init__(self):
         super(NorthKorea, self).__init__(38, "North Korea")
 
 
 class Pakistan(Country):
+    id = 39
+
     def __init__(self):
         super(Pakistan, self).__init__(39, "Pakistan")
 
 
 class Poland(Country):
+    id = 40
+
     def __init__(self):
         super(Poland, self).__init__(40, "Poland")
 
 
 class Romania(Country):
+    id = 41
+
     def __init__(self):
         super(Romania, self).__init__(41, "Romania")
 
 
 class SaudiArabia(Country):
+    id = 42
+
     def __init__(self):
         super(SaudiArabia, self).__init__(42, "Saudi Arabia")
 
 
 class Serbia(Country):
+    id = 43
+
     def __init__(self):
         super(Serbia, self).__init__(43, "Serbia")
 
 
 class Slovakia(Country):
+    id = 44
+
     def __init__(self):
         super(Slovakia, self).__init__(44, "Slovakia")
 
 
 class SouthKorea(Country):
+    id = 45
+
     def __init__(self):
         super(SouthKorea, self).__init__(45, "South Korea")
 
 
 class Sweden(Country):
+    id = 46
+
     def __init__(self):
         super(Sweden, self).__init__(46, "Sweden")
 
 
 class Syria(Country):
+    id = 47
+
     def __init__(self):
         super(Syria, self).__init__(47, "Syria")
+
+country_dict = {
+    Russia.id: Russia(),
+    Ukraine.id: Ukraine(),
+    USA.id: USA(),
+    Turkey.id: Turkey(),
+    UK.id: UK(),
+    France.id: France(),
+    Germany.id: Germany(),
+    USAFAggressors.id: USAFAggressors(),
+    Canada.id: Canada(),
+    Spain.id: Spain(),
+    Netherlands.id: Netherlands(),
+    Belgium.id: Belgium(),
+    Norway.id: Norway(),
+    Denmark.id: Denmark(),
+    Israel.id: Israel(),
+    Georgia.id: Georgia(),
+    Insurgents.id: Insurgents(),
+    Abkhazia.id: Abkhazia(),
+    SouthOssetia.id: SouthOssetia(),
+    Italy.id: Italy(),
+    Australia.id: Australia(),
+    Switzerland.id: Switzerland(),
+    Austria.id: Austria(),
+    Belarus.id: Belarus(),
+    Bulgaria.id: Bulgaria(),
+    CzechRepublic.id: CzechRepublic(),
+    China.id: China(),
+    Croatia.id: Croatia(),
+    Egypt.id: Egypt(),
+    Finland.id: Finland(),
+    Greece.id: Greece(),
+    Hungary.id: Hungary(),
+    India.id: India(),
+    Iran.id: Iran(),
+    Iraq.id: Iraq(),
+    Japan.id: Japan(),
+    Kazakhstan.id: Kazakhstan(),
+    NorthKorea.id: NorthKorea(),
+    Pakistan.id: Pakistan(),
+    Poland.id: Poland(),
+    Romania.id: Romania(),
+    SaudiArabia.id: SaudiArabia(),
+    Serbia.id: Serbia(),
+    Slovakia.id: Slovakia(),
+    SouthKorea.id: SouthKorea(),
+    Sweden.id: Sweden(),
+    Syria.id: Syria()
+}
+
+
+def get_by_id(_id: int):
+    return country_dict[_id]
