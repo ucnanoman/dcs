@@ -65,6 +65,7 @@ class Caucasus(Terrain):
 
         kobuleti = Airport(24, "Kobuleti", 133.0, -317948.32727306, 635639.37385346, "67X")
         kobuleti.runways.append(Runway(70, 111.50))
+        kobuleti.runways.append(Runway(290))
         kobuleti.parking_slots[22] = ParkingSlot(22, -317899.40625, 636670.4375, True)
         kobuleti.parking_slots[23] = ParkingSlot(23, -317680.78125, 636917.5625, True)
         kobuleti.parking_slots[24] = ParkingSlot(24, -317870.0625, 636859.8125, True)
@@ -159,7 +160,7 @@ class ParkingSlot:
 
 
 class Runway:
-    def __init__(self, heading, ils, leftright = 0):
+    def __init__(self, heading, ils=None, leftright=0):
         """
 
         :param heading:
