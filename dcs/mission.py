@@ -539,14 +539,18 @@ class Mission:
     def plane_group(self, name):
         return PlaneGroup(self.next_group_id(), self.string(name))
 
-    def plane_group_inflight(self, _country, name, task, x, y, altitude, plane_type):
+    def plane_group_inflight(self, _country, name, task, x, y, altitude, plane_type, group_size=1):
         pg = self.plane_group(name)
         pg.task = task
-        p = self.plane(name + " Pilot #1", plane_type)
-        p.x = x
-        p.y = y
-        p.alt = altitude
-        pg.add_unit(p)
+        for i in range(1, group_size + 1):
+            p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type)
+            p.x = x
+            p.y = y
+            p.alt = altitude
+            callsign = _country.callsign.get(plane_type.role)[0]
+            if callsign:
+                p.callsign_name = callsign
+            pg.add_unit(p)
 
         mp = MovingPoint()
         mp.type = "Turning Point"
