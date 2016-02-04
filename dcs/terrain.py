@@ -7,7 +7,7 @@ class Terrain:
         self.center = {"lat": 0, "long": 0}  # WGS84 decimal
         self.bullseye_blue = {"x": 0, "y": 0}
         self.bullseye_red = {"x": 0, "y": 0}
-        self.airports = {} # type dict[str,Airport]
+        self.airports = {}  # type dict[str,Airport]
 
     def airport_by_id(self, id: int):
         for x in self.airports:
@@ -23,7 +23,7 @@ class Caucasus(Terrain):
         # 36TWQ9949898109
         self.center = {"lat": 45.12945, "long": 34.26527}
         self.bullseye_blue = {"x": -291014, "y": 617414}
-        self.bullseye_red = {"x": 371700, "y": 11557}
+        self.bullseye_red = {"x": 11557, "y": 371700}
 
         anapa = Airport(12, "Anapa", 121.0, 0, 0, None)
         self.airports[anapa.name] = anapa
