@@ -9,6 +9,12 @@ class Terrain:
         self.bullseye_red = {"x": 0, "y": 0}
         self.airports = {} # type dict[str,Airport]
 
+    def airport_by_id(self, id: int):
+        for x in self.airports:
+            if self.airports[x].id == id:
+                return self.airports[x]
+        return None
+
 
 class Caucasus(Terrain):
     def __init__(self):
@@ -19,7 +25,46 @@ class Caucasus(Terrain):
         self.bullseye_blue = {"x": -291014, "y": 617414}
         self.bullseye_red = {"x": 371700, "y": 11557}
 
-        kobuleti = Airport(24, "Kobuleti", 133.0, {"x": -317948.32727306, "y": 635639.37385346}, "67X", 111.5)
+        anapa = Airport(12, "Anapa", 121.0, 0, 0, None)
+        self.airports[anapa.name] = anapa
+
+        krasnodar_center = Airport(13, "Krasnodar-Center", 122.0, 0, 0, None)
+        self.airports[krasnodar_center.name] = krasnodar_center
+
+        novorossiysk = Airport(14, "Novorossiysk", 123.0, 0, 0, None)
+        self.airports[novorossiysk.name] = novorossiysk
+
+        krymsk = Airport(15, "Krymsk", 124.0, 0, 0, None)
+        self.airports[krymsk.name] = krymsk
+
+        maykop = Airport(16, "Maykop", 125.0, 0, 0, None)
+        self.airports[maykop.name] = maykop
+
+        gelendzihik = Airport(17, "Gelendzihik", 126.0, 0, 0, None)
+        self.airports[gelendzihik.name] = gelendzihik
+
+        sochi = Airport(18, "Sochi", 127.0, 0, 0, None)
+        self.airports[sochi.name] = sochi
+
+        krasnodar_pashkovsky = Airport(19, "Krasnodar-Pashkovsky", 128.0, 0, 0, None)
+        self.airports[krasnodar_pashkovsky.name] = krasnodar_pashkovsky
+
+        sukhumi = Airport(20, "Sukhumi", 129.0, 0, 0, None)
+        self.airports[sukhumi.name] = sukhumi
+
+        gudauta = Airport(21, "Gudauta", 130.0, 0, 0, None)
+        self.airports[gudauta.name] = gudauta
+
+        batumi = Airport(22, "Batumi", 131.0, -293933, 540000, "16X")
+        batumi.runways.append(Runway(120, 110.3))
+        self.airports[batumi.name] = batumi
+
+        senaki = Airport(23, "Senaki", 132.0, -281619.03125, 646385.625, "31X")
+        senaki.runways.append(Runway(90, 108.9))
+        self.airports[senaki.name] = senaki
+
+        kobuleti = Airport(24, "Kobuleti", 133.0, -317948.32727306, 635639.37385346, "67X")
+        kobuleti.runways.append(Runway(70, 111.50))
         kobuleti.parking_slots[22] = ParkingSlot(22, -317899.40625, 636670.4375, True)
         kobuleti.parking_slots[23] = ParkingSlot(23, -317680.78125, 636917.5625, True)
         kobuleti.parking_slots[24] = ParkingSlot(24, -317870.0625, 636859.8125, True)
@@ -64,11 +109,34 @@ class Caucasus(Terrain):
         kobuleti.parking_slots[86] = ParkingSlot(86, -318184.09375, 635734.25, True)
         self.airports[kobuleti.name] = kobuleti
 
-        senaki = Airport(23, "Senaki-Kolkhi", 132.0, {"x": -281619.03125, "y": 646385.625}, "31X", 108.9)
-        self.airports[senaki.name] = senaki
+        kutaisi = Airport(25, "Kutaisi", 134.0, 0, 0, None)
+        kutaisi.runways.append(Runway(70, 109.40))
+        self.airports[kutaisi.name] = kutaisi
 
-        batumi = Airport(22, "Batumi", 131.0, {"x": -293933, "y": 540000}, "16X", 110.3)
-        self.airports[batumi.name] = batumi
+        mineralnye = Airport(26, "Mineralnye", 135.0, 0, 0, None)
+        self.airports[mineralnye.name] = mineralnye
+
+        nalchik = Airport(27, "Nalchik", 136.0, 0, 0, None)
+        self.airports[nalchik.name] = nalchik
+
+        mozdok = Airport(28, "Mozdok", 137.0, 0, 0, None)
+        self.airports[mozdok.name] = mozdok
+
+        lochini = Airport(29, "Lochini", 138.0, 0, 0, None)
+        lochini.runways.append(Runway(130, 110.30, 2))
+        lochini.runways.append(Runway(300, 108.90, 1))
+        self.airports[lochini.name] = lochini
+
+        soganlug = Airport(30, "Soganlug", 139.0, 0, 0, None)
+        self.airports[soganlug.name] = soganlug
+
+        vaziani = Airport(31, "Vaziani", 140.0, 0, 0, None)
+        vaziani.runways.append(Runway(130, 108.75))
+        vaziani.runways.append(Runway(310, 108.75))
+        self.airports[vaziani.name] = vaziani
+
+        beslan = Airport(32, "Beslan", 141.0, 0, 0, None)
+        self.airports[beslan.name] = beslan
 
 
 class Nevada(Terrain):
@@ -90,19 +158,102 @@ class ParkingSlot:
         self.unit_id = None  # type: int
 
 
+class Runway:
+    def __init__(self, heading, ils, leftright = 0):
+        """
+
+        :param heading:
+        :param ils:
+        :param leftright: 0 only 1 runway
+                          1 left runway
+                          2 right runway
+        :return: None
+        """
+        self.heading = heading
+        self.ils = ils
+        self.leftright = leftright
+
+
 class Airport:
-    def __init__(self, _id: int, name: str, frequency: float, pos: dict, tacan: str =None, ils=None):
+    def __init__(self, _id: int, name: str, frequency: float, x, y, tacan: str=None):
         self.id = _id
         self.name = name
-        self.coalition = "NEUTRAL"
         self.tacan = tacan
-        self.ils = ils
         self.frequency = frequency
-        self.position = pos
-        self.x = pos["x"]
-        self.y = pos["y"]
+        self.x = x
+        self.y = y
+        self.runways = []
         self.parking_slots = {}  # type: dict[str:ParkingSlot]
 
-    def free_parking_slot(self, plane_type):
-        free_slots = [x for x in sorted(self.parking_slots) if self.parking_slots[x].unit_id is None]
+        # warehouse values
+        self.coalition = "NEUTRAL"
+        self.size = 100
+        self.speed = 16.666666
+        self.periodicity = 30
+        self.unlimited_munitions = True
+        self.unlimited_aircrafts = True
+        self.unlimited_fuel = True
+        self.operating_level_air = 10
+        self.operating_level_fuel = 10
+        self.operating_level_equipment = 10
+        self.aircrafts = {}
+        self.weapons = {}
+        self.suppliers = {}
+        self.gasoline_init = 100
+        self.methanol_mixture_init = 100
+        self.diesel_init = 100
+        self.jet_init = 100
+
+    def load_from_dict(self, d):
+        self.coalition = d["coalition"]
+        self.speed = d["speed"]
+        self.size = d["size"]
+        self.periodicity = d["periodicity"]
+        self.unlimited_munitions = d["unlimitedMunitions"]
+        self.unlimited_fuel = d["unlimitedFuel"]
+        self.unlimited_aircrafts = d["unlimitedAircrafts"]
+        self.operating_level_air = d["OperatingLevel_Air"]
+        self.operating_level_equipment = d["OperatingLevel_Eqp"]
+        self.operating_level_fuel = d["OperatingLevel_Fuel"]
+        self.gasoline_init = d.get("gasoline", {}).get("InitFuel", 100)
+        self.diesel_init = d.get("diesel", {}).get("InitFuel", 100)
+        self.jet_init = d.get("jet_fuel", {}).get("InitFuel", 100)
+        self.methanol_mixture_init = d.get("methanol_mixture", {}).get("InitFuel", 100)
+        self.aircrafts = d["aircrafts"]
+        self.weapons = d["weapons"]
+
+    def set_blue(self):
+        self.coalition = "BLUE"
+
+    def set_red(self):
+        self.coalition = "RED"
+
+    def set_neutral(self):
+        self.coalition = "NEUTRAL"
+
+    def free_parking_slot(self, large: bool):
+        free_slots = [x for x in sorted(self.parking_slots)
+                      if self.parking_slots[x].unit_id is None and
+                      self.parking_slots[x].large == large]
         return self.parking_slots[free_slots[0]]
+
+    def dict(self):
+        d = {
+            "coalition": self.coalition,
+            "speed": self.speed,
+            "size": self.size,
+            "periodicity": self.periodicity,
+            "unlimitedMunitions": self.unlimited_munitions,
+            "unlimitedFuel": self.unlimited_fuel,
+            "unlimitedAircrafts": self.unlimited_aircrafts,
+            "OperatingLevel_Air": self.operating_level_air,
+            "OperatingLevel_Eqp": self.operating_level_equipment,
+            "OperatingLevel_Fuel": self.operating_level_fuel,
+            "gasoline": {"InitFuel": self.gasoline_init},
+            "diesel": {"InitFuel": self.diesel_init},
+            "jet_fuel": {"InitFuel": self.jet_init},
+            "methanol_mixture": {"InitFuel": self.methanol_mixture_init},
+            "aircrafts": self.aircrafts,
+            "weapons": self.weapons
+        }
+        return d
