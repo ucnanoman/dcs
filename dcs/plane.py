@@ -6,9 +6,8 @@ class PlaneType:
     id = ""
     large_parking_slot = False
     fuel_max = 0
-    ammo_type = []
+    ammo_type = 1
     gun_max = 100
-    chaff_flare_max = 0
     chaff = 0
     flare = 0
     role = "air"
@@ -16,11 +15,12 @@ class PlaneType:
 
 class A10C(PlaneType):
     id = "A-10C"
-    fuel_max = 5029
-    ammo_type = [1, 2]
-    gun_max = 100
-    chaff_flare_max = 360
+    fuel_max = 5029  # kg
+    ammo_type = 1
+    gun_max = 100  # %
+    chaff_max = 480
     chaff = 240
+    flare_max = 240
     flare = 120
     role = "air"
 
