@@ -91,6 +91,19 @@ class VehicleGroup(MovingGroup):
         self.communication = True
         self.task = VehicleGroup.Task.GROUND
 
+    def add_waypoint(self, x, y, _type="Off Road", speed=32) -> MovingPoint:
+        mp = MovingPoint()
+        mp.type = "Turning Point"
+        mp.action = _type
+        mp.x = x
+        mp.y = y
+        mp.speed = speed / 3.6
+        mp.ETA = 1000
+        mp.ETA_locked = False
+
+        self.add_point(mp)
+        return mp
+
     def dict(self):
         d = super(VehicleGroup, self).dict()
         d["modulation"] = self.modulation

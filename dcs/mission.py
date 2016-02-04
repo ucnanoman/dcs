@@ -509,11 +509,32 @@ class Mission:
         """Create a new String() object for translation"""
         return self.translation.create_string(s, lang)
 
-    def vehicle_group(self, name):
+    def vehicle_group(self, name) -> VehicleGroup:
         return VehicleGroup(self.next_group_id(), self.string(name))
 
     def vehicle(self, name, _type):
         return Vehicle(self.next_unit_id(), self.string(name), _type)
+
+    def vehicle_group(self, _country, name, _type: str, x, y, heading=0, group_size=1, formation=None) -> VehicleGroup:
+        vg = VehicleGroup(self.next_group_id(), self.string(name))
+
+        for i in range(1, group_size + 1):
+            v = self.vehicle(name + " Unit #{nr}".format(nr=i), _type)
+            v.x = x
+            v.y = y + (i-1) * 20
+            v.heading = heading
+            vg.add_unit(v)
+
+        mp = MovingPoint()
+        mp.type = "Turning Point"
+        mp.action = "On Road"
+        mp.x = vg.units[0].x
+        mp.y = vg.units[0].y
+
+        vg.add_point(mp)
+
+        _country.add_vehicle_group(vg)
+        return vg
 
     def plane_group(self, name):
         return PlaneGroup(self.next_group_id(), self.string(name))
