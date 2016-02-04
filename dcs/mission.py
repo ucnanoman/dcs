@@ -95,10 +95,10 @@ class Mission:
 
         self.translation = Translation()
 
-        self.description_text = String()
-        self.description_bluetask = String()
-        self.description_redtask = String()
-        self.sortie = String()
+        self.description_text = self.string("dcs mission")
+        self.description_bluetask = self.string("blue task")
+        self.description_redtask = self.string("red task")
+        self.sortie = self.string("sortie text")
         self.pictureFileNameR = ""
         self.pictureFileNameB = ""
         self.version = 9
