@@ -8,8 +8,9 @@ from .point import Point, MovingPoint
 from .vehicle import Vehicle
 from .plane import Plane, PlaneType
 from .static import Static
-from .translation import Translation, String
+from .translation import Translation
 from .terrain import Terrain, Caucasus, Nevada, ParkingSlot
+from .goals import Goals
 
 
 class Options:
@@ -86,6 +87,97 @@ class Coalition:
         return d
 
 
+class TriggerZone:
+    def __init__(self, _id, x=0, y=0, radius=1500, hidden=False, name=""):
+        self.id = _id
+        self.radius = radius
+        self.x = x
+        self.y = y
+        self.hidden = hidden
+        self.name = name
+        self.color = {1:1, 2:1, 3:1, 4:0.15}
+
+    def dict(self):
+        return {
+            "name": self.name,
+            "hidden": self.hidden,
+            "x": self.x,
+            "y": self.y,
+            "zoneId": self.id,
+            "radius": self.radius,
+            "color": self.color
+        }
+
+
+class Triggers:
+    def __init__(self):
+        self.current_zone_id = 0
+        self.zones = []
+
+    def load_from_dict(self, data):
+        self.current_zone_id = 0
+        self.zones = []
+        for x in data["zones"]:
+            imp_zone = data["zones"][x]
+            tz = TriggerZone(
+                imp_zone["zoneId"],
+                imp_zone["radius"],
+                imp_zone["x"],
+                imp_zone["y"],
+                imp_zone["hidden"],
+                imp_zone["name"]
+            )
+            tz.color = imp_zone["color"]
+            self.current_zone_id = max(self.current_zone_id, tz.id)
+
+    def triggerzone(self,  x=0, y=0, radius=1500, hidden=False, name="") -> TriggerZone:
+        self.current_zone_id += 1
+        return TriggerZone(self.current_zone_id, x, y, radius, hidden, name)
+
+    def dict(self):
+        return {
+            "zones": {i+1: self.zones[i].dict() for i in range(0, len(self.zones))}
+        }
+
+
+class Result:
+    def __init__(self):
+        self.results = {
+            "offline": {
+                "conditions": [],
+                "actions": [],
+                "func": []
+            },
+            "red": {
+                "conditions": [],
+                "actions": [],
+                "func": []
+            },
+            "blue": {
+                "conditions": [],
+                "actions": [],
+                "func": []
+            }
+        }
+
+    def dict(self):
+        total = 0
+        for x in self.results:
+            if self.results[x]["func"]:
+                total += 1
+        d = {"offline": {}, "red": {}, "blue": {}}
+        for x in self.results:
+            res_cond = self.results[x]["conditions"]
+            res_act = self.results[x]["actions"]
+            res_func = self.results[x]["func"]
+            d[x]["conditions"] = {i+1: res_cond[i] for i in range(0, len(res_cond))}
+            d[x]["actions"] = {i+1: res_act[i] for i in range(0, len(res_act))}
+            d[x]["func"] = {i+1: res_func[i] for i in range(0, len(res_func))}
+        d["total"] = total
+
+        return d
+
+
 class Mission:
     COUNTRY_IDS = {x for x in range(0, 13)} | {x for x in range(15, 47)}
 
@@ -106,11 +198,11 @@ class Mission:
         self.start_time = 43200
         self.terrain = terrain
         self.trigrules = {}
-        self.triggers = {}
+        self.triggers = Triggers()
         self.options = Options()
         self.warehouses = Warehouses(self.terrain)
         self.mapresource = {}
-        self.goals = {}
+        self.goals = Goals()
         blue = Coalition("blue")
         blue.add_country(country.Australia())
         blue.add_country(country.Belgium())
@@ -159,7 +251,7 @@ class Mission:
         self.groundControl = {}
         self.failures = {}
         self.trig = {}
-        self.result = {}
+        self.result = Result()
         self.groundControl = {}
         self.forcedOptions = {}
         self.resourceCounter = {}
@@ -403,16 +495,19 @@ class Mission:
         self.groundControl = imp_mission["groundControl"]  # TODO
 
         # result
-        self.result = imp_mission["result"]  # TODO
+        self.result = Result()
+        self.result.load_from_dict(imp_mission["result"])
 
         # goals
-        self.goals = imp_mission["goals"]  # TODO
+        self.goals = Goals()
+        self.goals.load_from_dict(imp_mission["goals"])
 
         # trig
         self.trig = imp_mission["trig"]  # TODO
 
         # triggers
-        self.triggers = imp_mission["triggers"]  # TODO
+        self.triggers = Triggers()
+        self.triggers.load_from_dict(imp_mission["triggers"])
 
         # trigrules
         self.trigrules = imp_mission["trigrules"]  # TODO
@@ -662,11 +757,11 @@ class Mission:
     def __str__(self):
         m = {}
         m["trig"] = self.trig
-        m["result"] = self.result
+        m["result"] = self.result.dict()
         m["groundControl"] = self.groundControl
         m["usedModules"] = self.usedModules
         m["resourceCounter"] = self.resourceCounter
-        m["triggers"] = self.triggers
+        m["triggers"] = self.triggers.dict()
         m["weather"] = self.weather.dict()
         m["theatre"] = self.terrain.name
         m["needModules"] = self.needModules
@@ -692,7 +787,7 @@ class Mission:
         }
         m["sortie"] = self.sortie.id
         m["version"] = self.version
-        m["goals"] = self.goals
+        m["goals"] = self.goals.dict()
         m["currentKey"] = self.currentKey
         m["start_time"] = self.start_time
         m["forcedOptions"] = self.forcedOptions
