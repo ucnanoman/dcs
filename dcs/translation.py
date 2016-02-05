@@ -32,6 +32,9 @@ class Translation:
         self.strings[lang][_id] = string
         return _id
 
+    def get_string(self, _id):
+        return String(_id, self)
+
     def create_string(self, s, lang='DEFAULT'):
         _id = 'DictKey_Translation_{dict_id}'.format(dict_id=self.max_dict_id)
         self.max_dict_id += 1
