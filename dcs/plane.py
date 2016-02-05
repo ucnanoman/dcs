@@ -27,7 +27,12 @@ class A10C(PlaneType):
 
 
 class M2000C(PlaneType):
-    id = "M2000-C"
+    id = "M-2000C"
+    fuel_max = 3165
+    chaff_max = 112
+    chaff = 112
+    flare_max = 16
+    flare = 16
 
 
 class Plane(Unit):
