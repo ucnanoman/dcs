@@ -137,9 +137,10 @@ class PlaneGroup(MovingGroup):
     def land_at(self, airport: Airport):
         mp = MovingPoint()
         mp.type = "Land"
-        mp.action = mp.type
+        mp.action = "Landing"
         mp.x = airport.x
         mp.y = airport.y
+        mp.airdrome_id = airport.id
         mp.alt = 0
         mp.speed = 0
         mp.ETA_locked = False
