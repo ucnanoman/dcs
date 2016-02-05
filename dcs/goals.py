@@ -82,7 +82,7 @@ class Goals:
     def load_from_dict(self, data):
         for x in data:
             g = Goal()
-            g.load_from_dict(data)
+            g.load_from_dict(x)
             self.goals.append(g)
 
     def dict(self):
