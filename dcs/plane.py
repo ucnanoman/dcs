@@ -4,6 +4,7 @@ from .terrain import ParkingSlot
 
 class PlaneType:
     id = ""
+    group_size_max = 4
     large_parking_slot = False
     fuel_max = 0
     ammo_type = 1
@@ -23,6 +24,10 @@ class A10C(PlaneType):
     flare_max = 240
     flare = 120
     role = "air"
+
+
+class M2000C(PlaneType):
+    id = "M2000-C"
 
 
 class Plane(Unit):
