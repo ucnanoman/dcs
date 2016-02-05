@@ -98,7 +98,6 @@ class VehicleGroup(MovingGroup):
         mp.x = x
         mp.y = y
         mp.speed = speed / 3.6
-        mp.ETA = 1000
         mp.ETA_locked = False
 
         self.add_point(mp)
@@ -122,6 +121,30 @@ class PlaneGroup(MovingGroup):
         self.communication = True
         self.uncontrolled = False
         self.task = "CAS"
+
+    def add_waypoint(self, x, y, altidute, speed=600):
+        mp = MovingPoint()
+        mp.type = "Turning Point"
+        mp.action = mp.type
+        mp.x = x
+        mp.y = y
+        mp.alt = altidute
+        mp.speed = speed / 3.6
+        mp.ETA_locked = False
+
+        self.add_point(mp)
+
+    def land_at(self, airport: Airport):
+        mp = MovingPoint()
+        mp.type = "Land"
+        mp.action = mp.type
+        mp.x = airport.x
+        mp.y = airport.y
+        mp.alt = 0
+        mp.speed = 0
+        mp.ETA_locked = False
+
+        self.add_point(mp)
 
     def dict(self):
         d = super(PlaneGroup, self).dict()
