@@ -161,6 +161,16 @@ class Result:
             }
         }
 
+    def load_from_dict(self, data):
+        for x in data:
+            if x in ["conditions", "actions", "func"]:
+                for t in data[x]["conditions"]:
+                    self.results[x]["conditions"].append(data[x]["conditions"][t])
+                for t in data[x]["actions"]:
+                    self.results[x]["actions"].append(data[x]["actions"][t])
+                for t in data[x]["func"]:
+                    self.results[x]["func"].append(data[x]["func"][t])
+
     def dict(self):
         total = 0
         for x in self.results:
