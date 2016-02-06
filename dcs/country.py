@@ -171,15 +171,77 @@ class USA(Country):
         Chevy = "Chevy"
         Pontiac = "Pontiac"
 
-    callsign = {"air": [CallsignAir.Enfield,
+    class CallsignAWACS:
+        Overlord = "Overlord"
+        Magic = "Magic"
+        Wizard = "Wizard"
+        Focus = "Focus"
+        Darkstar = "Darkstar"
+
+    class CallsignTankers:
+        Texaco = "Texaco"
+        Arco = "Arco"
+        Shell = "Shell"
+
+    callsign = {"Air": [CallsignAir.Enfield,
                         CallsignAir.Springfield,
                         CallsignAir.Uzi,
                         CallsignAir.Colt,
                         CallsignAir.Dodge,
                         CallsignAir.Ford,
                         CallsignAir.Chevy,
-                        CallsignAir.Pontiac]
+                        CallsignAir.Pontiac],
+                "AWACS": [
+                    CallsignAWACS.Overlord,
+                    CallsignAWACS.Magic,
+                    CallsignAWACS.Wizard,
+                    CallsignAWACS.Focus,
+                    CallsignAWACS.Darkstar],
+                "Tankers": [
+                    CallsignTankers.Texaco,
+                    CallsignTankers.Arco,
+                    CallsignTankers.Shell
+                ]
                 }
+
+    Vehicle_M_2_Bradley = "M-2 Bradley"
+    Vehicle_M1097_Avenger = "M1097 Avenger"
+    Vehicle_Patriot_str = "Patriot str"
+    Vehicle_Patriot_ln = "Patriot ln"
+    Vehicle_Patriot_AMG = "Patriot AMG"
+    Vehicle_Patriot_EPP = "Patriot EPP"
+    Vehicle_Patriot_ECS = "Patriot ECS"
+    Vehicle_Patriot_cp = "Patriot cp"
+    Vehicle_Hawk_sr = "Hawk sr"
+    Vehicle_Hawk_cwar = "Hawk cwar"
+    Vehicle_Hawk_pcp = "Hawk pcp"
+    Vehicle_Hawk_tr = "Hawk tr"
+    Vehicle_Hawk_ln = "Hawk ln"
+    Vehicle_Vulcan = "Vulcan"
+    Vehicle_Hummer = "Hummer"
+    Vehicle_LAV_25 = "LAV-25"
+    Vehicle_AAV7 = "AAV7"
+    Vehicle_M_113 = "M-113"
+    Vehicle_M_109 = "M-109"
+    Vehicle_M_1_Abrams = "M-1 Abrams"
+    Vehicle_MLRS = "MLRS"
+    Vehicle_M_818 = "M 818"
+    Vehicle_M48_Chaparral = "M48 Chaparral"
+    Vehicle_M1126_Stryker_ICV = "M1126 Stryker ICV"
+    Vehicle_M1128_Stryker_MGS = "M1128 Stryker MGS"
+    Vehicle_M1134_Stryker_ATGM = "M1134 Stryker ATGM"
+    Vehicle_M6_Linebacker = "M6 Linebacker"
+    Vehicle_Stinger_manpad = "Stinger manpad"
+    Vehicle_Stinger_comm = "Stinger comm"
+    Vehicle_Predator_GCS = "Predator GCS"
+    Vehicle_Predator_TrojanSpirit = "Predator TrojanSpirit"
+    Vehicle_M1043_HMMWV_Armament = "M1043 HMMWV Armament"
+    Vehicle_M1045_HMMWV_TOW = "M1045 HMMWV TOW"
+    Vehicle_M978_HEMTT_Tanker = "M978 HEMTT Tanker"
+    Vehicle_HEMTT_TFFT = "HEMTT TFFT"
+    Vehicle_Soldier_M4 = "Soldier M4"
+    Vehicle_Soldier_M249 = "Soldier M249"
+    Vehicle_2B11_mortar = "2B11 mortar"
 
     def __init__(self):
         super(USA, self).__init__(USA.id, "USA")
