@@ -621,7 +621,7 @@ class Mission:
     def vehicle(self, name, _type):
         return Vehicle(self.next_unit_id(), self.string(name), _type)
 
-    def vehicle_group(self, _country, name, _type: str, x, y, heading=0, group_size=1, formation=None) -> VehicleGroup:
+    def vehicle_group(self, _country, name, _type: str, x, y, heading=0, group_size=1, action="Off Road", formation=None) -> VehicleGroup:
         vg = VehicleGroup(self.next_group_id(), self.string(name))
 
         for i in range(1, group_size + 1):
@@ -633,7 +633,7 @@ class Mission:
 
         mp = MovingPoint()
         mp.type = "Turning Point"
-        mp.action = "On Road"
+        mp.action = action
         mp.x = vg.units[0].x
         mp.y = vg.units[0].y
 
