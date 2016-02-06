@@ -123,19 +123,20 @@ class PlaneGroup(MovingGroup):
         self.uncontrolled = False
         self.task = "CAS"
 
-    def add_waypoint(self, x, y, altidute, speed=600):
+    def add_waypoint(self, x, y, altitude, speed=600) -> MovingPoint:
         mp = MovingPoint()
         mp.type = "Turning Point"
         mp.action = mp.type
         mp.x = x
         mp.y = y
-        mp.alt = altidute
+        mp.alt = altitude
         mp.speed = speed / 3.6
         mp.ETA_locked = False
 
         self.add_point(mp)
+        return mp
 
-    def add_runway_waypoint(self, airport: Airport, runway_heading: float, distance=6000):
+    def add_runway_waypoint(self, airport: Airport, runway_heading: float, distance=6000) -> MovingPoint:
         """
         Adds a wayport parallel to the given runway heading, for start or approach.
         :param airport: start airport object
@@ -168,13 +169,14 @@ class PlaneGroup(MovingGroup):
         mp.alt_type = "RADIO"
         mp.x = airport.x + (xadd * xmulti)
         mp.y = airport.y + (yadd * ymulti)
-        mp.alt = 300
+        mp.alt = 500
         mp.speed = 200 / 3.6
         mp.ETA_locked = False
 
         self.add_point(mp)
+        return mp
 
-    def land_at(self, airport: Airport):
+    def land_at(self, airport: Airport) -> MovingPoint:
         mp = MovingPoint()
         mp.type = "Land"
         mp.action = "Landing"
@@ -186,6 +188,7 @@ class PlaneGroup(MovingGroup):
         mp.ETA_locked = False
 
         self.add_point(mp)
+        return mp
 
     def dict(self):
         d = super(PlaneGroup, self).dict()
