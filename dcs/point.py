@@ -1,4 +1,5 @@
 from .translation import String
+from .task import Task
 
 
 class Point:
@@ -32,7 +33,7 @@ class MovingPoint(Point):
         self.ETA = 0
         self.ETA_locked = True
         self.speed_locked = True
-        self.task = {"id": "ComboTask", "params": {"tasks": {}}}
+        self.tasks = []  # type: Task
         self.properties = None
         self.airdrome_id = None
         self.action = "Off Road"
@@ -44,7 +45,16 @@ class MovingPoint(Point):
         d["ETA"] = self.ETA
         d["ETA_locked"] = self.ETA_locked
         d["speed_locked"] = self.speed_locked
-        d["task"] = self.task
+        tasks = {}
+        for i in range(0, len(self.tasks)):
+            self.tasks[i].number = i+1
+            tasks[i+1] = self.tasks[i].dict()
+        d["task"] = {
+            "id": "ComboTask",
+            "params": {
+                "tasks": {i+1: self.tasks[i].dict() for i in range(0, len(self.tasks))}
+            }
+        }
         if self.airdrome_id is not None:
             d["airdromeId"] = self.airdrome_id
         if self.properties is not None:
