@@ -7,11 +7,16 @@ class PlaneType:
     group_size_max = 4
     large_parking_slot = False
     fuel_max = 0
-    ammo_type = 1
+    ammo_type = None
     gun_max = 100
     chaff = 0
     flare = 0
-    role = "air"
+    charge_total = 0
+    chaff_charge_size = 1
+    flare_charge_size = 2
+    role = "Air"
+
+    tasks = ['Nothing']
 
 
 class A10C(PlaneType):
@@ -19,20 +24,37 @@ class A10C(PlaneType):
     fuel_max = 5029  # kg
     ammo_type = 1
     gun_max = 100  # %
-    chaff_max = 480
+    charge_total = 480
     chaff = 240
-    flare_max = 240
     flare = 120
-    role = "air"
+    role = "Air"
+
+    tasks = PlaneType.tasks + ['GroundAttack', 'CAS', 'AFAC', 'RunwayAttack', 'AntishipStrike']
 
 
 class M2000C(PlaneType):
     id = "M-2000C"
     fuel_max = 3165
-    chaff_max = 112
+    charge_total = 224
     chaff = 112
-    flare_max = 16
+    flare_charge_size = 7
     flare = 16
+
+    tasks = PlaneType.tasks + ['GroundAttack', 'CAP', 'CAS', 'AFAC', 'Escort', 'Fighter Sweep',
+                               'Intercept', 'Pinpoint Strike', 'RunwayAttack']
+
+
+class E3A(PlaneType):
+    """AWACS aircraft"""
+    id = "E-3A"
+    group_size_max = 1
+    large_parking_slot = True
+    fuel_max = 65000
+    chaff = 120
+    flare = 60
+    role = 'AWACS'
+
+    tasks = PlaneType.tasks + ['AWACS']
 
 
 class Plane(Unit):
