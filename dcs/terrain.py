@@ -258,7 +258,24 @@ class Caucasus(Terrain):
         vaziani.runways.append(Runway(310, 108.75))
         self.airports[vaziani.name] = vaziani
 
-        beslan = Airport(32, "Beslan", 141.0, 0, 0, None)
+        beslan = Airport(32, "Beslan", 141.0, -148810.84954665, 843756.7533062, None)
+        beslan.runways.append(Runway(90, 110.5))
+        beslan.runways.append(Runway(270))
+        beslan.parking_slots[2] = ParkingSlot(2, -148868.4375, 843496.4375, False, "02")
+        beslan.parking_slots[8] = ParkingSlot(8, -148838.5, 843498.3125, False, "01")
+        beslan.parking_slots[9] = ParkingSlot(9, -148845.28125, 843609.375, False, "04")
+        beslan.parking_slots[16] = ParkingSlot(16, -148815.34375, 843611.1875, False, "03")
+        beslan.parking_slots[20] = ParkingSlot(20, -148875.234375, 843607.5, False, "05")
+        beslan.parking_slots[42] = ParkingSlot(42, -148853.515625, 843744, False, "06")
+        beslan.parking_slots[55] = ParkingSlot(55, -148875.8125, 844108.375, True, "15")
+        beslan.parking_slots[56] = ParkingSlot(56, -148873.375, 844068.5, False, "14")
+        beslan.parking_slots[57] = ParkingSlot(57, -148870.921875, 844028.5625, True, "13")
+        beslan.parking_slots[58] = ParkingSlot(58, -148868.484375, 843988.625, False, "12")
+        beslan.parking_slots[59] = ParkingSlot(59, -148866.046875, 843948.6875, True, "11")
+        beslan.parking_slots[60] = ParkingSlot(60, -148863.59375, 843908.75, False, "10")
+        beslan.parking_slots[61] = ParkingSlot(61, -148860.84375, 843863.75, True, "09")
+        beslan.parking_slots[62] = ParkingSlot(62, -148858.421875, 843824.125, False, "08")
+        beslan.parking_slots[63] = ParkingSlot(63, -148856.03125, 843784.9375, True, "07")
         self.airports[beslan.name] = beslan
 
 
