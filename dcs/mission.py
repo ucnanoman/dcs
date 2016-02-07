@@ -195,6 +195,7 @@ class Mission:
     def __init__(self, terrain: Terrain = Caucasus()):
         self.current_unit_id = 0
         self.current_group_id = 0
+        self.current_callsign_id = 99
 
         self.translation = Translation()
 
@@ -408,10 +409,12 @@ class Mission:
                         plane.chaff = imp_unit["payload"]["chaff"]
                         plane.ammo_type = imp_unit["payload"].get("ammo_type")
                         plane.pylons = imp_unit["payload"]["pylons"]
-                        plane.callsign_name = imp_unit["callsign"]["name"]
+                        if isinstance(imp_unit["callsign"], int):
+                            plane.callsign = imp_unit["callsign"]
+                        else:
+                            plane.callsign_dict = imp_unit["callsign"]
                         plane.parking = imp_unit.get("parking", None)
                         plane.speed = imp_unit["speed"]
-                        plane.callsign = [imp_unit["callsign"][1], imp_unit["callsign"][2], imp_unit["callsign"][3]]
 
                         self.current_unit_id = max(self.current_unit_id, plane.id)
                         plane_group.add_unit(plane)
@@ -611,6 +614,10 @@ class Mission:
         self.current_unit_id += 1
         return self.current_unit_id
 
+    def next_callsign_id(self):
+        self.current_callsign_id += 1
+        return self.current_callsign_id
+
     def string(self, s, lang='DEFAULT'):
         """Create a new String() object for translation"""
         return self.translation.create_string(s, lang)
@@ -645,9 +652,9 @@ class Mission:
     def plane_group(self, name):
         return PlaneGroup(self.next_group_id(), self.string(name))
 
-    def plane_group_inflight(self, _country, name, task: dcs.task.Task, x, y, altitude, plane_type, group_size=1):
+    def plane_group_inflight(self, _country, name, task: dcs.task.MainTask, x, y, altitude, plane_type, group_size=1):
         pg = self.plane_group(name)
-        pg.task = task.main_task_name()
+        pg.task = task.name
         group_size = min(group_size, plane_type.group_size_max)
 
         for i in range(1, group_size + 1):
@@ -657,7 +664,7 @@ class Mission:
             p.alt = altitude
             callsign = _country.callsign.get(plane_type.role)[0]
             if callsign:
-                p.callsign_name = callsign
+                p.callsign_dict["name"] = callsign
             pg.add_unit(p)
 
         mp = MovingPoint()
@@ -666,16 +673,17 @@ class Mission:
         mp.x = pg.units[0].x
         mp.y = pg.units[0].y
         mp.alt = p.alt
-        mp.tasks.append(task)
+        for t in task.perform_task:
+            mp.tasks.append(t())
 
         pg.add_point(mp)
 
         _country.add_plane_group(pg)
         return pg
 
-    def plane_group_from_runway(self, _country, name, task: dcs.task.Task, plane_type: PlaneType, airport: Airport, group_size=1):
+    def plane_group_from_runway(self, _country, name, task: dcs.task.MainTask, plane_type: PlaneType, airport: Airport, group_size=1):
         pg = self.plane_group(name)
-        pg.task = task.main_task_name()
+        pg.task = task.name
         group_size = min(group_size, plane_type.group_size_max)
 
         for i in range(1, group_size + 1):
@@ -684,7 +692,7 @@ class Mission:
             p.y = airport.y
             callsign = _country.callsign.get(plane_type.role)[0]
             if callsign:
-                p.callsign_name = callsign
+                p.callsign_dict["name"] = callsign
             pg.add_unit(p)
 
         mp = MovingPoint()
@@ -694,7 +702,8 @@ class Mission:
         mp.y = pg.units[0].y
         mp.airdrome_id = airport.id
         mp.alt = p.alt
-        mp.tasks.append(task)
+        for t in task.perform_task:
+            mp.tasks.append(t())
 
         pg.add_point(mp)
 
@@ -704,7 +713,7 @@ class Mission:
     def plane_group_from_parking(self,
                                  _country: Country,
                                  name,
-                                 task: dcs.task.Task,
+                                 task: dcs.task.MainTask,
                                  plane_type: PlaneType,
                                  airport: Airport,
                                  coldstart=True,
@@ -723,9 +732,14 @@ class Mission:
         :return: the new PlaneGroup
         """
         pg = self.plane_group(name)
-        pg.task = task.main_task_name()
+        pg.task = task.name
 
-        callsign = _country.callsign.get(plane_type.role)[0]
+        callsign_name = None
+        callsign = None
+        if plane_type.role in _country.callsign:
+            callsign_name = _country.callsign.get(plane_type.role)[0]
+        else:
+            callsign = self.next_callsign_id()
         group_size = min(group_size, plane_type.group_size_max)
 
         for i in range(1, group_size + 1):
@@ -735,7 +749,9 @@ class Mission:
             p.y = parking_slot.y
             p.set_parking(parking_slot)
             if callsign:
-                p.callsign_name = callsign
+                p.callsign = callsign
+            else:
+                p.callsign_dict["name"] = callsign_name
             pg.add_unit(p)
 
         mp = MovingPoint()
@@ -745,7 +761,8 @@ class Mission:
         mp.y = pg.units[0].y
         mp.airdrome_id = airport.id
         mp.alt = p.alt
-        mp.tasks.append(task)
+        for t in task.perform_task:
+            mp.tasks.append(t())
 
         pg.add_point(mp)
 

@@ -86,8 +86,8 @@ class Plane(Unit):
         self.gun = _type.gun_max
         self.ammo_type = _type.ammo_type
         self.pylons = {}
-        self.callsign_name = ""
-        self.callsign = [1, 1, 1]
+        self.callsign = None
+        self.callsign_dict = {1: 1, 2:1, 3:1, "name": ""}
         self.speed = 0
 
     def set_parking(self, parking_slot: ParkingSlot):
@@ -113,10 +113,8 @@ class Plane(Unit):
             "ammo_type": self.ammo_type,
             "pylons": self.pylons
         }
-        d["callsign"] = {
-            "name": self.callsign_name,
-            1: self.callsign[0],
-            2: self.callsign[1],
-            3: self.callsign[2]
-        }
+        if self.callsign:
+            d["callsign"] = self.callsign
+        else:
+            d["callsign"] = self.callsign_dict
         return d

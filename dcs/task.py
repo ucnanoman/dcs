@@ -19,27 +19,139 @@ class Task:
         }
 
 
-class CAS(Task):
+# TODO check
+class AntiShipStrikeTaskAction(Task):
     def __init__(self):
-        super(CAS, self).__init__("EngageTargets")
+        super(AntiShipStrikeTaskAction, self).__init__("EngageTargets")
+        self.key = "AntishipStrike"
+
+    def dict(self):
+        d = super(CASTaskAction, self).dict()
+        d["key"] = self.key
+        return d
+
+
+class CASTaskAction(Task):
+    def __init__(self):
+        super(CASTaskAction, self).__init__("EngageTargets")
         self.params = {
             "targetTypes": {1: "Helicopters", 2: "Ground Units", 3: "Light armed ships"},
             "priority": 0
         }
         self.key = "CAS"
 
-    def main_task_name(self):
-        return self.key
-
     def dict(self):
-        d = super(CAS, self).dict()
+        d = super(CASTaskAction, self).dict()
         d["key"] = self.key
         return d
 
 
-class AWACS(Task):
+class SEADTaskAction(Task):
+    def __init__(self, group_id):
+        super(SEADTaskAction, self).__init__("EngageTargets")
+        self.params = {
+            "targetTypes": {1: "Air Defence"},
+            "priority": 0
+        }
+        self.key = "SEAD"
+
+    def dict(self):
+        d = super(SEADTaskAction, self).dict()
+        d["key"] = self.key
+        return d
+
+
+class CAPTaskAction(Task):
     def __init__(self):
-        super(AWACS, self).__init__("AWACS")
+        super(CAPTaskAction, self).__init__("EngageTargets")
+        self.params = {
+            "targetTypes": {1: "Air"},
+            "priority": 0
+        }
+        self.key = "CAP"
+
+    def dict(self):
+        d = super(CAPTaskAction, self).dict()
+        d["key"] = self.key
+        return d
+
+
+class FighterSweepTaskAction(Task):
+    def __init__(self):
+        super(FighterSweepTaskAction, self).__init__("EngageTargets")
+        self.params = {
+            "targetTypes": {1: "Planes"},
+            "priority": 0
+        }
+        self.key = "FighterSweep"
+
+    def dict(self):
+        d = super(FighterSweepTaskAction, self).dict()
+        d["key"] = self.key
+        return d
+
+
+class EscortTaskAction(Task):
+    def __init__(self, group_id, engagement_max_dist=60000):
+        super(EscortTaskAction, self).__init__("Escort")
+        self.params = {
+            "lastWptIndexFlagChangedManually": True,
+            "groupId": group_id,
+            "lastWptIndexFlag": False,
+            "engagementDistMax": engagement_max_dist,
+            "targetTypes": {1: "Planes"},
+            "pos": {"x": -200, "y": -500, "z": 0}
+        }
+
+
+class AttackGroup(Task):
+    def __init__(self, group_id):
+        super(AttackGroup, self).__init__("AttackGroup")
+        self.params = {
+            "groupId": 7,
+            "weaponType": 1069547520
+        }
+
+
+class Bombing(Task):
+    def __init__(self, x, y):
+        super(Bombing, self).__init__("Bombing")
+        self.params = {
+            "directionEnabled": False,
+            "direction": 0,
+            "attackQtyLimit": False,
+            "attackQty": 1,
+            "expend": "Auto",
+            "y": y,
+            "groupAttack": False,
+            "altitude": 88,
+            "altitudeEnabled": False,
+            "weaponType": 1073741822,
+            "x": x
+        }
+
+
+class EngageTargetsInZone(Task):
+    def __init__(self, x, y, radius=5000):
+        super(EngageTargetsInZone, self).__init__("EngageTargetsInZone")
+        self.params = {
+            "targetTypes": {1: "Air Defence"},
+            "priority": 0,
+            "x": x,
+            "y": y,
+            "zoneRadius": radius
+        }
+
+
+class AWACSTaskAction(Task):
+    def __init__(self):
+        super(AWACSTaskAction, self).__init__("AWACS")
+
+
+# TODO check
+class RefuelingTaskAction(Task):
+    def __init__(self):
+        super(RefuelingTaskAction, self).__init__("Refueling")
 
 
 class EPLRS(Task):
@@ -48,3 +160,100 @@ class EPLRS(Task):
         self.params = {
             "action": {"id": "EPLRS", "params": {"value": True, "groupId": group_id}}
         }
+
+
+class MainTask:
+    name = None
+    sub_tasks = []
+    perform_task = []
+
+
+class Nothing(MainTask):
+    name = "Nothing"
+    sub_tasks = ["Orbit", "Follow", "Aerobatics"]
+
+
+class AFAC(MainTask):
+    name = "AFAC"
+    sub_tasks = ["Orbit", "Follow", "AttackGroup", "AttackUnit", "Bombing", "AttackMapObject"]
+
+
+class AWACS(MainTask):
+    name = "AWACS"
+    sub_tasks = ["Orbit", "Follow", "Refueling"]
+    perform_task = [AWACSTaskAction]
+
+
+class AntiShipStrike(MainTask):
+    name = "AntishipStrike"
+    sub_tasks = ["Orbit", "Follow", "AttackGroup", "AttackUnit"]
+    perform_task = [AntiShipStrikeTaskAction]
+
+
+class CAS(MainTask):
+    name = "CAS"
+    sub_tasks = ["Orbit", "Follow", "AttackGroup", "AttackUnit", "Aerobatics", "Refueling"]
+    perform_task = [CASTaskAction]
+
+
+class CAP(MainTask):
+    name = "CAP"
+    sub_tasks = ["Orbit", "Follow", "Aerobatics"]
+    perform_task = [CAPTaskAction]
+
+
+class Escort(MainTask):
+    name = "Escort"
+    sub_tasks = ["Orbit", "Follow", "Escort"]
+    perform_task = [EscortTaskAction]
+
+
+class FighterSweep(MainTask):
+    name = "Fighter Sweep"
+    sub_tasks = ["Orbit", "Follow", "Aerobatics"]
+    perform_task = [FighterSweepTaskAction]
+
+
+class GroundAttack(MainTask):
+    name = "Ground Attack"
+    sub_tasks = ["Orbit", "Follow", "Bombing", "AttackMapObject", "Aerobatics"]
+
+
+class Intercept(MainTask):
+    name = "Intercept"
+    sub_tasks = ["Orbit", "Follow", "AttackGroup", "AttackUnit", "Aerobatics"]
+
+
+class PinpointStrike(MainTask):
+    name = "Pinpoint Strike"
+    sub_tasks = ["Orbit", "Follow", "Bombing", "AttackMapObject"]
+
+
+class Reconnaissance(MainTask):
+    name = "Reconnaissance"
+    sub_tasks = ["Orbit", "Follow", "Aerobatics"]
+    perform_task = []
+
+
+class Refueling(MainTask):
+    name = "Refueling"
+    sub_tasks = ["Orbit", "Follow"]
+    perform_task = [RefuelingTaskAction]
+
+
+class RunwayAttack(MainTask):
+    name = "Ground Attack"
+    sub_tasks = ["Orbit", "Follow", "Bombing", "BombingRunway", "AttackMapObject"]
+    perform_task = []
+
+
+class SEAD(MainTask):
+    name = "SEAD"
+    sub_tasks = ["Orbit", "Follow", "AttackGroup", "AttackUnit", "Escort"]
+    perform_task = [SEADTaskAction]
+
+
+class Transport(MainTask):
+    name = "Transport"
+    sub_tasks = ["Orbit", "Follow", "Aerobatics"]
+    perform_task = []
