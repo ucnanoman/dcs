@@ -56,6 +56,20 @@ class E3A(PlaneType):
 
     tasks = PlaneType.tasks + ['AWACS']
 
+# Red
+
+
+class MIG29A(PlaneType):
+    id = "MiG-29A"
+    fuel_max = 3380
+    charge_total = 60
+    chaff = 30
+    flare_charge_size = 1
+    flare = 30
+
+    tasks = PlaneType.tasks + ['GroundAttack', 'CAP', 'CAS', 'AFAC', 'Escort', 'Fighter Sweep',
+                           'Intercept', 'RunwayAttack', 'AntishipStrike']
+
 
 class Plane(Unit):
     def __init__(self, _id=None, name=None, _type: PlaneType=A10C):
