@@ -13,11 +13,9 @@ end
 db = {}
 dofile('weapons.lua')
 
-print("# Don't change this file, it's generated.")
-print("class Weapons:")
 weapons = {}
 keys = {}
-for j in pairs({1,2,3,4,5}) do
+for j in pairs({1,2,3,4,5,6}) do
 	for i, v in ipairs(db.Weapons.Categories[j].Launchers) do
 		local pyName = v.displayName
 		if string.sub(v.CLSID, 0, 1) ~= "{" then
@@ -40,8 +38,22 @@ for j in pairs({1,2,3,4,5}) do
 end
 
 table.sort( keys )
+
+if arg[1] then
+print("-- lua helper file for plane_exporter")
+print("weapons_map = {}")
+i = 1
+while i <= #keys do
+	local x = keys[i]
+	local s = 'weapons_map["' .. weapons[x].clsid .. '"] = "'..x..'"'
+	i = i + 1
+	print(s)
+end
+else
+print("# Don't change this file, it's generated.")
+print("class Weapons:")
 local i = 1
-while i < #keys do
+while i <= #keys do
 	local x = keys[i]
 	print("    " .. x .. " = {\"clsid\": \"" .. weapons[x].clsid
 		.. "\", \"name\": \"" .. weapons[x].displayName .. "\", \"weight\": " .. weapons[x].weight .. "}")
@@ -51,9 +63,9 @@ end
 print()
 print("weapon_ids = {")
 i = 1
-while i < #keys do
+while i <= #keys do
 	local x = keys[i]
-	local s = "    \"" .. weapons[x].clsid .. "\" : Weapons." .. x
+	local s = "    \"" .. weapons[x].clsid .. "\": Weapons." .. x
 	i = i + 1
 	if i < #keys then
 		s = s .. ","
@@ -62,3 +74,4 @@ while i < #keys do
 end
 print("}")
 
+end -- arg[1]
