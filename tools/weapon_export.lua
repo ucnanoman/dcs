@@ -50,7 +50,9 @@ while i <= #keys do
 	print(s)
 end
 else
-print("# Don't change this file, it's generated.")
+print('# This file is generated from weapon_export.lua')
+print()
+print()
 print("class Weapons:")
 local i = 1
 while i <= #keys do
