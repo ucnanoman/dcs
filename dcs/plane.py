@@ -1,79 +1,12 @@
 from .unit import Unit
 from .terrain import ParkingSlot
-
-
-class PlaneType:
-    id = ""
-    group_size_max = 4
-    large_parking_slot = False
-    fuel_max = 0
-    ammo_type = None
-    gun_max = 100
-    chaff = 0
-    flare = 0
-    charge_total = 0
-    chaff_charge_size = 1
-    flare_charge_size = 2
-    role = "Air"
-
-    tasks = ['Nothing']
-
-
-class A10C(PlaneType):
-    id = "A-10C"
-    fuel_max = 5029  # kg
-    ammo_type = 1
-    gun_max = 100  # %
-    charge_total = 480
-    chaff = 240
-    flare = 120
-    role = "Air"
-
-    tasks = PlaneType.tasks + ['GroundAttack', 'CAS', 'AFAC', 'RunwayAttack', 'AntishipStrike']
-
-
-class M2000C(PlaneType):
-    id = "M-2000C"
-    fuel_max = 3165
-    charge_total = 224
-    chaff = 112
-    flare_charge_size = 7
-    flare = 16
-
-    tasks = PlaneType.tasks + ['GroundAttack', 'CAP', 'CAS', 'AFAC', 'Escort', 'Fighter Sweep',
-                               'Intercept', 'Pinpoint Strike', 'RunwayAttack']
-
-
-class E3A(PlaneType):
-    """AWACS aircraft"""
-    id = "E-3A"
-    group_size_max = 1
-    large_parking_slot = True
-    fuel_max = 65000
-    chaff = 120
-    flare = 60
-    role = 'AWACS'
-
-    tasks = PlaneType.tasks + ['AWACS']
-
-# Red
-
-
-class MIG29A(PlaneType):
-    id = "MiG-29A"
-    fuel_max = 3380
-    charge_total = 60
-    chaff = 30
-    flare_charge_size = 1
-    flare = 30
-
-    tasks = PlaneType.tasks + ['GroundAttack', 'CAP', 'CAS', 'AFAC', 'Escort', 'Fighter Sweep',
-                           'Intercept', 'RunwayAttack', 'AntishipStrike']
+from .planes import PlaneType, A_10C
 
 
 class Plane(Unit):
-    def __init__(self, _id=None, name=None, _type: PlaneType=A10C):
+    def __init__(self, _id=None, name=None, _type: PlaneType=A_10C):
         super(Plane, self).__init__(_id, name, _type.id)
+        self.plane_type = _type  # for loadout validation
         self.livery_id = None
         self.parking = None
         self.psi = ""
@@ -87,12 +20,18 @@ class Plane(Unit):
         self.ammo_type = _type.ammo_type
         self.pylons = {}
         self.callsign = None
-        self.callsign_dict = {1: 1, 2:1, 3:1, "name": ""}
+        self.callsign_dict = {1: 1, 2: 1, 3: 1, "name": ""}
         self.speed = 0
 
     def set_parking(self, parking_slot: ParkingSlot):
         parking_slot.unit_id = self.id
         self.parking = parking_slot.id
+
+    def load_pylon(self, pylon, weapon):
+        if pylon not in self.plane_type.pylons:
+            raise RuntimeError("Plane {pn} has no pylon {p}.".format(pn=self.plane_type.id, p=pylon))
+        self.pylons[pylon] = weapon["clsid"]
+        return True
 
     def dict(self):
         d = super(Plane, self).dict()

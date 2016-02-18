@@ -3,7 +3,7 @@ import lua
 from .weather import *
 from .group import *
 from .country import Country
-from . import country
+from . import countries
 from .point import Point, MovingPoint
 from .vehicle import Vehicle
 from .plane import Plane, PlaneType
@@ -216,38 +216,38 @@ class Mission:
         self.mapresource = {}
         self.goals = Goals()
         blue = Coalition("blue")
-        blue.add_country(country.Australia())
-        blue.add_country(country.Belgium())
-        blue.add_country(country.Canada())
-        blue.add_country(country.Croatia())
-        blue.add_country(country.CzechRepublic())
-        blue.add_country(country.Denmark())
-        blue.add_country(country.France())
-        blue.add_country(country.Georgia())
-        blue.add_country(country.Germany())
-        blue.add_country(country.Israel())
-        blue.add_country(country.Italy())
-        blue.add_country(country.Norway())
-        blue.add_country(country.Poland())
-        blue.add_country(country.SouthKorea())
-        blue.add_country(country.Spain())
-        blue.add_country(country.Netherlands())
-        blue.add_country(country.UK())
-        blue.add_country(country.USA())
-        blue.add_country(country.Turkey())
+        blue.add_country(countries.Australia())
+        blue.add_country(countries.Belgium())
+        blue.add_country(countries.Canada())
+        blue.add_country(countries.Croatia())
+        blue.add_country(countries.CzechRepublic())
+        blue.add_country(countries.Denmark())
+        blue.add_country(countries.France())
+        blue.add_country(countries.Georgia())
+        blue.add_country(countries.Germany())
+        blue.add_country(countries.Israel())
+        blue.add_country(countries.Italy())
+        blue.add_country(countries.Norway())
+        blue.add_country(countries.Poland())
+        blue.add_country(countries.SouthKorea())
+        blue.add_country(countries.Spain())
+        blue.add_country(countries.TheNetherlands())
+        blue.add_country(countries.UK())
+        blue.add_country(countries.USA())
+        blue.add_country(countries.Turkey())
 
         red = Coalition("red")
-        red.add_country(country.Abkhazia())
-        red.add_country(country.Belarus())
-        red.add_country(country.China())
-        red.add_country(country.Iran())
-        red.add_country(country.Kazakhstan())
-        red.add_country(country.NorthKorea())
-        red.add_country(country.Russia())
-        red.add_country(country.Serbia())
-        red.add_country(country.SouthOssetia())
-        red.add_country(country.Syria())
-        red.add_country(country.Ukraine())
+        red.add_country(countries.Abkhazia())
+        red.add_country(countries.Belarus())
+        red.add_country(countries.China())
+        red.add_country(countries.Iran())
+        red.add_country(countries.Kazakhstan())
+        red.add_country(countries.NorthKorea())
+        red.add_country(countries.Russia())
+        red.add_country(countries.Serbia())
+        red.add_country(countries.SouthOssetia())
+        red.add_country(countries.Syria())
+        red.add_country(countries.Ukraine())
 
         blue.bullseye = terrain.bullseye_blue
         red.bullseye = terrain.bullseye_red
@@ -736,8 +736,8 @@ class Mission:
 
         callsign_name = None
         callsign = None
-        if plane_type.role in _country.callsign:
-            callsign_name = _country.callsign.get(plane_type.role)[0]
+        if plane_type.category in _country.callsign:
+            callsign_name = _country.callsign.get(plane_type.category)[0]
         else:
             callsign = self.next_callsign_id()
         group_size = min(group_size, plane_type.group_size_max)
