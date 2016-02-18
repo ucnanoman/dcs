@@ -24,13 +24,14 @@ function makeAirplaneCanopyGeometry(a, b, c)
 end
 
 db_path = "/home/rp/dcs_data/Scripts/Database/"
-
 dofile(db_path.."PlaneConst.lua")
 dofile(db_path.."HelicopterConst.lua")
 dofile(db_path.."db_units_planes.lua")
 dofile("weapons_map.lua")
 
 print([[
+# This file is generated from plane_export.lua
+
 from .weapons_data import Weapons
 
 
@@ -46,7 +47,7 @@ class PlaneType:
     charge_total = 0
     chaff_charge_size = 1
     flare_charge_size = 2
-    role = "Air"
+    category = "Air"
 
     pylons = {}
 
@@ -76,7 +77,20 @@ for i in pairs(db.Units.Planes.Plane) do
 		print('    chaff_charge_size = '..plane.passivCounterm.chaff.chargeSz)
 		print('    flare_charge_size = '..plane.passivCounterm.flare.chargeSz)
 	end
-	--print('    role = "'..)
+
+	if plane.Categories and plane.Categories[1] then
+		local s = '    category = "'
+		if plane.Categories[1].CLSID == "{D2BC159C-5B7D-40cf-92CD-44DF3E99FAA9}" then
+			s = s..'AWACS'
+		elseif plane.Categories[1].CLSID == "{8A302789-A55D-4897-B647-66493FA6826F}" then
+			s = s..'Tanker'
+		elseif plane.Categories[1].CLSID == "{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}" then
+			s = s..'Interceptor'
+		else
+			s = s..'Air'
+		end
+		print(s..'"')  -- category
+	end
 
 	local pylons = {}
 
