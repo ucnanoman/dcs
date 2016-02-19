@@ -41,7 +41,6 @@ class PlaneType:
     large_parking_slot = False
     fuel_max = 0
     ammo_type = None
-    gun_max = 100
     chaff = 0
     flare = 0
     charge_total = 0

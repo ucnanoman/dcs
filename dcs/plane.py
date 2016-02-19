@@ -16,7 +16,7 @@ class Plane(Unit):
         self.flare = _type.flare
         self.chaff = _type.chaff
         self.fuel = _type.fuel_max
-        self.gun = _type.gun_max
+        self.gun = 100
         self.ammo_type = _type.ammo_type
         self.pylons = {}
         self.callsign = None
