@@ -1,6 +1,7 @@
 from .unit import Unit
 from .terrain import ParkingSlot
 from .planes import PlaneType, A_10C
+import json
 
 
 class Plane(Unit):
@@ -31,6 +32,18 @@ class Plane(Unit):
         if pylon not in self.plane_type.pylons:
             raise RuntimeError("Plane {pn} has no pylon {p}.".format(pn=self.plane_type.id, p=pylon))
         self.pylons[pylon] = weapon["clsid"]
+        return True
+
+    def store_loadout(self, filename):
+        with open(filename, 'w') as loadout:
+            json.dump(self.pylons, loadout)
+
+        return True
+
+    def load_loadout(self, filename):
+        with open(filename, 'r') as loadout:
+            self.pylons = json.load(loadout)
+
         return True
 
     def dict(self):

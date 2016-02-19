@@ -11,9 +11,9 @@ class Group:
             raise TypeError("id must be an integer")
         self.id = _id
         self.hidden = False
-        self.units = []  # type: List[Unit]
+        self.units = []  # type: list[Unit]
         self.spans = []
-        self.points = []  # type: List[MovingPoint]
+        self.points = []  # type: list[MovingPoint]
         self.name = name if name else String()
 
     def add_unit(self, unit: Unit):
@@ -189,6 +189,18 @@ class PlaneGroup(MovingGroup):
 
         self.add_point(mp)
         return mp
+
+    def load_pylon(self, pylon, weapon):
+        for u in self.units:
+            u.load_pylon(pylon, weapon)
+
+        return True
+
+    def load_loadout(self, filename):
+        for u in self.units:
+            u.load_loadout(filename)
+
+        return True
 
     def dict(self):
         d = super(PlaneGroup, self).dict()
