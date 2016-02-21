@@ -723,6 +723,7 @@ class Mission:
         mp.x = pg.units[0].x
         mp.y = pg.units[0].y
         mp.alt = p.alt
+
         for t in task.perform_task:
             mp.tasks.append(t())
 
@@ -736,13 +737,21 @@ class Mission:
         pg.task = task.name
         group_size = min(group_size, plane_type.group_size_max)
 
+        callsign_name = None
+        callsign = None
+        if plane_type.category in _country.callsign:
+            callsign_name = _country.callsign.get(plane_type.category)[0]
+        else:
+            callsign = self.next_callsign_id()
+
         for i in range(1, group_size + 1):
             p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type)
             p.x = airport.x
             p.y = airport.y
-            callsign = _country.callsign.get(plane_type.role)[0]
             if callsign:
-                p.callsign_dict["name"] = callsign
+                p.callsign = callsign
+            else:
+                p.callsign_dict["name"] = callsign_name
             pg.add_unit(p)
 
         mp = MovingPoint()
