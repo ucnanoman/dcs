@@ -23,7 +23,9 @@ function makeAirplaneCanopyGeometry(a, b, c)
 	return 1
 end
 
-db_path = "/home/rp/dcs_data/Scripts/Database/"
+ed_path = "C:/Program Files/Eagle Dynamics/DCS World"
+db_path = ed_path.."/Scripts/Database/"
+
 dofile(db_path.."PlaneConst.lua")
 dofile(db_path.."HelicopterConst.lua")
 dofile(db_path.."db_units_planes.lua")
@@ -95,7 +97,7 @@ for i in pairs(db.Units.Planes.Plane) do
 
 	for j in pairs(plane.Pylons) do
 		if #plane.Pylons[j].Launchers > 0 then
-			print()
+			print("")
 			table.insert(pylons, j)
 			print('    class Pylon'..j..':')
 			for k in pairs(plane.Pylons[j].Launchers) do
@@ -109,7 +111,7 @@ for i in pairs(db.Units.Planes.Plane) do
 		end
 	end
 
-	print()
+	print("")
 	local s = ''
 	for j in pairs(pylons) do
 		s = s..tostring(pylons[j])
@@ -120,18 +122,18 @@ for i in pairs(db.Units.Planes.Plane) do
 	print('    pylons = {'..s..'}')
 
 	-- tasks
-	print()
+	print("")
 	s = ''
 	j = 1
 	while j <= #plane.Tasks do
 		s = s..'"'..plane.Tasks[j].Name..'"'
 		j = j + 1
-		if j < #plane.Tasks then
+		if j <= #plane.Tasks then
 			s = s..', '
 		end
 	end
 	print('    tasks = ['..s..']')
 	print('    task_default = "'..plane.DefaultTask.Name..'"')
-	print()
-	print()
+	print("")
+	print("")
 end
