@@ -6,6 +6,7 @@ from .country import Country
 from . import countries
 from .point import Point, MovingPoint
 from .vehicle import Vehicle
+from .ship import Ship
 from .plane import Plane, PlaneType
 from .static import Static
 from .translation import Translation
@@ -375,6 +376,30 @@ class Mission:
                         vg.add_unit(unit)
                     _country.add_vehicle_group(vg)
 
+            if "ship" in imp_country:
+                for group_idx in imp_country["ship"]["group"]:
+                    group = imp_country["ship"]["group"][group_idx]
+                    vg = ShipGroup(group["groupId"], self.translation.get_string(group["name"]), group["start_time"])
+                    self.current_group_id = max(self.current_group_id, vg.id)
+
+                    self._import_moving_point(vg, vgroup)
+
+                    # units
+                    for imp_unit_idx in vgroup["units"]:
+                        imp_unit = vgroup["units"][imp_unit_idx]
+                        unit = Ship(id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]))
+                        unit.set_position(MapPosition(imp_unit["x"], imp_unit["y"]))
+                        unit.heading = imp_unit["heading"]
+                        unit.type = imp_unit["type"]
+                        unit.skill = imp_unit["skill"]
+                        unit.x = imp_unit["x"]
+                        unit.y = imp_unit["y"]
+                        unit.transportable = imp_unit["transportable"]
+
+                        self.current_unit_id = max(self.current_unit_id, unit.id)
+                        vg.add_unit(unit)
+                    _country.add_ship_group(vg)
+
             if "plane" in imp_country:
                 for pgroup_idx in imp_country["plane"]["group"]:
                     pgroup = imp_country["plane"]["group"][pgroup_idx]
@@ -648,6 +673,31 @@ class Mission:
 
         _country.add_vehicle_group(vg)
         return vg
+
+    def ship(self, name, _type):
+        return Ship(self.next_unit_id(), self.string(name), _type)
+
+    def ship_group(self, _country, name, _type: str, x, y, heading=0, group_size=1, formation=None) -> ShipGroup:
+        sg = ShipGroup(self.next_group_id(), self.string(name))
+
+        for i in range(1, group_size + 1):
+            v = self.ship(name + " Unit #{nr}".format(nr=i), _type)
+            v.x = x
+            v.y = y + (i-1) * 20
+            v.heading = heading
+            sg.add_unit(v)
+
+        mp = MovingPoint()
+        mp.type = "Turning Point"
+        mp.action = mp.type
+        mp.x = sg.units[0].x
+        mp.y = sg.units[0].y
+        mp.speed = 20 / 3.6
+
+        sg.add_point(mp)
+
+        _country.add_ship_group(sg)
+        return sg
 
     def plane_group(self, name):
         return PlaneGroup(self.next_group_id(), self.string(name))

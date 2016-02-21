@@ -1,4 +1,4 @@
-from .group import VehicleGroup, PlaneGroup, StaticGroup
+from .group import VehicleGroup, ShipGroup, PlaneGroup, StaticGroup
 
 
 class Country:
@@ -8,6 +8,7 @@ class Country:
         self.id = _id
         self.name = name
         self.vehicle_group = []  # type: list[VehicleGroup]
+        self.ship_group = []  # type: list[ShipGroup]
         self.plane_group = []  # type: list[PlaneGroup]
         self.static_group = []  # type: list[StaticGroup]
 
@@ -16,6 +17,9 @@ class Country:
 
     def add_vehicle_group(self, vgroup):
         self.vehicle_group.append(vgroup)
+
+    def add_ship_group(self, sgroup):
+        self.ship_group.append(sgroup)
 
     def add_plane_group(self, pgroup):
         self.plane_group.append(pgroup)
@@ -27,6 +31,11 @@ class Country:
         for vgroup in self.vehicle_group:
             if name in vgroup.name.str():
                 return vgroup
+
+    def find_ship_group(self, name: str):
+        for sgroup in self.ship_group:
+            if name in sgroup.name.str():
+                return sgroup
 
     def find_plane_group(self, name: str):
         for group in self.plane_group:
@@ -49,6 +58,14 @@ class Country:
             for vgroup in self.vehicle_group:
                 d["vehicle"]["group"][i] = vgroup.dict()
                 i += 1
+
+        if self.ship_group:
+            d["ship"] = {"group": {}}
+            i = 1
+            for group in self.ship_group:
+                d["ship"]["group"][i] = group.dict()
+                i += 1
+
         if self.plane_group:
             d["plane"] = {"group": {}}
             i = 1

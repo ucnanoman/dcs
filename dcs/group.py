@@ -49,13 +49,15 @@ class Group:
                 d["units"][i] = unit.dict()
                 i += 1
         if self.points:
-            d["route"] = {"points": {}, "spans": {}}
+            d["route"] = {"points": {}}
             i = 1
             for point in self.points:
                 d["route"]["points"][i] = point.dict()
                 i += 1
 
+        if self.spans is not None:
             # spans
+            d["route"]["spans"] = {}
             i = 1
             for spawn in self.spans:
                 d["route"]["spans"][i] = spawn
@@ -74,23 +76,21 @@ class MovingGroup(Group):
 
     def dict(self):
         d = super(MovingGroup, self).dict()
-        d["task"] = self.task
+        if self.task:
+            d["task"] = self.task
         d["tasks"] = self.tasks
         d["start_time"] = self.start_time
         d["visible"] = self.visible
-        d["frequency"] = self.frequency
+        if self.frequency:
+            d["frequency"] = self.frequency
         return d
 
 
 class VehicleGroup(MovingGroup):
-    class Task:
-        GROUND = "Ground Nothing"
-
     def __init__(self, _id, name=None, start_time=0):
         super(VehicleGroup, self).__init__(_id, name, start_time)
         self.modulation = 0
         self.communication = True
-        self.task = VehicleGroup.Task.GROUND
 
     def add_waypoint(self, x, y, _type="Off Road", speed=32) -> MovingPoint:
         mp = MovingPoint()
@@ -112,10 +112,6 @@ class VehicleGroup(MovingGroup):
 
 
 class PlaneGroup(MovingGroup):
-    class Task:
-        CAS = "CAS"
-        CAP = "CAP"
-
     def __init__(self, _id, name=None, start_time=0):
         super(PlaneGroup, self).__init__(_id, name, start_time)
         self.modulation = 0
@@ -123,10 +119,11 @@ class PlaneGroup(MovingGroup):
         self.uncontrolled = False
         self.task = "CAS"
 
-    def add_waypoint(self, x, y, altitude, speed=600) -> MovingPoint:
+    def add_waypoint(self, x, y, altitude, speed=600, name=String()) -> MovingPoint:
         mp = MovingPoint()
         mp.type = "Turning Point"
         mp.action = mp.type
+        mp.name = name
         mp.x = x
         mp.y = y
         mp.alt = altitude
@@ -207,6 +204,30 @@ class PlaneGroup(MovingGroup):
         d["modulation"] = self.modulation
         d["communication"] = self.communication
         d["uncontrolled"] = self.uncontrolled
+        return d
+
+
+class ShipGroup(MovingGroup):
+    def __init__(self, _id, name=None, start_time=0):
+        super(ShipGroup, self).__init__(_id, name, start_time)
+        self.task = None
+        self.frequency = None
+        self.spans = None
+
+    def add_waypoint(self, x, y, speed=20) -> MovingPoint:
+        mp = MovingPoint()
+        mp.type = "Turning Point"
+        mp.action = "Turning Point"
+        mp.x = x
+        mp.y = y
+        mp.speed = speed / 3.6
+        mp.ETA_locked = False
+
+        self.add_point(mp)
+        return mp
+
+    def dict(self):
+        d = super(ShipGroup, self).dict()
         return d
 
 
