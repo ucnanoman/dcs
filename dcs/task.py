@@ -143,6 +143,18 @@ class EngageTargetsInZone(Task):
         }
 
 
+class EngageGroup(Task):
+    def __init__(self, group_id):
+        super(EngageGroup, self).__init__("EngageGroup")
+        self.auto = False
+        self.params = {
+            "visible": False,
+            "groupId": group_id,
+            "priority": 1,
+            "weaponType": 1073741822
+        }
+
+
 class AWACSTaskAction(Task):
     def __init__(self):
         super(AWACSTaskAction, self).__init__("AWACS")
@@ -194,6 +206,10 @@ class CAS(MainTask):
     name = "CAS"
     sub_tasks = ["Orbit", "Follow", "AttackGroup", "AttackUnit", "Aerobatics", "Refueling"]
     perform_task = [CASTaskAction]
+
+    class EnrouteTasks:
+        EngageGroup = EngageGroup
+        EngageTargetsInZone = EngageTargetsInZone
 
 
 class CAP(MainTask):
