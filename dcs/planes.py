@@ -81,7 +81,7 @@ class Tornado_GR4(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
 
-    tasks = ["Pinpoint Strike", "Ground Attack", "SEAD", "AFAC", "Antiship Strike""Reconnaissance"]
+    tasks = ["Pinpoint Strike", "Ground Attack", "SEAD", "AFAC", "Antiship Strike", "Reconnaissance"]
     task_default = "Ground Attack"
 
 
@@ -144,7 +144,7 @@ class Tornado_IDS(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
 
-    tasks = ["Pinpoint Strike", "Ground Attack", "SEAD", "AFAC", "Antiship Strike""Reconnaissance"]
+    tasks = ["Pinpoint Strike", "Ground Attack", "SEAD", "AFAC", "Antiship Strike", "Reconnaissance"]
     task_default = "Ground Attack"
 
 
@@ -229,7 +229,7 @@ class F_A_18A(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Pinpoint Strike", "CAS", "Ground Attack", "Runway Attack", "SEAD", "AFAC", "Antiship Strike""Reconnaissance"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Pinpoint Strike", "CAS", "Ground Attack", "Runway Attack", "SEAD", "AFAC", "Antiship Strike", "Reconnaissance"]
     task_default = "CAP"
 
 
@@ -403,7 +403,7 @@ class F_A_18C(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Pinpoint Strike", "CAS", "Ground Attack", "Runway Attack", "SEAD", "AFAC", "Antiship Strike""Reconnaissance"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Pinpoint Strike", "CAS", "Ground Attack", "Runway Attack", "SEAD", "AFAC", "Antiship Strike", "Reconnaissance"]
     task_default = "CAP"
 
 
@@ -550,7 +550,7 @@ class MiG_29S(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "AFAC", "Ground Attack", "CAS", "Runway Attack""Antiship Strike"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "AFAC", "Ground Attack", "CAS", "Runway Attack", "Antiship Strike"]
     task_default = "CAP"
 
 
@@ -697,7 +697,7 @@ class MiG_29A(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "AFAC", "Ground Attack", "CAS", "Runway Attack""Antiship Strike"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "AFAC", "Ground Attack", "CAS", "Runway Attack", "Antiship Strike"]
     task_default = "CAP"
 
 
@@ -755,7 +755,7 @@ class F_14A(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept""Reconnaissance"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Reconnaissance"]
     task_default = "Intercept"
 
 
@@ -791,7 +791,7 @@ class Tu_22M3(PlaneType):
 
     pylons = {1, 2, 3, 4, 5}
 
-    tasks = ["Antiship Strike", "Ground Attack""Runway Attack"]
+    tasks = ["Antiship Strike", "Ground Attack", "Runway Attack"]
     task_default = "Antiship Strike"
 
 
@@ -878,7 +878,7 @@ class F_4E(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Ground Attack", "CAS", "Pinpoint Strike", "SEAD", "AFAC", "Reconnaissance""Antiship Strike"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Ground Attack", "CAS", "Pinpoint Strike", "SEAD", "AFAC", "Reconnaissance", "Antiship Strike"]
     task_default = "CAP"
 
 
@@ -909,11 +909,11 @@ class B_52H(PlaneType):
         HSAB_9_Mk_20_Rockeye = Weapons.HSAB_9_Mk_20_Rockeye
         HSAB_9_Mk_84 = Weapons.HSAB_9_Mk_84
         MER_6_AGM_86C = Weapons.MER_6_AGM_86C
-        HSAB_9GBU_31 = Weapons.HSAB_9GBU_31
+#ERRR {HSAB*9 GBU-31}
 
     pylons = {1, 2, 3}
 
-    tasks = ["Ground Attack", "Runway Attack", "Pinpoint Strike", "Antiship Strike""CAS"]
+    tasks = ["Ground Attack", "Runway Attack", "Pinpoint Strike", "Antiship Strike", "CAS"]
     task_default = "Ground Attack"
 
 
@@ -989,7 +989,7 @@ class MiG_27K(PlaneType):
 
     pylons = {2, 3, 4, 5, 6, 7, 8}
 
-    tasks = ["Pinpoint Strike", "CAS", "Ground Attack", "Runway Attack", "SEAD""Antiship Strike"]
+    tasks = ["Pinpoint Strike", "CAS", "Ground Attack", "Runway Attack", "SEAD", "Antiship Strike"]
     task_default = "Ground Attack"
 
 
@@ -1061,7 +1061,7 @@ class F_111F(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6}
 
-    tasks = ["Ground Attack", "Runway Attack", "Pinpoint Strike""AFAC"]
+    tasks = ["Ground Attack", "Runway Attack", "Pinpoint Strike", "AFAC"]
     task_default = "Ground Attack"
 
 
@@ -1337,7 +1337,7 @@ class A_10A(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
 
-    tasks = ["Ground Attack", "CAS", "AFAC", "Runway Attack""Antiship Strike"]
+    tasks = ["Ground Attack", "CAS", "AFAC", "Runway Attack", "Antiship Strike"]
     task_default = "CAS"
 
 
@@ -1525,7 +1525,7 @@ class Su_27(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
-    tasks = ["CAP", "Intercept", "Escort", "Fighter Sweep", "AFAC", "Ground Attack", "Runway Attack""Antiship Strike"]
+    tasks = ["CAP", "Intercept", "Escort", "Fighter Sweep", "AFAC", "Ground Attack", "Runway Attack", "Antiship Strike"]
     task_default = "CAP"
 
 
@@ -1592,7 +1592,7 @@ class MiG_29G(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept""AFAC"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "AFAC"]
     task_default = "CAP"
 
 
@@ -1669,7 +1669,7 @@ class MiG_23MLD(PlaneType):
 
     pylons = {2, 3, 4, 5, 6}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Ground Attack""CAS"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Ground Attack", "CAS"]
     task_default = "CAP"
 
 
@@ -1893,7 +1893,7 @@ class Su_25(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
-    tasks = ["Ground Attack", "Runway Attack", "Pinpoint Strike", "CAS", "AFAC""Antiship Strike"]
+    tasks = ["Ground Attack", "Runway Attack", "Pinpoint Strike", "CAS", "AFAC", "Antiship Strike"]
     task_default = "CAS"
 
 
@@ -2143,7 +2143,7 @@ class Su_25TM(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
 
-    tasks = ["Ground Attack", "Runway Attack", "Pinpoint Strike", "CAS", "SEAD", "AFAC""Antiship Strike"]
+    tasks = ["Ground Attack", "Runway Attack", "Pinpoint Strike", "CAS", "SEAD", "AFAC", "Antiship Strike"]
     task_default = "CAS"
 
 
@@ -2386,7 +2386,7 @@ class Su_25T(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
 
-    tasks = ["Ground Attack", "Runway Attack", "Pinpoint Strike", "CAS", "SEAD", "AFAC""Antiship Strike"]
+    tasks = ["Ground Attack", "Runway Attack", "Pinpoint Strike", "CAS", "SEAD", "AFAC", "Antiship Strike"]
     task_default = "CAS"
 
 
@@ -2604,7 +2604,7 @@ class Su_33(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "AFAC", "CAS", "Ground Attack", "Runway Attack""Antiship Strike"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "AFAC", "CAS", "Ground Attack", "Runway Attack", "Antiship Strike"]
     task_default = "CAP"
 
 
@@ -2638,7 +2638,7 @@ class MiG_25PD(PlaneType):
 
     pylons = {1, 2, 3, 4}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep""Intercept"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept"]
     task_default = "Intercept"
 
 
@@ -2698,7 +2698,7 @@ class MiG_25RBT(PlaneType):
 
     pylons = {1, 2, 3, 4}
 
-    tasks = ["Reconnaissance", "AFAC""Ground Attack"]
+    tasks = ["Reconnaissance", "AFAC", "Ground Attack"]
     task_default = "Reconnaissance"
 
 
@@ -2861,7 +2861,7 @@ class Su_30(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "AFAC", "SEAD", "Antiship Strike", "CAS", "Pinpoint Strike", "Ground Attack""Runway Attack"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "AFAC", "SEAD", "Antiship Strike", "CAS", "Pinpoint Strike", "Ground Attack", "Runway Attack"]
     task_default = "CAP"
 
 
@@ -3095,7 +3095,7 @@ class Su_34(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
 
-    tasks = ["AFAC", "SEAD", "Antiship Strike", "CAS", "Pinpoint Strike", "Ground Attack""Runway Attack"]
+    tasks = ["AFAC", "SEAD", "Antiship Strike", "CAS", "Pinpoint Strike", "Ground Attack", "Runway Attack"]
     task_default = "Ground Attack"
 
 
@@ -3270,7 +3270,7 @@ class Su_17M4(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8}
 
-    tasks = ["Ground Attack", "CAS", "Pinpoint Strike", "SEAD", "AFAC", "Runway Attack""Antiship Strike"]
+    tasks = ["Ground Attack", "CAS", "Pinpoint Strike", "SEAD", "AFAC", "Runway Attack", "Antiship Strike"]
     task_default = "Ground Attack"
 
 
@@ -3303,7 +3303,7 @@ class MiG_31(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep""Intercept"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept"]
     task_default = "Intercept"
 
 
@@ -3478,7 +3478,7 @@ class Su_24M(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8}
 
-    tasks = ["Ground Attack", "CAS", "Antiship Strike", "SEAD", "Pinpoint Strike", "AFAC""Runway Attack"]
+    tasks = ["Ground Attack", "CAS", "Antiship Strike", "SEAD", "Pinpoint Strike", "AFAC", "Runway Attack"]
     task_default = "Ground Attack"
 
 
@@ -3510,7 +3510,7 @@ class Su_24MR(PlaneType):
 
     pylons = {1, 2, 5, 7, 8}
 
-    tasks = ["AFAC""Reconnaissance"]
+    tasks = ["AFAC", "Reconnaissance"]
     task_default = "Reconnaissance"
 
 
@@ -3600,7 +3600,7 @@ class B_1B(PlaneType):
 
     pylons = {1, 2, 3}
 
-    tasks = ["Ground Attack", "Runway Attack", "Pinpoint Strike""CAS"]
+    tasks = ["Ground Attack", "Runway Attack", "Pinpoint Strike", "CAS"]
     task_default = "Ground Attack"
 
 
@@ -3665,7 +3665,7 @@ class S_3B(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6}
 
-    tasks = ["Ground Attack", "Antiship Strike""Pinpoint Strike"]
+    tasks = ["Ground Attack", "Antiship Strike", "Pinpoint Strike"]
     task_default = "Antiship Strike"
 
 
@@ -3735,7 +3735,7 @@ class Mirage_2000_5(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "AFAC""Reconnaissance"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "AFAC", "Reconnaissance"]
     task_default = "CAP"
 
 
@@ -3818,7 +3818,7 @@ class F_15C(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep""Intercept"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept"]
     task_default = "CAP"
 
 
@@ -4070,7 +4070,7 @@ class F_15E(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Pinpoint Strike", "CAS", "Ground Attack", "Runway Attack", "AFAC""Reconnaissance"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Pinpoint Strike", "CAS", "Ground Attack", "Runway Attack", "AFAC", "Reconnaissance"]
     task_default = "Ground Attack"
 
 
@@ -4089,7 +4089,7 @@ class MiG_29K(PlaneType):
 
     pylons = {3}
 
-    tasks = ["SEAD", "Antiship Strike", "CAS", "CAP", "Escort", "Fighter Sweep", "Ground Attack", "Intercept", "AFAC", "Pinpoint Strike""Runway Attack"]
+    tasks = ["SEAD", "Antiship Strike", "CAS", "CAP", "Escort", "Fighter Sweep", "Ground Attack", "Intercept", "AFAC", "Pinpoint Strike", "Runway Attack"]
     task_default = "CAP"
 
 
@@ -4109,7 +4109,7 @@ class Tu_142(PlaneType):
 
     pylons = {1}
 
-    tasks = ["Antiship Strike""Reconnaissance"]
+    tasks = ["Antiship Strike", "Reconnaissance"]
     task_default = "Antiship Strike"
 
 
@@ -4158,7 +4158,7 @@ class An_30M(PlaneType):
 
     pylons = {}
 
-    tasks = ["Transport""Reconnaissance"]
+    tasks = ["Transport", "Reconnaissance"]
     task_default = "Transport"
 
 
@@ -4426,7 +4426,7 @@ class F_16C_bl_50(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Pinpoint Strike", "CAS", "Ground Attack", "Runway Attack", "AFAC", "Reconnaissance""Antiship Strike"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Pinpoint Strike", "CAS", "Ground Attack", "Runway Attack", "AFAC", "Reconnaissance", "Antiship Strike"]
     task_default = "CAP"
 
 
@@ -4587,7 +4587,7 @@ class F_16C_bl_52d(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Pinpoint Strike", "CAS", "Ground Attack", "Runway Attack", "SEAD", "AFAC", "Reconnaissance""Antiship Strike"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Pinpoint Strike", "CAS", "Ground Attack", "Runway Attack", "SEAD", "AFAC", "Reconnaissance", "Antiship Strike"]
     task_default = "CAP"
 
 
@@ -4686,7 +4686,7 @@ class F_16A(PlaneType):
 
     pylons = {1, 2, 3, 4, 6, 7, 8, 9, 10}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Pinpoint Strike", "CAS", "Ground Attack", "Runway Attack", "SEAD", "AFAC", "Reconnaissance""Antiship Strike"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Pinpoint Strike", "CAS", "Ground Attack", "Runway Attack", "SEAD", "AFAC", "Reconnaissance", "Antiship Strike"]
     task_default = "CAP"
 
 
@@ -4816,7 +4816,7 @@ class F_16A_MLU(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Pinpoint Strike", "CAS", "Ground Attack", "Runway Attack", "AFAC", "Reconnaissance""Antiship Strike"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Intercept", "Pinpoint Strike", "CAS", "Ground Attack", "Runway Attack", "AFAC", "Reconnaissance", "Antiship Strike"]
     task_default = "CAP"
 
 
@@ -4833,7 +4833,7 @@ class RQ_1A_Predator(PlaneType):
 
     pylons = {1, 2}
 
-    tasks = ["Ground Attack", "AFAC""Reconnaissance"]
+    tasks = ["Ground Attack", "AFAC", "Reconnaissance"]
     task_default = "Reconnaissance"
 
 
@@ -5291,7 +5291,7 @@ class A_10C(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
 
-    tasks = ["Ground Attack", "CAS", "AFAC", "Runway Attack""Antiship Strike"]
+    tasks = ["Ground Attack", "CAS", "AFAC", "Runway Attack", "Antiship Strike"]
     task_default = "CAS"
 
 
@@ -5299,7 +5299,7 @@ class KC_135(PlaneType):
     id = "KC-135"
     group_size_max = 1
     large_parking_slot = True
-    fuel_max = 90700.0
+    fuel_max = 90700
     category = "Tanker"
 
     pylons = {}
@@ -5350,7 +5350,7 @@ class P_51D(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
-    tasks = ["CAP", "Escort", "Fighter Sweep", "Ground Attack", "CAS", "AFAC", "Runway Attack""Antiship Strike"]
+    tasks = ["CAP", "Escort", "Fighter Sweep", "Ground Attack", "CAS", "AFAC", "Runway Attack", "Antiship Strike"]
     task_default = "CAS"
 
 
