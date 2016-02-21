@@ -348,7 +348,7 @@ class Mission:
         col = Coalition(key, imp_col["bullseye"])
         for country_idx in imp_col["country"]:
             imp_country = imp_col["country"][country_idx]
-            _country = country.get_by_id(imp_country["id"])
+            _country = countries.get_by_id(imp_country["id"])
 
             if "vehicle" in imp_country:
                 for vgroup_idx in imp_country["vehicle"]["group"]:
