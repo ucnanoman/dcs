@@ -31,7 +31,9 @@ class Plane(Unit):
     def load_pylon(self, pylon, weapon):
         if pylon not in self.plane_type.pylons:
             raise RuntimeError("Plane {pn} has no pylon {p}.".format(pn=self.plane_type.id, p=pylon))
-        self.pylons[pylon] = weapon["clsid"]
+        if weapon is None:
+            return self.pylons.pop(pylon, None)
+        self.pylons[pylon] = {"CLSID": weapon["clsid"]}
         return True
 
     def store_loadout(self, filename):
