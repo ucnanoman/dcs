@@ -98,12 +98,14 @@ class FlyingUnit(Unit):
         parking_slot.unit_id = self.id
         self.parking = parking_slot.id
 
-    def load_pylon(self, pylon, weapon):
+    def load_pylon(self, weapon, pylon=None):
+        if pylon is None:
+            pylon = weapon[0]
         if pylon not in self.unit_type.pylons:
             raise RuntimeError("Plane {pn} has no pylon {p}.".format(pn=self.unit_type.id, p=pylon))
         if weapon is None:
             return self.pylons.pop(pylon, None)
-        self.pylons[pylon] = {"CLSID": weapon["clsid"]}
+        self.pylons[pylon] = {"CLSID": weapon[1]["clsid"]}
         return True
 
     def store_loadout(self, filename):

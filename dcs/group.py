@@ -183,9 +183,9 @@ class FlyingGroup(MovingGroup):
         self.add_point(mp)
         return mp
 
-    def load_pylon(self, pylon, weapon):
+    def load_pylon(self, weapon, pylon=None):
         for u in self.units:
-            u.load_pylon(pylon, weapon)
+            u.load_pylon(weapon, pylon)
 
         return True
 
