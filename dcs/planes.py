@@ -7,6 +7,7 @@ class PlaneType:
     id = ""
     group_size_max = 4
     large_parking_slot = False
+    helicopter = False
     fuel_max = 0
     ammo_type = None
     chaff = 0

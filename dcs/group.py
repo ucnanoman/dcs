@@ -111,9 +111,9 @@ class VehicleGroup(MovingGroup):
         return d
 
 
-class PlaneGroup(MovingGroup):
+class FlyingGroup(MovingGroup):
     def __init__(self, _id, name=None, start_time=0):
-        super(PlaneGroup, self).__init__(_id, name, start_time)
+        super(FlyingGroup, self).__init__(_id, name, start_time)
         self.modulation = 0
         self.communication = True
         self.uncontrolled = False
@@ -200,11 +200,21 @@ class PlaneGroup(MovingGroup):
         return True
 
     def dict(self):
-        d = super(PlaneGroup, self).dict()
+        d = super(FlyingGroup, self).dict()
         d["modulation"] = self.modulation
         d["communication"] = self.communication
         d["uncontrolled"] = self.uncontrolled
         return d
+
+
+class PlaneGroup(FlyingGroup):
+    def __init__(self, _id, name=None, start_time=0):
+        super(PlaneGroup, self).__init__(_id, name, start_time)
+
+
+class HelicopterGroup(FlyingGroup):
+    def __init__(self, _id, name=None, start_time=0):
+        super(HelicopterGroup, self).__init__(_id, name, start_time)
 
 
 class ShipGroup(MovingGroup):

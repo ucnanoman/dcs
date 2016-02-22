@@ -8,6 +8,7 @@ from .point import Point, MovingPoint
 from .vehicle import Vehicle
 from .ship import Ship
 from .plane import Plane, PlaneType
+from .helicopter import Helicopter, HelicopterType
 from .static import Static
 from .translation import Translation
 from .terrain import Terrain, Caucasus, Nevada, ParkingSlot
@@ -364,7 +365,7 @@ class Mission:
                         imp_unit = vgroup["units"][imp_unit_idx]
                         unit = Vehicle(id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]))
                         unit.set_position(MapPosition(imp_unit["x"], imp_unit["y"]))
-                        unit.heading = imp_unit["heading"]
+                        unit.heading = math.degrees(imp_unit["heading"])
                         unit.type = imp_unit["type"]
                         unit.skill = imp_unit["skill"]
                         unit.x = imp_unit["x"]
@@ -382,14 +383,14 @@ class Mission:
                     vg = ShipGroup(group["groupId"], self.translation.get_string(group["name"]), group["start_time"])
                     self.current_group_id = max(self.current_group_id, vg.id)
 
-                    self._import_moving_point(vg, vgroup)
+                    self._import_moving_point(vg, group)
 
                     # units
-                    for imp_unit_idx in vgroup["units"]:
-                        imp_unit = vgroup["units"][imp_unit_idx]
+                    for imp_unit_idx in group["units"]:
+                        imp_unit = group["units"][imp_unit_idx]
                         unit = Ship(id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]))
                         unit.set_position(MapPosition(imp_unit["x"], imp_unit["y"]))
-                        unit.heading = imp_unit["heading"]
+                        unit.heading = math.degrees(imp_unit["heading"])
                         unit.type = imp_unit["type"]
                         unit.skill = imp_unit["skill"]
                         unit.x = imp_unit["x"]
@@ -417,39 +418,40 @@ class Mission:
                     for imp_unit_idx in pgroup["units"]:
                         imp_unit = pgroup["units"][imp_unit_idx]
                         plane = Plane(_id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]))
-                        plane.set_position(MapPosition(imp_unit["x"], imp_unit["y"]))
-                        plane.heading = imp_unit["heading"]
-                        plane.type = imp_unit["type"]
-                        plane.skill = imp_unit["skill"]
-                        plane.livery_id = imp_unit.get("livery_id")
-                        plane.x = imp_unit["x"]
-                        plane.y = imp_unit["y"]
-                        plane.alt_type = imp_unit["alt_type"]
-                        plane.alt = imp_unit["alt"]
-                        plane.psi = imp_unit["psi"]
-                        plane.speed = imp_unit["speed"]
-                        plane.fuel = imp_unit["payload"]["fuel"]
-                        plane.gun = imp_unit["payload"]["gun"]
-                        plane.flare = imp_unit["payload"]["flare"]
-                        plane.chaff = imp_unit["payload"]["chaff"]
-                        plane.ammo_type = imp_unit["payload"].get("ammo_type")
-                        plane.pylons = imp_unit["payload"]["pylons"]
-                        if isinstance(imp_unit["callsign"], int):
-                            plane.callsign = imp_unit["callsign"]
-                        else:
-                            plane.callsign_dict = imp_unit["callsign"]
-                        plane.parking = imp_unit.get("parking", None)
-                        plane.speed = imp_unit["speed"]
+                        plane.load_from_dict(imp_unit)
 
                         self.current_unit_id = max(self.current_unit_id, plane.id)
                         plane_group.add_unit(plane)
                     _country.add_plane_group(plane_group)
 
+            if "helicopter" in imp_country:
+                for pgroup_idx in imp_country["helicopter"]["group"]:
+                    pgroup = imp_country["helicopter"]["group"][pgroup_idx]
+                    helicopter_group = HelicopterGroup(pgroup["groupId"], self.translation.get_string(pgroup["name"]), pgroup["start_time"])
+                    helicopter_group.task = pgroup["task"]
+                    helicopter_group.frequency = pgroup["frequency"]
+                    helicopter_group.modulation = pgroup["modulation"]
+                    helicopter_group.communication = pgroup["communication"]
+                    helicopter_group.uncontrolled = pgroup["uncontrolled"]
+                    self.current_group_id = max(self.current_group_id, helicopter_group.id)
+
+                    self._import_moving_point(helicopter_group, pgroup)
+
+                    # units
+                    for imp_unit_idx in pgroup["units"]:
+                        imp_unit = pgroup["units"][imp_unit_idx]
+                        heli = Helicopter(_id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]))
+                        heli.load_from_dict(imp_unit)
+
+                        self.current_unit_id = max(self.current_unit_id, heli.id)
+                        helicopter_group.add_unit(heli)
+                    _country.add_helicopter_group(helicopter_group)
+
             if "static" in imp_country:
                 for sgroup_idx in imp_country["static"]["group"]:
                     sgroup = imp_country["static"]["group"][sgroup_idx]
                     static_group = StaticGroup(sgroup["groupId"], self.translation.get_string(sgroup["name"]))
-                    static_group.heading = sgroup["heading"]
+                    static_group.heading = math.degrees(sgroup["heading"])
                     static_group.hidden = sgroup["hidden"]
                     static_group.dead = sgroup["dead"]
                     self.current_group_id = max(self.current_group_id, static_group.id)
@@ -461,7 +463,7 @@ class Mission:
                         imp_unit = sgroup["units"][imp_unit_idx]
                         static = Static(id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]), type=imp_unit["type"])
                         static.can_cargo = imp_unit["canCargo"]
-                        static.heading = imp_unit["heading"]
+                        static.heading = math.degrees(imp_unit["heading"])
                         static.x = imp_unit["x"]
                         static.y = imp_unit["y"]
                         static.category = imp_unit["category"]
@@ -712,24 +714,9 @@ class Mission:
             p.x = x
             p.y = y
             p.alt = altitude
-            callsign = _country.callsign.get(plane_type.role)[0]
-            if callsign:
-                p.callsign_dict["name"] = callsign
             pg.add_unit(p)
 
-        mp = MovingPoint()
-        mp.type = "Turning Point"
-        mp.action = mp.type
-        mp.x = pg.units[0].x
-        mp.y = pg.units[0].y
-        mp.alt = p.alt
-
-        for t in task.perform_task:
-            mp.tasks.append(t())
-
-        pg.add_point(mp)
-
-        _country.add_plane_group(pg)
+        _country.add_plane_group(self._flying_group_inflight(_country, pg, task, altitude))
         return pg
 
     def plane_group_from_runway(self, _country, name, task: dcs.task.MainTask, plane_type: PlaneType, airport: Airport, group_size=1):
@@ -737,36 +724,11 @@ class Mission:
         pg.task = task.name
         group_size = min(group_size, plane_type.group_size_max)
 
-        callsign_name = None
-        callsign = None
-        if plane_type.category in _country.callsign:
-            callsign_name = _country.callsign.get(plane_type.category)[0]
-        else:
-            callsign = self.next_callsign_id()
-
         for i in range(1, group_size + 1):
             p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type)
-            p.x = airport.x
-            p.y = airport.y
-            if callsign:
-                p.callsign = callsign
-            else:
-                p.callsign_dict["name"] = callsign_name
             pg.add_unit(p)
 
-        mp = MovingPoint()
-        mp.type = "TakeOff"
-        mp.action = "From Runway"
-        mp.x = pg.units[0].x
-        mp.y = pg.units[0].y
-        mp.airdrome_id = airport.id
-        mp.alt = p.alt
-        for t in task.perform_task:
-            mp.tasks.append(t())
-
-        pg.add_point(mp)
-
-        _country.add_plane_group(pg)
+        _country.add_plane_group(self._flying_group_runway(_country, pg, task, airport))
         return pg
 
     def plane_group_from_parking(self,
@@ -792,44 +754,169 @@ class Mission:
         """
         pg = self.plane_group(name)
         pg.task = task.name
-
-        callsign_name = None
-        callsign = None
-        if plane_type.category in _country.callsign:
-            callsign_name = _country.callsign.get(plane_type.category)[0]
-        else:
-            callsign = self.next_callsign_id()
         group_size = min(group_size, plane_type.group_size_max)
 
         for i in range(1, group_size + 1):
             p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type)
-            parking_slot = parking_slots.pop(i) if parking_slots else airport.free_parking_slot(plane_type.large_parking_slot)
-            p.x = parking_slot.x
-            p.y = parking_slot.y
-            p.set_parking(parking_slot)
-            if callsign:
-                p.callsign = callsign
-            else:
-                p.callsign_dict["name"] = callsign_name
             pg.add_unit(p)
 
-        mp = MovingPoint()
-        mp.type = "TakeOffParking" if coldstart else "TakeOffParkingHot"
-        mp.action = "From Parking Area" if coldstart else "From Parking Area Hot"
-        mp.x = pg.units[0].x
-        mp.y = pg.units[0].y
-        mp.airdrome_id = airport.id
-        mp.alt = p.alt
-        for t in task.perform_task:
-            mp.tasks.append(t())
-
-        pg.add_point(mp)
-
-        _country.add_plane_group(pg)
+        _country.add_plane_group(self._flying_group_ramp(_country, pg, task, airport, coldstart, parking_slots))
         return pg
 
     def plane(self, name, _type: PlaneType):
         return Plane(self.next_unit_id(), self.string(name), _type)
+
+    def helicopter(self, name, _type: HelicopterType):
+        return Helicopter(self.next_unit_id(), self.string(name), _type)
+
+    def helicopter_group(self, name):
+        return HelicopterGroup(self.next_group_id(), self.string(name))
+
+    def _assign_callsign(self, _country, group):
+        callsign_name = None
+        callsign = None
+        category = group.units[0].unit_type.category
+        if category in _country.callsign:
+            callsign_name = _country.callsign.get(category)[0]
+        else:
+            callsign = self.next_callsign_id()
+
+        for unit in group.units:
+            if callsign:
+                unit.callsign = callsign
+            else:
+                unit.callsign_dict["name"] = callsign_name
+
+    def _flying_group_ramp(self, _country, group: FlyingGroup, task: dcs.task.MainTask, airport: Airport,
+                           coldstart=True,
+                           parking_slots: ParkingSlot=None):
+
+        i = 0
+        for unit in group.units:
+            parking_slot = parking_slots.pop(i) if parking_slots else airport.free_parking_slot(unit.unit_type.large_parking_slot, unit.unit_type.helicopter)
+            unit.x = parking_slot.x
+            unit.y = parking_slot.y
+            unit.set_parking(parking_slot)
+            i += 1
+
+        self._assign_callsign(_country, group)
+
+        mp = MovingPoint()
+        mp.type = "TakeOffParking" if coldstart else "TakeOffParkingHot"
+        mp.action = "From Parking Area" if coldstart else "From Parking Area Hot"
+        mp.x = group.units[0].x
+        mp.y = group.units[0].y
+        mp.airdrome_id = airport.id
+        mp.alt = group.units[0].alt
+        for t in task.perform_task:
+            mp.tasks.append(t())
+
+        group.add_point(mp)
+
+        return group
+
+    def _flying_group_runway(self, _country, group: FlyingGroup, task: dcs.task.MainTask, airport: Airport):
+        for unit in group.units:
+            unit.x = airport.x
+            unit.y = airport.y
+
+        self._assign_callsign(_country, group)
+
+        mp = MovingPoint()
+        mp.type = "TakeOff"
+        mp.action = "From Runway"
+        mp.x = group.units[0].x
+        mp.y = group.units[0].y
+        mp.airdrome_id = airport.id
+        mp.alt = group.units[0].alt
+        for t in task.perform_task:
+            mp.tasks.append(t())
+
+        group.add_point(mp)
+
+        return group
+
+    def _flying_group_inflight(self, _country, group: FlyingGroup, task: dcs.task.MainTask, altitude):
+
+        i = 0
+        for unit in group.units:
+            unit.alt = altitude
+            unit.x += i * 10
+            i += 1
+
+        self._assign_callsign(_country, group)
+
+        mp = MovingPoint()
+        mp.type = "Turning Point"
+        mp.action = mp.type
+        mp.x = group.units[0].x
+        mp.y = group.units[0].y
+        mp.alt = altitude
+
+        for t in task.perform_task:
+            mp.tasks.append(t())
+
+        group.add_point(mp)
+
+        return group
+
+    def helicopter_group_inflight(self, _country, name, task: dcs.task.MainTask, x, y, altitude, helicopter_type, group_size=1):
+        hg = self.helicopter_group(name)
+        hg.task = task.name
+        group_size = min(group_size, helicopter_type.group_size_max)
+
+        for i in range(1, group_size + 1):
+            p = self.helicopter(name + " Pilot #{nr}".format(nr=i), helicopter_type)
+            p.x = x
+            p.y = y
+            hg.add_unit(p)
+
+        _country.add_helicopter_group(self._flying_group_inflight(_country, hg, task, altitude))
+        return hg
+
+    def helicopter_group_from_runway(self, _country, name, task: dcs.task.MainTask, heli_type: HelicopterType, airport: Airport, group_size=1):
+        hg = self.helicopter_group(name)
+        hg.task = task.name
+        group_size = min(group_size, heli_type.group_size_max)
+
+        for i in range(1, group_size + 1):
+            p = self.helicopter(name + " Pilot #{nr}".format(nr=i), heli_type)
+            hg.add_unit(p)
+
+        _country.add_helicopter_group(self._flying_group_runway(_country, hg, task, airport))
+        return hg
+
+    def helicopter_group_from_parking(self,
+                                      _country: Country,
+                                      name,
+                                      task: dcs.task.MainTask,
+                                      heli_type: HelicopterType,
+                                      airport: Airport,
+                                      coldstart=True,
+                                      parking_slots: ParkingSlot=None,
+                                      group_size=1) -> PlaneGroup:
+        """
+        Add a new PlaneGroup at parking position on the given airport.
+        :param _country: Country object the plane group belongs to
+        :param name: Name of the helicopter group
+        :param task: Task of the helicopter group
+        :param heli_type: HelicopterType object representing the helicopter
+        :param airport: Airport object on which to spawn the helicopter
+        :param coldstart: Coldstart yes or no
+        :param parking_slots: List of parking slots to use for helicopters
+        :param group_size: Group size 1-4
+        :return: the new PlaneGroup
+        """
+        hg = self.helicopter_group(name)
+        hg.task = task.name
+        group_size = min(group_size, heli_type.group_size_max)
+
+        for i in range(1, group_size + 1):
+            p = self.plane(name + " Pilot #{nr}".format(nr=i), heli_type)
+            hg.add_unit(p)
+
+        _country.add_helicopter_group(self._flying_group_ramp(_country, hg, task, airport, coldstart, parking_slots))
+        return hg
 
     def save(self, filename):
         with zipfile.ZipFile(filename, 'w', compression=zipfile.ZIP_DEFLATED) as zipf:

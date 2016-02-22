@@ -10,6 +10,7 @@ class Country:
         self.vehicle_group = []  # type: list[VehicleGroup]
         self.ship_group = []  # type: list[ShipGroup]
         self.plane_group = []  # type: list[PlaneGroup]
+        self.helicopter_group = []  # type: list[HelicopterGroup]
         self.static_group = []  # type: list[StaticGroup]
 
     def name(self):
@@ -23,6 +24,9 @@ class Country:
 
     def add_plane_group(self, pgroup):
         self.plane_group.append(pgroup)
+
+    def add_helicopter_group(self, hgroup):
+        self.helicopter_group.append(hgroup)
 
     def add_static_group(self, sgroup):
         self.static_group.append(sgroup)
@@ -39,6 +43,11 @@ class Country:
 
     def find_plane_group(self, name: str):
         for group in self.plane_group:
+            if name in group.name.str():
+                return group
+
+    def find_helicopter_group(self, name: str):
+        for group in self.helicopter_group:
             if name in group.name.str():
                 return group
 
@@ -71,6 +80,13 @@ class Country:
             i = 1
             for plane_group in self.plane_group:
                 d["plane"]["group"][i] = plane_group.dict()
+                i += 1
+
+        if self.helicopter_group:
+            d["helicopter"] = {"group": {}}
+            i = 1
+            for group in self.helicopter_group:
+                d["helicopter"]["group"][i] = group.dict()
                 i += 1
 
         if self.static_group:
