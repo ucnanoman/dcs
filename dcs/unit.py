@@ -2,6 +2,7 @@ from .terrain import ParkingSlot
 from .translation import String
 import json
 import copy
+import math
 
 
 class Skill:
@@ -38,7 +39,7 @@ class Unit:
             "type": self.type,
             "x": self.x,
             "y": self.y,
-            "heading": self.heading,
+            "heading": math.radians(self.heading),
             "skill": self.skill,
             "unitId": self.id,
             "name": self.name.id
@@ -69,7 +70,7 @@ class FlyingUnit(Unit):
     def load_from_dict(self, dict):
         self.x = dict["x"]
         self.y = dict["y"]
-        self.heading = dict["heading"]
+        self.heading = math.degrees(dict["heading"])
         self.type = dict["type"]
         self.skill = dict["skill"]
         self.livery_id = dict.get("livery_id")
