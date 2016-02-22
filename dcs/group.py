@@ -87,6 +87,9 @@ class MovingGroup(Group):
 
 
 class VehicleGroup(MovingGroup):
+    class Formation:
+        Line = 1
+
     def __init__(self, _id, name=None, start_time=0):
         super(VehicleGroup, self).__init__(_id, name, start_time)
         self.modulation = 0
@@ -103,6 +106,17 @@ class VehicleGroup(MovingGroup):
 
         self.add_point(mp)
         return mp
+
+    def formation(self, _type=Formation.Line, heading=0):
+        x = self.units[0].x
+        y = self.units[0].y
+        for i in range(0, len(self.units)):
+            unit = self.units[i]
+            unit.x = x
+            unit.y = y + i * 20
+            unit.heading = heading
+
+        return True
 
     def dict(self):
         d = super(VehicleGroup, self).dict()
