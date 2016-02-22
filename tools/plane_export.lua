@@ -41,6 +41,7 @@ class PlaneType:
     id = ""
     group_size_max = 4
     large_parking_slot = False
+    helicopter = False
     fuel_max = 0
     ammo_type = None
     chaff = 0
@@ -103,7 +104,7 @@ for i in pairs(db.Units.Planes.Plane) do
 			for k in pairs(plane.Pylons[j].Launchers) do
 				if weapons_map[plane.Pylons[j].Launchers[k].CLSID] then
 					local name = weapons_map[plane.Pylons[j].Launchers[k].CLSID]
-					print('        '..name..' = Weapons.'..name)
+					print('        '..name..' = ('..j..', Weapons.'..name..')')
 				else
 					print('#ERRR '..plane.Pylons[j].Launchers[k].CLSID)
 				end
