@@ -36,7 +36,7 @@ class Airport:
         self.frequency = frequency
         self.x = x
         self.y = y
-        self.runways = []
+        self.runways = []  # type: list[Runway]
         self.parking_slots = {}  # type: dict[str:ParkingSlot]
 
         # warehouse values
