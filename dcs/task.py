@@ -154,6 +154,26 @@ class EngageGroup(Task):
             "weaponType": 1073741822
         }
 
+# weapontype 14 => guided bombs
+
+
+class EngageUnit(Task):
+    def __init__(self, unit_id):
+        super(EngageUnit, self).__init__("EngageUnit")
+        self.auto = False
+        self.params = {
+            "visible": False,
+            "groupAttack": False,
+            "unitId": unit_id,
+            "priority": 1,
+            "weaponType": 1073741822,
+            "directionEnabled": False,
+            "direction": 0,
+            "altitudeEnabled": False,
+            "attackQtyLimit": False,
+            "attackQty": 0
+        }
+
 
 class AWACSTaskAction(Task):
     def __init__(self):
@@ -210,6 +230,7 @@ class CAS(MainTask):
     class EnrouteTasks:
         EngageGroup = EngageGroup
         EngageTargetsInZone = EngageTargetsInZone
+        EngageUnit = EngageUnit
 
 
 class CAP(MainTask):
