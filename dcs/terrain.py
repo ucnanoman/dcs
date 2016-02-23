@@ -341,7 +341,24 @@ class Caucasus(Terrain):
         mineralnye = Airport(26, "Mineralnye", 135.0, 0, 0, None)
         self.airports[mineralnye.name] = mineralnye
 
-        nalchik = Airport(27, "Nalchik", 136.0, 0, 0, None)
+        nalchik = Airport(27, "Nalchik", 136.0, -124921.90954665, 760428.0733062, None)
+        nalchik.runways.append(Runway(60))
+        nalchik.runways.append(Runway(240))
+        nalchik.parking_slots[18] = ParkingSlot(18, -125277.8359375, 760545.625, large=False, slot_name="02", heli=True)
+        nalchik.parking_slots[21] = ParkingSlot(21, -125119.265625, 760800.75, large=True, slot_name="01", heli=False)
+        nalchik.parking_slots[23] = ParkingSlot(23, -125153.2734375, 760751.3125, large=True, slot_name="03", heli=False)
+        nalchik.parking_slots[24] = ParkingSlot(24, -125187.2265625, 760701.875, large=True, slot_name="04", heli=False)
+        nalchik.parking_slots[25] = ParkingSlot(25, -125221.234375, 760652.375, large=True, slot_name="05", heli=False)
+        nalchik.parking_slots[27] = ParkingSlot(27, -125294.8359375, 760520.875, large=False, slot_name="06", heli=True)
+        nalchik.parking_slots[29] = ParkingSlot(29, -125311.7890625, 760496.1875, large=False, slot_name="07", heli=True)
+        nalchik.parking_slots[31] = ParkingSlot(31, -125328.7890625, 760471.4375, large=False, slot_name="08", heli=True)
+        nalchik.parking_slots[33] = ParkingSlot(33, -125345.796875, 760446.75, large=False, slot_name="09", heli=True)
+        nalchik.parking_slots[34] = ParkingSlot(34, -125362.796875, 760422, large=False, slot_name="10", heli=True)
+        nalchik.parking_slots[35] = ParkingSlot(35, -125379.75, 760397.3125, large=False, slot_name="11", heli=True)
+        nalchik.parking_slots[37] = ParkingSlot(37, -125396.75, 760372.5625, large=False, slot_name="12", heli=True)
+        nalchik.parking_slots[38] = ParkingSlot(38, -125413.7578125, 760347.8125, large=False, slot_name="13", heli=True)
+        nalchik.parking_slots[39] = ParkingSlot(39, -125430.7578125, 760323.125, large=False, slot_name="14", heli=True)
+        nalchik.parking_slots[41] = ParkingSlot(41, -125255.1875, 760602.9375, large=True, slot_name="15", heli=False)
         self.airports[nalchik.name] = nalchik
 
         mozdok = Airport(28, "Mozdok", 137.0, -83454.571428571, 834453.14285714, None)
