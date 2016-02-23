@@ -74,7 +74,7 @@ class Coalition:
         return self.countries.pop(name)
 
     def country(self, country_name: str):
-        return self.countries[country_name]
+        return self.countries.get(country_name, None)
 
     def dict(self):
         d = {}
@@ -706,7 +706,10 @@ class Mission:
     def plane_group(self, name):
         return PlaneGroup(self.next_group_id(), self.string(name))
 
-    def plane_group_inflight(self, _country, name, task: dcs.task.MainTask, x, y, altitude, plane_type, speed=600, group_size=1):
+    def plane_group_inflight(self, _country, name, plane_type, x, y, altitude, speed=600, task: dcs.task.MainTask=None, group_size=1):
+        if task is None:
+            task = plane_type.task_default
+
         pg = self.plane_group(name)
         pg.task = task.name
         group_size = min(group_size, plane_type.group_size_max)
@@ -721,7 +724,10 @@ class Mission:
         _country.add_plane_group(self._flying_group_inflight(_country, pg, task, altitude, speed))
         return pg
 
-    def plane_group_from_runway(self, _country, name, task: dcs.task.MainTask, plane_type: PlaneType, airport: Airport, group_size=1):
+    def plane_group_from_runway(self, _country, name, plane_type: PlaneType, airport: Airport, task: dcs.task.MainTask=None, group_size=1):
+        if task is None:
+            task = plane_type.task_default
+
         pg = self.plane_group(name)
         pg.task = task.name
         group_size = min(group_size, plane_type.group_size_max)
@@ -736,9 +742,9 @@ class Mission:
     def plane_group_from_parking(self,
                                  _country: Country,
                                  name,
-                                 task: dcs.task.MainTask,
                                  plane_type: PlaneType,
                                  airport: Airport,
+                                 task: dcs.task.MainTask=None,
                                  coldstart=True,
                                  parking_slots: ParkingSlot=None,
                                  group_size=1) -> PlaneGroup:
@@ -754,6 +760,9 @@ class Mission:
         :param group_size: Group size 1-4
         :return: the new PlaneGroup
         """
+        if task is None:
+            task = plane_type.task_default
+
         pg = self.plane_group(name)
         pg.task = task.name
         group_size = min(group_size, plane_type.group_size_max)
@@ -865,7 +874,10 @@ class Mission:
 
         return group
 
-    def helicopter_group_inflight(self, _country, name, task: dcs.task.MainTask, x, y, altitude, helicopter_type, group_size=1):
+    def helicopter_group_inflight(self, _country, name, helicopter_type, x, y, altitude, speed=400, task: dcs.task.MainTask=None, group_size=1):
+        if task is None:
+            task = helicopter_type.task_default
+
         hg = self.helicopter_group(name)
         hg.task = task.name
         group_size = min(group_size, helicopter_type.group_size_max)
@@ -876,10 +888,13 @@ class Mission:
             p.y = y
             hg.add_unit(p)
 
-        _country.add_helicopter_group(self._flying_group_inflight(_country, hg, task, altitude))
+        _country.add_helicopter_group(self._flying_group_inflight(_country, hg, task, altitude, speed))
         return hg
 
-    def helicopter_group_from_runway(self, _country, name, task: dcs.task.MainTask, heli_type: HelicopterType, airport: Airport, group_size=1):
+    def helicopter_group_from_runway(self, _country, name, heli_type: HelicopterType, airport: Airport, task: dcs.task.MainTask=None, group_size=1):
+        if task is None:
+            task = heli_type.task_default
+
         hg = self.helicopter_group(name)
         hg.task = task.name
         group_size = min(group_size, heli_type.group_size_max)
@@ -894,9 +909,9 @@ class Mission:
     def helicopter_group_from_parking(self,
                                       _country: Country,
                                       name,
-                                      task: dcs.task.MainTask,
                                       heli_type: HelicopterType,
                                       airport: Airport,
+                                      task: dcs.task.MainTask=None,
                                       coldstart=True,
                                       parking_slots: ParkingSlot=None,
                                       group_size=1) -> PlaneGroup:
@@ -912,6 +927,9 @@ class Mission:
         :param group_size: Group size 1-4
         :return: the new PlaneGroup
         """
+        if task is None:
+            task = heli_type.task_default
+
         hg = self.helicopter_group(name)
         hg.task = task.name
         group_size = min(group_size, heli_type.group_size_max)
@@ -922,6 +940,13 @@ class Mission:
 
         _country.add_helicopter_group(self._flying_group_ramp(_country, hg, task, airport, coldstart, parking_slots))
         return hg
+
+    def country(self, name):
+        for k in self.coalition:
+            c = self.coalition[k].country(name)
+            if c:
+                return c
+        return None
 
     def save(self, filename):
         with zipfile.ZipFile(filename, 'w', compression=zipfile.ZIP_DEFLATED) as zipf:
