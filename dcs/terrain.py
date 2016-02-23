@@ -112,7 +112,8 @@ class Airport:
             "jet_fuel": {"InitFuel": self.jet_init},
             "methanol_mixture": {"InitFuel": self.methanol_mixture_init},
             "aircrafts": self.aircrafts,
-            "weapons": self.weapons
+            "weapons": self.weapons,
+            "suppliers": self.suppliers
         }
         return d
 
