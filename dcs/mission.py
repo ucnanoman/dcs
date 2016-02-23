@@ -706,7 +706,7 @@ class Mission:
     def plane_group(self, name):
         return PlaneGroup(self.next_group_id(), self.string(name))
 
-    def plane_group_inflight(self, _country, name, task: dcs.task.MainTask, x, y, altitude, plane_type, group_size=1):
+    def plane_group_inflight(self, _country, name, task: dcs.task.MainTask, x, y, altitude, plane_type, speed=600, group_size=1):
         pg = self.plane_group(name)
         pg.task = task.name
         group_size = min(group_size, plane_type.group_size_max)
@@ -718,7 +718,7 @@ class Mission:
             p.alt = altitude
             pg.add_unit(p)
 
-        _country.add_plane_group(self._flying_group_inflight(_country, pg, task, altitude))
+        _country.add_plane_group(self._flying_group_inflight(_country, pg, task, altitude, speed))
         return pg
 
     def plane_group_from_runway(self, _country, name, task: dcs.task.MainTask, plane_type: PlaneType, airport: Airport, group_size=1):
@@ -838,7 +838,7 @@ class Mission:
 
         return group
 
-    def _flying_group_inflight(self, _country, group: FlyingGroup, task: dcs.task.MainTask, altitude):
+    def _flying_group_inflight(self, _country, group: FlyingGroup, task: dcs.task.MainTask, altitude, speed):
 
         i = 0
         for unit in group.units:
@@ -854,6 +854,7 @@ class Mission:
         mp.x = group.units[0].x
         mp.y = group.units[0].y
         mp.alt = altitude
+        mp.speed = speed / 3.6
 
         for t in task.perform_task:
             mp.tasks.append(t())
