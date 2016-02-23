@@ -319,7 +319,7 @@ class Mission:
             point.ETA = imp_point["ETA"]
             point.formation_template = imp_point["formation_template"]
             point.speed_locked = imp_point["speed_locked"]
-            point.speed = imp_point["speed"]
+            point.speed = imp_point["speed"] * 3.6
             point.name = self.translation.get_string(imp_point["name"])
             point.task = imp_point["task"]
             point.airdrome_id = imp_point.get("airdromeId", None)
@@ -337,7 +337,7 @@ class Mission:
             point.y = imp_point["y"]
             point.action = imp_point["action"]
             point.formation_template = imp_point["formation_template"]
-            point.speed = imp_point["speed"]
+            point.speed = imp_point["speed"] * 3.6
             point.name = self.translation.get_string(imp_point["name"])
             group.add_point(point)
         return group
@@ -696,7 +696,7 @@ class Mission:
         mp.action = mp.type
         mp.x = sg.units[0].x
         mp.y = sg.units[0].y
-        mp.speed = 20 / 3.6
+        mp.speed = 20
 
         sg.add_point(mp)
 
@@ -783,11 +783,13 @@ class Mission:
         else:
             callsign = self.next_callsign_id()
 
+        i = 1
         for unit in group.units:
             if callsign:
                 unit.callsign = callsign
             else:
-                unit.callsign_dict["name"] = callsign_name
+                unit.callsign_dict["name"] = callsign_name + str(1) + str(i)
+            i += 1
 
     def _flying_group_ramp(self, _country, group: FlyingGroup, task: dcs.task.MainTask, airport: Airport,
                            coldstart=True,
@@ -854,7 +856,7 @@ class Mission:
         mp.x = group.units[0].x
         mp.y = group.units[0].y
         mp.alt = altitude
-        mp.speed = speed / 3.6
+        mp.speed = speed
 
         for t in task.perform_task:
             mp.tasks.append(t())

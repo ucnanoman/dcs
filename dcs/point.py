@@ -20,7 +20,7 @@ class Point:
             "name": self.name.id,
             "x": self.x,
             "y": self.y,
-            "speed": self.speed,
+            "speed": self.speed / 3.6,
             "formation_template": self.formation_template,
             "action": self.action
         }
