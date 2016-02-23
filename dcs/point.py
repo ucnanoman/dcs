@@ -33,7 +33,7 @@ class MovingPoint(Point):
         self.ETA = 0
         self.ETA_locked = True
         self.speed_locked = True
-        self.tasks = []  # type: Task
+        self.tasks = []  # type: list[Task]
         self.properties = None
         self.airdrome_id = None
         self.action = "Off Road"
