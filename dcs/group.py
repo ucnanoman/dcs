@@ -110,10 +110,9 @@ class VehicleGroup(MovingGroup):
         self.add_point(mp)
         return mp
 
-    def _line(self, heading):
+    def formation_line(self, heading, distance=20):
         x = self.units[0].x
         y = self.units[0].y
-        distance = 15
         for i in range(0, len(self.units)):
             unit = self.units[i]
             unit.x = x
@@ -124,10 +123,9 @@ class VehicleGroup(MovingGroup):
 
             unit.heading = heading
 
-    def _star(self, heading):
+    def formation_star(self, heading, distance=20):
         x = self.units[0].x
         y = self.units[0].y
-        distance = 15
         units_count = len(self.units)
         iterations = math.ceil(units_count / 8)
         u_idx = 1
@@ -148,10 +146,9 @@ class VehicleGroup(MovingGroup):
                     if not (j == 1 and k == 1):
                         u_idx += 1
 
-    def _rectangle(self, heading):
+    def formation_rectangle(self, heading, distance=20):
         units_count = len(self.units)
         size = math.ceil(math.sqrt(units_count))
-        distance = 15
         sx = self.units[0].x
         sy = self.units[0].y
         u_idx = 0
@@ -167,11 +164,11 @@ class VehicleGroup(MovingGroup):
                 u.heading = heading
                 u_idx += 1
 
-    def formation(self, _type=Formation.Line, heading=0, options=None):
+    def formation(self, _type=Formation.Line, heading=0):
         form_map = {
-            VehicleGroup.Formation.Line: self._line,
-            VehicleGroup.Formation.Star: self._star,
-            VehicleGroup.Formation.Rectangle: self._rectangle
+            VehicleGroup.Formation.Line: self.formation_line,
+            VehicleGroup.Formation.Star: self.formation_star,
+            VehicleGroup.Formation.Rectangle: self.formation_rectangle
         }
 
         form_map[_type](heading)
