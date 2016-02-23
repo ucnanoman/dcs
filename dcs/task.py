@@ -294,3 +294,15 @@ class Transport(MainTask):
     name = "Transport"
     sub_tasks = ["Orbit", "Follow", "Aerobatics"]
     perform_task = []
+
+
+# options
+
+class OptDisparseUnderFire(Task):
+    def __init__(self, value=None):
+        super(OptDisparseUnderFire, self).__init__("WrappedAction")
+        self.params = {
+            "action": {"id": "Option", "params": {"name": 8}}
+        }
+        if value:
+            self.params["action"]["params"]["value"] = value
