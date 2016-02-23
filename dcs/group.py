@@ -90,6 +90,8 @@ class MovingGroup(Group):
 class VehicleGroup(MovingGroup):
     class Formation:
         Line = 1
+        Star = 2
+        Rectangle = 3
 
     def __init__(self, _id, name=None, start_time=0):
         super(VehicleGroup, self).__init__(_id, name, start_time)
@@ -108,14 +110,71 @@ class VehicleGroup(MovingGroup):
         self.add_point(mp)
         return mp
 
-    def formation(self, _type=Formation.Line, heading=0):
+    def _line(self, heading):
         x = self.units[0].x
         y = self.units[0].y
+        distance = 15
         for i in range(0, len(self.units)):
             unit = self.units[i]
             unit.x = x
-            unit.y = y + i * 20
+            unit.y = y + i * distance
+
+            #unit.x = x + i * distance
+            #unit.y = y
+
             unit.heading = heading
+
+    def _star(self, heading):
+        x = self.units[0].x
+        y = self.units[0].y
+        distance = 15
+        units_count = len(self.units)
+        iterations = math.ceil(units_count / 8)
+        u_idx = 1
+        for i in range(0, iterations):
+            sx = x - (i+1) * distance
+            sy = y - (i+1) * distance
+            for j in range(0, 3):
+                dx = distance * (i + 1) * j
+                for k in range(0, 3):
+                    dy = distance * (i + 1) * k
+                    if u_idx >= units_count:
+                        break
+                    u = self.units[u_idx]
+                    u.x = sx + dx
+                    u.y = sy + dy
+                    u.heading = heading
+
+                    if not (j == 1 and k == 1):
+                        u_idx += 1
+
+    def _rectangle(self, heading):
+        units_count = len(self.units)
+        size = math.ceil(math.sqrt(units_count))
+        distance = 15
+        sx = self.units[0].x
+        sy = self.units[0].y
+        u_idx = 0
+        for i in range(0, size):
+            dx = distance * i
+            for j in range(0, size):
+                dy = distance * j
+                if u_idx >= units_count:
+                    break
+                u = self.units[u_idx]
+                u.x = sx - dx
+                u.y = sy + dy
+                u.heading = heading
+                u_idx += 1
+
+    def formation(self, _type=Formation.Line, heading=0, options=None):
+        form_map = {
+            VehicleGroup.Formation.Line: self._line,
+            VehicleGroup.Formation.Star: self._star,
+            VehicleGroup.Formation.Rectangle: self._rectangle
+        }
+
+        form_map[_type](heading)
 
         return True
 
