@@ -35,6 +35,7 @@ print([[
 # This file is generated from plane_export.lua
 
 from .weapons_data import Weapons
+from . import task
 
 
 class PlaneType:
@@ -127,14 +128,26 @@ for i in pairs(db.Units.Planes.Plane) do
 	s = ''
 	j = 1
 	while j <= #plane.Tasks do
-		s = s..'"'..plane.Tasks[j].Name..'"'
+		local objname = string.gsub(plane.Tasks[j].Name, "[-()/., *']", "")
+		s = s..'task.'..objname..''
 		j = j + 1
 		if j <= #plane.Tasks then
 			s = s..', '
 		end
 	end
 	print('    tasks = ['..s..']')
-	print('    task_default = "'..plane.DefaultTask.Name..'"')
+	local objname = string.gsub(plane.DefaultTask.Name, "[-()/., *']", "")
+	print('    task_default = task.'..objname..'')
 	print("")
 	print("")
 end
+
+print("plane_map = {")
+for i in pairs(db.Units.Planes.Plane) do
+	local plane = db.Units.Planes.Plane[i];
+	local safename = plane.Name
+	safename = string.gsub(safename, "[-()/., *']", "_")
+	safename = string.gsub(safename,"^([0-9])", "_%1")
+	print('    "'..plane.Name..'": '..safename..',')
+end
+print("}")

@@ -1,6 +1,7 @@
 # This file is generated from plane_export.lua
 
 from .weapons_data import Weapons
+from . import task
 
 
 class HelicopterType:
@@ -89,8 +90,8 @@ class Ka_50(HelicopterType):
 
     pylons = {1, 2, 3, 4}
 
-    tasks = ["CAS", "Ground Attack", "Escort", "AFAC", "Antiship Strike"]
-    task_default = "CAS"
+    tasks = [task.CAS, task.GroundAttack, task.Escort, task.AFAC, task.AntishipStrike]
+    task_default = task.CAS
 
 
 class Ka_52(HelicopterType):
@@ -150,8 +151,8 @@ class Ka_52(HelicopterType):
 
     pylons = {1, 2, 3, 4}
 
-    tasks = ["CAS", "Ground Attack", "Pinpoint Strike", "Escort", "AFAC", "Antiship Strike"]
-    task_default = "CAS"
+    tasks = [task.CAS, task.GroundAttack, task.PinpointStrike, task.Escort, task.AFAC, task.AntishipStrike]
+    task_default = task.CAS
 
 
 class Mi_24V(HelicopterType):
@@ -229,8 +230,8 @@ class Mi_24V(HelicopterType):
 
     pylons = {1, 2, 3, 4, 5, 6}
 
-    tasks = ["CAS", "Ground Attack", "Escort", "Transport", "AFAC", "Antiship Strike"]
-    task_default = "CAS"
+    tasks = [task.CAS, task.GroundAttack, task.Escort, task.Transport, task.AFAC, task.AntishipStrike]
+    task_default = task.CAS
 
 
 class Mi_8MT(HelicopterType):
@@ -308,8 +309,8 @@ class Mi_8MT(HelicopterType):
 
     pylons = {1, 2, 3, 4, 5, 6}
 
-    tasks = ["CAS", "Ground Attack", "Transport", "AFAC", "Antiship Strike"]
-    task_default = "Transport"
+    tasks = [task.CAS, task.GroundAttack, task.Transport, task.AFAC, task.AntishipStrike]
+    task_default = task.Transport
 
 
 class Mi_26(HelicopterType):
@@ -324,8 +325,8 @@ class Mi_26(HelicopterType):
 
     pylons = {}
 
-    tasks = ["Transport"]
-    task_default = "Transport"
+    tasks = [task.Transport]
+    task_default = task.Transport
 
 
 class Ka_27(HelicopterType):
@@ -334,8 +335,8 @@ class Ka_27(HelicopterType):
 
     pylons = {}
 
-    tasks = ["Transport"]
-    task_default = "Transport"
+    tasks = [task.Transport]
+    task_default = task.Transport
 
 
 class UH_60A(HelicopterType):
@@ -349,8 +350,8 @@ class UH_60A(HelicopterType):
 
     pylons = {}
 
-    tasks = ["Transport"]
-    task_default = "Transport"
+    tasks = [task.Transport]
+    task_default = task.Transport
 
 
 class CH_53E(HelicopterType):
@@ -364,8 +365,8 @@ class CH_53E(HelicopterType):
 
     pylons = {}
 
-    tasks = ["Transport"]
-    task_default = "Transport"
+    tasks = [task.Transport]
+    task_default = task.Transport
 
 
 class CH_47D(HelicopterType):
@@ -379,8 +380,8 @@ class CH_47D(HelicopterType):
 
     pylons = {}
 
-    tasks = ["Transport"]
-    task_default = "Transport"
+    tasks = [task.Transport]
+    task_default = task.Transport
 
 
 class SH_3W(HelicopterType):
@@ -394,8 +395,8 @@ class SH_3W(HelicopterType):
 
     pylons = {}
 
-    tasks = ["Transport"]
-    task_default = "Transport"
+    tasks = [task.Transport]
+    task_default = task.Transport
 
 
 class AH_64A(HelicopterType):
@@ -431,8 +432,8 @@ class AH_64A(HelicopterType):
 
     pylons = {1, 2, 3, 4}
 
-    tasks = ["CAS", "Ground Attack", "Escort", "AFAC", "Antiship Strike"]
-    task_default = "CAS"
+    tasks = [task.CAS, task.GroundAttack, task.Escort, task.AFAC, task.AntishipStrike]
+    task_default = task.CAS
 
 
 class AH_64D(HelicopterType):
@@ -468,8 +469,8 @@ class AH_64D(HelicopterType):
 
     pylons = {1, 2, 3, 4}
 
-    tasks = ["CAS", "Ground Attack", "Escort", "AFAC", "Antiship Strike"]
-    task_default = "CAS"
+    tasks = [task.CAS, task.GroundAttack, task.Escort, task.AFAC, task.AntishipStrike]
+    task_default = task.CAS
 
 
 class AH_1W(HelicopterType):
@@ -507,8 +508,8 @@ class AH_1W(HelicopterType):
 
     pylons = {1, 2, 3, 4}
 
-    tasks = ["CAS", "Ground Attack", "Escort", "AFAC", "Antiship Strike"]
-    task_default = "CAS"
+    tasks = [task.CAS, task.GroundAttack, task.Escort, task.AFAC, task.AntishipStrike]
+    task_default = task.CAS
 
 
 class SH_60B(HelicopterType):
@@ -525,8 +526,8 @@ class SH_60B(HelicopterType):
 
     pylons = {1}
 
-    tasks = ["Antiship Strike", "Transport"]
-    task_default = "Transport"
+    tasks = [task.AntishipStrike, task.Transport]
+    task_default = task.Transport
 
 
 class UH_1H(HelicopterType):
@@ -574,8 +575,8 @@ class UH_1H(HelicopterType):
 
     pylons = {1, 2, 3, 4, 5, 6}
 
-    tasks = ["CAS", "Ground Attack", "Transport"]
-    task_default = "Transport"
+    tasks = [task.CAS, task.GroundAttack, task.Transport]
+    task_default = task.Transport
 
 
 class Mi_28N(HelicopterType):
@@ -647,8 +648,8 @@ class Mi_28N(HelicopterType):
 
     pylons = {1, 2, 3, 4}
 
-    tasks = ["CAS", "Ground Attack", "Escort", "AFAC", "Antiship Strike"]
-    task_default = "CAS"
+    tasks = [task.CAS, task.GroundAttack, task.Escort, task.AFAC, task.AntishipStrike]
+    task_default = task.CAS
 
 
 class OH_58D(HelicopterType):
@@ -673,7 +674,26 @@ class OH_58D(HelicopterType):
 
     pylons = {1, 2}
 
-    tasks = ["AFAC", "Transport", "Ground Attack", "Escort", "Antiship Strike"]
-    task_default = "AFAC"
+    tasks = [task.AFAC, task.Transport, task.GroundAttack, task.Escort, task.AntishipStrike]
+    task_default = task.AFAC
 
 
+helicopter_map = {
+    "Ka-50": Ka_50,
+    "Ka-52": Ka_52,
+    "Mi-24V": Mi_24V,
+    "Mi-8MT": Mi_8MT,
+    "Mi-26": Mi_26,
+    "Ka-27": Ka_27,
+    "UH-60A": UH_60A,
+    "CH-53E": CH_53E,
+    "CH-47D": CH_47D,
+    "SH-3W": SH_3W,
+    "AH-64A": AH_64A,
+    "AH-64D": AH_64D,
+    "AH-1W": AH_1W,
+    "SH-60B": SH_60B,
+    "UH-1H": UH_1H,
+    "Mi-28N": Mi_28N,
+    "OH-58D": OH_58D,
+}
