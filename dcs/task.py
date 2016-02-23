@@ -20,13 +20,13 @@ class Task:
 
 
 # TODO check
-class AntiShipStrikeTaskAction(Task):
+class AntishipStrikeTaskAction(Task):
     def __init__(self):
-        super(AntiShipStrikeTaskAction, self).__init__("EngageTargets")
+        super(AntishipStrikeTaskAction, self).__init__("EngageTargets")
         self.key = "AntishipStrike"
 
     def dict(self):
-        d = super(CASTaskAction, self).dict()
+        d = super(AntishipStrikeTaskAction, self).dict()
         d["key"] = self.key
         return d
 
@@ -108,7 +108,7 @@ class AttackGroup(Task):
     def __init__(self, group_id):
         super(AttackGroup, self).__init__("AttackGroup")
         self.params = {
-            "groupId": 7,
+            "groupId": group_id,
             "weaponType": 1069547520
         }
 
@@ -216,10 +216,10 @@ class AWACS(MainTask):
     perform_task = [AWACSTaskAction]
 
 
-class AntiShipStrike(MainTask):
+class AntishipStrike(MainTask):
     name = "AntishipStrike"
     sub_tasks = ["Orbit", "Follow", "AttackGroup", "AttackUnit"]
-    perform_task = [AntiShipStrikeTaskAction]
+    perform_task = [AntishipStrikeTaskAction]
 
 
 class CAS(MainTask):
