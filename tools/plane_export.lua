@@ -36,6 +36,8 @@ print([[
 
 from .weapons_data import Weapons
 from . import task
+import lua
+import os
 
 
 class PlaneType:
@@ -53,8 +55,17 @@ class PlaneType:
     category = "Air"
 
     pylons = {}
+    payloads = {}
 
     tasks = ['Nothing']
+
+    @classmethod
+    def load_payloads(cls):
+        payload_filename = "payloads/" + cls.id + ".lua"
+        payload_filename = os.path.join(os.path.dirname(os.path.realpath(__file__)), payload_filename)
+        if os.path.exists(payload_filename):
+            with open(payload_filename, 'r') as payload:
+                cls.payloads = lua.loads(payload.read())
 
 ]])
 for i in pairs(db.Units.Planes.Plane) do
@@ -138,6 +149,7 @@ for i in pairs(db.Units.Planes.Plane) do
 	print('    tasks = ['..s..']')
 	local objname = string.gsub(plane.DefaultTask.Name, "[-()/., *']", "")
 	print('    task_default = task.'..objname..'')
+	print(safename..'.load_payloads()')
 	print("")
 	print("")
 end
