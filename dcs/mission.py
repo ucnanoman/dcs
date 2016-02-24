@@ -771,6 +771,11 @@ class Mission:
             p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type)
             pg.add_unit(p)
 
+        task_payload = plane_type.loadout(task)
+        if task_payload:
+            for x in task_payload:
+                p.load_pylon(x)
+
         _country.add_plane_group(self._flying_group_ramp(_country, pg, task, airport, coldstart, parking_slots))
         return pg
 

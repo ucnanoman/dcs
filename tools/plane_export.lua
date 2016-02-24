@@ -55,7 +55,7 @@ class PlaneType:
     category = "Air"
 
     pylons = {}
-    payloads = {}
+    payloads = None
 
     tasks = ['Nothing']
 
@@ -65,7 +65,19 @@ class PlaneType:
         payload_filename = os.path.join(os.path.dirname(os.path.realpath(__file__)), payload_filename)
         if os.path.exists(payload_filename):
             with open(payload_filename, 'r') as payload:
-                cls.payloads = lua.loads(payload.read())
+                cls.payloads = lua.loads(payload.read())["payloads"]
+
+    @classmethod
+    def loadout(cls, _task):
+        if cls.payloads:
+            for p in cls.payloads["payloads"]:
+                payload = cls.payloads["payloads"][p]
+                tasks = [payload["tasks"][x] for x in payload["tasks"] ]
+                if _task.id in tasks:
+                    pylons = payload["pylons"]
+                    r = [(pylons[x]["num"], {"clsid": pylons[x]["CLSID"]}) for x in pylons]
+                    return r
+        return None
 
 ]])
 for i in pairs(db.Units.Planes.Plane) do
