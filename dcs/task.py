@@ -201,28 +201,33 @@ class MainTask:
 
 
 class Nothing(MainTask):
+    id = 15
     name = "Nothing"
     sub_tasks = ["Orbit", "Follow", "Aerobatics"]
 
 
 class AFAC(MainTask):
+    id = 16
     name = "AFAC"
     sub_tasks = ["Orbit", "Follow", "AttackGroup", "AttackUnit", "Bombing", "AttackMapObject"]
 
 
 class AWACS(MainTask):
+    id = 14
     name = "AWACS"
     sub_tasks = ["Orbit", "Follow", "Refueling"]
     perform_task = [AWACSTaskAction]
 
 
 class AntishipStrike(MainTask):
+    id = 30
     name = "AntishipStrike"
     sub_tasks = ["Orbit", "Follow", "AttackGroup", "AttackUnit"]
     perform_task = [AntishipStrikeTaskAction]
 
 
 class CAS(MainTask):
+    id = 31
     name = "CAS"
     sub_tasks = ["Orbit", "Follow", "AttackGroup", "AttackUnit", "Aerobatics", "Refueling"]
     perform_task = [CASTaskAction]
@@ -234,63 +239,74 @@ class CAS(MainTask):
 
 
 class CAP(MainTask):
+    id = 11
     name = "CAP"
     sub_tasks = ["Orbit", "Follow", "Aerobatics"]
     perform_task = [CAPTaskAction]
 
 
 class Escort(MainTask):
+    id = 18
     name = "Escort"
     sub_tasks = ["Orbit", "Follow", "Escort"]
     perform_task = [EscortTaskAction]
 
 
 class FighterSweep(MainTask):
+    id = 19
     name = "Fighter Sweep"
     sub_tasks = ["Orbit", "Follow", "Aerobatics"]
     perform_task = [FighterSweepTaskAction]
 
 
 class GroundAttack(MainTask):
+    id = 32
     name = "Ground Attack"
     sub_tasks = ["Orbit", "Follow", "Bombing", "AttackMapObject", "Aerobatics"]
 
 
 class Intercept(MainTask):
+    id = 10
     name = "Intercept"
     sub_tasks = ["Orbit", "Follow", "AttackGroup", "AttackUnit", "Aerobatics"]
 
 
 class PinpointStrike(MainTask):
+    id = 33
     name = "Pinpoint Strike"
     sub_tasks = ["Orbit", "Follow", "Bombing", "AttackMapObject"]
 
 
 class Reconnaissance(MainTask):
+    id = 17
     name = "Reconnaissance"
     sub_tasks = ["Orbit", "Follow", "Aerobatics"]
     perform_task = []
 
 
 class Refueling(MainTask):
+    id = 13
     name = "Refueling"
     sub_tasks = ["Orbit", "Follow"]
     perform_task = [RefuelingTaskAction]
 
 
 class RunwayAttack(MainTask):
+    id = 34
     name = "Ground Attack"
     sub_tasks = ["Orbit", "Follow", "Bombing", "BombingRunway", "AttackMapObject"]
     perform_task = []
 
 
 class SEAD(MainTask):
+    id = 29
     name = "SEAD"
     sub_tasks = ["Orbit", "Follow", "AttackGroup", "AttackUnit", "Escort"]
     perform_task = [SEADTaskAction]
 
 
 class Transport(MainTask):
+    id = 35
     name = "Transport"
     sub_tasks = ["Orbit", "Follow", "Aerobatics"]
     perform_task = []
