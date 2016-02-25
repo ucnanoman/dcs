@@ -21,6 +21,10 @@ def loads(tablestr):
                 varname = self.eatvarname()
                 if varname == 'false' or varname == 'true':
                     return varname == 'true'
+                if varname == 'local':
+                    # ignore local keyword
+                    self.eat_ws()
+                    varname = self.eatvarname()
                 self.eat_ws()
                 if not self.eob() and self.buffer[self.pos] == '=':
                     self.pos += 1
