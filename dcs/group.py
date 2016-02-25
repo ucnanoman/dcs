@@ -239,6 +239,13 @@ class FlyingGroup(MovingGroup):
         self.add_point(mp)
         return mp
 
+    def load_task_default_loadout(self, task):
+        task_payload = self.units[0].unit_type.loadout(task)
+        if task_payload:
+            for p in self.units:
+                for x in task_payload:
+                    p.load_pylon(x)
+
     def load_pylon(self, weapon, pylon=None):
         for u in self.units:
             u.load_pylon(weapon, pylon)

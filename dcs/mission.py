@@ -773,8 +773,9 @@ class Mission:
 
         task_payload = plane_type.loadout(task)
         if task_payload:
-            for x in task_payload:
-                p.load_pylon(x)
+            for p in pg.units:
+                for x in task_payload:
+                    p.load_pylon(x)
 
         _country.add_plane_group(self._flying_group_ramp(_country, pg, task, airport, coldstart, parking_slots))
         return pg
@@ -817,6 +818,8 @@ class Mission:
             unit.set_parking(parking_slot)
             i += 1
 
+        group.load_task_default_loadout(task)
+
         self._assign_callsign(_country, group)
 
         mp = MovingPoint()
@@ -839,6 +842,8 @@ class Mission:
             unit.y = airport.y
 
         self._assign_callsign(_country, group)
+
+        group.load_task_default_loadout(task)
 
         mp = MovingPoint()
         mp.type = "TakeOff"
@@ -863,6 +868,8 @@ class Mission:
             i += 1
 
         self._assign_callsign(_country, group)
+
+        group.load_task_default_loadout(task)
 
         mp = MovingPoint()
         mp.type = "Turning Point"
