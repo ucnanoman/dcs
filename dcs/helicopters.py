@@ -2,48 +2,11 @@
 
 from .weapons_data import Weapons
 from . import task
-import lua
-import os
+from .flyingtype import FlyingType
 
 
-class HelicopterType:
-    id = ""
-    group_size_max = 4
-    large_parking_slot = False
+class HelicopterType(FlyingType):
     helicopter = True
-    fuel_max = 0
-    ammo_type = None
-    chaff = 0
-    flare = 0
-    charge_total = 0
-    chaff_charge_size = 1
-    flare_charge_size = 2
-    category = "Air"
-
-    pylons = {}
-    payloads = None
-
-    tasks = ['Nothing']
-
-    @classmethod
-    def load_payloads(cls):
-        payload_filename = "payloads/" + cls.id + ".lua"
-        payload_filename = os.path.join(os.path.dirname(os.path.realpath(__file__)), payload_filename)
-        if os.path.exists(payload_filename):
-            with open(payload_filename, 'r') as payload:
-                cls.payloads = lua.loads(payload.read())["payloads"]
-
-    @classmethod
-    def loadout(cls, _task):
-        if cls.payloads:
-            for p in cls.payloads["payloads"]:
-                payload = cls.payloads["payloads"][p]
-                tasks = [payload["tasks"][x] for x in payload["tasks"] ]
-                if _task.id in tasks:
-                    pylons = payload["pylons"]
-                    r = [(pylons[x]["num"], {"clsid": pylons[x]["CLSID"]}) for x in pylons]
-                    return r
-        return None
 
 
 class Ka_50(HelicopterType):
