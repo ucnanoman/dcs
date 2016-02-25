@@ -120,6 +120,9 @@ class FlyingUnit(Unit):
 
         return True
 
+    def reset_loadout(self):
+        self.pylons = {}
+
     def dict(self):
         d = super(FlyingUnit, self).dict()
         d["alt"] = self.alt

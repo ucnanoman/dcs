@@ -258,6 +258,10 @@ class FlyingGroup(MovingGroup):
 
         return True
 
+    def reset_loadout(self):
+        for u in self.units:
+            u.reset_loadout()
+
     def dict(self):
         d = super(FlyingGroup, self).dict()
         d["modulation"] = self.modulation
