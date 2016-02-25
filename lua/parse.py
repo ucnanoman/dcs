@@ -9,7 +9,7 @@ def loads(tablestr):
             self.lineno = 1
 
         def value(self):
-            self.eatWS()
+            self.eat_ws()
 
             if self.buffer[self.pos] == '{':
                 return self.object()
@@ -21,7 +21,7 @@ def loads(tablestr):
                 varname = self.eatvarname()
                 if varname == 'false' or varname == 'true':
                     return varname == 'true'
-                self.eatWS()
+                self.eat_ws()
                 if not self.eob() and self.buffer[self.pos] == '=':
                     self.pos += 1
                     return {varname: self.value()}
@@ -46,7 +46,7 @@ def loads(tablestr):
             s = ''
             while state != 1:
                 if self.advance():
-                    raise self.eobException()
+                    raise self.eob_exception()
 
                 c = self.char()
                 if state == 0:
@@ -68,7 +68,7 @@ def loads(tablestr):
             if self.char() == '-':
                 sign = -1
                 if self.advance():
-                    raise self.eobException()
+                    raise self.eob_exception()
 
             while (not self.eob() and
                     (self.char().isnumeric() or self.char() == '.' or
@@ -91,12 +91,12 @@ def loads(tablestr):
                 raise se
 
             if self.advance():
-                raise self.eobException()
+                raise self.eob_exception()
 
-            self.eatWS()
+            self.eat_ws()
 
             while self.char() != '}':
-                self.eatWS()
+                self.eat_ws()
 
                 if self.char() != '[':
                     se = SyntaxError()
@@ -106,18 +106,18 @@ def loads(tablestr):
                     raise se
 
                 if self.advance():
-                    raise self.eobException()
+                    raise self.eob_exception()
 
-                self.eatWS()
+                self.eat_ws()
                 if self.char() == '"':
                     key = self.string()
                 else:
                     key = self.number()
 
                 if self.eob():
-                    raise self.eobException()
+                    raise self.eob_exception()
 
-                self.eatWS()
+                self.eat_ws()
 
                 if self.char() != ']':
                     se = SyntaxError()
@@ -127,9 +127,9 @@ def loads(tablestr):
                     raise se
 
                 if self.advance():
-                    raise self.eobException()
+                    raise self.eob_exception()
 
-                self.eatWS()
+                self.eat_ws()
 
                 if self.char() != '=':
                     se = SyntaxError()
@@ -139,11 +139,11 @@ def loads(tablestr):
                     raise se
 
                 if self.advance():
-                    raise self.eobException()
+                    raise self.eob_exception()
 
                 val = self.value()
 
-                self.eatWS()
+                self.eat_ws()
 
                 d[key] = val
                 # print(key, ':', val)
@@ -152,8 +152,8 @@ def loads(tablestr):
                     break
                 elif self.char() == ',':
                     if self.advance():
-                        raise self.eobException()
-                    self.eatWS()
+                        raise self.eob_exception()
+                    self.eat_ws()
                 else:
                     se = SyntaxError()
                     se.lineno = self.lineno
@@ -173,25 +173,25 @@ def loads(tablestr):
 
             return varname
 
-        def eatComment(self):
+        def eat_comment(self):
             if (self.char() == '-' and
                 self.pos + 1 < self.buflen and
                 self.buffer[self.pos + 1] == '-'):
                 while not self.eob() and self.char() != '\n':
                     self.advance()
 
-        def eatWS(self):
-            self.eatComment()
+        def eat_ws(self):
+            self.eat_comment()
             while not self.eob() and self.char().isspace():
                 if self.char() == '\n':
                     self.lineno += 1
                 self.pos += 1
-                self.eatComment()
+                self.eat_comment()
 
         def eob(self):
             return self.pos >= self.buflen
 
-        def eobException(self):
+        def eob_exception(self):
             se = SyntaxError()
             se.lineno = self.lineno
             se.offset = self.pos
