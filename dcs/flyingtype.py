@@ -23,6 +23,9 @@ class FlyingType:
 
     @classmethod
     def load_payloads(cls):
+        if cls.payloads:
+            return cls.payloads
+
         payload_filename = "payloads/" + cls.id + ".lua"
         payload_filename = os.path.join(os.path.dirname(os.path.realpath(__file__)), payload_filename)
         if os.path.exists(payload_filename):
@@ -37,6 +40,17 @@ class FlyingType:
                 payload = cls.payloads["payloads"][p]
                 tasks = [payload["tasks"][x] for x in payload["tasks"]]
                 if _task.id in tasks:
+                    pylons = payload["pylons"]
+                    r = [(pylons[x]["num"], {"clsid": pylons[x]["CLSID"]}) for x in pylons]
+                    return r
+        return None
+
+    @classmethod
+    def loadout_by_name(cls, loadout_name):
+        if cls.payloads:
+            for p in cls.payloads["payloads"]:
+                payload = cls.payloads["payloads"][p]
+                if payload["name"] == loadout_name:
                     pylons = payload["pylons"]
                     r = [(pylons[x]["num"], {"clsid": pylons[x]["CLSID"]}) for x in pylons]
                     return r

@@ -249,13 +249,20 @@ class FlyingGroup(MovingGroup):
                 for x in task_payload:
                     p.load_pylon(x)
 
+    def load_loadout(self, name):
+        payload = self.units[0].unit_type.loadout_by_name(name)
+        if payload:
+            for p in self.units:
+                for x in payload:
+                    p.load_pylon(x)
+
     def load_pylon(self, weapon, pylon=None):
         for u in self.units:
             u.load_pylon(weapon, pylon)
 
         return True
 
-    def load_loadout(self, filename):
+    def load_loadout_from_file(self, filename):
         for u in self.units:
             u.load_loadout(filename)
 

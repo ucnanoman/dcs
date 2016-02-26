@@ -51,6 +51,7 @@ class FlyingUnit(Unit):
     def __init__(self, _id=None, name=None, _type=None):
         super(FlyingUnit, self).__init__(_id, name, _type.id)
         self.unit_type = _type  # for loadout validation
+        self.unit_type.load_payloads()
         self.livery_id = None
         self.parking = None
         self.psi = ""
