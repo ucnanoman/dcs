@@ -45,6 +45,8 @@ class UnitAltitudeLower(GoalRule):
         self.unit = unitid
         self.zone = zoneid
 
+# TODO add all goal types
+
 
 class Goal:
     def __init__(self, comment="", side="OFFLINE", score=100):

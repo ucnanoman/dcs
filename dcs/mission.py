@@ -144,6 +144,7 @@ class Triggers:
 
 
 class Result:
+    # TODO add interface to add results
     def __init__(self):
         self.results = {
             "offline": {
