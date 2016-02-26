@@ -2,7 +2,7 @@ import math
 from .unit import Unit
 from .point import Point, MovingPoint
 from .translation import String
-from .terrain import Airport
+from .terrain import Airport, Runway
 from . import mapping
 
 
@@ -204,20 +204,23 @@ class FlyingGroup(MovingGroup):
         self.add_point(mp)
         return mp
 
-    def add_runway_waypoint(self, airport: Airport, runway_heading: float, distance=6000) -> MovingPoint:
+    def add_runway_waypoint(self, airport: Airport, runway: Runway=None, distance=6000) -> MovingPoint:
         """
         Adds a waypoint parallel to the given runway heading, for start or approach.
         :param airport: start airport object
-        :param runway_heading: degress of the runway
+        :param runway: runway for heading direction
+                        if None first(default) airport runway will be used.
         :param distance: distance of the waypoint from the airport
         :return:
         """
+
+        runway = runway if runway else airport.runways[0]
 
         mp = MovingPoint()
         mp.type = "Turning Point"
         mp.action = mp.type
         mp.alt_type = "RADIO"
-        mp.x, mp.y = mapping.point_from_heading(airport.x, airport.y, runway_heading, distance)
+        mp.x, mp.y = mapping.point_from_heading(airport.x, airport.y, runway.heading, distance)
         mp.alt = 300
         mp.speed = 200 / 3.6
         mp.ETA_locked = False
