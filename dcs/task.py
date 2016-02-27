@@ -193,6 +193,33 @@ class EPLRS(Task):
         }
 
 
+class SetFrequencyCommand(Task):
+    Modulation_AM = 0
+    Modulation_FM = 1
+
+    def __init__(self, frequency, modulation=Modulation_AM):
+        super(SetFrequencyCommand, self).__init__("WrappedAction")
+        self.params = {
+            "action": {"id": "SetFrequency", "params": {"modulation": modulation, "frequency": frequency * 1000000}}
+        }
+
+
+class OrbitAction(Task):
+    supported_pattern = ["Race-Track", "Circle"]
+
+    def __init__(self, altitude, speed, pattern="Race-Track"):
+        super(OrbitAction, self).__init__("Orbit")
+        if pattern not in OrbitAction.supported_pattern:
+            raise RuntimeError("Orbit patter '{pattern}' unknown. Use one of {patterns}.".format(
+                pattern=pattern, patterns=','.join(OrbitAction.supported_pattern)))
+        self.params = {
+            "altitude": altitude,
+            "pattern": pattern,
+            "speed": speed / 3.6,
+            "speedEdited": True
+        }
+
+
 class MainTask:
     name = None
     sub_tasks = []
