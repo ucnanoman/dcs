@@ -878,7 +878,7 @@ class Mission:
         mp.x = group.units[0].x
         mp.y = group.units[0].y
         mp.alt = altitude
-        mp.speed = speed
+        mp.speed = speed / 3.6
 
         for t in task.perform_task:
             mp.tasks.append(t())
