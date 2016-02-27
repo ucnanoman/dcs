@@ -410,7 +410,14 @@ class Caucasus(Terrain):
         lochini.runways.append(Runway(300, 108.90, 1))
         self.airports[lochini.name] = lochini
 
-        soganlug = Airport(30, "Soganlug", 139.0, 0, 0, None)
+        soganlug = Airport(30, "Soganlug", 139.0, -317838.57142857, 895424.57142858, None)
+        soganlug.runways.append(Runway(130))
+        soganlug.runways.append(Runway(310))
+        soganlug.parking_slots[2] = ParkingSlot(2, -317118.53125, 894178.25, large=True, slot_name="05", heli=False)
+        soganlug.parking_slots[8] = ParkingSlot(8, -317991.84375, 895367.25, large=True, slot_name="04", heli=False)
+        soganlug.parking_slots[10] = ParkingSlot(10, -318016.28125, 895389.9375, large=False, slot_name="03", heli=True)
+        soganlug.parking_slots[12] = ParkingSlot(12, -318051.78125, 895428.6875, large=True, slot_name="02", heli=False)
+        soganlug.parking_slots[14] = ParkingSlot(14, -318528.5625, 895798.75, large=False, slot_name="01", heli=True)
         self.airports[soganlug.name] = soganlug
 
         vaziani = Airport(31, "Vaziani", 140.0, 0, 0, None)
@@ -437,6 +444,9 @@ class Caucasus(Terrain):
         beslan.parking_slots[62] = ParkingSlot(62, -148858.421875, 843824.125, False, "08")
         beslan.parking_slots[63] = ParkingSlot(63, -148856.03125, 843784.9375, True, "07")
         self.airports[beslan.name] = beslan
+
+    def airport_soganlug(self):
+        return self.airports["Soganlug"]
 
 
 class Nevada(Terrain):
