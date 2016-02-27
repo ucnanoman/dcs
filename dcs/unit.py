@@ -140,9 +140,10 @@ class FlyingUnit(Unit):
             "chaff": self.chaff,
             "fuel": self.fuel,
             "gun": self.gun,
-            "ammo_type": self.ammo_type,
             "pylons": self.pylons
         }
+        if self.ammo_type:
+            d["payload"]["ammo_type"] = self.ammo_type
         if self.callsign:
             d["callsign"] = self.callsign
         else:
