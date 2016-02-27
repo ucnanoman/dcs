@@ -18,6 +18,10 @@ class FlyingType:
 
     pylons = {}
     payloads = None
+    payload_dirs = [
+        os.path.join(os.path.dirname(os.path.realpath(__file__)), "payloads"),
+        "C:\\Program Files\\Eagle Dynamics\\DCS World\\MissionEditor\\data\\scripts\\UnitPayloads"
+    ]
 
     tasks = ['Nothing']
 
@@ -26,12 +30,13 @@ class FlyingType:
         if cls.payloads:
             return cls.payloads
 
-        payload_filename = "payloads/" + cls.id + ".lua"
-        payload_filename = os.path.join(os.path.dirname(os.path.realpath(__file__)), payload_filename)
-        if os.path.exists(payload_filename):
-            with open(payload_filename, 'r') as payload:
-                pays = lua.loads(payload.read())
-                cls.payloads = pays[list(pays.keys())[0]]
+        for payload_dir in FlyingType.payload_dirs:
+            payload_filename = os.path.join(payload_dir, cls.id + ".lua")
+            if os.path.exists(payload_filename):
+                with open(payload_filename, 'r') as payload:
+                    pays = lua.loads(payload.read())
+                    cls.payloads = pays[list(pays.keys())[0]]
+                    return cls.payloads
 
     @classmethod
     def loadout(cls, _task):
