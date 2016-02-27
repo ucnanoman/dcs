@@ -954,6 +954,32 @@ class Mission:
         _country.add_helicopter_group(self._flying_group_ramp(_country, hg, task, airport, coldstart, parking_slots))
         return hg
 
+    def refuel_flight(self,
+                      _country,
+                      name: str,
+                      plane_type: PlaneType,
+                      airport: Airport,
+                      x,
+                      y,
+                      race_distance=30*1000,
+                      heading=90,
+                      altitude=4500,
+                      speed=407,
+                      coldstart=True,
+                      frequency=140):
+        tanker = self.plane_group_from_parking(_country, name, plane_type, airport, coldstart=coldstart)
+
+        wp = tanker.add_runway_waypoint(airport)
+        wp.tasks.append(dcs.task.SetFrequencyCommand(frequency))
+
+        wp = tanker.add_waypoint(x, y, altitude, speed)
+        wp.tasks.append(dcs.task.OrbitAction(altitude, speed, "Race-Track"))
+
+        x2, y2 = mapping.point_from_heading(x, y, heading, race_distance)
+        tanker.add_waypoint(x2, y2, altitude, speed)
+
+        return tanker
+
     def country(self, name):
         for k in self.coalition:
             c = self.coalition[k].country(name)
