@@ -71,7 +71,6 @@ class Tornado_GR4(PlaneType):
 
     tasks = [task.PinpointStrike, task.GroundAttack, task.SEAD, task.AFAC, task.AntishipStrike, task.Reconnaissance]
     task_default = task.GroundAttack
-Tornado_GR4.load_payloads()
 
 
 class Tornado_IDS(PlaneType):
@@ -135,7 +134,6 @@ class Tornado_IDS(PlaneType):
 
     tasks = [task.PinpointStrike, task.GroundAttack, task.SEAD, task.AFAC, task.AntishipStrike, task.Reconnaissance]
     task_default = task.GroundAttack
-Tornado_IDS.load_payloads()
 
 
 class F_A_18A(PlaneType):
@@ -221,7 +219,6 @@ class F_A_18A(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.PinpointStrike, task.CAS, task.GroundAttack, task.RunwayAttack, task.SEAD, task.AFAC, task.AntishipStrike, task.Reconnaissance]
     task_default = task.CAP
-F_A_18A.load_payloads()
 
 
 class F_A_18C(PlaneType):
@@ -396,7 +393,6 @@ class F_A_18C(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.PinpointStrike, task.CAS, task.GroundAttack, task.RunwayAttack, task.SEAD, task.AFAC, task.AntishipStrike, task.Reconnaissance]
     task_default = task.CAP
-F_A_18C.load_payloads()
 
 
 class MiG_29S(PlaneType):
@@ -544,7 +540,6 @@ class MiG_29S(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.AFAC, task.GroundAttack, task.CAS, task.RunwayAttack, task.AntishipStrike]
     task_default = task.CAP
-MiG_29S.load_payloads()
 
 
 class MiG_29A(PlaneType):
@@ -692,7 +687,6 @@ class MiG_29A(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.AFAC, task.GroundAttack, task.CAS, task.RunwayAttack, task.AntishipStrike]
     task_default = task.CAP
-MiG_29A.load_payloads()
 
 
 class F_14A(PlaneType):
@@ -751,7 +745,6 @@ class F_14A(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.Reconnaissance]
     task_default = task.Intercept
-F_14A.load_payloads()
 
 
 class Tu_22M3(PlaneType):
@@ -788,7 +781,6 @@ class Tu_22M3(PlaneType):
 
     tasks = [task.AntishipStrike, task.GroundAttack, task.RunwayAttack]
     task_default = task.AntishipStrike
-Tu_22M3.load_payloads()
 
 
 class F_4E(PlaneType):
@@ -876,7 +868,6 @@ class F_4E(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.GroundAttack, task.CAS, task.PinpointStrike, task.SEAD, task.AFAC, task.Reconnaissance, task.AntishipStrike]
     task_default = task.CAP
-F_4E.load_payloads()
 
 
 class B_52H(PlaneType):
@@ -912,7 +903,6 @@ class B_52H(PlaneType):
 
     tasks = [task.GroundAttack, task.RunwayAttack, task.PinpointStrike, task.AntishipStrike, task.CAS]
     task_default = task.GroundAttack
-B_52H.load_payloads()
 
 
 class MiG_27K(PlaneType):
@@ -989,7 +979,6 @@ class MiG_27K(PlaneType):
 
     tasks = [task.PinpointStrike, task.CAS, task.GroundAttack, task.RunwayAttack, task.SEAD, task.AntishipStrike]
     task_default = task.GroundAttack
-MiG_27K.load_payloads()
 
 
 class F_111F(PlaneType):
@@ -1062,7 +1051,6 @@ class F_111F(PlaneType):
 
     tasks = [task.GroundAttack, task.RunwayAttack, task.PinpointStrike, task.AFAC]
     task_default = task.GroundAttack
-F_111F.load_payloads()
 
 
 class A_10A(PlaneType):
@@ -1339,7 +1327,6 @@ class A_10A(PlaneType):
 
     tasks = [task.GroundAttack, task.CAS, task.AFAC, task.RunwayAttack, task.AntishipStrike]
     task_default = task.CAS
-A_10A.load_payloads()
 
 
 class Su_27(PlaneType):
@@ -1528,7 +1515,6 @@ class Su_27(PlaneType):
 
     tasks = [task.CAP, task.Intercept, task.Escort, task.FighterSweep, task.AFAC, task.GroundAttack, task.RunwayAttack, task.AntishipStrike]
     task_default = task.CAP
-Su_27.load_payloads()
 
 
 class MiG_29G(PlaneType):
@@ -1596,7 +1582,6 @@ class MiG_29G(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.AFAC]
     task_default = task.CAP
-MiG_29G.load_payloads()
 
 
 class MiG_23MLD(PlaneType):
@@ -1674,7 +1659,6 @@ class MiG_23MLD(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.GroundAttack, task.CAS]
     task_default = task.CAP
-MiG_23MLD.load_payloads()
 
 
 class Su_25(PlaneType):
@@ -1899,7 +1883,6 @@ class Su_25(PlaneType):
 
     tasks = [task.GroundAttack, task.RunwayAttack, task.PinpointStrike, task.CAS, task.AFAC, task.AntishipStrike]
     task_default = task.CAS
-Su_25.load_payloads()
 
 
 class Su_25TM(PlaneType):
@@ -2150,7 +2133,6 @@ class Su_25TM(PlaneType):
 
     tasks = [task.GroundAttack, task.RunwayAttack, task.PinpointStrike, task.CAS, task.SEAD, task.AFAC, task.AntishipStrike]
     task_default = task.CAS
-Su_25TM.load_payloads()
 
 
 class Su_25T(PlaneType):
@@ -2394,7 +2376,6 @@ class Su_25T(PlaneType):
 
     tasks = [task.GroundAttack, task.RunwayAttack, task.PinpointStrike, task.CAS, task.SEAD, task.AFAC, task.AntishipStrike]
     task_default = task.CAS
-Su_25T.load_payloads()
 
 
 class Su_33(PlaneType):
@@ -2613,7 +2594,6 @@ class Su_33(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.AFAC, task.CAS, task.GroundAttack, task.RunwayAttack, task.AntishipStrike]
     task_default = task.CAP
-Su_33.load_payloads()
 
 
 class MiG_25PD(PlaneType):
@@ -2648,7 +2628,6 @@ class MiG_25PD(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept]
     task_default = task.Intercept
-MiG_25PD.load_payloads()
 
 
 class MiG_25RBT(PlaneType):
@@ -2709,7 +2688,6 @@ class MiG_25RBT(PlaneType):
 
     tasks = [task.Reconnaissance, task.AFAC, task.GroundAttack]
     task_default = task.Reconnaissance
-MiG_25RBT.load_payloads()
 
 
 class Su_30(PlaneType):
@@ -2873,7 +2851,6 @@ class Su_30(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.AFAC, task.SEAD, task.AntishipStrike, task.CAS, task.PinpointStrike, task.GroundAttack, task.RunwayAttack]
     task_default = task.CAP
-Su_30.load_payloads()
 
 
 class Su_34(PlaneType):
@@ -3108,7 +3085,6 @@ class Su_34(PlaneType):
 
     tasks = [task.AFAC, task.SEAD, task.AntishipStrike, task.CAS, task.PinpointStrike, task.GroundAttack, task.RunwayAttack]
     task_default = task.GroundAttack
-Su_34.load_payloads()
 
 
 class Su_17M4(PlaneType):
@@ -3284,7 +3260,6 @@ class Su_17M4(PlaneType):
 
     tasks = [task.GroundAttack, task.CAS, task.PinpointStrike, task.SEAD, task.AFAC, task.RunwayAttack, task.AntishipStrike]
     task_default = task.GroundAttack
-Su_17M4.load_payloads()
 
 
 class MiG_31(PlaneType):
@@ -3318,7 +3293,6 @@ class MiG_31(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept]
     task_default = task.Intercept
-MiG_31.load_payloads()
 
 
 class Tu_95MS(PlaneType):
@@ -3339,7 +3313,6 @@ class Tu_95MS(PlaneType):
 
     tasks = [task.PinpointStrike]
     task_default = task.PinpointStrike
-Tu_95MS.load_payloads()
 
 
 class Su_24M(PlaneType):
@@ -3495,7 +3468,6 @@ class Su_24M(PlaneType):
 
     tasks = [task.GroundAttack, task.CAS, task.AntishipStrike, task.SEAD, task.PinpointStrike, task.AFAC, task.RunwayAttack]
     task_default = task.GroundAttack
-Su_24M.load_payloads()
 
 
 class Su_24MR(PlaneType):
@@ -3528,7 +3500,6 @@ class Su_24MR(PlaneType):
 
     tasks = [task.AFAC, task.Reconnaissance]
     task_default = task.Reconnaissance
-Su_24MR.load_payloads()
 
 
 class Tu_160(PlaneType):
@@ -3552,7 +3523,6 @@ class Tu_160(PlaneType):
 
     tasks = [task.PinpointStrike]
     task_default = task.PinpointStrike
-Tu_160.load_payloads()
 
 
 class F_117A(PlaneType):
@@ -3573,7 +3543,6 @@ class F_117A(PlaneType):
 
     tasks = [task.PinpointStrike]
     task_default = task.PinpointStrike
-F_117A.load_payloads()
 
 
 class B_1B(PlaneType):
@@ -3621,7 +3590,6 @@ class B_1B(PlaneType):
 
     tasks = [task.GroundAttack, task.RunwayAttack, task.PinpointStrike, task.CAS]
     task_default = task.GroundAttack
-B_1B.load_payloads()
 
 
 class S_3B(PlaneType):
@@ -3687,7 +3655,6 @@ class S_3B(PlaneType):
 
     tasks = [task.GroundAttack, task.AntishipStrike, task.PinpointStrike]
     task_default = task.AntishipStrike
-S_3B.load_payloads()
 
 
 class S_3B_Tanker(PlaneType):
@@ -3705,7 +3672,6 @@ class S_3B_Tanker(PlaneType):
 
     tasks = [task.Refueling]
     task_default = task.Refueling
-S_3B_Tanker.load_payloads()
 
 
 class Mirage_2000_5(PlaneType):
@@ -3759,7 +3725,6 @@ class Mirage_2000_5(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.AFAC, task.Reconnaissance]
     task_default = task.CAP
-Mirage_2000_5.load_payloads()
 
 
 class F_15C(PlaneType):
@@ -3843,7 +3808,6 @@ class F_15C(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept]
     task_default = task.CAP
-F_15C.load_payloads()
 
 
 class F_15E(PlaneType):
@@ -4096,7 +4060,6 @@ class F_15E(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.PinpointStrike, task.CAS, task.GroundAttack, task.RunwayAttack, task.AFAC, task.Reconnaissance]
     task_default = task.GroundAttack
-F_15E.load_payloads()
 
 
 class MiG_29K(PlaneType):
@@ -4116,7 +4079,6 @@ class MiG_29K(PlaneType):
 
     tasks = [task.SEAD, task.AntishipStrike, task.CAS, task.CAP, task.Escort, task.FighterSweep, task.GroundAttack, task.Intercept, task.AFAC, task.PinpointStrike, task.RunwayAttack]
     task_default = task.CAP
-MiG_29K.load_payloads()
 
 
 class Tu_142(PlaneType):
@@ -4137,7 +4099,6 @@ class Tu_142(PlaneType):
 
     tasks = [task.AntishipStrike, task.Reconnaissance]
     task_default = task.AntishipStrike
-Tu_142.load_payloads()
 
 
 class C_130(PlaneType):
@@ -4155,7 +4116,6 @@ class C_130(PlaneType):
 
     tasks = [task.Transport]
     task_default = task.Transport
-C_130.load_payloads()
 
 
 class An_26B(PlaneType):
@@ -4172,7 +4132,6 @@ class An_26B(PlaneType):
 
     tasks = [task.Transport]
     task_default = task.Transport
-An_26B.load_payloads()
 
 
 class An_30M(PlaneType):
@@ -4189,7 +4148,6 @@ class An_30M(PlaneType):
 
     tasks = [task.Transport, task.Reconnaissance]
     task_default = task.Transport
-An_30M.load_payloads()
 
 
 class C_17A(PlaneType):
@@ -4207,7 +4165,6 @@ class C_17A(PlaneType):
 
     tasks = [task.Transport]
     task_default = task.Transport
-C_17A.load_payloads()
 
 
 class A_50(PlaneType):
@@ -4226,7 +4183,6 @@ class A_50(PlaneType):
 
     tasks = [task.AWACS]
     task_default = task.AWACS
-A_50.load_payloads()
 
 
 class E_3A(PlaneType):
@@ -4245,7 +4201,6 @@ class E_3A(PlaneType):
 
     tasks = [task.AWACS]
     task_default = task.AWACS
-E_3A.load_payloads()
 
 
 class IL_78M(PlaneType):
@@ -4264,7 +4219,6 @@ class IL_78M(PlaneType):
 
     tasks = [task.Refueling]
     task_default = task.Refueling
-IL_78M.load_payloads()
 
 
 class E_2C(PlaneType):
@@ -4282,7 +4236,6 @@ class E_2C(PlaneType):
 
     tasks = [task.AWACS]
     task_default = task.AWACS
-E_2C.load_payloads()
 
 
 class IL_76MD(PlaneType):
@@ -4300,7 +4253,6 @@ class IL_76MD(PlaneType):
 
     tasks = [task.Transport]
     task_default = task.Transport
-IL_76MD.load_payloads()
 
 
 class F_16C_bl_50(PlaneType):
@@ -4464,7 +4416,6 @@ class F_16C_bl_50(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.PinpointStrike, task.CAS, task.GroundAttack, task.RunwayAttack, task.AFAC, task.Reconnaissance, task.AntishipStrike]
     task_default = task.CAP
-F_16C_bl_50.load_payloads()
 
 
 class F_16C_bl_52d(PlaneType):
@@ -4626,7 +4577,6 @@ class F_16C_bl_52d(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.PinpointStrike, task.CAS, task.GroundAttack, task.RunwayAttack, task.SEAD, task.AFAC, task.Reconnaissance, task.AntishipStrike]
     task_default = task.CAP
-F_16C_bl_52d.load_payloads()
 
 
 class F_16A(PlaneType):
@@ -4726,7 +4676,6 @@ class F_16A(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.PinpointStrike, task.CAS, task.GroundAttack, task.RunwayAttack, task.SEAD, task.AFAC, task.Reconnaissance, task.AntishipStrike]
     task_default = task.CAP
-F_16A.load_payloads()
 
 
 class F_16A_MLU(PlaneType):
@@ -4857,7 +4806,6 @@ class F_16A_MLU(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.PinpointStrike, task.CAS, task.GroundAttack, task.RunwayAttack, task.AFAC, task.Reconnaissance, task.AntishipStrike]
     task_default = task.CAP
-F_16A_MLU.load_payloads()
 
 
 class RQ_1A_Predator(PlaneType):
@@ -4875,7 +4823,6 @@ class RQ_1A_Predator(PlaneType):
 
     tasks = [task.GroundAttack, task.AFAC, task.Reconnaissance]
     task_default = task.Reconnaissance
-RQ_1A_Predator.load_payloads()
 
 
 class Yak_40(PlaneType):
@@ -4887,7 +4834,6 @@ class Yak_40(PlaneType):
 
     tasks = [task.Transport]
     task_default = task.Transport
-Yak_40.load_payloads()
 
 
 class A_10C(PlaneType):
@@ -5335,7 +5281,6 @@ class A_10C(PlaneType):
 
     tasks = [task.GroundAttack, task.CAS, task.AFAC, task.RunwayAttack, task.AntishipStrike]
     task_default = task.CAS
-A_10C.load_payloads()
 
 
 class KC_135(PlaneType):
@@ -5349,7 +5294,6 @@ class KC_135(PlaneType):
 
     tasks = [task.Refueling]
     task_default = task.Refueling
-KC_135.load_payloads()
 
 
 class P_51D(PlaneType):
@@ -5396,7 +5340,6 @@ class P_51D(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.GroundAttack, task.CAS, task.AFAC, task.RunwayAttack, task.AntishipStrike]
     task_default = task.CAS
-P_51D.load_payloads()
 
 
 plane_map = {
