@@ -124,7 +124,7 @@ for i in pairs(db.Units.Planes.Plane) do
 	print('    tasks = ['..s..']')
 	local objname = string.gsub(plane.DefaultTask.Name, "[-()/., *']", "")
 	print('    task_default = task.'..objname..'')
-	print(safename..'.load_payloads()')
+	-- print(safename..'.load_payloads()')
 	print("")
 	print("")
 end

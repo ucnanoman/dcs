@@ -47,7 +47,6 @@ from .flyingtype import FlyingType
 class HelicopterType(FlyingType):
     helicopter = True
 
-
 ]])
 for i in pairs(db.Units.Helicopters.Helicopter) do
 	local plane = db.Units.Helicopters.Helicopter[i];
@@ -119,7 +118,7 @@ for i in pairs(db.Units.Helicopters.Helicopter) do
 	print('    tasks = ['..s..']')
 	local objname = string.gsub(plane.DefaultTask.Name, "[-()/., *']", "")
 	print('    task_default = task.'..objname..'')
-	print(safename..'.load_payloads()')
+	-- print(safename..'.load_payloads()')
 	print("")
 	print("")
 end
