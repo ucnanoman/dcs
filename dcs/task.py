@@ -180,10 +180,9 @@ class AWACSTaskAction(Task):
         super(AWACSTaskAction, self).__init__("AWACS")
 
 
-# TODO check
 class RefuelingTaskAction(Task):
     def __init__(self):
-        super(RefuelingTaskAction, self).__init__("Refueling")
+        super(RefuelingTaskAction, self).__init__("Tanker")
 
 
 class EPLRS(Task):
