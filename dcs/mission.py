@@ -199,6 +199,7 @@ class Mission:
         self.current_unit_id = 0
         self.current_group_id = 0
         self.current_callsign_id = 99
+        self.filename = None
 
         self.translation = Translation()
 
@@ -477,6 +478,7 @@ class Mission:
         return col
 
     def load_file(self, filename):
+        self.filename = filename
         mission_dict = {}
         options_dict = {}
         warehouse_dict = {}
@@ -1029,7 +1031,10 @@ class Mission:
                 return c
         return None
 
-    def save(self, filename):
+    def save(self, filename=None):
+        filename = self.filename if filename is None else filename
+        if not filename:
+            raise RuntimeError("No filename given.")
         with zipfile.ZipFile(filename, 'w', compression=zipfile.ZIP_DEFLATED) as zipf:
             # options
             zipf.writestr('options', str(self.options))
