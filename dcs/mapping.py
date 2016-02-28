@@ -2,6 +2,7 @@ import math
 
 
 def point_from_heading(_x, _y, heading, distance):
+    heading %= 360
     rad_heading = math.radians(heading)
     x = _x + math.cos(rad_heading) * distance
     y = _y + math.sin(rad_heading) * distance
