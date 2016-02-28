@@ -448,6 +448,15 @@ class Caucasus(Terrain):
     def airport_soganlug(self):
         return self.airports["Soganlug"]
 
+    def airport_senaki(self):
+        return self.airports["Senaki"]
+
+    def airport_sochi(self):
+        return self.airports["Sochi"]
+
+    def airport_batumi(self):
+        return self.airports["Batumi"]
+
 
 class Nevada(Terrain):
     def __init__(self):
