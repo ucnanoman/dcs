@@ -24,7 +24,9 @@ class FlyingType:
     payloads = None
     payload_dirs = [
         os.path.join(os.path.dirname(os.path.realpath(__file__)), "payloads"),
-        "C:\\Program Files\\Eagle Dynamics\\DCS World\\MissionEditor\\data\\scripts\\UnitPayloads"
+        os.path.join(os.path.expanduser("~"), "Saved Games\\DCS\\MissionEditor\\UnitPayloads"),
+        "C:\\Program Files\\Eagle Dynamics\\DCS World\\MissionEditor\\data\\scripts\\UnitPayloads",
+        "C:\\Program Files\\Eagle Dynamics\\DCS World\\CoreMods\\aircraft\\M-2000C\\UnitPayloads"
     ]
 
     tasks = ['Nothing']
