@@ -12,6 +12,7 @@ class PlaneType(FlyingType):
 class Tornado_GR4(PlaneType):
     id = "Tornado GR4"
     fuel_max = 4663
+    max_speed = 2340
     chaff = 90
     flare = 45
     charge_total = 180
@@ -76,6 +77,7 @@ class Tornado_GR4(PlaneType):
 class Tornado_IDS(PlaneType):
     id = "Tornado IDS"
     fuel_max = 4663
+    max_speed = 2340
     chaff = 90
     flare = 45
     charge_total = 180
@@ -139,6 +141,7 @@ class Tornado_IDS(PlaneType):
 class F_A_18A(PlaneType):
     id = "F/A-18A"
     fuel_max = 6531
+    max_speed = 1920
     chaff = 30
     flare = 15
     charge_total = 60
@@ -224,11 +227,13 @@ class F_A_18A(PlaneType):
 class F_A_18C(PlaneType):
     id = "F/A-18C"
     fuel_max = 6531
+    max_speed = 1920
     chaff = 30
     flare = 15
     charge_total = 60
     chaff_charge_size = 1
     flare_charge_size = 2
+    eplrs = True
     category = "Interceptor"
 
     class Pylon1:
@@ -398,6 +403,7 @@ class F_A_18C(PlaneType):
 class MiG_29S(PlaneType):
     id = "MiG-29S"
     fuel_max = 3500
+    max_speed = 2450
     chaff = 30
     flare = 30
     charge_total = 60
@@ -545,6 +551,7 @@ class MiG_29S(PlaneType):
 class MiG_29A(PlaneType):
     id = "MiG-29A"
     fuel_max = 3380
+    max_speed = 2450
     chaff = 30
     flare = 30
     charge_total = 60
@@ -692,6 +699,7 @@ class MiG_29A(PlaneType):
 class F_14A(PlaneType):
     id = "F-14A"
     fuel_max = 7348
+    max_speed = 2490
     chaff = 30
     flare = 15
     charge_total = 60
@@ -752,6 +760,7 @@ class Tu_22M3(PlaneType):
     group_size_max = 1
     large_parking_slot = True
     fuel_max = 50000
+    max_speed = 2300
     chaff = 48
     flare = 48
     charge_total = 96
@@ -786,6 +795,7 @@ class Tu_22M3(PlaneType):
 class F_4E(PlaneType):
     id = "F-4E"
     fuel_max = 4864
+    max_speed = 2370
     chaff = 60
     flare = 30
     charge_total = 120
@@ -875,11 +885,13 @@ class B_52H(PlaneType):
     group_size_max = 1
     large_parking_slot = True
     fuel_max = 141135
+    max_speed = 1000
     chaff = 1125
     flare = 192
     charge_total = 1317
     chaff_charge_size = 1
     flare_charge_size = 1
+    eplrs = True
 
     class Pylon1:
         MER_12_Mk_82 = (1, Weapons.MER_12_Mk_82)
@@ -908,6 +920,7 @@ class B_52H(PlaneType):
 class MiG_27K(PlaneType):
     id = "MiG-27K"
     fuel_max = 4500
+    max_speed = 1810
     chaff = 60
     flare = 60
     charge_total = 120
@@ -984,6 +997,7 @@ class MiG_27K(PlaneType):
 class F_111F(PlaneType):
     id = "F-111F"
     fuel_max = 15500
+    max_speed = 2221.2
     chaff = 90
     flare = 45
     charge_total = 180
@@ -1056,6 +1070,7 @@ class F_111F(PlaneType):
 class A_10A(PlaneType):
     id = "A-10A"
     fuel_max = 5029
+    max_speed = 840
     chaff = 240
     flare = 120
     charge_total = 480
@@ -1332,6 +1347,7 @@ class A_10A(PlaneType):
 class Su_27(PlaneType):
     id = "Su-27"
     fuel_max = 9400
+    max_speed = 2500
     chaff = 96
     flare = 96
     charge_total = 192
@@ -1520,6 +1536,7 @@ class Su_27(PlaneType):
 class MiG_29G(PlaneType):
     id = "MiG-29G"
     fuel_max = 3380
+    max_speed = 2450
     chaff = 30
     flare = 30
     charge_total = 60
@@ -1587,6 +1604,7 @@ class MiG_29G(PlaneType):
 class MiG_23MLD(PlaneType):
     id = "MiG-23MLD"
     fuel_max = 3800
+    max_speed = 2500
     chaff = 60
     flare = 60
     charge_total = 120
@@ -1664,6 +1682,7 @@ class MiG_23MLD(PlaneType):
 class Su_25(PlaneType):
     id = "Su-25"
     fuel_max = 2835
+    max_speed = 980
     chaff = 128
     flare = 128
     charge_total = 256
@@ -1888,6 +1907,7 @@ class Su_25(PlaneType):
 class Su_25TM(PlaneType):
     id = "Su-25TM"
     fuel_max = 3790
+    max_speed = 950
     chaff = 128
     flare = 128
     charge_total = 256
@@ -2138,6 +2158,7 @@ class Su_25TM(PlaneType):
 class Su_25T(PlaneType):
     id = "Su-25T"
     fuel_max = 3790
+    max_speed = 950
     chaff = 128
     flare = 128
     charge_total = 256
@@ -2381,6 +2402,7 @@ class Su_25T(PlaneType):
 class Su_33(PlaneType):
     id = "Su-33"
     fuel_max = 9400
+    max_speed = 2300
     chaff = 48
     flare = 48
     charge_total = 96
@@ -2599,6 +2621,7 @@ class Su_33(PlaneType):
 class MiG_25PD(PlaneType):
     id = "MiG-25PD"
     fuel_max = 15245
+    max_speed = 3000
     chaff = 64
     flare = 64
     charge_total = 128
@@ -2633,6 +2656,7 @@ class MiG_25PD(PlaneType):
 class MiG_25RBT(PlaneType):
     id = "MiG-25RBT"
     fuel_max = 15245
+    max_speed = 3000
 
     class Pylon1:
         R_60M = (1, Weapons.R_60M)
@@ -2693,6 +2717,7 @@ class MiG_25RBT(PlaneType):
 class Su_30(PlaneType):
     id = "Su-30"
     fuel_max = 9400
+    max_speed = 2200
     chaff = 96
     flare = 96
     charge_total = 192
@@ -2856,6 +2881,7 @@ class Su_30(PlaneType):
 class Su_34(PlaneType):
     id = "Su-34"
     fuel_max = 9800
+    max_speed = 1900
     chaff = 64
     flare = 64
     charge_total = 128
@@ -3090,6 +3116,7 @@ class Su_34(PlaneType):
 class Su_17M4(PlaneType):
     id = "Su-17M4"
     fuel_max = 3770
+    max_speed = 1860
     chaff = 64
     flare = 64
     charge_total = 128
@@ -3265,6 +3292,7 @@ class Su_17M4(PlaneType):
 class MiG_31(PlaneType):
     id = "MiG-31"
     fuel_max = 15500
+    max_speed = 3000
     category = "Interceptor"
 
     class Pylon1:
@@ -3300,6 +3328,7 @@ class Tu_95MS(PlaneType):
     group_size_max = 1
     large_parking_slot = True
     fuel_max = 87000
+    max_speed = 830
     chaff = 48
     flare = 48
     charge_total = 96
@@ -3318,6 +3347,7 @@ class Tu_95MS(PlaneType):
 class Su_24M(PlaneType):
     id = "Su-24M"
     fuel_max = 11700
+    max_speed = 1700
     chaff = 96
     flare = 96
     charge_total = 192
@@ -3473,6 +3503,7 @@ class Su_24M(PlaneType):
 class Su_24MR(PlaneType):
     id = "Su-24MR"
     fuel_max = 11700
+    max_speed = 1700
     chaff = 96
     flare = 96
     charge_total = 192
@@ -3507,6 +3538,7 @@ class Tu_160(PlaneType):
     group_size_max = 1
     large_parking_slot = True
     fuel_max = 157000
+    max_speed = 2200
     chaff = 72
     flare = 72
     charge_total = 144
@@ -3528,6 +3560,7 @@ class Tu_160(PlaneType):
 class F_117A(PlaneType):
     id = "F-117A"
     fuel_max = 3840
+    max_speed = 1000
 
     class Pylon1:
         GBU_10 = (1, Weapons.GBU_10)
@@ -3550,11 +3583,13 @@ class B_1B(PlaneType):
     group_size_max = 1
     large_parking_slot = True
     fuel_max = 88450
+    max_speed = 1530
     chaff = 60
     flare = 30
     charge_total = 120
     chaff_charge_size = 1
     flare_charge_size = 2
+    eplrs = True
 
     class Pylon1:
         MK_82_28 = (1, Weapons.MK_82_28)
@@ -3596,6 +3631,7 @@ class S_3B(PlaneType):
     id = "S-3B"
     group_size_max = 1
     fuel_max = 5500
+    max_speed = 840
     chaff = 30
     flare = 30
     charge_total = 60
@@ -3661,6 +3697,7 @@ class S_3B_Tanker(PlaneType):
     id = "S-3B Tanker"
     group_size_max = 1
     fuel_max = 5500
+    max_speed = 840
     chaff = 30
     flare = 30
     charge_total = 60
@@ -3677,6 +3714,7 @@ class S_3B_Tanker(PlaneType):
 class Mirage_2000_5(PlaneType):
     id = "Mirage 2000-5"
     fuel_max = 3160
+    max_speed = 2340
     chaff = 112
     flare = 16
     charge_total = 128
@@ -3730,6 +3768,7 @@ class Mirage_2000_5(PlaneType):
 class F_15C(PlaneType):
     id = "F-15C"
     fuel_max = 6103
+    max_speed = 2650
     chaff = 120
     flare = 60
     charge_total = 240
@@ -3813,11 +3852,13 @@ class F_15C(PlaneType):
 class F_15E(PlaneType):
     id = "F-15E"
     fuel_max = 10246
+    max_speed = 2650
     chaff = 120
     flare = 60
     charge_total = 240
     chaff_charge_size = 1
     flare_charge_size = 2
+    eplrs = True
     category = "Interceptor"
 
     class Pylon1:
@@ -4065,6 +4106,7 @@ class F_15E(PlaneType):
 class MiG_29K(PlaneType):
     id = "MiG-29K"
     fuel_max = 4500
+    max_speed = 2300
     chaff = 30
     flare = 30
     charge_total = 60
@@ -4086,6 +4128,7 @@ class Tu_142(PlaneType):
     group_size_max = 1
     large_parking_slot = True
     fuel_max = 87000
+    max_speed = 860
     chaff = 48
     flare = 48
     charge_total = 96
@@ -4106,6 +4149,7 @@ class C_130(PlaneType):
     group_size_max = 1
     large_parking_slot = True
     fuel_max = 20830
+    max_speed = 610
     chaff = 120
     flare = 60
     charge_total = 240
@@ -4122,6 +4166,7 @@ class An_26B(PlaneType):
     id = "An-26B"
     group_size_max = 1
     fuel_max = 5500
+    max_speed = 540
     chaff = 384
     flare = 384
     charge_total = 768
@@ -4138,6 +4183,7 @@ class An_30M(PlaneType):
     id = "An-30M"
     group_size_max = 1
     fuel_max = 8300
+    max_speed = 540
     chaff = 192
     flare = 192
     charge_total = 384
@@ -4155,6 +4201,7 @@ class C_17A(PlaneType):
     group_size_max = 1
     large_parking_slot = True
     fuel_max = 132405
+    max_speed = 850
     chaff = 120
     flare = 60
     charge_total = 240
@@ -4172,6 +4219,7 @@ class A_50(PlaneType):
     group_size_max = 1
     large_parking_slot = True
     fuel_max = 70000
+    max_speed = 850
     chaff = 192
     flare = 192
     charge_total = 384
@@ -4190,6 +4238,7 @@ class E_3A(PlaneType):
     group_size_max = 1
     large_parking_slot = True
     fuel_max = 65000
+    max_speed = 860
     chaff = 120
     flare = 60
     charge_total = 240
@@ -4208,6 +4257,7 @@ class IL_78M(PlaneType):
     group_size_max = 1
     large_parking_slot = True
     fuel_max = 90000
+    max_speed = 850
     chaff = 96
     flare = 96
     charge_total = 192
@@ -4225,6 +4275,7 @@ class E_2C(PlaneType):
     id = "E-2C"
     group_size_max = 1
     fuel_max = 5624
+    max_speed = 610
     chaff = 120
     flare = 60
     charge_total = 240
@@ -4243,6 +4294,7 @@ class IL_76MD(PlaneType):
     group_size_max = 1
     large_parking_slot = True
     fuel_max = 80000
+    max_speed = 850
     chaff = 96
     flare = 96
     charge_total = 192
@@ -4258,6 +4310,7 @@ class IL_76MD(PlaneType):
 class F_16C_bl_50(PlaneType):
     id = "F-16C bl.50"
     fuel_max = 3104
+    max_speed = 2150
     chaff = 90
     flare = 45
     charge_total = 180
@@ -4421,11 +4474,13 @@ class F_16C_bl_50(PlaneType):
 class F_16C_bl_52d(PlaneType):
     id = "F-16C bl.52d"
     fuel_max = 3104
+    max_speed = 2150
     chaff = 90
     flare = 45
     charge_total = 180
     chaff_charge_size = 1
     flare_charge_size = 2
+    eplrs = True
     category = "Interceptor"
 
     class Pylon1:
@@ -4582,6 +4637,7 @@ class F_16C_bl_52d(PlaneType):
 class F_16A(PlaneType):
     id = "F-16A"
     fuel_max = 3104
+    max_speed = 2150
     chaff = 60
     flare = 30
     charge_total = 120
@@ -4681,11 +4737,13 @@ class F_16A(PlaneType):
 class F_16A_MLU(PlaneType):
     id = "F-16A MLU"
     fuel_max = 3104
+    max_speed = 2150
     chaff = 60
     flare = 30
     charge_total = 120
     chaff_charge_size = 1
     flare_charge_size = 2
+    eplrs = True
     category = "Interceptor"
 
     class Pylon1:
@@ -4812,6 +4870,8 @@ class RQ_1A_Predator(PlaneType):
     id = "RQ-1A Predator"
     group_size_max = 1
     fuel_max = 200
+    max_speed = 220
+    eplrs = True
 
     class Pylon1:
         AGM_114K = (1, Weapons.AGM_114K)
@@ -4829,6 +4889,7 @@ class Yak_40(PlaneType):
     id = "Yak-40"
     group_size_max = 1
     fuel_max = 3080
+    max_speed = 570
 
     pylons = {}
 
@@ -4839,11 +4900,13 @@ class Yak_40(PlaneType):
 class A_10C(PlaneType):
     id = "A-10C"
     fuel_max = 5029
+    max_speed = 840
     chaff = 240
     flare = 120
     charge_total = 480
     chaff_charge_size = 1
     flare_charge_size = 2
+    eplrs = True
 
     class Pylon1:
         LAU_105___2_AIM_9M = (1, Weapons.LAU_105___2_AIM_9M)
@@ -5288,6 +5351,8 @@ class KC_135(PlaneType):
     group_size_max = 1
     large_parking_slot = True
     fuel_max = 90700
+    max_speed = 980
+    tacan = True
     category = "Tanker"
 
     pylons = {}
@@ -5299,6 +5364,7 @@ class KC_135(PlaneType):
 class P_51D(PlaneType):
     id = "P-51D"
     fuel_max = 732
+    max_speed = 750
 
     class Pylon1:
         HVAR = (1, Weapons.HVAR)

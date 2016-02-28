@@ -8,6 +8,7 @@ class FlyingType:
     large_parking_slot = False
     helicopter = False
     fuel_max = 0
+    max_speed = 500
     ammo_type = None
     chaff = 0
     flare = 0
@@ -15,6 +16,9 @@ class FlyingType:
     chaff_charge_size = 1
     flare_charge_size = 2
     category = "Air"
+
+    tacan = False
+    eplrs = False
 
     pylons = {}
     payloads = None

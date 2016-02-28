@@ -12,6 +12,7 @@ class HelicopterType(FlyingType):
 class Ka_50(HelicopterType):
     id = "Ka-50"
     fuel_max = 1450
+    max_speed = 300
     chaff = 0
     flare = 128
     charge_total = 128
@@ -83,6 +84,7 @@ class Ka_50(HelicopterType):
 class Ka_52(HelicopterType):
     id = "Ka-52"
     fuel_max = 1500
+    max_speed = 300
     chaff = 0
     flare = 128
     charge_total = 128
@@ -144,6 +146,7 @@ class Ka_52(HelicopterType):
 class Mi_24V(HelicopterType):
     id = "Mi-24V"
     fuel_max = 1704
+    max_speed = 320
     chaff = 0
     flare = 192
     charge_total = 192
@@ -223,6 +226,7 @@ class Mi_24V(HelicopterType):
 class Mi_8MT(HelicopterType):
     id = "Mi-8MT"
     fuel_max = 1929
+    max_speed = 250
     chaff = 0
     flare = 192
     charge_total = 192
@@ -303,6 +307,7 @@ class Mi_26(HelicopterType):
     id = "Mi-26"
     group_size_max = 1
     fuel_max = 9600
+    max_speed = 300
     chaff = 0
     flare = 192
     charge_total = 192
@@ -318,6 +323,7 @@ class Mi_26(HelicopterType):
 class Ka_27(HelicopterType):
     id = "Ka-27"
     fuel_max = 2616
+    max_speed = 290
 
     pylons = {}
 
@@ -328,6 +334,7 @@ class Ka_27(HelicopterType):
 class UH_60A(HelicopterType):
     id = "UH-60A"
     fuel_max = 1100
+    max_speed = 300
     chaff = 30
     flare = 30
     charge_total = 60
@@ -343,6 +350,7 @@ class UH_60A(HelicopterType):
 class CH_53E(HelicopterType):
     id = "CH-53E"
     fuel_max = 1908
+    max_speed = 310
     chaff = 60
     flare = 60
     charge_total = 120
@@ -358,6 +366,7 @@ class CH_53E(HelicopterType):
 class CH_47D(HelicopterType):
     id = "CH-47D"
     fuel_max = 3600
+    max_speed = 300
     chaff = 120
     flare = 120
     charge_total = 240
@@ -373,6 +382,7 @@ class CH_47D(HelicopterType):
 class SH_3W(HelicopterType):
     id = "SH-3W"
     fuel_max = 2132
+    max_speed = 270
     chaff = 30
     flare = 30
     charge_total = 60
@@ -388,6 +398,7 @@ class SH_3W(HelicopterType):
 class AH_64A(HelicopterType):
     id = "AH-64A"
     fuel_max = 1157
+    max_speed = 300
     chaff = 30
     flare = 30
     charge_total = 60
@@ -425,6 +436,7 @@ class AH_64A(HelicopterType):
 class AH_64D(HelicopterType):
     id = "AH-64D"
     fuel_max = 1157
+    max_speed = 280
     chaff = 30
     flare = 30
     charge_total = 60
@@ -462,6 +474,7 @@ class AH_64D(HelicopterType):
 class AH_1W(HelicopterType):
     id = "AH-1W"
     fuel_max = 1250.0
+    max_speed = 290
     chaff = 30
     flare = 30
     charge_total = 60
@@ -501,6 +514,7 @@ class AH_1W(HelicopterType):
 class SH_60B(HelicopterType):
     id = "SH-60B"
     fuel_max = 1100
+    max_speed = 240
     chaff = 30
     flare = 30
     charge_total = 60
@@ -519,6 +533,7 @@ class SH_60B(HelicopterType):
 class UH_1H(HelicopterType):
     id = "UH-1H"
     fuel_max = 631
+    max_speed = 200
     chaff = 0
     flare = 60
     charge_total = 60
@@ -568,6 +583,7 @@ class UH_1H(HelicopterType):
 class Mi_28N(HelicopterType):
     id = "Mi-28N"
     fuel_max = 1500
+    max_speed = 305
     chaff = 0
     flare = 128
     charge_total = 128
@@ -641,6 +657,7 @@ class Mi_28N(HelicopterType):
 class OH_58D(HelicopterType):
     id = "OH-58D"
     fuel_max = 1100
+    max_speed = 220
     chaff = 30
     flare = 30
     charge_total = 60

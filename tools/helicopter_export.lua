@@ -60,6 +60,7 @@ for i in pairs(db.Units.Helicopters.Helicopter) do
 	end
 
 	print('    fuel_max = '..plane.MaxFuelWeight)
+	print('    max_speed = '..plane.MaxSpeed)
 	--print('    ammo_type = '..plane.MaxFuelWeight)
 	--print('    gun_max = '..)
 	if plane.passivCounterm then

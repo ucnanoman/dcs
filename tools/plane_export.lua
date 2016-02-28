@@ -57,6 +57,7 @@ for i in pairs(db.Units.Planes.Plane) do
 		print('    large_parking_slot = True')
 	end
 	print('    fuel_max = '..plane.MaxFuelWeight)
+	print('    max_speed = '..plane.MaxSpeed)
 	--print('    ammo_type = '..plane.MaxFuelWeight)
 	--print('    gun_max = '..)
 	if plane.passivCounterm then
@@ -65,6 +66,14 @@ for i in pairs(db.Units.Planes.Plane) do
 		print('    charge_total = '..plane.passivCounterm.SingleChargeTotal)
 		print('    chaff_charge_size = '..plane.passivCounterm.chaff.chargeSz)
 		print('    flare_charge_size = '..plane.passivCounterm.flare.chargeSz)
+	end
+
+	if plane.TACAN then
+		print('    tacan = True')
+	end
+
+	if plane.EPLRS then
+		print('    eplrs = True')
 	end
 
 	if plane.Categories and plane.Categories[1] then
