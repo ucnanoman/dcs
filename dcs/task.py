@@ -240,9 +240,11 @@ class SetFrequencyCommand(Task):
 
 
 class OrbitAction(Task):
-    supported_pattern = ["Race-Track", "Circle"]
+    Pattern_RaceTrack = "Race-Track"
+    Pattern_Circle = "Circle"
+    supported_pattern = [Pattern_RaceTrack, Pattern_Circle]
 
-    def __init__(self, altitude, speed, pattern="Race-Track"):
+    def __init__(self, altitude, speed, pattern=Pattern_RaceTrack):
         super(OrbitAction, self).__init__("Orbit")
         if pattern not in OrbitAction.supported_pattern:
             raise RuntimeError("Orbit patter '{pattern}' unknown. Use one of {patterns}.".format(
