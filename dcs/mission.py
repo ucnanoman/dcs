@@ -1031,6 +1031,12 @@ class Mission:
                 return c
         return None
 
+    def is_red(self, _country: Country):
+        return _country.name in self.coalition["red"].countries
+
+    def is_blue(self, _country: Country):
+        return _country.name in self.coalition["blue"].countries
+
     def save(self, filename=None):
         filename = self.filename if filename is None else filename
         if not filename:
