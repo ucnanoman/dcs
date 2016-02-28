@@ -193,6 +193,41 @@ class EPLRS(Task):
         }
 
 
+class ActivateBeaconCommand(Task):
+
+    @staticmethod
+    def calc_tacan_frequency(mode_channel, channel, aa=True):
+        if not aa and mode_channel == "X":
+            if channel < 64:
+                freq = 962 + channel - 1
+            else:
+                freq = 1151 + channel - 64
+        else:
+            if channel < 64:
+                freq = 1088 + channel - 1
+            else:
+                freq = 1025 + channel - 64
+
+        return freq * 1000000
+
+    def __init__(self, channel, modechannel="X", callsign="TKR", bearing=True):
+        super(ActivateBeaconCommand, self).__init__("WrappedAction")
+        self.params = {
+            "action": {
+                "id": "ActivateBeacon",
+                "params": {
+                    "type": 4,
+                    "frequency": self.calc_tacan_frequency(modechannel, channel),
+                    "callsign": callsign,
+                    "channel": channel,
+                    "modeChannel": modechannel,
+                    "bearing": bearing,
+                    "system": 4
+                }
+            }
+        }
+
+
 class SetFrequencyCommand(Task):
     Modulation_AM = 0
     Modulation_FM = 1
