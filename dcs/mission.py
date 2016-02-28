@@ -966,11 +966,22 @@ class Mission:
                       altitude=4500,
                       speed=407,
                       coldstart=True,
-                      frequency=140):
-        tanker = self.plane_group_from_parking(_country, name, plane_type, airport, coldstart=coldstart)
+                      frequency=150,
+                      tacanchannel="10X") -> PlaneGroup:
+        if airport:
+            tanker = self.plane_group_from_parking(_country, name, plane_type, airport, coldstart=coldstart)
+            wp = tanker.add_runway_waypoint(airport)
+        else:
+            x2, y2 = mapping.point_from_heading(x, y, (heading + 180) % 360, 1000)
+            tanker = self.plane_group_inflight(_country, name, plane_type, x2, y2, altitude, speed, dcs.task.Refueling)
+            wp = tanker.add_waypoint(x, y, altitude, speed)
 
-        wp = tanker.add_runway_waypoint(airport)
         wp.tasks.append(dcs.task.SetFrequencyCommand(frequency))
+
+        if plane_type.tacan:
+            channel = int(tacanchannel[:-1])
+            modechannel = tacanchannel[-1]
+            tanker.points[0].tasks.append(dcs.task.ActivateBeaconCommand(channel, modechannel))
 
         wp = tanker.add_waypoint(x, y, altitude, speed)
         wp.tasks.append(dcs.task.OrbitAction(altitude, speed, "Race-Track"))
@@ -979,6 +990,37 @@ class Mission:
         tanker.add_waypoint(x2, y2, altitude, speed)
 
         return tanker
+
+    def awacs_flight(self,
+                     _country,
+                     name: str,
+                     plane_type: PlaneType,
+                     airport: Airport,
+                     x,
+                     y,
+                     race_distance=30*1000,
+                     heading=90,
+                     altitude=4500,
+                     speed=550,
+                     coldstart=True,
+                     frequency=150) -> PlaneGroup:
+        if airport:
+            awacs = self.plane_group_from_parking(_country, name, plane_type, airport, coldstart=coldstart)
+            wp = awacs.add_runway_waypoint(airport)
+        else:
+            x2, y2 = mapping.point_from_heading(x, y, (heading + 180) % 360, 1000)
+            awacs = self.plane_group_inflight(_country, name, plane_type, x2, y2, altitude, speed, dcs.task.AWACS)
+            wp = awacs.add_waypoint(x, y, altitude, speed)
+
+        wp.tasks.append(dcs.task.SetFrequencyCommand(frequency))
+
+        wp = awacs.add_waypoint(x, y, altitude, speed)
+        wp.tasks.append(dcs.task.OrbitAction(altitude, speed, dcs.task.OrbitAction.Pattern_RaceTrack))
+
+        x2, y2 = mapping.point_from_heading(x, y, heading, race_distance)
+        awacs.add_waypoint(x2, y2, altitude, speed)
+
+        return awacs
 
     def country(self, name):
         for k in self.coalition:
