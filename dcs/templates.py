@@ -15,7 +15,7 @@ class VehicleTemplate:
             hdg = 90
             for i in range(0, 3):  # 3 launchers
                 vx, vy = mapping.point_from_heading(x, y, heading + hdg, 50)
-                u = mission.vehicle("launcher #" + str(i), Russia.Vehicle.S_300PS_5P85C_ln)
+                u = mission.vehicle("launcher #" + str(i+1), Russia.Vehicle.S_300PS_5P85C_ln)
                 u.x = vx
                 u.y = vy
                 vg.add_unit(u)
