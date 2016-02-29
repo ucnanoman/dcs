@@ -1,5 +1,6 @@
 from .terrain import ParkingSlot
 from .translation import String
+from .flyingtype import FlyingType
 import json
 import copy
 import math
@@ -48,7 +49,7 @@ class Unit:
 
 
 class FlyingUnit(Unit):
-    def __init__(self, _id=None, name=None, _type=None):
+    def __init__(self, _id=None, name=None, _type:FlyingType=None):
         super(FlyingUnit, self).__init__(_id, name, _type.id)
         self.unit_type = _type  # for loadout validation
         self.unit_type.load_payloads()
@@ -125,6 +126,22 @@ class FlyingUnit(Unit):
 
     def reset_loadout(self):
         self.pylons = {}
+
+    def set_default_preset_channel(self, freq):
+        if self.radio:
+            self.radio[1]["channels"][1] = freq
+
+    def set_radio_preset(self):
+        if self.unit_type.panel_radio:
+            self.radio = self.unit_type.panel_radio
+
+    def set_player(self):
+        self.skill = Skill.PLAYER
+        self.set_radio_preset()
+
+    def set_client(self):
+        self.skill = Skill.CLIENT
+        self.set_radio_preset()
 
     def dict(self):
         d = super(FlyingUnit, self).dict()

@@ -1,4 +1,4 @@
-# This file is generated from plane_export.lua
+# This file is generated from aircraft_export.lua
 
 from .weapons_data import Weapons
 from . import task
@@ -5350,7 +5350,7 @@ class KC_135(PlaneType):
     id = "KC-135"
     group_size_max = 1
     large_parking_slot = True
-    fuel_max = 90700.0
+    fuel_max = 90700
     max_speed = 980
     tacan = True
     category = "Tanker"
@@ -5365,6 +5365,17 @@ class P_51D(PlaneType):
     id = "P-51D"
     fuel_max = 732
     max_speed = 750
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 105,
+                2: 124,
+                4: 139,
+                3: 131
+            },
+        },
+    }
 
     class Pylon1:
         HVAR = (1, Weapons.HVAR)
@@ -5411,8 +5422,20 @@ class P_51D(PlaneType):
 class Bf_109K_4(PlaneType):
     id = "Bf-109K-4"
     fuel_max = 296
-    max_speed = 828.0
+    max_speed = 828
     category = "Air"
+
+    panel_radio = {
+        1: {
+            "channels": {
+                2: 40,
+                3: 41,
+                1: 39,
+                4: 42,
+                5: 38
+            },
+        },
+    }
 
     class Pylon1:
         SC_501_SC500 = (1, Weapons.SC_501_SC500)
@@ -5428,8 +5451,19 @@ class Bf_109K_4(PlaneType):
 class FW_190D9(PlaneType):
     id = "FW-190D9"
     fuel_max = 388
-    max_speed = 828.0
+    max_speed = 828
     category = "Air"
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 39,
+                2: 40,
+                4: 42,
+                3: 41
+            },
+        },
+    }
 
     class Pylon1:
         FW109_FUEL_TANK = (1, Weapons.FW109_FUEL_TANK)
@@ -5445,8 +5479,33 @@ class FW_190D9(PlaneType):
 class Hawk(PlaneType):
     id = "Hawk"
     fuel_max = 1272
-    max_speed = 2880.0
+    max_speed = 2880
     category = "Air"
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 225,
+                2: 258,
+                4: 270,
+                8: 257,
+                16: 252,
+                17: 268,
+                9: 253,
+                18: 269,
+                5: 255,
+                10: 263,
+                11: 267,
+                3: 260,
+                6: 259,
+                12: 254,
+                13: 264,
+                7: 262,
+                14: 266,
+                15: 265
+            },
+        },
+    }
 
     class Pylon1:
         LAU_61___19_2_75__rockets_MK151_HE = (1, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
@@ -5480,14 +5539,65 @@ class Hawk(PlaneType):
 
 class M_2000C(PlaneType):
     id = "M-2000C"
-    fuel_max = 3165.0
-    max_speed = 2520.0
+    fuel_max = 3165
+    max_speed = 2520
     chaff = 112
     flare = 16
     charge_total = 128
     chaff_charge_size = 1
     flare_charge_size = 1
     category = "Air"
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 305,
+                2: 264,
+                4: 256,
+                8: 257,
+                16: 261,
+                17: 267,
+                9: 255,
+                18: 251,
+                5: 254,
+                10: 262,
+                20: 266,
+                11: 259,
+                3: 265,
+                6: 250,
+                12: 268,
+                13: 269,
+                7: 270,
+                14: 260,
+                19: 253,
+                15: 263
+            },
+        },
+        2: {
+            "channels": {
+                1: 129,
+                2: 135,
+                4: 127,
+                8: 128,
+                16: 132,
+                17: 138,
+                9: 126,
+                18: 122,
+                5: 125,
+                10: 133,
+                20: 137,
+                11: 130,
+                3: 136,
+                6: 121,
+                12: 139,
+                13: 140,
+                7: 141,
+                14: 131,
+                19: 124,
+                15: 134
+            },
+        },
+    }
 
     class Pylon1:
         R_550_Magic_2 = (1, Weapons.R_550_Magic_2)

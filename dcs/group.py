@@ -1,5 +1,5 @@
 import math
-from .unit import Unit
+from .unit import Unit, Skill
 from .point import Point, MovingPoint
 from .translation import String
 from .terrain import Airport, Runway
@@ -273,10 +273,17 @@ class FlyingGroup(MovingGroup):
             u.reset_loadout()
 
     def dict(self):
+        # if a player/client is in the group
+        # make sure his 1. preset channel is at frequency
+        for u in self.units:
+            if u.skill in [Skill.CLIENT, Skill.PLAYER]:
+                u.set_default_preset_channel(self.frequency)
+
         d = super(FlyingGroup, self).dict()
         d["modulation"] = self.modulation
         d["communication"] = self.communication
         d["uncontrolled"] = self.uncontrolled
+
         return d
 
 

@@ -1,4 +1,4 @@
-# This file is generated from helicopter_export.lua
+# This file is generated from aircraft_export.lua
 
 from .weapons_data import Weapons
 from . import task
@@ -18,6 +18,43 @@ class Ka_50(HelicopterType):
     charge_total = 128
     chaff_charge_size = 0
     flare_charge_size = 1
+
+    panel_radio = {
+        1: {
+            "channels": {
+                7: 40,
+                1: 21.5,
+                2: 25.7,
+                4: 28,
+                8: 50,
+                9: 55.5,
+                5: 30,
+                10: 59.9,
+                3: 27,
+                6: 32
+            },
+        },
+        2: {
+            "channels": {
+                15: 0.995,
+                13: 0.583,
+                7: 0.443,
+                1: 0.625,
+                2: 0.303,
+                4: 0.591,
+                8: 0.215,
+                16: 1.21,
+                9: 0.525,
+                5: 0.408,
+                10: 1.065,
+                14: 0.283,
+                3: 0.289,
+                6: 0.803,
+                12: 0.35,
+                11: 0.718
+            },
+        },
+    }
 
     class Pylon1:
         B_8V20A_CM = (1, Weapons.B_8V20A_CM)
@@ -232,6 +269,47 @@ class Mi_8MT(HelicopterType):
     charge_total = 192
     chaff_charge_size = 0
     flare_charge_size = 1
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 127.5,
+                2: 135,
+                4: 127,
+                8: 128,
+                16: 132,
+                17: 138,
+                9: 126,
+                18: 122,
+                5: 125,
+                10: 133,
+                20: 137,
+                11: 130,
+                3: 136,
+                6: 121,
+                12: 129,
+                13: 123,
+                7: 141,
+                14: 131,
+                19: 124,
+                15: 134
+            },
+        },
+        2: {
+            "channels": {
+                7: 40,
+                1: 21.5,
+                2: 25.7,
+                4: 28,
+                8: 50,
+                9: 55.5,
+                5: 30,
+                10: 59.9,
+                3: 27,
+                6: 32
+            },
+        },
+    }
 
     class Pylon1:
         B_8V20A_CM = (1, Weapons.B_8V20A_CM)
@@ -539,6 +617,33 @@ class UH_1H(HelicopterType):
     charge_total = 60
     chaff_charge_size = 0
     flare_charge_size = 1
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 251,
+                2: 264,
+                4: 256,
+                8: 257,
+                16: 261,
+                17: 267,
+                9: 255,
+                18: 251,
+                5: 254,
+                10: 262,
+                20: 266,
+                11: 259,
+                3: 265,
+                6: 250,
+                12: 268,
+                13: 269,
+                7: 270,
+                14: 260,
+                19: 253,
+                15: 263
+            },
+        },
+    }
 
     class Pylon1:
         M134_L = (1, Weapons.M134_L)
