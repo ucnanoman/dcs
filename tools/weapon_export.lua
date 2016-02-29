@@ -28,6 +28,10 @@ function pylon() end
 function aircraft_task() end
 function verbose_to_dmg_properties() end
 function add_aircraft() end
+function simple_warhead() end
+function fire_effect() end
+function smoke_effect() end
+function gun_mount() end
 
 function declare_loadout(tbl)
 	if tbl.category ~= nil then
@@ -42,12 +46,21 @@ mod_weapons = {}
 mod_weapons["M2KC_Weapons"] = ed_path.."/CoreMods/aircraft/M-2000C/Weapons"
 mod_weapons["Bf-109K-4"] = ed_path.."/CoreMods/WWII Units"
 mod_weapons["FW-190D9"] = ed_path.."/CoreMods/WWII Units"
+mod_weapons["MiG-15bis"] = ed_path.."/CoreMods/aircraft/MiG-15bis"
 
 
 for k,v in pairs(mod_weapons) do
     current_mod_path = v
     dofile(v.."/"..k..".lua")
 end
+
+current_mod_path = ed_path.."/CoreMods/aircraft/MiG-21BIS"
+dofile(current_mod_path.."/Entry/Aw")
+dofile(current_mod_path.."/Entry/Am")
+
+current_mod_path = ed_path.."/CoreMods/aircraft/L-39"
+dofile(ed_path.."/CoreMods/aircraft/L-39/L-39C.lua")
+dofile(ed_path.."/CoreMods/aircraft/L-39/L-39ZA.lua")
 
 weapons = {}
 keys = {}
@@ -66,6 +79,9 @@ for j in pairs({CAT_BOMBS,CAT_MISSILES,CAT_ROCKETS,CAT_AIR_TO_AIR,CAT_FUEL_TANKS
 		local w = "None"
 		if v["Weight"] ~= nil then
 			w = v["Weight"]
+		end
+		while weapons[key] ~= nil do
+			key = key..'_'
 		end
 		weapons[key] = {clsid = v.CLSID, displayName = v.displayName, weight = w}
 		table.insert(keys, key)
