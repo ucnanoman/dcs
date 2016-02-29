@@ -5350,7 +5350,7 @@ class KC_135(PlaneType):
     id = "KC-135"
     group_size_max = 1
     large_parking_slot = True
-    fuel_max = 90700
+    fuel_max = 90700.0
     max_speed = 980
     tacan = True
     category = "Tanker"
@@ -5406,6 +5406,161 @@ class P_51D(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.FighterSweep, task.GroundAttack, task.CAS, task.AFAC, task.RunwayAttack, task.AntishipStrike]
     task_default = task.CAS
+
+
+class Bf_109K_4(PlaneType):
+    id = "Bf-109K-4"
+    fuel_max = 296
+    max_speed = 828.0
+    category = "Air"
+
+    class Pylon1:
+        SC_501_SC500 = (1, Weapons.SC_501_SC500)
+        SC_501_SC250 = (1, Weapons.SC_501_SC250)
+        BF109K_4_FUEL_TANK = (1, Weapons.BF109K_4_FUEL_TANK)
+
+    pylons = {1}
+
+    tasks = [task.CAP, task.Escort, task.Intercept, task.FighterSweep, task.GroundAttack, task.CAS, task.AFAC, task.RunwayAttack, task.AntishipStrike]
+    task_default = task.CAP
+
+
+class FW_190D9(PlaneType):
+    id = "FW-190D9"
+    fuel_max = 388
+    max_speed = 828.0
+    category = "Air"
+
+    class Pylon1:
+        FW109_FUEL_TANK = (1, Weapons.FW109_FUEL_TANK)
+        SC_501_SC500 = (1, Weapons.SC_501_SC500)
+        ER_4_SC50 = (1, Weapons.ER_4_SC50)
+
+    pylons = {1}
+
+    tasks = [task.CAP, task.Escort, task.Intercept, task.FighterSweep, task.GroundAttack, task.CAS, task.AFAC, task.RunwayAttack, task.AntishipStrike]
+    task_default = task.CAP
+
+
+class Hawk(PlaneType):
+    id = "Hawk"
+    fuel_max = 1272
+    max_speed = 2880.0
+    category = "Air"
+
+    class Pylon1:
+        LAU_61___19_2_75__rockets_MK151_HE = (1, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
+        CBU_87 = (1, Weapons.CBU_87)
+        BRU_42_3_BDU_33 = (1, Weapons.BRU_42_3_BDU_33)
+        _3_Mk_82 = (1, Weapons._3_Mk_82)
+
+    class Pylon2:
+        AIM_9M = (2, Weapons.AIM_9M)
+
+    class Pylon3:
+        Smoke_Generator___red_smk = (3, Weapons.Smoke_Generator___red_smk)
+        Smoke_Generator___white = (3, Weapons.Smoke_Generator___white)
+        Smoke_Generator___blue_smk = (3, Weapons.Smoke_Generator___blue_smk)
+        UPK_23_250 = (3, Weapons.UPK_23_250)
+
+    class Pylon4:
+        AIM_9M = (4, Weapons.AIM_9M)
+
+    class Pylon5:
+        LAU_61___19_2_75__rockets_MK151_HE = (5, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
+        CBU_87 = (5, Weapons.CBU_87)
+        BRU_42_3_BDU_33 = (5, Weapons.BRU_42_3_BDU_33)
+        _3_Mk_82 = (5, Weapons._3_Mk_82)
+
+    pylons = {1, 2, 3, 4, 5}
+
+    tasks = [task.CAP, task.CAS, task.Escort, task.FighterSweep, task.GroundAttack, task.Intercept]
+    task_default = task.CAP
+
+
+class M_2000C(PlaneType):
+    id = "M-2000C"
+    fuel_max = 3165.0
+    max_speed = 2520.0
+    chaff = 112
+    flare = 16
+    charge_total = 128
+    chaff_charge_size = 1
+    flare_charge_size = 1
+    category = "Air"
+
+    class Pylon1:
+        R_550_Magic_2 = (1, Weapons.R_550_Magic_2)
+        Matra_Magic_II = (1, Weapons.Matra_Magic_II)
+        Smokewinder___red_smk = (1, Weapons.Smokewinder___red_smk)
+        Smokewinder___white = (1, Weapons.Smokewinder___white)
+        Smokewinder___blue_smk = (1, Weapons.Smokewinder___blue_smk)
+
+    class Pylon2:
+        Super_530D = (2, Weapons.Super_530D)
+        Matra_Super_530D = (2, Weapons.Matra_Super_530D)
+        Matra_Type_155_Rocket_Pod = (2, Weapons.Matra_Type_155_Rocket_Pod)
+        Mk_82 = (2, Weapons.Mk_82)
+        Mk_82_SnakeEye = (2, Weapons.Mk_82_SnakeEye)
+        Mk_20 = (2, Weapons.Mk_20)
+        AUF2_MK_82_x_2 = (2, Weapons.AUF2_MK_82_x_2)
+        AUF2_MK_82_Snakeyes_x_2 = (2, Weapons.AUF2_MK_82_Snakeyes_x_2)
+        AUF2_BLG_66_x_2 = (2, Weapons.AUF2_BLG_66_x_2)
+        RPL_541_2000_liters_Fuel_Tank_ = (2, Weapons.RPL_541_2000_liters_Fuel_Tank_)
+
+    class Pylon3:
+        Mk_82 = (3, Weapons.Mk_82)
+        Mk_82_SnakeEye = (3, Weapons.Mk_82_SnakeEye)
+        Mk_20 = (3, Weapons.Mk_20)
+        GBU_12 = (3, Weapons.GBU_12)
+
+    class Pylon4:
+        Mk_82 = (4, Weapons.Mk_82)
+        Mk_82_SnakeEye = (4, Weapons.Mk_82_SnakeEye)
+        Mk_20 = (4, Weapons.Mk_20)
+
+    class Pylon5:
+        Mk_20 = (5, Weapons.Mk_20)
+        GBU_12 = (5, Weapons.GBU_12)
+        GBU_16 = (5, Weapons.GBU_16)
+        GBU_24 = (5, Weapons.GBU_24)
+        AUF2_GBU_12_x_2 = (5, Weapons.AUF2_GBU_12_x_2)
+        RPL_522_1300_liters_Fuel_Tank = (5, Weapons.RPL_522_1300_liters_Fuel_Tank)
+
+    class Pylon6:
+        Mk_82 = (6, Weapons.Mk_82)
+        Mk_82_SnakeEye = (6, Weapons.Mk_82_SnakeEye)
+        Mk_20 = (6, Weapons.Mk_20)
+
+    class Pylon7:
+        Mk_82 = (7, Weapons.Mk_82)
+        Mk_82_SnakeEye = (7, Weapons.Mk_82_SnakeEye)
+        Mk_20 = (7, Weapons.Mk_20)
+        GBU_12 = (7, Weapons.GBU_12)
+
+    class Pylon8:
+        Super_530D = (8, Weapons.Super_530D)
+        Matra_Super_530D = (8, Weapons.Matra_Super_530D)
+        Matra_Type_155_Rocket_Pod = (8, Weapons.Matra_Type_155_Rocket_Pod)
+        Mk_82 = (8, Weapons.Mk_82)
+        Mk_82_SnakeEye = (8, Weapons.Mk_82_SnakeEye)
+        Mk_20 = (8, Weapons.Mk_20)
+        AUF2_MK_82_x_2 = (8, Weapons.AUF2_MK_82_x_2)
+        AUF2_MK_82_Snakeyes_x_2 = (8, Weapons.AUF2_MK_82_Snakeyes_x_2)
+        AUF2_BLG_66_x_2 = (8, Weapons.AUF2_BLG_66_x_2)
+        RPL_541_2000_liters_Fuel_Tank__ = (8, Weapons.RPL_541_2000_liters_Fuel_Tank__)
+
+    class Pylon9:
+        R_550_Magic_2 = (9, Weapons.R_550_Magic_2)
+        Matra_Magic_II = (9, Weapons.Matra_Magic_II)
+        Smokewinder___red_smk = (9, Weapons.Smokewinder___red_smk)
+        Smokewinder___white = (9, Weapons.Smokewinder___white)
+        Smokewinder___blue_smk = (9, Weapons.Smokewinder___blue_smk)
+
+    pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9}
+
+    tasks = [task.GroundAttack, task.RunwayAttack, task.PinpointStrike, task.CAS, task.AFAC, task.CAP, task.Escort, task.FighterSweep, task.Intercept]
+    task_default = task.CAP
 
 
 plane_map = {
@@ -5466,4 +5621,8 @@ plane_map = {
     "A-10C": A_10C,
     "KC-135": KC_135,
     "P-51D": P_51D,
+    "Bf-109K-4": Bf_109K_4,
+    "FW-190D9": FW_190D9,
+    "Hawk": Hawk,
+    "M-2000C": M_2000C,
 }
