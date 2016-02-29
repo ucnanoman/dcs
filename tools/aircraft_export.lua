@@ -194,15 +194,17 @@ for i in pairs(aircrafts) do
         for j in pairs(plane.panelRadio) do
             cnt = 0
             print('        '..j..': {')
+            print('            "channels": {')
             for c in pairs(plane.panelRadio[j]["channels"]) do
                 channel = plane.panelRadio[j]["channels"][c]
-                local s = '            '..c..': '..channel.default
+                local s = '                '..c..': '..channel.default
                 if cnt + 1 < #plane.panelRadio[j]["channels"] then
                    s = s..','
                 end
                 print(s)
                 cnt = cnt + 1
             end
+            print('            },')
             print('        },')
         end
         print('    }')
