@@ -69,9 +69,13 @@ class Coalition:
 
     def add_country(self, country):
         self.countries[country.name] = country
+        return country
 
     def remove_country(self, name):
         return self.countries.pop(name)
+
+    def swap_country(self, coalition, name):
+        return coalition.add_country(self.remove_country(name))
 
     def country(self, country_name: str):
         return self.countries.get(country_name, None)
