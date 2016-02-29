@@ -144,11 +144,11 @@ class EngageTargetsInZone(Task):
 
 
 class EngageGroup(Task):
-    def __init__(self, group_id):
+    def __init__(self, group_id, visible=False):
         super(EngageGroup, self).__init__("EngageGroup")
         self.auto = False
         self.params = {
-            "visible": False,
+            "visible": visible,
             "groupId": group_id,
             "priority": 1,
             "weaponType": 1073741822
@@ -158,11 +158,11 @@ class EngageGroup(Task):
 
 
 class EngageUnit(Task):
-    def __init__(self, unit_id):
+    def __init__(self, unit_id, visible=False):
         super(EngageUnit, self).__init__("EngageUnit")
         self.auto = False
         self.params = {
-            "visible": False,
+            "visible": visible,
             "groupAttack": False,
             "unitId": unit_id,
             "priority": 1,
