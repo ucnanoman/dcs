@@ -34,3 +34,42 @@ class VehicleTemplate:
             vg.add_unit(u)
 
             return vg
+
+    class USA:
+        @staticmethod
+        def patriot_site(mission: Mission, x, y, heading, prefix=""):
+            usa = mission.country("USA")
+            vg = mission.vehicle_group(usa, prefix + "Patriot site", USA.Vehicle.Patriot_cp, x, y, heading)
+
+            hdg = 90
+            for i in range(0, 2): # 2 launchers
+                vx, vy = mapping.point_from_heading(x, y, heading + hdg, 50)
+                u = mission.vehicle("launcher #" + str(i+1), USA.Vehicle.Patriot_ln)
+                u.x = vx
+                u.y = vy
+                vg.add_unit(u)
+                hdg += 90
+
+            vx, vy = mapping.point_from_heading(x, y, heading + 180, 20)
+            u = mission.vehicle("epp", USA.Vehicle.Patriot_EPP)
+            u.x = vx
+            u.y = vy
+            vg.add_unit(u)
+
+            vx, vy = mapping.point_from_heading(x, y, heading, 80)
+            u = mission.vehicle("radar", USA.Vehicle.Patriot_str)
+            u.x = vx
+            u.y = vy
+            vg.add_unit(u)
+
+            vx, vy = mapping.point_from_heading(x, y, heading + 180, 100)
+            u = mission.vehicle("Antenna", USA.Vehicle.Patriot_AMG)
+            u.x = vx
+            u.y = vy
+            vg.add_unit(u)
+
+            vx, vy = mapping.point_from_heading(x, y, heading + 120, 80)
+            u = mission.vehicle("epp", USA.Vehicle.Patriot_ECS)
+            u.x = vx
+            u.y = vy
+            vg.add_unit(u)
