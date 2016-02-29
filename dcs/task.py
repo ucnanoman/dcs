@@ -92,16 +92,21 @@ class FighterSweepTaskAction(Task):
 
 
 class EscortTaskAction(Task):
-    def __init__(self, group_id, engagement_max_dist=60000):
+    def __init__(self, group_id=None, engagement_max_dist=60000, lastwpt=None):
         super(EscortTaskAction, self).__init__("Escort")
         self.params = {
-            "lastWptIndexFlagChangedManually": True,
-            "groupId": group_id,
+            "lastWptIndexFlagChangedManually": False,
             "lastWptIndexFlag": False,
             "engagementDistMax": engagement_max_dist,
             "targetTypes": {1: "Planes"},
             "pos": {"x": -200, "y": -500, "z": 0}
         }
+        if group_id:
+            self.params["groupId"] = group_id
+        if lastwpt:
+            self.params["lastWptIndexFlagChangedManually"] = True
+            self.params["lastWptIndexFlag"] = True
+            self.params["lastWptIndex"] = lastwpt
 
 
 class AttackGroup(Task):
