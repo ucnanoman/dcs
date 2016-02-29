@@ -86,10 +86,10 @@ while i <= #keys do
 	print(s)
 end
 else
-print('# This file is generated from weapon_export.lua')
-print()
-print()
-print("class Weapons:")
+print([[# This file is generated from weapon_export.lua
+
+
+class Weapons:]])
 local i = 1
 while i <= #keys do
 	local x = keys[i]
@@ -98,7 +98,7 @@ while i <= #keys do
 	i = i + 1
 end
 
-print()
+print('')
 print("weapon_ids = {")
 i = 1
 while i <= #keys do
