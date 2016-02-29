@@ -24,6 +24,7 @@ function makeAirplaneCanopyGeometry(a, b, c)
 end
 
 ed_path = "C:/Program Files/Eagle Dynamics/DCS World"
+--ed_path = "/home/rp/dcs_data"
 db_path = ed_path.."/Scripts/Database/"
 
 dofile(db_path.."PlaneConst.lua")
@@ -31,6 +32,83 @@ dofile(db_path.."HelicopterConst.lua")
 dofile(db_path.."db_units_planes.lua")
 dofile("weapons_map.lua")
 
+-- functions for mods
+local function form_helicopter(t)
+    t.MaxSpeed  = t.V_max
+end
+
+local function form_plane(t)
+    t.WingSpan  = t.wing_span
+    t.MaxSpeed  = t.V_max_h * 3.6
+end
+
+function add_aircraft(t)
+
+	table.insert(db.Units.Planes.Plane,t);
+
+	t.attribute[4]  	= t.WorldID
+    t.stores_number     = #t.Pylons
+    t.EmptyWeight       = t.M_empty
+    t.MaxFuelWeight     = t.M_fuel_max
+    t.MaxTakeOffWeight  = t.M_max
+    t.MaxHeight         = t.H_max
+	if t.HumanRadio   == nil then
+       t.HumanRadio = {
+            frequency = 251.0,
+            editable = true,
+            minFrequency = 225.000,
+            maxFrequency = 399.975,
+            modulation = MODULATION_AM
+            }
+    end
+
+	t.AmmoWeight = get_aircraft_ammo_mass(t.Guns);
+
+	if #t.Tasks == 0 then
+		t.Tasks = {
+					aircraft_task(Reconnaissance)
+				  }
+	end
+
+	if  t.attribute[2] == wsType_Airplane then
+        form_plane(t)
+    else -- helicopter
+        form_helicopter(t)
+    end
+end
+
+-- dummy functions
+function mount_vfs_model_path() end
+function mount_vfs_liveries_path() end
+function mount_vfs_texture_path() end
+function mount_vfs_sound_path() end
+function declare_loadout() end
+function simple_aa_warhead() end
+function declare_weapon() end
+function gun_mount() end
+function verbose_to_dmg_properties() end
+
+-- load mods
+dofile(ed_path.."/CoreMods/WWII Units/Weapons.lua")
+
+mod_planes = {}
+mod_planes["M-2000C"] = ed_path.."/CoreMods/aircraft/M-2000C"
+mod_planes["Hawk"] = ed_path.."/CoreMods/aircraft/Hawk"
+mod_planes["Bf-109K-4"] = ed_path.."/CoreMods/WWII Units"
+mod_planes["FW-190D9"] = ed_path.."/CoreMods/WWII Units"
+
+-- make sure output is stable
+plane_keys = {}
+for n in pairs(mod_planes) do table.insert(plane_keys, n) end
+table.sort(plane_keys)
+
+for i,k in pairs(plane_keys) do
+    local v = mod_planes[k]
+    current_mod_path = v
+    dofile(v.."/"..k..".lua")
+end
+
+-- generate export output
 print([[
 # This file is generated from plane_export.lua
 
