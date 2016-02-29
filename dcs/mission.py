@@ -968,7 +968,7 @@ class Mission:
                       altitude=4500,
                       speed=407,
                       coldstart=True,
-                      frequency=150,
+                      frequency=140,
                       tacanchannel="10X") -> PlaneGroup:
         if airport:
             tanker = self.plane_group_from_parking(_country, name, plane_type, airport, coldstart=coldstart)
@@ -1005,7 +1005,7 @@ class Mission:
                      altitude=4500,
                      speed=550,
                      coldstart=True,
-                     frequency=150) -> PlaneGroup:
+                     frequency=140) -> PlaneGroup:
         if airport:
             awacs = self.plane_group_from_parking(_country, name, plane_type, airport, coldstart=coldstart)
             wp = awacs.add_runway_waypoint(airport)
