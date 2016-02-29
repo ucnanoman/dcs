@@ -67,6 +67,7 @@ class FlyingUnit(Unit):
         self.callsign = None
         self.callsign_dict = {1: 1, 2: 1, 3: 1, "name": ""}
         self.speed = 0
+        self.radio = None
 
     def load_from_dict(self, dict):
         self.x = dict["x"]
@@ -93,6 +94,7 @@ class FlyingUnit(Unit):
             self.callsign_dict = dict["callsign"]
         self.parking = dict.get("parking", None)
         self.speed = dict["speed"]
+        self.radio = dict.get("Radio")
         return True
 
     def set_parking(self, parking_slot: ParkingSlot):
@@ -148,4 +150,6 @@ class FlyingUnit(Unit):
             d["callsign"] = self.callsign
         else:
             d["callsign"] = self.callsign_dict
+        if self.radio:
+            d["Radio"] = self.radio
         return d

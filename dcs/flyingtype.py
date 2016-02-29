@@ -20,6 +20,8 @@ class FlyingType:
     tacan = False
     eplrs = False
 
+    panel_radio = None
+
     pylons = {}
     payloads = None
     payload_dirs = [
