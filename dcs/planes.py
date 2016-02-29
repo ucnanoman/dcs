@@ -5537,6 +5537,196 @@ class Hawk(PlaneType):
     task_default = task.CAP
 
 
+class L_39C(PlaneType):
+    id = "L-39C"
+    fuel_max = 980
+    max_speed = 763.2
+    chaff = 0
+    flare = 0
+    charge_total = 0
+    chaff_charge_size = 0
+    flare_charge_size = 0
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 305,
+                2: 264,
+                4: 256,
+                8: 257,
+                16: 261,
+                17: 267,
+                9: 255,
+                18: 251,
+                5: 254,
+                10: 262,
+                20: 266,
+                11: 259,
+                3: 265,
+                6: 250,
+                12: 268,
+                13: 269,
+                7: 270,
+                14: 260,
+                19: 253,
+                15: 263
+            },
+        },
+    }
+
+    class Pylon1:
+        FAB_100 = (1, Weapons.FAB_100)
+        SAB_100 = (1, Weapons.SAB_100)
+        UB_16___16_S_5KO = (1, Weapons.UB_16___16_S_5KO)
+        P_50T = (1, Weapons.P_50T)
+        Fuel_Tank_150_liters = (1, Weapons.Fuel_Tank_150_liters)
+        R_3S = (1, Weapons.R_3S)
+        Smoke_Generator___red_smk = (1, Weapons.Smoke_Generator___red_smk)
+        Smoke_Generator___green = (1, Weapons.Smoke_Generator___green)
+        Smoke_Generator___blue_smk = (1, Weapons.Smoke_Generator___blue_smk)
+        Smoke_Generator___white = (1, Weapons.Smoke_Generator___white)
+        Smoke_Generator___yellow = (1, Weapons.Smoke_Generator___yellow)
+        Smoke_Generator___orange = (1, Weapons.Smoke_Generator___orange)
+
+    class Pylon2:
+        Smoke_Generator___red_smk_ = (2, Weapons.Smoke_Generator___red_smk_)
+        Smoke_Generator___green_ = (2, Weapons.Smoke_Generator___green_)
+        Smoke_Generator___blue_smk_ = (2, Weapons.Smoke_Generator___blue_smk_)
+        Smoke_Generator___white_ = (2, Weapons.Smoke_Generator___white_)
+        Smoke_Generator___yellow_ = (2, Weapons.Smoke_Generator___yellow_)
+        Smoke_Generator___orange_ = (2, Weapons.Smoke_Generator___orange_)
+
+    class Pylon3:
+        FAB_100 = (3, Weapons.FAB_100)
+        SAB_100 = (3, Weapons.SAB_100)
+        UB_16___16_S_5KO = (3, Weapons.UB_16___16_S_5KO)
+        P_50T = (3, Weapons.P_50T)
+        Fuel_Tank_150_liters = (3, Weapons.Fuel_Tank_150_liters)
+        R_3S = (3, Weapons.R_3S)
+        Smoke_Generator___red_smk = (3, Weapons.Smoke_Generator___red_smk)
+        Smoke_Generator___green = (3, Weapons.Smoke_Generator___green)
+        Smoke_Generator___blue_smk = (3, Weapons.Smoke_Generator___blue_smk)
+        Smoke_Generator___white = (3, Weapons.Smoke_Generator___white)
+        Smoke_Generator___yellow = (3, Weapons.Smoke_Generator___yellow)
+        Smoke_Generator___orange = (3, Weapons.Smoke_Generator___orange)
+
+    pylons = {1, 2, 3}
+
+    tasks = [task.GroundAttack, task.RunwayAttack, task.CAS, task.AFAC, task.CAP, task.AntishipStrike]
+    task_default = task.CAS
+
+
+class L_39ZA(PlaneType):
+    id = "L-39ZA"
+    fuel_max = 980
+    max_speed = 763.2
+    chaff = 0
+    flare = 0
+    charge_total = 0
+    chaff_charge_size = 0
+    flare_charge_size = 0
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 305,
+                2: 264,
+                4: 256,
+                8: 257,
+                16: 261,
+                17: 267,
+                9: 255,
+                18: 251,
+                5: 254,
+                10: 262,
+                20: 266,
+                11: 259,
+                3: 265,
+                6: 250,
+                12: 268,
+                13: 269,
+                7: 270,
+                14: 260,
+                19: 253,
+                15: 263
+            },
+        },
+    }
+
+    class Pylon1:
+        FAB_100 = (1, Weapons.FAB_100)
+        SAB_100 = (1, Weapons.SAB_100)
+        FAB_250 = (1, Weapons.FAB_250)
+        OFAB_100_Jupiter = (1, Weapons.OFAB_100_Jupiter)
+        P_50T = (1, Weapons.P_50T)
+        OFAB_100_Jupiter_x2 = (1, Weapons.OFAB_100_Jupiter_x2)
+        UB_16___16_S_5KO = (1, Weapons.UB_16___16_S_5KO)
+        PK_3 = (1, Weapons.PK_3)
+        R_3S = (1, Weapons.R_3S)
+        APU_60_1_R_60M = (1, Weapons.APU_60_1_R_60M)
+        Smoke_Generator___red_smk = (1, Weapons.Smoke_Generator___red_smk)
+        Smoke_Generator___green = (1, Weapons.Smoke_Generator___green)
+        Smoke_Generator___blue_smk = (1, Weapons.Smoke_Generator___blue_smk)
+        Smoke_Generator___white = (1, Weapons.Smoke_Generator___white)
+        Smoke_Generator___yellow = (1, Weapons.Smoke_Generator___yellow)
+        Smoke_Generator___orange = (1, Weapons.Smoke_Generator___orange)
+
+    class Pylon2:
+        FAB_100 = (2, Weapons.FAB_100)
+        SAB_100 = (2, Weapons.SAB_100)
+        FAB_250 = (2, Weapons.FAB_250)
+        OFAB_100_Jupiter = (2, Weapons.OFAB_100_Jupiter)
+        P_50T = (2, Weapons.P_50T)
+        OFAB_100_Jupiter_x2 = (2, Weapons.OFAB_100_Jupiter_x2)
+        UB_16___16_S_5KO = (2, Weapons.UB_16___16_S_5KO)
+        PK_3 = (2, Weapons.PK_3)
+        Fuel_Tank_150_liters = (2, Weapons.Fuel_Tank_150_liters)
+        Fuel_Tank_350_liters = (2, Weapons.Fuel_Tank_350_liters)
+
+    class Pylon3:
+        Smoke_Generator___red_smk_ = (3, Weapons.Smoke_Generator___red_smk_)
+        Smoke_Generator___green_ = (3, Weapons.Smoke_Generator___green_)
+        Smoke_Generator___blue_smk_ = (3, Weapons.Smoke_Generator___blue_smk_)
+        Smoke_Generator___white_ = (3, Weapons.Smoke_Generator___white_)
+        Smoke_Generator___yellow_ = (3, Weapons.Smoke_Generator___yellow_)
+        Smoke_Generator___orange_ = (3, Weapons.Smoke_Generator___orange_)
+
+    class Pylon4:
+        FAB_100 = (4, Weapons.FAB_100)
+        SAB_100 = (4, Weapons.SAB_100)
+        FAB_250 = (4, Weapons.FAB_250)
+        OFAB_100_Jupiter = (4, Weapons.OFAB_100_Jupiter)
+        P_50T = (4, Weapons.P_50T)
+        OFAB_100_Jupiter_x2 = (4, Weapons.OFAB_100_Jupiter_x2)
+        UB_16___16_S_5KO = (4, Weapons.UB_16___16_S_5KO)
+        PK_3 = (4, Weapons.PK_3)
+        Fuel_Tank_150_liters = (4, Weapons.Fuel_Tank_150_liters)
+        Fuel_Tank_350_liters = (4, Weapons.Fuel_Tank_350_liters)
+
+    class Pylon5:
+        FAB_100 = (5, Weapons.FAB_100)
+        SAB_100 = (5, Weapons.SAB_100)
+        FAB_250 = (5, Weapons.FAB_250)
+        OFAB_100_Jupiter = (5, Weapons.OFAB_100_Jupiter)
+        P_50T = (5, Weapons.P_50T)
+        OFAB_100_Jupiter_x2 = (5, Weapons.OFAB_100_Jupiter_x2)
+        UB_16___16_S_5KO = (5, Weapons.UB_16___16_S_5KO)
+        PK_3 = (5, Weapons.PK_3)
+        R_3S = (5, Weapons.R_3S)
+        APU_60_1_R_60M = (5, Weapons.APU_60_1_R_60M)
+        Smoke_Generator___red_smk = (5, Weapons.Smoke_Generator___red_smk)
+        Smoke_Generator___green = (5, Weapons.Smoke_Generator___green)
+        Smoke_Generator___blue_smk = (5, Weapons.Smoke_Generator___blue_smk)
+        Smoke_Generator___white = (5, Weapons.Smoke_Generator___white)
+        Smoke_Generator___yellow = (5, Weapons.Smoke_Generator___yellow)
+        Smoke_Generator___orange = (5, Weapons.Smoke_Generator___orange)
+
+    pylons = {1, 2, 3, 4, 5}
+
+    tasks = [task.GroundAttack, task.RunwayAttack, task.CAS, task.AFAC, task.CAP, task.AntishipStrike]
+    task_default = task.CAS
+
+
 class M_2000C(PlaneType):
     id = "M-2000C"
     fuel_max = 3165
@@ -5673,6 +5863,217 @@ class M_2000C(PlaneType):
     task_default = task.CAP
 
 
+class MiG_15bis(PlaneType):
+    id = "MiG-15bis"
+    fuel_max = 1172
+    max_speed = 992
+    category = "Air"
+
+    class Pylon1:
+        FAB_50 = (1, Weapons.FAB_50)
+        FAB_100M = (1, Weapons.FAB_100M)
+        PTB400_MIG15 = (1, Weapons.PTB400_MIG15)
+        PTB600_MIG15 = (1, Weapons.PTB600_MIG15)
+        PTB300_MIG15 = (1, Weapons.PTB300_MIG15)
+
+    class Pylon2:
+        FAB_50 = (2, Weapons.FAB_50)
+        FAB_100M = (2, Weapons.FAB_100M)
+        PTB400_MIG15 = (2, Weapons.PTB400_MIG15)
+        PTB600_MIG15 = (2, Weapons.PTB600_MIG15)
+        PTB300_MIG15 = (2, Weapons.PTB300_MIG15)
+
+    pylons = {1, 2}
+
+    tasks = [task.CAP, task.CAS, task.Escort, task.FighterSweep, task.GroundAttack, task.Intercept]
+    task_default = task.CAP
+
+
+class MQ_9_Reaper(PlaneType):
+    id = "MQ-9 Reaper"
+    group_size_max = 1
+    fuel_max = 1300
+    max_speed = 400
+    eplrs = True
+
+    class Pylon1:
+        GBU_12 = (1, Weapons.GBU_12)
+        GBU_38 = (1, Weapons.GBU_38)
+        AGM114x2_OH_58 = (1, Weapons.AGM114x2_OH_58)
+        AGM_114K___4 = (1, Weapons.AGM_114K___4)
+
+    class Pylon2:
+        GBU_12 = (2, Weapons.GBU_12)
+        GBU_38 = (2, Weapons.GBU_38)
+        AGM114x2_OH_58 = (2, Weapons.AGM114x2_OH_58)
+
+    class Pylon3:
+        GBU_12 = (3, Weapons.GBU_12)
+        GBU_38 = (3, Weapons.GBU_38)
+        AGM114x2_OH_58 = (3, Weapons.AGM114x2_OH_58)
+
+    class Pylon4:
+        GBU_12 = (4, Weapons.GBU_12)
+        GBU_38 = (4, Weapons.GBU_38)
+        AGM114x2_OH_58 = (4, Weapons.AGM114x2_OH_58)
+        AGM_114K___4 = (4, Weapons.AGM_114K___4)
+
+    pylons = {1, 2, 3, 4}
+
+    tasks = [task.GroundAttack, task.CAS, task.AFAC, task.Reconnaissance]
+    task_default = task.Reconnaissance
+
+
+class MiG_21Bis(PlaneType):
+    id = "MiG-21Bis"
+    fuel_max = 2280
+    max_speed = 2509.2
+    chaff = 32
+    flare = 32
+    charge_total = 64
+    chaff_charge_size = 1
+    flare_charge_size = 1
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 124,
+                2: 150,
+                4: 131,
+                8: 133,
+                16: 123,
+                17: 132,
+                9: 122,
+                18: 127,
+                5: 141,
+                10: 124,
+                20: 138,
+                11: 134,
+                3: 121,
+                6: 126,
+                12: 125,
+                13: 135,
+                7: 130,
+                14: 137,
+                19: 129,
+                15: 136
+            },
+        },
+    }
+
+    class Pylon1:
+        UB_16UM___16_S_5M = (1, Weapons.UB_16UM___16_S_5M)
+        S_24B__ = (1, Weapons.S_24B__)
+        S_24A = (1, Weapons.S_24A)
+        FAB_100 = (1, Weapons.FAB_100)
+        FAB_250 = (1, Weapons.FAB_250)
+        RBK_250_PTAB_2_5M = (1, Weapons.RBK_250_PTAB_2_5M)
+        FAB_250_M54_TU = (1, Weapons.FAB_250_M54_TU)
+        SAB_100 = (1, Weapons.SAB_100)
+        R_3R = (1, Weapons.R_3R)
+        R_3S = (1, Weapons.R_3S)
+        RS_2US = (1, Weapons.RS_2US)
+        R_60 = (1, Weapons.R_60)
+        R_60M_ = (1, Weapons.R_60M_)
+        R_60M_x_2 = (1, Weapons.R_60M_x_2)
+        R_60_x_2 = (1, Weapons.R_60_x_2)
+        Fuel_Tank_490_L__21_ = (1, Weapons.Fuel_Tank_490_L__21_)
+
+    class Pylon2:
+        UB_16UM___16_S_5M = (2, Weapons.UB_16UM___16_S_5M)
+        UB_32M___32_S_5M = (2, Weapons.UB_32M___32_S_5M)
+        S_24B__ = (2, Weapons.S_24B__)
+        S_24A = (2, Weapons.S_24A)
+        FAB_100_x_4 = (2, Weapons.FAB_100_x_4)
+        FAB_100 = (2, Weapons.FAB_100)
+        FAB_250 = (2, Weapons.FAB_250)
+        FAB_500_M62 = (2, Weapons.FAB_500_M62)
+        BetAB_500 = (2, Weapons.BetAB_500)
+        BetAB_500ShP = (2, Weapons.BetAB_500ShP)
+        RBK_250_PTAB_2_5M = (2, Weapons.RBK_250_PTAB_2_5M)
+        RBK_500_PTAB_10_5 = (2, Weapons.RBK_500_PTAB_10_5)
+        BL755 = (2, Weapons.BL755)
+        SAB_100 = (2, Weapons.SAB_100)
+        Kh_66_Grom__21__APU_68 = (2, Weapons.Kh_66_Grom__21__APU_68)
+        R_13M = (2, Weapons.R_13M)
+        R_13M1 = (2, Weapons.R_13M1)
+        R_3R = (2, Weapons.R_3R)
+        R_3S = (2, Weapons.R_3S)
+        RS_2US = (2, Weapons.RS_2US)
+        R_55 = (2, Weapons.R_55)
+        R_60 = (2, Weapons.R_60)
+        R_60M_ = (2, Weapons.R_60M_)
+        R_60M_x_2 = (2, Weapons.R_60M_x_2)
+        R_60_x_2 = (2, Weapons.R_60_x_2)
+        UPK_23_250_ = (2, Weapons.UPK_23_250_)
+
+    class Pylon3:
+        RN_24 = (3, Weapons.RN_24)
+        RN_28 = (3, Weapons.RN_28)
+        SPS_141_100__21_ = (3, Weapons.SPS_141_100__21_)
+        Fuel_Tank_490_L_Central__21_ = (3, Weapons.Fuel_Tank_490_L_Central__21_)
+        Fuel_Tank_800_L__21_ = (3, Weapons.Fuel_Tank_800_L__21_)
+
+    class Pylon4:
+        UB_16UM___16_S_5M = (4, Weapons.UB_16UM___16_S_5M)
+        UB_32M___32_S_5M = (4, Weapons.UB_32M___32_S_5M)
+        S_24B__ = (4, Weapons.S_24B__)
+        S_24A = (4, Weapons.S_24A)
+        FAB_100_x_4 = (4, Weapons.FAB_100_x_4)
+        FAB_100 = (4, Weapons.FAB_100)
+        FAB_250 = (4, Weapons.FAB_250)
+        FAB_500_M62 = (4, Weapons.FAB_500_M62)
+        BetAB_500 = (4, Weapons.BetAB_500)
+        BetAB_500ShP = (4, Weapons.BetAB_500ShP)
+        RBK_250_PTAB_2_5M = (4, Weapons.RBK_250_PTAB_2_5M)
+        RBK_500_PTAB_10_5 = (4, Weapons.RBK_500_PTAB_10_5)
+        BL755 = (4, Weapons.BL755)
+        SAB_100 = (4, Weapons.SAB_100)
+        Kh_66_Grom__21__APU_68 = (4, Weapons.Kh_66_Grom__21__APU_68)
+        R_13M = (4, Weapons.R_13M)
+        R_13M1 = (4, Weapons.R_13M1)
+        R_3R = (4, Weapons.R_3R)
+        R_3S = (4, Weapons.R_3S)
+        RS_2US = (4, Weapons.RS_2US)
+        R_55 = (4, Weapons.R_55)
+        R_60 = (4, Weapons.R_60)
+        R_60M_ = (4, Weapons.R_60M_)
+        R_60M_x_2_ = (4, Weapons.R_60M_x_2_)
+        R_60_x_2_ = (4, Weapons.R_60_x_2_)
+        UPK_23_250_ = (4, Weapons.UPK_23_250_)
+
+    class Pylon5:
+        UB_16UM___16_S_5M = (5, Weapons.UB_16UM___16_S_5M)
+        S_24B__ = (5, Weapons.S_24B__)
+        S_24A = (5, Weapons.S_24A)
+        FAB_100 = (5, Weapons.FAB_100)
+        FAB_250 = (5, Weapons.FAB_250)
+        RBK_250_PTAB_2_5M = (5, Weapons.RBK_250_PTAB_2_5M)
+#ERRR {40A24F07-CD7D-4F83-89A2-39B2258B62C6}
+        FAB_250_M54_TU = (5, Weapons.FAB_250_M54_TU)
+        SAB_100 = (5, Weapons.SAB_100)
+        R_3R = (5, Weapons.R_3R)
+        R_3S = (5, Weapons.R_3S)
+        RS_2US = (5, Weapons.RS_2US)
+        R_60 = (5, Weapons.R_60)
+        R_60M_ = (5, Weapons.R_60M_)
+        R_60M_x_2_ = (5, Weapons.R_60M_x_2_)
+        R_60_x_2_ = (5, Weapons.R_60_x_2_)
+        Fuel_Tank_490_L__21_ = (5, Weapons.Fuel_Tank_490_L__21_)
+
+    class Pylon6:
+        ASO_2 = (6, Weapons.ASO_2)
+        SPRD_99 = (6, Weapons.SPRD_99)
+
+    class Pylon7:
+        Smoke___white___21 = (7, Weapons.Smoke___white___21)
+
+    pylons = {1, 2, 3, 4, 5, 6, 7}
+
+    tasks = [task.Intercept, task.CAP, task.Escort, task.CAS, task.GroundAttack]
+    task_default = task.CAP
+
+
 plane_map = {
     "Tornado GR4": Tornado_GR4,
     "Tornado IDS": Tornado_IDS,
@@ -5734,5 +6135,10 @@ plane_map = {
     "Bf-109K-4": Bf_109K_4,
     "FW-190D9": FW_190D9,
     "Hawk": Hawk,
+    "L-39C": L_39C,
+    "L-39ZA": L_39ZA,
     "M-2000C": M_2000C,
+    "MiG-15bis": MiG_15bis,
+    "MQ-9 Reaper": MQ_9_Reaper,
+    "MiG-21Bis": MiG_21Bis,
 }
