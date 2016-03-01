@@ -51,7 +51,7 @@ class VehicleTemplate:
                 hdg += 90
 
             vx, vy = mapping.point_from_heading(x, y, heading + 180, 20)
-            u = mission.vehicle("epp", USA.Vehicle.Patriot_EPP)
+            u = mission.vehicle("Electronic power plant", USA.Vehicle.Patriot_EPP)
             u.x = vx
             u.y = vy
             vg.add_unit(u)
@@ -69,7 +69,7 @@ class VehicleTemplate:
             vg.add_unit(u)
 
             vx, vy = mapping.point_from_heading(x, y, heading + 120, 80)
-            u = mission.vehicle("epp", USA.Vehicle.Patriot_ECS)
+            u = mission.vehicle("ECS", USA.Vehicle.Patriot_ECS)
             u.x = vx
             u.y = vy
             vg.add_unit(u)
