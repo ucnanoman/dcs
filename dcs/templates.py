@@ -42,7 +42,7 @@ class VehicleTemplate:
             vg = mission.vehicle_group(usa, prefix + "Patriot site", USA.Vehicle.Patriot_cp, x, y, heading)
 
             hdg = 90
-            for i in range(0, 2): # 2 launchers
+            for i in range(0, 2):  # 2 launchers
                 vx, vy = mapping.point_from_heading(x, y, heading + hdg, 50)
                 u = mission.vehicle("launcher #" + str(i+1), USA.Vehicle.Patriot_ln)
                 u.x = vx
@@ -70,6 +70,38 @@ class VehicleTemplate:
 
             vx, vy = mapping.point_from_heading(x, y, heading + 120, 80)
             u = mission.vehicle("ECS", USA.Vehicle.Patriot_ECS)
+            u.x = vx
+            u.y = vy
+            vg.add_unit(u)
+
+        @staticmethod
+        def hawk_site(mission: Mission, x, y, heading, prefix=""):
+            usa = mission.country("USA")
+            vg = mission.vehicle_group(usa, prefix + "Hawk site", USA.Vehicle.Hawk_pcp, x, y, heading)
+
+            hdg = 90
+            for i in range(0, 2):  # 2 launchers
+                vx, vy = mapping.point_from_heading(x, y, heading + hdg, 50)
+                u = mission.vehicle("launcher #" + str(i+1), USA.Vehicle.Hawk_ln)
+                u.x = vx
+                u.y = vy
+                vg.add_unit(u)
+                hdg += 90
+
+            vx, vy = mapping.point_from_heading(x, y, heading + 180, 20)
+            u = mission.vehicle("Radar", USA.Vehicle.Hawk_sr)
+            u.x = vx
+            u.y = vy
+            vg.add_unit(u)
+
+            vx, vy = mapping.point_from_heading(x, y, heading, 80)
+            u = mission.vehicle("Tower", USA.Vehicle.Hawk_tr)
+            u.x = vx
+            u.y = vy
+            vg.add_unit(u)
+
+            vx, vy = mapping.point_from_heading(x, y, heading + 180, 100)
+            u = mission.vehicle("Wave Radar", USA.Vehicle.Hawk_cwar)
             u.x = vx
             u.y = vy
             vg.add_unit(u)
