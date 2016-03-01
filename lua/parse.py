@@ -1,6 +1,6 @@
 def loads(tablestr):
 
-    class Parser():
+    class Parser:
 
         def __init__(self, buffer):
             self.buffer = buffer
@@ -11,11 +11,12 @@ def loads(tablestr):
         def value(self):
             self.eat_ws()
 
-            if self.buffer[self.pos] == '{':
+            c = self.char()
+            if c == '{':
                 return self.object()
-            elif self.buffer[self.pos] == '"':
+            elif c == '"':
                 return self.string()
-            elif self.char().isnumeric() or self.char() == '-':
+            elif c.isnumeric() or c == '-':
                 return self.number()
             else:  # varname
                 varname = self.eatvarname()
@@ -26,7 +27,7 @@ def loads(tablestr):
                     self.eat_ws()
                     varname = self.eatvarname()
                 self.eat_ws()
-                if not self.eob() and self.buffer[self.pos] == '=':
+                if not self.eob() and self.char() == '=':
                     self.pos += 1
                     return {varname: self.value()}
                 else:
@@ -56,7 +57,7 @@ def loads(tablestr):
                 if state == 0:
                     if c == '"':
                         state = 1
-                        self.advance()
+                        self.pos += 1
                     elif c == '\\':
                         state = 2
                     else:
@@ -78,7 +79,7 @@ def loads(tablestr):
                     (self.char().isnumeric() or self.char() == '.' or
                         self.char().lower() == 'e')):
                 n += self.char()
-                self.advance()
+                self.pos += 1
 
             num = float(n) * sign
             if num.is_integer():
@@ -152,9 +153,10 @@ def loads(tablestr):
                 d[key] = val
                 # print(key, ':', val)
 
-                if self.char() == '}':
+                c = self.char()
+                if c == '}':
                     break
-                elif self.char() == ',':
+                elif c == ',':
                     if self.advance():
                         raise self.eob_exception()
                     self.eat_ws()
@@ -165,7 +167,7 @@ def loads(tablestr):
                     se.text = "Unexpected character '{char}'".format(char=self.char())
                     raise se
 
-            self.advance()
+            self.pos += 1
 
             return d
 
@@ -182,15 +184,21 @@ def loads(tablestr):
                 self.pos + 1 < self.buflen and
                 self.buffer[self.pos + 1] == '-'):
                 while not self.eob() and self.char() != '\n':
-                    self.advance()
+                    self.pos += 1
 
         def eat_ws(self):
             self.eat_comment()
-            while not self.eob() and self.char().isspace():
-                if self.char() == '\n':
+            while True:
+                if self.eob():
+                    break
+                c = self.char()
+                if not c.isspace():
+                    break
+                if c == '\n':
                     self.lineno += 1
+                if c == '-':
+                    self.eat_comment()
                 self.pos += 1
-                self.eat_comment()
 
         def eob(self):
             return self.pos >= self.buflen
