@@ -732,6 +732,10 @@ class Mission:
         return pg
 
     def plane_group_from_runway(self, _country, name, plane_type: PlaneType, airport: Airport, task: dcs.task.MainTask=None, group_size=1):
+        if not airport.runway_free:
+            raise RuntimeError("Runway already occupied.")
+
+        airport.runway_free = False
         if task is None:
             task = plane_type.task_default
 

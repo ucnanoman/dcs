@@ -38,6 +38,7 @@ class Airport:
         self.y = y
         self.runways = []  # type: list[Runway]
         self.parking_slots = {}  # type: dict[str:ParkingSlot]
+        self.runway_free = True
 
         # warehouse values
         self.coalition = "NEUTRAL"
