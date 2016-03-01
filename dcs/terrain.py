@@ -463,22 +463,22 @@ class Caucasus(Terrain):
         beslan.parking_slots[63] = ParkingSlot(63, -148856.03125, 843784.9375, True, "07", heli=True)
         self.airports[beslan.name] = beslan
 
-    def airport_soganlug(self):
+    def airport_soganlug(self) -> Airport:
         return self.airports["Soganlug"]
 
-    def airport_senaki(self):
+    def airport_senaki(self) -> Airport:
         return self.airports["Senaki"]
 
-    def airport_sochi(self):
+    def airport_sochi(self) -> Airport:
         return self.airports["Sochi"]
 
-    def airport_batumi(self):
+    def airport_batumi(self) -> Airport:
         return self.airports["Batumi"]
 
-    def airport_nalchik(self):
+    def airport_nalchik(self) -> Airport:
         return self.airports["Nalchik"]
 
-    def airport_beslan(self):
+    def airport_beslan(self) -> Airport:
         return self.airports["Beslan"]
 
 
