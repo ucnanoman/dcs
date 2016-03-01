@@ -29,6 +29,12 @@ class Cyclone:
 
 
 class Weather:
+    class Season:
+        Summer = 1
+        Winter = 2
+        Spring = 3
+        Fall = 4
+
     def __init__(self):
         self.atmosphere_type = 0
         self.wind_at_ground = Wind()
@@ -39,7 +45,7 @@ class Weather:
         self.turbulence_at_2000 = 0
         self.turbulence_at_8000 = 0
         self.season_temperature = 20
-        self.season_iseason = 1
+        self.season_iseason = Weather.Season.Summer
         self.type_weather = 0
         self.qnh = 760
         self.cyclones = []
