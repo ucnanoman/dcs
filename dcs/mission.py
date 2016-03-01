@@ -215,7 +215,7 @@ class Mission:
         self.pictureFileNameB = ""
         self.version = 9
         self.currentKey = 0
-        self.start_time = 43200
+        self.start_time = 43200  # start time in seconds, startin from 1. june 00:00:00, no negative values
         self.terrain = terrain
         self.trigrules = {}
         self.triggers = Triggers()
