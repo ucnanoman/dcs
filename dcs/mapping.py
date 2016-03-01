@@ -11,6 +11,8 @@ def point_from_heading(_x, _y, heading, distance):
     :param distance: distance from source point
     :return: returns a tuple (x, y) of the calculated point
     """
+    while heading < 0:
+        heading += 360
     heading %= 360
     rad_heading = math.radians(heading)
     x = _x + math.cos(rad_heading) * distance
