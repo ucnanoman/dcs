@@ -87,7 +87,7 @@ class Airport:
         self.coalition = "NEUTRAL"
 
     def free_parking_slot(self, large: bool, helicopter: bool):
-        slots_sorted = sorted(self.parking_slots)
+        slots_sorted = sorted(self.parking_slots, reverse=True)
         free_large_slots = {x for x in slots_sorted
                             if self.parking_slots[x].unit_id is None and
                             self.parking_slots[x].large}
@@ -102,8 +102,9 @@ class Airport:
                            if self.parking_slots[x].unit_id is None and
                            self.parking_slots[x].helicopter}
         if helicopter:
-            if free_heli_slots:
-                return self.parking_slots[list(free_heli_slots)[0]]
+            free_slots = list(free_heli_slots) + list(free_large_slots)
+            if free_slots:
+                return self.parking_slots[free_slots[0]]
             else:
                 return None
 
