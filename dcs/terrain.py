@@ -153,11 +153,16 @@ class Terrain:
 
 
 class Caucasus(Terrain):
+    Center = {"lat": 45.12945, "long": 34.26527}
+    Top = 337143
+    Left = -557857
+    Bottom = -584643
+    Right = 1121943
+
     def __init__(self):
         super(Caucasus, self).__init__("Caucasus")
         # caucasus center MGRS
         # 36TWQ9949898109
-        self.center = {"lat": 45.12945, "long": 34.26527}
         self.bullseye_blue = {"x": -291014, "y": 617414}
         self.bullseye_red = {"x": 11557, "y": 371700}
 
