@@ -1,4 +1,5 @@
 import zipfile
+from datetime import datetime
 from . import lua
 from .weather import *
 from .group import *
@@ -215,7 +216,7 @@ class Mission:
         self.pictureFileNameB = ""
         self.version = 11
         self.currentKey = 0
-        self.start_time = 43200  # start time in seconds, startin from 1. june 00:00:00, no negative values
+        self.start_time = datetime.fromtimestamp(13039200 + 43200)
         self.terrain = terrain
         self.trigrules = {}
         self.triggers = Triggers()
@@ -536,7 +537,7 @@ class Mission:
         self.pictureFileNameB = imp_mission["pictureFileNameB"]
         self.version = imp_mission["version"]
         self.currentKey = imp_mission["currentKey"]
-        self.start_time = imp_mission["start_time"]
+        self.start_time = datetime.fromtimestamp(13039200 + imp_mission["start_time"])
         self.usedModules = imp_mission["usedModules"]
 
         # groundControl
@@ -1100,7 +1101,7 @@ class Mission:
         m["version"] = self.version
         m["goals"] = self.goals.dict()
         m["currentKey"] = self.currentKey
-        m["start_time"] = self.start_time
+        m["start_time"] = self.start_time.timestamp() - 13039200
         m["forcedOptions"] = self.forcedOptions
         m["failures"] = self.failures
 
