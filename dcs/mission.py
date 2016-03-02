@@ -1,5 +1,5 @@
 import zipfile
-import lua
+from . import lua
 from .weather import *
 from .group import *
 from .country import Country

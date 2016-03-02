@@ -1,4 +1,4 @@
-import lua
+from . import lua
 import os
 
 
