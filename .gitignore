@@ -1,3 +1,6 @@
 __pycache__
 missions
 .idea
+build/
+dist/
+dcs_mission.egg-info/
