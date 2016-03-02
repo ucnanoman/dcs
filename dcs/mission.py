@@ -275,7 +275,7 @@ class Mission:
         self.result = Result()
         self.groundControl = {}
         self.forcedOptions = {}
-        self.resourceCounter = {}
+        self.resourceCounter = {}  # keep default or empty, old format
         self.needModules = {}
         self.weather = Weather()
         self.usedModules = {
