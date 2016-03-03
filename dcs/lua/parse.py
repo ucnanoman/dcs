@@ -192,12 +192,14 @@ def loads(tablestr):
                 if self.eob():
                     break
                 c = self.char()
-                if not c.isspace():
-                    break
                 if c == '\n':
                     self.lineno += 1
                 if c == '-':
                     self.eat_comment()
+                    c = self.char()
+                if not c.isspace():
+                    break
+
                 self.pos += 1
 
         def eob(self):
