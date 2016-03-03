@@ -72,7 +72,6 @@ class MovingGroup(Group):
         self.task = ""
         self.tasks = {}
         self.start_time = start_time
-        self.visible = False
         self.frequency = 251
 
     def dict(self):
@@ -81,7 +80,6 @@ class MovingGroup(Group):
             d["task"] = self.task
         d["tasks"] = self.tasks
         d["start_time"] = self.start_time
-        d["visible"] = self.visible
         if self.frequency:
             d["frequency"] = self.frequency
         return d
@@ -97,6 +95,7 @@ class VehicleGroup(MovingGroup):
         super(VehicleGroup, self).__init__(_id, name, start_time)
         self.modulation = 0
         self.communication = True
+        self.visible = False  # visible before start flag
 
     def add_waypoint(self, x, y, _type="Off Road", speed=32) -> MovingPoint:
         mp = MovingPoint()
@@ -179,6 +178,7 @@ class VehicleGroup(MovingGroup):
         d = super(VehicleGroup, self).dict()
         d["modulation"] = self.modulation
         d["communication"] = self.communication
+        d["visible"] = self.visible
         return d
 
 
@@ -303,6 +303,7 @@ class ShipGroup(MovingGroup):
         self.task = None
         self.frequency = None
         self.spans = None
+        self.visible = False  # visible before start flag
 
     def add_waypoint(self, x, y, speed=20) -> MovingPoint:
         mp = MovingPoint()
@@ -318,6 +319,7 @@ class ShipGroup(MovingGroup):
 
     def dict(self):
         d = super(ShipGroup, self).dict()
+        d["visible"] = self.visible
         return d
 
 
