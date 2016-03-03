@@ -269,7 +269,6 @@ class Mission:
             "centerX": -250000
         }
 
-        self.groundControl = {}
         self.failures = {}
         self.trig = {}
         self.result = Result()
@@ -541,7 +540,7 @@ class Mission:
         self.usedModules = imp_mission["usedModules"]
 
         # groundControl
-        self.groundControl = imp_mission["groundControl"]  # TODO
+        self.groundControl = imp_mission.get("groundControl")  # TODO
 
         # result
         self.result = Result()
@@ -1070,7 +1069,8 @@ class Mission:
         m = {}
         m["trig"] = self.trig
         m["result"] = self.result.dict()
-        m["groundControl"] = self.groundControl
+        if self.groundControl:
+            m["groundControl"] = self.groundControl
         m["usedModules"] = self.usedModules
         m["resourceCounter"] = self.resourceCounter
         m["triggers"] = self.triggers.dict()
