@@ -18,6 +18,43 @@ class Task:
             "number": self.number
         }
 
+    @staticmethod
+    def create_from_dict(d):
+        id = d["id"]
+        if id == "WrappedAction":
+            actionid = d["params"]["action"]["id"]
+            if actionid == "EPLRS":
+                eplrs = EPLRS(None)
+                eplrs.params = d["params"]
+                return eplrs
+            if actionid == "SetFrequency":
+                setfreq = SetFrequencyCommand(1)
+                setfreq.params = d["params"]
+                return setfreq
+            if actionid == "ActivateBeacon":
+                ab = ActivateBeaconCommand(10)
+                ab.params = d["params"]
+                return ab
+            if actionid == "Option":
+                option = OptDisparseUnderFire()
+                option.params = d["params"]
+                return option
+        if id == "EngageTargets":
+            key = d["key"]
+            if key == "CAS":
+                return CASTaskAction()
+            if key == "CAP":
+                return CAPTaskAction()
+        if id == "AWACS":
+            return AWACSTaskAction()
+        if id == "Tanker":
+            return RefuelingTaskAction()
+        if id == "Orbit":
+            orbit = OrbitAction(None, 600)
+            orbit.params = d["params"]
+            return orbit
+        return None
+
 
 # TODO check
 class AntishipStrikeTaskAction(Task):

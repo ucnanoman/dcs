@@ -1,5 +1,6 @@
 from .translation import String
-from .task import Task
+from . import task
+from typing import List
 
 
 class Point:
@@ -33,10 +34,28 @@ class MovingPoint(Point):
         self.ETA = 0
         self.ETA_locked = True
         self.speed_locked = True
-        self.tasks = []  # type: list[Task]
+        self.tasks = []  # type: List[dcs.task.Task]
         self.properties = None
         self.airdrome_id = None
         self.action = "Off Road"
+
+    def load_from_dict(self, d, translation):
+        self.alt = d["alt"]
+        self.alt_type = d.get("alt_type", None)
+        self.type = d["type"]
+        self.x = d["x"]
+        self.y = d["y"]
+        self.action = d["action"]
+        self.ETA_locked = d["ETA_locked"]
+        self.ETA = d["ETA"]
+        self.formation_template = d["formation_template"]
+        self.speed_locked = d["speed_locked"]
+        self.speed = d["speed"]
+        self.name = translation.get_string(d["name"])
+        for t in d["task"]["params"]["tasks"]:
+            self.tasks.append(task.Task.create_from_dict(d["task"]["params"]["tasks"][t]))
+        self.airdrome_id = d.get("airdromeId", None)
+        self.properties = d.get("properties", None)
 
     def dict(self):
         d = super(MovingPoint, self).dict()

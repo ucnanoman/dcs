@@ -318,21 +318,7 @@ class Mission:
         for imp_point_idx in imp_group["route"]["points"]:
             imp_point = imp_group["route"]["points"][imp_point_idx]
             point = MovingPoint()
-            point.alt = imp_point["alt"]
-            point.alt_type = imp_point.get("alt_type", None)
-            point.type = imp_point["type"]
-            point.x = imp_point["x"]
-            point.y = imp_point["y"]
-            point.action = imp_point["action"]
-            point.ETA_locked = imp_point["ETA_locked"]
-            point.ETA = imp_point["ETA"]
-            point.formation_template = imp_point["formation_template"]
-            point.speed_locked = imp_point["speed_locked"]
-            point.speed = imp_point["speed"]
-            point.name = self.translation.get_string(imp_point["name"])
-            point.task = imp_point["task"]
-            point.airdrome_id = imp_point.get("airdromeId", None)
-            point.properties = imp_point.get("properties", None)
+            point.load_from_dict(imp_point, self.translation)
             group.add_point(point)
         return group
 
