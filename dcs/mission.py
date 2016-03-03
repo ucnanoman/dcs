@@ -84,13 +84,12 @@ class Coalition:
         return self.countries.get(country_name, None)
 
     def dict(self):
-        d = {}
-        d["name"] = self.name
+        d = {"name": self.name}
         if self.bullseye:
             d["bullseye"] = self.bullseye
         d["country"] = {}
         i = 1
-        for country in self.countries.keys():
+        for country in sorted(self.countries.keys()):
             d["country"][i] = self.country(country).dict()
             i += 1
         d["nav_points"] = {}
@@ -131,13 +130,14 @@ class Triggers:
             imp_zone = data["zones"][x]
             tz = TriggerZone(
                 imp_zone["zoneId"],
-                imp_zone["radius"],
                 imp_zone["x"],
                 imp_zone["y"],
+                imp_zone["radius"],
                 imp_zone["hidden"],
                 imp_zone["name"]
             )
             tz.color = imp_zone["color"]
+            self.zones.append(tz)
             self.current_zone_id = max(self.current_zone_id, tz.id)
 
     def triggerzone(self,  x=0, y=0, radius=1500, hidden=False, name="") -> TriggerZone:
@@ -328,7 +328,7 @@ class Mission:
             point.ETA = imp_point["ETA"]
             point.formation_template = imp_point["formation_template"]
             point.speed_locked = imp_point["speed_locked"]
-            point.speed = imp_point["speed"] * 3.6
+            point.speed = imp_point["speed"]
             point.name = self.translation.get_string(imp_point["name"])
             point.task = imp_point["task"]
             point.airdrome_id = imp_point.get("airdromeId", None)
@@ -346,7 +346,7 @@ class Mission:
             point.y = imp_point["y"]
             point.action = imp_point["action"]
             point.formation_template = imp_point["formation_template"]
-            point.speed = imp_point["speed"] * 3.6
+            point.speed = imp_point["speed"]
             point.name = self.translation.get_string(imp_point["name"])
             group.add_point(point)
         return group
@@ -546,6 +546,7 @@ class Mission:
         self.currentKey = imp_mission["currentKey"]
         self.start_time = datetime.fromtimestamp(13039200 + imp_mission["start_time"])
         self.usedModules = imp_mission["usedModules"]
+        self.needModules = imp_mission["needModules"]
 
         # groundControl
         self.groundControl = imp_mission.get("groundControl")  # TODO
@@ -1068,7 +1069,7 @@ class Mission:
             m["pictureFileNameB"][i+1] = self.pictureFileNameB[i]
         m["descriptionBlueTask"] = self.description_bluetask.id
         m["descriptionRedTask"] = self.description_redtask.id
-        m["trigrules"] = {}
+        m["trigrules"] = self.trigrules
         m["coalition"] = {}
         for col in self.coalition.keys():
             m["coalition"][col] = self.coalition[col].dict()
