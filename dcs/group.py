@@ -13,7 +13,6 @@ class Group:
         self.id = _id
         self.hidden = False
         self.units = []  # type: list[Unit]
-        self.spans = []
         self.points = []  # type: list[MovingPoint]
         self.name = name if name else String()
 
@@ -55,14 +54,6 @@ class Group:
             for point in self.points:
                 d["route"]["points"][i] = point.dict()
                 i += 1
-
-        if self.spans is not None:
-            # spans
-            d["route"]["spans"] = {}
-            i = 1
-            for spawn in self.spans:
-                d["route"]["spans"][i] = spawn
-                i += 1
         return d
 
 
@@ -96,6 +87,7 @@ class VehicleGroup(MovingGroup):
         self.modulation = 0
         self.communication = True
         self.visible = False  # visible before start flag
+        self.spans = []
 
     def add_waypoint(self, x, y, _type="Off Road", speed=32) -> MovingPoint:
         mp = MovingPoint()
@@ -179,6 +171,13 @@ class VehicleGroup(MovingGroup):
         d["modulation"] = self.modulation
         d["communication"] = self.communication
         d["visible"] = self.visible
+        if self.spans is not None:
+            # spans
+            d["route"]["spans"] = {}
+            i = 1
+            for spawn in self.spans:
+                d["route"]["spans"][i] = spawn
+                i += 1
         return d
 
 
