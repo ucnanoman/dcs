@@ -62,7 +62,7 @@ def loads(tablestr):
                         state = 2
                     else:
                         s += c
-                if state == 2:
+                elif state == 2:
                     s += c
                     state = 0
             return s
