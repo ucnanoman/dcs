@@ -216,8 +216,8 @@ class Mission:
         self.description_bluetask = self.string("blue task")
         self.description_redtask = self.string("red task")
         self.sortie = self.string("sortie text")
-        self.pictureFileNameR = ""
-        self.pictureFileNameB = ""
+        self.pictureFileNameR = []
+        self.pictureFileNameB = []
         self.version = 11
         self.currentKey = 0
         self.start_time = datetime.fromtimestamp(13039200 + 43200)
@@ -538,8 +538,10 @@ class Mission:
         self.description_bluetask = self.translation.get_string(imp_mission["descriptionBlueTask"])
         self.description_redtask = self.translation.get_string(imp_mission["descriptionRedTask"])
         self.sortie = self.translation.get_string(imp_mission["sortie"])
-        self.pictureFileNameR = imp_mission["pictureFileNameR"]
-        self.pictureFileNameB = imp_mission["pictureFileNameB"]
+        for pic in sorted(imp_mission["pictureFileNameR"]):
+            self.pictureFileNameR.append(imp_mission["pictureFileNameR"][pic])
+        for pic in sorted(imp_mission["pictureFileNameB"]):
+            self.pictureFileNameB.append(imp_mission["pictureFileNameB"][pic])
         self.version = imp_mission["version"]
         self.currentKey = imp_mission["currentKey"]
         self.start_time = datetime.fromtimestamp(13039200 + imp_mission["start_time"])
@@ -606,6 +608,12 @@ class Mission:
 
     def set_description_redtask_text(self, text):
         self.description_redtask.set(text)
+
+    def add_picture_red(self, filepath):
+        self.pictureFileNameR.append(self.map_resource.add_resource_file(filepath))
+
+    def add_picture_blue(self, filepath):
+        self.pictureFileNameB.append(self.map_resource.add_resource_file(filepath))
 
     def next_group_id(self):
         self.current_group_id += 1
@@ -1052,8 +1060,12 @@ class Mission:
         m["needModules"] = self.needModules
         m["map"] = self.map
         m["descriptionText"] = self.description_text.id
-        m["pictureFileNameR"] = self.pictureFileNameR
-        m["pictureFileNameB"] = self.pictureFileNameB
+        m["pictureFileNameR"] = {}
+        for i in range(0, len(self.pictureFileNameR)):
+            m["pictureFileNameR"][i+1] = self.pictureFileNameR[i]
+        m["pictureFileNameB"] = {}
+        for i in range(0, len(self.pictureFileNameB)):
+            m["pictureFileNameB"][i+1] = self.pictureFileNameB[i]
         m["descriptionBlueTask"] = self.description_bluetask.id
         m["descriptionRedTask"] = self.description_redtask.id
         m["trigrules"] = {}
