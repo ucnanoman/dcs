@@ -1112,12 +1112,13 @@ class MapResource:
 
     def store(self, zipf: zipfile.ZipFile, lang='DEFAULT'):
         d = {}
-        for x in self.files[lang]:
-            mr = self.files[lang][x]
-            filepath = mr["path"]
-            if os.path.isabs(filepath):
-                nameinzip = os.path.basename(filepath)
-                zipf.write(filepath, "l10n/{lang}/{name}".format(lang=lang, name=nameinzip))
-                d[mr["reskey"]] = nameinzip
+        if lang in self.files:
+            for x in self.files[lang]:
+                mr = self.files[lang][x]
+                filepath = mr["path"]
+                if os.path.isabs(filepath):
+                    nameinzip = os.path.basename(filepath)
+                    zipf.write(filepath, "l10n/{lang}/{name}".format(lang=lang, name=nameinzip))
+                    d[mr["reskey"]] = nameinzip
 
         return d
