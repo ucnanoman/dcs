@@ -69,6 +69,7 @@ class FlyingUnit(Unit):
         self.callsign_dict = {1: 1, 2: 1, 3: 1, "name": ""}
         self.speed = 0
         self.radio = None
+        self.hardpoint_racks = True
 
     def load_from_dict(self, dict):
         self.x = dict["x"]
@@ -89,12 +90,14 @@ class FlyingUnit(Unit):
         self.chaff = dict["payload"]["chaff"]
         self.ammo_type = dict["payload"].get("ammo_type")
         self.pylons = dict["payload"]["pylons"]
+        self.onboard_num = dict["onboard_num"]
         if isinstance(dict["callsign"], int):
             self.callsign = dict["callsign"]
         else:
             self.callsign_dict = dict["callsign"]
         self.parking = dict.get("parking", None)
         self.radio = dict.get("Radio")
+        self.hardpoint_racks = dict.get("hardpoint_racks", True)
         return True
 
     def set_parking(self, parking_slot: ParkingSlot):
@@ -153,6 +156,8 @@ class FlyingUnit(Unit):
         d["psi"] = self.psi
         d["onboard_num"] = self.onboard_num
         d["speed"] = self.speed
+        if self.unit_type.pylons:
+            d["hardpoint_racks"] = self.hardpoint_racks
         d["payload"] = {
             "flare": self.flare,
             "chaff": self.chaff,
