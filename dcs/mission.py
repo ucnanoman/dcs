@@ -1,4 +1,6 @@
 import zipfile
+import os
+import tempfile
 from datetime import datetime
 from . import lua
 from .weather import *
@@ -204,9 +206,11 @@ class Mission:
         self.current_unit_id = 0
         self.current_group_id = 0
         self.current_callsign_id = 99
+        self.current_dict_id = 0
         self.filename = None
 
-        self.translation = Translation()
+        self.translation = Translation(self)
+        self.map_resource = MapResource(self)
 
         self.description_text = self.string("dcs mission")
         self.description_bluetask = self.string("blue task")
@@ -222,7 +226,6 @@ class Mission:
         self.triggers = Triggers()
         self.options = Options()
         self.warehouses = Warehouses(self.terrain)
-        self.mapresource = {}
         self.goals = Goals()
         blue = Coalition("blue")
         blue.add_country(countries.Australia())
@@ -499,16 +502,19 @@ class Mission:
             options_dict = loaddict('options', miz)
             warehouse_dict = loaddict('warehouses', miz)
             dictionary_dict = loaddict('l10n/DEFAULT/dictionary', miz)
+            if 'l10n/DEFAULT/mapResource' in miz.namelist():
+                mapresource_dict = loaddict('l10n/DEFAULT/mapResource', miz)
+                self.map_resource.load_from_dict(mapresource_dict, miz)
 
         imp_mission = mission_dict["mission"]
 
         # import translations
-        self.translation = Translation()
+        self.translation = Translation(self)
         translation_dict = dictionary_dict["dictionary"]
         for sid in translation_dict:
             self.translation.set_string(sid, translation_dict[sid], 'DEFAULT')
 
-        self.translation.max_dict_id = imp_mission["maxDictId"]
+        self.current_dict_id = imp_mission["maxDictId"]
 
         # print(self.translation)
 
@@ -612,6 +618,10 @@ class Mission:
     def next_callsign_id(self):
         self.current_callsign_id += 1
         return self.current_callsign_id
+
+    def next_dict_id(self):
+        self.current_dict_id += 1
+        return self.current_dict_id
 
     def string(self, s, lang='DEFAULT'):
         """Create a new String() object for translation"""
@@ -1021,7 +1031,9 @@ class Mission:
             dicttext = lua.dumps(self.translation.dict('DEFAULT'), "dictionary", 1)
             zipf.writestr('l10n/DEFAULT/dictionary', dicttext)
 
-            zipf.writestr('l10n/DEFAULT/mapResource', lua.dumps(self.mapresource, "mapResource", 1))
+            mapresource = self.map_resource.store(zipf, 'DEFAULT')
+            print(mapresource)
+            zipf.writestr('l10n/DEFAULT/mapResource', lua.dumps(mapresource, "mapResource", 1))
 
             zipf.writestr('mission', str(self))
         return True
@@ -1062,6 +1074,7 @@ class Mission:
         m["version"] = self.version
         m["goals"] = self.goals.dict()
         m["currentKey"] = self.currentKey
+        m["maxDictId"] = self.current_dict_id
         m["start_time"] = self.start_time.timestamp() - 13039200
         m["forcedOptions"] = self.forcedOptions
         m["failures"] = self.failures
@@ -1071,3 +1084,40 @@ class Mission:
     def __repr__(self):
         rep = {"base": self.values, "options": self.options, "translation": self.translation}
         return repr(rep)
+
+
+class MapResource:
+    def __init__(self, mission: Mission):
+        self.files = {}
+        self.mission = mission
+
+    def load_from_dict(self, _dict, zipf: zipfile.ZipFile, lang='DEFAULT'):
+        _dict = _dict["mapResource"]
+
+        for key in _dict:
+            filename = _dict[key]
+            extractedpath = zipf.extract('l10n/{lang}/{fn}'.format(lang=lang, fn=filename), tempfile.gettempdir())
+            self.add_resource_file(extractedpath, lang, key)
+
+    def add_resource_file(self, filepath, lang='DEFAULT', key=None):
+        abspath = os.path.abspath(filepath)
+        resource_key = key if key else "ResKey_" + str(self.mission.next_dict_id())
+        if lang not in self.files:
+            self.files[lang] = {}
+        self.files[lang][abspath] = {
+            "path": abspath,
+            "reskey": resource_key
+        }
+        return resource_key
+
+    def store(self, zipf: zipfile.ZipFile, lang='DEFAULT'):
+        d = {}
+        for x in self.files[lang]:
+            mr = self.files[lang][x]
+            filepath = mr["path"]
+            if os.path.isabs(filepath):
+                nameinzip = os.path.basename(filepath)
+                zipf.write(filepath, "l10n/{lang}/{name}".format(lang=lang, name=nameinzip))
+                d[mr["reskey"]] = nameinzip
+
+        return d

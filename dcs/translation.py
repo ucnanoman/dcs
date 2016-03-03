@@ -22,9 +22,9 @@ class String:
 
 
 class Translation:
-    def __init__(self):
+    def __init__(self, _mission):
         self.strings = {}  # type: dict[str,dict[str,str]]
-        self.max_dict_id = 0
+        self.mission = _mission
 
     def set_string(self, _id, string, lang='DEFAULT'):
         if lang not in self.strings:
@@ -36,8 +36,7 @@ class Translation:
         return String(_id, self)
 
     def create_string(self, s, lang='DEFAULT'):
-        _id = 'DictKey_Translation_{dict_id}'.format(dict_id=self.max_dict_id)
-        self.max_dict_id += 1
+        _id = 'DictKey_Translation_{dict_id}'.format(dict_id=self.mission.next_dict_id())
         self.set_string(_id, s, lang)
         return String(_id, self)
 
