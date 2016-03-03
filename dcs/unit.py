@@ -94,7 +94,6 @@ class FlyingUnit(Unit):
         else:
             self.callsign_dict = dict["callsign"]
         self.parking = dict.get("parking", None)
-        self.speed = dict["speed"]
         self.radio = dict.get("Radio")
         return True
 
