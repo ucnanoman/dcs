@@ -6,11 +6,17 @@ class StaticType:
 
 
 class Static(Unit):
-    def __init__(self, id=None, name=None, type=""):
-        super(Static, self).__init__(id, name, type)
+    def __init__(self, id=None, name=None, _type=""):
+        super(Static, self).__init__(id, name, _type)
         self.category = "Warehouses"
         self.can_cargo = False
         self.shape_name = ""
+
+    def load_from_dict(self, d):
+        super(Static, self).load_from_dict(d)
+        self.can_cargo = d["canCargo"]
+        self.category = d["category"]
+        self.shape_name = d["shape_name"]
 
     def dict(self):
         d = super(Static, self).dict()

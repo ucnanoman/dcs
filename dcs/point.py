@@ -14,6 +14,16 @@ class Point:
         self.formation_template = ""
         self.action = ""
 
+    def load_from_dict(self, d, translation):
+        self.alt = d["alt"]
+        self.type = d["type"]
+        self.x = d["x"]
+        self.y = d["y"]
+        self.action = d["action"]
+        self.formation_template = d["formation_template"]
+        self.speed = d["speed"]
+        self.name = translation.get_string(d["name"])
+
     def dict(self):
         return {
             "alt": self.alt,
@@ -40,18 +50,11 @@ class MovingPoint(Point):
         self.action = "Off Road"
 
     def load_from_dict(self, d, translation):
-        self.alt = d["alt"]
+        super(MovingPoint, self).load_from_dict(d, translation)
         self.alt_type = d.get("alt_type", None)
-        self.type = d["type"]
-        self.x = d["x"]
-        self.y = d["y"]
-        self.action = d["action"]
         self.ETA_locked = d["ETA_locked"]
         self.ETA = d["ETA"]
-        self.formation_template = d["formation_template"]
         self.speed_locked = d["speed_locked"]
-        self.speed = d["speed"]
-        self.name = translation.get_string(d["name"])
         for t in d["task"]["params"]["tasks"]:
             self.tasks.append(task.Task.create_from_dict(d["task"]["params"]["tasks"][t]))
         self.airdrome_id = d.get("airdromeId", None)
@@ -59,7 +62,6 @@ class MovingPoint(Point):
 
     def dict(self):
         d = super(MovingPoint, self).dict()
-        d["alt"] = self.alt
         d["alt_type"] = self.alt_type
         d["ETA"] = self.ETA
         d["ETA_locked"] = self.ETA_locked

@@ -16,6 +16,9 @@ class Group:
         self.points = []  # type: list[MovingPoint]
         self.name = name if name else String()
 
+    def load_from_dict(self, d):
+        self.hidden = d["hidden"]
+
     def add_unit(self, unit: Unit):
         self.units.append(unit)
 
@@ -64,6 +67,13 @@ class MovingGroup(Group):
         self.tasks = {}
         self.start_time = start_time
         self.frequency = 251
+        self.task_selected = True
+
+    def load_from_dict(self, d):
+        super(MovingGroup, self).load_from_dict(d)
+        self.frequency = d.get("frequency")
+        self.task = d["task"]
+        self.task_selected = d.get("taskSelected", False)
 
     def dict(self):
         d = super(MovingGroup, self).dict()
@@ -73,6 +83,8 @@ class MovingGroup(Group):
         d["start_time"] = self.start_time
         if self.frequency:
             d["frequency"] = self.frequency
+        if self.task_selected:
+            d["taskSelected"] = self.task_selected
         return d
 
 
@@ -85,9 +97,16 @@ class VehicleGroup(MovingGroup):
     def __init__(self, _id, name=None, start_time=0):
         super(VehicleGroup, self).__init__(_id, name, start_time)
         self.modulation = 0
-        self.communication = True
+        self.communication = False
+        self.frequency = None
         self.visible = False  # visible before start flag
         self.spans = []
+
+    def load_from_dict(self, d):
+        super(VehicleGroup, self).load_from_dict(d)
+        self.modulation = d.get("modulation")
+        self.communication = d.get("communication", False)
+        self.visible = d.get("visible", False)
 
     def add_waypoint(self, x, y, _type="Off Road", speed=32) -> MovingPoint:
         mp = MovingPoint()
@@ -168,8 +187,10 @@ class VehicleGroup(MovingGroup):
 
     def dict(self):
         d = super(VehicleGroup, self).dict()
-        d["modulation"] = self.modulation
-        d["communication"] = self.communication
+        if self.communication:
+            d["modulation"] = self.modulation
+            d["communication"] = self.communication
+            d["frequency"] = self.frequency
         d["visible"] = self.visible
         if self.spans is not None:
             # spans
@@ -188,6 +209,12 @@ class FlyingGroup(MovingGroup):
         self.communication = True
         self.uncontrolled = False
         self.task = "CAS"
+
+    def load_from_dict(self, d):
+        super(FlyingGroup, self).load_from_dict(d)
+        self.modulation = d.get("modulation")
+        self.communication = d.get("communication", False)
+        self.uncontrolled = d["uncontrolled"]
 
     def add_waypoint(self, x, y, altitude, speed=600, name=String()) -> MovingPoint:
         mp = MovingPoint()
@@ -327,6 +354,12 @@ class StaticGroup(Group):
         super(StaticGroup, self).__init__(_id, name)
         self.dead = False
         self.heading = 0
+
+    def load_from_dict(self, d):
+        super(StaticGroup, self).load_from_dict(d)
+        self.heading = math.degrees(d["heading"])
+        self.hidden = d["hidden"]
+        self.dead = d["dead"]
 
     def dict(self):
         d = super(StaticGroup, self).dict()

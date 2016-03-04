@@ -7,6 +7,11 @@ class Vehicle(Unit):
         self.player_can_drive = False
         self.transportable = {"randomTransportable": False}
 
+    def load_from_dict(self, d):
+        super(Vehicle, self).load_from_dict(d)
+        self.player_can_drive = d["playerCanDrive"]
+        self.transportable = d["transportable"]
+
     def dict(self):
         d = super(Vehicle, self).dict()
         d["playerCanDrive"] = self.player_can_drive

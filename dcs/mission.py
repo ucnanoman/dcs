@@ -16,6 +16,8 @@ from .static import Static
 from .translation import Translation
 from .terrain import Terrain, Caucasus, Nevada, ParkingSlot
 from .goals import Goals
+from . import planes
+from . import helicopters
 import dcs.task
 
 
@@ -326,14 +328,7 @@ class Mission:
         for imp_point_idx in imp_group["route"]["points"]:
             imp_point = imp_group["route"]["points"][imp_point_idx]
             point = Point()
-            point.alt = imp_point["alt"]
-            point.type = imp_point["type"]
-            point.x = imp_point["x"]
-            point.y = imp_point["y"]
-            point.action = imp_point["action"]
-            point.formation_template = imp_point["formation_template"]
-            point.speed = imp_point["speed"]
-            point.name = self.translation.get_string(imp_point["name"])
+            point.load_from_dict(imp_point, self.translation)
             group.add_point(point)
         return group
 
@@ -350,7 +345,7 @@ class Mission:
                 for vgroup_idx in imp_country["vehicle"]["group"]:
                     vgroup = imp_country["vehicle"]["group"][vgroup_idx]
                     vg = VehicleGroup(vgroup["groupId"], self.translation.get_string(vgroup["name"]), vgroup["start_time"])
-                    vg.task = vgroup["task"]
+                    vg.load_from_dict(vgroup)
                     self.current_group_id = max(self.current_group_id, vg.id)
 
                     self._import_moving_point(vg, vgroup)
@@ -358,15 +353,11 @@ class Mission:
                     # units
                     for imp_unit_idx in vgroup["units"]:
                         imp_unit = vgroup["units"][imp_unit_idx]
-                        unit = Vehicle(id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]))
-                        unit.set_position(MapPosition(imp_unit["x"], imp_unit["y"]))
-                        unit.heading = math.degrees(imp_unit["heading"])
-                        unit.type = imp_unit["type"]
-                        unit.skill = imp_unit["skill"]
-                        unit.x = imp_unit["x"]
-                        unit.y = imp_unit["y"]
-                        unit.player_can_drive = imp_unit["playerCanDrive"]
-                        unit.transportable = imp_unit["transportable"]
+                        unit = Vehicle(
+                            id=imp_unit["unitId"],
+                            name=self.translation.get_string(imp_unit["name"]),
+                            _type=imp_unit["type"])
+                        unit.load_from_dict(imp_unit)
 
                         self.current_unit_id = max(self.current_unit_id, unit.id)
                         vg.add_unit(unit)
@@ -376,6 +367,7 @@ class Mission:
                 for group_idx in imp_country["ship"]["group"]:
                     group = imp_country["ship"]["group"][group_idx]
                     vg = ShipGroup(group["groupId"], self.translation.get_string(group["name"]), group["start_time"])
+                    vg.load_from_dict(group)
                     self.current_group_id = max(self.current_group_id, vg.id)
 
                     self._import_moving_point(vg, group)
@@ -383,14 +375,11 @@ class Mission:
                     # units
                     for imp_unit_idx in group["units"]:
                         imp_unit = group["units"][imp_unit_idx]
-                        unit = Ship(id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]))
-                        unit.set_position(MapPosition(imp_unit["x"], imp_unit["y"]))
-                        unit.heading = math.degrees(imp_unit["heading"])
-                        unit.type = imp_unit["type"]
-                        unit.skill = imp_unit["skill"]
-                        unit.x = imp_unit["x"]
-                        unit.y = imp_unit["y"]
-                        unit.transportable = imp_unit["transportable"]
+                        unit = Ship(
+                            id=imp_unit["unitId"],
+                            name=self.translation.get_string(imp_unit["name"]),
+                            _type=imp_unit["type"])
+                        unit.load_from_dict(imp_unit)
 
                         self.current_unit_id = max(self.current_unit_id, unit.id)
                         vg.add_unit(unit)
@@ -400,11 +389,7 @@ class Mission:
                 for pgroup_idx in imp_country["plane"]["group"]:
                     pgroup = imp_country["plane"]["group"][pgroup_idx]
                     plane_group = PlaneGroup(pgroup["groupId"], self.translation.get_string(pgroup["name"]), pgroup["start_time"])
-                    plane_group.task = pgroup["task"]
-                    plane_group.frequency = pgroup["frequency"]
-                    plane_group.modulation = pgroup["modulation"]
-                    plane_group.communication = pgroup["communication"]
-                    plane_group.uncontrolled = pgroup["uncontrolled"]
+                    plane_group.load_from_dict(pgroup)
                     self.current_group_id = max(self.current_group_id, plane_group.id)
 
                     self._import_moving_point(plane_group, pgroup)
@@ -412,7 +397,10 @@ class Mission:
                     # units
                     for imp_unit_idx in pgroup["units"]:
                         imp_unit = pgroup["units"][imp_unit_idx]
-                        plane = Plane(_id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]))
+                        plane = Plane(
+                            _id=imp_unit["unitId"],
+                            name=self.translation.get_string(imp_unit["name"]),
+                            _type=dcs.planes.plane_map[imp_unit["type"]])
                         plane.load_from_dict(imp_unit)
 
                         self.current_unit_id = max(self.current_unit_id, plane.id)
@@ -422,12 +410,11 @@ class Mission:
             if "helicopter" in imp_country:
                 for pgroup_idx in imp_country["helicopter"]["group"]:
                     pgroup = imp_country["helicopter"]["group"][pgroup_idx]
-                    helicopter_group = HelicopterGroup(pgroup["groupId"], self.translation.get_string(pgroup["name"]), pgroup["start_time"])
-                    helicopter_group.task = pgroup["task"]
-                    helicopter_group.frequency = pgroup["frequency"]
-                    helicopter_group.modulation = pgroup["modulation"]
-                    helicopter_group.communication = pgroup["communication"]
-                    helicopter_group.uncontrolled = pgroup["uncontrolled"]
+                    helicopter_group = HelicopterGroup(
+                        pgroup["groupId"],
+                        self.translation.get_string(pgroup["name"]),
+                        pgroup["start_time"])
+                    helicopter_group.load_from_dict(pgroup)
                     self.current_group_id = max(self.current_group_id, helicopter_group.id)
 
                     self._import_moving_point(helicopter_group, pgroup)
@@ -435,7 +422,10 @@ class Mission:
                     # units
                     for imp_unit_idx in pgroup["units"]:
                         imp_unit = pgroup["units"][imp_unit_idx]
-                        heli = Helicopter(_id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]))
+                        heli = Helicopter(
+                            _id=imp_unit["unitId"],
+                            name=self.translation.get_string(imp_unit["name"]),
+                            _type=dcs.helicopters.helicopter_map[imp_unit["type"]])
                         heli.load_from_dict(imp_unit)
 
                         self.current_unit_id = max(self.current_unit_id, heli.id)
@@ -446,9 +436,7 @@ class Mission:
                 for sgroup_idx in imp_country["static"]["group"]:
                     sgroup = imp_country["static"]["group"][sgroup_idx]
                     static_group = StaticGroup(sgroup["groupId"], self.translation.get_string(sgroup["name"]))
-                    static_group.heading = math.degrees(sgroup["heading"])
-                    static_group.hidden = sgroup["hidden"]
-                    static_group.dead = sgroup["dead"]
+                    static_group.load_from_dict(sgroup)
                     self.current_group_id = max(self.current_group_id, static_group.id)
 
                     self._import_static_point(static_group, sgroup)
@@ -456,13 +444,11 @@ class Mission:
                     # units
                     for imp_unit_idx in sgroup["units"]:
                         imp_unit = sgroup["units"][imp_unit_idx]
-                        static = Static(id=imp_unit["unitId"], name=self.translation.get_string(imp_unit["name"]), type=imp_unit["type"])
-                        static.can_cargo = imp_unit["canCargo"]
-                        static.heading = math.degrees(imp_unit["heading"])
-                        static.x = imp_unit["x"]
-                        static.y = imp_unit["y"]
-                        static.category = imp_unit["category"]
-                        static.shape_name = imp_unit["shape_name"]
+                        static = Static(
+                            id=imp_unit["unitId"],
+                            name=self.translation.get_string(imp_unit["name"]),
+                            _type=imp_unit["type"])
+                        static.load_from_dict(imp_unit)
 
                         self.current_unit_id = max(self.current_unit_id, static.id)
                         static_group.add_unit(static)
@@ -1027,7 +1013,7 @@ class Mission:
             zipf.writestr('l10n/DEFAULT/dictionary', dicttext)
 
             mapresource = self.map_resource.store(zipf, 'DEFAULT')
-            print(mapresource)
+            #print(mapresource)
             zipf.writestr('l10n/DEFAULT/mapResource', lua.dumps(mapresource, "mapResource", 1))
 
             zipf.writestr('mission', str(self))

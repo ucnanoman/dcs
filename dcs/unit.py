@@ -26,6 +26,12 @@ class Unit:
         self.skill = Skill.AVERAGE
         self.name = name if name else String()
 
+    def load_from_dict(self, d):
+        self.x = d["x"]
+        self.y = d["y"]
+        self.heading = math.degrees(d["heading"])
+        self.skill = d["skill"]
+
     def set_position(self, pos):
         self.x = pos.x()
         self.y = pos.y()
@@ -71,33 +77,27 @@ class FlyingUnit(Unit):
         self.radio = None
         self.hardpoint_racks = True
 
-    def load_from_dict(self, dict):
-        self.x = dict["x"]
-        self.y = dict["y"]
-        self.heading = math.degrees(dict["heading"])
-        self.type = dict["type"]
-        self.skill = dict["skill"]
-        self.livery_id = dict.get("livery_id")
-        self.x = dict["x"]
-        self.y = dict["y"]
-        self.alt_type = dict["alt_type"]
-        self.alt = dict["alt"]
-        self.psi = dict["psi"]
-        self.speed = dict["speed"]
-        self.fuel = dict["payload"]["fuel"]
-        self.gun = dict["payload"]["gun"]
-        self.flare = dict["payload"]["flare"]
-        self.chaff = dict["payload"]["chaff"]
-        self.ammo_type = dict["payload"].get("ammo_type")
-        self.pylons = dict["payload"]["pylons"]
-        self.onboard_num = dict["onboard_num"]
-        if isinstance(dict["callsign"], int):
-            self.callsign = dict["callsign"]
+    def load_from_dict(self, d):
+        super(FlyingUnit, self).load_from_dict(d)
+        self.livery_id = d.get("livery_id")
+        self.alt_type = d["alt_type"]
+        self.alt = d["alt"]
+        self.psi = d["psi"]
+        self.speed = d["speed"]
+        self.fuel = d["payload"]["fuel"]
+        self.gun = d["payload"]["gun"]
+        self.flare = d["payload"]["flare"]
+        self.chaff = d["payload"]["chaff"]
+        self.ammo_type = d["payload"].get("ammo_type")
+        self.pylons = d["payload"]["pylons"]
+        self.onboard_num = d["onboard_num"]
+        if isinstance(d["callsign"], int):
+            self.callsign = d["callsign"]
         else:
-            self.callsign_dict = dict["callsign"]
-        self.parking = dict.get("parking", None)
-        self.radio = dict.get("Radio")
-        self.hardpoint_racks = dict.get("hardpoint_racks", True)
+            self.callsign_dict = d["callsign"]
+        self.parking = d.get("parking", None)
+        self.radio = d.get("Radio")
+        self.hardpoint_racks = d.get("hardpoint_racks", True)
         return True
 
     def set_parking(self, parking_slot: ParkingSlot):
