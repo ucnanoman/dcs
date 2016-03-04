@@ -97,7 +97,7 @@ class FlyingUnit(Unit):
             self.callsign_dict = d["callsign"]
         self.parking = d.get("parking", None)
         self.radio = d.get("Radio")
-        self.hardpoint_racks = d.get("hardpoint_racks", True)
+        self.hardpoint_racks = d.get("hardpoint_racks", None)
         return True
 
     def set_parking(self, parking_slot: ParkingSlot):
@@ -156,7 +156,7 @@ class FlyingUnit(Unit):
         d["psi"] = self.psi
         d["onboard_num"] = self.onboard_num
         d["speed"] = self.speed
-        if self.unit_type.pylons:
+        if self.hardpoint_racks:
             d["hardpoint_racks"] = self.hardpoint_racks
         d["payload"] = {
             "flare": self.flare,
