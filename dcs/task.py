@@ -23,9 +23,9 @@ class Task:
 
     @staticmethod
     def create_from_dict(d):
-        id = d["id"]
+        _id = d["id"]
         t = None
-        if id == "WrappedAction":
+        if _id == "WrappedAction":
             actionid = d["params"]["action"]["id"]
             if actionid == "EPLRS":
                 t = EPLRS(None)
@@ -35,101 +35,125 @@ class Task:
                 t = ActivateBeaconCommand(10)
             if actionid == "Option":
                 t = OptDisparseUnderFire()
-            t.params = d["params"]
-        if id == "EngageTargets":
-            key = d["key"]
-            if key == "CAS":
-                t = CASTaskAction()
-            if key == "CAP":
-                t = CAPTaskAction()
-        if id == "AWACS":
-            t = AWACSTaskAction()
-        if id == "Tanker":
-            t = RefuelingTaskAction()
-        if id == "Orbit":
-            t = OrbitAction(None, 600)
-            t.params = d["params"]
+        elif _id == "EngageTargets":
+            t = engagetargets_tasks[d["key"]]()
+        elif _id == OrbitAction.Id:
+            t = OrbitAction(0, 0)
+        elif _id == AttackGroup.Id:
+            t = AttackGroup(0)
+        elif _id == Bombing.Id:
+            t = Bombing(0, 0)
+        elif _id == EngageTargetsInZone.Id:
+            t = EngageTargetsInZone(0, 0)
+        elif _id == EngageGroup.Id:
+            t = EngageGroup(0)
+        elif _id == EngageUnit.Id:
+            t = EngageUnit(0)
+        else:
+            t = tasks_map[_id]()
+
         t.auto = d["auto"]
         t.enabled = d["enabled"]
         t.number = d["number"]
+        t.params = d["params"]
         return t
 
 
 # TODO check
 class AntishipStrikeTaskAction(Task):
+    Id = "EngageTargets"
+    Key = "AntishipStrike"
+
     def __init__(self):
-        super(AntishipStrikeTaskAction, self).__init__("EngageTargets")
-        self.key = "AntishipStrike"
+        super(AntishipStrikeTaskAction, self).__init__(AntishipStrikeTaskAction.Id)
 
     def dict(self):
         d = super(AntishipStrikeTaskAction, self).dict()
-        d["key"] = self.key
+        d["key"] = AntishipStrikeTaskAction.Key
         return d
 
 
 class CASTaskAction(Task):
+    Id = "EngageTargets"
+    Key = "CAS"
+
     def __init__(self):
-        super(CASTaskAction, self).__init__("EngageTargets")
+        super(CASTaskAction, self).__init__(CASTaskAction.Id)
         self.params = {
             "targetTypes": {1: "Helicopters", 2: "Ground Units", 3: "Light armed ships"},
             "priority": 0
         }
-        self.key = "CAS"
 
     def dict(self):
         d = super(CASTaskAction, self).dict()
-        d["key"] = self.key
+        d["key"] = CASTaskAction.Key
         return d
 
 
 class SEADTaskAction(Task):
-    def __init__(self, group_id):
-        super(SEADTaskAction, self).__init__("EngageTargets")
+    Id = "EngageTargets"
+    Key = "SEAD"
+
+    def __init__(self):
+        super(SEADTaskAction, self).__init__(SEADTaskAction.Id)
         self.params = {
             "targetTypes": {1: "Air Defence"},
             "priority": 0
         }
-        self.key = "SEAD"
 
     def dict(self):
         d = super(SEADTaskAction, self).dict()
-        d["key"] = self.key
+        d["key"] = SEADTaskAction.Key
         return d
 
 
 class CAPTaskAction(Task):
+    Id = "EngageTargets"
+    Key = "CAP"
+
     def __init__(self):
-        super(CAPTaskAction, self).__init__("EngageTargets")
+        super(CAPTaskAction, self).__init__(CAPTaskAction.Id)
         self.params = {
             "targetTypes": {1: "Air"},
             "priority": 0
         }
-        self.key = "CAP"
 
     def dict(self):
         d = super(CAPTaskAction, self).dict()
-        d["key"] = self.key
+        d["key"] = CAPTaskAction.Key
         return d
 
 
 class FighterSweepTaskAction(Task):
+    Id = "EngageTargets"
+    Key = "FighterSweep"
+
     def __init__(self):
-        super(FighterSweepTaskAction, self).__init__("EngageTargets")
+        super(FighterSweepTaskAction, self).__init__(FighterSweepTaskAction.Id)
         self.params = {
             "targetTypes": {1: "Planes"},
             "priority": 0
         }
-        self.key = "FighterSweep"
 
     def dict(self):
         d = super(FighterSweepTaskAction, self).dict()
-        d["key"] = self.key
+        d["key"] = FighterSweepTaskAction.Key
         return d
+
+engagetargets_tasks = {
+    AntishipStrikeTaskAction.Key: AntishipStrikeTaskAction,
+    CASTaskAction.Key: CASTaskAction,
+    CAPTaskAction.Key: CAPTaskAction,
+    SEADTaskAction.Key: SEADTaskAction,
+    FighterSweepTaskAction.Key: FighterSweepTaskAction
+}
 
 
 class EscortTaskAction(Task):
+    Id = "Escort"
+
     def __init__(self, group_id=None, engagement_max_dist=60000, lastwpt=None):
-        super(EscortTaskAction, self).__init__("Escort")
+        super(EscortTaskAction, self).__init__(EscortTaskAction.Id)
         self.params = {
             "lastWptIndexFlagChangedManually": False,
             "lastWptIndexFlag": False,
@@ -146,8 +170,10 @@ class EscortTaskAction(Task):
 
 
 class AttackGroup(Task):
+    Id = "AttackGroup"
+
     def __init__(self, group_id):
-        super(AttackGroup, self).__init__("AttackGroup")
+        super(AttackGroup, self).__init__(AttackGroup.Id)
         self.params = {
             "groupId": group_id,
             "weaponType": 1069547520
@@ -155,8 +181,10 @@ class AttackGroup(Task):
 
 
 class Bombing(Task):
+    Id = "Bombing"
+
     def __init__(self, x, y):
-        super(Bombing, self).__init__("Bombing")
+        super(Bombing, self).__init__(Bombing.Id)
         self.params = {
             "directionEnabled": False,
             "direction": 0,
@@ -173,8 +201,10 @@ class Bombing(Task):
 
 
 class EngageTargetsInZone(Task):
+    Id = "EngageTargetsInZone"
+
     def __init__(self, x, y, radius=5000):
-        super(EngageTargetsInZone, self).__init__("EngageTargetsInZone")
+        super(EngageTargetsInZone, self).__init__(EngageTargetsInZone.Id)
         self.params = {
             "targetTypes": {1: "Air Defence"},
             "priority": 0,
@@ -185,8 +215,10 @@ class EngageTargetsInZone(Task):
 
 
 class EngageGroup(Task):
+    Id = "EngageGroup"
+
     def __init__(self, group_id, visible=False):
-        super(EngageGroup, self).__init__("EngageGroup")
+        super(EngageGroup, self).__init__(EngageGroup.Id)
         self.auto = False
         self.params = {
             "visible": visible,
@@ -199,8 +231,10 @@ class EngageGroup(Task):
 
 
 class EngageUnit(Task):
+    Id = "EngageUnit"
+
     def __init__(self, unit_id, visible=False):
-        super(EngageUnit, self).__init__("EngageUnit")
+        super(EngageUnit, self).__init__(EngageUnit.Id)
         self.auto = False
         self.params = {
             "visible": visible,
@@ -217,24 +251,69 @@ class EngageUnit(Task):
 
 
 class AWACSTaskAction(Task):
+    Id = "AWACS"
+
     def __init__(self):
-        super(AWACSTaskAction, self).__init__("AWACS")
+        super(AWACSTaskAction, self).__init__(AWACSTaskAction.Id)
 
 
 class RefuelingTaskAction(Task):
+    Id = "Tanker"
+
     def __init__(self):
-        super(RefuelingTaskAction, self).__init__("Tanker")
+        super(RefuelingTaskAction, self).__init__(RefuelingTaskAction.Id)
 
 
-class EPLRS(Task):
-    def __init__(self, group_id):
-        super(EPLRS, self).__init__("WrappedAction")
+class OrbitAction(Task):
+    Id = "Orbit"
+    Pattern_RaceTrack = "Race-Track"
+    Pattern_Circle = "Circle"
+    supported_pattern = [Pattern_RaceTrack, Pattern_Circle]
+
+    def __init__(self, altitude, speed, pattern=Pattern_RaceTrack):
+        super(OrbitAction, self).__init__(OrbitAction.Id)
+        if pattern not in OrbitAction.supported_pattern:
+            raise RuntimeError("Orbit patter '{pattern}' unknown. Use one of {patterns}.".format(
+                pattern=pattern, patterns=','.join(OrbitAction.supported_pattern)))
         self.params = {
-            "action": {"id": "EPLRS", "params": {"value": True, "groupId": group_id}}
+            "altitude": altitude,
+            "pattern": pattern,
+            "speed": speed / 3.6,
+            "speedEdited": True
+        }
+
+tasks_map = {
+    EscortTaskAction.Id: EscortTaskAction,
+    AttackGroup.Id: AttackGroup,
+    Bombing.Id: Bombing,
+    EngageTargetsInZone.Id: EngageTargetsInZone,
+    EngageGroup.Id: EngageGroup,
+    EngageUnit.Id: EngageUnit,
+    AWACSTaskAction.Id: AWACSTaskAction,
+    RefuelingTaskAction.Id: RefuelingTaskAction,
+    OrbitAction.Id: OrbitAction
+}
+
+
+class WrappedAction(Task):
+    Id = "WrappedAction"
+
+    def __init__(self):
+        super(WrappedAction, self).__init__(WrappedAction.Id)
+
+
+class EPLRS(WrappedAction):
+    Key = "EPLRS"
+
+    def __init__(self, group_id):
+        super(EPLRS, self).__init__()
+        self.params = {
+            "action": {"id": EPLRS.Key, "params": {"value": True, "groupId": group_id}}
         }
 
 
-class ActivateBeaconCommand(Task):
+class ActivateBeaconCommand(WrappedAction):
+    Key = "ActivateBeacon"
 
     @staticmethod
     def calc_tacan_frequency(mode_channel, channel, aa=True):
@@ -252,10 +331,10 @@ class ActivateBeaconCommand(Task):
         return freq * 1000000
 
     def __init__(self, channel, modechannel="X", callsign="TKR", bearing=True):
-        super(ActivateBeaconCommand, self).__init__("WrappedAction")
+        super(ActivateBeaconCommand, self).__init__()
         self.params = {
             "action": {
-                "id": "ActivateBeacon",
+                "id": ActivateBeaconCommand.Key,
                 "params": {
                     "type": 4,
                     "frequency": self.calc_tacan_frequency(modechannel, channel),
@@ -269,32 +348,18 @@ class ActivateBeaconCommand(Task):
         }
 
 
-class SetFrequencyCommand(Task):
+class SetFrequencyCommand(WrappedAction):
+    Key = "SetFrequency"
     Modulation_AM = 0
     Modulation_FM = 1
 
     def __init__(self, frequency, modulation=Modulation_AM):
-        super(SetFrequencyCommand, self).__init__("WrappedAction")
+        super(SetFrequencyCommand, self).__init__()
         self.params = {
-            "action": {"id": "SetFrequency", "params": {"modulation": modulation, "frequency": frequency * 1000000}}
-        }
-
-
-class OrbitAction(Task):
-    Pattern_RaceTrack = "Race-Track"
-    Pattern_Circle = "Circle"
-    supported_pattern = [Pattern_RaceTrack, Pattern_Circle]
-
-    def __init__(self, altitude, speed, pattern=Pattern_RaceTrack):
-        super(OrbitAction, self).__init__("Orbit")
-        if pattern not in OrbitAction.supported_pattern:
-            raise RuntimeError("Orbit patter '{pattern}' unknown. Use one of {patterns}.".format(
-                pattern=pattern, patterns=','.join(OrbitAction.supported_pattern)))
-        self.params = {
-            "altitude": altitude,
-            "pattern": pattern,
-            "speed": speed / 3.6,
-            "speedEdited": True
+            "action": {
+                "id": SetFrequencyCommand.Key,
+                "params": {"modulation": modulation, "frequency": frequency * 1000000}
+            }
         }
 
 
@@ -418,11 +483,20 @@ class Transport(MainTask):
 
 # options
 
-class OptDisparseUnderFire(Task):
+class Option(Task):
+    Id = "WrappedAction"
+
+    def __init__(self):
+        super(Option, self).__init__(Option.Id)
+
+
+class OptDisparseUnderFire(Option):
+    Key = 8
+
     def __init__(self, value=None):
-        super(OptDisparseUnderFire, self).__init__("WrappedAction")
+        super(OptDisparseUnderFire, self).__init__()
         self.params = {
-            "action": {"id": "Option", "params": {"name": 8}}
+            "action": {"id": "Option", "params": {"name": OptDisparseUnderFire.Key}}
         }
         if value:
             self.params["action"]["params"]["value"] = value
