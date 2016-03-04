@@ -208,6 +208,7 @@ class FlyingGroup(MovingGroup):
         self.modulation = 0
         self.communication = True
         self.uncontrolled = False
+        self.radio_set = False
         self.task = "CAS"
 
     def load_from_dict(self, d):
@@ -215,6 +216,7 @@ class FlyingGroup(MovingGroup):
         self.modulation = d.get("modulation")
         self.communication = d.get("communication", False)
         self.uncontrolled = d["uncontrolled"]
+        self.radio_set = d["radioSet"]
 
     def add_waypoint(self, x, y, altitude, speed=600, name=String()) -> MovingPoint:
         mp = MovingPoint()
@@ -309,6 +311,7 @@ class FlyingGroup(MovingGroup):
         d["modulation"] = self.modulation
         d["communication"] = self.communication
         d["uncontrolled"] = self.uncontrolled
+        d["radioSet"] = self.radio_set
 
         return d
 
