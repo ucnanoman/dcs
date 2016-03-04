@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Task:
     def __init__(self, _id):
         self.id = _id
@@ -21,39 +24,35 @@ class Task:
     @staticmethod
     def create_from_dict(d):
         id = d["id"]
+        t = None
         if id == "WrappedAction":
             actionid = d["params"]["action"]["id"]
             if actionid == "EPLRS":
-                eplrs = EPLRS(None)
-                eplrs.params = d["params"]
-                return eplrs
+                t = EPLRS(None)
             if actionid == "SetFrequency":
-                setfreq = SetFrequencyCommand(1)
-                setfreq.params = d["params"]
-                return setfreq
+                t = SetFrequencyCommand(1)
             if actionid == "ActivateBeacon":
-                ab = ActivateBeaconCommand(10)
-                ab.params = d["params"]
-                return ab
+                t = ActivateBeaconCommand(10)
             if actionid == "Option":
-                option = OptDisparseUnderFire()
-                option.params = d["params"]
-                return option
+                t = OptDisparseUnderFire()
+            t.params = d["params"]
         if id == "EngageTargets":
             key = d["key"]
             if key == "CAS":
-                return CASTaskAction()
+                t = CASTaskAction()
             if key == "CAP":
-                return CAPTaskAction()
+                t = CAPTaskAction()
         if id == "AWACS":
-            return AWACSTaskAction()
+            t = AWACSTaskAction()
         if id == "Tanker":
-            return RefuelingTaskAction()
+            t = RefuelingTaskAction()
         if id == "Orbit":
-            orbit = OrbitAction(None, 600)
-            orbit.params = d["params"]
-            return orbit
-        return None
+            t = OrbitAction(None, 600)
+            t.params = d["params"]
+        t.auto = d["auto"]
+        t.enabled = d["enabled"]
+        t.number = d["number"]
+        return t
 
 
 # TODO check
@@ -302,7 +301,7 @@ class OrbitAction(Task):
 class MainTask:
     name = None
     sub_tasks = []
-    perform_task = []
+    perform_task = []  # type: List[Task]
 
 
 class Nothing(MainTask):
