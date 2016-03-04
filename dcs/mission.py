@@ -769,6 +769,14 @@ class Mission:
                 unit.callsign_dict["name"] = callsign_name + str(1) + str(i)
             i += 1
 
+    @staticmethod
+    def _load_tasks(mp: MovingPoint, task: dcs.task.MainTask):
+        for t in task.perform_task:
+            ptask = t()
+            ptask.auto = True
+            mp.tasks.append(ptask)
+        return mp
+
     def _flying_group_ramp(self, _country, group: FlyingGroup, task: dcs.task.MainTask, airport: Airport,
                            coldstart=True,
                            parking_slots: ParkingSlot=None):
@@ -792,8 +800,7 @@ class Mission:
         mp.y = group.units[0].y
         mp.airdrome_id = airport.id
         mp.alt = group.units[0].alt
-        for t in task.perform_task:
-            mp.tasks.append(t())
+        Mission._load_tasks(mp, task)
 
         group.add_point(mp)
 
@@ -815,8 +822,7 @@ class Mission:
         mp.y = group.units[0].y
         mp.airdrome_id = airport.id
         mp.alt = group.units[0].alt
-        for t in task.perform_task:
-            mp.tasks.append(t())
+        Mission._load_tasks(mp, task)
 
         group.add_point(mp)
 
@@ -842,8 +848,7 @@ class Mission:
         mp.alt = altitude
         mp.speed = speed / 3.6
 
-        for t in task.perform_task:
-            mp.tasks.append(t())
+        Mission._load_tasks(mp, task)
 
         group.add_point(mp)
 

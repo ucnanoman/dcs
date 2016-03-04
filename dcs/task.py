@@ -2,7 +2,7 @@ class Task:
     def __init__(self, _id):
         self.id = _id
         self.params = {}
-        self.auto = True
+        self.auto = False
         self.number = 1
         self.enabled = True
 
