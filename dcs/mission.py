@@ -834,6 +834,7 @@ class Mission:
         for unit in group.units:
             unit.alt = altitude
             unit.x += i * 10
+            unit.speed = speed / 3.6
             i += 1
 
         self._assign_callsign(_country, group)
