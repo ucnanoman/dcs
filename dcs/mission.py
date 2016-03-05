@@ -667,7 +667,7 @@ class Mission:
     def plane_group(self, name):
         return PlaneGroup(self.next_group_id(), self.string(name))
 
-    def plane_group_inflight(self, _country, name, plane_type, x, y, altitude, speed=600, task: dcs.task.MainTask=None, group_size=1):
+    def plane_group_inflight(self, _country, name, plane_type: PlaneType, x, y, altitude, speed=600, task: dcs.task.MainTask=None, group_size=1):
         if task is None:
             task = plane_type.task_default
 
