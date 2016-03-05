@@ -207,7 +207,6 @@ class Mission:
     def __init__(self, terrain: Terrain = Caucasus()):
         self.current_unit_id = 0
         self.current_group_id = 0
-        self.current_callsign_id = 99
         self.current_dict_id = 0
         self.filename = None
 
@@ -598,10 +597,6 @@ class Mission:
         self.current_unit_id += 1
         return self.current_unit_id
 
-    def next_callsign_id(self):
-        self.current_callsign_id += 1
-        return self.current_callsign_id
-
     def next_dict_id(self):
         self.current_dict_id += 1
         return self.current_dict_id
@@ -754,14 +749,15 @@ class Mission:
     def helicopter_group(self, name):
         return HelicopterGroup(self.next_group_id(), self.string(name))
 
-    def _assign_callsign(self, _country, group):
+    @classmethod
+    def _assign_callsign(cls, _country, group):
         callsign_name = None
         callsign = None
         category = group.units[0].unit_type.category
         if category in _country.callsign:
             callsign_name = _country.callsign.get(category)[0]
         else:
-            callsign = self.next_callsign_id()
+            callsign = _country.next_callsign_id()
 
         i = 1
         for unit in group.units:

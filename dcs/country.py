@@ -12,6 +12,7 @@ class Country:
         self.plane_group = []  # type: list[PlaneGroup]
         self.helicopter_group = []  # type: list[HelicopterGroup]
         self.static_group = []  # type: list[StaticGroup]
+        self.current_callsign_id = 99
 
     def name(self):
         return self.name
@@ -55,6 +56,10 @@ class Country:
         for group in self.static_group_group:
             if name in group.name.str():
                 return group
+
+    def next_callsign_id(self):
+        self.current_callsign_id += 1
+        return self.current_callsign_id
 
     def dict(self):
         d = {}
