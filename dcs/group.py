@@ -335,6 +335,7 @@ class PlaneGroup(FlyingGroup):
 class HelicopterGroup(FlyingGroup):
     def __init__(self, _id, name=None, start_time=0):
         super(HelicopterGroup, self).__init__(_id, name, start_time)
+        self.frequency = 127.5
 
 
 class ShipGroup(MovingGroup):
