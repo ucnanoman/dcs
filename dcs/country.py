@@ -1,4 +1,5 @@
 from .group import VehicleGroup, ShipGroup, PlaneGroup, StaticGroup
+from typing import List, Dict
 
 
 class Country:
@@ -7,12 +8,13 @@ class Country:
     def __init__(self, _id, name):
         self.id = _id
         self.name = name
-        self.vehicle_group = []  # type: list[VehicleGroup]
-        self.ship_group = []  # type: list[ShipGroup]
-        self.plane_group = []  # type: list[PlaneGroup]
-        self.helicopter_group = []  # type: list[HelicopterGroup]
-        self.static_group = []  # type: list[StaticGroup]
+        self.vehicle_group = []  # type: List[VehicleGroup]
+        self.ship_group = []  # type: List[ShipGroup]
+        self.plane_group = []  # type: List[PlaneGroup]
+        self.helicopter_group = []  # type: List[HelicopterGroup]
+        self.static_group = []  # type: List[StaticGroup]
         self.current_callsign_id = 99
+        self.current_callsign_category = {}  # type: Dict[str,int]
 
     def name(self):
         return self.name
