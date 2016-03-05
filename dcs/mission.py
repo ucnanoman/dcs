@@ -270,8 +270,8 @@ class Mission:
 
         self.map = {
             "zoom": 1000000,
-            "centerY": 680000,
-            "centerX": -250000
+            "centerY": 680571.42857143,
+            "centerX": -255714.28571428
         }
 
         self.failures = {}
