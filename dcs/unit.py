@@ -46,7 +46,7 @@ class Unit:
             "type": self.type,
             "x": self.x,
             "y": self.y,
-            "heading": math.radians(self.heading),
+            "heading": round(math.radians(self.heading), 13),
             "skill": self.skill,
             "unitId": self.id,
             "name": self.name.id
@@ -155,7 +155,7 @@ class FlyingUnit(Unit):
             d["livery_id"] = self.livery_id
         d["psi"] = self.psi
         d["onboard_num"] = self.onboard_num
-        d["speed"] = self.speed
+        d["speed"] = round(self.speed, 13)
         if self.hardpoint_racks:
             d["hardpoint_racks"] = self.hardpoint_racks
         d["payload"] = {

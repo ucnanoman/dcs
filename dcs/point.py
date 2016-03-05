@@ -31,7 +31,7 @@ class Point:
             "name": self.name.id,
             "x": self.x,
             "y": self.y,
-            "speed": self.speed,
+            "speed": round(self.speed, 13),
             "formation_template": self.formation_template,
             "action": self.action
         }

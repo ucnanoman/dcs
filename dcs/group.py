@@ -367,5 +367,5 @@ class StaticGroup(Group):
     def dict(self):
         d = super(StaticGroup, self).dict()
         d["dead"] = self.dead
-        d["heading"] = math.radians(self.heading)
+        d["heading"] = round(math.radians(self.heading), 13)
         return d
