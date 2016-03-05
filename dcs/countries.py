@@ -349,7 +349,7 @@ class USA(Country):
             CallsignAWACS.Focus,
             CallsignAWACS.Darkstar
         ],
-        "Tankers": [
+        "Tanker": [
             CallsignTankers.Texaco,
             CallsignTankers.Arco,
             CallsignTankers.Shell

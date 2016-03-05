@@ -15,7 +15,7 @@ print('from .country import Country')
 
 local categories = {
 	'AWACS',
-	'Tankers',
+	'Tanker',
 	'Air',
 	'Helipad',
 	'Ground Units'
