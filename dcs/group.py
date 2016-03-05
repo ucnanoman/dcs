@@ -50,6 +50,17 @@ class Group:
             i = 1
             for unit in self.units:
                 d["units"][i] = unit.dict()
+                dunit = d["units"][i]
+                if len(self.points) > 1:
+                    p1x = self.points[0].x
+                    p1y = self.points[0].y
+                    p2x = self.points[1].x
+                    p2y = self.points[1].y
+                    hdg = mapping.heading_between_points(p1x, p1y, p2x, p2y)
+                    rhdg = math.radians(hdg)
+                    dunit["heading"] = round(rhdg, 13)
+                    if "psi" in dunit:
+                        dunit["psi"] = round(rhdg * -1, 13)
                 i += 1
         if self.points:
             d["route"] = {"points": {}}
