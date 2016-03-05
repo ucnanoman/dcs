@@ -486,17 +486,67 @@ class Transport(MainTask):
 class Option(Task):
     Id = "WrappedAction"
 
-    def __init__(self):
+    def __init__(self, value=None):
         super(Option, self).__init__(Option.Id)
+        self.params = {
+            "action": {"id": "Option", "params": {"name": self.Key}}
+        }
+        if value:
+            self.params["action"]["params"]["value"] = value
+
+
+class OptROE(Option):
+    """
+    Sets the groups rules of engagement.
+    Ultimately defines whether or not the AI group is allowed to attack.
+    This option can override all other tasking. With the 1.5 patch two of the values
+    have different names in the mission editor.
+    However the behavior is still exactly the same as before,
+    its just labeled slightly different. The scripting engine still uses the previous values.
+    """
+    Key = 0
+
+    class Values:
+        WeaponFree = 0
+        """AI will engage any enemy group it detects. Target prioritization is based based on the threat of the target."""
+        OpenFireWeaponFree = 1
+        """AI will engage any enemy group it detects, but will prioritize targets specified in the groups tasking."""
+        OpenFire = 2
+        """AI will engage only targets specified in its taskings."""
+        ReturnFire = 3
+        """AI will only engage threats that shoot first."""
+        WeaponHold = 4
+        """AI will hold fire under all circumstances."""
+
+    def __init__(self, value=Values.WeaponFree):
+        super(OptROE, self).__init__(value)
+
+
+class OptReactOnThreat(Option):
+    """
+    Defines the allowable action for an airborne group to take in response to a threat.
+    This option can have an effect on other tasking.
+    """
+    Key = 1
+
+    class Values:
+        NoReaction = 0
+        """No defensive actions will take place to counter threats"""
+        PassiveDefense = 1
+        """AI will use jammers and other countermeasures in an attempt to defeat the threat. AI will not attempt a maneuver to defeat a threat."""
+        EvadeFire = 2
+        """AI will react by performing defensive maneuvers against incoming threats, AI will also use passive defense."""
+        ByPassAndEscape = 3
+        """AI will attempt to avoid enemy threat zones all together. This includes attempting to fly above or around threats."""
+        AllowAbortMission = 4
+        """If a threat is deemed severe enough the AI will abort its mission and return to base."""
+
+    def __init__(self, value=Values.NoReaction):
+        super(OptReactOnThreat, self).__init__(value)
 
 
 class OptDisparseUnderFire(Option):
     Key = 8
 
     def __init__(self, value=None):
-        super(OptDisparseUnderFire, self).__init__()
-        self.params = {
-            "action": {"id": "Option", "params": {"name": OptDisparseUnderFire.Key}}
-        }
-        if value:
-            self.params["action"]["params"]["value"] = value
+        super(OptDisparseUnderFire, self).__init__(value)
