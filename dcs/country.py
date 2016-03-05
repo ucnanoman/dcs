@@ -63,6 +63,16 @@ class Country:
         self.current_callsign_id += 1
         return self.current_callsign_id
 
+    def next_callsign_category(self, category):
+        if category not in self.current_callsign_category:
+            self.current_callsign_category[category] = 0
+            return self.callsign.get(category)[0]
+
+        self.current_callsign_category[category] += 1
+        if self.current_callsign_category[category] >= len(self.callsign[category]):
+            self.current_callsign_category[category] = 0
+        return self.callsign.get(category)[self.current_callsign_category[category]]
+
     def dict(self):
         d = {}
         d["name"] = self.name

@@ -755,16 +755,15 @@ class Mission:
         callsign = None
         category = group.units[0].unit_type.category
         if category in _country.callsign:
-            callsign_name = _country.callsign.get(category)[0]
-        else:
-            callsign = _country.next_callsign_id()
+            callsign_name = _country.next_callsign_category(category)
 
         i = 1
         for unit in group.units:
-            if callsign:
-                unit.callsign = callsign
-            else:
+            if category in _country.callsign:
                 unit.callsign_dict["name"] = callsign_name + str(1) + str(i)
+                unit.callsign_dict[3] = i
+            else:
+                unit.callsign = _country.next_callsign_id()
             i += 1
 
     @staticmethod
