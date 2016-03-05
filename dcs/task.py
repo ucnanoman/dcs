@@ -59,6 +59,85 @@ class Task:
         return t
 
 
+class TargetType(type):
+    def __str__(self):
+        return '"{id}"'.format(id=self.id)
+
+
+class Targets(metaclass=TargetType):
+    class All(metaclass=TargetType):
+        id = "All"
+        class Air(metaclass=TargetType):
+            id = "Air"
+            class Planes(metaclass=TargetType):
+                id = "Planes"
+                class Fighters(metaclass=TargetType):
+                    id = "Fighters"
+                class Bombers(metaclass=TargetType):
+                    id = "Bombers"
+            class Helicopters(metaclass=TargetType):
+                id = "Helicopters"
+
+        class GroundUnits(metaclass=TargetType):
+            id = "Ground Units"
+            class Infantry(metaclass=TargetType):
+                id = "Infantry"
+            class Fortifications(metaclass=TargetType):
+                id = "Fortifications"
+            class GroundVehicles(metaclass=TargetType):
+                id = "Ground vehicles"
+
+                class ArmoredVehicles(metaclass=TargetType):
+                    id = "Armored vehicles"
+                    class Tanks(metaclass=TargetType):
+                        id = "Tanks"
+                    class IFV(metaclass=TargetType):
+                        id = "IFV"
+                    class APC(metaclass=TargetType):
+                        id = "APC"
+                class Artillery(metaclass=TargetType):
+                    id = "Artillery"
+                class UnarmedVehicles(metaclass=TargetType):
+                    id = "Unarmed vehicles"
+            class AirDefence(metaclass=TargetType):
+                id = "Air Defence"
+                class AAA(metaclass=TargetType):
+                    id = "AAA"
+                    class SAMRelated(metaclass=TargetType):
+                        id = "SAM related"
+                        class SRSAM(metaclass=TargetType):
+                            id = "SR SAM"
+                        class MRSAM(metaclass=TargetType):
+                            id = "MR SAM"
+                        class LRSAM(metaclass=TargetType):
+                            id = "LR SAM"
+
+        class Naval(metaclass=TargetType):
+            id = "Naval"
+            class Ships(metaclass=TargetType):
+                id = "Ships"
+                class ArmedShips(metaclass=TargetType):
+                    id = "Armed ships"
+                    class HeavyArmedShips(metaclass=TargetType):
+                        id = "Heavy armed ships"
+                        class AircraftCarriers(metaclass=TargetType):
+                            id = "Aircraft Carriers"
+                        class Cruisers(metaclass=TargetType):
+                            id = "Cruisers"
+                        class Destroyers(metaclass=TargetType):
+                            id = "Destroyers"
+                        class Frigates(metaclass=TargetType):
+                            id = "Frigates"
+                        class Corvettes(metaclass=TargetType):
+                            id = "Corvettes"
+                    class LightArmedShips(metaclass=TargetType):
+                        id = "Light armed ships"
+                class UnarmedShips(metaclass=TargetType):
+                    id = "Unarmed ships"
+            class Submarines(metaclass=TargetType):
+                id = "Submarines"
+
+
 # TODO check
 class AntishipStrikeTaskAction(Task):
     Id = "EngageTargets"
@@ -78,9 +157,13 @@ class CASTaskAction(Task):
     Key = "CAS"
 
     def __init__(self):
-        super(CASTaskAction, self).__init__(CASTaskAction.Id)
+        super(CASTaskAction, self).__init__(CASTaskAction)
         self.params = {
-            "targetTypes": {1: "Helicopters", 2: "Ground Units", 3: "Light armed ships"},
+            "targetTypes": {
+                1: Targets.All.Air.Helicopters,
+                2: Targets.All.GroundUnits,
+                3: Targets.All.Naval.Ships.ArmedShips.LightArmedShips
+            },
             "priority": 0
         }
 
@@ -97,7 +180,7 @@ class SEADTaskAction(Task):
     def __init__(self):
         super(SEADTaskAction, self).__init__(SEADTaskAction.Id)
         self.params = {
-            "targetTypes": {1: "Air Defence"},
+            "targetTypes": {1: Targets.All.GroundUnits.AirDefence},
             "priority": 0
         }
 
@@ -114,7 +197,7 @@ class CAPTaskAction(Task):
     def __init__(self):
         super(CAPTaskAction, self).__init__(CAPTaskAction.Id)
         self.params = {
-            "targetTypes": {1: "Air"},
+            "targetTypes": {1: Targets.All.Air},
             "priority": 0
         }
 
@@ -131,7 +214,7 @@ class FighterSweepTaskAction(Task):
     def __init__(self):
         super(FighterSweepTaskAction, self).__init__(FighterSweepTaskAction.Id)
         self.params = {
-            "targetTypes": {1: "Planes"},
+            "targetTypes": {1: Targets.All.Air.Planes},
             "priority": 0
         }
 
@@ -152,13 +235,13 @@ engagetargets_tasks = {
 class EscortTaskAction(Task):
     Id = "Escort"
 
-    def __init__(self, group_id=None, engagement_max_dist=60000, lastwpt=None):
+    def __init__(self, group_id=None, engagement_max_dist=60000, lastwpt=None, targets: List[str]=[Targets.All.Air.Planes]):
         super(EscortTaskAction, self).__init__(EscortTaskAction.Id)
         self.params = {
             "lastWptIndexFlagChangedManually": False,
             "lastWptIndexFlag": False,
             "engagementDistMax": engagement_max_dist,
-            "targetTypes": {1: "Planes"},
+            "targetTypes": {i: targets[i-1] for i in range(1, len(targets)+1)},
             "pos": {"x": -200, "y": -500, "z": 0}
         }
         if group_id:
@@ -200,13 +283,26 @@ class Bombing(Task):
         }
 
 
+class EngageTargets(Task):
+    Id = "EngageTargets"
+
+    def __init__(self, max_distance=None, targets: List[str]=[Targets.All]):
+        super(EngageTargets, self).__init__(EngageTargets.Id)
+        self.params = {
+            "targetTypes": {i: targets[i-1] for i in range(1, len(targets)+1)},
+            "maxDistEnabled": True if max_distance else False,
+            "maxDist": max_distance,
+            "priority": 0
+        }
+
+
 class EngageTargetsInZone(Task):
     Id = "EngageTargetsInZone"
 
-    def __init__(self, x, y, radius=5000):
+    def __init__(self, x, y, radius=5000, targets: List[str]=[Targets.All]):
         super(EngageTargetsInZone, self).__init__(EngageTargetsInZone.Id)
         self.params = {
-            "targetTypes": {1: "Air Defence"},
+            "targetTypes": {i: targets[i-1] for i in range(1, len(targets)+1)},
             "priority": 0,
             "x": x,
             "y": y,
@@ -412,6 +508,12 @@ class CAP(MainTask):
     name = "CAP"
     sub_tasks = ["Orbit", "Follow", "Aerobatics"]
     perform_task = [CAPTaskAction]
+
+    class EnrouteTasks:
+        EngageTargets = EngageTargets
+        EngageTargetsInZone = EngageTargetsInZone
+        EngageGroup = EngageGroup
+        EngageUnit = EngageUnit
 
 
 class Escort(MainTask):
