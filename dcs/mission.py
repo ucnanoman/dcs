@@ -1,6 +1,7 @@
 import zipfile
 import os
 import tempfile
+from typing import List
 from datetime import datetime
 from . import lua
 from .weather import *
@@ -611,6 +612,15 @@ class Mission:
     def vehicle(self, name, _type):
         return Vehicle(self.next_unit_id(), self.string(name), _type)
 
+    def _add_vehicle_point(self, vg: VehicleGroup, action: str):
+        mp = MovingPoint()
+        mp.type = "Turning Point"
+        mp.action = action
+        mp.x = vg.units[0].x
+        mp.y = vg.units[0].y
+
+        vg.add_point(mp)
+
     def vehicle_group(self, _country, name, _type: str, x, y, heading=0, group_size=1, action="Off Road", formation=VehicleGroup.Formation.Line) -> VehicleGroup:
         vg = VehicleGroup(self.next_group_id(), self.string(name))
 
@@ -621,13 +631,25 @@ class Mission:
             v.heading = heading
             vg.add_unit(v)
 
-        mp = MovingPoint()
-        mp.type = "Turning Point"
-        mp.action = action
-        mp.x = vg.units[0].x
-        mp.y = vg.units[0].y
+        self._add_vehicle_point(vg, action)
 
-        vg.add_point(mp)
+        vg.formation(formation)
+
+        _country.add_vehicle_group(vg)
+        return vg
+
+    def vehicle_group_platoon(self, _country, name, types: List[str], x, y, heading=0, action="Off Road", formation=VehicleGroup.Formation.Line) -> VehicleGroup:
+        vg = VehicleGroup(self.next_group_id(), self.string(name))
+
+        for i in range(0, len(types)):
+            utype = types[i]
+            v = self.vehicle(name + " Unit #{nr}".format(nr=i+1), utype)
+            v.x = x
+            v.y = y + i * 20
+            v.heading = heading
+            vg.add_unit(v)
+
+        self._add_vehicle_point(vg, action)
 
         vg.formation(formation)
 
