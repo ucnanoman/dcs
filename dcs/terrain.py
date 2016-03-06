@@ -1,6 +1,7 @@
 # terrain module
 from typing import List
 
+
 class ParkingSlot:
     def __init__(self, _id, x, y, large=False, slot_name=None, heli=False):
         self.id = _id
@@ -39,6 +40,7 @@ class Airport:
         self.runways = []  # type: list[Runway]
         self.parking_slots = {}  # type: dict[str:ParkingSlot]
         self.runway_free = True
+        self.civilian = True
 
         # warehouse values
         self.coalition = "NEUTRAL"
@@ -386,6 +388,7 @@ class Caucasus(Terrain):
         self.airports[nalchik.name] = nalchik
 
         mozdok = Airport(28, "Mozdok", 137.0, -83454.571428571, 834453.14285714, None)
+        mozdok.civilian = False
         mozdok.runways.append(Runway(80, None))
         mozdok.runways.append(Runway(260, None))
         mozdok.parking_slots[6] = ParkingSlot(6, -83756.9765625, 835044.375, False, "23", heli=True)
@@ -445,6 +448,7 @@ class Caucasus(Terrain):
         self.airports[soganlug.name] = soganlug
 
         vaziani = Airport(31, "Vaziani", 140.0, -319069.063, 903150.625, None)
+        vaziani.civilian = False
         vaziani.runways.append(Runway(130, 108.75))
         vaziani.runways.append(Runway(310, 108.75))
         self.airports[vaziani.name] = vaziani
