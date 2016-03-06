@@ -1,4 +1,5 @@
 import math
+from typing import List
 from .unit import Unit, Skill
 from .point import Point, MovingPoint
 from .translation import String
@@ -12,8 +13,8 @@ class Group:
             raise TypeError("id must be an integer")
         self.id = _id
         self.hidden = False
-        self.units = []  # type: list[Unit]
-        self.points = []  # type: list[MovingPoint]
+        self.units = []  # type: List[Unit]
+        self.points = []  # type: List[MovingPoint]
         self.name = name if name else String()
 
     def load_from_dict(self, d):
