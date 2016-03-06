@@ -110,6 +110,7 @@ mod_aircraft["entry"] = ed_path.."/CoreMods/aircraft/MQ-9 Reaper"
 mod_aircraft["Bf-109K-4"] = ed_path.."/CoreMods/WWII Units"
 mod_aircraft["FW-190D9"] = ed_path.."/CoreMods/WWII Units"
 mod_aircraft["MiG-15bis"] = ed_path.."/CoreMods/aircraft/MiG-15bis"
+mod_aircraft["F-86"] = ed_path.."/CoreMods/aircraft/F-86"
 
 -- make sure output is stable
 aircraft_keys = {}
@@ -121,6 +122,15 @@ for i,k in pairs(aircraft_keys) do
     current_mod_path = v
     dofile(v.."/"..k..".lua")
 end
+
+current_mod_path = ed_path.."/CoreMods/aircraft/C-101"
+dofile(current_mod_path.."/C-101.lua")
+dofile(current_mod_path.."/C-101CC.lua")
+
+current_mod_path = ed_path.."/CoreMods/aircraft/F-5E"
+dofile(current_mod_path.."/F-5E.lua")
+dofile(current_mod_path.."/F-5E-3.lua")
+
 current_mod_path = ed_path.."/CoreMods/aircraft/MiG-21BIS"
 dofile(current_mod_path.."/Entry/Aw")
 dofile(current_mod_path.."/Entry/Am")
