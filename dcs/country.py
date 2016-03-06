@@ -16,9 +16,6 @@ class Country:
         self.current_callsign_id = 99
         self.current_callsign_category = {}  # type: Dict[str,int]
 
-    def name(self):
-        return self.name
-
     def add_vehicle_group(self, vgroup):
         self.vehicle_group.append(vgroup)
 
