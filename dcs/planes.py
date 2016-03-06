@@ -410,6 +410,7 @@ class MiG_29S(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
     category = "Interceptor"
+    radio_frequency = 124
 
     class Pylon1:
         R_60M = (1, Weapons.R_60M)
@@ -558,6 +559,7 @@ class MiG_29A(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
     category = "Interceptor"
+    radio_frequency = 124
 
     class Pylon1:
         R_60M = (1, Weapons.R_60M)
@@ -1076,6 +1078,16 @@ class A_10A(PlaneType):
     charge_total = 480
     chaff_charge_size = 1
     flare_charge_size = 2
+    radio_frequency = 124
+
+    callnames = {
+        "USA": [
+            "Hawg",
+            "Boar",
+            "Pig",
+            "Tusk",
+        ]
+    }
 
     class Pylon1:
         LAU_105___2_AIM_9M = (1, Weapons.LAU_105___2_AIM_9M)
@@ -1354,6 +1366,7 @@ class Su_27(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
     category = "Interceptor"
+    radio_frequency = 127.5
 
     class Pylon1:
         R_73 = (1, Weapons.R_73)
@@ -1543,6 +1556,7 @@ class MiG_29G(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
     category = "Interceptor"
+    radio_frequency = 124
 
     class Pylon1:
         R_60M = (1, Weapons.R_60M)
@@ -1688,6 +1702,7 @@ class Su_25(PlaneType):
     charge_total = 256
     chaff_charge_size = 1
     flare_charge_size = 1
+    radio_frequency = 124
 
     class Pylon1:
         R_60M = (1, Weapons.R_60M)
@@ -2164,6 +2179,7 @@ class Su_25T(PlaneType):
     charge_total = 256
     chaff_charge_size = 1
     flare_charge_size = 1
+    radio_frequency = 124
 
     class Pylon1:
         R_60M = (1, Weapons.R_60M)
@@ -2409,6 +2425,7 @@ class Su_33(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
     category = "Interceptor"
+    radio_frequency = 124
 
     class Pylon1:
         R_73 = (1, Weapons.R_73)
@@ -3775,6 +3792,7 @@ class F_15C(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 2
     category = "Interceptor"
+    radio_frequency = 124
 
     class Pylon1:
         AIM_120B = (1, Weapons.AIM_120B)
@@ -4112,6 +4130,7 @@ class MiG_29K(PlaneType):
     charge_total = 60
     chaff_charge_size = 1
     flare_charge_size = 1
+    radio_frequency = 124
 
     class Pylon3:
         R_73 = (3, Weapons.R_73)
@@ -4872,6 +4891,7 @@ class RQ_1A_Predator(PlaneType):
     fuel_max = 200
     max_speed = 220
     eplrs = True
+    radio_frequency = 127.5
 
     class Pylon1:
         AGM_114K = (1, Weapons.AGM_114K)
@@ -4907,6 +4927,15 @@ class A_10C(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 2
     eplrs = True
+
+    callnames = {
+        "USA": [
+            "Hawg",
+            "Boar",
+            "Pig",
+            "Tusk",
+        ]
+    }
 
     class Pylon1:
         LAU_105___2_AIM_9M = (1, Weapons.LAU_105___2_AIM_9M)
@@ -5365,6 +5394,7 @@ class P_51D(PlaneType):
     id = "P-51D"
     fuel_max = 732
     max_speed = 750
+    radio_frequency = 124
 
     panel_radio = {
         1: {
@@ -5424,6 +5454,7 @@ class Bf_109K_4(PlaneType):
     fuel_max = 296
     max_speed = 828
     category = "Air"
+    radio_frequency = 40
 
     panel_radio = {
         1: {
@@ -5448,11 +5479,96 @@ class Bf_109K_4(PlaneType):
     task_default = task.CAP
 
 
+class F_86F_Sabre(PlaneType):
+    id = "F-86F Sabre"
+    fuel_max = 1282
+    max_speed = 964.8
+    category = "Air"
+    radio_frequency = 225
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 225,
+                2: 258,
+                4: 270,
+                8: 257,
+                16: 252,
+                17: 268,
+                9: 253,
+                18: 269,
+                5: 255,
+                10: 263,
+                11: 267,
+                3: 260,
+                6: 259,
+                12: 254,
+                13: 264,
+                7: 262,
+                14: 266,
+                15: 265
+            },
+        },
+    }
+
+    class Pylon1:
+        Fuel_Tank_200_gallons = (1, Weapons.Fuel_Tank_200_gallons)
+        Fuel_Tank_120_gallons = (1, Weapons.Fuel_Tank_120_gallons)
+        HVARx2 = (1, Weapons.HVARx2)
+        HVAR_SMOKE_2 = (1, Weapons.HVAR_SMOKE_2)
+
+    class Pylon2:
+        HVARx2 = (2, Weapons.HVARx2)
+        HVAR_SMOKE_2 = (2, Weapons.HVAR_SMOKE_2)
+
+    class Pylon3:
+        HVARx2 = (3, Weapons.HVARx2)
+        HVAR_SMOKE_2 = (3, Weapons.HVAR_SMOKE_2)
+
+    class Pylon4:
+        Fuel_Tank_120_gallons = (4, Weapons.Fuel_Tank_120_gallons)
+        AN_M64_ = (4, Weapons.AN_M64_)
+        HVARx2 = (4, Weapons.HVARx2)
+        HVAR_SMOKE_2 = (4, Weapons.HVAR_SMOKE_2)
+
+    class Pylon5:
+        GAR_8 = (5, Weapons.GAR_8)
+
+    class Pylon6:
+        GAR_8 = (6, Weapons.GAR_8)
+
+    class Pylon7:
+        Fuel_Tank_120_gallons = (7, Weapons.Fuel_Tank_120_gallons)
+        AN_M64_ = (7, Weapons.AN_M64_)
+        HVARx2 = (7, Weapons.HVARx2)
+        HVAR_SMOKE_2 = (7, Weapons.HVAR_SMOKE_2)
+
+    class Pylon8:
+        HVARx2 = (8, Weapons.HVARx2)
+        HVAR_SMOKE_2 = (8, Weapons.HVAR_SMOKE_2)
+
+    class Pylon9:
+        HVARx2 = (9, Weapons.HVARx2)
+        HVAR_SMOKE_2 = (9, Weapons.HVAR_SMOKE_2)
+
+    class Pylon10:
+        Fuel_Tank_200_gallons = (10, Weapons.Fuel_Tank_200_gallons)
+        Fuel_Tank_120_gallons = (10, Weapons.Fuel_Tank_120_gallons)
+        HVARx2 = (10, Weapons.HVARx2)
+        HVAR_SMOKE_2 = (10, Weapons.HVAR_SMOKE_2)
+
+    pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+    tasks = [task.CAP, task.CAS, task.Escort, task.FighterSweep, task.GroundAttack, task.Intercept, task.AntishipStrike]
+    task_default = task.CAP
+
+
 class FW_190D9(PlaneType):
     id = "FW-190D9"
     fuel_max = 388
     max_speed = 828
     category = "Air"
+    radio_frequency = 38.4
 
     panel_radio = {
         1: {
@@ -5481,6 +5597,7 @@ class Hawk(PlaneType):
     fuel_max = 1272
     max_speed = 2880
     category = "Air"
+    radio_frequency = 127.5
 
     panel_radio = {
         1: {
@@ -5546,6 +5663,7 @@ class L_39C(PlaneType):
     charge_total = 0
     chaff_charge_size = 0
     flare_charge_size = 0
+    radio_frequency = 305
 
     panel_radio = {
         1: {
@@ -5625,6 +5743,7 @@ class L_39ZA(PlaneType):
     charge_total = 0
     chaff_charge_size = 0
     flare_charge_size = 0
+    radio_frequency = 305
 
     panel_radio = {
         1: {
@@ -5868,6 +5987,7 @@ class MiG_15bis(PlaneType):
     fuel_max = 1172
     max_speed = 992
     category = "Air"
+    radio_frequency = 3.75
 
     class Pylon1:
         FAB_50 = (1, Weapons.FAB_50)
@@ -5924,6 +6044,478 @@ class MQ_9_Reaper(PlaneType):
     task_default = task.Reconnaissance
 
 
+class C_101EB(PlaneType):
+    id = "C-101EB"
+    fuel_max = 1885
+    max_speed = 925.2
+    category = "Air"
+    radio_frequency = 127.5
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 225,
+                2: 258,
+                4: 270,
+                8: 257,
+                16: 252,
+                17: 268,
+                9: 253,
+                18: 269,
+                5: 255,
+                10: 263,
+                11: 267,
+                3: 260,
+                6: 259,
+                12: 254,
+                13: 264,
+                7: 262,
+                14: 266,
+                15: 265
+            },
+        },
+        2: {
+            "channels": {
+                1: 225,
+                2: 258,
+                4: 270,
+                8: 257,
+                16: 252,
+                17: 268,
+                9: 253,
+                18: 269,
+                5: 255,
+                10: 263,
+                11: 267,
+                3: 260,
+                6: 259,
+                12: 254,
+                13: 264,
+                7: 262,
+                14: 266,
+                15: 265
+            },
+        },
+    }
+
+    class Pylon1:
+        Aviojet_Red_Smoke = (1, Weapons.Aviojet_Red_Smoke)
+
+    class Pylon2:
+        Aviojet_White_Smoke = (2, Weapons.Aviojet_White_Smoke)
+
+    class Pylon3:
+        Aviojet_Yellow_Smoke = (3, Weapons.Aviojet_Yellow_Smoke)
+
+    pylons = {1, 2, 3}
+
+    tasks = [task.GroundAttack, task.RunwayAttack, task.PinpointStrike, task.CAS, task.AFAC, task.CAP, task.Escort, task.FighterSweep, task.Intercept]
+    task_default = task.CAP
+
+
+class C_101CC(PlaneType):
+    id = "C-101CC"
+    fuel_max = 1885
+    max_speed = 925.2
+    category = "Air"
+    radio_frequency = 127.5
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 225,
+                2: 258,
+                4: 270,
+                8: 257,
+                16: 252,
+                17: 268,
+                9: 253,
+                18: 269,
+                5: 255,
+                10: 263,
+                11: 267,
+                3: 260,
+                6: 259,
+                12: 254,
+                13: 264,
+                7: 262,
+                14: 266,
+                15: 265
+            },
+        },
+    }
+
+    class Pylon1:
+        AIM_9M = (1, Weapons.AIM_9M)
+        AIM_9P = (1, Weapons.AIM_9P)
+        R_550_Magic_2 = (1, Weapons.R_550_Magic_2)
+        LAU_61___19_2_75__rockets_MK151_HE = (1, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
+        BR_500 = (1, Weapons.BR_500)
+
+    class Pylon2:
+        Sea_Eagle = (2, Weapons.Sea_Eagle)
+        Mk_84 = (2, Weapons.Mk_84)
+        Mk_82 = (2, Weapons.Mk_82)
+        LAU_61___19_2_75__rockets_MK151_HE = (2, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
+        LAU_68___7_2_75__rockets_M151__HE_ = (2, Weapons.LAU_68___7_2_75__rockets_M151__HE_)
+        LAU_68___7_2_75__rockets_M156_WP_ = (2, Weapons.LAU_68___7_2_75__rockets_M156_WP_)
+        LAU_68___7_2_75__rockets_M257__Parachute_illumination_ = (2, Weapons.LAU_68___7_2_75__rockets_M257__Parachute_illumination_)
+        LAU_68___7_2_75__rockets_M274__Practice_smoke_ = (2, Weapons.LAU_68___7_2_75__rockets_M274__Practice_smoke_)
+        BL755 = (2, Weapons.BL755)
+        FAB_250 = (2, Weapons.FAB_250)
+        FAB_100 = (2, Weapons.FAB_100)
+        BR_250 = (2, Weapons.BR_250)
+        BR_500 = (2, Weapons.BR_500)
+        BIN_200 = (2, Weapons.BIN_200)
+
+    class Pylon3:
+        LAU_68___7_2_75__rockets_M151__HE_ = (3, Weapons.LAU_68___7_2_75__rockets_M151__HE_)
+        LAU_68___7_2_75__rockets_M156_WP_ = (3, Weapons.LAU_68___7_2_75__rockets_M156_WP_)
+        LAU_68___7_2_75__rockets_M257__Parachute_illumination_ = (3, Weapons.LAU_68___7_2_75__rockets_M257__Parachute_illumination_)
+        LAU_68___7_2_75__rockets_M274__Practice_smoke_ = (3, Weapons.LAU_68___7_2_75__rockets_M274__Practice_smoke_)
+        Mk_84 = (3, Weapons.Mk_84)
+        Mk_82 = (3, Weapons.Mk_82)
+        BL755 = (3, Weapons.BL755)
+        FAB_250 = (3, Weapons.FAB_250)
+        FAB_100 = (3, Weapons.FAB_100)
+        BR_250 = (3, Weapons.BR_250)
+        BR_500 = (3, Weapons.BR_500)
+        BIN_200 = (3, Weapons.BIN_200)
+        BRU_42_3_BDU_33 = (3, Weapons.BRU_42_3_BDU_33)
+
+    class Pylon4:
+        DEFA_553_cal_30_mm = (4, Weapons.DEFA_553_cal_30_mm)
+        AN_M3_cal_0_5_in = (4, Weapons.AN_M3_cal_0_5_in)
+
+    class Pylon5:
+        LAU_68___7_2_75__rockets_M151__HE_ = (5, Weapons.LAU_68___7_2_75__rockets_M151__HE_)
+        LAU_68___7_2_75__rockets_M156_WP_ = (5, Weapons.LAU_68___7_2_75__rockets_M156_WP_)
+        LAU_68___7_2_75__rockets_M257__Parachute_illumination_ = (5, Weapons.LAU_68___7_2_75__rockets_M257__Parachute_illumination_)
+        LAU_68___7_2_75__rockets_M274__Practice_smoke_ = (5, Weapons.LAU_68___7_2_75__rockets_M274__Practice_smoke_)
+        Mk_84 = (5, Weapons.Mk_84)
+        Mk_82 = (5, Weapons.Mk_82)
+        BL755 = (5, Weapons.BL755)
+        FAB_250 = (5, Weapons.FAB_250)
+        FAB_100 = (5, Weapons.FAB_100)
+        BR_250 = (5, Weapons.BR_250)
+        BR_500 = (5, Weapons.BR_500)
+        BIN_200 = (5, Weapons.BIN_200)
+        BRU_42_3_BDU_33 = (5, Weapons.BRU_42_3_BDU_33)
+
+    class Pylon6:
+        Sea_Eagle = (6, Weapons.Sea_Eagle)
+        Mk_84 = (6, Weapons.Mk_84)
+        Mk_82 = (6, Weapons.Mk_82)
+        LAU_61___19_2_75__rockets_MK151_HE = (6, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
+        LAU_68___7_2_75__rockets_M151__HE_ = (6, Weapons.LAU_68___7_2_75__rockets_M151__HE_)
+        LAU_68___7_2_75__rockets_M156_WP_ = (6, Weapons.LAU_68___7_2_75__rockets_M156_WP_)
+        LAU_68___7_2_75__rockets_M257__Parachute_illumination_ = (6, Weapons.LAU_68___7_2_75__rockets_M257__Parachute_illumination_)
+        LAU_68___7_2_75__rockets_M274__Practice_smoke_ = (6, Weapons.LAU_68___7_2_75__rockets_M274__Practice_smoke_)
+        BL755 = (6, Weapons.BL755)
+        FAB_250 = (6, Weapons.FAB_250)
+        FAB_100 = (6, Weapons.FAB_100)
+        BR_250 = (6, Weapons.BR_250)
+        BR_500 = (6, Weapons.BR_500)
+        BIN_200 = (6, Weapons.BIN_200)
+
+    class Pylon7:
+        AIM_9M = (7, Weapons.AIM_9M)
+        AIM_9P = (7, Weapons.AIM_9P)
+        R_550_Magic_2 = (7, Weapons.R_550_Magic_2)
+        LAU_61___19_2_75__rockets_MK151_HE = (7, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
+        BR_500 = (7, Weapons.BR_500)
+
+    pylons = {1, 2, 3, 4, 5, 6, 7}
+
+    tasks = [task.GroundAttack, task.RunwayAttack, task.PinpointStrike, task.CAS, task.AFAC, task.CAP, task.Escort, task.FighterSweep, task.Intercept]
+    task_default = task.CAP
+
+
+class F_5E(PlaneType):
+    id = "F-5E"
+    fuel_max = 1996
+    max_speed = 1742.4
+    chaff = 0
+    flare = 0
+    charge_total = 0
+    chaff_charge_size = 0
+    flare_charge_size = 0
+    category = "Air"
+    radio_frequency = 305
+
+    class Pylon1:
+        AIM_9P = (1, Weapons.AIM_9P)
+        Smokewinder___red_smk = (1, Weapons.Smokewinder___red_smk)
+        Smokewinder___green = (1, Weapons.Smokewinder___green)
+        Smokewinder___blue_smk = (1, Weapons.Smokewinder___blue_smk)
+        Smokewinder___white = (1, Weapons.Smokewinder___white)
+        Smokewinder___yellow = (1, Weapons.Smokewinder___yellow)
+        Smokewinder___orange = (1, Weapons.Smokewinder___orange)
+        AN_ASQ_T50_TCTS_Pod = (1, Weapons.AN_ASQ_T50_TCTS_Pod)
+
+    class Pylon2:
+        Mk_82 = (2, Weapons.Mk_82)
+        Mk_82_SnakeEye = (2, Weapons.Mk_82_SnakeEye)
+        M_117 = (2, Weapons.M_117)
+        CBU_52B = (2, Weapons.CBU_52B)
+        LAU_68___7_2_75__rockets_MK1__Practice_ = (2, Weapons.LAU_68___7_2_75__rockets_MK1__Practice_)
+        LAU_68___7_2_75__rockets_MK5__HE_ = (2, Weapons.LAU_68___7_2_75__rockets_MK5__HE_)
+        LAU_68___7_2_75__rockets_MK61__Practice_ = (2, Weapons.LAU_68___7_2_75__rockets_MK61__Practice_)
+        LAU_68___7_2_75__rockets_M151__HE_ = (2, Weapons.LAU_68___7_2_75__rockets_M151__HE_)
+        LAU_68___7_2_75__rockets_M156_WP_ = (2, Weapons.LAU_68___7_2_75__rockets_M156_WP_)
+        LAU_68___7_2_75__rockets_WTU1B__Practice_ = (2, Weapons.LAU_68___7_2_75__rockets_WTU1B__Practice_)
+        LAU_68___7_2_75__rockets_M257__Parachute_illumination_ = (2, Weapons.LAU_68___7_2_75__rockets_M257__Parachute_illumination_)
+        LAU_68___7_2_75__rockets_M274__Practice_smoke_ = (2, Weapons.LAU_68___7_2_75__rockets_M274__Practice_smoke_)
+        LAU_61___19_2_75__rockets_MK151_HE = (2, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
+        LAU_61___19_2_75__rockets_MK156_WP = (2, Weapons.LAU_61___19_2_75__rockets_MK156_WP)
+        SUU_25___8_LUU_2 = (2, Weapons.SUU_25___8_LUU_2)
+        GBU_12 = (2, Weapons.GBU_12)
+
+    class Pylon3:
+        Mk_82 = (3, Weapons.Mk_82)
+        Mk_82_SnakeEye = (3, Weapons.Mk_82_SnakeEye)
+        Mk_83 = (3, Weapons.Mk_83)
+        M_117 = (3, Weapons.M_117)
+        CBU_52B = (3, Weapons.CBU_52B)
+        LAU_68___7_2_75__rockets_MK1__Practice_ = (3, Weapons.LAU_68___7_2_75__rockets_MK1__Practice_)
+        LAU_68___7_2_75__rockets_MK5__HE_ = (3, Weapons.LAU_68___7_2_75__rockets_MK5__HE_)
+        LAU_68___7_2_75__rockets_MK61__Practice_ = (3, Weapons.LAU_68___7_2_75__rockets_MK61__Practice_)
+        LAU_68___7_2_75__rockets_M151__HE_ = (3, Weapons.LAU_68___7_2_75__rockets_M151__HE_)
+        LAU_68___7_2_75__rockets_M156_WP_ = (3, Weapons.LAU_68___7_2_75__rockets_M156_WP_)
+        LAU_68___7_2_75__rockets_WTU1B__Practice_ = (3, Weapons.LAU_68___7_2_75__rockets_WTU1B__Practice_)
+        LAU_68___7_2_75__rockets_M257__Parachute_illumination_ = (3, Weapons.LAU_68___7_2_75__rockets_M257__Parachute_illumination_)
+        LAU_68___7_2_75__rockets_M274__Practice_smoke_ = (3, Weapons.LAU_68___7_2_75__rockets_M274__Practice_smoke_)
+        LAU_61___19_2_75__rockets_MK151_HE = (3, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
+        LAU_61___19_2_75__rockets_MK156_WP = (3, Weapons.LAU_61___19_2_75__rockets_MK156_WP)
+        F_5_275Gal_Fuel_tank = (3, Weapons.F_5_275Gal_Fuel_tank)
+        F_5_150Gal_Fuel_tank = (3, Weapons.F_5_150Gal_Fuel_tank)
+        GBU_12 = (3, Weapons.GBU_12)
+        MXU_648_TP = (3, Weapons.MXU_648_TP)
+
+    class Pylon4:
+        Mk_82 = (4, Weapons.Mk_82)
+        Mk_82_SnakeEye = (4, Weapons.Mk_82_SnakeEye)
+        Mk_83 = (4, Weapons.Mk_83)
+        Mk_84 = (4, Weapons.Mk_84)
+        M_117 = (4, Weapons.M_117)
+        CBU_52B = (4, Weapons.CBU_52B)
+        F_5_275Gal_Fuel_tank = (4, Weapons.F_5_275Gal_Fuel_tank)
+        F_5_150Gal_Fuel_tank = (4, Weapons.F_5_150Gal_Fuel_tank)
+        _5_Mk_82 = (4, Weapons._5_Mk_82)
+        _5_Mk_82_SnakeEye = (4, Weapons._5_Mk_82_SnakeEye)
+        MXU_648_TP = (4, Weapons.MXU_648_TP)
+
+    class Pylon5:
+        Mk_82 = (5, Weapons.Mk_82)
+        Mk_82_SnakeEye = (5, Weapons.Mk_82_SnakeEye)
+        Mk_83 = (5, Weapons.Mk_83)
+        M_117 = (5, Weapons.M_117)
+        CBU_52B = (5, Weapons.CBU_52B)
+        LAU_68___7_2_75__rockets_MK1__Practice_ = (5, Weapons.LAU_68___7_2_75__rockets_MK1__Practice_)
+        LAU_68___7_2_75__rockets_MK5__HE_ = (5, Weapons.LAU_68___7_2_75__rockets_MK5__HE_)
+        LAU_68___7_2_75__rockets_MK61__Practice_ = (5, Weapons.LAU_68___7_2_75__rockets_MK61__Practice_)
+        LAU_68___7_2_75__rockets_M151__HE_ = (5, Weapons.LAU_68___7_2_75__rockets_M151__HE_)
+        LAU_68___7_2_75__rockets_M156_WP_ = (5, Weapons.LAU_68___7_2_75__rockets_M156_WP_)
+        LAU_68___7_2_75__rockets_WTU1B__Practice_ = (5, Weapons.LAU_68___7_2_75__rockets_WTU1B__Practice_)
+        LAU_68___7_2_75__rockets_M257__Parachute_illumination_ = (5, Weapons.LAU_68___7_2_75__rockets_M257__Parachute_illumination_)
+        LAU_68___7_2_75__rockets_M274__Practice_smoke_ = (5, Weapons.LAU_68___7_2_75__rockets_M274__Practice_smoke_)
+        LAU_61___19_2_75__rockets_MK151_HE = (5, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
+        LAU_61___19_2_75__rockets_MK156_WP = (5, Weapons.LAU_61___19_2_75__rockets_MK156_WP)
+        F_5_275Gal_Fuel_tank = (5, Weapons.F_5_275Gal_Fuel_tank)
+        F_5_150Gal_Fuel_tank = (5, Weapons.F_5_150Gal_Fuel_tank)
+        GBU_12 = (5, Weapons.GBU_12)
+        MXU_648_TP = (5, Weapons.MXU_648_TP)
+
+    class Pylon6:
+        Mk_82 = (6, Weapons.Mk_82)
+        Mk_82_SnakeEye = (6, Weapons.Mk_82_SnakeEye)
+        M_117 = (6, Weapons.M_117)
+        CBU_52B = (6, Weapons.CBU_52B)
+        LAU_68___7_2_75__rockets_MK1__Practice_ = (6, Weapons.LAU_68___7_2_75__rockets_MK1__Practice_)
+        LAU_68___7_2_75__rockets_MK5__HE_ = (6, Weapons.LAU_68___7_2_75__rockets_MK5__HE_)
+        LAU_68___7_2_75__rockets_MK61__Practice_ = (6, Weapons.LAU_68___7_2_75__rockets_MK61__Practice_)
+        LAU_68___7_2_75__rockets_M151__HE_ = (6, Weapons.LAU_68___7_2_75__rockets_M151__HE_)
+        LAU_68___7_2_75__rockets_M156_WP_ = (6, Weapons.LAU_68___7_2_75__rockets_M156_WP_)
+        LAU_68___7_2_75__rockets_WTU1B__Practice_ = (6, Weapons.LAU_68___7_2_75__rockets_WTU1B__Practice_)
+        LAU_68___7_2_75__rockets_M257__Parachute_illumination_ = (6, Weapons.LAU_68___7_2_75__rockets_M257__Parachute_illumination_)
+        LAU_68___7_2_75__rockets_M274__Practice_smoke_ = (6, Weapons.LAU_68___7_2_75__rockets_M274__Practice_smoke_)
+        LAU_61___19_2_75__rockets_MK151_HE = (6, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
+        LAU_61___19_2_75__rockets_MK156_WP = (6, Weapons.LAU_61___19_2_75__rockets_MK156_WP)
+        SUU_25___8_LUU_2 = (6, Weapons.SUU_25___8_LUU_2)
+        GBU_12 = (6, Weapons.GBU_12)
+
+    class Pylon7:
+        AIM_9P = (7, Weapons.AIM_9P)
+        Smokewinder___red_smk = (7, Weapons.Smokewinder___red_smk)
+        Smokewinder___green = (7, Weapons.Smokewinder___green)
+        Smokewinder___blue_smk = (7, Weapons.Smokewinder___blue_smk)
+        Smokewinder___white = (7, Weapons.Smokewinder___white)
+        Smokewinder___yellow = (7, Weapons.Smokewinder___yellow)
+        Smokewinder___orange = (7, Weapons.Smokewinder___orange)
+        AN_ASQ_T50_TCTS_Pod = (7, Weapons.AN_ASQ_T50_TCTS_Pod)
+
+    pylons = {1, 2, 3, 4, 5, 6, 7}
+
+    tasks = [task.CAS, task.GroundAttack, task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.AFAC, task.Reconnaissance]
+    task_default = task.CAP
+
+
+class F_5E_3(PlaneType):
+    id = "F-5E-3"
+    fuel_max = 2046
+    max_speed = 1742.4
+    chaff = 30
+    flare = 15
+    charge_total = 60
+    chaff_charge_size = 1
+    flare_charge_size = 2
+    category = "Air"
+    radio_frequency = 305
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 305,
+                2: 264,
+                4: 256,
+                8: 257,
+                16: 261,
+                17: 267,
+                9: 255,
+                18: 251,
+                5: 254,
+                10: 262,
+                20: 266,
+                11: 259,
+                3: 265,
+                6: 250,
+                12: 268,
+                13: 269,
+                7: 270,
+                14: 260,
+                19: 253,
+                15: 263
+            },
+        },
+    }
+
+    class Pylon1:
+        AIM_9P = (1, Weapons.AIM_9P)
+        Smokewinder___red_smk = (1, Weapons.Smokewinder___red_smk)
+        Smokewinder___green = (1, Weapons.Smokewinder___green)
+        Smokewinder___blue_smk = (1, Weapons.Smokewinder___blue_smk)
+        Smokewinder___white = (1, Weapons.Smokewinder___white)
+        Smokewinder___yellow = (1, Weapons.Smokewinder___yellow)
+        Smokewinder___orange = (1, Weapons.Smokewinder___orange)
+        AN_ASQ_T50_TCTS_Pod = (1, Weapons.AN_ASQ_T50_TCTS_Pod)
+
+    class Pylon2:
+        Mk_82 = (2, Weapons.Mk_82)
+        Mk_82_SnakeEye = (2, Weapons.Mk_82_SnakeEye)
+        M_117 = (2, Weapons.M_117)
+        CBU_52B = (2, Weapons.CBU_52B)
+        LAU_68___7_2_75__rockets_MK1__Practice_ = (2, Weapons.LAU_68___7_2_75__rockets_MK1__Practice_)
+        LAU_68___7_2_75__rockets_MK5__HE_ = (2, Weapons.LAU_68___7_2_75__rockets_MK5__HE_)
+        LAU_68___7_2_75__rockets_MK61__Practice_ = (2, Weapons.LAU_68___7_2_75__rockets_MK61__Practice_)
+        LAU_68___7_2_75__rockets_M151__HE_ = (2, Weapons.LAU_68___7_2_75__rockets_M151__HE_)
+        LAU_68___7_2_75__rockets_M156_WP_ = (2, Weapons.LAU_68___7_2_75__rockets_M156_WP_)
+        LAU_68___7_2_75__rockets_WTU1B__Practice_ = (2, Weapons.LAU_68___7_2_75__rockets_WTU1B__Practice_)
+        LAU_68___7_2_75__rockets_M257__Parachute_illumination_ = (2, Weapons.LAU_68___7_2_75__rockets_M257__Parachute_illumination_)
+        LAU_68___7_2_75__rockets_M274__Practice_smoke_ = (2, Weapons.LAU_68___7_2_75__rockets_M274__Practice_smoke_)
+        LAU_61___19_2_75__rockets_MK151_HE = (2, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
+        LAU_61___19_2_75__rockets_MK156_WP = (2, Weapons.LAU_61___19_2_75__rockets_MK156_WP)
+        SUU_25___8_LUU_2 = (2, Weapons.SUU_25___8_LUU_2)
+        GBU_12 = (2, Weapons.GBU_12)
+
+    class Pylon3:
+        Mk_82 = (3, Weapons.Mk_82)
+        Mk_82_SnakeEye = (3, Weapons.Mk_82_SnakeEye)
+        Mk_83 = (3, Weapons.Mk_83)
+        M_117 = (3, Weapons.M_117)
+        CBU_52B = (3, Weapons.CBU_52B)
+        LAU_68___7_2_75__rockets_MK1__Practice_ = (3, Weapons.LAU_68___7_2_75__rockets_MK1__Practice_)
+        LAU_68___7_2_75__rockets_MK5__HE_ = (3, Weapons.LAU_68___7_2_75__rockets_MK5__HE_)
+        LAU_68___7_2_75__rockets_MK61__Practice_ = (3, Weapons.LAU_68___7_2_75__rockets_MK61__Practice_)
+        LAU_68___7_2_75__rockets_M151__HE_ = (3, Weapons.LAU_68___7_2_75__rockets_M151__HE_)
+        LAU_68___7_2_75__rockets_M156_WP_ = (3, Weapons.LAU_68___7_2_75__rockets_M156_WP_)
+        LAU_68___7_2_75__rockets_WTU1B__Practice_ = (3, Weapons.LAU_68___7_2_75__rockets_WTU1B__Practice_)
+        LAU_68___7_2_75__rockets_M257__Parachute_illumination_ = (3, Weapons.LAU_68___7_2_75__rockets_M257__Parachute_illumination_)
+        LAU_68___7_2_75__rockets_M274__Practice_smoke_ = (3, Weapons.LAU_68___7_2_75__rockets_M274__Practice_smoke_)
+        LAU_61___19_2_75__rockets_MK151_HE = (3, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
+        LAU_61___19_2_75__rockets_MK156_WP = (3, Weapons.LAU_61___19_2_75__rockets_MK156_WP)
+        F_5_275Gal_Fuel_tank = (3, Weapons.F_5_275Gal_Fuel_tank)
+        F_5_150Gal_Fuel_tank = (3, Weapons.F_5_150Gal_Fuel_tank)
+        GBU_12 = (3, Weapons.GBU_12)
+        MXU_648_TP = (3, Weapons.MXU_648_TP)
+
+    class Pylon4:
+        Mk_82 = (4, Weapons.Mk_82)
+        Mk_82_SnakeEye = (4, Weapons.Mk_82_SnakeEye)
+        Mk_83 = (4, Weapons.Mk_83)
+        Mk_84 = (4, Weapons.Mk_84)
+        M_117 = (4, Weapons.M_117)
+        CBU_52B = (4, Weapons.CBU_52B)
+        F_5_275Gal_Fuel_tank = (4, Weapons.F_5_275Gal_Fuel_tank)
+        F_5_150Gal_Fuel_tank = (4, Weapons.F_5_150Gal_Fuel_tank)
+        _5_Mk_82 = (4, Weapons._5_Mk_82)
+        _5_Mk_82_SnakeEye = (4, Weapons._5_Mk_82_SnakeEye)
+        MXU_648_TP = (4, Weapons.MXU_648_TP)
+
+    class Pylon5:
+        Mk_82 = (5, Weapons.Mk_82)
+        Mk_82_SnakeEye = (5, Weapons.Mk_82_SnakeEye)
+        Mk_83 = (5, Weapons.Mk_83)
+        M_117 = (5, Weapons.M_117)
+        CBU_52B = (5, Weapons.CBU_52B)
+        LAU_68___7_2_75__rockets_MK1__Practice_ = (5, Weapons.LAU_68___7_2_75__rockets_MK1__Practice_)
+        LAU_68___7_2_75__rockets_MK5__HE_ = (5, Weapons.LAU_68___7_2_75__rockets_MK5__HE_)
+        LAU_68___7_2_75__rockets_MK61__Practice_ = (5, Weapons.LAU_68___7_2_75__rockets_MK61__Practice_)
+        LAU_68___7_2_75__rockets_M151__HE_ = (5, Weapons.LAU_68___7_2_75__rockets_M151__HE_)
+        LAU_68___7_2_75__rockets_M156_WP_ = (5, Weapons.LAU_68___7_2_75__rockets_M156_WP_)
+        LAU_68___7_2_75__rockets_WTU1B__Practice_ = (5, Weapons.LAU_68___7_2_75__rockets_WTU1B__Practice_)
+        LAU_68___7_2_75__rockets_M257__Parachute_illumination_ = (5, Weapons.LAU_68___7_2_75__rockets_M257__Parachute_illumination_)
+        LAU_68___7_2_75__rockets_M274__Practice_smoke_ = (5, Weapons.LAU_68___7_2_75__rockets_M274__Practice_smoke_)
+        LAU_61___19_2_75__rockets_MK151_HE = (5, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
+        LAU_61___19_2_75__rockets_MK156_WP = (5, Weapons.LAU_61___19_2_75__rockets_MK156_WP)
+        F_5_275Gal_Fuel_tank = (5, Weapons.F_5_275Gal_Fuel_tank)
+        F_5_150Gal_Fuel_tank = (5, Weapons.F_5_150Gal_Fuel_tank)
+        GBU_12 = (5, Weapons.GBU_12)
+        MXU_648_TP = (5, Weapons.MXU_648_TP)
+
+    class Pylon6:
+        Mk_82 = (6, Weapons.Mk_82)
+        Mk_82_SnakeEye = (6, Weapons.Mk_82_SnakeEye)
+        M_117 = (6, Weapons.M_117)
+        CBU_52B = (6, Weapons.CBU_52B)
+        LAU_68___7_2_75__rockets_MK1__Practice_ = (6, Weapons.LAU_68___7_2_75__rockets_MK1__Practice_)
+        LAU_68___7_2_75__rockets_MK5__HE_ = (6, Weapons.LAU_68___7_2_75__rockets_MK5__HE_)
+        LAU_68___7_2_75__rockets_MK61__Practice_ = (6, Weapons.LAU_68___7_2_75__rockets_MK61__Practice_)
+        LAU_68___7_2_75__rockets_M151__HE_ = (6, Weapons.LAU_68___7_2_75__rockets_M151__HE_)
+        LAU_68___7_2_75__rockets_M156_WP_ = (6, Weapons.LAU_68___7_2_75__rockets_M156_WP_)
+        LAU_68___7_2_75__rockets_WTU1B__Practice_ = (6, Weapons.LAU_68___7_2_75__rockets_WTU1B__Practice_)
+        LAU_68___7_2_75__rockets_M257__Parachute_illumination_ = (6, Weapons.LAU_68___7_2_75__rockets_M257__Parachute_illumination_)
+        LAU_68___7_2_75__rockets_M274__Practice_smoke_ = (6, Weapons.LAU_68___7_2_75__rockets_M274__Practice_smoke_)
+        LAU_61___19_2_75__rockets_MK151_HE = (6, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
+        LAU_61___19_2_75__rockets_MK156_WP = (6, Weapons.LAU_61___19_2_75__rockets_MK156_WP)
+        SUU_25___8_LUU_2 = (6, Weapons.SUU_25___8_LUU_2)
+        GBU_12 = (6, Weapons.GBU_12)
+
+    class Pylon7:
+        AIM_9P = (7, Weapons.AIM_9P)
+        Smokewinder___red_smk = (7, Weapons.Smokewinder___red_smk)
+        Smokewinder___green = (7, Weapons.Smokewinder___green)
+        Smokewinder___blue_smk = (7, Weapons.Smokewinder___blue_smk)
+        Smokewinder___white = (7, Weapons.Smokewinder___white)
+        Smokewinder___yellow = (7, Weapons.Smokewinder___yellow)
+        Smokewinder___orange = (7, Weapons.Smokewinder___orange)
+        AN_ASQ_T50_TCTS_Pod = (7, Weapons.AN_ASQ_T50_TCTS_Pod)
+
+    pylons = {1, 2, 3, 4, 5, 6, 7}
+
+    tasks = [task.CAS, task.GroundAttack, task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.AFAC, task.Reconnaissance]
+    task_default = task.CAP
+
+
 class MiG_21Bis(PlaneType):
     id = "MiG-21Bis"
     fuel_max = 2280
@@ -5933,6 +6525,7 @@ class MiG_21Bis(PlaneType):
     charge_total = 64
     chaff_charge_size = 1
     flare_charge_size = 1
+    radio_frequency = 124
 
     panel_radio = {
         1: {
@@ -6133,6 +6726,7 @@ plane_map = {
     "KC-135": KC_135,
     "P-51D": P_51D,
     "Bf-109K-4": Bf_109K_4,
+    "F-86F Sabre": F_86F_Sabre,
     "FW-190D9": FW_190D9,
     "Hawk": Hawk,
     "L-39C": L_39C,
@@ -6140,5 +6734,9 @@ plane_map = {
     "M-2000C": M_2000C,
     "MiG-15bis": MiG_15bis,
     "MQ-9 Reaper": MQ_9_Reaper,
+    "C-101EB": C_101EB,
+    "C-101CC": C_101CC,
+    "F-5E": F_5E,
+    "F-5E-3": F_5E_3,
     "MiG-21Bis": MiG_21Bis,
 }

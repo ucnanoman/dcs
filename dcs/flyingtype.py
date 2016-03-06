@@ -20,6 +20,7 @@ class FlyingType:
     tacan = False
     eplrs = False
 
+    radio_frequency = 251
     panel_radio = None
 
     pylons = {}

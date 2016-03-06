@@ -18,6 +18,7 @@ class Ka_50(HelicopterType):
     charge_total = 128
     chaff_charge_size = 0
     flare_charge_size = 1
+    radio_frequency = 124
 
     panel_radio = {
         1: {
@@ -617,6 +618,7 @@ class UH_1H(HelicopterType):
     charge_total = 60
     chaff_charge_size = 0
     flare_charge_size = 1
+    radio_frequency = 251
 
     panel_radio = {
         1: {
