@@ -7,8 +7,6 @@ planes_dmg_parts = {}
 lights_prototypes = {}
 exhaust_data = {}
 guns_by_wstype = {}
-country = {}
-country["USA"] = {}
 
 
 function _(s)
@@ -31,6 +29,8 @@ ed_path = "C:/Program Files/Eagle Dynamics/DCS World"
 --ed_path = "/home/rp/dcs_data"
 db_path = ed_path.."/Scripts/Database/"
 
+dofile(db_path.."db_countries.lua")
+dofile(db_path.."db_callnames.lua")
 dofile(db_path.."PlaneConst.lua")
 dofile(db_path.."HelicopterConst.lua")
 dofile(db_path.."db_units_planes.lua")
@@ -244,6 +244,19 @@ for i in pairs(aircrafts) do
             end
             print('            },')
             print('        },')
+        end
+        print('    }')
+    end
+
+    if plane.SpecificCallnames then
+        print('')
+        print('    callnames = {')
+        for c in pairs(plane.SpecificCallnames) do
+            print('        "'..country.by_idx[c].Name..'": [')
+            for n in pairs(plane.SpecificCallnames[c]) do
+                print('            "'..plane.SpecificCallnames[c][n][1]..'",')
+            end
+            print('        ]')
         end
         print('    }')
     end
