@@ -524,6 +524,9 @@ class Caucasus(Terrain):
     def airport_gudauta(self) -> Airport:
         return self.airports["Gudauta"]
 
+    def airport_vaziani(self) -> Airport:
+        return self.airports["Vaziani"]
+
     def default_red_airports(self) -> List[Airport]:
         return [
             self.airport_anapa(),
