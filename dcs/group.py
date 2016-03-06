@@ -1,4 +1,5 @@
 import math
+import random
 from typing import List
 from .unit import Unit, Skill
 from .point import Point, MovingPoint
@@ -105,6 +106,7 @@ class VehicleGroup(MovingGroup):
         Line = 1
         Star = 2
         Rectangle = 3
+        Scattered = 4
 
     def __init__(self, _id, name=None, start_time=0):
         super(VehicleGroup, self).__init__(_id, name, start_time)
@@ -186,11 +188,39 @@ class VehicleGroup(MovingGroup):
                 u.heading = heading
                 u_idx += 1
 
+    def formation_scattered(self, heading=0, max_radius=None):
+        unit_count = len(self.units)
+        max_r = max_radius if max_radius else random.randrange(10, unit_count * 20)
+
+        sx = self.units[0].x
+        sy = self.units[0].y
+
+        for i in range(1, unit_count):
+            while True:
+                x, y = mapping.point_from_heading(sx, sy, random.randrange(0, 360), max_r)
+
+                collision = False
+                for j in range(1, i):
+                    test_unit = self.units[j]
+                    unit_rect = mapping.Rectangle.from_point(test_unit.x, test_unit.y, 14)
+
+                    if unit_rect.point_in_rect(x, y):
+                        collision = True
+
+                if not collision:
+                    u = self.units[i]
+                    u.x = x
+                    u.y = y
+                    u.heading = heading
+                    break
+            i += 1
+
     def formation(self, _type=Formation.Line, heading=0):
         form_map = {
             VehicleGroup.Formation.Line: self.formation_line,
             VehicleGroup.Formation.Star: self.formation_star,
-            VehicleGroup.Formation.Rectangle: self.formation_rectangle
+            VehicleGroup.Formation.Rectangle: self.formation_rectangle,
+            VehicleGroup.Formation.Scattered: self.formation_scattered
         }
 
         form_map[_type](heading)
