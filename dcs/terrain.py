@@ -1,5 +1,5 @@
 # terrain module
-
+from typing import List
 
 class ParkingSlot:
     def __init__(self, _id, x, y, large=False, slot_name=None, heli=False):
@@ -166,22 +166,22 @@ class Caucasus(Terrain):
         self.bullseye_blue = {"x": -291014, "y": 617414}
         self.bullseye_red = {"x": 11557, "y": 371700}
 
-        anapa = Airport(12, "Anapa", 121.0, 0, 0, None)
+        anapa = Airport(12, "Anapa", 121.0, -5406.2803440839, 243127.2973737, None)
         self.airports[anapa.name] = anapa
 
-        krasnodar_center = Airport(13, "Krasnodar-Center", 122.0, 0, 0, None)
+        krasnodar_center = Airport(13, "Krasnodar-Center", 122.0, 11692.789495652, 367948.47230953, None)
         self.airports[krasnodar_center.name] = krasnodar_center
 
-        novorossiysk = Airport(14, "Novorossiysk", 123.0, 0, 0, None)
+        novorossiysk = Airport(14, "Novorossiysk", 123.0, -40915.496728899, 279256.64920952, None)
         self.airports[novorossiysk.name] = novorossiysk
 
-        krymsk = Airport(15, "Krymsk", 124.0, 0, 0, None)
+        krymsk = Airport(15, "Krymsk", 124.0, -6583.663574989, 294383.98405512, None)
         self.airports[krymsk.name] = krymsk
 
-        maykop = Airport(16, "Maykop", 125.0, 0, 0, None)
+        maykop = Airport(16, "Maykop", 125.0, -26441.347360305, 458040.61422532, None)
         self.airports[maykop.name] = maykop
 
-        gelendzihik = Airport(17, "Gelendzihik", 126.0, 0, 0, None)
+        gelendzihik = Airport(17, "Gelendzihik", 126.0, -50392.648146355, 298387.43849386, None)
         self.airports[gelendzihik.name] = gelendzihik
 
         sochi = Airport(18, "Sochi", 127.0, -164474.73482633, 462236.21834688, None)
@@ -257,7 +257,7 @@ class Caucasus(Terrain):
         sochi.parking_slots[138] = ParkingSlot(138, -163865.125, 462902.1875, True, "41")
         self.airports[sochi.name] = sochi
 
-        krasnodar_pashkovsky = Airport(19, "Krasnodar-Pashkovsky", 128.0, 0, 0, None)
+        krasnodar_pashkovsky = Airport(19, "Krasnodar-Pashkovsky", 128.0, 7674.038444859, 385029.5736699, None)
         self.airports[krasnodar_pashkovsky.name] = krasnodar_pashkovsky
 
         sukhumi = Airport(20, "Sukhumi", 129.0, -219863.984375, 563508.6875, None)
@@ -289,7 +289,7 @@ class Caucasus(Terrain):
 
         self.airports[sukhumi.name] = sukhumi
 
-        gudauta = Airport(21, "Gudauta", 130.0, 0, 0, None)
+        gudauta = Airport(21, "Gudauta", 130.0, -196974.19851241, 516290.23098695, None)
         self.airports[gudauta.name] = gudauta
 
         batumi = Airport(22, "Batumi", 131.0, -355692.3067714, 617269.96285781, "16X")
@@ -358,11 +358,11 @@ class Caucasus(Terrain):
         kobuleti.parking_slots[86] = ParkingSlot(86, -318184.09375, 635734.25, large=True, slot_name="17", heli=False)
         self.airports[kobuleti.name] = kobuleti
 
-        kutaisi = Airport(25, "Kutaisi", 134.0, 0, 0, None)
+        kutaisi = Airport(25, "Kutaisi", 134.0, -284889.06283057, 683853.75717885, None)
         kutaisi.runways.append(Runway(70, 109.40))
         self.airports[kutaisi.name] = kutaisi
 
-        mineralnye = Airport(26, "Mineralnye", 135.0, 0, 0, None)
+        mineralnye = Airport(26, "Mineralnye", 135.0, -51251.551717591, 705718.47981263, None)
         self.airports[mineralnye.name] = mineralnye
 
         nalchik = Airport(27, "Nalchik", 136.0, -124921.90954665, 760428.0733062, None)
@@ -429,7 +429,7 @@ class Caucasus(Terrain):
         mozdok.parking_slots[91] = ParkingSlot(91, -84045.5546875, 833972.875, True, "02", heli=True)
         self.airports[mozdok.name] = mozdok
 
-        lochini = Airport(29, "Lochini", 138.0, 0, 0, None)
+        lochini = Airport(29, "Lochini", 138.0, -315478.57142857, 896538.85714286, None)
         lochini.runways.append(Runway(130, 110.30, 2))
         lochini.runways.append(Runway(300, 108.90, 1))
         self.airports[lochini.name] = lochini
@@ -444,7 +444,7 @@ class Caucasus(Terrain):
         soganlug.parking_slots[14] = ParkingSlot(14, -318528.5625, 895798.75, large=False, slot_name="01", heli=True)
         self.airports[soganlug.name] = soganlug
 
-        vaziani = Airport(31, "Vaziani", 140.0, 0, 0, None)
+        vaziani = Airport(31, "Vaziani", 140.0, -319069.063, 903150.625, None)
         vaziani.runways.append(Runway(130, 108.75))
         vaziani.runways.append(Runway(310, 108.75))
         self.airports[vaziani.name] = vaziani
@@ -486,6 +486,55 @@ class Caucasus(Terrain):
 
     def airport_beslan(self) -> Airport:
         return self.airports["Beslan"]
+
+    def airport_mozdok(self) -> Airport:
+        return self.airports["Mozdok"]
+
+    def airport_anapa(self) -> Airport:
+        return self.airports["Anapa"]
+
+    def airport_anapa(self) -> Airport:
+        return self.airports["Anapa"]
+
+    def airport_krasnodarcenter(self) -> Airport:
+        return self.airports["Krasnodar-Center"]
+
+    def airport_krasnodarpashkovsky(self) -> Airport:
+        return self.airports["Krasnodar-Pashkovsky"]
+
+    def airport_novorossiysk(self) -> Airport:
+        return self.airports["Novorossiysk"]
+
+    def airport_krymsk(self) -> Airport:
+        return self.airports["Krymsk"]
+
+    def airport_maykop(self) -> Airport:
+        return self.airports["Maykop"]
+
+    def airport_gelendzihik(self) -> Airport:
+        return self.airports["Gelendzihik"]
+
+    def airport_mineralnye(self) -> Airport:
+        return self.airports["Mineralnye"]
+
+    def airport_gudauta(self) -> Airport:
+        return self.airports["Gudauta"]
+
+    def default_red_airports(self) -> List[Airport]:
+        return [
+            self.airport_anapa(),
+            self.airport_krymsk(),
+            self.airport_novorossiysk(),
+            self.airport_krasnodarcenter(),
+            self.airport_krasnodarpashkovsky(),
+            self.airport_maykop(),
+            self.airport_gelendzihik(),
+            self.airport_mineralnye(),
+            self.airport_mozdok(),
+            self.airport_beslan(),
+            self.airport_nalchik(),
+            self.airport_sochi()
+        ]
 
 
 class Nevada(Terrain):
