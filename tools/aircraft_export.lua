@@ -210,6 +210,22 @@ for i in pairs(aircrafts) do
     end
 
     -- panel radio
+    if plane.HumanRadio then
+        local bwritefreq = false
+        if exportplane and plane.HumanRadio.frequency ~= 251 then
+            bwritefreq = true
+        end
+        if not exportplane and plane.HumanRadio.frequency ~= 127.5 then
+            bwritefreq = true
+        end
+        if bwritefreq then
+            print('    radio_frequency = '..plane.HumanRadio.frequency)
+        end
+        -- modulation seems always to be nil
+        -- if plane.HumanRadio.modulation ~= nil then
+        --     print('    radio_modulation = '..plane.HumanRadio.modulation)
+        -- end
+    end
     if plane.panelRadio then
         print('')
         print('    panel_radio = {')
