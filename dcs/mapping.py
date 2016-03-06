@@ -51,6 +51,25 @@ def heading_between_points(x1, y1, x2, y2):
     return math.degrees(angle_trunc(math.atan2(deltay, deltax)))
 
 
+class Rectangle:
+    def __init__(self, top, left, bottom, right):
+        self.top = top
+        self.left = left
+        self.bottom = bottom
+        self.right = right
+
+    @staticmethod
+    def from_point(x, y, side_length):
+        top = x + side_length / 2
+        left = y - side_length / 2
+        bottom = x - side_length / 2
+        right = y + side_length / 2
+        return Rectangle(top, left, bottom, right)
+
+    def point_in_rect(self, x, y):
+        return self.bottom <= x <= self.top and self.left <= y <= self.right
+
+
 def point_in_poly(x, y, poly: List[Tuple[float, float]]):
     """
     Checks if the given point is within the polygon.
