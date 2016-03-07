@@ -258,7 +258,7 @@ class FlyingGroup(MovingGroup):
         self.modulation = d.get("modulation")
         self.communication = d.get("communication", False)
         self.uncontrolled = d["uncontrolled"]
-        self.radio_set = d["radioSet"]
+        self.radio_set = d.get("radioSet", False)
 
     def add_waypoint(self, x, y, altitude, speed=600, name=String()) -> MovingPoint:
         mp = MovingPoint()
