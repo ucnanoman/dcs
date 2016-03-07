@@ -169,21 +169,33 @@ class Caucasus(Terrain):
         self.bullseye_red = {"x": 11557, "y": 371700}
 
         anapa = Airport(12, "Anapa", 121.0, -5406.2803440839, 243127.2973737, None)
+        anapa.runways.append(Runway(40))
+        anapa.runways.append(Runway(220))
         self.airports[anapa.name] = anapa
 
         krasnodar_center = Airport(13, "Krasnodar-Center", 122.0, 11692.789495652, 367948.47230953, None)
+        krasnodar_center.runways.append(Runway(80))
+        krasnodar_center.runways.append(Runway(260))
         self.airports[krasnodar_center.name] = krasnodar_center
 
         novorossiysk = Airport(14, "Novorossiysk", 123.0, -40915.496728899, 279256.64920952, None)
+        novorossiysk.runways.append(Runway(40))
+        novorossiysk.runways.append(Runway(220))
         self.airports[novorossiysk.name] = novorossiysk
 
         krymsk = Airport(15, "Krymsk", 124.0, -6583.663574989, 294383.98405512, None)
+        krymsk.runways.append(Runway(30))
+        krymsk.runways.append(Runway(210))
         self.airports[krymsk.name] = krymsk
 
         maykop = Airport(16, "Maykop", 125.0, -26441.347360305, 458040.61422532, None)
+        maykop.runways.append(Runway(40))
+        maykop.runways.append(Runway(220))
         self.airports[maykop.name] = maykop
 
         gelendzihik = Airport(17, "Gelendzihik", 126.0, -50392.648146355, 298387.43849386, None)
+        gelendzihik.runways.append(Runway(40))
+        gelendzihik.runways.append(Runway(220))
         self.airports[gelendzihik.name] = gelendzihik
 
         sochi = Airport(18, "Sochi", 127.0, -164474.73482633, 462236.21834688, None)
@@ -260,6 +272,8 @@ class Caucasus(Terrain):
         self.airports[sochi.name] = sochi
 
         krasnodar_pashkovsky = Airport(19, "Krasnodar-Pashkovsky", 128.0, 7674.038444859, 385029.5736699, None)
+        krasnodar_pashkovsky.runways.append(Runway(40))
+        krasnodar_pashkovsky.runways.append(Runway(220))
         self.airports[krasnodar_pashkovsky.name] = krasnodar_pashkovsky
 
         sukhumi = Airport(20, "Sukhumi", 129.0, -219863.984375, 563508.6875, None)
@@ -292,6 +306,8 @@ class Caucasus(Terrain):
         self.airports[sukhumi.name] = sukhumi
 
         gudauta = Airport(21, "Gudauta", 130.0, -196974.19851241, 516290.23098695, None)
+        gudauta.runways.append(Runway(150))
+        gudauta.runways.append(Runway(330))
         self.airports[gudauta.name] = gudauta
 
         batumi = Airport(22, "Batumi", 131.0, -355692.3067714, 617269.96285781, "16X")
@@ -311,6 +327,7 @@ class Caucasus(Terrain):
 
         senaki = Airport(23, "Senaki", 132.0, -281619.03125, 646385.625, "31X")
         senaki.runways.append(Runway(90, 108.9))
+        senaki.runways.append(Runway(270))
         self.airports[senaki.name] = senaki
 
         kobuleti = Airport(24, "Kobuleti", 133.0, -317948.32727306, 635639.37385346, "67X")
@@ -362,9 +379,12 @@ class Caucasus(Terrain):
 
         kutaisi = Airport(25, "Kutaisi", 134.0, -284889.06283057, 683853.75717885, None)
         kutaisi.runways.append(Runway(70, 109.40))
+        kutaisi.runways.append(Runway(250))
         self.airports[kutaisi.name] = kutaisi
 
         mineralnye = Airport(26, "Mineralnye", 135.0, -51251.551717591, 705718.47981263, None)
+        mineralnye.runways.append(Runway(110))
+        mineralnye.runways.append(Runway(290))
         self.airports[mineralnye.name] = mineralnye
 
         nalchik = Airport(27, "Nalchik", 136.0, -124921.90954665, 760428.0733062, None)
@@ -497,9 +517,6 @@ class Caucasus(Terrain):
     def airport_anapa(self) -> Airport:
         return self.airports["Anapa"]
 
-    def airport_anapa(self) -> Airport:
-        return self.airports["Anapa"]
-
     def airport_krasnodarcenter(self) -> Airport:
         return self.airports["Krasnodar-Center"]
 
@@ -526,6 +543,12 @@ class Caucasus(Terrain):
 
     def airport_vaziani(self) -> Airport:
         return self.airports["Vaziani"]
+
+    def airport_lochini(self) -> Airport:
+        return self.airports["Lochini"]
+
+    def airport_kobuleti(self) -> Airport:
+        return self.airports["Kobuleti"]
 
     def default_red_airports(self) -> List[Airport]:
         return [
