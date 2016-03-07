@@ -125,7 +125,7 @@ class TriggerZone:
 class Triggers:
     def __init__(self):
         self.current_zone_id = 0
-        self.zones = []
+        self.zones = []  # type: List[TriggerZone]
 
     def load_from_dict(self, data):
         self.current_zone_id = 0
