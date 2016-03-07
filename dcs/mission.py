@@ -1012,6 +1012,28 @@ class Mission:
 
         return awacs
 
+    def escort_flight(self,
+                     _country,
+                     name: str,
+                     escort_type: dcs.planes.PlaneType,
+                     airport: Airport,
+                     group_to_escort: dcs.group.FlyingGroup,
+                      group_size=2):
+        if airport
+            eg = self.plane_group_from_parking(
+                _country, name, escort_type, airport, dcs.task.Escort, group_size=group_size)
+            eg.add_runway_waypoint(airport)
+        else:
+            eg = self.plane_group_inflight(
+                _country, name, escort_type,
+                group_to_escort.points[0] - 10*1000, group_to_escort.points[0].y, 2000, group_size=group_size
+            )
+
+        wp = eg.add_waypoint(group_to_escort.points[1].x, group_to_escort.points[1].y, group_to_escort.points[1].alt)
+        wp.tasks.append(dcs.task.EscortTaskAction(group_to_escort.id, lastwpt=len(eg.points)+1))
+
+        return eg
+
     def country(self, name):
         for k in self.coalition:
             c = self.coalition[k].country(name)
