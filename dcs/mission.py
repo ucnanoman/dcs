@@ -962,9 +962,10 @@ class Mission:
             tanker = self.plane_group_from_parking(_country, name, plane_type, airport, coldstart=coldstart)
             wp = tanker.add_runway_waypoint(airport)
         else:
-            x2, y2 = mapping.point_from_heading(x, y, (heading + 180) % 360, 1000)
+            x2, y2 = mapping.point_from_heading(x, y, (heading + 180) % 360, 2000)
             tanker = self.plane_group_inflight(_country, name, plane_type, x2, y2, altitude, speed, dcs.task.Refueling)
-            wp = tanker.add_waypoint(x, y, altitude, speed)
+            x2, y2 = mapping.point_from_heading(x, y, heading + 180, 1000)
+            wp = tanker.add_waypoint(x2, y2, altitude, speed)
 
         wp.tasks.append(dcs.task.SetFrequencyCommand(frequency))
 
@@ -998,9 +999,10 @@ class Mission:
             awacs = self.plane_group_from_parking(_country, name, plane_type, airport, coldstart=coldstart)
             wp = awacs.add_runway_waypoint(airport)
         else:
-            x2, y2 = mapping.point_from_heading(x, y, (heading + 180) % 360, 1000)
+            x2, y2 = mapping.point_from_heading(x, y, (heading + 180) % 360, 2000)
             awacs = self.plane_group_inflight(_country, name, plane_type, x2, y2, altitude, speed, dcs.task.AWACS)
-            wp = awacs.add_waypoint(x, y, altitude, speed)
+            x2, y2 = mapping.point_from_heading(x, y, heading + 180, 1000)
+            wp = awacs.add_waypoint(x2, y2, altitude, speed)
 
         wp.tasks.append(dcs.task.SetFrequencyCommand(frequency))
 
