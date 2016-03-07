@@ -48,12 +48,17 @@ class BasicScenario:
         else:
             slots = len(airport.parking_slots)
             airdef = int(round(random.random() + slots/20, 0))
+            if airport.unit_zones:
+                x, y = airport.unit_zones[0].center()
+            else:
+                x = airport.x + 500
+                y = airport.y + 100
             if airdef:
                 vg = self.m.vehicle_group(
                     self.m.country("Russia"),
                     airport.name + " Air Defense",
                     dcs.countries.Russia.Vehicle._2S6_Tunguska,
-                    airport.x + 500, airport.y + 100, 180)
+                    x, y, 180)
 
                 for i in range(1, airdef):
                     _type = dcs.countries.Russia.Vehicle._2S6_Tunguska if random.random() > 0.5 else dcs.countries.Russia.Vehicle.ZSU_23_4_Shilka
@@ -64,9 +69,9 @@ class BasicScenario:
         return airport
 
     def setup_airport_blue(self, airport: dcs.terrain.Airport):
-        airport.set_red()
+        airport.set_blue()
         if not airport.civilian:
-            dcs.templates.VehicleTemplate.USA.patriot_site(self.m, airport.x + 500, airport.y, 330)
+            dcs.templates.VehicleTemplate.USA.patriot_site(self.m, airport.x - 500, airport.y - 300, 330)
 
     def add_civil_airtraffic(self, planes=(10, 20), helicopters=(0, 10)):
         p_count = random.randrange(planes[0], planes[1])
@@ -77,17 +82,39 @@ class BasicScenario:
         def civil_flight(countries, airports):
             country_str = countries[random.randrange(0, len(countries))]
             country = self.m.country(country_str)
-            x = random.randrange(dcs.terrain.Caucasus.Bottom, dcs.terrain.Caucasus.Top)
-            y = random.randrange(dcs.terrain.Caucasus.Left, dcs.terrain.Caucasus.Right)
-            transports = [x for x in country.planes if dcs.planes.plane_map[x].task_default == dcs.task.Transport]
-            ptype = dcs.planes.plane_map[transports[random.randrange(0, len(transports))]]
 
             airport = airports[random.randrange(0, len(airports))]
 
-            pg = self.m.plane_group_inflight(
-                country, "Civil " + str(c_count), ptype, x, y, random.randrange(5000, 8000, 100), 650)
-            pg.add_runway_waypoint(airport)
-            pg.land_at(airport)
+            transports = [x for x in country.planes if dcs.planes.plane_map[x].task_default == dcs.task.Transport]
+            ptype = dcs.planes.plane_map[transports[random.randrange(0, len(transports))]]
+
+            slots = airport.free_parking_slot(ptype.large_parking_slot, False)
+
+            x = random.randrange(dcs.terrain.Caucasus.Bottom+100*1000, dcs.terrain.Caucasus.Top-100*1000)
+            y = random.randrange(dcs.terrain.Caucasus.Left+200*1000, dcs.terrain.Caucasus.Right-130*1000)
+
+            name = "Civil " + str(c_count)
+            rand = random.random()
+            if 0.3 < rand < 0.5 and slots:
+                pg = self.m.plane_group_from_parking(country, name, ptype, airport, coldstart=random.getrandbits(1))
+                pg.add_runway_waypoint(airport, distance=random.randrange(6000, 8000, 100))
+                pg.add_waypoint(x, y, random.randrange(5000, 8000, 100), 400)
+            elif 0.5 < rand and slots:
+                pg = self.m.plane_group_from_parking(country, name, ptype, airport)
+                pg.uncontrolled = True
+            else:
+                x = random.randrange(dcs.terrain.Caucasus.Bottom+100*1000, dcs.terrain.Caucasus.Top-100*1000)
+                y = random.randrange(dcs.terrain.Caucasus.Left+200*1000, dcs.terrain.Caucasus.Right-130*1000)
+
+                pg = self.m.plane_group_inflight(
+                    country, name, ptype, x, y, random.randrange(5000, 8000, 100), 400)
+                tmp = pg.add_waypoint(0, 0, pg.points[0].alt)
+                wp = pg.add_runway_waypoint(airport, distance=random.randrange(6000, 8000, 100))
+                heading = dcs.mapping.heading_between_points(wp.x, wp.y, x, y)
+                x, y = dcs.mapping.point_from_heading(wp.x, wp.y, heading, 30*1000)
+                tmp.x = x
+                tmp.y = y
+                pg.land_at(airport)
             return pg
 
         def heli_transport_flight(countries, airports):
@@ -139,7 +166,7 @@ class Refueling(BasicScenario):
     def __init__(self, aircraft_type:str, playercount: int, start:str):
         super(Refueling, self).__init__()
 
-        self.add_civil_airtraffic()
+        self.add_civil_airtraffic((20, 50), (5, 10))
 
         caucasus = self.m.terrain  # type: dcs.terrain.Caucasus
 
@@ -162,6 +189,8 @@ class Refueling(BasicScenario):
             x=x1, y=y1,
             race_distance=race_dist, heading=heading,
             altitude=random.randrange(4000, 5500, 100), frequency=frequency)
+
+        self.m.escort_flight(usa, "AWACS Escort", dcs.planes.plane_map[dcs.countries.USA.Plane.F_15E], None, awacs, 2)
 
         x1, y1, heading, race_dist = Refueling.random_orbit(orbit_rect)
         refuel_net = self.m.refuel_flight(
