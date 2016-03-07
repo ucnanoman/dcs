@@ -543,6 +543,16 @@ class Caucasus(Terrain):
             self.airport_sochi()
         ]
 
+    def default_blue_airports(self) -> List[Airport]:
+        return [
+            self.airport_batumi(),
+            self.airport_vaziani(),
+            self.airport_soganlug(),
+            self.airport_kobuleti(),
+            self.airport_batumi(),
+            self.airport_senaki()
+        ]
+
 
 class Nevada(Terrain):
     def __init__(self):
