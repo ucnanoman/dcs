@@ -459,6 +459,32 @@ class SetFrequencyCommand(WrappedAction):
         }
 
 
+class SetInvisibleCommand(WrappedAction):
+    Key = "SetInvisible"
+
+    def __init__(self, value=True):
+        super(SetInvisibleCommand, self).__init__()
+        self.params = {
+            "action": {
+                "id": SetInvisibleCommand.Key,
+                "params": {"value": value}
+            }
+        }
+
+
+class SetImmortalCommand(WrappedAction):
+    Key = "SetImmortal"
+
+    def __init__(self, value=True):
+        super(SetImmortalCommand, self).__init__()
+        self.params = {
+            "action": {
+                "id": SetImmortalCommand.Key,
+                "params": {"value": value}
+            }
+        }
+
+
 class MainTask:
     name = None
     sub_tasks = []
