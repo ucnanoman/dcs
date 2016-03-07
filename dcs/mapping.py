@@ -69,6 +69,15 @@ class Rectangle:
     def point_in_rect(self, x, y):
         return self.bottom <= x <= self.top and self.left <= y <= self.right
 
+    def height(self):
+        return self.top - self.bottom
+
+    def width(self):
+        return self.right - self.left
+
+    def center(self):
+        return self.bottom + (self.height() / 2), self.left + (self.width() / 2)
+
 
 def point_in_poly(x, y, poly: List[Tuple[float, float]]):
     """
