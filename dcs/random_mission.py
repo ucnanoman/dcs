@@ -2,9 +2,11 @@ import sys
 import dcs
 import dcs.mission
 import dcs.task
+import dcs.mapping
 import random
 import argparse
 import os
+from typing import List
 
 
 class USPlatoon:
@@ -23,13 +25,21 @@ class BasicScenario:
     def __init__(self):
         self.m = dcs.mission.Mission()
 
+        self.m.coalition["red"].swap_country(self.m.coalition["blue"], dcs.countries.Ukraine.name)
+
+        self.red_airports = []  # type: List[Airport]
+        self.blue_airports = []  # type: List[Airport]
+        self.setup_airports()
+
+    def setup_airports(self):
         caucasus = self.m.terrain  # type: dcs.terrain.Caucasus
-
-        self.m.coalition["red"].swap_country(self.m.coalition["blue"], "Ukraine")
-
         self.red_airports = caucasus.default_red_airports()
         for a in self.red_airports:
             self.setup_airport_red(a)
+
+        self.blue_airports = caucasus.default_blue_airports()
+        for a in self.blue_airports:
+            self.setup_airport_blue(a)
 
     def setup_airport_red(self, airport: dcs.terrain.Airport):
         airport.set_red()
@@ -53,6 +63,74 @@ class BasicScenario:
 
         return airport
 
+    def setup_airport_blue(self, airport: dcs.terrain.Airport):
+        airport.set_red()
+        if not airport.civilian:
+            dcs.templates.VehicleTemplate.USA.patriot_site(self.m, airport.x + 500, airport.y, 330)
+
+    def add_civil_airtraffic(self, planes=(10, 20), helicopters=(0, 10)):
+        p_count = random.randrange(planes[0], planes[1])
+        h_count = random.randrange(helicopters[0], helicopters[1])
+
+        c_count = 1
+
+        def civil_flight(countries, airports):
+            country_str = countries[random.randrange(0, len(countries))]
+            country = self.m.country(country_str)
+            x = random.randrange(dcs.terrain.Caucasus.Bottom, dcs.terrain.Caucasus.Top)
+            y = random.randrange(dcs.terrain.Caucasus.Left, dcs.terrain.Caucasus.Right)
+            transports = [x for x in country.planes if dcs.planes.plane_map[x].task_default == dcs.task.Transport]
+            ptype = dcs.planes.plane_map[transports[random.randrange(0, len(transports))]]
+
+            airport = airports[random.randrange(0, len(airports))]
+
+            pg = self.m.plane_group_inflight(
+                country, "Civil " + str(c_count), ptype, x, y, random.randrange(5000, 8000, 100), 650)
+            pg.add_runway_waypoint(airport)
+            pg.land_at(airport)
+            return pg
+
+        def heli_transport_flight(countries, airports):
+            country_str = countries[random.randrange(0, len(countries))]
+            country = self.m.country(country_str)
+
+            transports = [x for x in country.helicopters
+                          if dcs.helicopters.helicopter_map[x].task_default == dcs.task.Transport]
+            htype = dcs.helicopters.helicopter_map[transports[random.randrange(0, len(transports))]]
+
+            start_airport = airports[random.randrange(0, len(airports))]
+            while True:
+                dest_airport = airports[random.randrange(0, len(airports))]
+                if dest_airport != start_airport:
+                    break
+
+            hg = self.m.helicopter_group_from_parking(
+                country, "Helicopter Transport " + str(c_count), htype, start_airport, coldstart=random.getrandbits(1))
+            hg.add_runway_waypoint(start_airport)
+            hg.add_runway_waypoint(dest_airport)
+            hg.land_at(dest_airport)
+            return hg
+
+        # red
+        red_countries = [dcs.countries.Russia.name]
+        for i in range(0, int(p_count / 2)):
+            civil_flight(red_countries, self.red_airports)
+            c_count += 1
+
+        for i in range(0, int(h_count / 2)):
+            heli_transport_flight(red_countries, self.red_airports)
+            c_count += 1
+
+        # blue
+        blue_countries = [dcs.countries.USA.name, dcs.countries.Ukraine.name, dcs.countries.Georgia.name]
+        for i in range(0, int(p_count / 2)):
+            civil_flight(blue_countries, self.blue_airports)
+            c_count += 1
+
+        for i in range(0, int(h_count / 2)):
+            heli_transport_flight(blue_countries, self.blue_airports)
+            c_count += 1
+
     def save(self, filename):
         self.m.save(filename)
 
@@ -61,22 +139,101 @@ class Refueling(BasicScenario):
     def __init__(self, aircraft_type:str, playercount: int, start:str):
         super(Refueling, self).__init__()
 
+        self.add_civil_airtraffic()
+
         caucasus = self.m.terrain  # type: dcs.terrain.Caucasus
 
-        usa = self.m.country("USA")
-        ukraine = self.m.country("Ukraine")
+        usa = self.m.country(dcs.countries.USA.name)
+        ukraine = self.m.country(dcs.countries.Ukraine.name)
 
         batumi = caucasus.airport_batumi()
         vaziani = caucasus.airport_vaziani()
 
-        x1 = random.randrange(int(batumi.x), int(batumi.x) + 120 * 1000)
-        sy = int(batumi.y) - 100 * 1000
-        y1 = random.randrange(sy, int(vaziani.y))
-        heading = 90 if y1 < (sy + (vaziani.y - sy) / 2) else 270
+        frequency = 140
+        orbit_rect = dcs.mapping.Rectangle(
+            int(batumi.x + 120*1000), int(batumi.y - 100 * 1000), int(batumi.x), int(vaziani.y))
+
+        x1, y1, heading, race_dist = Refueling.random_orbit(orbit_rect)
+        awacs = self.m.awacs_flight(
+            usa,
+            "AWACS",
+            plane_type=dcs.planes.E_3A,
+            airport=None,
+            x=x1, y=y1,
+            race_distance=race_dist, heading=heading,
+            altitude=random.randrange(4000, 5500, 100), frequency=frequency)
+
+        x1, y1, heading, race_dist = Refueling.random_orbit(orbit_rect)
+        refuel_net = self.m.refuel_flight(
+            ukraine,
+            "Tanker IL",
+            dcs.planes.IL_78M,
+            airport=None,
+            x=x1, y=y1,
+            race_distance=race_dist, heading=heading,
+            altitude=random.randrange(4000, 5500, 100), frequency=frequency)
+
+        x1, y1, heading, race_dist = Refueling.random_orbit(orbit_rect)
+        refuel_rod = self.m.refuel_flight(
+            usa,
+            "Tanker KC",
+            dcs.planes.KC_135,
+            airport=None,
+            x=x1, y=y1,
+            race_distance=race_dist, heading=heading,
+            altitude=random.randrange(4000, 5500, 100), frequency=frequency)
+
+        plane_type = dcs.planes.plane_map[aircraft_type]
+        airport = self.blue_airports[random.randrange(0, len(self.blue_airports))]
+        fuel_percent = 0.5
+
+        if start == "inflight":
+            x1, y1, heading, race_dist = Refueling.random_orbit(orbit_rect)
+            pg = self.m.plane_group_inflight(
+                usa, "Refueler", plane_type, x1, y1, random.randrange(2000, 5000, 100), group_size=playercount)
+            fuel_percent = 0.2
+        elif start == "runway":
+            pg = self.m.plane_group_from_runway(usa, "Refueler", plane_type, airport, group_size=playercount)
+        else:
+            pg = self.m.plane_group_from_parking(
+                usa, "Refueler", plane_type, airport, coldstart=start == "cold", group_size=playercount)
+
+        for u in pg.units:
+            u.fuel *= fuel_percent
+
+        if start != "inflight":
+            pg.add_runway_waypoint(airport)
+
+        if aircraft_type in [dcs.planes.A_10C]:
+            pg.add_waypoint(refuel_rod.points[1].x, refuel_rod.points[1].y, 4000)
+        else:
+            pg.add_waypoint(refuel_net.points[1].x, refuel_net.points[1].y, 4000)
+
+        pg.add_runway_waypoint(airport)
+        pg.land_at(airport)
+
+        if playercount > 1:
+            for u in pg.units:
+                u.skill = dcs.unit.Skill.CLIENT
+        else:
+            pg.units[0].skill = dcs.unit.Skill.PLAYER
+
+        self.m.set_description_text("""Random generated refueling test mission.
+{count} {type} are\is prepared for a refueling training mission.""".format(count=playercount, type=plane_type.id))
+        self.m.set_description_bluetask_text("""Find your tanker and do a full refuel.
+Afterwards land at your designated homebase.
+
+AWACS and Tankers are reachable on {freq} Mhz VHF-AM.""".format(freq=frequency))
+
+    @staticmethod
+    def random_orbit(rect: dcs.mapping.Rectangle):
+        x1 = random.randrange(rect.bottom, rect.top)
+        sy = rect.left
+        y1 = random.randrange(sy, rect.right)
+        heading = 90 if y1 < (sy + (rect.right - sy) / 2) else 270
         heading = random.randrange(heading - 20, heading + 20)
         race_dist = random.randrange(80*1000, 120*1000)
-        #awacs = self.m.awacs_flight(usa, "AWACS", dcs.planes.E_3A, soganlug, soganlug.x - 5000, soganlug.y - 70000, race_distance=120 * 1000, heading=270)
-        refuel = self.m.refuel_flight(ukraine, "Tanker", dcs.planes.IL_78M, None, x1, y1, race_distance=race_dist, heading=heading)
+        return x1, y1, heading, race_dist
 
 
 class Scenario(BasicScenario):
@@ -116,7 +273,7 @@ class Scenario(BasicScenario):
         self.blue_targets = []  # list[dcs.group.VehicleGroup]
 
         caucasus = self.m.terrain  # type: dcs.terrain.Caucasus
-        ukraine = self.m.coalition["red"].swap_country(self.m.coalition["blue"], "Ukraine")
+        ukraine = self.m.coalition["red"].swap_country(self.m.coalition["blue"], dcs.countries.Ukraine.name)
 
         nalchik = self.m.terrain.airport_nalchik()
         beslan = self.m.terrain.airport_beslan()
