@@ -157,7 +157,7 @@ class CASTaskAction(Task):
     Key = "CAS"
 
     def __init__(self):
-        super(CASTaskAction, self).__init__(CASTaskAction)
+        super(CASTaskAction, self).__init__(CASTaskAction.Id)
         self.params = {
             "targetTypes": {
                 1: Targets.All.Air.Helicopters,
