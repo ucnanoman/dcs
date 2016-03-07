@@ -15,21 +15,21 @@ setup(
     url='https://github.com/rp-/dcs',
     author="Peinthor Rene",
     author_email="peinthor@gmail.com",
-    license="GPLv3",
+    license="LGPLv3",
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Topic :: Games/Entertainment :: Simulation',
         'Intended Audience :: Developers',
         'Intended Audience :: End Users/Desktop',
-        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'License :: OSI Approved :: GNU General Public License v3 (LGPLv3)',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3 :: Only'
     ],
     keywords='dcs digital combat simulator eagle dynamics mission framework',
     packages=['dcs', 'dcs/lua'],
-    # entry_points={
-    #     'console_scripts': [
-    #         'dcs=dcs:main'
-    #     ]
-    # }
+    entry_points={
+        'console_scripts': [
+            'dcs_random=dcs.random_mission:main'
+        ]
+    }
 )
