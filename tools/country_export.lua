@@ -21,6 +21,13 @@ local categories = {
 	'Ground Units'
 }
 
+local function safe_name(name)
+	local safeName = name
+	safeName = string.gsub(safeName, "[-()/., *']", "_")
+	safeName = string.gsub(safeName,"^([0-9])", "_%1")
+	return safeName
+end
+
 local i = 0
 while i <= country.maxIndex do
 	local c = country.by_idx[i]
@@ -31,25 +38,58 @@ while i <= country.maxIndex do
 		print()
 		print('class '..pyName..'(Country):')
 		print('    id = '..i)
+		print('    name = "'..c.Name..'"')
 		print()
 
 		print('    class Vehicle:')
 		local cars = c.Units.Cars.Car
 		for u in pairs(cars) do
-			local safeName = cars[u].Name
-			safeName = string.gsub(safeName, "[-()/., *']", "_")
-			safeName = string.gsub(safeName,"^([0-9])", "_%1")
+			local safeName = safe_name(cars[u].Name)
 			print('        '..safeName..' = "'..cars[u].Name..'"')
+		end
+
+		local planes = c.Units.Planes.Plane
+		if #planes > 0 then
+			print('')
+			print('    class Plane:')
+			for u in pairs(planes) do
+				local safeName = safe_name(planes[u].Name)
+				print('        '..safeName..' = "'..planes[u].Name..'"')
+			end
+
+			print('')
+			print('    planes = [')
+			for u in pairs(planes) do
+				local safeName = safe_name(planes[u].Name)
+				print('        Plane.'..safeName..',')
+			end
+			print('    ]')
+		end
+
+		local helis = c.Units.Helicopters.Helicopter
+		if #helis > 0 then
+			print('')
+			print('    class Helicopter:')
+			for u in pairs(helis) do
+				local safeName = safe_name(helis[u].Name)
+				print('        '..safeName..' = "'..helis[u].Name..'"')
+			end
+
+			print('')
+			print('    helicopters = [')
+			for u in pairs(helis) do
+				local safeName = safe_name(helis[u].Name)
+				print('        Helicopter.'..safeName..',')
+			end
+			print('    ]')
 		end
 
 		local ships = c.Units.Ships.Ship
 		if #ships > 0 then
-			print()
+			print('')
 			print('    class Ship:')
 			for u in pairs(ships) do
-				local safeName = ships[u].Name
-				safeName = string.gsub(safeName, "[-()/., *']", "_")
-				safeName = string.gsub(safeName,"^([0-9])", "_%1")
+				local safeName = safe_name(ships[u].Name)
 				print('        '..safeName..' = "'..ships[u].Name..'"')
 			end
 		end
@@ -91,7 +131,7 @@ while i <= country.maxIndex do
 
 		print()
 		print('    def __init__(self):')
-		print('        super('..pyName..', self).__init__('..pyName..'.id, "'..c.Name..'")')
+		print('        super('..pyName..', self).__init__('..pyName..'.id, '..pyName..'.name)')
 	end
 	i = i + 1
 end

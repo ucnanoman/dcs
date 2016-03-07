@@ -4,6 +4,8 @@ from typing import List, Dict
 
 class Country:
     callsign = {}
+    planes = []
+    helicopters = []
 
     def __init__(self, _id, name):
         self.id = _id
