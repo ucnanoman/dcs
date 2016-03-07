@@ -1019,7 +1019,7 @@ class Mission:
                      airport: Airport,
                      group_to_escort: dcs.group.FlyingGroup,
                       group_size=2):
-        if airport
+        if airport:
             eg = self.plane_group_from_parking(
                 _country, name, escort_type, airport, dcs.task.Escort, group_size=group_size)
             eg.add_runway_waypoint(airport)
