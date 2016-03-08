@@ -672,14 +672,7 @@ class Mission:
             v.heading = heading
             sg.add_unit(v)
 
-        mp = MovingPoint()
-        mp.type = "Turning Point"
-        mp.action = mp.type
-        mp.x = sg.units[0].x
-        mp.y = sg.units[0].y
-        mp.speed = 20
-
-        sg.add_point(mp)
+        sg.add_waypoint(x, y, 20)
 
         _country.add_ship_group(sg)
         return sg
