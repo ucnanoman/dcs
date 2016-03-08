@@ -874,7 +874,7 @@ class Mission:
 
         return group
 
-    def helicopter_group_inflight(self, _country, name, helicopter_type, x, y, altitude, speed=400,
+    def helicopter_group_inflight(self, _country, name, helicopter_type, x, y, altitude, speed=200,
                                   maintask: task.MainTask = None, group_size=1):
         if maintask is None:
             maintask = helicopter_type.task_default
