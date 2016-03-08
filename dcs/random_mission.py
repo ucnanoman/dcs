@@ -3,10 +3,11 @@ import dcs
 import dcs.mission
 import dcs.task
 import dcs.mapping
+import dcs.terrain
 import random
 import argparse
 import os
-from typing import List
+from typing import List, Dict, Tuple
 
 
 class USPlatoon:
@@ -111,7 +112,7 @@ class BasicScenario:
             slots = airport.free_parking_slot(ptype.large_parking_slot, False)
 
             x = random.randrange(dcs.terrain.Caucasus.Bottom+100*1000, dcs.terrain.Caucasus.Top-100*1000)
-            y = random.randrange(dcs.terrain.Caucasus.Left+200*1000, dcs.terrain.Caucasus.Right-130*1000)
+            y = random.randrange(dcs.terrain.Caucasus.Left+600*1000, dcs.terrain.Caucasus.Right-130*1000)
 
             name = "Civil " + str(c_count)
             rand = random.random()
@@ -136,6 +137,7 @@ class BasicScenario:
                 tmp.x = x
                 tmp.y = y
                 pg.land_at(airport)
+            pg.set_frequency(240)
             return pg
 
         def heli_transport_flight(countries, airports):
@@ -200,6 +202,28 @@ class BasicScenario:
             hf.points[0].tasks.append(dcs.task.SetInvisibleCommand())
             c_count += 1
 
+    def add_uncontrolled_military_planes(self, airports: List[dcs.terrain.Airport],
+                                         planes: List[Tuple[str, str, int]], hidden=True):
+
+        g_idx = 1
+        while planes:
+            country, strtype, group_size = planes.pop()
+
+            while True:
+                airport = airports[random.randrange(0, len(airports))]
+
+                ptype = dcs.planes.plane_map[strtype]
+                slots = airport.free_parking_slots(ptype.large_parking_slot, False)
+                if len(slots) >= group_size:
+                    break
+
+            c = self.m.country(country)
+            pg = self.m.plane_group_from_parking(c, strtype + " Flight #" + str(g_idx),
+                                                 ptype, airport, parking_slots=slots, group_size=group_size)
+            pg.uncontrolled = True
+            pg.hidden = hidden
+            g_idx += 1
+
     def save(self, filename, stats):
         self.m.save(filename, show_stats=stats)
 
@@ -208,7 +232,7 @@ class Refueling(BasicScenario):
     def __init__(self, aircraft_type:str, playercount: int, start:str):
         super(Refueling, self).__init__()
 
-        self.add_civil_airtraffic((20, 50), (5, 10))
+        self.add_civil_airtraffic(hidden=False)
 
         caucasus = self.m.terrain  # type: dcs.terrain.Caucasus
 
@@ -217,6 +241,19 @@ class Refueling(BasicScenario):
 
         batumi = caucasus.airport_batumi()
         vaziani = caucasus.airport_vaziani()
+
+        kutaisi = caucasus.airport_kutaisi()
+        kobuleti = caucasus.airport_kobuleti()
+        blue_military = [kutaisi, kobuleti]
+
+        planes = [
+            (dcs.countries.USA.name, dcs.countries.USA.Plane.F_16C_bl_52d, 4),
+            (dcs.countries.USA.name, dcs.countries.USA.Plane.F_15E, 2),
+            (dcs.countries.USA.name, dcs.countries.USA.Plane.F_A_18C, 4),
+            (dcs.countries.Georgia.name, dcs.countries.Georgia.Plane.Su_25T, 4)
+        ]
+
+        self.add_uncontrolled_military_planes(blue_military, planes, False)
 
         frequency = 140
         orbit_rect = dcs.mapping.Rectangle(
@@ -255,7 +292,7 @@ class Refueling(BasicScenario):
             altitude=random.randrange(4000, 5500, 100), frequency=frequency)
 
         plane_type = dcs.planes.plane_map[aircraft_type]
-        airport = self.blue_airports[random.randrange(0, len(self.blue_airports))]
+        airport = blue_military[random.randrange(0, len(blue_military))]
         fuel_percent = 0.5
 
         if start == "inflight":
