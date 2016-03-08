@@ -1021,6 +1021,8 @@ class Mission:
                       airport: Airport,
                       group_to_escort: dcs.group.FlyingGroup,
                       group_size=2):
+
+        second_point_group = group_to_escort.points[1]
         if airport:
             eg = self.plane_group_from_parking(
                 _country, name, escort_type, airport, dcs.task.Escort, group_size=group_size)
@@ -1028,10 +1030,14 @@ class Mission:
         else:
             eg = self.plane_group_inflight(
                 _country, name, escort_type,
-                group_to_escort.points[0].x - 10*1000, group_to_escort.points[0].y, 2000, task=dcs.task.Escort, group_size=group_size
+                group_to_escort.points[0].x - 10*1000,
+                group_to_escort.points[0].y,
+                second_point_group.alt + 200,
+                task=dcs.task.Escort,
+                group_size=group_size
             )
 
-        wp = eg.add_waypoint(group_to_escort.points[1].x, group_to_escort.points[1].y, group_to_escort.points[1].alt)
+        wp = eg.add_waypoint(second_point_group.x, second_point_group.y, second_point_group.alt)
         eg.points[0].tasks.clear()
         eg.points[0].tasks.append(dcs.task.EscortTaskAction(group_to_escort.id, lastwpt=len(group_to_escort.points)))
 
