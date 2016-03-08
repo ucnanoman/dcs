@@ -552,16 +552,16 @@ class Caucasus(Terrain):
         batumi = Airport(22, "Batumi", 131.0, -355692.3067714, 617269.96285781, "16X")
         batumi.runways.append(Runway(300))
         batumi.runways.append(Runway(120, 110.3))
-        batumi.parking_slots[3] = ParkingSlot(3, -355972.03125, 618122.6875, False, "01", heli=True)
-        batumi.parking_slots[5] = ParkingSlot(5, -355984.8125, 618141.25, False, "02", heli=True)
-        batumi.parking_slots[7] = ParkingSlot(7, -356010.375, 618177.5625, False, "04", heli=True)
-        batumi.parking_slots[9] = ParkingSlot(9, -355997.40625, 618159.25, False, "03", heli=True)
-        batumi.parking_slots[15] = ParkingSlot(15, -356091.65625, 618219.125, True, "06", heli=True)
-        batumi.parking_slots[16] = ParkingSlot(16, -356059.21875, 618240.25, False, "05", heli=True)
-        batumi.parking_slots[18] = ParkingSlot(18, -356100.46875, 618303.125, False, "07", heli=True)
-        batumi.parking_slots[21] = ParkingSlot(21, -356140.09375, 618271.0625, True, "08", heli=True)
-        batumi.parking_slots[23] = ParkingSlot(23, -356180.90625, 618327, True, "10", heli=True)
-        batumi.parking_slots[24] = ParkingSlot(24, -356151.25, 618352.625, False, "09", heli=True)
+        batumi.parking_slots[3] = ParkingSlot(3, -355972.03125, 618122.6875, large=False, slot_name="01", heli=True)
+        batumi.parking_slots[5] = ParkingSlot(5, -355984.8125, 618141.25, large=False, slot_name="02", heli=True)
+        batumi.parking_slots[7] = ParkingSlot(7, -356010.375, 618177.5625, large=False, slot_name="04", heli=True)
+        batumi.parking_slots[9] = ParkingSlot(9, -355997.40625, 618159.25, large=False, slot_name="03", heli=True)
+        batumi.parking_slots[15] = ParkingSlot(15, -356091.65625, 618219.125, large=True, slot_name="06", heli=False)
+        batumi.parking_slots[16] = ParkingSlot(16, -356059.21875, 618240.25, large=False, slot_name="05", heli=True)
+        batumi.parking_slots[18] = ParkingSlot(18, -356100.46875, 618303.125, large=False, slot_name="07", heli=True)
+        batumi.parking_slots[21] = ParkingSlot(21, -356140.09375, 618271.0625, large=True, slot_name="08", heli=False)
+        batumi.parking_slots[23] = ParkingSlot(23, -356180.90625, 618327, large=True, slot_name="10", heli=False)
+        batumi.parking_slots[24] = ParkingSlot(24, -356151.25, 618352.625, large=False, slot_name="09", heli=True)
         batumi.unit_zones.append(mapping.Rectangle(-356960, 616688.00000003, -356160, 617488.00000003))
         batumi.unit_zones.append(mapping.Rectangle(-358551.42857143, 614990.85714289, -357551.42857143, 615990.85714289))
         batumi.unit_zones.append(mapping.Rectangle(-356474.28571429, 615740.85714289, -355574.28571429, 616640.85714289))
@@ -962,6 +962,9 @@ class Caucasus(Terrain):
     def airport_kobuleti(self) -> Airport:
         return self.airports["Kobuleti"]
 
+    def airport_kutaisi(self) -> Airport:
+        return self.airports["Kutaisi"]
+
     def default_red_airports(self) -> List[Airport]:
         return [
             self.airport_anapa(),
@@ -984,8 +987,9 @@ class Caucasus(Terrain):
             self.airport_vaziani(),
             self.airport_soganlug(),
             self.airport_kobuleti(),
-            self.airport_batumi(),
-            self.airport_senaki()
+            self.airport_senaki(),
+            self.airport_lochini(),
+            self.airport_kutaisi()
         ]
 
 
