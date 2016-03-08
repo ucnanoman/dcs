@@ -1,11 +1,10 @@
 import zipfile
 import os
 import tempfile
-from typing import List
+from typing import List, Dict
 from datetime import datetime
 from . import lua
-from .weather import *
-from . import group
+from . import unitgroup
 from .country import Country
 from . import countries
 from .point import Point, MovingPoint
@@ -20,12 +19,16 @@ from .goals import Goals
 from . import mapping
 from . import planes
 from . import helicopters
-import dcs.task
+from . import task
+from . import weather
 
 
 class Options:
-    def __init__(self, opts={}):
-        self.options = opts
+    def __init__(self):
+        self.options = {}
+
+    def load_from_dict(self, d):
+        self.options = d
 
     def __str__(self):
         return lua.dumps(self.options, "options", 1)
@@ -67,7 +70,7 @@ class MapPosition:
 class Coalition:
     def __init__(self, name, bullseye=None):
         self.name = name
-        self.countries = {}  # type: dict[str, Country]
+        self.countries = {}  # type: Dict[str, Country]
         self.bullseye = bullseye
         self.nav_points = []  # TODO
 
@@ -108,7 +111,7 @@ class TriggerZone:
         self.y = y
         self.hidden = hidden
         self.name = name
-        self.color = {1:1, 2:1, 3:1, 4:0.15}
+        self.color = {1: 1, 2: 1, 3: 1, 4: 0.15}
 
     def dict(self):
         return {
@@ -144,13 +147,13 @@ class Triggers:
             self.zones.append(tz)
             self.current_zone_id = max(self.current_zone_id, tz.id)
 
-    def triggerzone(self,  x=0, y=0, radius=1500, hidden=False, name="") -> TriggerZone:
+    def triggerzone(self, x=0, y=0, radius=1500, hidden=False, name="") -> TriggerZone:
         self.current_zone_id += 1
         return TriggerZone(self.current_zone_id, x, y, radius, hidden, name)
 
     def dict(self):
         return {
-            "zones": {i+1: self.zones[i].dict() for i in range(0, len(self.zones))}
+            "zones": {i + 1: self.zones[i].dict() for i in range(0, len(self.zones))}
         }
 
 
@@ -195,9 +198,9 @@ class Result:
             res_cond = self.results[x]["conditions"]
             res_act = self.results[x]["actions"]
             res_func = self.results[x]["func"]
-            d[x]["conditions"] = {i+1: res_cond[i] for i in range(0, len(res_cond))}
-            d[x]["actions"] = {i+1: res_act[i] for i in range(0, len(res_act))}
-            d[x]["func"] = {i+1: res_func[i] for i in range(0, len(res_func))}
+            d[x]["conditions"] = {i + 1: res_cond[i] for i in range(0, len(res_cond))}
+            d[x]["actions"] = {i + 1: res_act[i] for i in range(0, len(res_act))}
+            d[x]["func"] = {i + 1: res_func[i] for i in range(0, len(res_func))}
         d["total"] = total
 
         return d
@@ -267,7 +270,7 @@ class Mission:
         blue.bullseye = terrain.bullseye_blue
         red.bullseye = terrain.bullseye_red
 
-        self.coalition = {"blue": blue, "red": red}  # type: dict[str, Coalition]
+        self.coalition = {"blue": blue, "red": red}  # type: Dict[str, Coalition]
 
         self.map = {
             "zoom": 1000000,
@@ -282,7 +285,7 @@ class Mission:
         self.forcedOptions = {}
         self.resourceCounter = {}  # keep default or empty, old format
         self.needModules = {}
-        self.weather = Weather()
+        self.weather = weather.Weather()
         self.usedModules = {
             'Su-25A by Eagle Dynamics': True,
             'MiG-21Bis AI by Leatherneck Simulations': True,
@@ -319,7 +322,7 @@ class Mission:
             'F-86F Sabre AI by Eagle Dynamics': True
         }
 
-    def _import_moving_point(self, group: dcs.group.Group, imp_group) -> dcs.group.Group:
+    def _import_moving_point(self, group: unitgroup.Group, imp_group) -> unitgroup.Group:
         for imp_point_idx in imp_group["route"]["points"]:
             imp_point = imp_group["route"]["points"][imp_point_idx]
             point = MovingPoint()
@@ -327,7 +330,7 @@ class Mission:
             group.add_point(point)
         return group
 
-    def _import_static_point(self, group: dcs.group.Group, imp_group) -> dcs.group.Group:
+    def _import_static_point(self, group: unitgroup.Group, imp_group) -> unitgroup.Group:
         for imp_point_idx in imp_group["route"]["points"]:
             imp_point = imp_group["route"]["points"][imp_point_idx]
             point = Point()
@@ -347,7 +350,8 @@ class Mission:
             if "vehicle" in imp_country:
                 for vgroup_idx in imp_country["vehicle"]["group"]:
                     vgroup = imp_country["vehicle"]["group"][vgroup_idx]
-                    vg = dcs.group.VehicleGroup(vgroup["groupId"], self.translation.get_string(vgroup["name"]), vgroup["start_time"])
+                    vg = unitgroup.VehicleGroup(vgroup["groupId"], self.translation.get_string(vgroup["name"]),
+                                                vgroup["start_time"])
                     vg.load_from_dict(vgroup)
                     self.current_group_id = max(self.current_group_id, vg.id)
 
@@ -368,16 +372,17 @@ class Mission:
 
             if "ship" in imp_country:
                 for group_idx in imp_country["ship"]["group"]:
-                    group = imp_country["ship"]["group"][group_idx]
-                    vg = dcs.group.ShipGroup(group["groupId"], self.translation.get_string(group["name"]), group["start_time"])
-                    vg.load_from_dict(group)
+                    imp_group = imp_country["ship"]["group"][group_idx]
+                    vg = unitgroup.ShipGroup(imp_group["groupId"], self.translation.get_string(imp_group["name"]),
+                                             imp_group["start_time"])
+                    vg.load_from_dict(imp_group)
                     self.current_group_id = max(self.current_group_id, vg.id)
 
-                    self._import_moving_point(vg, group)
+                    self._import_moving_point(vg, imp_group)
 
                     # units
-                    for imp_unit_idx in group["units"]:
-                        imp_unit = group["units"][imp_unit_idx]
+                    for imp_unit_idx in imp_group["units"]:
+                        imp_unit = imp_group["units"][imp_unit_idx]
                         unit = Ship(
                             id=imp_unit["unitId"],
                             name=self.translation.get_string(imp_unit["name"]),
@@ -391,7 +396,8 @@ class Mission:
             if "plane" in imp_country:
                 for pgroup_idx in imp_country["plane"]["group"]:
                     pgroup = imp_country["plane"]["group"][pgroup_idx]
-                    plane_group = dcs.group.PlaneGroup(pgroup["groupId"], self.translation.get_string(pgroup["name"]), pgroup["start_time"])
+                    plane_group = unitgroup.PlaneGroup(pgroup["groupId"], self.translation.get_string(pgroup["name"]),
+                                                       pgroup["start_time"])
                     plane_group.load_from_dict(pgroup)
                     self.current_group_id = max(self.current_group_id, plane_group.id)
 
@@ -403,7 +409,7 @@ class Mission:
                         plane = Plane(
                             _id=imp_unit["unitId"],
                             name=self.translation.get_string(imp_unit["name"]),
-                            _type=dcs.planes.plane_map[imp_unit["type"]])
+                            _type=planes.plane_map[imp_unit["type"]])
                         plane.load_from_dict(imp_unit)
 
                         self.current_unit_id = max(self.current_unit_id, plane.id)
@@ -413,7 +419,7 @@ class Mission:
             if "helicopter" in imp_country:
                 for pgroup_idx in imp_country["helicopter"]["group"]:
                     pgroup = imp_country["helicopter"]["group"][pgroup_idx]
-                    helicopter_group = dcs.group.HelicopterGroup(
+                    helicopter_group = unitgroup.HelicopterGroup(
                         pgroup["groupId"],
                         self.translation.get_string(pgroup["name"]),
                         pgroup["start_time"])
@@ -428,7 +434,7 @@ class Mission:
                         heli = Helicopter(
                             _id=imp_unit["unitId"],
                             name=self.translation.get_string(imp_unit["name"]),
-                            _type=dcs.helicopters.helicopter_map[imp_unit["type"]])
+                            _type=helicopters.helicopter_map[imp_unit["type"]])
                         heli.load_from_dict(imp_unit)
 
                         self.current_unit_id = max(self.current_unit_id, heli.id)
@@ -438,7 +444,7 @@ class Mission:
             if "static" in imp_country:
                 for sgroup_idx in imp_country["static"]["group"]:
                     sgroup = imp_country["static"]["group"][sgroup_idx]
-                    static_group = dcs.group.StaticGroup(sgroup["groupId"], self.translation.get_string(sgroup["name"]))
+                    static_group = unitgroup.StaticGroup(sgroup["groupId"], self.translation.get_string(sgroup["name"]))
                     static_group.load_from_dict(sgroup)
                     self.current_group_id = max(self.current_group_id, static_group.id)
 
@@ -466,8 +472,8 @@ class Mission:
         warehouse_dict = {}
         dictionary_dict = {}
 
-        def loaddict(fname, miz):
-            with miz.open(fname) as mfile:
+        def loaddict(fname, mizfile):
+            with mizfile.open(fname) as mfile:
                 data = mfile.read()
                 data = data.decode()
                 return lua.loads(data)
@@ -502,7 +508,8 @@ class Mission:
             raise RuntimeError("Unknown theatre: '{theatre}'".format(theatre=imp_mission["theatre"]))
 
         # import options
-        self.options = Options(options_dict["options"])
+        self.options = Options()
+        self.options.load_from_dict(options_dict["options"])
 
         # import warehouses
         self.warehouses = Warehouses(self.terrain)
@@ -555,7 +562,7 @@ class Mission:
 
         # weather
         imp_weather = imp_mission["weather"]
-        self.weather = Weather()
+        self.weather = weather.Weather()
         self.weather.load_from_dict(imp_weather)
 
         # import coalition with countries and units
@@ -604,16 +611,18 @@ class Mission:
         return self.current_dict_id
 
     def string(self, s, lang='DEFAULT'):
-        """Create a new String() object for translation"""
+        """
+        Create a new String() object for translation
+        :param s: string for lang
+        :param lang: language for s
+        :return: A new String() object for string s
+        """
         return self.translation.create_string(s, lang)
-
-    def vehicle_group(self, name) -> dcs.group.VehicleGroup:
-        return dcs.group.VehicleGroup(self.next_group_id(), self.string(name))
 
     def vehicle(self, name, _type):
         return Vehicle(self.next_unit_id(), self.string(name), _type)
 
-    def _add_vehicle_point(self, vg: dcs.group.VehicleGroup, action: str):
+    def _add_vehicle_point(self, vg: unitgroup.VehicleGroup, action: str):
         mp = MovingPoint()
         mp.type = "Turning Point"
         mp.action = action
@@ -622,13 +631,14 @@ class Mission:
 
         vg.add_point(mp)
 
-    def vehicle_group(self, _country, name, _type: str, x, y, heading=0, group_size=1, action="Off Road", formation=dcs.group.VehicleGroup.Formation.Line) -> dcs.group.VehicleGroup:
-        vg = dcs.group.VehicleGroup(self.next_group_id(), self.string(name))
+    def vehicle_group(self, _country, name, _type: str, x, y, heading=0, group_size=1, action="Off Road",
+                      formation=unitgroup.VehicleGroup.Formation.Line) -> unitgroup.VehicleGroup:
+        vg = unitgroup.VehicleGroup(self.next_group_id(), self.string(name))
 
         for i in range(1, group_size + 1):
             v = self.vehicle(name + " Unit #{nr}".format(nr=i), _type)
             v.x = x
-            v.y = y + (i-1) * 20
+            v.y = y + (i - 1) * 20
             v.heading = heading
             vg.add_unit(v)
 
@@ -639,12 +649,13 @@ class Mission:
         _country.add_vehicle_group(vg)
         return vg
 
-    def vehicle_group_platoon(self, _country, name, types: List[str], x, y, heading=0, action="Off Road", formation=dcs.group.VehicleGroup.Formation.Line) -> dcs.group.VehicleGroup:
-        vg = dcs.group.VehicleGroup(self.next_group_id(), self.string(name))
+    def vehicle_group_platoon(self, _country, name, types: List[str], x, y, heading=0, action="Off Road",
+                              formation=unitgroup.VehicleGroup.Formation.Line) -> unitgroup.VehicleGroup:
+        vg = unitgroup.VehicleGroup(self.next_group_id(), self.string(name))
 
         for i in range(0, len(types)):
             utype = types[i]
-            v = self.vehicle(name + " Unit #{nr}".format(nr=i+1), utype)
+            v = self.vehicle(name + " Unit #{nr}".format(nr=i + 1), utype)
             v.x = x
             v.y = y + i * 20
             v.heading = heading
@@ -660,13 +671,13 @@ class Mission:
     def ship(self, name, _type):
         return Ship(self.next_unit_id(), self.string(name), _type)
 
-    def ship_group(self, _country, name, _type: str, x, y, heading=0, group_size=1, formation=None) -> dcs.group.ShipGroup:
-        sg = dcs.group.ShipGroup(self.next_group_id(), self.string(name))
+    def ship_group(self, _country, name, _type: str, x, y, heading=0, group_size=1) -> unitgroup.ShipGroup:
+        sg = unitgroup.ShipGroup(self.next_group_id(), self.string(name))
 
         for i in range(1, group_size + 1):
             v = self.ship(name + " Unit #{nr}".format(nr=i), _type)
             v.x = x
-            v.y = y + (i-1) * 20
+            v.y = y + (i - 1) * 20
             v.heading = heading
             sg.add_unit(v)
 
@@ -683,9 +694,10 @@ class Mission:
         return sg
 
     def plane_group(self, name):
-        return dcs.group.PlaneGroup(self.next_group_id(), self.string(name))
+        return unitgroup.PlaneGroup(self.next_group_id(), self.string(name))
 
-    def plane_group_inflight(self, _country, name, plane_type: PlaneType, x, y, altitude, speed=600, task: dcs.task.MainTask=None, group_size=1):
+    def plane_group_inflight(self, _country, name, plane_type: PlaneType, x, y, altitude, speed=600,
+                             task: task.MainTask = None, group_size=1):
         if task is None:
             task = plane_type.task_default
 
@@ -703,7 +715,8 @@ class Mission:
         _country.add_plane_group(self._flying_group_inflight(_country, pg, task, altitude, speed))
         return pg
 
-    def plane_group_from_runway(self, _country, name, plane_type: PlaneType, airport: Airport, task: dcs.task.MainTask=None, group_size=1):
+    def plane_group_from_runway(self, _country, name, plane_type: PlaneType, airport: Airport,
+                                task: task.MainTask = None, group_size=1):
         if not airport.runway_free:
             raise RuntimeError("Runway already occupied.")
 
@@ -727,10 +740,10 @@ class Mission:
                                  name,
                                  plane_type: PlaneType,
                                  airport: Airport,
-                                 task: dcs.task.MainTask=None,
+                                 task: task.MainTask = None,
                                  coldstart=True,
-                                 parking_slots: ParkingSlot=None,
-                                 group_size=1) -> dcs.group.PlaneGroup:
+                                 parking_slots: ParkingSlot = None,
+                                 group_size=1) -> unitgroup.PlaneGroup:
         """
         Add a new PlaneGroup at parking position on the given airport.
         :param _country: Country object the plane group belongs to
@@ -770,7 +783,7 @@ class Mission:
         return Helicopter(self.next_unit_id(), self.string(name), _type)
 
     def helicopter_group(self, name):
-        return dcs.group.HelicopterGroup(self.next_group_id(), self.string(name))
+        return unitgroup.HelicopterGroup(self.next_group_id(), self.string(name))
 
     @classmethod
     def _assign_callsign(cls, _country, group):
@@ -790,20 +803,21 @@ class Mission:
             i += 1
 
     @staticmethod
-    def _load_tasks(mp: MovingPoint, task: dcs.task.MainTask):
+    def _load_tasks(mp: MovingPoint, task: task.MainTask):
         for t in task.perform_task:
             ptask = t()
             ptask.auto = True
             mp.tasks.append(ptask)
         return mp
 
-    def _flying_group_ramp(self, _country, group: dcs.group.FlyingGroup, task: dcs.task.MainTask, airport: Airport,
+    def _flying_group_ramp(self, _country, group: unitgroup.FlyingGroup, task: task.MainTask, airport: Airport,
                            coldstart=True,
-                           parking_slots: ParkingSlot=None):
+                           parking_slots: List[ParkingSlot] = None):
 
         i = 0
         for unit in group.units:
-            parking_slot = parking_slots.pop(i) if parking_slots else airport.free_parking_slot(unit.unit_type.large_parking_slot, unit.unit_type.helicopter)
+            parking_slot = parking_slots.pop(i) if parking_slots else airport.free_parking_slot(
+                unit.unit_type.large_parking_slot, unit.unit_type.helicopter)
             if parking_slot is None:
                 raise RuntimeError("No free parking slot at " + airport.name)
             unit.x = parking_slot.x
@@ -828,7 +842,7 @@ class Mission:
 
         return group
 
-    def _flying_group_runway(self, _country, group: group.FlyingGroup, task: dcs.task.MainTask, airport: Airport):
+    def _flying_group_runway(self, _country, group: unitgroup.FlyingGroup, task: task.MainTask, airport: Airport):
         for unit in group.units:
             unit.x = airport.x
             unit.y = airport.y
@@ -850,7 +864,7 @@ class Mission:
 
         return group
 
-    def _flying_group_inflight(self, _country, group: group.FlyingGroup, task: dcs.task.MainTask, altitude, speed):
+    def _flying_group_inflight(self, _country, group: unitgroup.FlyingGroup, task: task.MainTask, altitude, speed):
 
         i = 0
         for unit in group.units:
@@ -877,7 +891,8 @@ class Mission:
 
         return group
 
-    def helicopter_group_inflight(self, _country, name, helicopter_type, x, y, altitude, speed=400, task: dcs.task.MainTask=None, group_size=1):
+    def helicopter_group_inflight(self, _country, name, helicopter_type, x, y, altitude, speed=400,
+                                  task: task.MainTask = None, group_size=1):
         if task is None:
             task = helicopter_type.task_default
 
@@ -894,7 +909,8 @@ class Mission:
         _country.add_helicopter_group(self._flying_group_inflight(_country, hg, task, altitude, speed))
         return hg
 
-    def helicopter_group_from_runway(self, _country, name, heli_type: HelicopterType, airport: Airport, task: dcs.task.MainTask=None, group_size=1):
+    def helicopter_group_from_runway(self, _country, name, heli_type: HelicopterType, airport: Airport,
+                                     task: task.MainTask = None, group_size=1):
         if task is None:
             task = heli_type.task_default
 
@@ -914,10 +930,10 @@ class Mission:
                                       name,
                                       heli_type: HelicopterType,
                                       airport: Airport,
-                                      task: dcs.task.MainTask=None,
+                                      task: task.MainTask = None,
                                       coldstart=True,
-                                      parking_slots: ParkingSlot=None,
-                                      group_size=1) -> dcs.group.PlaneGroup:
+                                      parking_slots: List[ParkingSlot] = None,
+                                      group_size=1) -> unitgroup.PlaneGroup:
         """
         Add a new PlaneGroup at parking position on the given airport.
         :param _country: Country object the plane group belongs to
@@ -938,7 +954,7 @@ class Mission:
         group_size = min(group_size, heli_type.group_size_max)
 
         for i in range(1, group_size + 1):
-            p = self.plane(name + " Pilot #{nr}".format(nr=i), heli_type)
+            p = self.helicopter(name + " Pilot #{nr}".format(nr=i), heli_type)
             hg.add_unit(p)
 
         _country.add_helicopter_group(self._flying_group_ramp(_country, hg, task, airport, coldstart, parking_slots))
@@ -951,31 +967,31 @@ class Mission:
                       airport: Airport,
                       x,
                       y,
-                      race_distance=30*1000,
+                      race_distance=30 * 1000,
                       heading=90,
                       altitude=4500,
                       speed=407,
                       coldstart=True,
                       frequency=140,
-                      tacanchannel="10X") -> dcs.group.PlaneGroup:
+                      tacanchannel="10X") -> unitgroup.PlaneGroup:
         if airport:
             tanker = self.plane_group_from_parking(_country, name, plane_type, airport, coldstart=coldstart)
             wp = tanker.add_runway_waypoint(airport)
         else:
             x2, y2 = mapping.point_from_heading(x, y, (heading + 180) % 360, 2000)
-            tanker = self.plane_group_inflight(_country, name, plane_type, x2, y2, altitude, speed, dcs.task.Refueling)
+            tanker = self.plane_group_inflight(_country, name, plane_type, x2, y2, altitude, speed, task.Refueling)
             x2, y2 = mapping.point_from_heading(x, y, heading + 180, 1000)
             wp = tanker.add_waypoint(x2, y2, altitude, speed)
 
-        wp.tasks.append(dcs.task.SetFrequencyCommand(frequency))
+        wp.tasks.append(task.SetFrequencyCommand(frequency))
 
         if plane_type.tacan:
             channel = int(tacanchannel[:-1])
             modechannel = tacanchannel[-1]
-            tanker.points[0].tasks.append(dcs.task.ActivateBeaconCommand(channel, modechannel))
+            tanker.points[0].tasks.append(task.ActivateBeaconCommand(channel, modechannel))
 
         wp = tanker.add_waypoint(x, y, altitude, speed)
-        wp.tasks.append(dcs.task.OrbitAction(altitude, speed, "Race-Track"))
+        wp.tasks.append(task.OrbitAction(altitude, speed, "Race-Track"))
 
         x2, y2 = mapping.point_from_heading(x, y, heading, race_distance)
         tanker.add_waypoint(x2, y2, altitude, speed)
@@ -989,25 +1005,25 @@ class Mission:
                      airport: Airport,
                      x,
                      y,
-                     race_distance=30*1000,
+                     race_distance=30 * 1000,
                      heading=90,
                      altitude=4500,
                      speed=550,
                      coldstart=True,
-                     frequency=140) -> dcs.group.PlaneGroup:
+                     frequency=140) -> unitgroup.PlaneGroup:
         if airport:
             awacs = self.plane_group_from_parking(_country, name, plane_type, airport, coldstart=coldstart)
             wp = awacs.add_runway_waypoint(airport)
         else:
             x2, y2 = mapping.point_from_heading(x, y, (heading + 180) % 360, 2000)
-            awacs = self.plane_group_inflight(_country, name, plane_type, x2, y2, altitude, speed, dcs.task.AWACS)
+            awacs = self.plane_group_inflight(_country, name, plane_type, x2, y2, altitude, speed, task.AWACS)
             x2, y2 = mapping.point_from_heading(x, y, heading + 180, 1000)
             wp = awacs.add_waypoint(x2, y2, altitude, speed)
 
-        wp.tasks.append(dcs.task.SetFrequencyCommand(frequency))
+        wp.tasks.append(task.SetFrequencyCommand(frequency))
 
         wp = awacs.add_waypoint(x, y, altitude, speed)
-        wp.tasks.append(dcs.task.OrbitAction(altitude, speed, dcs.task.OrbitAction.Pattern_RaceTrack))
+        wp.tasks.append(task.OrbitAction(altitude, speed, task.OrbitAction.Pattern_RaceTrack))
 
         x2, y2 = mapping.point_from_heading(x, y, heading, race_distance)
         awacs.add_waypoint(x2, y2, altitude, speed)
@@ -1017,29 +1033,29 @@ class Mission:
     def escort_flight(self,
                       _country,
                       name: str,
-                      escort_type: dcs.planes.PlaneType,
+                      escort_type: planes.PlaneType,
                       airport: Airport,
-                      group_to_escort: dcs.group.FlyingGroup,
+                      group_to_escort: unitgroup.FlyingGroup,
                       group_size=2):
 
         second_point_group = group_to_escort.points[1]
         if airport:
             eg = self.plane_group_from_parking(
-                _country, name, escort_type, airport, dcs.task.Escort, group_size=group_size)
+                _country, name, escort_type, airport, task.Escort, group_size=group_size)
             eg.add_runway_waypoint(airport)
         else:
             eg = self.plane_group_inflight(
                 _country, name, escort_type,
-                group_to_escort.points[0].x - 10*1000,
+                group_to_escort.points[0].x - 10 * 1000,
                 group_to_escort.points[0].y,
                 second_point_group.alt + 200,
-                task=dcs.task.Escort,
+                task=task.Escort,
                 group_size=group_size
             )
 
-        wp = eg.add_waypoint(second_point_group.x, second_point_group.y, second_point_group.alt)
+        eg.add_waypoint(second_point_group.x, second_point_group.y, second_point_group.alt)
         eg.points[0].tasks.clear()
-        eg.points[0].tasks.append(dcs.task.EscortTaskAction(group_to_escort.id, lastwpt=len(group_to_escort.points)))
+        eg.points[0].tasks.append(task.EscortTaskAction(group_to_escort.id, lastwpt=len(group_to_escort.points)))
 
         return eg
 
@@ -1072,15 +1088,14 @@ class Mission:
             zipf.writestr('l10n/DEFAULT/dictionary', dicttext)
 
             mapresource = self.map_resource.store(zipf, 'DEFAULT')
-            #print(mapresource)
+            # print(mapresource)
             zipf.writestr('l10n/DEFAULT/mapResource', lua.dumps(mapresource, "mapResource", 1))
 
             zipf.writestr('mission', str(self))
         return True
 
     def __str__(self):
-        m = {}
-        m["trig"] = self.trig
+        m = {"trig": self.trig}
         m["result"] = self.result.dict()
         if self.groundControl:
             m["groundControl"] = self.groundControl
@@ -1094,10 +1109,10 @@ class Mission:
         m["descriptionText"] = self.description_text.id
         m["pictureFileNameR"] = {}
         for i in range(0, len(self.pictureFileNameR)):
-            m["pictureFileNameR"][i+1] = self.pictureFileNameR[i]
+            m["pictureFileNameR"][i + 1] = self.pictureFileNameR[i]
         m["pictureFileNameB"] = {}
         for i in range(0, len(self.pictureFileNameB)):
-            m["pictureFileNameB"][i+1] = self.pictureFileNameB[i]
+            m["pictureFileNameB"][i + 1] = self.pictureFileNameB[i]
         m["descriptionBlueTask"] = self.description_bluetask.id
         m["descriptionRedTask"] = self.description_redtask.id
         m["trigrules"] = self.trigrules
@@ -1126,7 +1141,7 @@ class Mission:
         return lua.dumps(m, "mission", 1)
 
     def __repr__(self):
-        rep = {"base": self.values, "options": self.options, "translation": self.translation}
+        rep = {"base": str(self), "options": self.options, "translation": self.translation}
         return repr(rep)
 
 

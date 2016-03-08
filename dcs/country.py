@@ -1,4 +1,4 @@
-from .group import VehicleGroup, ShipGroup, PlaneGroup, StaticGroup
+from .unitgroup import VehicleGroup, ShipGroup, PlaneGroup, StaticGroup
 from typing import List, Dict
 
 
