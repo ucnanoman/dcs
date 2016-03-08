@@ -1056,7 +1056,46 @@ class Mission:
     def is_blue(self, _country: Country):
         return _country.name in self.coalition["blue"].countries
 
-    def save(self, filename=None):
+    def stats(self) -> Dict:
+        d = {
+            "red": {},
+            "blue": {},
+            "unit_count": 0,
+            "count": 0
+        }
+
+        def count_group(field, group):
+            d[col_name]["count"] += len(group)
+            d[col_name][field]["count"] += len(group)
+            for g in group:
+                for u in g.units:
+                    _unit = d[col_name][field]["units"].get(u.type, 0)
+                    d[col_name][field]["units"][u.type] = _unit + 1
+                    d[col_name]["unit_count"] += 1
+            d[col_name][field]["unit_count"] = sum(d[col_name][field]["units"].values())
+
+        for col_name in ["red", "blue"]:
+            d[col_name]["unit_count"] = 0
+            d[col_name]["count"] = 0
+            col = self.coalition[col_name]
+            d[col_name]["plane_groups"] = {"count": 0, "units": {}}
+            d[col_name]["helicopter_groups"] = {"count": 0, "units": {}}
+            d[col_name]["vehicle_groups"] = {"count": 0, "units": {}}
+            d[col_name]["ship_groups"] = {"count": 0, "units": {}}
+            for k, v in col.countries.items():
+                count_group("plane_groups", v.plane_group)
+                count_group("helicopter_groups", v.helicopter_group)
+                count_group("vehicle_groups", v.vehicle_group)
+                count_group("ship_groups", v.ship_group)
+            d["unit_count"] += d[col_name]["unit_count"]
+            d["count"] += d[col_name]["count"]
+
+        # import pprint
+        # pp = pprint.PrettyPrinter(indent=2)
+        # pp.pprint(d)
+        return d
+
+    def save(self, filename=None, show_stats=False):
         filename = self.filename if filename is None else filename
         if not filename:
             raise RuntimeError("No filename given.")
@@ -1076,6 +1115,34 @@ class Mission:
             zipf.writestr('l10n/DEFAULT/mapResource', lua.dumps(mapresource, "mapResource", 1))
 
             zipf.writestr('mission', str(self))
+
+        if show_stats:
+            d = self.stats()
+            print("Mission Statistics")
+            print("-"*60)
+            output = {"red": [], "blue": []}
+            for x in ["Blue", "Red"]:
+                low = x.lower()
+                output[low].append("{group:<15s} groups units".format(group=x))
+                output[low].append("{group:<15s} {gc:6d} {u:5d}".format(
+                    group="Plane",
+                    gc=d[low]["plane_groups"]["count"], u=d[low]["plane_groups"]["unit_count"]))
+                output[low].append("{group:<15s} {gc:6d} {u:5d}".format(
+                    group="Helicopter",
+                    gc=d[low]["helicopter_groups"]["count"], u=d[low]["helicopter_groups"]["unit_count"]))
+                output[low].append("{group:<15s} {gc:6d} {u:5d}".format(
+                    group="Vehicle",
+                    gc=d[low]["vehicle_groups"]["count"], u=d[low]["vehicle_groups"]["unit_count"]))
+                output[low].append("{group:<15s} {gc:6d} {u:5d}".format(
+                    group="Ship",
+                    gc=d[low]["ship_groups"]["count"], u=d[low]["ship_groups"]["unit_count"]))
+                output[low].append("-"*28)
+                output[low].append("{group:<15s} {gc:6d} {u:5d}".format(group="Sum", gc=d[low]["count"], u=d[low]["unit_count"]))
+
+            # merge tables
+            for i in range(0, len(output["blue"])):
+                print(output["blue"][i], "  ", output["red"][i])
+            print("Total {g} groups with {u} units".format(g=d["count"], u=d["unit_count"]))
         return True
 
     def __str__(self):
