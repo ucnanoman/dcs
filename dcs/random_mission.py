@@ -252,7 +252,7 @@ class Refueling(BasicScenario):
             pg.units[0].skill = dcs.unit.Skill.PLAYER
 
         self.m.set_description_text("""Random generated refueling test mission.
-{count} {type} are\is prepared for a refueling training mission.""".format(count=playercount, type=plane_type.id))
+{count} {type} are/is prepared for a refueling training mission.""".format(count=playercount, type=plane_type.id))
         self.m.set_description_bluetask_text("""Find your tanker and do a full refuel.
 Afterwards land at your designated homebase.
 
