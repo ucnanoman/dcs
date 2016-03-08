@@ -33,6 +33,7 @@ class FlyingType:
     ]
 
     tasks = ['Nothing']
+    task_default = None
 
     @classmethod
     def load_payloads(cls):
