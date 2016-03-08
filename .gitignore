@@ -3,4 +3,4 @@ missions
 .idea
 build/
 dist/
-dcs_mission.egg-info/
+pydcs.egg-info/

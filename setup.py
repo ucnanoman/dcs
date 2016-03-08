@@ -8,11 +8,11 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name="dcs-mission",
+    name="pydcs",
     version='0.6.0',
     description="A Digital Combat Simulator mission builder framework",
     long_description=long_description,
-    url='https://github.com/rp-/dcs',
+    url='https://github.com/pydcs/dcs',
     author="Peinthor Rene",
     author_email="peinthor@gmail.com",
     license="LGPLv3",
