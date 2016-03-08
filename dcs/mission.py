@@ -218,9 +218,9 @@ class Mission:
         self.translation = Translation(self)
         self.map_resource = MapResource(self)
 
-        self.description_text = self.string("dcs mission")
-        self.description_bluetask = self.string("blue task")
-        self.description_redtask = self.string("red task")
+        self._description_text = self.string("dcs mission")
+        self._description_bluetask = self.string("blue task")
+        self._description_redtask = self.string("red task")
         self.sortie = self.string("sortie text")
         self.pictureFileNameR = []
         self.pictureFileNameB = []
@@ -516,9 +516,9 @@ class Mission:
         self.warehouses.load_dict(warehouse_dict["warehouses"])
 
         # import base values
-        self.description_text = self.translation.get_string(imp_mission["descriptionText"])
-        self.description_bluetask = self.translation.get_string(imp_mission["descriptionBlueTask"])
-        self.description_redtask = self.translation.get_string(imp_mission["descriptionRedTask"])
+        self._description_text = self.translation.get_string(imp_mission["descriptionText"])
+        self._description_bluetask = self.translation.get_string(imp_mission["descriptionBlueTask"])
+        self._description_redtask = self.translation.get_string(imp_mission["descriptionRedTask"])
         self.sortie = self.translation.get_string(imp_mission["sortie"])
         for pic in sorted(imp_mission["pictureFileNameR"]):
             self.pictureFileNameR.append(imp_mission["pictureFileNameR"][pic])
@@ -575,22 +575,22 @@ class Mission:
         return True
 
     def description_text(self):
-        return str(self.description_text)
+        return str(self._description_text)
 
     def set_description_text(self, text):
-        self.description_text.set(text)
+        self._description_text.set(text)
 
     def description_bluetask_text(self):
-        return str(self.description_bluetask)
+        return str(self._description_bluetask)
 
     def set_description_bluetask_text(self, text):
-        self.description_bluetask.set(text)
+        self._description_bluetask.set(text)
 
     def description_redtask_text(self):
-        return str(self.description_redtask)
+        return str(self._description_redtask)
 
     def set_description_redtask_text(self, text):
-        self.description_redtask.set(text)
+        self._description_redtask.set(text)
 
     def add_picture_red(self, filepath):
         self.pictureFileNameR.append(self.map_resource.add_resource_file(filepath))
@@ -947,7 +947,8 @@ class Mission:
             p = self.helicopter(name + " Pilot #{nr}".format(nr=i), heli_type)
             hg.add_unit(p)
 
-        _country.add_helicopter_group(self._flying_group_ramp(_country, hg, maintask, airport, coldstart, parking_slots))
+        _country.add_helicopter_group(
+            self._flying_group_ramp(_country, hg, maintask, airport, coldstart, parking_slots))
         return hg
 
     def refuel_flight(self,
@@ -1098,15 +1099,15 @@ class Mission:
         m["theatre"] = self.terrain.name
         m["needModules"] = self.needModules
         m["map"] = self.map
-        m["descriptionText"] = self.description_text.id
+        m["descriptionText"] = self._description_text.id
         m["pictureFileNameR"] = {}
         for i in range(0, len(self.pictureFileNameR)):
             m["pictureFileNameR"][i + 1] = self.pictureFileNameR[i]
         m["pictureFileNameB"] = {}
         for i in range(0, len(self.pictureFileNameB)):
             m["pictureFileNameB"][i + 1] = self.pictureFileNameB[i]
-        m["descriptionBlueTask"] = self.description_bluetask.id
-        m["descriptionRedTask"] = self.description_redtask.id
+        m["descriptionBlueTask"] = self._description_bluetask.id
+        m["descriptionRedTask"] = self._description_redtask.id
         m["trigrules"] = self.trigrules
         m["coalition"] = {}
         for col in self.coalition.keys():
