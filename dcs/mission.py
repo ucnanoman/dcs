@@ -1043,6 +1043,39 @@ class Mission:
 
         return eg
 
+    def patrol_flight(self,
+                      _country,
+                      name: str,
+                      patrol_type: planes.PlaneType,
+                      airport: Airport,
+                      x1,
+                      y1,
+                      x2,
+                      y2,
+                      speed=600,
+                      altitude=4000,
+                      group_size=2):
+        if airport:
+            eg = self.plane_group_from_parking(
+                _country, name, patrol_type, airport, maintask=task.CAP, group_size=group_size)
+            eg.add_runway_waypoint(airport)
+        else:
+            eg = self.plane_group_inflight(
+                _country, name, patrol_type,
+                x1 - 10 * 1000,
+                y1,
+                altitude,
+                maintask=task.CAP,
+                group_size=group_size
+            )
+
+        wp = eg.add_waypoint(x1, y1, altitude, speed)
+        wp.tasks.append(task.OrbitAction(altitude, speed, task.OrbitAction.Pattern_RaceTrack))
+        eg.add_waypoint(x2, y2, altitude, speed)
+
+        return eg
+
+
     def country(self, name):
         for k in self.coalition:
             c = self.coalition[k].country(name)
