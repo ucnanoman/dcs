@@ -411,15 +411,15 @@ class Scenario(BasicScenario):
 
                 if True:
                     if airport.runway_free:
-                        pg = self.m.plane_group_from_runway(_country, "Airgroup " + str(i), _type, airport, task=dcs.task.CAS, group_size=2)
+                        pg = self.m.plane_group_from_runway(_country, "Airgroup " + str(i), _type, airport, maintask=dcs.task.CAS, group_size=2)
                     else:
-                        pg = self.m.plane_group_from_parking(_country, "Airgroup " + str(i), _type, airport, task=dcs.task.CAS, group_size=2)
+                        pg = self.m.plane_group_from_parking(_country, "Airgroup " + str(i), _type, airport, maintask=dcs.task.CAS, group_size=2)
                     last_wp = pg.add_runway_waypoint(airport)
                 else:
                     heading = int(dcs.mapping.heading_between_points(target.x(), target.y(), airport.x, airport.y) + 360)
                     heading = random.randrange(heading - 20, heading + 20) - 360
                     x, y = dcs.mapping.point_from_heading(target.x(), target.y(), heading, random.randrange(50, 80)*1000)
-                    pg = self.m.plane_group_inflight(_country, "Airgroup " + str(i), _type, x, y, 1000, task=dcs.task.CAS, group_size=2)
+                    pg = self.m.plane_group_inflight(_country, "Airgroup " + str(i), _type, x, y, 1000, maintask=dcs.task.CAS, group_size=2)
                     last_wp = pg.points[0]
                 pg.points[0].tasks.clear()
                 pg.points[0].tasks.append(dcs.task.EngageTargets(20*1000, [dcs.task.Targets.All.GroundUnits.GroundVehicles]))

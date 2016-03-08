@@ -622,15 +622,6 @@ class Mission:
     def vehicle(self, name, _type):
         return Vehicle(self.next_unit_id(), self.string(name), _type)
 
-    def _add_vehicle_point(self, vg: unitgroup.VehicleGroup, action: str):
-        mp = MovingPoint()
-        mp.type = "Turning Point"
-        mp.action = action
-        mp.x = vg.units[0].x
-        mp.y = vg.units[0].y
-
-        vg.add_point(mp)
-
     def vehicle_group(self, _country, name, _type: str, x, y, heading=0, group_size=1, action="Off Road",
                       formation=unitgroup.VehicleGroup.Formation.Line) -> unitgroup.VehicleGroup:
         vg = unitgroup.VehicleGroup(self.next_group_id(), self.string(name))
@@ -642,7 +633,7 @@ class Mission:
             v.heading = heading
             vg.add_unit(v)
 
-        self._add_vehicle_point(vg, action)
+        vg.add_waypoint(vg.units[0].x, vg.units[0].y, action, 0)
 
         vg.formation(formation)
 
@@ -661,7 +652,7 @@ class Mission:
             v.heading = heading
             vg.add_unit(v)
 
-        self._add_vehicle_point(vg, action)
+        vg.add_waypoint(vg.units[0].x, vg.units[0].y, action, 0)
 
         vg.formation(formation)
 
@@ -697,12 +688,12 @@ class Mission:
         return unitgroup.PlaneGroup(self.next_group_id(), self.string(name))
 
     def plane_group_inflight(self, _country, name, plane_type: PlaneType, x, y, altitude, speed=600,
-                             task: task.MainTask = None, group_size=1):
-        if task is None:
-            task = plane_type.task_default
+                             maintask: task.MainTask = None, group_size=1):
+        if maintask is None:
+            maintask = plane_type.task_default
 
         pg = self.plane_group(name)
-        pg.task = task.name
+        pg.task = maintask.name
         group_size = min(group_size, plane_type.group_size_max)
 
         for i in range(1, group_size + 1):
@@ -712,27 +703,27 @@ class Mission:
             p.alt = altitude
             pg.add_unit(p)
 
-        _country.add_plane_group(self._flying_group_inflight(_country, pg, task, altitude, speed))
+        _country.add_plane_group(self._flying_group_inflight(_country, pg, maintask, altitude, speed))
         return pg
 
     def plane_group_from_runway(self, _country, name, plane_type: PlaneType, airport: Airport,
-                                task: task.MainTask = None, group_size=1):
+                                maintask: task.MainTask = None, group_size=1):
         if not airport.runway_free:
             raise RuntimeError("Runway already occupied.")
 
         airport.runway_free = False
-        if task is None:
-            task = plane_type.task_default
+        if maintask is None:
+            maintask = plane_type.task_default
 
         pg = self.plane_group(name)
-        pg.task = task.name
+        pg.task = maintask.name
         group_size = min(group_size, plane_type.group_size_max)
 
         for i in range(1, group_size + 1):
             p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type)
             pg.add_unit(p)
 
-        _country.add_plane_group(self._flying_group_runway(_country, pg, task, airport))
+        _country.add_plane_group(self._flying_group_runway(_country, pg, maintask, airport))
         return pg
 
     def plane_group_from_parking(self,
@@ -740,7 +731,7 @@ class Mission:
                                  name,
                                  plane_type: PlaneType,
                                  airport: Airport,
-                                 task: task.MainTask = None,
+                                 maintask: task.MainTask = None,
                                  coldstart=True,
                                  parking_slots: ParkingSlot = None,
                                  group_size=1) -> unitgroup.PlaneGroup:
@@ -748,7 +739,7 @@ class Mission:
         Add a new PlaneGroup at parking position on the given airport.
         :param _country: Country object the plane group belongs to
         :param name: Name of the plane group
-        :param task: Task of the plane group
+        :param maintask: Task of the plane group
         :param plane_type: PlaneType object representing the plane
         :param airport: Airport object on which to spawn the plane
         :param coldstart: Coldstart yes or no
@@ -756,24 +747,24 @@ class Mission:
         :param group_size: Group size 1-4
         :return: the new PlaneGroup
         """
-        if task is None:
-            task = plane_type.task_default
+        if maintask is None:
+            maintask = plane_type.task_default
 
         pg = self.plane_group(name)
-        pg.task = task.name
+        pg.task = maintask.name
         group_size = min(group_size, plane_type.group_size_max)
 
         for i in range(1, group_size + 1):
             p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type)
             pg.add_unit(p)
 
-        task_payload = plane_type.loadout(task)
+        task_payload = plane_type.loadout(maintask)
         if task_payload:
             for p in pg.units:
                 for x in task_payload:
                     p.load_pylon(x)
 
-        _country.add_plane_group(self._flying_group_ramp(_country, pg, task, airport, coldstart, parking_slots))
+        _country.add_plane_group(self._flying_group_ramp(_country, pg, maintask, airport, coldstart, parking_slots))
         return pg
 
     def plane(self, name, _type: PlaneType):
@@ -788,7 +779,6 @@ class Mission:
     @classmethod
     def _assign_callsign(cls, _country, group):
         callsign_name = None
-        callsign = None
         category = group.units[0].unit_type.category
         if category in _country.callsign:
             callsign_name = _country.next_callsign_category(category)
@@ -803,14 +793,14 @@ class Mission:
             i += 1
 
     @staticmethod
-    def _load_tasks(mp: MovingPoint, task: task.MainTask):
-        for t in task.perform_task:
+    def _load_tasks(mp: MovingPoint, maintask: task.MainTask):
+        for t in maintask.perform_task:
             ptask = t()
             ptask.auto = True
             mp.tasks.append(ptask)
         return mp
 
-    def _flying_group_ramp(self, _country, group: unitgroup.FlyingGroup, task: task.MainTask, airport: Airport,
+    def _flying_group_ramp(self, _country, group: unitgroup.FlyingGroup, maintask: task.MainTask, airport: Airport,
                            coldstart=True,
                            parking_slots: List[ParkingSlot] = None):
 
@@ -825,7 +815,7 @@ class Mission:
             unit.set_parking(parking_slot)
             i += 1
 
-        group.load_task_default_loadout(task)
+        group.load_task_default_loadout(maintask)
 
         self._assign_callsign(_country, group)
 
@@ -836,20 +826,20 @@ class Mission:
         mp.y = group.units[0].y
         mp.airdrome_id = airport.id
         mp.alt = group.units[0].alt
-        Mission._load_tasks(mp, task)
+        Mission._load_tasks(mp, maintask)
 
         group.add_point(mp)
 
         return group
 
-    def _flying_group_runway(self, _country, group: unitgroup.FlyingGroup, task: task.MainTask, airport: Airport):
+    def _flying_group_runway(self, _country, group: unitgroup.FlyingGroup, maintask: task.MainTask, airport: Airport):
         for unit in group.units:
             unit.x = airport.x
             unit.y = airport.y
 
         self._assign_callsign(_country, group)
 
-        group.load_task_default_loadout(task)
+        group.load_task_default_loadout(maintask)
 
         mp = MovingPoint()
         mp.type = "TakeOff"
@@ -858,13 +848,13 @@ class Mission:
         mp.y = group.units[0].y
         mp.airdrome_id = airport.id
         mp.alt = group.units[0].alt
-        Mission._load_tasks(mp, task)
+        Mission._load_tasks(mp, maintask)
 
         group.add_point(mp)
 
         return group
 
-    def _flying_group_inflight(self, _country, group: unitgroup.FlyingGroup, task: task.MainTask, altitude, speed):
+    def _flying_group_inflight(self, _country, group: unitgroup.FlyingGroup, maintask: task.MainTask, altitude, speed):
 
         i = 0
         for unit in group.units:
@@ -875,7 +865,7 @@ class Mission:
 
         self._assign_callsign(_country, group)
 
-        group.load_task_default_loadout(task)
+        group.load_task_default_loadout(maintask)
 
         mp = MovingPoint()
         mp.type = "Turning Point"
@@ -885,19 +875,19 @@ class Mission:
         mp.alt = altitude
         mp.speed = speed / 3.6
 
-        Mission._load_tasks(mp, task)
+        Mission._load_tasks(mp, maintask)
 
         group.add_point(mp)
 
         return group
 
     def helicopter_group_inflight(self, _country, name, helicopter_type, x, y, altitude, speed=400,
-                                  task: task.MainTask = None, group_size=1):
-        if task is None:
-            task = helicopter_type.task_default
+                                  maintask: task.MainTask = None, group_size=1):
+        if maintask is None:
+            maintask = helicopter_type.task_default
 
         hg = self.helicopter_group(name)
-        hg.task = task.name
+        hg.task = maintask.name
         group_size = min(group_size, helicopter_type.group_size_max)
 
         for i in range(1, group_size + 1):
@@ -906,23 +896,23 @@ class Mission:
             p.y = y
             hg.add_unit(p)
 
-        _country.add_helicopter_group(self._flying_group_inflight(_country, hg, task, altitude, speed))
+        _country.add_helicopter_group(self._flying_group_inflight(_country, hg, maintask, altitude, speed))
         return hg
 
     def helicopter_group_from_runway(self, _country, name, heli_type: HelicopterType, airport: Airport,
-                                     task: task.MainTask = None, group_size=1):
-        if task is None:
-            task = heli_type.task_default
+                                     maintask: task.MainTask = None, group_size=1):
+        if maintask is None:
+            maintask = heli_type.task_default
 
         hg = self.helicopter_group(name)
-        hg.task = task.name
+        hg.task = maintask.name
         group_size = min(group_size, heli_type.group_size_max)
 
         for i in range(1, group_size + 1):
             p = self.helicopter(name + " Pilot #{nr}".format(nr=i), heli_type)
             hg.add_unit(p)
 
-        _country.add_helicopter_group(self._flying_group_runway(_country, hg, task, airport))
+        _country.add_helicopter_group(self._flying_group_runway(_country, hg, maintask, airport))
         return hg
 
     def helicopter_group_from_parking(self,
@@ -930,7 +920,7 @@ class Mission:
                                       name,
                                       heli_type: HelicopterType,
                                       airport: Airport,
-                                      task: task.MainTask = None,
+                                      maintask: task.MainTask = None,
                                       coldstart=True,
                                       parking_slots: List[ParkingSlot] = None,
                                       group_size=1) -> unitgroup.PlaneGroup:
@@ -938,7 +928,7 @@ class Mission:
         Add a new PlaneGroup at parking position on the given airport.
         :param _country: Country object the plane group belongs to
         :param name: Name of the helicopter group
-        :param task: Task of the helicopter group
+        :param maintask: Task of the helicopter group
         :param heli_type: HelicopterType object representing the helicopter
         :param airport: Airport object on which to spawn the helicopter
         :param coldstart: Coldstart yes or no
@@ -946,18 +936,18 @@ class Mission:
         :param group_size: Group size 1-4
         :return: the new PlaneGroup
         """
-        if task is None:
-            task = heli_type.task_default
+        if maintask is None:
+            maintask = heli_type.task_default
 
         hg = self.helicopter_group(name)
-        hg.task = task.name
+        hg.task = maintask.name
         group_size = min(group_size, heli_type.group_size_max)
 
         for i in range(1, group_size + 1):
             p = self.helicopter(name + " Pilot #{nr}".format(nr=i), heli_type)
             hg.add_unit(p)
 
-        _country.add_helicopter_group(self._flying_group_ramp(_country, hg, task, airport, coldstart, parking_slots))
+        _country.add_helicopter_group(self._flying_group_ramp(_country, hg, maintask, airport, coldstart, parking_slots))
         return hg
 
     def refuel_flight(self,
@@ -1049,7 +1039,7 @@ class Mission:
                 group_to_escort.points[0].x - 10 * 1000,
                 group_to_escort.points[0].y,
                 second_point_group.alt + 200,
-                task=task.Escort,
+                maintask=task.Escort,
                 group_size=group_size
             )
 
@@ -1095,8 +1085,10 @@ class Mission:
         return True
 
     def __str__(self):
-        m = {"trig": self.trig}
-        m["result"] = self.result.dict()
+        m = {
+            "trig": self.trig,
+            "result": self.result.dict()
+        }
         if self.groundControl:
             m["groundControl"] = self.groundControl
         m["usedModules"] = self.usedModules
