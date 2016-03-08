@@ -172,7 +172,7 @@ for i in pairs(aircrafts) do
     if plane.singleInFlight then
         print('    group_size_max = 1')
     end
-    if plane.WingSpan ~= Nil and tonumber(plane.WingSpan) > 30 then
+    if plane.WingSpan ~= Nil and tonumber(plane.WingSpan) > 20 then
         print('    large_parking_slot = True')
     end
     print('    fuel_max = '..plane.MaxFuelWeight)

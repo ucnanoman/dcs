@@ -3647,6 +3647,7 @@ class B_1B(PlaneType):
 class S_3B(PlaneType):
     id = "S-3B"
     group_size_max = 1
+    large_parking_slot = True
     fuel_max = 5500
     max_speed = 840
     chaff = 30
@@ -3713,6 +3714,7 @@ class S_3B(PlaneType):
 class S_3B_Tanker(PlaneType):
     id = "S-3B Tanker"
     group_size_max = 1
+    large_parking_slot = True
     fuel_max = 5500
     max_speed = 840
     chaff = 30
@@ -4184,6 +4186,7 @@ class C_130(PlaneType):
 class An_26B(PlaneType):
     id = "An-26B"
     group_size_max = 1
+    large_parking_slot = True
     fuel_max = 5500
     max_speed = 540
     chaff = 384
@@ -4201,6 +4204,7 @@ class An_26B(PlaneType):
 class An_30M(PlaneType):
     id = "An-30M"
     group_size_max = 1
+    large_parking_slot = True
     fuel_max = 8300
     max_speed = 540
     chaff = 192
@@ -4293,6 +4297,7 @@ class IL_78M(PlaneType):
 class E_2C(PlaneType):
     id = "E-2C"
     group_size_max = 1
+    large_parking_slot = True
     fuel_max = 5624
     max_speed = 610
     chaff = 120
@@ -4908,6 +4913,7 @@ class RQ_1A_Predator(PlaneType):
 class Yak_40(PlaneType):
     id = "Yak-40"
     group_size_max = 1
+    large_parking_slot = True
     fuel_max = 3080
     max_speed = 570
 
