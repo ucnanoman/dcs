@@ -93,7 +93,7 @@ class BasicScenario:
                     vg.add_unit(u)
                 vg.formation_scattered(180)
 
-    def add_civil_airtraffic(self, planes=(10, 20), helicopters=(0, 10)):
+    def add_civil_airtraffic(self, planes=(10, 20), helicopters=(0, 10), hidden=True):
         p_count = random.randrange(planes[0], planes[1])
         h_count = random.randrange(helicopters[0], helicopters[1])
 
@@ -123,8 +123,9 @@ class BasicScenario:
                 pg = self.m.plane_group_from_parking(country, name, ptype, airport)
                 pg.uncontrolled = True
             else:
-                x = random.randrange(dcs.terrain.Caucasus.Bottom+100*1000, dcs.terrain.Caucasus.Top-100*1000)
-                y = random.randrange(dcs.terrain.Caucasus.Left+200*1000, dcs.terrain.Caucasus.Right-130*1000)
+                bound = dcs.mapping.Rectangle(dcs.terrain.Caucasus.Top-100*1000, dcs.terrain.Caucasus.Left+200*1000,
+                                              dcs.terrain.Caucasus.Bottom+100*1000, dcs.terrain.Caucasus.Right-130*1000)
+                x, y = bound.random_int_point()
 
                 pg = self.m.plane_group_inflight(
                     country, name, ptype, x, y, random.randrange(5000, 8000, 100), 400)
@@ -146,27 +147,42 @@ class BasicScenario:
             htype = dcs.helicopters.helicopter_map[transports[random.randrange(0, len(transports))]]
 
             start_airport = airports[random.randrange(0, len(airports))]
-            while True:
-                dest_airport = airports[random.randrange(0, len(airports))]
-                if dest_airport != start_airport:
-                    break
+            rand = random.random()
+            name = "Helicopter Transport " + str(c_count)
+            if 0.7 < rand:
+                bound = dcs.mapping.Rectangle.from_point(start_airport.x, start_airport.y, 200*1000)
+                x, y = bound.random_int_point()
+                hg = self.m.helicopter_group_inflight(
+                    country, name, htype, x, y, random.randrange(800, 1500, 100), 200)
+                hg.add_runway_waypoint(start_airport)
+                hg.land_at(start_airport)
+            elif 0.4 < rand < 0.7:
+                hg = self.m.plane_group_from_parking(country, name, htype, start_airport)
+                hg.uncontrolled = True
+            else:
+                while True:
+                    dest_airport = airports[random.randrange(0, len(airports))]
+                    if dest_airport != start_airport:
+                        break
 
-            hg = self.m.helicopter_group_from_parking(
-                country, "Helicopter Transport " + str(c_count), htype, start_airport, coldstart=random.getrandbits(1))
-            hg.add_runway_waypoint(start_airport)
-            hg.add_runway_waypoint(dest_airport)
-            hg.land_at(dest_airport)
+                hg = self.m.helicopter_group_from_parking(
+                    country, name, htype, start_airport, coldstart=random.getrandbits(1))
+                hg.add_runway_waypoint(start_airport)
+                hg.add_runway_waypoint(dest_airport)
+                hg.land_at(dest_airport)
             return hg
 
         # red
         red_countries = [dcs.countries.Russia.name]
         for i in range(0, int(p_count / 2)):
             cf = civil_flight(red_countries, self.red_airports)
+            cf.hidden = hidden
             cf.points[0].tasks.append(dcs.task.SetInvisibleCommand())
             c_count += 1
 
         for i in range(0, int(h_count / 2)):
             hf = heli_transport_flight(red_countries, self.red_airports)
+            hf.hidden = hidden
             hf.points[0].tasks.append(dcs.task.SetInvisibleCommand())
             c_count += 1
 
@@ -174,11 +190,13 @@ class BasicScenario:
         blue_countries = [dcs.countries.USA.name, dcs.countries.Ukraine.name, dcs.countries.Georgia.name]
         for i in range(0, int(p_count / 2)):
             cf = civil_flight(blue_countries, self.blue_airports)
+            cf.hidden = hidden
             cf.points[0].tasks.append(dcs.task.SetInvisibleCommand())
             c_count += 1
 
         for i in range(0, int(h_count / 2)):
             hf = heli_transport_flight(blue_countries, self.blue_airports)
+            hf.hidden = hidden
             hf.points[0].tasks.append(dcs.task.SetInvisibleCommand())
             c_count += 1
 
