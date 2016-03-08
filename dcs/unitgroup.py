@@ -344,6 +344,10 @@ class FlyingGroup(MovingGroup):
         for u in self.units:
             u.reset_loadout()
 
+    def set_frequency(self, frequency):
+        self.frequency = frequency
+        self.radio_set = True
+
     def dict(self):
         # if a player/client is in the group
         # make sure his 1. preset channel is at frequency
