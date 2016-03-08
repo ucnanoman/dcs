@@ -162,8 +162,8 @@ class BasicScenario:
             hf.points[0].tasks.append(dcs.task.SetInvisibleCommand())
             c_count += 1
 
-    def save(self, filename):
-        self.m.save(filename)
+    def save(self, filename, stats):
+        self.m.save(filename, show_stats=stats)
 
 
 class Refueling(BasicScenario):
@@ -477,6 +477,7 @@ def main():
     parser.add_argument("-p", "--playercount", default=1, type=int)
     parser.add_argument("-s", "--start", default="inflight", choices=["inflight", "runway", "warm", "cold"])
     parser.add_argument("-t", "--missiontype", default="main", choices=["main", "CAS", "CAP", "refuel"])
+    parser.add_argument("--show-stats", action="store_true", default=False, help="Show generated missions stats")
     parser.add_argument("-o", "--output", default=os.path.join(os.path.expanduser("~"), "Saved Games\\DCS\\Missions\\random.miz"))
 
     args = parser.parse_args()
@@ -492,7 +493,7 @@ def main():
     else:
         s = Scenario()
 
-    s.save(args.output)
+    s.save(args.output, args.show_stats)
 
 
 if __name__ == '__main__':
