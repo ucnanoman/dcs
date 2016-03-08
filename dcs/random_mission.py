@@ -157,7 +157,7 @@ class BasicScenario:
                 hg.add_runway_waypoint(start_airport)
                 hg.land_at(start_airport)
             elif 0.4 < rand < 0.7:
-                hg = self.m.plane_group_from_parking(country, name, htype, start_airport)
+                hg = self.m.helicopter_group_from_parking(country, name, htype, start_airport)
                 hg.uncontrolled = True
             else:
                 while True:
