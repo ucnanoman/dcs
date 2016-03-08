@@ -273,7 +273,8 @@ class FlyingGroup(MovingGroup):
         self.add_point(mp)
         return mp
 
-    def add_runway_waypoint(self, airport: Airport, runway: Runway=None, distance=6000) -> MovingPoint:
+    def add_runway_waypoint(self, airport: Airport, runway: Runway=None,
+                            distance=random.randrange(6000, 8000, 100)) -> MovingPoint:
         """
         Adds a waypoint parallel to the given runway heading, for start or approach.
         :param airport: start airport object
