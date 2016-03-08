@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 
 class Task:
@@ -235,14 +235,19 @@ engagetargets_tasks = {
 class EscortTaskAction(Task):
     Id = "Escort"
 
-    def __init__(self, group_id=None, engagement_max_dist=60000, lastwpt=None, targets: List[str]=[Targets.All.Air.Planes]):
+    def __init__(self,
+                 group_id=None,
+                 engagement_max_dist=60000,
+                 lastwpt=None,
+                 targets: List[str]=[Targets.All.Air.Planes],
+                 position: Dict[str, float]={"x": -200, "y": -100, "z": -500}):
         super(EscortTaskAction, self).__init__(EscortTaskAction.Id)
         self.params = {
             "lastWptIndexFlagChangedManually": False,
             "lastWptIndexFlag": False,
             "engagementDistMax": engagement_max_dist,
             "targetTypes": {i: targets[i-1] for i in range(1, len(targets)+1)},
-            "pos": {"x": -200, "y": -500, "z": 0}
+            "pos": position
         }
         if group_id:
             self.params["groupId"] = group_id
