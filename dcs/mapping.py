@@ -1,4 +1,5 @@
 import math
+import random
 from typing import List, Tuple
 
 
@@ -77,6 +78,11 @@ class Rectangle:
 
     def center(self):
         return self.bottom + (self.height() / 2), self.left + (self.width() / 2)
+
+    def random_int_point(self) -> (float, float):
+        x = random.randrange(int(self.bottom), int(self.top))
+        y = random.randrange(int(self.left), int(self.right))
+        return x, y
 
 
 def point_in_poly(x, y, poly: List[Tuple[float, float]]):
