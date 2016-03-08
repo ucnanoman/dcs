@@ -1,4 +1,4 @@
-from .unitgroup import VehicleGroup, ShipGroup, PlaneGroup, StaticGroup
+from .unitgroup import VehicleGroup, ShipGroup, PlaneGroup, StaticGroup, HelicopterGroup
 from typing import List, Dict
 
 
@@ -54,7 +54,7 @@ class Country:
                 return group
 
     def find_static_group(self, name: str):
-        for group in self.static_group_group:
+        for group in self.static_group:
             if name in group.name.str():
                 return group
 
@@ -73,9 +73,10 @@ class Country:
         return self.callsign.get(category)[self.current_callsign_category[category]]
 
     def dict(self):
-        d = {}
-        d["name"] = self.name
-        d["id"] = self.id
+        d = {
+            "name": self.name,
+            "id": self.id
+        }
 
         if self.vehicle_group:
             d["vehicle"] = {"group": {}}

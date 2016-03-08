@@ -60,6 +60,8 @@ class Task:
 
 
 class TargetType(type):
+    id = None
+
     def __str__(self):
         return '"{id}"'.format(id=self.id)
 
@@ -239,9 +241,13 @@ class EscortTaskAction(Task):
                  group_id=None,
                  engagement_max_dist=60000,
                  lastwpt=None,
-                 targets: List[str]=[Targets.All.Air.Planes],
-                 position: Dict[str, float]={"x": -200, "y": -100, "z": -500}):
+                 targets: List[str]=None,
+                 position: Dict[str, float]=None):
         super(EscortTaskAction, self).__init__(EscortTaskAction.Id)
+        if targets is None:
+            targets = [Targets.All.Air.Planes]
+        if position is None:
+            position = {"x": -200, "y": -100, "z": -500}
         self.params = {
             "lastWptIndexFlagChangedManually": False,
             "lastWptIndexFlag": False,
@@ -291,8 +297,10 @@ class Bombing(Task):
 class EngageTargets(Task):
     Id = "EngageTargets"
 
-    def __init__(self, max_distance=None, targets: List[str]=[Targets.All]):
+    def __init__(self, max_distance=None, targets: List[str]=None):
         super(EngageTargets, self).__init__(EngageTargets.Id)
+        if targets is None:
+            targets = [Targets.All]
         self.params = {
             "targetTypes": {i: targets[i-1] for i in range(1, len(targets)+1)},
             "maxDistEnabled": True if max_distance else False,
@@ -304,8 +312,10 @@ class EngageTargets(Task):
 class EngageTargetsInZone(Task):
     Id = "EngageTargetsInZone"
 
-    def __init__(self, x, y, radius=5000, targets: List[str]=[Targets.All]):
+    def __init__(self, x, y, radius=5000, targets: List[str]=None):
         super(EngageTargetsInZone, self).__init__(EngageTargetsInZone.Id)
+        if targets is None:
+            targets = [Targets.All]
         self.params = {
             "targetTypes": {i: targets[i-1] for i in range(1, len(targets)+1)},
             "priority": 0,
@@ -618,6 +628,7 @@ class Transport(MainTask):
 
 class Option(Task):
     Id = "WrappedAction"
+    Key = None
 
     def __init__(self, value=None):
         super(Option, self).__init__(Option.Id)
@@ -641,7 +652,10 @@ class OptROE(Option):
 
     class Values:
         WeaponFree = 0
-        """AI will engage any enemy group it detects. Target prioritization is based based on the threat of the target."""
+        """
+        AI will engage any enemy group it detects.
+        Target prioritization is based based on the threat of the target.
+        """
         OpenFireWeaponFree = 1
         """AI will engage any enemy group it detects, but will prioritize targets specified in the groups tasking."""
         OpenFire = 2
@@ -666,11 +680,20 @@ class OptReactOnThreat(Option):
         NoReaction = 0
         """No defensive actions will take place to counter threats"""
         PassiveDefense = 1
-        """AI will use jammers and other countermeasures in an attempt to defeat the threat. AI will not attempt a maneuver to defeat a threat."""
+        """
+        AI will use jammers and other countermeasures in an attempt to defeat the threat.
+        AI will not attempt a maneuver to defeat a threat.
+        """
         EvadeFire = 2
-        """AI will react by performing defensive maneuvers against incoming threats, AI will also use passive defense."""
+        """
+        AI will react by performing defensive maneuvers against incoming threats,
+        AI will also use passive defense.
+        """
         ByPassAndEscape = 3
-        """AI will attempt to avoid enemy threat zones all together. This includes attempting to fly above or around threats."""
+        """
+        AI will attempt to avoid enemy threat zones all together.
+        This includes attempting to fly above or around threats.
+        """
         AllowAbortMission = 4
         """If a threat is deemed severe enough the AI will abort its mission and return to base."""
 

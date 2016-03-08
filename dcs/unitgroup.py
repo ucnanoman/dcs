@@ -1,7 +1,7 @@
 import math
 import random
 from typing import List
-from .unit import Unit, Skill
+from .unit import Unit, Skill, FlyingUnit
 from .point import Point, MovingPoint
 from .translation import String
 from .terrain import Airport, Runway
@@ -27,9 +27,6 @@ class Group:
     def add_point(self, point: Point):
         self.points.append(point)
 
-    def add_span(self, pos):
-        self.spans.append({"x": pos.x, "y": pos.y})
-
     def x(self):
         if len(self.units) > 0:
             return self.units[0].x
@@ -41,10 +38,11 @@ class Group:
         return None
 
     def dict(self):
-        d = {}
-        d["hidden"] = self.hidden
-        d["name"] = self.name.id
-        d["groupId"] = self.id
+        d = {
+            "hidden": self.hidden,
+            "name": self.name.id,
+            "groupId": self.id
+        }
         if self.units:
             d["x"] = self.units[0].x
             d["y"] = self.units[0].y
@@ -122,6 +120,9 @@ class VehicleGroup(MovingGroup):
         self.communication = d.get("communication", False)
         self.visible = d.get("visible", False)
 
+    def add_span(self, pos):
+        self.spans.append({"x": pos.x, "y": pos.y})
+
     def add_waypoint(self, x, y, _type="Off Road", speed=32) -> MovingPoint:
         mp = MovingPoint()
         mp.type = "Turning Point"
@@ -141,9 +142,6 @@ class VehicleGroup(MovingGroup):
             unit = self.units[i]
             unit.x = x
             unit.y = y + i * distance
-
-            #unit.x = x + i * distance
-            #unit.y = y
 
             unit.heading = heading
 
@@ -252,6 +250,7 @@ class FlyingGroup(MovingGroup):
         self.uncontrolled = False
         self.radio_set = False
         self.task = "CAS"
+        self.units = []  # type: List[FlyingUnit]
 
     def load_from_dict(self, d):
         super(FlyingGroup, self).load_from_dict(d)

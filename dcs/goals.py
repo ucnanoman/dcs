@@ -1,3 +1,6 @@
+from typing import List
+
+
 class GoalRule:
     def __init__(self, predicate):
         self.coalitionlist = ""
@@ -50,7 +53,7 @@ class UnitAltitudeLower(GoalRule):
 
 class Goal:
     def __init__(self, comment="", side="OFFLINE", score=100):
-        self.rules = []  # type: list[GoalRule]
+        self.rules = []  # type: List[GoalRule]
         self.side = side
         self.score = score
         self.predicate = "score"

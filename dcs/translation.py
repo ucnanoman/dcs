@@ -1,3 +1,5 @@
+from typing import Dict
+
 class String:
     def __init__(self, _id='', translation=None):
         self.translation = translation
@@ -23,7 +25,7 @@ class String:
 
 class Translation:
     def __init__(self, _mission):
-        self.strings = {}  # type: dict[str,dict[str,str]]
+        self.strings = {}  # type: Dict[str,Dict[str,str]]
         self.mission = _mission
 
     def set_string(self, _id, string, lang='DEFAULT'):

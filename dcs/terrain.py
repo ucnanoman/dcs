@@ -1,5 +1,5 @@
 # terrain module
-from typing import List
+from typing import List, Dict
 from . import mapping
 
 
@@ -38,8 +38,8 @@ class Airport:
         self.frequency = frequency
         self.x = x
         self.y = y
-        self.runways = []  # type: list[Runway]
-        self.parking_slots = {}  # type: dict[str:ParkingSlot]
+        self.runways = []  # type: List[Runway]
+        self.parking_slots = {}  # type: Dict[int,ParkingSlot]
         self.unit_zones = []  # type: List[mapping.Rectangle]
         self.runway_free = True
         self.civilian = True
