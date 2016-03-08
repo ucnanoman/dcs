@@ -141,21 +141,25 @@ class BasicScenario:
         # red
         red_countries = [dcs.countries.Russia.name]
         for i in range(0, int(p_count / 2)):
-            civil_flight(red_countries, self.red_airports)
+            cf = civil_flight(red_countries, self.red_airports)
+            cf.points[0].tasks.append(dcs.task.SetInvisibleCommand())
             c_count += 1
 
         for i in range(0, int(h_count / 2)):
-            heli_transport_flight(red_countries, self.red_airports)
+            hf = heli_transport_flight(red_countries, self.red_airports)
+            hf.points[0].tasks.append(dcs.task.SetInvisibleCommand())
             c_count += 1
 
         # blue
         blue_countries = [dcs.countries.USA.name, dcs.countries.Ukraine.name, dcs.countries.Georgia.name]
         for i in range(0, int(p_count / 2)):
-            civil_flight(blue_countries, self.blue_airports)
+            cf = civil_flight(blue_countries, self.blue_airports)
+            cf.points[0].tasks.append(dcs.task.SetInvisibleCommand())
             c_count += 1
 
         for i in range(0, int(h_count / 2)):
-            heli_transport_flight(blue_countries, self.blue_airports)
+            hf = heli_transport_flight(blue_countries, self.blue_airports)
+            hf.points[0].tasks.append(dcs.task.SetInvisibleCommand())
             c_count += 1
 
     def save(self, filename):
