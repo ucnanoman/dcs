@@ -2,6 +2,8 @@ import math
 import random
 from typing import List
 from .unit import Unit, Skill, FlyingUnit
+from .helicopter import Helicopter, HelicopterType
+from .plane import Plane, PlaneType
 from .point import Point, MovingPoint
 from .translation import String
 from .terrain import Airport, Runway
@@ -362,11 +364,23 @@ class PlaneGroup(FlyingGroup):
     def __init__(self, _id, name=None, start_time=0):
         super(PlaneGroup, self).__init__(_id, name, start_time)
 
+    def add_unit(self, unit: Plane):
+        if not issubclass(unit.unit_type, PlaneType):
+            print(unit.unit_type)
+            raise TypeError("unit.unit_type is not a plane")
+        super(PlaneGroup, self).add_unit(unit)
+
 
 class HelicopterGroup(FlyingGroup):
     def __init__(self, _id, name=None, start_time=0):
         super(HelicopterGroup, self).__init__(_id, name, start_time)
         self.frequency = 127.5
+
+    def add_unit(self, unit: Helicopter):
+        if not issubclass(unit.unit_type, HelicopterType):
+            print(unit.unit_type)
+            raise TypeError("unit.unit_type is not a helicopter")
+        super(HelicopterGroup, self).add_unit(unit)
 
 
 class ShipGroup(MovingGroup):
