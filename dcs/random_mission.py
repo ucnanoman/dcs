@@ -72,6 +72,26 @@ class BasicScenario:
         airport.set_blue()
         if not airport.civilian:
             dcs.templates.VehicleTemplate.USA.patriot_site(self.m, airport.x - 500, airport.y - 300, 330)
+        else:
+            slots = len(airport.parking_slots)
+            airdef = int(round(random.random() + slots/20, 0))
+            if airport.unit_zones:
+                x, y = airport.unit_zones[0].center()
+            else:
+                x = airport.x + 500
+                y = airport.y + 100
+            if airdef:
+                vg = self.m.vehicle_group(
+                    self.m.country(dcs.countries.USA.name),
+                    airport.name + " Air Defense",
+                    dcs.countries.USA.Vehicle.M6_Linebacker,
+                    x, y, 180)
+
+                for i in range(1, airdef):
+                    _type = dcs.countries.USA.Vehicle.M6_Linebacker if random.random() > 0.5 else dcs.countries.USA.Vehicle.Vulcan
+                    u = self.m.vehicle(airport.name + " Air Defense #" + str(i), _type)
+                    vg.add_unit(u)
+                vg.formation_scattered(180)
 
     def add_civil_airtraffic(self, planes=(10, 20), helicopters=(0, 10)):
         p_count = random.randrange(planes[0], planes[1])
