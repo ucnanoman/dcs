@@ -150,7 +150,7 @@ class BasicScenario:
             rand = random.random()
             name = "Helicopter Transport " + str(c_count)
             if 0.7 < rand:
-                bound = dcs.mapping.Rectangle.from_point(start_airport.x, start_airport.y, 200*1000)
+                bound = dcs.mapping.Rectangle.from_point(start_airport.x, start_airport.y, 100*1000)
                 x, y = bound.random_int_point()
                 hg = self.m.helicopter_group_inflight(
                     country, name, htype, x, y, random.randrange(800, 1500, 100), 200)
