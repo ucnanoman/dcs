@@ -13,6 +13,13 @@ local function safe_name(name)
     return safeName
 end
 
+local function safe_name(name)
+    local safeName = name
+    safeName = string.gsub(safeName, "[-()/., *']", "_")
+    safeName = string.gsub(safeName,"^([0-9])", "_%1")
+    return safeName
+end
+
 -- prepare weapons data
 
 local weapons = {}
