@@ -4,6 +4,7 @@ import os
 
 class FlyingType:
     id = ""
+    flyable = False
     group_size_max = 4
     large_parking_slot = False
     helicopter = False

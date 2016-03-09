@@ -1,5 +1,16 @@
+-- append this file to 'DCS World\Scripts\Database\db_main.lua'
+-- edit export_path to your export folder
+local export_path = "C:\\Users\\peint\\Documents\\dcs-cs\\dcs\\"
+
 local function writeln(file, text)
     file:write(text.."\n")
+end
+
+local function safe_name(name)
+    local safeName = name
+    safeName = string.gsub(safeName, "[-()/., *']", "_")
+    safeName = string.gsub(safeName,"^([0-9])", "_%1")
+    return safeName
 end
 
 -- prepare weapons data
@@ -41,11 +52,12 @@ while i <= #keys do
 	i = i + 1
 end
 
-file = io.open("weapons_data.py", "w")
-file:write([[# This file is generated from weapon_export.lua
+file = io.open(export_path.."weapons_data.py", "w")
+file:write([[# This file is generated from pydcs_export.lua
 
 
-class Weapons:]])
+class Weapons:
+]])
 local i = 1
 while i <= #keys do
 	local x = keys[i]
@@ -70,17 +82,44 @@ writeln(file, "}")
 file:close()
 
 -- aircraft export planes and helicopters
+local flyable = {}
+flyable["A-10A"] = true
+flyable["A-10C"] = true
+flyable["Su-27"] = true
+flyable["Su-33"] = true
+flyable["Su-25"] = true
+flyable["Su-25T"] = true
+flyable["M-2000C"] = true
+flyable["F-15C"] = true
+flyable["MiG-29A"] = true
+flyable["MiG-29S"] = true
+flyable["P-51D"] = true
+flyable["TF-51D"] = true
+flyable["FW-190D9"] = true
+flyable["Bf-109K-4"] = true
+flyable["C-101EB"] = true
+flyable["F-86F Sabre"] = true
+flyable["Hawk"] = true
+flyable["L-39C"] = true
+flyable["L-39ZA"] = true
+flyable["MiG-15bis"] = true
+flyable["MiG-21Bis"] = true
+flyable["Ka-50"] = true
+flyable["Mi-8MT"] = true
+flyable["UH-1H"] = true
+
 
 local function export_aircraft(file, aircrafts, export_type, exportplane)
     -- generate export output
-    file:write([[
-    # This file is generated from aircraft_export.lua
+    file:write(
+[[# This file is generated from pydcs_export.lua
 
-    from .weapons_data import Weapons
-    from . import task
-    from .flyingtype import FlyingType
+from .weapons_data import Weapons
+from . import task
+from .flyingtype import FlyingType
 
-    ]])
+
+]])
     writeln(file, 'class '..export_type..'Type(FlyingType):')
     if exportplane then
         writeln(file, '    pass')
@@ -97,6 +136,9 @@ local function export_aircraft(file, aircrafts, export_type, exportplane)
         safename = string.gsub(safename,"^([0-9])", "_%1")
         writeln(file, "class "..safename.."("..export_type.."Type):")
         writeln(file, '    id = "'..plane.Name..'"')
+        if plane.HumanCockpit or flyable[plane.Name] ~= nil then
+            writeln(file, '    flyable = True')
+        end
         if plane.singleInFlight then
             writeln(file, '    group_size_max = 1')
         end
@@ -249,11 +291,156 @@ local function export_aircraft(file, aircrafts, export_type, exportplane)
     writeln(file, "}")
 end
 
-file = io.open("planes.py", "w")
+file = io.open(export_path.."planes.py", "w")
 export_aircraft(file, db.Units.Planes.Plane, 'Plane', true)
 file:close()
 
 aircrafts = db.Units.Helicopters.Helicopter
-file = io.open("helicopters.py", "w")
+file = io.open(export_path.."helicopters.py", "w")
 export_aircraft(file, db.Units.Helicopters.Helicopter, 'Helicopter', false)
+file:close()
+
+
+-- export country data
+file = io.open(export_path.."countries.py", "w")
+
+local categories = {
+    'AWACS',
+    'Tanker',
+    'Air',
+    'Helipad',
+    'Ground Units'
+}
+
+writeln(file, '# This file is generated from pydcs_export.lua')
+writeln(file, '')
+writeln(file, 'from .country import Country')
+local i = 0
+while i <= country.maxIndex do
+    local c = country.by_idx[i]
+    if c then
+        local pyName = c.Name
+        pyName = string.gsub(pyName, "[-()/., *']", "")
+        writeln(file, '')
+        writeln(file, '')
+        writeln(file, 'class '..pyName..'(Country):')
+        writeln(file, '    id = '..i)
+        writeln(file, '    name = "'..c.Name..'"')
+        writeln(file, '')
+
+        writeln(file, '    class Vehicle:')
+        local cars = c.Units.Cars.Car
+        for u in pairs(cars) do
+            local safeName = safe_name(cars[u].Name)
+            writeln(file, '        '..safeName..' = "'..cars[u].Name..'"')
+        end
+
+        local planes = c.Units.Planes.Plane
+        if #planes > 0 then
+            writeln(file, '')
+            writeln(file, '    class Plane:')
+            for u in pairs(planes) do
+                local safeName = safe_name(planes[u].Name)
+                writeln(file, '        '..safeName..' = "'..planes[u].Name..'"')
+            end
+
+            writeln(file, '')
+            writeln(file, '    planes = [')
+            for u in pairs(planes) do
+                local safeName = safe_name(planes[u].Name)
+                writeln(file, '        Plane.'..safeName..',')
+            end
+            writeln(file, '    ]')
+        end
+
+        local helis = c.Units.Helicopters.Helicopter
+        if #helis > 0 then
+            writeln(file, '')
+            writeln(file, '    class Helicopter:')
+            for u in pairs(helis) do
+                local safeName = safe_name(helis[u].Name)
+                writeln(file, '        '..safeName..' = "'..helis[u].Name..'"')
+            end
+
+            writeln(file, '')
+            writeln(file, '    helicopters = [')
+            for u in pairs(helis) do
+                local safeName = safe_name(helis[u].Name)
+                writeln(file, '        Helicopter.'..safeName..',')
+            end
+            writeln(file, '    ]')
+        end
+
+        local ships = c.Units.Ships.Ship
+        if #ships > 0 then
+            writeln(file, '')
+            writeln(file, '    class Ship:')
+            for u in pairs(ships) do
+                local safeName = safe_name(ships[u].Name)
+                writeln(file, '        '..safeName..' = "'..ships[u].Name..'"')
+            end
+        end
+
+        local countrycall = db.Callnames[i]
+        if countrycall then
+            for cat in pairs(categories) do
+                local call = db.Callnames[i][categories[cat]]
+                if call then
+                    safeName = string.gsub(categories[cat], "[-()/., *']", "")
+                    writeln(file, '')
+                    writeln(file, '    class Callsign'..safeName..':')
+                    for j in pairs(call) do
+                        writeln(file, '        '..call[j].Name..' = "'..call[j].Name..'"')
+                    end
+                end
+            end
+
+            writeln(file, '')
+            writeln(file, '    callsign = {')
+            for cat in pairs(categories) do
+                local call = db.Callnames[i][categories[cat]]
+                if call then
+                    safeName = string.gsub(categories[cat], "[-()/., *']", "")
+                    writeln(file, '        "'..safeName..'": [')
+                    local s = ''
+                    for j in pairs(call) do
+                        s = '            Callsign'..safeName..'.'..call[j].Name
+                        if j < #call then
+                            s = s..','
+                        end
+                        writeln(file, s)
+                    end
+                    writeln(file, '        ],')
+                end
+            end
+            writeln(file, '    }')
+        end
+
+        writeln(file, '')
+        writeln(file, '    def __init__(self):')
+        writeln(file, '        super('..pyName..', self).__init__('..pyName..'.id, '..pyName..'.name)')
+    end
+    i = i + 1
+end
+
+writeln(file, '')
+writeln(file, 'country_dict = {')
+i = 0
+while i <= country.maxIndex do
+    local c = country.by_idx[i]
+    if c then
+        local pyName = c.Name
+        pyName = string.gsub(pyName, "[-()/., *']", "")
+        writeln(file, '    '..pyName..'.id: '..pyName..'(),')
+    end
+    i = i + 1
+end
+writeln(file, '}')
+
+writeln(file, [[
+
+
+def get_by_id(_id: int):
+    return country_dict[_id]
+]])
 file:close()

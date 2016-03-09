@@ -11,6 +11,7 @@ class HelicopterType(FlyingType):
 
 class Ka_50(HelicopterType):
     id = "Ka-50"
+    flyable = True
     fuel_max = 1450
     max_speed = 300
     chaff = 0
@@ -263,6 +264,7 @@ class Mi_24V(HelicopterType):
 
 class Mi_8MT(HelicopterType):
     id = "Mi-8MT"
+    flyable = True
     fuel_max = 1929
     max_speed = 250
     chaff = 0
@@ -611,6 +613,7 @@ class SH_60B(HelicopterType):
 
 class UH_1H(HelicopterType):
     id = "UH-1H"
+    flyable = True
     fuel_max = 631
     max_speed = 200
     chaff = 0

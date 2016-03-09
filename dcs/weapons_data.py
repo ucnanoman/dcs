@@ -169,7 +169,7 @@ class Weapons:
     HSAB_9_Mk_20_Rockeye = {"clsid": "{4CD2BB0F-5493-44EF-A927-9760350F7BA1}", "name": "HSAB*9 Mk-20 Rockeye", "weight": 2050}
     HSAB_9_Mk_84 = {"clsid": "{696CFFC4-0BDE-42A8-BE4B-0BE3D9DD723C}", "name": "HSAB*9 Mk-84", "weight": 8100}
     HVAR = {"clsid": "{HVAR}", "name": "HVAR", "weight": 64}
-    HVAR_SMOKE_2 = {"clsid": "{HVAR_SMOKE_2}", "name": "HVAR_SMOKE_2", "weight": 100}
+    HVAR_SMOKE_2 = {"clsid": "{HVAR_SMOKE_2}", "name": "HVAR SMOKE 2", "weight": 100}
     HVAR_Smoke_Generator = {"clsid": "{HVAR_SMOKE_GENERATOR}", "name": "HVAR Smoke Generator", "weight": 64}
     HVARx2 = {"clsid": "{HVARx2}", "name": "HVARx2", "weight": 128}
     IAB_500 = {"clsid": "{IAB-500}", "name": "IAB-500", "weight": 470}
@@ -427,28 +427,28 @@ class Weapons:
     Sea_Eagle = {"clsid": "{1461CD18-429A-42A9-A21F-4C621ECD4573}", "name": "Sea Eagle", "weight": 600}
     Shpil_2M_Laser_Intelligence_Pod = {"clsid": "{0519A263-0AB6-11d6-9193-00A0249B6F00}", "name": "Shpil-2M Laser Intelligence Pod", "weight": 200}
     Sky_Shadow_ECM_Pod = {"clsid": "{8C3F26A2-FA0F-11d5-9190-00A0249B6F00}", "name": "Sky-Shadow ECM Pod", "weight": 200}
-    Smoke_Generator___blue_smk = {"clsid": "{D3F65166-1AB8-490f-AF2F-2FB6E22568B3}", "name": "Smoke Generator - blue_smk", "weight": 220}
-    Smoke_Generator___blue_smk_ = {"clsid": "{INV-SMOKE-BLUE}", "name": "Smoke Generator - blue_smk", "weight": 0}
+    Smoke_Generator___blue = {"clsid": "{D3F65166-1AB8-490f-AF2F-2FB6E22568B3}", "name": "Smoke Generator - blue", "weight": 220}
+    Smoke_Generator___blue_ = {"clsid": "{INV-SMOKE-BLUE}", "name": "Smoke Generator - blue", "weight": 0}
     Smoke_Generator___green = {"clsid": "{D3F65166-1AB8-490f-AF2F-2FB6E22568B2}", "name": "Smoke Generator - green", "weight": 220}
     Smoke_Generator___green_ = {"clsid": "{INV-SMOKE-GREEN}", "name": "Smoke Generator - green", "weight": 0}
     Smoke_Generator___orange = {"clsid": "{D3F65166-1AB8-490f-AF2F-2FB6E22568B6}", "name": "Smoke Generator - orange", "weight": 220}
     Smoke_Generator___orange_ = {"clsid": "{INV-SMOKE-ORANGE}", "name": "Smoke Generator - orange", "weight": 0}
-    Smoke_Generator___red_smk = {"clsid": "{D3F65166-1AB8-490f-AF2F-2FB6E22568B1}", "name": "Smoke Generator - red_smk", "weight": 220}
-    Smoke_Generator___red_smk_ = {"clsid": "{INV-SMOKE-RED}", "name": "Smoke Generator - red_smk", "weight": 0}
+    Smoke_Generator___red = {"clsid": "{D3F65166-1AB8-490f-AF2F-2FB6E22568B1}", "name": "Smoke Generator - red", "weight": 220}
+    Smoke_Generator___red_ = {"clsid": "{INV-SMOKE-RED}", "name": "Smoke Generator - red", "weight": 0}
     Smoke_Generator___white = {"clsid": "{D3F65166-1AB8-490f-AF2F-2FB6E22568B4}", "name": "Smoke Generator - white", "weight": 220}
     Smoke_Generator___white_ = {"clsid": "{INV-SMOKE-WHITE}", "name": "Smoke Generator - white", "weight": 0}
     Smoke_Generator___yellow = {"clsid": "{D3F65166-1AB8-490f-AF2F-2FB6E22568B5}", "name": "Smoke Generator - yellow", "weight": 220}
     Smoke_Generator___yellow_ = {"clsid": "{INV-SMOKE-YELLOW}", "name": "Smoke Generator - yellow", "weight": 0}
     Smoke___red___21__t = {"clsid": "{SMOKE_RED_NOZZLE}", "name": "Smoke - red - 21 /t", "weight": 30}
     Smoke___white___21 = {"clsid": "{SMOKE_WHITE}", "name": "Smoke - white - 21", "weight": 30}
-    Smokewinder___blue_smk = {"clsid": "{A4BCC903-06C8-47bb-9937-A30FEDB4E743}", "name": "Smokewinder - blue_smk", "weight": 200}
+    Smokewinder___blue = {"clsid": "{A4BCC903-06C8-47bb-9937-A30FEDB4E743}", "name": "Smokewinder - blue", "weight": 200}
     Smokewinder___green = {"clsid": "{A4BCC903-06C8-47bb-9937-A30FEDB4E742}", "name": "Smokewinder - green", "weight": 200}
     Smokewinder___orange = {"clsid": "{A4BCC903-06C8-47bb-9937-A30FEDB4E746}", "name": "Smokewinder - orange", "weight": 200}
-    Smokewinder___red_smk = {"clsid": "{A4BCC903-06C8-47bb-9937-A30FEDB4E741}", "name": "Smokewinder - red_smk", "weight": 200}
+    Smokewinder___red = {"clsid": "{A4BCC903-06C8-47bb-9937-A30FEDB4E741}", "name": "Smokewinder - red", "weight": 200}
     Smokewinder___white = {"clsid": "{A4BCC903-06C8-47bb-9937-A30FEDB4E744}", "name": "Smokewinder - white", "weight": 200}
     Smokewinder___yellow = {"clsid": "{A4BCC903-06C8-47bb-9937-A30FEDB4E745}", "name": "Smokewinder - yellow", "weight": 200}
     Super_530D = {"clsid": "{FD21B13E-57F3-4C2A-9F78-C522D0B5BCE1}", "name": "Super 530D", "weight": 270}
-    TEST_ROTARY_LAUNCHER_MK82 = {"clsid": "TEST_ROTARY_LAUNCHER_MK82", "name": "TEST_ROTARY_LAUNCHER_MK82", "weight": 6748}
+    TEST_ROTARY_LAUNCHER_MK82 = {"clsid": "TEST_ROTARY_LAUNCHER_MK82", "name": "TEST ROTARY LAUNCHER MK82", "weight": 6748}
     TGM_65H = {"clsid": "TGM_65H", "name": "TGM-65H", "weight": 208}
     TORNADO_Fuel_tank = {"clsid": "{EF124821-F9BB-4314-A153-E0E2FE1162C4}", "name": "TORNADO Fuel tank", "weight": 1275}
     TOW = {"clsid": "TOW", "name": "BGM-71 TOW", "weight": None}
@@ -924,24 +924,24 @@ weapon_ids = {
     "{1461CD18-429A-42A9-A21F-4C621ECD4573}": Weapons.Sea_Eagle,
     "{0519A263-0AB6-11d6-9193-00A0249B6F00}": Weapons.Shpil_2M_Laser_Intelligence_Pod,
     "{8C3F26A2-FA0F-11d5-9190-00A0249B6F00}": Weapons.Sky_Shadow_ECM_Pod,
-    "{D3F65166-1AB8-490f-AF2F-2FB6E22568B3}": Weapons.Smoke_Generator___blue_smk,
-    "{INV-SMOKE-BLUE}": Weapons.Smoke_Generator___blue_smk_,
+    "{D3F65166-1AB8-490f-AF2F-2FB6E22568B3}": Weapons.Smoke_Generator___blue,
+    "{INV-SMOKE-BLUE}": Weapons.Smoke_Generator___blue_,
     "{D3F65166-1AB8-490f-AF2F-2FB6E22568B2}": Weapons.Smoke_Generator___green,
     "{INV-SMOKE-GREEN}": Weapons.Smoke_Generator___green_,
     "{D3F65166-1AB8-490f-AF2F-2FB6E22568B6}": Weapons.Smoke_Generator___orange,
     "{INV-SMOKE-ORANGE}": Weapons.Smoke_Generator___orange_,
-    "{D3F65166-1AB8-490f-AF2F-2FB6E22568B1}": Weapons.Smoke_Generator___red_smk,
-    "{INV-SMOKE-RED}": Weapons.Smoke_Generator___red_smk_,
+    "{D3F65166-1AB8-490f-AF2F-2FB6E22568B1}": Weapons.Smoke_Generator___red,
+    "{INV-SMOKE-RED}": Weapons.Smoke_Generator___red_,
     "{D3F65166-1AB8-490f-AF2F-2FB6E22568B4}": Weapons.Smoke_Generator___white,
     "{INV-SMOKE-WHITE}": Weapons.Smoke_Generator___white_,
     "{D3F65166-1AB8-490f-AF2F-2FB6E22568B5}": Weapons.Smoke_Generator___yellow,
     "{INV-SMOKE-YELLOW}": Weapons.Smoke_Generator___yellow_,
     "{SMOKE_RED_NOZZLE}": Weapons.Smoke___red___21__t,
     "{SMOKE_WHITE}": Weapons.Smoke___white___21,
-    "{A4BCC903-06C8-47bb-9937-A30FEDB4E743}": Weapons.Smokewinder___blue_smk,
+    "{A4BCC903-06C8-47bb-9937-A30FEDB4E743}": Weapons.Smokewinder___blue,
     "{A4BCC903-06C8-47bb-9937-A30FEDB4E742}": Weapons.Smokewinder___green,
     "{A4BCC903-06C8-47bb-9937-A30FEDB4E746}": Weapons.Smokewinder___orange,
-    "{A4BCC903-06C8-47bb-9937-A30FEDB4E741}": Weapons.Smokewinder___red_smk,
+    "{A4BCC903-06C8-47bb-9937-A30FEDB4E741}": Weapons.Smokewinder___red,
     "{A4BCC903-06C8-47bb-9937-A30FEDB4E744}": Weapons.Smokewinder___white,
     "{A4BCC903-06C8-47bb-9937-A30FEDB4E745}": Weapons.Smokewinder___yellow,
     "{FD21B13E-57F3-4C2A-9F78-C522D0B5BCE1}": Weapons.Super_530D,
