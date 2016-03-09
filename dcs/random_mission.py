@@ -12,13 +12,13 @@ from typing import List, Dict, Tuple
 
 class USPlatoon:
     units = [
-        dcs.countries.USA.Vehicle.M1043_HMMWV_Armament,
-        dcs.countries.USA.Vehicle.M1043_HMMWV_Armament,
-        dcs.countries.USA.Vehicle.M1126_Stryker_ICV,
-        dcs.countries.USA.Vehicle.Vulcan
+        dcs.countries.USA.Vehicle.Armor.APC_M1043_HMMWV_Armament.id,
+        dcs.countries.USA.Vehicle.Armor.APC_M1043_HMMWV_Armament.id,
+        dcs.countries.USA.Vehicle.Armor.APC_M1126_Stryker_ICV.id,
+        dcs.countries.USA.Vehicle.AirDefence.AAA_Vulcan_M163.id
     ]
     maybe = [
-        dcs.countries.USA.Vehicle.M1097_Avenger
+        dcs.countries.USA.Vehicle.AirDefence.SAM_Avenger_M1097.id
     ]
 
 
@@ -58,11 +58,11 @@ class BasicScenario:
                 vg = self.m.vehicle_group(
                     self.m.country("Russia"),
                     airport.name + " Air Defense",
-                    dcs.countries.Russia.Vehicle._2S6_Tunguska,
+                    dcs.countries.Russia.Vehicle.AirDefence.SAM_SA_19_Tunguska_2S6,
                     x, y, 180)
 
                 for i in range(1, airdef):
-                    _type = dcs.countries.Russia.Vehicle._2S6_Tunguska if random.random() > 0.5 else dcs.countries.Russia.Vehicle.ZSU_23_4_Shilka
+                    _type = dcs.countries.Russia.Vehicle.AirDefence.SAM_SA_19_Tunguska_2S6 if random.random() > 0.5 else dcs.countries.Russia.Vehicle.AirDefence.SPAAA_ZSU_23_4_Shilka
                     u = self.m.vehicle(airport.name + " Air Defense #" + str(i), _type)
                     vg.add_unit(u)
                 vg.formation_scattered(180)
@@ -85,11 +85,11 @@ class BasicScenario:
                 vg = self.m.vehicle_group(
                     self.m.country(dcs.countries.USA.name),
                     airport.name + " Air Defense",
-                    dcs.countries.USA.Vehicle.M6_Linebacker,
+                    dcs.countries.USA.Vehicle.AirDefence.SAM_Linebacker_M6,
                     x, y, 180)
 
                 for i in range(1, airdef):
-                    _type = dcs.countries.USA.Vehicle.M6_Linebacker if random.random() > 0.5 else dcs.countries.USA.Vehicle.Vulcan
+                    _type = dcs.countries.USA.Vehicle.AirDefence.SAM_Linebacker_M6 if random.random() > 0.5 else dcs.countries.USA.Vehicle.AirDefence.AAA_Vulcan_M163
                     u = self.m.vehicle(airport.name + " Air Defense #" + str(i), _type)
                     vg.add_unit(u)
                 vg.formation_scattered(180)

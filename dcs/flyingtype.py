@@ -1,9 +1,10 @@
 from . import lua
+from . import unittype
 import os
 
 
-class FlyingType:
-    id = ""
+class FlyingType(unittype.UnitType):
+    flyable = False
     group_size_max = 4
     large_parking_slot = False
     helicopter = False

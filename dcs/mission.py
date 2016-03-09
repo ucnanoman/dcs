@@ -5,6 +5,7 @@ from typing import List, Dict
 from datetime import datetime
 from . import lua
 from . import unitgroup
+from . import unittype
 from .country import Country
 from . import countries
 from .point import Point, MovingPoint
@@ -619,10 +620,12 @@ class Mission:
         """
         return self.translation.create_string(s, lang)
 
-    def vehicle(self, name, _type):
-        return Vehicle(self.next_unit_id(), self.string(name), _type)
+    def vehicle(self, name, _type: unittype.VehicleType):
+        if not issubclass(_type, unittype.VehicleType):
+            raise TypeError("_type not a unittype.VehicleType class: " + _type)
+        return Vehicle(self.next_unit_id(), self.string(name), _type.id)
 
-    def vehicle_group(self, _country, name, _type: str, x, y, heading=0, group_size=1, action="Off Road",
+    def vehicle_group(self, _country, name, _type: unittype.VehicleType, x, y, heading=0, group_size=1, action="Off Road",
                       formation=unitgroup.VehicleGroup.Formation.Line) -> unitgroup.VehicleGroup:
         vg = unitgroup.VehicleGroup(self.next_group_id(), self.string(name))
 

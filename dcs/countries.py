@@ -1,6 +1,7 @@
-# This file is generated from country_export.lua
+# This file is generated from pydcs_export.lua
 
 from .country import Country
+from . import vehicles
 
 
 class Russia(Country):
@@ -8,88 +9,106 @@ class Russia(Country):
     name = "Russia"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        BTR_80 = "BTR-80"
-        _1L13_EWR = "1L13 EWR"
-        _55G6_EWR = "55G6 EWR"
-        S_300PS_40B6M_tr = "S-300PS 40B6M tr"
-        S_300PS_40B6MD_sr = "S-300PS 40B6MD sr"
-        S_300PS_64H6E_sr = "S-300PS 64H6E sr"
-        S_300PS_5P85C_ln = "S-300PS 5P85C ln"
-        S_300PS_5P85D_ln = "S-300PS 5P85D ln"
-        SA_11_Buk_SR_9S18M1 = "SA-11 Buk SR 9S18M1"
-        SA_11_Buk_CC_9S470M1 = "SA-11 Buk CC 9S470M1"
-        SA_11_Buk_LN_9A310M1 = "SA-11 Buk LN 9A310M1"
-        Kub_1S91_str = "Kub 1S91 str"
-        Kub_2P25_ln = "Kub 2P25 ln"
-        Osa_9A33_ln = "Osa 9A33 ln"
-        Strela_1_9P31 = "Strela-1 9P31"
-        Strela_10M3 = "Strela-10M3"
-        Dog_Ear_radar = "Dog Ear radar"
-        Tor_9A331 = "Tor 9A331"
-        _2S6_Tunguska = "2S6 Tunguska"
-        ZSU_23_4_Shilka = "ZSU-23-4 Shilka"
-        SAU_Msta = "SAU Msta"
-        SAU_Akatsia = "SAU Akatsia"
-        SAU_2_C9 = "SAU 2-C9"
-        ATMZ_5 = "ATMZ-5"
-        ATZ_10 = "ATZ-10"
-        BMD_1 = "BMD-1"
-        BMP_1 = "BMP-1"
-        BMP_2 = "BMP-2"
-        BRDM_2 = "BRDM-2"
-        Grad_URAL = "Grad-URAL"
-        Uragan_BM_27 = "Uragan_BM-27"
-        Smerch = "Smerch"
-        T_80UD = "T-80UD"
-        UAZ_469 = "UAZ-469"
-        Ural_375 = "Ural-375"
-        Ural_375_PBU = "Ural-375 PBU"
-        IKARUS_Bus = "IKARUS Bus"
-        VAZ_Car = "VAZ Car"
-        Trolley_bus = "Trolley bus"
-        KAMAZ_Truck = "KAMAZ Truck"
-        LAZ_Bus = "LAZ Bus"
-        SAU_Gvozdika = "SAU Gvozdika"
-        BMP_3 = "BMP-3"
-        BTR_D = "BTR_D"
-        S_300PS_54K6_cp = "S-300PS 54K6 cp"
-        GAZ_3307 = "GAZ-3307"
-        GAZ_66 = "GAZ-66"
-        GAZ_3308 = "GAZ-3308"
-        MAZ_6303 = "MAZ-6303"
-        ZIL_4331 = "ZIL-4331"
-        SKP_11 = "SKP-11"
-        Ural_4320T = "Ural-4320T"
-        Ural_4320_31 = "Ural-4320-31"
-        Ural_ATsP_6 = "Ural ATsP-6"
-        ZiL_131_APA_80 = "ZiL-131 APA-80"
-        ZIL_131_KUNG = "ZIL-131 KUNG"
-        Ural_4320_APA_5D = "Ural-4320 APA-5D"
-        ZU_23_Emplacement = "ZU-23 Emplacement"
-        ZU_23_Emplacement_Closed = "ZU-23 Emplacement Closed"
-        Ural_375_ZU_23 = "Ural-375 ZU-23"
-        MTLB = "MTLB"
-        T_72B = "T-72B"
-        SA_18_Igla_S_manpad = "SA-18 Igla-S manpad"
-        SA_18_Igla_S_comm = "SA-18 Igla-S comm"
-        T_55 = "T-55"
-        Paratrooper_RPG_16 = "Paratrooper RPG-16"
-        Paratrooper_AKS_74 = "Paratrooper AKS-74"
-        Boman = "Boman"
-        _2B11_mortar = "2B11 mortar"
-        _5p73_s_125_ln = "5p73 s-125 ln"
-        snr_s_125_tr = "snr s-125 tr"
-        p_19_s_125_sr = "p-19 s-125 sr"
-        Infantry_AK = "Infantry AK"
-        T_90 = "T-90"
-        Tigr_233036 = "Tigr_233036"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Infantry:
+            Paratrooper_RPG_16 = vehicles.Infantry.Paratrooper_RPG_16
+            Paratrooper_AKS = vehicles.Infantry.Paratrooper_AKS
+            Infantry_Soldier_Rus = vehicles.Infantry.Infantry_Soldier_Rus
+
+
+        class Unarmed:
+            Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
+            Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
+            Transport_UAZ_469 = vehicles.Unarmed.Transport_UAZ_469
+            Transport_Ural_375 = vehicles.Unarmed.Transport_Ural_375
+            CP_Ural_375_PBU = vehicles.Unarmed.CP_Ural_375_PBU
+            Transport_IKARUS_280 = vehicles.Unarmed.Transport_IKARUS_280
+            Transport_VAZ_2109 = vehicles.Unarmed.Transport_VAZ_2109
+            Transport_ZIU_9 = vehicles.Unarmed.Transport_ZIU_9
+            Transport_KAMAZ_43101 = vehicles.Unarmed.Transport_KAMAZ_43101
+            Transport_LAZ_695 = vehicles.Unarmed.Transport_LAZ_695
+            Transport_GAZ_3307 = vehicles.Unarmed.Transport_GAZ_3307
+            Transport_GAZ_66 = vehicles.Unarmed.Transport_GAZ_66
+            Transport_GAZ_3308 = vehicles.Unarmed.Transport_GAZ_3308
+            Transport_MAZ_6303 = vehicles.Unarmed.Transport_MAZ_6303
+            Transport_ZIL_4331 = vehicles.Unarmed.Transport_ZIL_4331
+            CP_SKP_11_ATC_Mobile_Command_Post = vehicles.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
+            Transport_Ural_4320T = vehicles.Unarmed.Transport_Ural_4320T
+            Transport_Ural_4320_31_Armored = vehicles.Unarmed.Transport_Ural_4320_31_Armored
+            Transport_fire_Engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_Engine_Ural_ATsP_6
+            GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
+            Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
+            GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
+            APC_Tigr_233036 = vehicles.Unarmed.APC_Tigr_233036
+
+
+        class Armor:
+            APC_BTR_80 = vehicles.Armor.APC_BTR_80
+            IFV_BMD_1 = vehicles.Armor.IFV_BMD_1
+            IFV_BMP_1 = vehicles.Armor.IFV_BMP_1
+            IFV_BMP_2 = vehicles.Armor.IFV_BMP_2
+            ARV_BRDM_2 = vehicles.Armor.ARV_BRDM_2
+            MBT_T_80U = vehicles.Armor.MBT_T_80U
+            IFV_BMP_3 = vehicles.Armor.IFV_BMP_3
+            ARV_BTR_RD = vehicles.Armor.ARV_BTR_RD
+            APC_MTLB = vehicles.Armor.APC_MTLB
+            MBT_T_72B = vehicles.Armor.MBT_T_72B
+            MBT_T_55 = vehicles.Armor.MBT_T_55
+            ARV_MTLB_U_BOMAN = vehicles.Armor.ARV_MTLB_U_BOMAN
+            MBT_T_90 = vehicles.Armor.MBT_T_90
+
+
+        class Artillery:
+            SPH_2S19_Msta = vehicles.Artillery.SPH_2S19_Msta
+            SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
+            SPH_2S9_Nona = vehicles.Artillery.SPH_2S9_Nona
+            MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
+            MLRS_9K57_Uragan_BM_27 = vehicles.Artillery.MLRS_9K57_Uragan_BM_27
+            MLRS_9A52_Smerch = vehicles.Artillery.MLRS_9A52_Smerch
+            SPH_2S1_Gvozdika = vehicles.Artillery.SPH_2S1_Gvozdika
+            _2B11_mortar = vehicles.Artillery._2B11_mortar
+
+
+        class AirDefence:
+            EWR_1L13 = vehicles.AirDefence.EWR_1L13
+            EWR_55G6 = vehicles.AirDefence.EWR_55G6
+            SAM_SA_10_S_300PS_TR_30N6 = vehicles.AirDefence.SAM_SA_10_S_300PS_TR_30N6
+            SAM_SA_10_S_300PS_SR_5N66M = vehicles.AirDefence.SAM_SA_10_S_300PS_SR_5N66M
+            SAM_SA_10_S_300PS_SR_64H6E = vehicles.AirDefence.SAM_SA_10_S_300PS_SR_64H6E
+            SAM_SA_10_S_300PS_LN_5P85C = vehicles.AirDefence.SAM_SA_10_S_300PS_LN_5P85C
+            SAM_SA_10_S_300PS_LN_5P85D = vehicles.AirDefence.SAM_SA_10_S_300PS_LN_5P85D
+            SAM_SA_11_Buk_SR_9S18M1 = vehicles.AirDefence.SAM_SA_11_Buk_SR_9S18M1
+            SAM_SA_11_Buk_CC_9S470M1 = vehicles.AirDefence.SAM_SA_11_Buk_CC_9S470M1
+            SAM_SA_11_Buk_LN_9A310M1 = vehicles.AirDefence.SAM_SA_11_Buk_LN_9A310M1
+            SAM_SA_6_Kub_STR_9S91 = vehicles.AirDefence.SAM_SA_6_Kub_STR_9S91
+            SAM_SA_6_Kub_LN_2P25 = vehicles.AirDefence.SAM_SA_6_Kub_LN_2P25
+            SAM_SA_8_Osa_9A33 = vehicles.AirDefence.SAM_SA_8_Osa_9A33
+            SAM_SA_9_Strela_1_9P31 = vehicles.AirDefence.SAM_SA_9_Strela_1_9P31
+            SAM_SA_13_Strela_10M3_9A35M3 = vehicles.AirDefence.SAM_SA_13_Strela_10M3_9A35M3
+            CP_9S80M1_Sborka = vehicles.AirDefence.CP_9S80M1_Sborka
+            SAM_SA_15_Tor_9A331 = vehicles.AirDefence.SAM_SA_15_Tor_9A331
+            SAM_SA_19_Tunguska_2S6 = vehicles.AirDefence.SAM_SA_19_Tunguska_2S6
+            SPAAA_ZSU_23_4_Shilka = vehicles.AirDefence.SPAAA_ZSU_23_4_Shilka
+            SAM_SA_10_S_300PS_CP_54K6 = vehicles.AirDefence.SAM_SA_10_S_300PS_CP_54K6
+            AAA_ZU_23_Emplacement = vehicles.AirDefence.AAA_ZU_23_Emplacement
+            AAA_ZU_23_Closed = vehicles.AirDefence.AAA_ZU_23_Closed
+            AAA_ZU_23_on_Ural_375 = vehicles.AirDefence.AAA_ZU_23_on_Ural_375
+            SAM_SA_18_Igla_S_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_S_MANPADS
+            SAM_SA_18_Igla_S_comm = vehicles.AirDefence.SAM_SA_18_Igla_S_comm
+            SAM_SA_3_S_125_LN_5P73 = vehicles.AirDefence.SAM_SA_3_S_125_LN_5P73
+            SAM_SA_3_S_125_TR_SNR = vehicles.AirDefence.SAM_SA_3_S_125_TR_SNR
+            SAM_SA_3_S_125_SR_P_19 = vehicles.AirDefence.SAM_SA_3_S_125_SR_P_19
 
     class Plane:
         A_10C = "A-10C"
@@ -122,6 +141,19 @@ class Russia(Country):
         IL_76MD = "IL-76MD"
         L_39ZA = "L-39ZA"
         P_51D = "P-51D"
+        FW_190D9 = "FW-190D9"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
+        TF_51D = "TF-51D"
 
     planes = [
         Plane.A_10C,
@@ -154,6 +186,19 @@ class Russia(Country):
         Plane.IL_76MD,
         Plane.L_39ZA,
         Plane.P_51D,
+        Plane.FW_190D9,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
+        Plane.TF_51D,
     ]
 
     class Helicopter:
@@ -227,79 +272,97 @@ class Ukraine(Country):
     name = "Ukraine"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        BTR_80 = "BTR-80"
-        _1L13_EWR = "1L13 EWR"
-        _55G6_EWR = "55G6 EWR"
-        S_300PS_40B6M_tr = "S-300PS 40B6M tr"
-        S_300PS_40B6MD_sr = "S-300PS 40B6MD sr"
-        S_300PS_64H6E_sr = "S-300PS 64H6E sr"
-        S_300PS_5P85C_ln = "S-300PS 5P85C ln"
-        S_300PS_5P85D_ln = "S-300PS 5P85D ln"
-        SA_11_Buk_SR_9S18M1 = "SA-11 Buk SR 9S18M1"
-        SA_11_Buk_CC_9S470M1 = "SA-11 Buk CC 9S470M1"
-        SA_11_Buk_LN_9A310M1 = "SA-11 Buk LN 9A310M1"
-        Kub_1S91_str = "Kub 1S91 str"
-        Kub_2P25_ln = "Kub 2P25 ln"
-        Osa_9A33_ln = "Osa 9A33 ln"
-        Strela_10M3 = "Strela-10M3"
-        Dog_Ear_radar = "Dog Ear radar"
-        Tor_9A331 = "Tor 9A331"
-        ZSU_23_4_Shilka = "ZSU-23-4 Shilka"
-        SAU_Msta = "SAU Msta"
-        SAU_Akatsia = "SAU Akatsia"
-        SAU_2_C9 = "SAU 2-C9"
-        ATMZ_5 = "ATMZ-5"
-        ATZ_10 = "ATZ-10"
-        BMD_1 = "BMD-1"
-        BMP_1 = "BMP-1"
-        BMP_2 = "BMP-2"
-        BMP_3 = "BMP-3"
-        BRDM_2 = "BRDM-2"
-        Grad_URAL = "Grad-URAL"
-        T_80UD = "T-80UD"
-        UAZ_469 = "UAZ-469"
-        Ural_375 = "Ural-375"
-        Ural_375_PBU = "Ural-375 PBU"
-        IKARUS_Bus = "IKARUS Bus"
-        VAZ_Car = "VAZ Car"
-        Trolley_bus = "Trolley bus"
-        KAMAZ_Truck = "KAMAZ Truck"
-        LAZ_Bus = "LAZ Bus"
-        SAU_Gvozdika = "SAU Gvozdika"
-        BTR_D = "BTR_D"
-        S_300PS_54K6_cp = "S-300PS 54K6 cp"
-        GAZ_3307 = "GAZ-3307"
-        GAZ_3308 = "GAZ-3308"
-        GAZ_66 = "GAZ-66"
-        ZIL_4331 = "ZIL-4331"
-        MAZ_6303 = "MAZ-6303"
-        SKP_11 = "SKP-11"
-        Ural_4320T = "Ural-4320T"
-        Ural_ATsP_6 = "Ural ATsP-6"
-        ZiL_131_APA_80 = "ZiL-131 APA-80"
-        ZIL_131_KUNG = "ZIL-131 KUNG"
-        Ural_4320_APA_5D = "Ural-4320 APA-5D"
-        ZU_23_Emplacement = "ZU-23 Emplacement"
-        ZU_23_Emplacement_Closed = "ZU-23 Emplacement Closed"
-        Ural_375_ZU_23 = "Ural-375 ZU-23"
-        _2S6_Tunguska = "2S6 Tunguska"
-        Smerch = "Smerch"
-        Strela_1_9P31 = "Strela-1 9P31"
-        MTLB = "MTLB"
-        T_72B = "T-72B"
-        SA_18_Igla_S_manpad = "SA-18 Igla-S manpad"
-        SA_18_Igla_S_comm = "SA-18 Igla-S comm"
-        T_55 = "T-55"
-        _2B11_mortar = "2B11 mortar"
-        Paratrooper_RPG_16 = "Paratrooper RPG-16"
-        Paratrooper_AKS_74 = "Paratrooper AKS-74"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Infantry:
+            Paratrooper_RPG_16 = vehicles.Infantry.Paratrooper_RPG_16
+            Paratrooper_AKS = vehicles.Infantry.Paratrooper_AKS
+
+
+        class Unarmed:
+            Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
+            Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
+            Transport_UAZ_469 = vehicles.Unarmed.Transport_UAZ_469
+            Transport_Ural_375 = vehicles.Unarmed.Transport_Ural_375
+            CP_Ural_375_PBU = vehicles.Unarmed.CP_Ural_375_PBU
+            Transport_IKARUS_280 = vehicles.Unarmed.Transport_IKARUS_280
+            Transport_VAZ_2109 = vehicles.Unarmed.Transport_VAZ_2109
+            Transport_ZIU_9 = vehicles.Unarmed.Transport_ZIU_9
+            Transport_KAMAZ_43101 = vehicles.Unarmed.Transport_KAMAZ_43101
+            Transport_LAZ_695 = vehicles.Unarmed.Transport_LAZ_695
+            Transport_GAZ_3307 = vehicles.Unarmed.Transport_GAZ_3307
+            Transport_GAZ_3308 = vehicles.Unarmed.Transport_GAZ_3308
+            Transport_GAZ_66 = vehicles.Unarmed.Transport_GAZ_66
+            Transport_ZIL_4331 = vehicles.Unarmed.Transport_ZIL_4331
+            Transport_MAZ_6303 = vehicles.Unarmed.Transport_MAZ_6303
+            CP_SKP_11_ATC_Mobile_Command_Post = vehicles.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
+            Transport_Ural_4320T = vehicles.Unarmed.Transport_Ural_4320T
+            Transport_fire_Engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_Engine_Ural_ATsP_6
+            GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
+            Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
+            GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
+
+
+        class Armor:
+            APC_BTR_80 = vehicles.Armor.APC_BTR_80
+            IFV_BMD_1 = vehicles.Armor.IFV_BMD_1
+            IFV_BMP_1 = vehicles.Armor.IFV_BMP_1
+            IFV_BMP_2 = vehicles.Armor.IFV_BMP_2
+            IFV_BMP_3 = vehicles.Armor.IFV_BMP_3
+            ARV_BRDM_2 = vehicles.Armor.ARV_BRDM_2
+            MBT_T_80U = vehicles.Armor.MBT_T_80U
+            ARV_BTR_RD = vehicles.Armor.ARV_BTR_RD
+            APC_MTLB = vehicles.Armor.APC_MTLB
+            MBT_T_72B = vehicles.Armor.MBT_T_72B
+            MBT_T_55 = vehicles.Armor.MBT_T_55
+
+
+        class Artillery:
+            SPH_2S19_Msta = vehicles.Artillery.SPH_2S19_Msta
+            SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
+            SPH_2S9_Nona = vehicles.Artillery.SPH_2S9_Nona
+            MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
+            SPH_2S1_Gvozdika = vehicles.Artillery.SPH_2S1_Gvozdika
+            MLRS_9A52_Smerch = vehicles.Artillery.MLRS_9A52_Smerch
+            _2B11_mortar = vehicles.Artillery._2B11_mortar
+
+
+        class AirDefence:
+            EWR_1L13 = vehicles.AirDefence.EWR_1L13
+            EWR_55G6 = vehicles.AirDefence.EWR_55G6
+            SAM_SA_10_S_300PS_TR_30N6 = vehicles.AirDefence.SAM_SA_10_S_300PS_TR_30N6
+            SAM_SA_10_S_300PS_SR_5N66M = vehicles.AirDefence.SAM_SA_10_S_300PS_SR_5N66M
+            SAM_SA_10_S_300PS_SR_64H6E = vehicles.AirDefence.SAM_SA_10_S_300PS_SR_64H6E
+            SAM_SA_10_S_300PS_LN_5P85C = vehicles.AirDefence.SAM_SA_10_S_300PS_LN_5P85C
+            SAM_SA_10_S_300PS_LN_5P85D = vehicles.AirDefence.SAM_SA_10_S_300PS_LN_5P85D
+            SAM_SA_11_Buk_SR_9S18M1 = vehicles.AirDefence.SAM_SA_11_Buk_SR_9S18M1
+            SAM_SA_11_Buk_CC_9S470M1 = vehicles.AirDefence.SAM_SA_11_Buk_CC_9S470M1
+            SAM_SA_11_Buk_LN_9A310M1 = vehicles.AirDefence.SAM_SA_11_Buk_LN_9A310M1
+            SAM_SA_6_Kub_STR_9S91 = vehicles.AirDefence.SAM_SA_6_Kub_STR_9S91
+            SAM_SA_6_Kub_LN_2P25 = vehicles.AirDefence.SAM_SA_6_Kub_LN_2P25
+            SAM_SA_8_Osa_9A33 = vehicles.AirDefence.SAM_SA_8_Osa_9A33
+            SAM_SA_13_Strela_10M3_9A35M3 = vehicles.AirDefence.SAM_SA_13_Strela_10M3_9A35M3
+            CP_9S80M1_Sborka = vehicles.AirDefence.CP_9S80M1_Sborka
+            SAM_SA_15_Tor_9A331 = vehicles.AirDefence.SAM_SA_15_Tor_9A331
+            SPAAA_ZSU_23_4_Shilka = vehicles.AirDefence.SPAAA_ZSU_23_4_Shilka
+            SAM_SA_10_S_300PS_CP_54K6 = vehicles.AirDefence.SAM_SA_10_S_300PS_CP_54K6
+            AAA_ZU_23_Emplacement = vehicles.AirDefence.AAA_ZU_23_Emplacement
+            AAA_ZU_23_Closed = vehicles.AirDefence.AAA_ZU_23_Closed
+            AAA_ZU_23_on_Ural_375 = vehicles.AirDefence.AAA_ZU_23_on_Ural_375
+            SAM_SA_19_Tunguska_2S6 = vehicles.AirDefence.SAM_SA_19_Tunguska_2S6
+            SAM_SA_9_Strela_1_9P31 = vehicles.AirDefence.SAM_SA_9_Strela_1_9P31
+            SAM_SA_18_Igla_S_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_S_MANPADS
+            SAM_SA_18_Igla_S_comm = vehicles.AirDefence.SAM_SA_18_Igla_S_comm
 
     class Plane:
         A_10C = "A-10C"
@@ -323,6 +386,18 @@ class Ukraine(Country):
         Yak_40 = "Yak-40"
         L_39ZA = "L-39ZA"
         P_51D = "P-51D"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
+        TF_51D = "TF-51D"
 
     planes = [
         Plane.A_10C,
@@ -346,6 +421,18 @@ class Ukraine(Country):
         Plane.Yak_40,
         Plane.L_39ZA,
         Plane.P_51D,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
+        Plane.TF_51D,
     ]
 
     class Helicopter:
@@ -385,51 +472,69 @@ class USA(Country):
     name = "USA"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        M_2_Bradley = "M-2 Bradley"
-        M1097_Avenger = "M1097 Avenger"
-        Patriot_str = "Patriot str"
-        Patriot_ln = "Patriot ln"
-        Patriot_AMG = "Patriot AMG"
-        Patriot_EPP = "Patriot EPP"
-        Patriot_ECS = "Patriot ECS"
-        Patriot_cp = "Patriot cp"
-        Hawk_sr = "Hawk sr"
-        Hawk_cwar = "Hawk cwar"
-        Hawk_pcp = "Hawk pcp"
-        Hawk_tr = "Hawk tr"
-        Hawk_ln = "Hawk ln"
-        Vulcan = "Vulcan"
-        Hummer = "Hummer"
-        LAV_25 = "LAV-25"
-        AAV7 = "AAV7"
-        M_113 = "M-113"
-        M_109 = "M-109"
-        M_1_Abrams = "M-1 Abrams"
-        MLRS = "MLRS"
-        M_818 = "M 818"
-        M48_Chaparral = "M48 Chaparral"
-        M1126_Stryker_ICV = "M1126 Stryker ICV"
-        M1128_Stryker_MGS = "M1128 Stryker MGS"
-        M1134_Stryker_ATGM = "M1134 Stryker ATGM"
-        M6_Linebacker = "M6 Linebacker"
-        Stinger_manpad = "Stinger manpad"
-        Stinger_comm = "Stinger comm"
-        Predator_GCS = "Predator GCS"
-        Predator_TrojanSpirit = "Predator TrojanSpirit"
-        M1043_HMMWV_Armament = "M1043 HMMWV Armament"
-        M1045_HMMWV_TOW = "M1045 HMMWV TOW"
-        M978_HEMTT_Tanker = "M978 HEMTT Tanker"
-        HEMTT_TFFT = "HEMTT TFFT"
-        Soldier_M4 = "Soldier M4"
-        Soldier_M249 = "Soldier M249"
-        _2B11_mortar = "2B11 mortar"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Infantry:
+            Infantry_M4 = vehicles.Infantry.Infantry_M4
+            Soldier_M249 = vehicles.Infantry.Soldier_M249
+
+
+        class Unarmed:
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+            CP_Predator_GCS = vehicles.Unarmed.CP_Predator_GCS
+            CP_Predator_TrojanSpirit = vehicles.Unarmed.CP_Predator_TrojanSpirit
+            Tanker_M978_HEMTT = vehicles.Unarmed.Tanker_M978_HEMTT
+            HEMTT_TFFT = vehicles.Unarmed.HEMTT_TFFT
+
+
+        class Armor:
+            IFV_M2A2_Bradley = vehicles.Armor.IFV_M2A2_Bradley
+            IFV_LAV_25 = vehicles.Armor.IFV_LAV_25
+            APC_AAV_7 = vehicles.Armor.APC_AAV_7
+            APC_M113 = vehicles.Armor.APC_M113
+            MBT_M1A2_Abrams = vehicles.Armor.MBT_M1A2_Abrams
+            APC_M1126_Stryker_ICV = vehicles.Armor.APC_M1126_Stryker_ICV
+            SPG_M1128_Stryker_MGS = vehicles.Armor.SPG_M1128_Stryker_MGS
+            ATGM_M1134_Stryker = vehicles.Armor.ATGM_M1134_Stryker
+            APC_M1043_HMMWV_Armament = vehicles.Armor.APC_M1043_HMMWV_Armament
+            ATGM_M1045_HMMWV_TOW = vehicles.Armor.ATGM_M1045_HMMWV_TOW
+
+
+        class Artillery:
+            SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
+            MLRS_M270 = vehicles.Artillery.MLRS_M270
+            _2B11_mortar = vehicles.Artillery._2B11_mortar
+
+
+        class AirDefence:
+            SAM_Avenger_M1097 = vehicles.AirDefence.SAM_Avenger_M1097
+            SAM_Patriot_STR_AN_MPQ_53 = vehicles.AirDefence.SAM_Patriot_STR_AN_MPQ_53
+            SAM_Patriot_LN_M901 = vehicles.AirDefence.SAM_Patriot_LN_M901
+            SAM_Patriot_AMG_AN_MRC_137 = vehicles.AirDefence.SAM_Patriot_AMG_AN_MRC_137
+            SAM_Patriot_EPP_III = vehicles.AirDefence.SAM_Patriot_EPP_III
+            SAM_Patriot_ECS_AN_MSQ_104 = vehicles.AirDefence.SAM_Patriot_ECS_AN_MSQ_104
+            SAM_Patriot_ICC = vehicles.AirDefence.SAM_Patriot_ICC
+            SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
+            SAM_Hawk_CWAR_AN_MPQ_55 = vehicles.AirDefence.SAM_Hawk_CWAR_AN_MPQ_55
+            SAM_Hawk_PCP = vehicles.AirDefence.SAM_Hawk_PCP
+            SAM_Hawk_TR_AN_MPQ_46 = vehicles.AirDefence.SAM_Hawk_TR_AN_MPQ_46
+            SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
+            AAA_Vulcan_M163 = vehicles.AirDefence.AAA_Vulcan_M163
+            SAM_Chaparral_M48 = vehicles.AirDefence.SAM_Chaparral_M48
+            SAM_Linebacker_M6 = vehicles.AirDefence.SAM_Linebacker_M6
+            SAM_Stinger_MANPADS = vehicles.AirDefence.SAM_Stinger_MANPADS
+            SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
         A_10C = "A-10C"
@@ -454,6 +559,20 @@ class USA(Country):
         RQ_1A_Predator = "RQ-1A Predator"
         P_51D = "P-51D"
         L_39ZA = "L-39ZA"
+        FW_190D9 = "FW-190D9"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
+        MQ_9_Reaper = "MQ-9 Reaper"
+        TF_51D = "TF-51D"
 
     planes = [
         Plane.A_10C,
@@ -478,6 +597,20 @@ class USA(Country):
         Plane.RQ_1A_Predator,
         Plane.P_51D,
         Plane.L_39ZA,
+        Plane.FW_190D9,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
+        Plane.MQ_9_Reaper,
+        Plane.TF_51D,
     ]
 
     class Helicopter:
@@ -625,34 +758,49 @@ class Turkey(Country):
     name = "Turkey"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        M_113 = "M-113"
-        Cobra = "Cobra"
-        Hawk_sr = "Hawk sr"
-        Hawk_cwar = "Hawk cwar"
-        Hawk_pcp = "Hawk pcp"
-        Hawk_tr = "Hawk tr"
-        Hawk_ln = "Hawk ln"
-        Hummer = "Hummer"
-        M_818 = "M 818"
-        M_60 = "M-60"
-        MLRS = "MLRS"
-        M1097_Avenger = "M1097 Avenger"
-        M_109 = "M-109"
-        AAV7 = "AAV7"
-        BTR_80 = "BTR-80"
-        Stinger_manpad = "Stinger manpad"
-        Stinger_comm = "Stinger comm"
-        M978_HEMTT_Tanker = "M978 HEMTT Tanker"
-        HEMTT_TFFT = "HEMTT TFFT"
-        Leopard1A3 = "Leopard1A3"
-        Leopard_2 = "Leopard-2"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Unarmed:
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+            Tanker_M978_HEMTT = vehicles.Unarmed.Tanker_M978_HEMTT
+            HEMTT_TFFT = vehicles.Unarmed.HEMTT_TFFT
+
+
+        class Armor:
+            APC_M113 = vehicles.Armor.APC_M113
+            APC_Cobra = vehicles.Armor.APC_Cobra
+            MBT_M60A3_Patton = vehicles.Armor.MBT_M60A3_Patton
+            APC_AAV_7 = vehicles.Armor.APC_AAV_7
+            APC_BTR_80 = vehicles.Armor.APC_BTR_80
+            MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
+            MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
+
+
+        class Artillery:
+            MLRS_M270 = vehicles.Artillery.MLRS_M270
+            SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
+
+
+        class AirDefence:
+            SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
+            SAM_Hawk_CWAR_AN_MPQ_55 = vehicles.AirDefence.SAM_Hawk_CWAR_AN_MPQ_55
+            SAM_Hawk_PCP = vehicles.AirDefence.SAM_Hawk_PCP
+            SAM_Hawk_TR_AN_MPQ_46 = vehicles.AirDefence.SAM_Hawk_TR_AN_MPQ_46
+            SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
+            SAM_Avenger_M1097 = vehicles.AirDefence.SAM_Avenger_M1097
+            SAM_Stinger_MANPADS = vehicles.AirDefence.SAM_Stinger_MANPADS
+            SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
         A_10C = "A-10C"
@@ -661,6 +809,19 @@ class Turkey(Country):
         F_5E = "F-5E"
         C_130 = "C-130"
         P_51D = "P-51D"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
+        MQ_9_Reaper = "MQ-9 Reaper"
+        TF_51D = "TF-51D"
 
     planes = [
         Plane.A_10C,
@@ -669,6 +830,19 @@ class Turkey(Country):
         Plane.F_5E,
         Plane.C_130,
         Plane.P_51D,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
+        Plane.MQ_9_Reaper,
+        Plane.TF_51D,
     ]
 
     class Helicopter:
@@ -699,31 +873,71 @@ class UK(Country):
     name = "UK"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        MCV_80 = "MCV-80"
-        Challenger2 = "Challenger2"
-        Hummer = "Hummer"
-        MLRS = "MLRS"
-        M_818 = "M 818"
-        TPZ = "TPZ"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Unarmed:
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+
+
+        class Armor:
+            IFV_MCV_80 = vehicles.Armor.IFV_MCV_80
+            MBT_Challenger_II = vehicles.Armor.MBT_Challenger_II
+            TPz_Fuchs = vehicles.Armor.TPz_Fuchs
+
+
+        class Artillery:
+            MLRS_M270 = vehicles.Artillery.MLRS_M270
 
     class Plane:
         A_10C = "A-10C"
         Tornado_GR4 = "Tornado GR4"
         C_130 = "C-130"
         P_51D = "P-51D"
+        FW_190D9 = "FW-190D9"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
+        MQ_9_Reaper = "MQ-9 Reaper"
+        TF_51D = "TF-51D"
 
     planes = [
         Plane.A_10C,
         Plane.Tornado_GR4,
         Plane.C_130,
         Plane.P_51D,
+        Plane.FW_190D9,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
+        Plane.MQ_9_Reaper,
+        Plane.TF_51D,
     ]
 
     class Helicopter:
@@ -766,33 +980,74 @@ class France(Country):
     name = "France"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        Leclerc = "Leclerc"
-        MLRS = "MLRS"
-        Hawk_sr = "Hawk sr"
-        Hawk_cwar = "Hawk cwar"
-        Hawk_pcp = "Hawk pcp"
-        Hawk_tr = "Hawk tr"
-        Hawk_ln = "Hawk ln"
-        M_818 = "M 818"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Unarmed:
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+
+
+        class Armor:
+            MBT_Leclerc = vehicles.Armor.MBT_Leclerc
+
+
+        class Artillery:
+            MLRS_M270 = vehicles.Artillery.MLRS_M270
+
+
+        class AirDefence:
+            SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
+            SAM_Hawk_CWAR_AN_MPQ_55 = vehicles.AirDefence.SAM_Hawk_CWAR_AN_MPQ_55
+            SAM_Hawk_PCP = vehicles.AirDefence.SAM_Hawk_PCP
+            SAM_Hawk_TR_AN_MPQ_46 = vehicles.AirDefence.SAM_Hawk_TR_AN_MPQ_46
+            SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
 
     class Plane:
         A_10C = "A-10C"
         Mirage_2000_5 = "Mirage 2000-5"
         C_130 = "C-130"
         P_51D = "P-51D"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
+        MQ_9_Reaper = "MQ-9 Reaper"
+        TF_51D = "TF-51D"
 
     planes = [
         Plane.A_10C,
         Plane.Mirage_2000_5,
         Plane.C_130,
         Plane.P_51D,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
+        Plane.MQ_9_Reaper,
+        Plane.TF_51D,
     ]
 
     class Helicopter:
@@ -829,40 +1084,55 @@ class Germany(Country):
     name = "Germany"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        M_113 = "M-113"
-        Patriot_str = "Patriot str"
-        Patriot_ln = "Patriot ln"
-        Patriot_AMG = "Patriot AMG"
-        Patriot_EPP = "Patriot EPP"
-        Patriot_ECS = "Patriot ECS"
-        Patriot_cp = "Patriot cp"
-        Hawk_sr = "Hawk sr"
-        Hawk_cwar = "Hawk cwar"
-        Hawk_pcp = "Hawk pcp"
-        Hawk_tr = "Hawk tr"
-        Hawk_ln = "Hawk ln"
-        Roland_ADS = "Roland ADS"
-        Roland_Radar = "Roland Radar"
-        Gepard = "Gepard"
-        Hummer = "Hummer"
-        Leopard_2 = "Leopard-2"
-        Leopard1A3 = "Leopard1A3"
-        M_109 = "M-109"
-        Marder = "Marder"
-        TPZ = "TPZ"
-        MLRS = "MLRS"
-        Stinger_manpad = "Stinger manpad"
-        Stinger_comm = "Stinger comm"
-        M_818 = "M 818"
-        M978_HEMTT_Tanker = "M978 HEMTT Tanker"
-        HEMTT_TFFT = "HEMTT TFFT"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Unarmed:
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+            Tanker_M978_HEMTT = vehicles.Unarmed.Tanker_M978_HEMTT
+            HEMTT_TFFT = vehicles.Unarmed.HEMTT_TFFT
+
+
+        class Armor:
+            APC_M113 = vehicles.Armor.APC_M113
+            MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
+            MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
+            IFV_Marder = vehicles.Armor.IFV_Marder
+            TPz_Fuchs = vehicles.Armor.TPz_Fuchs
+
+
+        class Artillery:
+            SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
+            MLRS_M270 = vehicles.Artillery.MLRS_M270
+
+
+        class AirDefence:
+            SAM_Patriot_STR_AN_MPQ_53 = vehicles.AirDefence.SAM_Patriot_STR_AN_MPQ_53
+            SAM_Patriot_LN_M901 = vehicles.AirDefence.SAM_Patriot_LN_M901
+            SAM_Patriot_AMG_AN_MRC_137 = vehicles.AirDefence.SAM_Patriot_AMG_AN_MRC_137
+            SAM_Patriot_EPP_III = vehicles.AirDefence.SAM_Patriot_EPP_III
+            SAM_Patriot_ECS_AN_MSQ_104 = vehicles.AirDefence.SAM_Patriot_ECS_AN_MSQ_104
+            SAM_Patriot_ICC = vehicles.AirDefence.SAM_Patriot_ICC
+            SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
+            SAM_Hawk_CWAR_AN_MPQ_55 = vehicles.AirDefence.SAM_Hawk_CWAR_AN_MPQ_55
+            SAM_Hawk_PCP = vehicles.AirDefence.SAM_Hawk_PCP
+            SAM_Hawk_TR_AN_MPQ_46 = vehicles.AirDefence.SAM_Hawk_TR_AN_MPQ_46
+            SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
+            SAM_Roland_ADS = vehicles.AirDefence.SAM_Roland_ADS
+            SAM_Roland_EWR = vehicles.AirDefence.SAM_Roland_EWR
+            SPAAA_Gepard = vehicles.AirDefence.SPAAA_Gepard
+            SAM_Stinger_MANPADS = vehicles.AirDefence.SAM_Stinger_MANPADS
+            SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
         A_10C = "A-10C"
@@ -870,6 +1140,19 @@ class Germany(Country):
         F_4E = "F-4E"
         Tornado_IDS = "Tornado IDS"
         P_51D = "P-51D"
+        FW_190D9 = "FW-190D9"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
+        TF_51D = "TF-51D"
 
     planes = [
         Plane.A_10C,
@@ -877,6 +1160,19 @@ class Germany(Country):
         Plane.F_4E,
         Plane.Tornado_IDS,
         Plane.P_51D,
+        Plane.FW_190D9,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
+        Plane.TF_51D,
     ]
 
     class Helicopter:
@@ -902,152 +1198,177 @@ class USAFAggressors(Country):
     name = "USAF Aggressors"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        BTR_80 = "BTR-80"
-        _1L13_EWR = "1L13 EWR"
-        _55G6_EWR = "55G6 EWR"
-        S_300PS_40B6M_tr = "S-300PS 40B6M tr"
-        S_300PS_40B6MD_sr = "S-300PS 40B6MD sr"
-        S_300PS_64H6E_sr = "S-300PS 64H6E sr"
-        S_300PS_5P85C_ln = "S-300PS 5P85C ln"
-        S_300PS_5P85D_ln = "S-300PS 5P85D ln"
-        SA_11_Buk_SR_9S18M1 = "SA-11 Buk SR 9S18M1"
-        SA_11_Buk_CC_9S470M1 = "SA-11 Buk CC 9S470M1"
-        SA_11_Buk_LN_9A310M1 = "SA-11 Buk LN 9A310M1"
-        Kub_1S91_str = "Kub 1S91 str"
-        Kub_2P25_ln = "Kub 2P25 ln"
-        Osa_9A33_ln = "Osa 9A33 ln"
-        Strela_10M3 = "Strela-10M3"
-        Dog_Ear_radar = "Dog Ear radar"
-        Tor_9A331 = "Tor 9A331"
-        ZSU_23_4_Shilka = "ZSU-23-4 Shilka"
-        SAU_Msta = "SAU Msta"
-        SAU_Akatsia = "SAU Akatsia"
-        SAU_2_C9 = "SAU 2-C9"
-        ATMZ_5 = "ATMZ-5"
-        ATZ_10 = "ATZ-10"
-        BMD_1 = "BMD-1"
-        BMP_1 = "BMP-1"
-        BMP_2 = "BMP-2"
-        BMP_3 = "BMP-3"
-        BRDM_2 = "BRDM-2"
-        Grad_URAL = "Grad-URAL"
-        T_80UD = "T-80UD"
-        UAZ_469 = "UAZ-469"
-        Ural_375 = "Ural-375"
-        Ural_375_PBU = "Ural-375 PBU"
-        IKARUS_Bus = "IKARUS Bus"
-        VAZ_Car = "VAZ Car"
-        Trolley_bus = "Trolley bus"
-        KAMAZ_Truck = "KAMAZ Truck"
-        LAZ_Bus = "LAZ Bus"
-        SAU_Gvozdika = "SAU Gvozdika"
-        BTR_D = "BTR_D"
-        S_300PS_54K6_cp = "S-300PS 54K6 cp"
-        GAZ_3307 = "GAZ-3307"
-        GAZ_3308 = "GAZ-3308"
-        GAZ_66 = "GAZ-66"
-        ZIL_4331 = "ZIL-4331"
-        MAZ_6303 = "MAZ-6303"
-        SKP_11 = "SKP-11"
-        Ural_4320T = "Ural-4320T"
-        Ural_ATsP_6 = "Ural ATsP-6"
-        ZiL_131_APA_80 = "ZiL-131 APA-80"
-        ZIL_131_KUNG = "ZIL-131 KUNG"
-        Ural_4320_APA_5D = "Ural-4320 APA-5D"
-        ZU_23_Emplacement = "ZU-23 Emplacement"
-        ZU_23_Emplacement_Closed = "ZU-23 Emplacement Closed"
-        Ural_375_ZU_23 = "Ural-375 ZU-23"
-        _2S6_Tunguska = "2S6 Tunguska"
-        Smerch = "Smerch"
-        Strela_1_9P31 = "Strela-1 9P31"
-        MTLB = "MTLB"
-        T_72B = "T-72B"
-        SA_18_Igla_S_manpad = "SA-18 Igla-S manpad"
-        SA_18_Igla_S_comm = "SA-18 Igla-S comm"
-        T_55 = "T-55"
-        _2B11_mortar = "2B11 mortar"
-        Paratrooper_RPG_16 = "Paratrooper RPG-16"
-        Paratrooper_AKS_74 = "Paratrooper AKS-74"
-        ZU_23_Insurgent = "ZU-23 Insurgent"
-        ZU_23_Closed_Insurgent = "ZU-23 Closed Insurgent"
-        Ural_375_ZU_23_Insurgent = "Ural-375 ZU-23 Insurgent"
-        SA_18_Igla_manpad = "SA-18 Igla manpad"
-        SA_18_Igla_comm = "SA-18 Igla comm"
-        Stinger_manpad = "Stinger manpad"
-        Stinger_comm = "Stinger comm"
-        Soldier_AK = "Soldier AK"
-        Soldier_RPG = "Soldier RPG"
-        M_109 = "M-109"
-        M_113 = "M-113"
-        M1043_HMMWV_Armament = "M1043 HMMWV Armament"
-        M1045_HMMWV_TOW = "M1045 HMMWV TOW"
-        Soldier_M4 = "Soldier M4"
-        Soldier_M249 = "Soldier M249"
-        MLRS = "MLRS"
-        Leopard1A3 = "Leopard1A3"
-        Leopard_2 = "Leopard-2"
-        Hummer = "Hummer"
-        M_818 = "M 818"
-        Stinger_manpad_dsr = "Stinger manpad dsr"
-        Patriot_AMG = "Patriot AMG"
-        Patriot_ECS = "Patriot ECS"
-        Patriot_ln = "Patriot ln"
-        Patriot_EPP = "Patriot EPP"
-        Patriot_cp = "Patriot cp"
-        Patriot_str = "Patriot str"
-        Hawk_tr = "Hawk tr"
-        Hawk_sr = "Hawk sr"
-        Hawk_ln = "Hawk ln"
-        MCV_80 = "MCV-80"
-        Challenger2 = "Challenger2"
-        TPZ = "TPZ"
-        Hawk_cwar = "Hawk cwar"
-        Hawk_pcp = "Hawk pcp"
-        Roland_ADS = "Roland ADS"
-        Roland_Radar = "Roland Radar"
-        Gepard = "Gepard"
-        Marder = "Marder"
-        M978_HEMTT_Tanker = "M978 HEMTT Tanker"
-        HEMTT_TFFT = "HEMTT TFFT"
-        Uragan_BM_27 = "Uragan_BM-27"
-        Ural_4320_31 = "Ural-4320-31"
-        Boman = "Boman"
-        _5p73_s_125_ln = "5p73 s-125 ln"
-        snr_s_125_tr = "snr s-125 tr"
-        p_19_s_125_sr = "p-19 s-125 sr"
-        Infantry_AK = "Infantry AK"
-        T_90 = "T-90"
-        Tigr_233036 = "Tigr_233036"
-        M_60 = "M-60"
-        M1097_Avenger = "M1097 Avenger"
-        Vulcan = "Vulcan"
-        M48_Chaparral = "M48 Chaparral"
-        Stinger_comm_dsr = "Stinger comm dsr"
-        M_2_Bradley = "M-2 Bradley"
-        LAV_25 = "LAV-25"
-        AAV7 = "AAV7"
-        M_1_Abrams = "M-1 Abrams"
-        M1126_Stryker_ICV = "M1126 Stryker ICV"
-        M1128_Stryker_MGS = "M1128 Stryker MGS"
-        M1134_Stryker_ATGM = "M1134 Stryker ATGM"
-        M6_Linebacker = "M6 Linebacker"
-        Predator_GCS = "Predator GCS"
-        Predator_TrojanSpirit = "Predator TrojanSpirit"
-        Cobra = "Cobra"
-        Stinger_manpad_GRG = "Stinger manpad GRG"
-        Soldier_M4_GRG = "Soldier M4 GRG"
-        Leclerc = "Leclerc"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Infantry:
+            Paratrooper_RPG_16 = vehicles.Infantry.Paratrooper_RPG_16
+            Paratrooper_AKS = vehicles.Infantry.Paratrooper_AKS
+            Soldier_AK = vehicles.Infantry.Soldier_AK
+            Soldier_RPG = vehicles.Infantry.Soldier_RPG
+            Infantry_Soldier_Rus = vehicles.Infantry.Infantry_Soldier_Rus
+            Infantry_M4 = vehicles.Infantry.Infantry_M4
+            Soldier_M249 = vehicles.Infantry.Soldier_M249
+            Georgian_soldier_with_M4 = vehicles.Infantry.Georgian_soldier_with_M4
+
+
+        class Unarmed:
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+            Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
+            Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
+            Transport_UAZ_469 = vehicles.Unarmed.Transport_UAZ_469
+            Transport_Ural_375 = vehicles.Unarmed.Transport_Ural_375
+            CP_Ural_375_PBU = vehicles.Unarmed.CP_Ural_375_PBU
+            Transport_IKARUS_280 = vehicles.Unarmed.Transport_IKARUS_280
+            Transport_VAZ_2109 = vehicles.Unarmed.Transport_VAZ_2109
+            Transport_KAMAZ_43101 = vehicles.Unarmed.Transport_KAMAZ_43101
+            Transport_LAZ_695 = vehicles.Unarmed.Transport_LAZ_695
+            Transport_GAZ_3307 = vehicles.Unarmed.Transport_GAZ_3307
+            Transport_GAZ_3308 = vehicles.Unarmed.Transport_GAZ_3308
+            Transport_GAZ_66 = vehicles.Unarmed.Transport_GAZ_66
+            Transport_ZIL_4331 = vehicles.Unarmed.Transport_ZIL_4331
+            Transport_MAZ_6303 = vehicles.Unarmed.Transport_MAZ_6303
+            CP_SKP_11_ATC_Mobile_Command_Post = vehicles.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
+            Transport_Ural_4320T = vehicles.Unarmed.Transport_Ural_4320T
+            Transport_fire_Engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_Engine_Ural_ATsP_6
+            GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
+            Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
+            GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
+            Transport_ZIU_9 = vehicles.Unarmed.Transport_ZIU_9
+            Tanker_M978_HEMTT = vehicles.Unarmed.Tanker_M978_HEMTT
+            HEMTT_TFFT = vehicles.Unarmed.HEMTT_TFFT
+            Transport_Ural_4320_31_Armored = vehicles.Unarmed.Transport_Ural_4320_31_Armored
+            APC_Tigr_233036 = vehicles.Unarmed.APC_Tigr_233036
+            CP_Predator_GCS = vehicles.Unarmed.CP_Predator_GCS
+            CP_Predator_TrojanSpirit = vehicles.Unarmed.CP_Predator_TrojanSpirit
+            Transport_ZIL_4331 = vehicles.Unarmed.Transport_ZIL_4331
+
+
+        class Armor:
+            APC_M113 = vehicles.Armor.APC_M113
+            MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
+            MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
+            APC_BTR_80 = vehicles.Armor.APC_BTR_80
+            IFV_BMD_1 = vehicles.Armor.IFV_BMD_1
+            IFV_BMP_1 = vehicles.Armor.IFV_BMP_1
+            IFV_BMP_2 = vehicles.Armor.IFV_BMP_2
+            ARV_BRDM_2 = vehicles.Armor.ARV_BRDM_2
+            ARV_BTR_RD = vehicles.Armor.ARV_BTR_RD
+            APC_MTLB = vehicles.Armor.APC_MTLB
+            MBT_T_72B = vehicles.Armor.MBT_T_72B
+            MBT_T_55 = vehicles.Armor.MBT_T_55
+            IFV_BMP_3 = vehicles.Armor.IFV_BMP_3
+            MBT_T_80U = vehicles.Armor.MBT_T_80U
+            APC_AAV_7 = vehicles.Armor.APC_AAV_7
+            MBT_M60A3_Patton = vehicles.Armor.MBT_M60A3_Patton
+            IFV_MCV_80 = vehicles.Armor.IFV_MCV_80
+            MBT_Challenger_II = vehicles.Armor.MBT_Challenger_II
+            TPz_Fuchs = vehicles.Armor.TPz_Fuchs
+            ARV_MTLB_U_BOMAN = vehicles.Armor.ARV_MTLB_U_BOMAN
+            MBT_T_90 = vehicles.Armor.MBT_T_90
+            IFV_M2A2_Bradley = vehicles.Armor.IFV_M2A2_Bradley
+            IFV_LAV_25 = vehicles.Armor.IFV_LAV_25
+            MBT_M1A2_Abrams = vehicles.Armor.MBT_M1A2_Abrams
+            APC_M1126_Stryker_ICV = vehicles.Armor.APC_M1126_Stryker_ICV
+            SPG_M1128_Stryker_MGS = vehicles.Armor.SPG_M1128_Stryker_MGS
+            ATGM_M1134_Stryker = vehicles.Armor.ATGM_M1134_Stryker
+            APC_M1043_HMMWV_Armament = vehicles.Armor.APC_M1043_HMMWV_Armament
+            ATGM_M1045_HMMWV_TOW = vehicles.Armor.ATGM_M1045_HMMWV_TOW
+            IFV_Marder = vehicles.Armor.IFV_Marder
+            MBT_Leclerc = vehicles.Armor.MBT_Leclerc
+            APC_Cobra = vehicles.Armor.APC_Cobra
+
+
+        class Artillery:
+            SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
+            MLRS_M270 = vehicles.Artillery.MLRS_M270
+            SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
+            SPH_2S9_Nona = vehicles.Artillery.SPH_2S9_Nona
+            MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
+            SPH_2S1_Gvozdika = vehicles.Artillery.SPH_2S1_Gvozdika
+            _2B11_mortar = vehicles.Artillery._2B11_mortar
+            SPH_2S19_Msta = vehicles.Artillery.SPH_2S19_Msta
+            MLRS_9A52_Smerch = vehicles.Artillery.MLRS_9A52_Smerch
+            MLRS_9K57_Uragan_BM_27 = vehicles.Artillery.MLRS_9K57_Uragan_BM_27
+
+
+        class AirDefence:
+            SAM_SA_15_Tor_9A331 = vehicles.AirDefence.SAM_SA_15_Tor_9A331
+            SAM_SA_10_S_300PS_TR_30N6 = vehicles.AirDefence.SAM_SA_10_S_300PS_TR_30N6
+            SAM_SA_10_S_300PS_SR_5N66M = vehicles.AirDefence.SAM_SA_10_S_300PS_SR_5N66M
+            SAM_SA_10_S_300PS_SR_64H6E = vehicles.AirDefence.SAM_SA_10_S_300PS_SR_64H6E
+            SAM_SA_10_S_300PS_LN_5P85C = vehicles.AirDefence.SAM_SA_10_S_300PS_LN_5P85C
+            SAM_SA_10_S_300PS_LN_5P85D = vehicles.AirDefence.SAM_SA_10_S_300PS_LN_5P85D
+            SAM_SA_10_S_300PS_CP_54K6 = vehicles.AirDefence.SAM_SA_10_S_300PS_CP_54K6
+            SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
+            SAM_Hawk_CWAR_AN_MPQ_55 = vehicles.AirDefence.SAM_Hawk_CWAR_AN_MPQ_55
+            SAM_Hawk_PCP = vehicles.AirDefence.SAM_Hawk_PCP
+            SAM_Hawk_TR_AN_MPQ_46 = vehicles.AirDefence.SAM_Hawk_TR_AN_MPQ_46
+            SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
+            SAM_Stinger_MANPADS = vehicles.AirDefence.SAM_Stinger_MANPADS
+            SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
+            SAM_SA_8_Osa_9A33 = vehicles.AirDefence.SAM_SA_8_Osa_9A33
+            SAM_SA_13_Strela_10M3_9A35M3 = vehicles.AirDefence.SAM_SA_13_Strela_10M3_9A35M3
+            SPAAA_ZSU_23_4_Shilka = vehicles.AirDefence.SPAAA_ZSU_23_4_Shilka
+            AAA_ZU_23_Emplacement = vehicles.AirDefence.AAA_ZU_23_Emplacement
+            AAA_ZU_23_Closed = vehicles.AirDefence.AAA_ZU_23_Closed
+            AAA_ZU_23_on_Ural_375 = vehicles.AirDefence.AAA_ZU_23_on_Ural_375
+            SAM_SA_19_Tunguska_2S6 = vehicles.AirDefence.SAM_SA_19_Tunguska_2S6
+            SAM_SA_9_Strela_1_9P31 = vehicles.AirDefence.SAM_SA_9_Strela_1_9P31
+            SAM_SA_18_Igla_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_MANPADS
+            SAM_SA_18_Igla_comm = vehicles.AirDefence.SAM_SA_18_Igla_comm
+            EWR_1L13 = vehicles.AirDefence.EWR_1L13
+            EWR_55G6 = vehicles.AirDefence.EWR_55G6
+            SAM_SA_11_Buk_SR_9S18M1 = vehicles.AirDefence.SAM_SA_11_Buk_SR_9S18M1
+            SAM_SA_11_Buk_CC_9S470M1 = vehicles.AirDefence.SAM_SA_11_Buk_CC_9S470M1
+            SAM_SA_11_Buk_LN_9A310M1 = vehicles.AirDefence.SAM_SA_11_Buk_LN_9A310M1
+            SAM_SA_6_Kub_STR_9S91 = vehicles.AirDefence.SAM_SA_6_Kub_STR_9S91
+            SAM_SA_6_Kub_LN_2P25 = vehicles.AirDefence.SAM_SA_6_Kub_LN_2P25
+            CP_9S80M1_Sborka = vehicles.AirDefence.CP_9S80M1_Sborka
+            SAM_SA_18_Igla_S_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_S_MANPADS
+            SAM_SA_18_Igla_S_comm = vehicles.AirDefence.SAM_SA_18_Igla_S_comm
+            AAA_ZU_23_Insurgent = vehicles.AirDefence.AAA_ZU_23_Insurgent
+            AAA_ZU_23_Insurgent_Closed = vehicles.AirDefence.AAA_ZU_23_Insurgent_Closed
+            AAA_ZU_23_Insurgent_on_Ural_375 = vehicles.AirDefence.AAA_ZU_23_Insurgent_on_Ural_375
+            SAM_Roland_ADS = vehicles.AirDefence.SAM_Roland_ADS
+            SAM_Roland_EWR = vehicles.AirDefence.SAM_Roland_EWR
+            SAM_SA_3_S_125_LN_5P73 = vehicles.AirDefence.SAM_SA_3_S_125_LN_5P73
+            SAM_SA_3_S_125_TR_SNR = vehicles.AirDefence.SAM_SA_3_S_125_TR_SNR
+            SAM_SA_3_S_125_SR_P_19 = vehicles.AirDefence.SAM_SA_3_S_125_SR_P_19
+            SAM_Avenger_M1097 = vehicles.AirDefence.SAM_Avenger_M1097
+            SAM_Patriot_STR_AN_MPQ_53 = vehicles.AirDefence.SAM_Patriot_STR_AN_MPQ_53
+            SAM_Patriot_LN_M901 = vehicles.AirDefence.SAM_Patriot_LN_M901
+            SAM_Patriot_AMG_AN_MRC_137 = vehicles.AirDefence.SAM_Patriot_AMG_AN_MRC_137
+            SAM_Patriot_EPP_III = vehicles.AirDefence.SAM_Patriot_EPP_III
+            SAM_Patriot_ECS_AN_MSQ_104 = vehicles.AirDefence.SAM_Patriot_ECS_AN_MSQ_104
+            SAM_Patriot_ICC = vehicles.AirDefence.SAM_Patriot_ICC
+            AAA_Vulcan_M163 = vehicles.AirDefence.AAA_Vulcan_M163
+            SAM_Chaparral_M48 = vehicles.AirDefence.SAM_Chaparral_M48
+            SAM_Linebacker_M6 = vehicles.AirDefence.SAM_Linebacker_M6
+            SPAAA_Gepard = vehicles.AirDefence.SPAAA_Gepard
+            SAM_Stinger_MANPADS_dsr = vehicles.AirDefence.SAM_Stinger_MANPADS_dsr
+            SAM_Stinger_comm_dsr = vehicles.AirDefence.SAM_Stinger_comm_dsr
 
     class Plane:
         A_10C = "A-10C"
         Su_27 = "Su-27"
+        IL_76MD = "IL-76MD"
+        IL_78M = "IL-78M"
+        An_26B = "An-26B"
+        An_30M = "An-30M"
+        C_130 = "C-130"
+        F_16A_MLU = "F-16A MLU"
+        P_51D = "P-51D"
         MiG_29A = "MiG-29A"
         MiG_29S = "MiG-29S"
         Su_17M4 = "Su-17M4"
@@ -1056,42 +1377,31 @@ class USAFAggressors(Country):
         Su_24MR = "Su-24MR"
         Su_25 = "Su-25"
         MiG_25PD = "MiG-25PD"
-        An_26B = "An-26B"
-        An_30M = "An-30M"
         MiG_23MLD = "MiG-23MLD"
-        IL_78M = "IL-78M"
-        IL_76MD = "IL-76MD"
         MiG_27K = "MiG-27K"
         Tu_22M3 = "Tu-22M3"
         MiG_25RBT = "MiG-25RBT"
         Yak_40 = "Yak-40"
         L_39ZA = "L-39ZA"
-        P_51D = "P-51D"
-        C_130 = "C-130"
-        F_4E = "F-4E"
+        F_A_18C = "F/A-18C"
         F_5E = "F-5E"
-        F_16C_bl_50 = "F-16C bl.50"
-        F_16C_bl_52d = "F-16C bl.52d"
-        Mirage_2000_5 = "Mirage 2000-5"
-        F_15C = "F-15C"
-        Su_33 = "Su-33"
-        Su_25T = "Su-25T"
-        A_10A = "A-10A"
-        Tornado_GR4 = "Tornado GR4"
-        F_16A_MLU = "F-16A MLU"
-        MiG_29G = "MiG-29G"
         Tornado_IDS = "Tornado IDS"
+        Tornado_GR4 = "Tornado GR4"
+        Su_33 = "Su-33"
         Su_25TM = "Su-25TM"
+        Su_25T = "Su-25T"
         MiG_31 = "MiG-31"
         Su_30 = "Su-30"
         Tu_160 = "Tu-160"
         Su_34 = "Su-34"
         Tu_142 = "Tu-142"
         A_50 = "A-50"
-        F_A_18C = "F/A-18C"
-        F_15E = "F-15E"
+        A_10A = "A-10A"
         F_117A = "F-117A"
         C_17A = "C-17A"
+        F_15C = "F-15C"
+        F_15E = "F-15E"
+        F_16C_bl_52d = "F-16C bl.52d"
         B_1B = "B-1B"
         B_52H = "B-52H"
         E_3A = "E-3A"
@@ -1102,10 +1412,32 @@ class USAFAggressors(Country):
         E_2C = "E-2C"
         F_16A = "F-16A"
         RQ_1A_Predator = "RQ-1A Predator"
+        MiG_29G = "MiG-29G"
+        F_4E = "F-4E"
+        Mirage_2000_5 = "Mirage 2000-5"
+        F_16C_bl_50 = "F-16C bl.50"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
         Plane.Su_27,
+        Plane.IL_76MD,
+        Plane.IL_78M,
+        Plane.An_26B,
+        Plane.An_30M,
+        Plane.C_130,
+        Plane.F_16A_MLU,
+        Plane.P_51D,
         Plane.MiG_29A,
         Plane.MiG_29S,
         Plane.Su_17M4,
@@ -1114,42 +1446,31 @@ class USAFAggressors(Country):
         Plane.Su_24MR,
         Plane.Su_25,
         Plane.MiG_25PD,
-        Plane.An_26B,
-        Plane.An_30M,
         Plane.MiG_23MLD,
-        Plane.IL_78M,
-        Plane.IL_76MD,
         Plane.MiG_27K,
         Plane.Tu_22M3,
         Plane.MiG_25RBT,
         Plane.Yak_40,
         Plane.L_39ZA,
-        Plane.P_51D,
-        Plane.C_130,
-        Plane.F_4E,
+        Plane.F_A_18C,
         Plane.F_5E,
-        Plane.F_16C_bl_50,
-        Plane.F_16C_bl_52d,
-        Plane.Mirage_2000_5,
-        Plane.F_15C,
-        Plane.Su_33,
-        Plane.Su_25T,
-        Plane.A_10A,
-        Plane.Tornado_GR4,
-        Plane.F_16A_MLU,
-        Plane.MiG_29G,
         Plane.Tornado_IDS,
+        Plane.Tornado_GR4,
+        Plane.Su_33,
         Plane.Su_25TM,
+        Plane.Su_25T,
         Plane.MiG_31,
         Plane.Su_30,
         Plane.Tu_160,
         Plane.Su_34,
         Plane.Tu_142,
         Plane.A_50,
-        Plane.F_A_18C,
-        Plane.F_15E,
+        Plane.A_10A,
         Plane.F_117A,
         Plane.C_17A,
+        Plane.F_15C,
+        Plane.F_15E,
+        Plane.F_16C_bl_52d,
         Plane.B_1B,
         Plane.B_52H,
         Plane.E_3A,
@@ -1160,39 +1481,54 @@ class USAFAggressors(Country):
         Plane.E_2C,
         Plane.F_16A,
         Plane.RQ_1A_Predator,
+        Plane.MiG_29G,
+        Plane.F_4E,
+        Plane.Mirage_2000_5,
+        Plane.F_16C_bl_50,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
         Ka_50 = "Ka-50"
-        Mi_24V = "Mi-24V"
         Mi_8MT = "Mi-8MT"
         Mi_26 = "Mi-26"
         Ka_27 = "Ka-27"
         UH_1H = "UH-1H"
+        Mi_24V = "Mi-24V"
+        CH_47D = "CH-47D"
         AH_64A = "AH-64A"
         AH_64D = "AH-64D"
-        CH_47D = "CH-47D"
-        SH_60B = "SH-60B"
         Mi_28N = "Mi-28N"
         AH_1W = "AH-1W"
         UH_60A = "UH-60A"
+        SH_60B = "SH-60B"
         CH_53E = "CH-53E"
         OH_58D = "OH-58D"
 
     helicopters = [
         Helicopter.Ka_50,
-        Helicopter.Mi_24V,
         Helicopter.Mi_8MT,
         Helicopter.Mi_26,
         Helicopter.Ka_27,
         Helicopter.UH_1H,
+        Helicopter.Mi_24V,
+        Helicopter.CH_47D,
         Helicopter.AH_64A,
         Helicopter.AH_64D,
-        Helicopter.CH_47D,
-        Helicopter.SH_60B,
         Helicopter.Mi_28N,
         Helicopter.AH_1W,
         Helicopter.UH_60A,
+        Helicopter.SH_60B,
         Helicopter.CH_53E,
         Helicopter.OH_58D,
     ]
@@ -1225,36 +1561,75 @@ class Canada(Country):
     name = "Canada"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        M_113 = "M-113"
-        Hummer = "Hummer"
-        LAV_25 = "LAV-25"
-        Stinger_manpad = "Stinger manpad"
-        Stinger_comm = "Stinger comm"
-        M_818 = "M 818"
-        M978_HEMTT_Tanker = "M978 HEMTT Tanker"
-        HEMTT_TFFT = "HEMTT TFFT"
-        Leopard1A3 = "Leopard1A3"
-        Leopard_2 = "Leopard-2"
-        M_109 = "M-109"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Unarmed:
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+            Tanker_M978_HEMTT = vehicles.Unarmed.Tanker_M978_HEMTT
+            HEMTT_TFFT = vehicles.Unarmed.HEMTT_TFFT
+
+
+        class Armor:
+            APC_M113 = vehicles.Armor.APC_M113
+            IFV_LAV_25 = vehicles.Armor.IFV_LAV_25
+            MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
+            MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
+
+
+        class Artillery:
+            SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
+
+
+        class AirDefence:
+            SAM_Stinger_MANPADS = vehicles.AirDefence.SAM_Stinger_MANPADS
+            SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
         A_10C = "A-10C"
         C_130 = "C-130"
         P_51D = "P-51D"
         F_A_18C = "F/A-18C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
+        TF_51D = "TF-51D"
 
     planes = [
         Plane.A_10C,
         Plane.C_130,
         Plane.P_51D,
         Plane.F_A_18C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
+        Plane.TF_51D,
     ]
 
     class Helicopter:
@@ -1280,41 +1655,80 @@ class Spain(Country):
     name = "Spain"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        M_113 = "M-113"
-        Hawk_sr = "Hawk sr"
-        Hawk_cwar = "Hawk cwar"
-        Hawk_pcp = "Hawk pcp"
-        Hawk_tr = "Hawk tr"
-        Hawk_ln = "Hawk ln"
-        Hummer = "Hummer"
-        Leopard_2 = "Leopard-2"
-        M_60 = "M-60"
-        M_109 = "M-109"
-        Stinger_manpad = "Stinger manpad"
-        Stinger_comm = "Stinger comm"
-        M_818 = "M 818"
-        Roland_ADS = "Roland ADS"
-        Roland_Radar = "Roland Radar"
-        _2B11_mortar = "2B11 mortar"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Unarmed:
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+
+
+        class Armor:
+            APC_M113 = vehicles.Armor.APC_M113
+            MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
+            MBT_M60A3_Patton = vehicles.Armor.MBT_M60A3_Patton
+
+
+        class Artillery:
+            SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
+            _2B11_mortar = vehicles.Artillery._2B11_mortar
+
+
+        class AirDefence:
+            SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
+            SAM_Hawk_CWAR_AN_MPQ_55 = vehicles.AirDefence.SAM_Hawk_CWAR_AN_MPQ_55
+            SAM_Hawk_PCP = vehicles.AirDefence.SAM_Hawk_PCP
+            SAM_Hawk_TR_AN_MPQ_46 = vehicles.AirDefence.SAM_Hawk_TR_AN_MPQ_46
+            SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
+            SAM_Stinger_MANPADS = vehicles.AirDefence.SAM_Stinger_MANPADS
+            SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
+            SAM_Roland_ADS = vehicles.AirDefence.SAM_Roland_ADS
+            SAM_Roland_EWR = vehicles.AirDefence.SAM_Roland_EWR
 
     class Plane:
         A_10C = "A-10C"
         C_130 = "C-130"
         P_51D = "P-51D"
         F_A_18C = "F/A-18C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
+        TF_51D = "TF-51D"
 
     planes = [
         Plane.A_10C,
         Plane.C_130,
         Plane.P_51D,
         Plane.F_A_18C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
+        Plane.TF_51D,
     ]
 
     class Helicopter:
@@ -1342,44 +1756,83 @@ class TheNetherlands(Country):
     name = "The Netherlands"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        Hummer = "Hummer"
-        Patriot_str = "Patriot str"
-        Patriot_ln = "Patriot ln"
-        Patriot_AMG = "Patriot AMG"
-        Patriot_EPP = "Patriot EPP"
-        Patriot_ECS = "Patriot ECS"
-        Patriot_cp = "Patriot cp"
-        Hawk_sr = "Hawk sr"
-        Hawk_cwar = "Hawk cwar"
-        Hawk_pcp = "Hawk pcp"
-        Hawk_tr = "Hawk tr"
-        Hawk_ln = "Hawk ln"
-        Stinger_manpad = "Stinger manpad"
-        Stinger_comm = "Stinger comm"
-        M_818 = "M 818"
-        Leopard_2 = "Leopard-2"
-        Leopard1A3 = "Leopard1A3"
-        TPZ = "TPZ"
-        M_109 = "M-109"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Unarmed:
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+
+
+        class Armor:
+            MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
+            MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
+            TPz_Fuchs = vehicles.Armor.TPz_Fuchs
+
+
+        class Artillery:
+            SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
+
+
+        class AirDefence:
+            SAM_Patriot_STR_AN_MPQ_53 = vehicles.AirDefence.SAM_Patriot_STR_AN_MPQ_53
+            SAM_Patriot_LN_M901 = vehicles.AirDefence.SAM_Patriot_LN_M901
+            SAM_Patriot_AMG_AN_MRC_137 = vehicles.AirDefence.SAM_Patriot_AMG_AN_MRC_137
+            SAM_Patriot_EPP_III = vehicles.AirDefence.SAM_Patriot_EPP_III
+            SAM_Patriot_ECS_AN_MSQ_104 = vehicles.AirDefence.SAM_Patriot_ECS_AN_MSQ_104
+            SAM_Patriot_ICC = vehicles.AirDefence.SAM_Patriot_ICC
+            SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
+            SAM_Hawk_CWAR_AN_MPQ_55 = vehicles.AirDefence.SAM_Hawk_CWAR_AN_MPQ_55
+            SAM_Hawk_PCP = vehicles.AirDefence.SAM_Hawk_PCP
+            SAM_Hawk_TR_AN_MPQ_46 = vehicles.AirDefence.SAM_Hawk_TR_AN_MPQ_46
+            SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
+            SAM_Stinger_MANPADS = vehicles.AirDefence.SAM_Stinger_MANPADS
+            SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
         A_10C = "A-10C"
         C_130 = "C-130"
         F_16A_MLU = "F-16A MLU"
         P_51D = "P-51D"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
+        TF_51D = "TF-51D"
 
     planes = [
         Plane.A_10C,
         Plane.C_130,
         Plane.F_16A_MLU,
         Plane.P_51D,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
+        Plane.TF_51D,
     ]
 
     class Helicopter:
@@ -1411,37 +1864,76 @@ class Belgium(Country):
     name = "Belgium"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        M_113 = "M-113"
-        Hawk_sr = "Hawk sr"
-        Hawk_cwar = "Hawk cwar"
-        Hawk_pcp = "Hawk pcp"
-        Hawk_tr = "Hawk tr"
-        Hawk_ln = "Hawk ln"
-        Hummer = "Hummer"
-        Stinger_manpad = "Stinger manpad"
-        Stinger_comm = "Stinger comm"
-        M_818 = "M 818"
-        M_109 = "M-109"
-        Leopard1A3 = "Leopard1A3"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Unarmed:
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+
+
+        class Armor:
+            APC_M113 = vehicles.Armor.APC_M113
+            MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
+
+
+        class Artillery:
+            SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
+
+
+        class AirDefence:
+            SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
+            SAM_Hawk_CWAR_AN_MPQ_55 = vehicles.AirDefence.SAM_Hawk_CWAR_AN_MPQ_55
+            SAM_Hawk_PCP = vehicles.AirDefence.SAM_Hawk_PCP
+            SAM_Hawk_TR_AN_MPQ_46 = vehicles.AirDefence.SAM_Hawk_TR_AN_MPQ_46
+            SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
+            SAM_Stinger_MANPADS = vehicles.AirDefence.SAM_Stinger_MANPADS
+            SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
         A_10C = "A-10C"
         C_130 = "C-130"
         F_16A_MLU = "F-16A MLU"
         P_51D = "P-51D"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
+        TF_51D = "TF-51D"
 
     planes = [
         Plane.A_10C,
         Plane.C_130,
         Plane.F_16A_MLU,
         Plane.P_51D,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
+        Plane.TF_51D,
     ]
 
     class Helicopter:
@@ -1467,40 +1959,79 @@ class Norway(Country):
     name = "Norway"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        M_113 = "M-113"
-        Hawk_sr = "Hawk sr"
-        Hawk_cwar = "Hawk cwar"
-        Hawk_pcp = "Hawk pcp"
-        Hawk_tr = "Hawk tr"
-        Hawk_ln = "Hawk ln"
-        Hummer = "Hummer"
-        M_109 = "M-109"
-        MLRS = "MLRS"
-        Stinger_manpad = "Stinger manpad"
-        Stinger_comm = "Stinger comm"
-        M_818 = "M 818"
-        Leopard_2 = "Leopard-2"
-        Leopard1A3 = "Leopard1A3"
-        TPZ = "TPZ"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Unarmed:
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+
+
+        class Armor:
+            APC_M113 = vehicles.Armor.APC_M113
+            MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
+            MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
+            TPz_Fuchs = vehicles.Armor.TPz_Fuchs
+
+
+        class Artillery:
+            SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
+            MLRS_M270 = vehicles.Artillery.MLRS_M270
+
+
+        class AirDefence:
+            SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
+            SAM_Hawk_CWAR_AN_MPQ_55 = vehicles.AirDefence.SAM_Hawk_CWAR_AN_MPQ_55
+            SAM_Hawk_PCP = vehicles.AirDefence.SAM_Hawk_PCP
+            SAM_Hawk_TR_AN_MPQ_46 = vehicles.AirDefence.SAM_Hawk_TR_AN_MPQ_46
+            SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
+            SAM_Stinger_MANPADS = vehicles.AirDefence.SAM_Stinger_MANPADS
+            SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
         A_10C = "A-10C"
         C_130 = "C-130"
         F_16A_MLU = "F-16A MLU"
         P_51D = "P-51D"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
+        TF_51D = "TF-51D"
 
     planes = [
         Plane.A_10C,
         Plane.C_130,
         Plane.F_16A_MLU,
         Plane.P_51D,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
+        Plane.TF_51D,
     ]
 
     class Helicopter:
@@ -1526,39 +2057,78 @@ class Denmark(Country):
     name = "Denmark"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        M_113 = "M-113"
-        Hawk_sr = "Hawk sr"
-        Hawk_cwar = "Hawk cwar"
-        Hawk_pcp = "Hawk pcp"
-        Hawk_tr = "Hawk tr"
-        Hawk_ln = "Hawk ln"
-        Hummer = "Hummer"
-        M_109 = "M-109"
-        MLRS = "MLRS"
-        Stinger_manpad = "Stinger manpad"
-        Stinger_comm = "Stinger comm"
-        M_818 = "M 818"
-        Leopard1A3 = "Leopard1A3"
-        Leopard_2 = "Leopard-2"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Unarmed:
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+
+
+        class Armor:
+            APC_M113 = vehicles.Armor.APC_M113
+            MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
+            MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
+
+
+        class Artillery:
+            SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
+            MLRS_M270 = vehicles.Artillery.MLRS_M270
+
+
+        class AirDefence:
+            SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
+            SAM_Hawk_CWAR_AN_MPQ_55 = vehicles.AirDefence.SAM_Hawk_CWAR_AN_MPQ_55
+            SAM_Hawk_PCP = vehicles.AirDefence.SAM_Hawk_PCP
+            SAM_Hawk_TR_AN_MPQ_46 = vehicles.AirDefence.SAM_Hawk_TR_AN_MPQ_46
+            SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
+            SAM_Stinger_MANPADS = vehicles.AirDefence.SAM_Stinger_MANPADS
+            SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
         A_10C = "A-10C"
         C_130 = "C-130"
         F_16A_MLU = "F-16A MLU"
         P_51D = "P-51D"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
+        TF_51D = "TF-51D"
 
     planes = [
         Plane.A_10C,
         Plane.C_130,
         Plane.F_16A_MLU,
         Plane.P_51D,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
+        Plane.TF_51D,
     ]
 
     class Helicopter:
@@ -1584,40 +2154,55 @@ class Israel(Country):
     name = "Israel"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        M_113 = "M-113"
-        M1097_Avenger = "M1097 Avenger"
-        Patriot_str = "Patriot str"
-        Patriot_ln = "Patriot ln"
-        Patriot_AMG = "Patriot AMG"
-        Patriot_EPP = "Patriot EPP"
-        Patriot_ECS = "Patriot ECS"
-        Patriot_cp = "Patriot cp"
-        Hawk_sr = "Hawk sr"
-        Hawk_cwar = "Hawk cwar"
-        Hawk_pcp = "Hawk pcp"
-        Hawk_tr = "Hawk tr"
-        Hawk_ln = "Hawk ln"
-        Vulcan = "Vulcan"
-        Hummer = "Hummer"
-        TPZ = "TPZ"
-        ZSU_23_4_Shilka = "ZSU-23-4 Shilka"
-        M_109 = "M-109"
-        M_60 = "M-60"
-        M_818 = "M 818"
-        M48_Chaparral = "M48 Chaparral"
-        MLRS = "MLRS"
-        Stinger_manpad_dsr = "Stinger manpad dsr"
-        Stinger_comm_dsr = "Stinger comm dsr"
-        ZU_23_Emplacement = "ZU-23 Emplacement"
-        ZU_23_Emplacement_Closed = "ZU-23 Emplacement Closed"
-        T_55 = "T-55"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Unarmed:
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+
+
+        class Armor:
+            APC_M113 = vehicles.Armor.APC_M113
+            TPz_Fuchs = vehicles.Armor.TPz_Fuchs
+            MBT_M60A3_Patton = vehicles.Armor.MBT_M60A3_Patton
+            MBT_T_55 = vehicles.Armor.MBT_T_55
+
+
+        class Artillery:
+            SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
+            MLRS_M270 = vehicles.Artillery.MLRS_M270
+
+
+        class AirDefence:
+            SAM_Avenger_M1097 = vehicles.AirDefence.SAM_Avenger_M1097
+            SAM_Patriot_STR_AN_MPQ_53 = vehicles.AirDefence.SAM_Patriot_STR_AN_MPQ_53
+            SAM_Patriot_LN_M901 = vehicles.AirDefence.SAM_Patriot_LN_M901
+            SAM_Patriot_AMG_AN_MRC_137 = vehicles.AirDefence.SAM_Patriot_AMG_AN_MRC_137
+            SAM_Patriot_EPP_III = vehicles.AirDefence.SAM_Patriot_EPP_III
+            SAM_Patriot_ECS_AN_MSQ_104 = vehicles.AirDefence.SAM_Patriot_ECS_AN_MSQ_104
+            SAM_Patriot_ICC = vehicles.AirDefence.SAM_Patriot_ICC
+            SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
+            SAM_Hawk_CWAR_AN_MPQ_55 = vehicles.AirDefence.SAM_Hawk_CWAR_AN_MPQ_55
+            SAM_Hawk_PCP = vehicles.AirDefence.SAM_Hawk_PCP
+            SAM_Hawk_TR_AN_MPQ_46 = vehicles.AirDefence.SAM_Hawk_TR_AN_MPQ_46
+            SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
+            AAA_Vulcan_M163 = vehicles.AirDefence.AAA_Vulcan_M163
+            SPAAA_ZSU_23_4_Shilka = vehicles.AirDefence.SPAAA_ZSU_23_4_Shilka
+            SAM_Chaparral_M48 = vehicles.AirDefence.SAM_Chaparral_M48
+            SAM_Stinger_MANPADS_dsr = vehicles.AirDefence.SAM_Stinger_MANPADS_dsr
+            SAM_Stinger_comm_dsr = vehicles.AirDefence.SAM_Stinger_comm_dsr
+            AAA_ZU_23_Emplacement = vehicles.AirDefence.AAA_ZU_23_Emplacement
+            AAA_ZU_23_Closed = vehicles.AirDefence.AAA_ZU_23_Closed
 
     class Plane:
         A_10C = "A-10C"
@@ -1627,6 +2212,18 @@ class Israel(Country):
         C_130 = "C-130"
         F_4E = "F-4E"
         P_51D = "P-51D"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
+        TF_51D = "TF-51D"
 
     planes = [
         Plane.A_10C,
@@ -1636,6 +2233,18 @@ class Israel(Country):
         Plane.C_130,
         Plane.F_4E,
         Plane.P_51D,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
+        Plane.TF_51D,
     ]
 
     class Helicopter:
@@ -1669,68 +2278,86 @@ class Georgia(Country):
     name = "Georgia"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        BTR_80 = "BTR-80"
-        Strela_1_9P31 = "Strela-1 9P31"
-        Strela_10M3 = "Strela-10M3"
-        ZSU_23_4_Shilka = "ZSU-23-4 Shilka"
-        SA_11_Buk_SR_9S18M1 = "SA-11 Buk SR 9S18M1"
-        SA_11_Buk_CC_9S470M1 = "SA-11 Buk CC 9S470M1"
-        SA_11_Buk_LN_9A310M1 = "SA-11 Buk LN 9A310M1"
-        SAU_Akatsia = "SAU Akatsia"
-        SAU_Msta = "SAU Msta"
-        ATMZ_5 = "ATMZ-5"
-        ATZ_10 = "ATZ-10"
-        Ural_4320_APA_5D = "Ural-4320 APA-5D"
-        BMD_1 = "BMD-1"
-        BMP_1 = "BMP-1"
-        BMP_2 = "BMP-2"
-        BRDM_2 = "BRDM-2"
-        Grad_URAL = "Grad-URAL"
-        UAZ_469 = "UAZ-469"
-        Ural_375 = "Ural-375"
-        Ural_375_PBU = "Ural-375 PBU"
-        IKARUS_Bus = "IKARUS Bus"
-        VAZ_Car = "VAZ Car"
-        Trolley_bus = "Trolley bus"
-        KAMAZ_Truck = "KAMAZ Truck"
-        LAZ_Bus = "LAZ Bus"
-        GAZ_3307 = "GAZ-3307"
-        GAZ_3308 = "GAZ-3308"
-        GAZ_66 = "GAZ-66"
-        MAZ_6303 = "MAZ-6303"
-        ZIL_4331 = "ZIL-4331"
-        Osa_9A33_ln = "Osa 9A33 ln"
-        SKP_11 = "SKP-11"
-        Ural_ATsP_6 = "Ural ATsP-6"
-        ZiL_131_APA_80 = "ZiL-131 APA-80"
-        ZIL_131_KUNG = "ZIL-131 KUNG"
-        ZU_23_Emplacement = "ZU-23 Emplacement"
-        ZU_23_Emplacement_Closed = "ZU-23 Emplacement Closed"
-        Ural_375_ZU_23 = "Ural-375 ZU-23"
-        Dog_Ear_radar = "Dog Ear radar"
-        _1L13_EWR = "1L13 EWR"
-        MTLB = "MTLB"
-        T_72B = "T-72B"
-        SA_18_Igla_manpad = "SA-18 Igla manpad"
-        SA_18_Igla_comm = "SA-18 Igla comm"
-        T_55 = "T-55"
-        Stinger_manpad_GRG = "Stinger manpad GRG"
-        Stinger_comm = "Stinger comm"
-        Soldier_M4_GRG = "Soldier M4 GRG"
-        Soldier_RPG = "Soldier RPG"
-        _5p73_s_125_ln = "5p73 s-125 ln"
-        snr_s_125_tr = "snr s-125 tr"
-        p_19_s_125_sr = "p-19 s-125 sr"
-        M_818 = "M 818"
-        _2B11_mortar = "2B11 mortar"
-        Cobra = "Cobra"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Infantry:
+            Georgian_soldier_with_M4 = vehicles.Infantry.Georgian_soldier_with_M4
+            Soldier_RPG = vehicles.Infantry.Soldier_RPG
+
+
+        class Unarmed:
+            Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
+            Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
+            GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
+            Transport_UAZ_469 = vehicles.Unarmed.Transport_UAZ_469
+            Transport_Ural_375 = vehicles.Unarmed.Transport_Ural_375
+            CP_Ural_375_PBU = vehicles.Unarmed.CP_Ural_375_PBU
+            Transport_IKARUS_280 = vehicles.Unarmed.Transport_IKARUS_280
+            Transport_VAZ_2109 = vehicles.Unarmed.Transport_VAZ_2109
+            Transport_ZIU_9 = vehicles.Unarmed.Transport_ZIU_9
+            Transport_KAMAZ_43101 = vehicles.Unarmed.Transport_KAMAZ_43101
+            Transport_LAZ_695 = vehicles.Unarmed.Transport_LAZ_695
+            Transport_GAZ_3307 = vehicles.Unarmed.Transport_GAZ_3307
+            Transport_GAZ_3308 = vehicles.Unarmed.Transport_GAZ_3308
+            Transport_GAZ_66 = vehicles.Unarmed.Transport_GAZ_66
+            Transport_MAZ_6303 = vehicles.Unarmed.Transport_MAZ_6303
+            Transport_ZIL_4331 = vehicles.Unarmed.Transport_ZIL_4331
+            CP_SKP_11_ATC_Mobile_Command_Post = vehicles.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
+            Transport_fire_Engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_Engine_Ural_ATsP_6
+            GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
+            Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
+            Transport_ZIL_4331 = vehicles.Unarmed.Transport_ZIL_4331
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+
+
+        class Armor:
+            APC_BTR_80 = vehicles.Armor.APC_BTR_80
+            IFV_BMD_1 = vehicles.Armor.IFV_BMD_1
+            IFV_BMP_1 = vehicles.Armor.IFV_BMP_1
+            IFV_BMP_2 = vehicles.Armor.IFV_BMP_2
+            ARV_BRDM_2 = vehicles.Armor.ARV_BRDM_2
+            APC_MTLB = vehicles.Armor.APC_MTLB
+            MBT_T_72B = vehicles.Armor.MBT_T_72B
+            MBT_T_55 = vehicles.Armor.MBT_T_55
+            APC_Cobra = vehicles.Armor.APC_Cobra
+
+
+        class Artillery:
+            SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
+            SPH_2S19_Msta = vehicles.Artillery.SPH_2S19_Msta
+            MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
+            _2B11_mortar = vehicles.Artillery._2B11_mortar
+
+
+        class AirDefence:
+            SAM_SA_9_Strela_1_9P31 = vehicles.AirDefence.SAM_SA_9_Strela_1_9P31
+            SAM_SA_13_Strela_10M3_9A35M3 = vehicles.AirDefence.SAM_SA_13_Strela_10M3_9A35M3
+            SPAAA_ZSU_23_4_Shilka = vehicles.AirDefence.SPAAA_ZSU_23_4_Shilka
+            SAM_SA_11_Buk_SR_9S18M1 = vehicles.AirDefence.SAM_SA_11_Buk_SR_9S18M1
+            SAM_SA_11_Buk_CC_9S470M1 = vehicles.AirDefence.SAM_SA_11_Buk_CC_9S470M1
+            SAM_SA_11_Buk_LN_9A310M1 = vehicles.AirDefence.SAM_SA_11_Buk_LN_9A310M1
+            SAM_SA_8_Osa_9A33 = vehicles.AirDefence.SAM_SA_8_Osa_9A33
+            AAA_ZU_23_Emplacement = vehicles.AirDefence.AAA_ZU_23_Emplacement
+            AAA_ZU_23_Closed = vehicles.AirDefence.AAA_ZU_23_Closed
+            AAA_ZU_23_on_Ural_375 = vehicles.AirDefence.AAA_ZU_23_on_Ural_375
+            CP_9S80M1_Sborka = vehicles.AirDefence.CP_9S80M1_Sborka
+            EWR_1L13 = vehicles.AirDefence.EWR_1L13
+            SAM_SA_18_Igla_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_MANPADS
+            SAM_SA_18_Igla_comm = vehicles.AirDefence.SAM_SA_18_Igla_comm
+            SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
+            SAM_SA_3_S_125_LN_5P73 = vehicles.AirDefence.SAM_SA_3_S_125_LN_5P73
+            SAM_SA_3_S_125_TR_SNR = vehicles.AirDefence.SAM_SA_3_S_125_TR_SNR
+            SAM_SA_3_S_125_SR_P_19 = vehicles.AirDefence.SAM_SA_3_S_125_SR_P_19
 
     class Plane:
         A_10C = "A-10C"
@@ -1740,6 +2367,18 @@ class Georgia(Country):
         L_39ZA = "L-39ZA"
         Yak_40 = "Yak-40"
         P_51D = "P-51D"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
+        TF_51D = "TF-51D"
 
     planes = [
         Plane.A_10C,
@@ -1749,6 +2388,18 @@ class Georgia(Country):
         Plane.L_39ZA,
         Plane.Yak_40,
         Plane.P_51D,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
+        Plane.TF_51D,
     ]
 
     class Helicopter:
@@ -1782,59 +2433,97 @@ class Insurgents(Country):
     name = "Insurgents"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        BTR_80 = "BTR-80"
-        Strela_1_9P31 = "Strela-1 9P31"
-        Strela_10M3 = "Strela-10M3"
-        ZSU_23_4_Shilka = "ZSU-23-4 Shilka"
-        SAU_Akatsia = "SAU Akatsia"
-        SAU_2_C9 = "SAU 2-C9"
-        ATMZ_5 = "ATMZ-5"
-        ATZ_10 = "ATZ-10"
-        BMD_1 = "BMD-1"
-        BMP_1 = "BMP-1"
-        BMP_2 = "BMP-2"
-        BRDM_2 = "BRDM-2"
-        Grad_URAL = "Grad-URAL"
-        UAZ_469 = "UAZ-469"
-        Ural_375 = "Ural-375"
-        Ural_375_PBU = "Ural-375 PBU"
-        IKARUS_Bus = "IKARUS Bus"
-        VAZ_Car = "VAZ Car"
-        Trolley_bus = "Trolley bus"
-        KAMAZ_Truck = "KAMAZ Truck"
-        LAZ_Bus = "LAZ Bus"
-        GAZ_3307 = "GAZ-3307"
-        GAZ_3308 = "GAZ-3308"
-        GAZ_66 = "GAZ-66"
-        MAZ_6303 = "MAZ-6303"
-        ZIL_4331 = "ZIL-4331"
-        ZU_23_Insurgent = "ZU-23 Insurgent"
-        ZU_23_Closed_Insurgent = "ZU-23 Closed Insurgent"
-        Ural_375_ZU_23_Insurgent = "Ural-375 ZU-23 Insurgent"
-        ZiL_131_APA_80 = "ZiL-131 APA-80"
-        ZIL_131_KUNG = "ZIL-131 KUNG"
-        MTLB = "MTLB"
-        SA_18_Igla_manpad = "SA-18 Igla manpad"
-        SA_18_Igla_comm = "SA-18 Igla comm"
-        T_55 = "T-55"
-        Stinger_manpad = "Stinger manpad"
-        Stinger_comm = "Stinger comm"
-        Soldier_AK = "Soldier AK"
-        Soldier_RPG = "Soldier RPG"
-        _2B11_mortar = "2B11 mortar"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Infantry:
+            Soldier_AK = vehicles.Infantry.Soldier_AK
+            Soldier_RPG = vehicles.Infantry.Soldier_RPG
+
+
+        class Unarmed:
+            Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
+            Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
+            Transport_UAZ_469 = vehicles.Unarmed.Transport_UAZ_469
+            Transport_Ural_375 = vehicles.Unarmed.Transport_Ural_375
+            CP_Ural_375_PBU = vehicles.Unarmed.CP_Ural_375_PBU
+            Transport_IKARUS_280 = vehicles.Unarmed.Transport_IKARUS_280
+            Transport_VAZ_2109 = vehicles.Unarmed.Transport_VAZ_2109
+            Transport_ZIU_9 = vehicles.Unarmed.Transport_ZIU_9
+            Transport_KAMAZ_43101 = vehicles.Unarmed.Transport_KAMAZ_43101
+            Transport_LAZ_695 = vehicles.Unarmed.Transport_LAZ_695
+            Transport_GAZ_3307 = vehicles.Unarmed.Transport_GAZ_3307
+            Transport_GAZ_3308 = vehicles.Unarmed.Transport_GAZ_3308
+            Transport_GAZ_66 = vehicles.Unarmed.Transport_GAZ_66
+            Transport_MAZ_6303 = vehicles.Unarmed.Transport_MAZ_6303
+            Transport_ZIL_4331 = vehicles.Unarmed.Transport_ZIL_4331
+            GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
+            Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
+
+
+        class Armor:
+            APC_BTR_80 = vehicles.Armor.APC_BTR_80
+            IFV_BMD_1 = vehicles.Armor.IFV_BMD_1
+            IFV_BMP_1 = vehicles.Armor.IFV_BMP_1
+            IFV_BMP_2 = vehicles.Armor.IFV_BMP_2
+            ARV_BRDM_2 = vehicles.Armor.ARV_BRDM_2
+            APC_MTLB = vehicles.Armor.APC_MTLB
+            MBT_T_55 = vehicles.Armor.MBT_T_55
+
+
+        class Artillery:
+            SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
+            SPH_2S9_Nona = vehicles.Artillery.SPH_2S9_Nona
+            MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
+            _2B11_mortar = vehicles.Artillery._2B11_mortar
+
+
+        class AirDefence:
+            SAM_SA_9_Strela_1_9P31 = vehicles.AirDefence.SAM_SA_9_Strela_1_9P31
+            SAM_SA_13_Strela_10M3_9A35M3 = vehicles.AirDefence.SAM_SA_13_Strela_10M3_9A35M3
+            SPAAA_ZSU_23_4_Shilka = vehicles.AirDefence.SPAAA_ZSU_23_4_Shilka
+            AAA_ZU_23_Insurgent = vehicles.AirDefence.AAA_ZU_23_Insurgent
+            AAA_ZU_23_Insurgent_Closed = vehicles.AirDefence.AAA_ZU_23_Insurgent_Closed
+            AAA_ZU_23_Insurgent_on_Ural_375 = vehicles.AirDefence.AAA_ZU_23_Insurgent_on_Ural_375
+            SAM_SA_18_Igla_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_MANPADS
+            SAM_SA_18_Igla_comm = vehicles.AirDefence.SAM_SA_18_Igla_comm
+            SAM_Stinger_MANPADS = vehicles.AirDefence.SAM_Stinger_MANPADS
+            SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
         P_51D = "P-51D"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
 
     planes = [
         Plane.P_51D,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
     ]
 
     class Helicopter:
@@ -1863,76 +2552,115 @@ class Abkhazia(Country):
     name = "Abkhazia"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        BTR_80 = "BTR-80"
-        SA_11_Buk_SR_9S18M1 = "SA-11 Buk SR 9S18M1"
-        SA_11_Buk_CC_9S470M1 = "SA-11 Buk CC 9S470M1"
-        SA_11_Buk_LN_9A310M1 = "SA-11 Buk LN 9A310M1"
-        Kub_1S91_str = "Kub 1S91 str"
-        Kub_2P25_ln = "Kub 2P25 ln"
-        Osa_9A33_ln = "Osa 9A33 ln"
-        Strela_10M3 = "Strela-10M3"
-        Dog_Ear_radar = "Dog Ear radar"
-        ZSU_23_4_Shilka = "ZSU-23-4 Shilka"
-        SAU_Akatsia = "SAU Akatsia"
-        SAU_2_C9 = "SAU 2-C9"
-        ATMZ_5 = "ATMZ-5"
-        ATZ_10 = "ATZ-10"
-        BMD_1 = "BMD-1"
-        BMP_1 = "BMP-1"
-        BMP_2 = "BMP-2"
-        BRDM_2 = "BRDM-2"
-        Grad_URAL = "Grad-URAL"
-        UAZ_469 = "UAZ-469"
-        Ural_375 = "Ural-375"
-        Ural_375_PBU = "Ural-375 PBU"
-        IKARUS_Bus = "IKARUS Bus"
-        VAZ_Car = "VAZ Car"
-        Trolley_bus = "Trolley bus"
-        KAMAZ_Truck = "KAMAZ Truck"
-        LAZ_Bus = "LAZ Bus"
-        SAU_Gvozdika = "SAU Gvozdika"
-        BTR_D = "BTR_D"
-        GAZ_3307 = "GAZ-3307"
-        GAZ_3308 = "GAZ-3308"
-        GAZ_66 = "GAZ-66"
-        ZIL_4331 = "ZIL-4331"
-        MAZ_6303 = "MAZ-6303"
-        SKP_11 = "SKP-11"
-        Ural_4320T = "Ural-4320T"
-        Ural_ATsP_6 = "Ural ATsP-6"
-        ZiL_131_APA_80 = "ZiL-131 APA-80"
-        ZIL_131_KUNG = "ZIL-131 KUNG"
-        Ural_4320_APA_5D = "Ural-4320 APA-5D"
-        ZU_23_Emplacement = "ZU-23 Emplacement"
-        ZU_23_Emplacement_Closed = "ZU-23 Emplacement Closed"
-        Ural_375_ZU_23 = "Ural-375 ZU-23"
-        _2S6_Tunguska = "2S6 Tunguska"
-        Strela_1_9P31 = "Strela-1 9P31"
-        MTLB = "MTLB"
-        T_72B = "T-72B"
-        SA_18_Igla_manpad = "SA-18 Igla manpad"
-        SA_18_Igla_comm = "SA-18 Igla comm"
-        T_55 = "T-55"
-        _2B11_mortar = "2B11 mortar"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Unarmed:
+            Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
+            Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
+            Transport_UAZ_469 = vehicles.Unarmed.Transport_UAZ_469
+            Transport_Ural_375 = vehicles.Unarmed.Transport_Ural_375
+            CP_Ural_375_PBU = vehicles.Unarmed.CP_Ural_375_PBU
+            Transport_IKARUS_280 = vehicles.Unarmed.Transport_IKARUS_280
+            Transport_VAZ_2109 = vehicles.Unarmed.Transport_VAZ_2109
+            Transport_ZIU_9 = vehicles.Unarmed.Transport_ZIU_9
+            Transport_KAMAZ_43101 = vehicles.Unarmed.Transport_KAMAZ_43101
+            Transport_LAZ_695 = vehicles.Unarmed.Transport_LAZ_695
+            Transport_GAZ_3307 = vehicles.Unarmed.Transport_GAZ_3307
+            Transport_GAZ_3308 = vehicles.Unarmed.Transport_GAZ_3308
+            Transport_GAZ_66 = vehicles.Unarmed.Transport_GAZ_66
+            Transport_ZIL_4331 = vehicles.Unarmed.Transport_ZIL_4331
+            Transport_MAZ_6303 = vehicles.Unarmed.Transport_MAZ_6303
+            CP_SKP_11_ATC_Mobile_Command_Post = vehicles.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
+            Transport_Ural_4320T = vehicles.Unarmed.Transport_Ural_4320T
+            Transport_fire_Engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_Engine_Ural_ATsP_6
+            GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
+            Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
+            GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
+
+
+        class Armor:
+            APC_BTR_80 = vehicles.Armor.APC_BTR_80
+            IFV_BMD_1 = vehicles.Armor.IFV_BMD_1
+            IFV_BMP_1 = vehicles.Armor.IFV_BMP_1
+            IFV_BMP_2 = vehicles.Armor.IFV_BMP_2
+            ARV_BRDM_2 = vehicles.Armor.ARV_BRDM_2
+            ARV_BTR_RD = vehicles.Armor.ARV_BTR_RD
+            APC_MTLB = vehicles.Armor.APC_MTLB
+            MBT_T_72B = vehicles.Armor.MBT_T_72B
+            MBT_T_55 = vehicles.Armor.MBT_T_55
+
+
+        class Artillery:
+            SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
+            SPH_2S9_Nona = vehicles.Artillery.SPH_2S9_Nona
+            MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
+            SPH_2S1_Gvozdika = vehicles.Artillery.SPH_2S1_Gvozdika
+            _2B11_mortar = vehicles.Artillery._2B11_mortar
+
+
+        class AirDefence:
+            SAM_SA_11_Buk_SR_9S18M1 = vehicles.AirDefence.SAM_SA_11_Buk_SR_9S18M1
+            SAM_SA_11_Buk_CC_9S470M1 = vehicles.AirDefence.SAM_SA_11_Buk_CC_9S470M1
+            SAM_SA_11_Buk_LN_9A310M1 = vehicles.AirDefence.SAM_SA_11_Buk_LN_9A310M1
+            SAM_SA_6_Kub_STR_9S91 = vehicles.AirDefence.SAM_SA_6_Kub_STR_9S91
+            SAM_SA_6_Kub_LN_2P25 = vehicles.AirDefence.SAM_SA_6_Kub_LN_2P25
+            SAM_SA_8_Osa_9A33 = vehicles.AirDefence.SAM_SA_8_Osa_9A33
+            SAM_SA_13_Strela_10M3_9A35M3 = vehicles.AirDefence.SAM_SA_13_Strela_10M3_9A35M3
+            CP_9S80M1_Sborka = vehicles.AirDefence.CP_9S80M1_Sborka
+            SPAAA_ZSU_23_4_Shilka = vehicles.AirDefence.SPAAA_ZSU_23_4_Shilka
+            AAA_ZU_23_Emplacement = vehicles.AirDefence.AAA_ZU_23_Emplacement
+            AAA_ZU_23_Closed = vehicles.AirDefence.AAA_ZU_23_Closed
+            AAA_ZU_23_on_Ural_375 = vehicles.AirDefence.AAA_ZU_23_on_Ural_375
+            SAM_SA_19_Tunguska_2S6 = vehicles.AirDefence.SAM_SA_19_Tunguska_2S6
+            SAM_SA_9_Strela_1_9P31 = vehicles.AirDefence.SAM_SA_9_Strela_1_9P31
+            SAM_SA_18_Igla_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_MANPADS
+            SAM_SA_18_Igla_comm = vehicles.AirDefence.SAM_SA_18_Igla_comm
 
     class Plane:
         Su_25 = "Su-25"
         An_26B = "An-26B"
         L_39ZA = "L-39ZA"
         P_51D = "P-51D"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
+        TF_51D = "TF-51D"
 
     planes = [
         Plane.Su_25,
         Plane.An_26B,
         Plane.L_39ZA,
         Plane.P_51D,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
+        Plane.TF_51D,
     ]
 
     class Helicopter:
@@ -1965,57 +2693,97 @@ class SouthOssetia(Country):
     name = "South Ossetia"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        BTR_80 = "BTR-80"
-        Osa_9A33_ln = "Osa 9A33 ln"
-        Strela_10M3 = "Strela-10M3"
-        ZSU_23_4_Shilka = "ZSU-23-4 Shilka"
-        SAU_Akatsia = "SAU Akatsia"
-        SAU_2_C9 = "SAU 2-C9"
-        ATMZ_5 = "ATMZ-5"
-        ATZ_10 = "ATZ-10"
-        BMD_1 = "BMD-1"
-        BMP_1 = "BMP-1"
-        BMP_2 = "BMP-2"
-        BRDM_2 = "BRDM-2"
-        Grad_URAL = "Grad-URAL"
-        UAZ_469 = "UAZ-469"
-        Ural_375 = "Ural-375"
-        Ural_375_PBU = "Ural-375 PBU"
-        IKARUS_Bus = "IKARUS Bus"
-        VAZ_Car = "VAZ Car"
-        KAMAZ_Truck = "KAMAZ Truck"
-        LAZ_Bus = "LAZ Bus"
-        SAU_Gvozdika = "SAU Gvozdika"
-        BTR_D = "BTR_D"
-        GAZ_3307 = "GAZ-3307"
-        GAZ_3308 = "GAZ-3308"
-        GAZ_66 = "GAZ-66"
-        ZIL_4331 = "ZIL-4331"
-        MAZ_6303 = "MAZ-6303"
-        SKP_11 = "SKP-11"
-        Ural_4320T = "Ural-4320T"
-        Ural_ATsP_6 = "Ural ATsP-6"
-        ZiL_131_APA_80 = "ZiL-131 APA-80"
-        ZIL_131_KUNG = "ZIL-131 KUNG"
-        Ural_4320_APA_5D = "Ural-4320 APA-5D"
-        ZU_23_Emplacement = "ZU-23 Emplacement"
-        ZU_23_Emplacement_Closed = "ZU-23 Emplacement Closed"
-        Ural_375_ZU_23 = "Ural-375 ZU-23"
-        _2S6_Tunguska = "2S6 Tunguska"
-        Strela_1_9P31 = "Strela-1 9P31"
-        MTLB = "MTLB"
-        T_72B = "T-72B"
-        SA_18_Igla_manpad = "SA-18 Igla manpad"
-        SA_18_Igla_comm = "SA-18 Igla comm"
-        T_55 = "T-55"
-        _2B11_mortar = "2B11 mortar"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Unarmed:
+            Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
+            Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
+            Transport_UAZ_469 = vehicles.Unarmed.Transport_UAZ_469
+            Transport_Ural_375 = vehicles.Unarmed.Transport_Ural_375
+            CP_Ural_375_PBU = vehicles.Unarmed.CP_Ural_375_PBU
+            Transport_IKARUS_280 = vehicles.Unarmed.Transport_IKARUS_280
+            Transport_VAZ_2109 = vehicles.Unarmed.Transport_VAZ_2109
+            Transport_KAMAZ_43101 = vehicles.Unarmed.Transport_KAMAZ_43101
+            Transport_LAZ_695 = vehicles.Unarmed.Transport_LAZ_695
+            Transport_GAZ_3307 = vehicles.Unarmed.Transport_GAZ_3307
+            Transport_GAZ_3308 = vehicles.Unarmed.Transport_GAZ_3308
+            Transport_GAZ_66 = vehicles.Unarmed.Transport_GAZ_66
+            Transport_ZIL_4331 = vehicles.Unarmed.Transport_ZIL_4331
+            Transport_MAZ_6303 = vehicles.Unarmed.Transport_MAZ_6303
+            CP_SKP_11_ATC_Mobile_Command_Post = vehicles.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
+            Transport_Ural_4320T = vehicles.Unarmed.Transport_Ural_4320T
+            Transport_fire_Engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_Engine_Ural_ATsP_6
+            GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
+            Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
+            GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
+
+
+        class Armor:
+            APC_BTR_80 = vehicles.Armor.APC_BTR_80
+            IFV_BMD_1 = vehicles.Armor.IFV_BMD_1
+            IFV_BMP_1 = vehicles.Armor.IFV_BMP_1
+            IFV_BMP_2 = vehicles.Armor.IFV_BMP_2
+            ARV_BRDM_2 = vehicles.Armor.ARV_BRDM_2
+            ARV_BTR_RD = vehicles.Armor.ARV_BTR_RD
+            APC_MTLB = vehicles.Armor.APC_MTLB
+            MBT_T_72B = vehicles.Armor.MBT_T_72B
+            MBT_T_55 = vehicles.Armor.MBT_T_55
+
+
+        class Artillery:
+            SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
+            SPH_2S9_Nona = vehicles.Artillery.SPH_2S9_Nona
+            MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
+            SPH_2S1_Gvozdika = vehicles.Artillery.SPH_2S1_Gvozdika
+            _2B11_mortar = vehicles.Artillery._2B11_mortar
+
+
+        class AirDefence:
+            SAM_SA_8_Osa_9A33 = vehicles.AirDefence.SAM_SA_8_Osa_9A33
+            SAM_SA_13_Strela_10M3_9A35M3 = vehicles.AirDefence.SAM_SA_13_Strela_10M3_9A35M3
+            SPAAA_ZSU_23_4_Shilka = vehicles.AirDefence.SPAAA_ZSU_23_4_Shilka
+            AAA_ZU_23_Emplacement = vehicles.AirDefence.AAA_ZU_23_Emplacement
+            AAA_ZU_23_Closed = vehicles.AirDefence.AAA_ZU_23_Closed
+            AAA_ZU_23_on_Ural_375 = vehicles.AirDefence.AAA_ZU_23_on_Ural_375
+            SAM_SA_19_Tunguska_2S6 = vehicles.AirDefence.SAM_SA_19_Tunguska_2S6
+            SAM_SA_9_Strela_1_9P31 = vehicles.AirDefence.SAM_SA_9_Strela_1_9P31
+            SAM_SA_18_Igla_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_MANPADS
+            SAM_SA_18_Igla_comm = vehicles.AirDefence.SAM_SA_18_Igla_comm
+
+    class Plane:
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+
+    planes = [
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+    ]
 
     class Helicopter:
         Mi_24V = "Mi-24V"
@@ -2039,30 +2807,45 @@ class Italy(Country):
     name = "Italy"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        M_113 = "M-113"
-        AAV7 = "AAV7"
-        Hawk_sr = "Hawk sr"
-        Hawk_cwar = "Hawk cwar"
-        Hawk_pcp = "Hawk pcp"
-        Hawk_tr = "Hawk tr"
-        Hawk_ln = "Hawk ln"
-        Hummer = "Hummer"
-        M_109 = "M-109"
-        MLRS = "MLRS"
-        Stinger_manpad = "Stinger manpad"
-        Stinger_comm = "Stinger comm"
-        M_818 = "M 818"
-        Leopard1A3 = "Leopard1A3"
-        M978_HEMTT_Tanker = "M978 HEMTT Tanker"
-        HEMTT_TFFT = "HEMTT TFFT"
-        _2B11_mortar = "2B11 mortar"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Unarmed:
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+            Tanker_M978_HEMTT = vehicles.Unarmed.Tanker_M978_HEMTT
+            HEMTT_TFFT = vehicles.Unarmed.HEMTT_TFFT
+
+
+        class Armor:
+            APC_M113 = vehicles.Armor.APC_M113
+            APC_AAV_7 = vehicles.Armor.APC_AAV_7
+            MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
+
+
+        class Artillery:
+            SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
+            MLRS_M270 = vehicles.Artillery.MLRS_M270
+            _2B11_mortar = vehicles.Artillery._2B11_mortar
+
+
+        class AirDefence:
+            SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
+            SAM_Hawk_CWAR_AN_MPQ_55 = vehicles.AirDefence.SAM_Hawk_CWAR_AN_MPQ_55
+            SAM_Hawk_PCP = vehicles.AirDefence.SAM_Hawk_PCP
+            SAM_Hawk_TR_AN_MPQ_46 = vehicles.AirDefence.SAM_Hawk_TR_AN_MPQ_46
+            SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
+            SAM_Stinger_MANPADS = vehicles.AirDefence.SAM_Stinger_MANPADS
+            SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
         A_10C = "A-10C"
@@ -2070,6 +2853,19 @@ class Italy(Country):
         F_16A_MLU = "F-16A MLU"
         P_51D = "P-51D"
         Tornado_IDS = "Tornado IDS"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
+        MQ_9_Reaper = "MQ-9 Reaper"
+        TF_51D = "TF-51D"
 
     planes = [
         Plane.A_10C,
@@ -2077,6 +2873,19 @@ class Italy(Country):
         Plane.F_16A_MLU,
         Plane.P_51D,
         Plane.Tornado_IDS,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
+        Plane.MQ_9_Reaper,
+        Plane.TF_51D,
     ]
 
     class Helicopter:
@@ -2102,30 +2911,63 @@ class Australia(Country):
     name = "Australia"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        M_1_Abrams = "M-1 Abrams"
-        Leopard1A3 = "Leopard1A3"
-        LAV_25 = "LAV-25"
-        Hummer = "Hummer"
-        M_113 = "M-113"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Unarmed:
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+
+
+        class Armor:
+            MBT_M1A2_Abrams = vehicles.Armor.MBT_M1A2_Abrams
+            MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
+            IFV_LAV_25 = vehicles.Armor.IFV_LAV_25
+            APC_M113 = vehicles.Armor.APC_M113
 
     class Plane:
         A_10C = "A-10C"
         C_130 = "C-130"
         P_51D = "P-51D"
         F_A_18C = "F/A-18C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
+        TF_51D = "TF-51D"
 
     planes = [
         Plane.A_10C,
         Plane.C_130,
         Plane.P_51D,
         Plane.F_A_18C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
+        Plane.TF_51D,
     ]
 
     class Helicopter:
@@ -2153,30 +2995,64 @@ class Switzerland(Country):
     name = "Switzerland"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        Leopard_2 = "Leopard-2"
-        M_109 = "M-109"
-        M_113 = "M-113"
-        Stinger_manpad = "Stinger manpad"
-        Stinger_comm = "Stinger comm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Armor:
+            MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
+            APC_M113 = vehicles.Armor.APC_M113
+
+
+        class Artillery:
+            SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
+
+
+        class AirDefence:
+            SAM_Stinger_MANPADS = vehicles.AirDefence.SAM_Stinger_MANPADS
+            SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
         A_10C = "A-10C"
         F_A_18C = "F/A-18C"
         F_5E = "F-5E"
         P_51D = "P-51D"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
         Plane.F_A_18C,
         Plane.F_5E,
         Plane.P_51D,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2198,19 +3074,44 @@ class Austria(Country):
     name = "Austria"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2232,19 +3133,44 @@ class Belarus(Country):
     name = "Belarus"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2266,21 +3192,46 @@ class Bulgaria(Country):
     name = "Bulgaria"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
         L_39ZA = "L-39ZA"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
         Plane.L_39ZA,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2302,21 +3253,46 @@ class CzechRepublic(Country):
     name = "Czech Republic"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
         L_39ZA = "L-39ZA"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
         Plane.L_39ZA,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2338,20 +3314,26 @@ class China(Country):
     name = "China"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        Tor_9A331 = "Tor 9A331"
-        S_300PS_40B6M_tr = "S-300PS 40B6M tr"
-        S_300PS_40B6MD_sr = "S-300PS 40B6MD sr"
-        S_300PS_64H6E_sr = "S-300PS 64H6E sr"
-        S_300PS_5P85C_ln = "S-300PS 5P85C ln"
-        S_300PS_5P85D_ln = "S-300PS 5P85D ln"
-        S_300PS_54K6_cp = "S-300PS 54K6 cp"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class AirDefence:
+            SAM_SA_15_Tor_9A331 = vehicles.AirDefence.SAM_SA_15_Tor_9A331
+            SAM_SA_10_S_300PS_TR_30N6 = vehicles.AirDefence.SAM_SA_10_S_300PS_TR_30N6
+            SAM_SA_10_S_300PS_SR_5N66M = vehicles.AirDefence.SAM_SA_10_S_300PS_SR_5N66M
+            SAM_SA_10_S_300PS_SR_64H6E = vehicles.AirDefence.SAM_SA_10_S_300PS_SR_64H6E
+            SAM_SA_10_S_300PS_LN_5P85C = vehicles.AirDefence.SAM_SA_10_S_300PS_LN_5P85C
+            SAM_SA_10_S_300PS_LN_5P85D = vehicles.AirDefence.SAM_SA_10_S_300PS_LN_5P85D
+            SAM_SA_10_S_300PS_CP_54K6 = vehicles.AirDefence.SAM_SA_10_S_300PS_CP_54K6
 
     class Plane:
         A_10C = "A-10C"
@@ -2360,6 +3342,17 @@ class China(Country):
         IL_78M = "IL-78M"
         An_26B = "An-26B"
         An_30M = "An-30M"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
@@ -2368,6 +3361,17 @@ class China(Country):
         Plane.IL_78M,
         Plane.An_26B,
         Plane.An_30M,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2395,19 +3399,44 @@ class Croatia(Country):
     name = "Croatia"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2429,19 +3458,44 @@ class Egypt(Country):
     name = "Egypt"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2463,19 +3517,44 @@ class Finland(Country):
     name = "Finland"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2497,46 +3576,64 @@ class Greece(Country):
     name = "Greece"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
-        M_109 = "M-109"
-        BMP_1 = "BMP-1"
-        M_113 = "M-113"
-        M1043_HMMWV_Armament = "M1043 HMMWV Armament"
-        M1045_HMMWV_TOW = "M1045 HMMWV TOW"
-        Soldier_M4 = "Soldier M4"
-        Soldier_M249 = "Soldier M249"
-        MLRS = "MLRS"
-        Leopard1A3 = "Leopard1A3"
-        Leopard_2 = "Leopard-2"
-        Hummer = "Hummer"
-        M_818 = "M 818"
-        Osa_9A33_ln = "Osa 9A33 ln"
-        Tor_9A331 = "Tor 9A331"
-        Stinger_manpad_dsr = "Stinger manpad dsr"
-        Stinger_comm = "Stinger comm"
-        ZU_23_Emplacement_Closed = "ZU-23 Emplacement Closed"
-        ZU_23_Emplacement = "ZU-23 Emplacement"
-        Patriot_AMG = "Patriot AMG"
-        Patriot_ECS = "Patriot ECS"
-        Patriot_ln = "Patriot ln"
-        Patriot_EPP = "Patriot EPP"
-        Patriot_cp = "Patriot cp"
-        Patriot_str = "Patriot str"
-        Hawk_tr = "Hawk tr"
-        Hawk_sr = "Hawk sr"
-        Hawk_ln = "Hawk ln"
-        S_300PS_40B6M_tr = "S-300PS 40B6M tr"
-        S_300PS_40B6MD_sr = "S-300PS 40B6MD sr"
-        S_300PS_64H6E_sr = "S-300PS 64H6E sr"
-        S_300PS_5P85C_ln = "S-300PS 5P85C ln"
-        S_300PS_5P85D_ln = "S-300PS 5P85D ln"
-        S_300PS_54K6_cp = "S-300PS 54K6 cp"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+
+        class Infantry:
+            Infantry_M4 = vehicles.Infantry.Infantry_M4
+            Soldier_M249 = vehicles.Infantry.Soldier_M249
+
+
+        class Unarmed:
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+
+
+        class Armor:
+            IFV_BMP_1 = vehicles.Armor.IFV_BMP_1
+            APC_M113 = vehicles.Armor.APC_M113
+            APC_M1043_HMMWV_Armament = vehicles.Armor.APC_M1043_HMMWV_Armament
+            ATGM_M1045_HMMWV_TOW = vehicles.Armor.ATGM_M1045_HMMWV_TOW
+            MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
+            MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
+
+
+        class Artillery:
+            SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
+            MLRS_M270 = vehicles.Artillery.MLRS_M270
+
+
+        class AirDefence:
+            SAM_SA_8_Osa_9A33 = vehicles.AirDefence.SAM_SA_8_Osa_9A33
+            SAM_SA_15_Tor_9A331 = vehicles.AirDefence.SAM_SA_15_Tor_9A331
+            SAM_Stinger_MANPADS_dsr = vehicles.AirDefence.SAM_Stinger_MANPADS_dsr
+            SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
+            AAA_ZU_23_Closed = vehicles.AirDefence.AAA_ZU_23_Closed
+            AAA_ZU_23_Emplacement = vehicles.AirDefence.AAA_ZU_23_Emplacement
+            SAM_Patriot_AMG_AN_MRC_137 = vehicles.AirDefence.SAM_Patriot_AMG_AN_MRC_137
+            SAM_Patriot_ECS_AN_MSQ_104 = vehicles.AirDefence.SAM_Patriot_ECS_AN_MSQ_104
+            SAM_Patriot_LN_M901 = vehicles.AirDefence.SAM_Patriot_LN_M901
+            SAM_Patriot_EPP_III = vehicles.AirDefence.SAM_Patriot_EPP_III
+            SAM_Patriot_ICC = vehicles.AirDefence.SAM_Patriot_ICC
+            SAM_Patriot_STR_AN_MPQ_53 = vehicles.AirDefence.SAM_Patriot_STR_AN_MPQ_53
+            SAM_Hawk_TR_AN_MPQ_46 = vehicles.AirDefence.SAM_Hawk_TR_AN_MPQ_46
+            SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
+            SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
+            SAM_SA_10_S_300PS_TR_30N6 = vehicles.AirDefence.SAM_SA_10_S_300PS_TR_30N6
+            SAM_SA_10_S_300PS_SR_5N66M = vehicles.AirDefence.SAM_SA_10_S_300PS_SR_5N66M
+            SAM_SA_10_S_300PS_SR_64H6E = vehicles.AirDefence.SAM_SA_10_S_300PS_SR_64H6E
+            SAM_SA_10_S_300PS_LN_5P85C = vehicles.AirDefence.SAM_SA_10_S_300PS_LN_5P85C
+            SAM_SA_10_S_300PS_LN_5P85D = vehicles.AirDefence.SAM_SA_10_S_300PS_LN_5P85D
+            SAM_SA_10_S_300PS_CP_54K6 = vehicles.AirDefence.SAM_SA_10_S_300PS_CP_54K6
 
     class Plane:
         A_10C = "A-10C"
@@ -2556,6 +3653,17 @@ class Greece(Country):
         Su_25 = "Su-25"
         P_51D = "P-51D"
         A_10A = "A-10A"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
@@ -2575,6 +3683,17 @@ class Greece(Country):
         Plane.Su_25,
         Plane.P_51D,
         Plane.A_10A,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2608,21 +3727,46 @@ class Hungary(Country):
     name = "Hungary"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
         L_39ZA = "L-39ZA"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
         Plane.L_39ZA,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2644,19 +3788,44 @@ class India(Country):
     name = "India"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2678,19 +3847,44 @@ class Iran(Country):
     name = "Iran"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2712,19 +3906,44 @@ class Iraq(Country):
     name = "Iraq"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2746,19 +3965,44 @@ class Japan(Country):
     name = "Japan"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2780,19 +4024,44 @@ class Kazakhstan(Country):
     name = "Kazakhstan"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2814,19 +4083,44 @@ class NorthKorea(Country):
     name = "North Korea"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2848,19 +4142,44 @@ class Pakistan(Country):
     name = "Pakistan"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2882,19 +4201,44 @@ class Poland(Country):
     name = "Poland"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2916,19 +4260,44 @@ class Romania(Country):
     name = "Romania"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2950,19 +4319,44 @@ class SaudiArabia(Country):
     name = "Saudi Arabia"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -2984,19 +4378,44 @@ class Serbia(Country):
     name = "Serbia"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -3018,21 +4437,46 @@ class Slovakia(Country):
     name = "Slovakia"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
         L_39ZA = "L-39ZA"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
         Plane.L_39ZA,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -3054,19 +4498,44 @@ class SouthKorea(Country):
     name = "South Korea"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -3088,19 +4557,44 @@ class Sweden(Country):
     name = "Sweden"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
@@ -3122,21 +4616,46 @@ class Syria(Country):
     name = "Syria"
 
     class Vehicle:
-        Bunker = "Bunker"
-        Sandbox = "Sandbox"
-        house1arm = "house1arm"
-        house2arm = "house2arm"
-        outpost_road = "outpost_road"
-        outpost = "outpost"
-        houseA_arm = "houseA_arm"
+
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
         A_10C = "A-10C"
         L_39ZA = "L-39ZA"
+        Bf_109K_4 = "Bf-109K-4"
+        C_101EB = "C-101EB"
+        C_101CC = "C-101CC"
+        F_5E = "F-5E"
+        F_5E_3 = "F-5E-3"
+        F_86F_Sabre = "F-86F Sabre"
+        Hawk = "Hawk"
+        L_39C = "L-39C"
+        M_2000C = "M-2000C"
+        MiG_15bis = "MiG-15bis"
+        MiG_21Bis = "MiG-21Bis"
 
     planes = [
         Plane.A_10C,
         Plane.L_39ZA,
+        Plane.Bf_109K_4,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
