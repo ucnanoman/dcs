@@ -22,6 +22,7 @@ from . import planes
 from . import helicopters
 from . import task
 from . import weather
+from .groundcontrol import GroundControl
 
 
 class Options:
@@ -282,7 +283,7 @@ class Mission:
         self.failures = {}
         self.trig = {}
         self.result = Result()
-        self.groundControl = {}
+        self.groundControl = GroundControl()
         self.forcedOptions = {}
         self.resourceCounter = {}  # keep default or empty, old format
         self.needModules = {}
@@ -532,7 +533,8 @@ class Mission:
         self.needModules = imp_mission["needModules"]
 
         # groundControl
-        self.groundControl = imp_mission.get("groundControl")  # TODO
+        self.groundControl = GroundControl()
+        self.groundControl.load_from_dict(imp_mission.get("groundControl"))
 
         # result
         self.result = Result()
@@ -1189,8 +1191,7 @@ class Mission:
             "trig": self.trig,
             "result": self.result.dict()
         }
-        if self.groundControl:
-            m["groundControl"] = self.groundControl
+        m["groundControl"] = self.groundControl.dict()
         m["usedModules"] = self.usedModules
         m["resourceCounter"] = self.resourceCounter
         m["triggers"] = self.triggers.dict()
