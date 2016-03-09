@@ -76,7 +76,7 @@ class Rectangle:
     def width(self):
         return self.right - self.left
 
-    def center(self):
+    def center(self) -> Tuple[float, float]:
         return self.bottom + (self.height() / 2), self.left + (self.width() / 2)
 
     def random_int_point(self) -> (float, float):
