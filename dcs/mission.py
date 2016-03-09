@@ -636,7 +636,8 @@ class Mission:
             v.heading = heading
             vg.add_unit(v)
 
-        vg.add_waypoint(vg.units[0].x, vg.units[0].y, action, 0)
+        wp = vg.add_waypoint(vg.units[0].x, vg.units[0].y, action, 0)
+        wp.ETA_locked = True
 
         vg.formation(formation)
 
@@ -655,7 +656,8 @@ class Mission:
             v.heading = heading
             vg.add_unit(v)
 
-        vg.add_waypoint(vg.units[0].x, vg.units[0].y, action, 0)
+        wp = vg.add_waypoint(vg.units[0].x, vg.units[0].y, action, 0)
+        wp.ETA_locked = True
 
         vg.formation(formation)
 
@@ -675,7 +677,8 @@ class Mission:
             v.heading = heading
             sg.add_unit(v)
 
-        sg.add_waypoint(x, y, 20)
+        wp = sg.add_waypoint(x, y, 20)
+        wp.ETA_locked = True
 
         _country.add_ship_group(sg)
         return sg
