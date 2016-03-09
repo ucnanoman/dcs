@@ -681,6 +681,9 @@ class Caucasus(Terrain):
         kobuleti.parking_slots[84] = ParkingSlot(84, -318163.5625, 635790.625, large=True, slot_name="18", heli=False)
         kobuleti.parking_slots[85] = ParkingSlot(85, -317659.59375, 635647.0625, large=False, slot_name="35", heli=False)
         kobuleti.parking_slots[86] = ParkingSlot(86, -318184.09375, 635734.25, large=True, slot_name="17", heli=False)
+        kobuleti.unit_zones.append(mapping.Rectangle(-320584.85714285, 636121.14285715, -319184.85714285, 637521.14285715))
+        kobuleti.unit_zones.append(mapping.Rectangle(-317553.42857142, 634509.71428572, -317053.42857142, 635009.71428572))
+        kobuleti.unit_zones.append(mapping.Rectangle(-318276.28571428, 634158.28571429, -317776.28571428, 634658.28571429))
         self.airports[kobuleti.name] = kobuleti
 
         kutaisi = Airport(25, "Kutaisi", 134.0, -284889.06283057, 683853.75717885, None)
