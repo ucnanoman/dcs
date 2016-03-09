@@ -12,13 +12,13 @@ from typing import List, Dict, Tuple
 
 class USPlatoon:
     units = [
-        dcs.countries.USA.Vehicle.Armor.APC_M1043_HMMWV_Armament.id,
-        dcs.countries.USA.Vehicle.Armor.APC_M1043_HMMWV_Armament.id,
-        dcs.countries.USA.Vehicle.Armor.APC_M1126_Stryker_ICV.id,
-        dcs.countries.USA.Vehicle.AirDefence.AAA_Vulcan_M163.id
+        dcs.countries.USA.Vehicle.Armor.APC_M1043_HMMWV_Armament,
+        dcs.countries.USA.Vehicle.Armor.APC_M1043_HMMWV_Armament,
+        dcs.countries.USA.Vehicle.Armor.APC_M1126_Stryker_ICV,
+        dcs.countries.USA.Vehicle.AirDefence.AAA_Vulcan_M163
     ]
     maybe = [
-        dcs.countries.USA.Vehicle.AirDefence.SAM_Avenger_M1097.id
+        dcs.countries.USA.Vehicle.AirDefence.SAM_Avenger_M1097
     ]
 
 
@@ -364,9 +364,9 @@ class Scenario(BasicScenario):
         ]
 
         self.red_ground = {
-            dcs.countries.Russia.Vehicle.T_80UD: 8,
-            dcs.countries.Russia.Vehicle.BMP_3: 10,
-            dcs.countries.Russia.Vehicle.Strela_1_9P31: 6
+            dcs.countries.Russia.Vehicle.Armor.MBT_T_80U: 8,
+            dcs.countries.Russia.Vehicle.Armor.IFV_BMP_3: 10,
+            dcs.countries.Russia.Vehicle.AirDefence.SAM_SA_9_Strela_1_9P31: 6
         }
 
         self.blue_ground = [
@@ -381,7 +381,7 @@ class Scenario(BasicScenario):
         self.blue_targets = []  # list[dcs.group.VehicleGroup]
 
         caucasus = self.m.terrain  # type: dcs.terrain.Caucasus
-        ukraine = self.m.coalition["red"].swap_country(self.m.coalition["blue"], dcs.countries.Ukraine.name)
+        ukraine = self.m.country(dcs.countries.Ukraine.name)
 
         nalchik = self.m.terrain.nalchik()
         beslan = self.m.terrain.beslan()
