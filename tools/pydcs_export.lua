@@ -142,9 +142,16 @@ from .flyingtype import FlyingType
         if plane.singleInFlight then
             writeln(file, '    group_size_max = 1')
         end
-        if plane.WingSpan ~= Nil and tonumber(plane.WingSpan) > 20 then
+        if plane.bigParkingRamp then
             writeln(file, '    large_parking_slot = True')
         end
+        writeln(file, '    height = '..plane.height)
+        if exportplane then
+            writeln(file, '    width = '..plane.wing_span or plane.rotor_diameter)
+        else
+            writeln(file, '    width = '..plane.rotor_diameter)
+        end
+        writeln(file, '    length = '..plane.length)
         writeln(file, '    fuel_max = '..plane.MaxFuelWeight)
         writeln(file, '    max_speed = '..plane.MaxSpeed)
         --writeln(file, '    ammo_type = '..plane.MaxFuelWeight)

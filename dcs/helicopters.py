@@ -12,6 +12,9 @@ class HelicopterType(FlyingType):
 class Ka_50(HelicopterType):
     id = "Ka-50"
     flyable = True
+    height = 5.6
+    width = 14.4
+    length = 15.84
     fuel_max = 1450
     max_speed = 300
     chaff = 0
@@ -122,6 +125,9 @@ class Ka_50(HelicopterType):
 
 class Ka_52(HelicopterType):
     id = "Ka-52"
+    height = 5.6
+    width = 14.4
+    length = 15.84
     fuel_max = 1500
     max_speed = 300
     chaff = 0
@@ -184,6 +190,9 @@ class Ka_52(HelicopterType):
 
 class Mi_24V(HelicopterType):
     id = "Mi-24V"
+    height = 4.354
+    width = 17.3
+    length = 20.953
     fuel_max = 1704
     max_speed = 320
     chaff = 0
@@ -265,6 +274,10 @@ class Mi_24V(HelicopterType):
 class Mi_8MT(HelicopterType):
     id = "Mi-8MT"
     flyable = True
+    large_parking_slot = True
+    height = 4.908
+    width = 21.33
+    length = 25.942
     fuel_max = 1929
     max_speed = 250
     chaff = 0
@@ -387,6 +400,10 @@ class Mi_8MT(HelicopterType):
 class Mi_26(HelicopterType):
     id = "Mi-26"
     group_size_max = 1
+    large_parking_slot = True
+    height = 12.9
+    width = 32
+    length = 40.854
     fuel_max = 9600
     max_speed = 300
     chaff = 0
@@ -403,6 +420,9 @@ class Mi_26(HelicopterType):
 
 class Ka_27(HelicopterType):
     id = "Ka-27"
+    height = 5.2
+    width = 15.9
+    length = 15.92
     fuel_max = 2616
     max_speed = 290
 
@@ -414,6 +434,9 @@ class Ka_27(HelicopterType):
 
 class UH_60A(HelicopterType):
     id = "UH-60A"
+    height = 4.893
+    width = 16.4
+    length = 18.654
     fuel_max = 1100
     max_speed = 300
     chaff = 30
@@ -430,6 +453,10 @@ class UH_60A(HelicopterType):
 
 class CH_53E(HelicopterType):
     id = "CH-53E"
+    large_parking_slot = True
+    height = 7.83
+    width = 24.08
+    length = 30.18
     fuel_max = 1908
     max_speed = 310
     chaff = 60
@@ -446,6 +473,10 @@ class CH_53E(HelicopterType):
 
 class CH_47D(HelicopterType):
     id = "CH-47D"
+    large_parking_slot = True
+    height = 5.998
+    width = 18.3
+    length = 28.3
     fuel_max = 3600
     max_speed = 300
     chaff = 120
@@ -462,6 +493,10 @@ class CH_47D(HelicopterType):
 
 class SH_3W(HelicopterType):
     id = "SH-3W"
+    large_parking_slot = True
+    height = 6.807
+    width = 18.91
+    length = 30.207
     fuel_max = 2132
     max_speed = 270
     chaff = 30
@@ -478,6 +513,9 @@ class SH_3W(HelicopterType):
 
 class AH_64A(HelicopterType):
     id = "AH-64A"
+    height = 4.15
+    width = 14.63
+    length = 17.87
     fuel_max = 1157
     max_speed = 300
     chaff = 30
@@ -516,6 +554,9 @@ class AH_64A(HelicopterType):
 
 class AH_64D(HelicopterType):
     id = "AH-64D"
+    height = 4.15
+    width = 14.63
+    length = 17.87
     fuel_max = 1157
     max_speed = 280
     chaff = 30
@@ -554,6 +595,9 @@ class AH_64D(HelicopterType):
 
 class AH_1W(HelicopterType):
     id = "AH-1W"
+    height = 3.9
+    width = 14.64
+    length = 17.27
     fuel_max = 1250.0
     max_speed = 290
     chaff = 30
@@ -594,6 +638,9 @@ class AH_1W(HelicopterType):
 
 class SH_60B(HelicopterType):
     id = "SH-60B"
+    height = 4.893
+    width = 16.4
+    length = 18.654
     fuel_max = 1100
     max_speed = 240
     chaff = 30
@@ -614,6 +661,9 @@ class SH_60B(HelicopterType):
 class UH_1H(HelicopterType):
     id = "UH-1H"
     flyable = True
+    height = 4.41
+    width = 14.7
+    length = 17.62
     fuel_max = 631
     max_speed = 200
     chaff = 0
@@ -692,6 +742,9 @@ class UH_1H(HelicopterType):
 
 class Mi_28N(HelicopterType):
     id = "Mi-28N"
+    height = 5.087
+    width = 17.2
+    length = 17.87
     fuel_max = 1500
     max_speed = 305
     chaff = 0
@@ -766,6 +819,9 @@ class Mi_28N(HelicopterType):
 
 class OH_58D(HelicopterType):
     id = "OH-58D"
+    height = 2.29
+    width = 10.53
+    length = 10.48
     fuel_max = 1100
     max_speed = 220
     chaff = 30

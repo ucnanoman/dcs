@@ -11,6 +11,9 @@ class PlaneType(FlyingType):
 
 class Tornado_GR4(PlaneType):
     id = "Tornado GR4"
+    height = 5.7
+    width = 13.91
+    length = 16.7
     fuel_max = 4663
     max_speed = 2340
     chaff = 90
@@ -76,6 +79,9 @@ class Tornado_GR4(PlaneType):
 
 class Tornado_IDS(PlaneType):
     id = "Tornado IDS"
+    height = 5.7
+    width = 13.91
+    length = 16.7
     fuel_max = 4663
     max_speed = 2340
     chaff = 90
@@ -140,6 +146,9 @@ class Tornado_IDS(PlaneType):
 
 class F_A_18A(PlaneType):
     id = "F/A-18A"
+    height = 4.66
+    width = 11.43
+    length = 17.07
     fuel_max = 6531
     max_speed = 1920
     chaff = 30
@@ -226,6 +235,9 @@ class F_A_18A(PlaneType):
 
 class F_A_18C(PlaneType):
     id = "F/A-18C"
+    height = 4.66
+    width = 11.43
+    length = 17.07
     fuel_max = 6531
     max_speed = 1920
     chaff = 30
@@ -403,6 +415,9 @@ class F_A_18C(PlaneType):
 class MiG_29S(PlaneType):
     id = "MiG-29S"
     flyable = True
+    height = 4.73
+    width = 11.36
+    length = 20.32
     fuel_max = 3500
     max_speed = 2450
     chaff = 30
@@ -559,6 +574,9 @@ class MiG_29S(PlaneType):
 class MiG_29A(PlaneType):
     id = "MiG-29A"
     flyable = True
+    height = 4.73
+    width = 11.36
+    length = 20.32
     fuel_max = 3380
     max_speed = 2450
     chaff = 30
@@ -708,6 +726,10 @@ class MiG_29A(PlaneType):
 
 class F_14A(PlaneType):
     id = "F-14A"
+    large_parking_slot = True
+    height = 4.88
+    width = 19.54
+    length = 19.1
     fuel_max = 7348
     max_speed = 2490
     chaff = 30
@@ -769,6 +791,9 @@ class Tu_22M3(PlaneType):
     id = "Tu-22M3"
     group_size_max = 1
     large_parking_slot = True
+    height = 11.05
+    width = 34.28
+    length = 46.12
     fuel_max = 50000
     max_speed = 2300
     chaff = 48
@@ -804,6 +829,9 @@ class Tu_22M3(PlaneType):
 
 class F_4E(PlaneType):
     id = "F-4E"
+    height = 5
+    width = 11.68
+    length = 19.2
     fuel_max = 4864
     max_speed = 2370
     chaff = 60
@@ -894,6 +922,9 @@ class B_52H(PlaneType):
     id = "B-52H"
     group_size_max = 1
     large_parking_slot = True
+    height = 12.4
+    width = 56.4
+    length = 49.05
     fuel_max = 141135
     max_speed = 1000
     chaff = 1125
@@ -929,6 +960,9 @@ class B_52H(PlaneType):
 
 class MiG_27K(PlaneType):
     id = "MiG-27K"
+    height = 5.64
+    width = 14
+    length = 16.7
     fuel_max = 4500
     max_speed = 1810
     chaff = 60
@@ -1006,6 +1040,10 @@ class MiG_27K(PlaneType):
 
 class F_111F(PlaneType):
     id = "F-111F"
+    large_parking_slot = True
+    height = 5.22
+    width = 19.2
+    length = 22.4
     fuel_max = 15500
     max_speed = 2221.2
     chaff = 90
@@ -1080,6 +1118,9 @@ class F_111F(PlaneType):
 class A_10A(PlaneType):
     id = "A-10A"
     flyable = True
+    height = 4.47
+    width = 17.53
+    length = 16.26
     fuel_max = 5029
     max_speed = 840
     chaff = 240
@@ -1368,6 +1409,9 @@ class A_10A(PlaneType):
 class Su_27(PlaneType):
     id = "Su-27"
     flyable = True
+    height = 5.932
+    width = 14.7
+    length = 21.935
     fuel_max = 9400
     max_speed = 2500
     chaff = 96
@@ -1558,6 +1602,9 @@ class Su_27(PlaneType):
 
 class MiG_29G(PlaneType):
     id = "MiG-29G"
+    height = 4.73
+    width = 11.36
+    length = 20.32
     fuel_max = 3380
     max_speed = 2450
     chaff = 30
@@ -1627,6 +1674,9 @@ class MiG_29G(PlaneType):
 
 class MiG_23MLD(PlaneType):
     id = "MiG-23MLD"
+    height = 5.772
+    width = 14
+    length = 15.7
     fuel_max = 3800
     max_speed = 2500
     chaff = 60
@@ -1706,6 +1756,9 @@ class MiG_23MLD(PlaneType):
 class Su_25(PlaneType):
     id = "Su-25"
     flyable = True
+    height = 4.8
+    width = 14.35
+    length = 15.36
     fuel_max = 2835
     max_speed = 980
     chaff = 128
@@ -1932,6 +1985,9 @@ class Su_25(PlaneType):
 
 class Su_25TM(PlaneType):
     id = "Su-25TM"
+    height = 5.2
+    width = 14.36
+    length = 15.35
     fuel_max = 3790
     max_speed = 950
     chaff = 128
@@ -2186,6 +2242,9 @@ class Su_25TM(PlaneType):
 class Su_25T(PlaneType):
     id = "Su-25T"
     flyable = True
+    height = 5.2
+    width = 14.36
+    length = 15.35
     fuel_max = 3790
     max_speed = 950
     chaff = 128
@@ -2432,6 +2491,9 @@ class Su_25T(PlaneType):
 class Su_33(PlaneType):
     id = "Su-33"
     flyable = True
+    height = 5.72
+    width = 14.7
+    length = 21.18
     fuel_max = 9400
     max_speed = 2300
     chaff = 48
@@ -2652,6 +2714,9 @@ class Su_33(PlaneType):
 
 class MiG_25PD(PlaneType):
     id = "MiG-25PD"
+    height = 6.1
+    width = 14
+    length = 23.82
     fuel_max = 15245
     max_speed = 3000
     chaff = 64
@@ -2687,6 +2752,9 @@ class MiG_25PD(PlaneType):
 
 class MiG_25RBT(PlaneType):
     id = "MiG-25RBT"
+    height = 6.1
+    width = 14
+    length = 23.82
     fuel_max = 15245
     max_speed = 3000
 
@@ -2748,6 +2816,9 @@ class MiG_25RBT(PlaneType):
 
 class Su_30(PlaneType):
     id = "Su-30"
+    height = 6.36
+    width = 14.7
+    length = 21.9
     fuel_max = 9400
     max_speed = 2200
     chaff = 96
@@ -2920,6 +2991,9 @@ class Su_30(PlaneType):
 
 class Su_34(PlaneType):
     id = "Su-34"
+    height = 6
+    width = 14.7
+    length = 23.3
     fuel_max = 9800
     max_speed = 1900
     chaff = 64
@@ -3164,6 +3238,9 @@ class Su_34(PlaneType):
 
 class Su_17M4(PlaneType):
     id = "Su-17M4"
+    height = 5.129
+    width = 13.68
+    length = 19.26
     fuel_max = 3770
     max_speed = 1860
     chaff = 64
@@ -3340,6 +3417,9 @@ class Su_17M4(PlaneType):
 
 class MiG_31(PlaneType):
     id = "MiG-31"
+    height = 6.15
+    width = 13.46
+    length = 22.7
     fuel_max = 15500
     max_speed = 3000
     category = "Interceptor"
@@ -3376,6 +3456,9 @@ class Tu_95MS(PlaneType):
     id = "Tu-95MS"
     group_size_max = 1
     large_parking_slot = True
+    height = 13.3
+    width = 50.04
+    length = 49.13
     fuel_max = 87000
     max_speed = 830
     chaff = 48
@@ -3395,6 +3478,9 @@ class Tu_95MS(PlaneType):
 
 class Su_24M(PlaneType):
     id = "Su-24M"
+    height = 4.97
+    width = 17.64
+    length = 24.53
     fuel_max = 11700
     max_speed = 1700
     chaff = 96
@@ -3551,6 +3637,9 @@ class Su_24M(PlaneType):
 
 class Su_24MR(PlaneType):
     id = "Su-24MR"
+    height = 4.97
+    width = 17.64
+    length = 24.53
     fuel_max = 11700
     max_speed = 1700
     chaff = 96
@@ -3586,6 +3675,9 @@ class Tu_160(PlaneType):
     id = "Tu-160"
     group_size_max = 1
     large_parking_slot = True
+    height = 13.25
+    width = 55.7
+    length = 54.1
     fuel_max = 157000
     max_speed = 2200
     chaff = 72
@@ -3608,6 +3700,9 @@ class Tu_160(PlaneType):
 
 class F_117A(PlaneType):
     id = "F-117A"
+    height = 3.78
+    width = 13.2
+    length = 20.08
     fuel_max = 3840
     max_speed = 1000
 
@@ -3631,6 +3726,9 @@ class B_1B(PlaneType):
     id = "B-1B"
     group_size_max = 1
     large_parking_slot = True
+    height = 10.36
+    width = 41.67
+    length = 44.81
     fuel_max = 88450
     max_speed = 1530
     chaff = 60
@@ -3680,6 +3778,9 @@ class S_3B(PlaneType):
     id = "S-3B"
     group_size_max = 1
     large_parking_slot = True
+    height = 6.93
+    width = 20.93
+    length = 16.26
     fuel_max = 5500
     max_speed = 840
     chaff = 30
@@ -3747,6 +3848,9 @@ class S_3B_Tanker(PlaneType):
     id = "S-3B Tanker"
     group_size_max = 1
     large_parking_slot = True
+    height = 6.93
+    width = 20.93
+    length = 16.26
     fuel_max = 5500
     max_speed = 840
     chaff = 30
@@ -3764,6 +3868,9 @@ class S_3B_Tanker(PlaneType):
 
 class Mirage_2000_5(PlaneType):
     id = "Mirage 2000-5"
+    height = 5.2
+    width = 9.13
+    length = 14.36
     fuel_max = 3160
     max_speed = 2340
     chaff = 112
@@ -3819,6 +3926,9 @@ class Mirage_2000_5(PlaneType):
 class F_15C(PlaneType):
     id = "F-15C"
     flyable = True
+    height = 5.63
+    width = 13.05
+    length = 19.43
     fuel_max = 6103
     max_speed = 2650
     chaff = 120
@@ -3904,6 +4014,9 @@ class F_15C(PlaneType):
 
 class F_15E(PlaneType):
     id = "F-15E"
+    height = 5.63
+    width = 13.05
+    length = 19.43
     fuel_max = 10246
     max_speed = 2650
     chaff = 120
@@ -4158,6 +4271,9 @@ class F_15E(PlaneType):
 
 class MiG_29K(PlaneType):
     id = "MiG-29K"
+    height = 5.175
+    width = 11.99
+    length = 20.37
     fuel_max = 4500
     max_speed = 2300
     chaff = 30
@@ -4181,6 +4297,9 @@ class Tu_142(PlaneType):
     id = "Tu-142"
     group_size_max = 1
     large_parking_slot = True
+    height = 13.3
+    width = 50.04
+    length = 49.13
     fuel_max = 87000
     max_speed = 860
     chaff = 48
@@ -4202,6 +4321,9 @@ class C_130(PlaneType):
     id = "C-130"
     group_size_max = 1
     large_parking_slot = True
+    height = 11.66
+    width = 40.4
+    length = 29.79
     fuel_max = 20830
     max_speed = 610
     chaff = 120
@@ -4220,6 +4342,9 @@ class An_26B(PlaneType):
     id = "An-26B"
     group_size_max = 1
     large_parking_slot = True
+    height = 8.575
+    width = 29.2
+    length = 23.8
     fuel_max = 5500
     max_speed = 540
     chaff = 384
@@ -4238,6 +4363,9 @@ class An_30M(PlaneType):
     id = "An-30M"
     group_size_max = 1
     large_parking_slot = True
+    height = 8.575
+    width = 29.2
+    length = 23.8
     fuel_max = 8300
     max_speed = 540
     chaff = 192
@@ -4256,6 +4384,9 @@ class C_17A(PlaneType):
     id = "C-17A"
     group_size_max = 1
     large_parking_slot = True
+    height = 16.79
+    width = 51.76
+    length = 53.04
     fuel_max = 132405
     max_speed = 850
     chaff = 120
@@ -4274,6 +4405,9 @@ class A_50(PlaneType):
     id = "A-50"
     group_size_max = 1
     large_parking_slot = True
+    height = 14.76
+    width = 50.5
+    length = 46.59
     fuel_max = 70000
     max_speed = 850
     chaff = 192
@@ -4293,6 +4427,9 @@ class E_3A(PlaneType):
     id = "E-3A"
     group_size_max = 1
     large_parking_slot = True
+    height = 12.93
+    width = 44.4
+    length = 46.61
     fuel_max = 65000
     max_speed = 860
     chaff = 120
@@ -4312,6 +4449,9 @@ class IL_78M(PlaneType):
     id = "IL-78M"
     group_size_max = 1
     large_parking_slot = True
+    height = 14.76
+    width = 50.5
+    length = 46.59
     fuel_max = 90000
     max_speed = 850
     chaff = 96
@@ -4331,6 +4471,9 @@ class E_2C(PlaneType):
     id = "E-2C"
     group_size_max = 1
     large_parking_slot = True
+    height = 5.59
+    width = 24.56
+    length = 17.55
     fuel_max = 5624
     max_speed = 610
     chaff = 120
@@ -4350,6 +4493,9 @@ class IL_76MD(PlaneType):
     id = "IL-76MD"
     group_size_max = 1
     large_parking_slot = True
+    height = 14.76
+    width = 50.5
+    length = 46.59
     fuel_max = 80000
     max_speed = 850
     chaff = 96
@@ -4366,6 +4512,9 @@ class IL_76MD(PlaneType):
 
 class F_16C_bl_50(PlaneType):
     id = "F-16C bl.50"
+    height = 5.02
+    width = 9.45
+    length = 14.52
     fuel_max = 3104
     max_speed = 2150
     chaff = 90
@@ -4530,6 +4679,9 @@ class F_16C_bl_50(PlaneType):
 
 class F_16C_bl_52d(PlaneType):
     id = "F-16C bl.52d"
+    height = 5.02
+    width = 9.45
+    length = 14.52
     fuel_max = 3104
     max_speed = 2150
     chaff = 90
@@ -4693,6 +4845,9 @@ class F_16C_bl_52d(PlaneType):
 
 class F_16A(PlaneType):
     id = "F-16A"
+    height = 5.02
+    width = 9.45
+    length = 14.52
     fuel_max = 3104
     max_speed = 2150
     chaff = 60
@@ -4793,6 +4948,9 @@ class F_16A(PlaneType):
 
 class F_16A_MLU(PlaneType):
     id = "F-16A MLU"
+    height = 5.02
+    width = 9.45
+    length = 14.52
     fuel_max = 3104
     max_speed = 2150
     chaff = 60
@@ -4926,6 +5084,9 @@ class F_16A_MLU(PlaneType):
 class RQ_1A_Predator(PlaneType):
     id = "RQ-1A Predator"
     group_size_max = 1
+    height = 2.21
+    width = 14.8
+    length = 8.13
     fuel_max = 200
     max_speed = 220
     eplrs = True
@@ -4947,6 +5108,9 @@ class Yak_40(PlaneType):
     id = "Yak-40"
     group_size_max = 1
     large_parking_slot = True
+    height = 6.5
+    width = 25
+    length = 20.36
     fuel_max = 3080
     max_speed = 570
 
@@ -4959,6 +5123,9 @@ class Yak_40(PlaneType):
 class A_10C(PlaneType):
     id = "A-10C"
     flyable = True
+    height = 4.47
+    width = 17.53
+    length = 16.26
     fuel_max = 5029
     max_speed = 840
     chaff = 240
@@ -5419,6 +5586,9 @@ class KC_135(PlaneType):
     id = "KC-135"
     group_size_max = 1
     large_parking_slot = True
+    height = 12.93
+    width = 40
+    length = 46.61
     fuel_max = 90700
     max_speed = 980
     tacan = True
@@ -5433,6 +5603,9 @@ class KC_135(PlaneType):
 class P_51D(PlaneType):
     id = "P-51D"
     flyable = True
+    height = 4.77
+    width = 9.12
+    length = 12.13
     fuel_max = 732
     max_speed = 750
     radio_frequency = 124
@@ -5493,6 +5666,9 @@ class P_51D(PlaneType):
 class FW_190D9(PlaneType):
     id = "FW-190D9"
     flyable = True
+    height = 4.77
+    width = 10.5
+    length = 12.13
     fuel_max = 388
     max_speed = 828
     category = "Air"
@@ -5523,6 +5699,9 @@ class FW_190D9(PlaneType):
 class Bf_109K_4(PlaneType):
     id = "Bf-109K-4"
     flyable = True
+    height = 4.77
+    width = 10.5
+    length = 12.13
     fuel_max = 296
     max_speed = 828
     category = "Air"
@@ -5554,6 +5733,9 @@ class Bf_109K_4(PlaneType):
 class C_101EB(PlaneType):
     id = "C-101EB"
     flyable = True
+    height = 4.25
+    width = 14
+    length = 12.25
     fuel_max = 1885
     max_speed = 925.2
     category = "Air"
@@ -5623,6 +5805,9 @@ class C_101EB(PlaneType):
 
 class C_101CC(PlaneType):
     id = "C-101CC"
+    height = 4.25
+    width = 14
+    length = 12.25
     fuel_max = 1885
     max_speed = 925.2
     category = "Air"
@@ -5741,6 +5926,9 @@ class C_101CC(PlaneType):
 
 class F_5E(PlaneType):
     id = "F-5E"
+    height = 4.06
+    width = 8.53
+    length = 14.68
     fuel_max = 1996
     max_speed = 1742.4
     chaff = 0
@@ -5870,6 +6058,9 @@ class F_5E(PlaneType):
 
 class F_5E_3(PlaneType):
     id = "F-5E-3"
+    height = 4.06
+    width = 8.53
+    length = 14.68
     fuel_max = 2046
     max_speed = 1742.4
     chaff = 30
@@ -6027,6 +6218,9 @@ class F_5E_3(PlaneType):
 class F_86F_Sabre(PlaneType):
     id = "F-86F Sabre"
     flyable = True
+    height = 4.496
+    width = 11.9
+    length = 11.43
     fuel_max = 1282
     max_speed = 964.8
     category = "Air"
@@ -6112,6 +6306,9 @@ class F_86F_Sabre(PlaneType):
 class Hawk(PlaneType):
     id = "Hawk"
     flyable = True
+    height = 4.02
+    width = 9.418
+    length = 11.98
     fuel_max = 1272
     max_speed = 2880
     category = "Air"
@@ -6175,6 +6372,9 @@ class Hawk(PlaneType):
 class L_39C(PlaneType):
     id = "L-39C"
     flyable = True
+    height = 4.77
+    width = 9.12
+    length = 12.13
     fuel_max = 980
     max_speed = 763.2
     chaff = 0
@@ -6256,6 +6456,9 @@ class L_39C(PlaneType):
 class L_39ZA(PlaneType):
     id = "L-39ZA"
     flyable = True
+    height = 4.77
+    width = 9.12
+    length = 12.13
     fuel_max = 980
     max_speed = 763.2
     chaff = 0
@@ -6369,6 +6572,9 @@ class L_39ZA(PlaneType):
 class M_2000C(PlaneType):
     id = "M-2000C"
     flyable = True
+    height = 5.2
+    width = 9.13
+    length = 14.36
     fuel_max = 3165
     max_speed = 2520
     chaff = 112
@@ -6506,6 +6712,9 @@ class M_2000C(PlaneType):
 class MiG_15bis(PlaneType):
     id = "MiG-15bis"
     flyable = True
+    height = 3.7
+    width = 10.08
+    length = 10.11
     fuel_max = 1172
     max_speed = 992
     category = "Air"
@@ -6534,6 +6743,9 @@ class MiG_15bis(PlaneType):
 class MiG_21Bis(PlaneType):
     id = "MiG-21Bis"
     flyable = True
+    height = 4.125
+    width = 7.154
+    length = 14.5
     fuel_max = 2280
     max_speed = 2509.2
     chaff = 32
@@ -6686,6 +6898,9 @@ class MiG_21Bis(PlaneType):
 class MQ_9_Reaper(PlaneType):
     id = "MQ-9 Reaper"
     group_size_max = 1
+    height = 4.77
+    width = 20
+    length = 11
     fuel_max = 1300
     max_speed = 400
     eplrs = True
@@ -6721,6 +6936,9 @@ class MQ_9_Reaper(PlaneType):
 class TF_51D(PlaneType):
     id = "TF-51D"
     flyable = True
+    height = 4.77
+    width = 9.12
+    length = 12.13
     fuel_max = 501
     max_speed = 763.2
     radio_frequency = 124
