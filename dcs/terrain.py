@@ -1,6 +1,7 @@
 # terrain module
 from typing import List, Dict
 from . import mapping
+import random
 
 
 class ParkingSlot:
@@ -82,13 +83,30 @@ class Airport:
         self.weapons = d["weapons"]
 
     def set_blue(self):
-        self.coalition = "BLUE"
+        self.set_coalition("BLUE")
 
     def set_red(self):
-        self.coalition = "RED"
+        self.set_coalition("RED")
 
     def set_neutral(self):
-        self.coalition = "NEUTRAL"
+        self.set_coalition("NEUTRAL")
+
+    def set_coalition(self, side):
+        if side.lower() in ["red", "blue", "neutral"]:
+            self.coalition = side.upper()
+            return True
+        return False
+
+    def is_red(self):
+        return self.coalition == "RED"
+
+    def is_blue(self):
+        return self.coalition == "BLUE"
+
+    def random_unit_zone(self) -> mapping.Rectangle:
+        if self.unit_zones:
+            return self.unit_zones[random.randrange(0, len(self.unit_zones))]
+        return mapping.Rectangle.from_point(self.x + 500, self.y, 200)
 
     def free_parking_slots(self, large: bool, helicopter: bool):
         slots_sorted = sorted(self.parking_slots, reverse=True)
