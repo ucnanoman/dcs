@@ -111,8 +111,8 @@ class BasicScenario:
 
             slots = airport.free_parking_slot(ptype.large_parking_slot, False)
 
-            x = random.randrange(dcs.terrain.Caucasus.Bottom+100*1000, dcs.terrain.Caucasus.Top-100*1000)
-            y = random.randrange(dcs.terrain.Caucasus.Left+600*1000, dcs.terrain.Caucasus.Right-130*1000)
+            x = random.randrange(dcs.terrain.Caucasus.bounds.bottom+100*1000, dcs.terrain.Caucasus.bounds.top-100*1000)
+            y = random.randrange(dcs.terrain.Caucasus.bounds.left+600*1000, dcs.terrain.Caucasus.bounds.right-130*1000)
 
             name = "Civil " + str(c_count)
             rand = random.random()
@@ -124,8 +124,8 @@ class BasicScenario:
                 pg = self.m.plane_group_from_parking(country, name, ptype, airport)
                 pg.uncontrolled = True
             else:
-                bound = dcs.mapping.Rectangle(dcs.terrain.Caucasus.Top-100*1000, dcs.terrain.Caucasus.Left+200*1000,
-                                              dcs.terrain.Caucasus.Bottom+100*1000, dcs.terrain.Caucasus.Right-130*1000)
+                bound = dcs.mapping.Rectangle(dcs.terrain.Caucasus.bounds.top-100*1000, dcs.terrain.Caucasus.bounds.left+200*1000,
+                                              dcs.terrain.Caucasus.bounds.bottom+100*1000, dcs.terrain.Caucasus.bounds.right-130*1000)
                 x, y = bound.random_int_point()
 
                 pg = self.m.plane_group_inflight(

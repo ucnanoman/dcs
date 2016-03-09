@@ -161,11 +161,8 @@ class Terrain:
 
 
 class Caucasus(Terrain):
-    Center = {"lat": 45.12945, "long": 34.26527}
-    Top = 337143
-    Left = -557857
-    Bottom = -584643
-    Right = 1121943
+    center = {"lat": 45.12945, "long": 34.26527}
+    bounds = mapping.Rectangle(380*1000, -560*1000, -600*1000, 1130*1000)
 
     def __init__(self):
         super(Caucasus, self).__init__("Caucasus")
