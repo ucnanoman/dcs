@@ -646,7 +646,7 @@ class Mission:
         _country.add_vehicle_group(vg)
         return vg
 
-    def vehicle_group_platoon(self, _country, name, types: List[str], x, y, heading=0, action="Off Road",
+    def vehicle_group_platoon(self, _country, name, types: List[unittype.VehicleType], x, y, heading=0, action="Off Road",
                               formation=unitgroup.VehicleGroup.Formation.Line) -> unitgroup.VehicleGroup:
         vg = unitgroup.VehicleGroup(self.next_group_id(), self.string(name))
 
@@ -1082,7 +1082,6 @@ class Mission:
         eg.add_waypoint(x2, y2, altitude, speed)
 
         return eg
-
 
     def country(self, name):
         for k in self.coalition:
