@@ -239,11 +239,11 @@ class Refueling(BasicScenario):
         usa = self.m.country(dcs.countries.USA.name)
         ukraine = self.m.country(dcs.countries.Ukraine.name)
 
-        batumi = caucasus.airport_batumi()
-        vaziani = caucasus.airport_vaziani()
+        batumi = caucasus.batumi()
+        vaziani = caucasus.vaziani()
 
-        kutaisi = caucasus.airport_kutaisi()
-        kobuleti = caucasus.airport_kobuleti()
+        kutaisi = caucasus.kutaisi()
+        kobuleti = caucasus.kobuleti()
         blue_military = [kutaisi, kobuleti]
 
         planes = [
@@ -383,17 +383,17 @@ class Scenario(BasicScenario):
         caucasus = self.m.terrain  # type: dcs.terrain.Caucasus
         ukraine = self.m.coalition["red"].swap_country(self.m.coalition["blue"], dcs.countries.Ukraine.name)
 
-        nalchik = self.m.terrain.airport_nalchik()
-        beslan = self.m.terrain.airport_beslan()
-        mozdok = caucasus.airport_mozdok()
-        sochi = caucasus.airport_sochi()
+        nalchik = self.m.terrain.nalchik()
+        beslan = self.m.terrain.beslan()
+        mozdok = caucasus.mozdok()
+        sochi = caucasus.sochi()
         self.setup_airport_red(beslan)
         self.setup_airport_red(nalchik)
         self.setup_airport_red(mozdok)
 
-        senaki = self.m.terrain.airport_senaki()
-        batumi = self.m.terrain.airport_batumi()
-        soganlug = self.m.terrain.airport_soganlug()
+        senaki = self.m.terrain.senaki()
+        batumi = self.m.terrain.batumi()
+        soganlug = self.m.terrain.soganlug()
         #self.setup_airport_blue(senaki)
         self.setup_airport_blue(batumi)
         self.setup_airport_blue(soganlug)
@@ -473,7 +473,7 @@ class Scenario(BasicScenario):
 
             if _type.task_default == dcs.task.AWACS:
                 if self.m.is_red(_country):
-                    sochi = self.m.terrain.airport_sochi()
+                    sochi = self.m.terrain.sochi()
                     x = random.randrange(int(sochi.x + 20*1000), -10000)
                     y = sochi.y + random.randrange(20000, 50000)
 

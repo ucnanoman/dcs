@@ -969,91 +969,91 @@ class Caucasus(Terrain):
         beslan.parking_slots[63] = ParkingSlot(63, -148856.03125, 843784.9375, True, "07", heli=True)
         self.airports[beslan.name] = beslan
 
-    def airport_soganlug(self) -> Airport:
+    def soganlug(self) -> Airport:
         return self.airports["Soganlug"]
 
-    def airport_senaki(self) -> Airport:
+    def senaki(self) -> Airport:
         return self.airports["Senaki"]
 
-    def airport_sochi(self) -> Airport:
+    def sochi(self) -> Airport:
         return self.airports["Sochi"]
 
-    def airport_batumi(self) -> Airport:
+    def batumi(self) -> Airport:
         return self.airports["Batumi"]
 
-    def airport_nalchik(self) -> Airport:
+    def nalchik(self) -> Airport:
         return self.airports["Nalchik"]
 
-    def airport_beslan(self) -> Airport:
+    def beslan(self) -> Airport:
         return self.airports["Beslan"]
 
-    def airport_mozdok(self) -> Airport:
+    def mozdok(self) -> Airport:
         return self.airports["Mozdok"]
 
-    def airport_anapa(self) -> Airport:
+    def anapa(self) -> Airport:
         return self.airports["Anapa"]
 
-    def airport_krasnodarcenter(self) -> Airport:
+    def krasnodar_center(self) -> Airport:
         return self.airports["Krasnodar-Center"]
 
-    def airport_krasnodarpashkovsky(self) -> Airport:
+    def krasnodar_pashkovsky(self) -> Airport:
         return self.airports["Krasnodar-Pashkovsky"]
 
-    def airport_novorossiysk(self) -> Airport:
+    def novorossiysk(self) -> Airport:
         return self.airports["Novorossiysk"]
 
-    def airport_krymsk(self) -> Airport:
+    def krymsk(self) -> Airport:
         return self.airports["Krymsk"]
 
-    def airport_maykop(self) -> Airport:
+    def maykop(self) -> Airport:
         return self.airports["Maykop"]
 
-    def airport_gelendzhik(self) -> Airport:
+    def gelendzhik(self) -> Airport:
         return self.airports["Gelendzhik"]
 
-    def airport_mineralnye(self) -> Airport:
+    def mineralnye(self) -> Airport:
         return self.airports["Mineralnye"]
 
-    def airport_gudauta(self) -> Airport:
+    def gudauta(self) -> Airport:
         return self.airports["Gudauta"]
 
-    def airport_vaziani(self) -> Airport:
+    def vaziani(self) -> Airport:
         return self.airports["Vaziani"]
 
-    def airport_lochini(self) -> Airport:
+    def lochini(self) -> Airport:
         return self.airports["Lochini"]
 
-    def airport_kobuleti(self) -> Airport:
+    def kobuleti(self) -> Airport:
         return self.airports["Kobuleti"]
 
-    def airport_kutaisi(self) -> Airport:
+    def kutaisi(self) -> Airport:
         return self.airports["Kutaisi"]
 
     def default_red_airports(self) -> List[Airport]:
         return [
-            self.airport_anapa(),
-            self.airport_krymsk(),
-            self.airport_novorossiysk(),
-            self.airport_krasnodarcenter(),
-            self.airport_krasnodarpashkovsky(),
-            self.airport_maykop(),
-            self.airport_gelendzhik(),
-            self.airport_mineralnye(),
-            self.airport_mozdok(),
-            self.airport_beslan(),
-            self.airport_nalchik(),
-            self.airport_sochi()
+            self.anapa(),
+            self.krymsk(),
+            self.novorossiysk(),
+            self.krasnodar_center(),
+            self.krasnodar_pashkovsky(),
+            self.maykop(),
+            self.gelendzhik(),
+            self.mineralnye(),
+            self.mozdok(),
+            self.beslan(),
+            self.nalchik(),
+            self.sochi()
         ]
 
     def default_blue_airports(self) -> List[Airport]:
         return [
-            self.airport_batumi(),
-            self.airport_vaziani(),
-            self.airport_soganlug(),
-            self.airport_kobuleti(),
-            self.airport_senaki(),
-            self.airport_lochini(),
-            self.airport_kutaisi()
+            self.batumi(),
+            self.vaziani(),
+            self.soganlug(),
+            self.kobuleti(),
+            self.senaki(),
+            self.lochini(),
+            self.kutaisi()
         ]
 
 
