@@ -429,7 +429,6 @@ while i <= country.maxIndex do
         for i in pairs(unit_categories) do
             if #unit_categories[i] > 0 then
                 writeln(file, '')
-                writeln(file, '')
                 writeln(file, '        class '..i..':')
                 for j in pairs(unit_categories[i]) do
                     local unit = unit_categories[i][j]
