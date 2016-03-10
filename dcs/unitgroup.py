@@ -84,8 +84,9 @@ class MovingGroup(Group):
 
     def load_from_dict(self, d):
         super(MovingGroup, self).load_from_dict(d)
+        print(d)
         self.frequency = d.get("frequency")
-        self.task = d["task"]
+        self.task = d.get("task")  # ships don't have a task
         self.task_selected = d.get("taskSelected", False)
 
     def dict(self):
@@ -110,6 +111,7 @@ class VehicleGroup(MovingGroup):
 
     def __init__(self, _id, name=None, start_time=0):
         super(VehicleGroup, self).__init__(_id, name, start_time)
+        self.task = "Ground Nothing"
         self.modulation = 0
         self.communication = False
         self.frequency = None
