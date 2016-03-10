@@ -12,6 +12,8 @@ class GroundControl:
         self.blue_observer = 0
 
     def load_from_dict(self, d):
+        if d is None:
+            return
         self.pilot_can_control_vehicles = d["isPilotControlVehicles"]
 
         self.red_game_masters = int(d["roles"]["instructor"]["red"])
