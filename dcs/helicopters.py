@@ -2,7 +2,7 @@
 
 from .weapons_data import Weapons
 from . import task
-from .flyingtype import FlyingType
+from .unittype import FlyingType
 
 
 class HelicopterType(FlyingType):

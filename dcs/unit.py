@@ -1,6 +1,6 @@
 from .terrain import ParkingSlot
 from .translation import String
-from .flyingtype import FlyingType
+from .unittype import FlyingType
 import json
 import copy
 import math
