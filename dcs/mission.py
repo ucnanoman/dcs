@@ -160,55 +160,6 @@ class Triggers:
         }
 
 
-class Result:
-    # TODO add interface to add results
-    def __init__(self):
-        self.results = {
-            "offline": {
-                "conditions": [],
-                "actions": [],
-                "func": []
-            },
-            "red": {
-                "conditions": [],
-                "actions": [],
-                "func": []
-            },
-            "blue": {
-                "conditions": [],
-                "actions": [],
-                "func": []
-            }
-        }
-
-    def load_from_dict(self, data):
-        for x in data:
-            if x in ["conditions", "actions", "func"]:
-                for t in data[x]["conditions"]:
-                    self.results[x]["conditions"].append(data[x]["conditions"][t])
-                for t in data[x]["actions"]:
-                    self.results[x]["actions"].append(data[x]["actions"][t])
-                for t in data[x]["func"]:
-                    self.results[x]["func"].append(data[x]["func"][t])
-
-    def dict(self):
-        total = 0
-        for x in self.results:
-            if self.results[x]["func"]:
-                total += 1
-        d = {"offline": {}, "red": {}, "blue": {}}
-        for x in self.results:
-            res_cond = self.results[x]["conditions"]
-            res_act = self.results[x]["actions"]
-            res_func = self.results[x]["func"]
-            d[x]["conditions"] = {i + 1: res_cond[i] for i in range(0, len(res_cond))}
-            d[x]["actions"] = {i + 1: res_act[i] for i in range(0, len(res_act))}
-            d[x]["func"] = {i + 1: res_func[i] for i in range(0, len(res_func))}
-        d["total"] = total
-
-        return d
-
-
 class Mission:
     COUNTRY_IDS = {x for x in range(0, 13)} | {x for x in range(15, 47)}
 
@@ -283,7 +234,6 @@ class Mission:
 
         self.failures = {}
         self.trig = {}
-        self.result = Result()
         self.groundControl = GroundControl()
         self.forcedOptions = {}
         self.resourceCounter = {}  # keep default or empty, old format
@@ -538,10 +488,6 @@ class Mission:
         # groundControl
         self.groundControl = GroundControl()
         self.groundControl.load_from_dict(imp_mission.get("groundControl"))
-
-        # result
-        self.result = Result()
-        self.result.load_from_dict(imp_mission["result"])
 
         # goals
         self.goals = Goals()
@@ -1190,8 +1136,7 @@ class Mission:
 
     def __str__(self):
         m = {
-            "trig": self.trig,
-            "result": self.result.dict()
+            "trig": self.trig
         }
         m["groundControl"] = self.groundControl.dict()
         m["usedModules"] = self.usedModules
@@ -1227,6 +1172,7 @@ class Mission:
         m["sortie"] = self.sortie.id
         m["version"] = self.version
         m["goals"] = self.goals.dict()
+        m["result"] = self.goals.generate_result()
         m["currentKey"] = self.currentKey
         m["maxDictId"] = self.current_dict_id
         m["start_time"] = self.start_time.timestamp() - 13039200
