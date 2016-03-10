@@ -1,4 +1,5 @@
 import zipfile
+import sys
 import os
 import tempfile
 from typing import List, Dict
@@ -482,6 +483,8 @@ class Mission:
 
         with zipfile.ZipFile(filename, 'r') as miz:
             mission_dict = loaddict('mission', miz)
+            if mission_dict["mission"]["version"] < 9:
+                print("Mission file is using an old format, be aware!", file=sys.stderr)
             options_dict = loaddict('options', miz)
             warehouse_dict = loaddict('warehouses', miz)
             dictionary_dict = loaddict('l10n/DEFAULT/dictionary', miz)
