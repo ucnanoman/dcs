@@ -1,7 +1,17 @@
--- append this file to 'DCS World\Scripts\Database\db_main.lua'
+-- execute(dofile) this script at the end of
+-- of 'DCS World\Scripts\Database\db_main.lua'
+
+-------------------------------------------------------------------------------
+-- settings
+-------------------------------------------------------------------------------
+
 -- edit export_path to your export folder
 local export_path = "C:\\Users\\peint\\Documents\\dcs-cs\\dcs\\"
 
+
+-------------------------------------------------------------------------------
+-- helper functions
+-------------------------------------------------------------------------------
 local function writeln(file, text)
     file:write(text.."\r\n")
 end
@@ -13,15 +23,10 @@ local function safe_name(name)
     return safeName
 end
 
-local function safe_name(name)
-    local safeName = name
-    safeName = string.gsub(safeName, "[-()/., *']", "_")
-    safeName = string.gsub(safeName,"^([0-9])", "_%1")
-    return safeName
-end
 
--- prepare weapons data
-
+-------------------------------------------------------------------------------
+-- prepare and export weapons data
+-------------------------------------------------------------------------------
 local weapons = {}
 local keys = {}
 for j in pairs({CAT_BOMBS,CAT_MISSILES,CAT_ROCKETS,CAT_AIR_TO_AIR,CAT_FUEL_TANKS,CAT_PODS}) do
@@ -88,7 +93,10 @@ end
 writeln(file, "}")
 file:close()
 
+
+-------------------------------------------------------------------------------
 -- aircraft export planes and helicopters
+-------------------------------------------------------------------------------
 local flyable = {}
 flyable["A-10A"] = true
 flyable["A-10C"] = true
@@ -314,7 +322,10 @@ file = io.open(export_path.."helicopters.py", "w")
 export_aircraft(file, db.Units.Helicopters.Helicopter, 'Helicopter', false)
 file:close()
 
+
+-------------------------------------------------------------------------------
 -- ground units
+-------------------------------------------------------------------------------
 file = io.open(export_path.."vehicles.py", "w")
 
 file:write(
@@ -370,7 +381,10 @@ end
 writeln(file, "}")
 file:close()
 
+
+-------------------------------------------------------------------------------
 -- export country data
+-------------------------------------------------------------------------------
 file = io.open(export_path.."countries.py", "w")
 
 local categories = {
