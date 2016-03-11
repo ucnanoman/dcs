@@ -1,6 +1,6 @@
 import math
 import random
-from typing import List
+from typing import List, Union
 from .unit import Unit, Skill, FlyingUnit
 from .helicopter import Helicopter, HelicopterType
 from .plane import Plane, PlaneType
@@ -17,7 +17,7 @@ class Group:
         self.id = _id
         self.hidden = False
         self.units = []  # type: List[Unit]
-        self.points = []  # type: List[MovingPoint]
+        self.points = []  # type: List[Union[Point, MovingPoint]
         self.name = name if name else String()
 
     def load_from_dict(self, d):

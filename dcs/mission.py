@@ -2,7 +2,7 @@ import zipfile
 import sys
 import os
 import tempfile
-from typing import List, Dict
+from typing import List, Dict, Union, Optional
 from datetime import datetime
 from . import lua
 from . import unitgroup
@@ -171,7 +171,7 @@ class Triggers:
 class Mission:
     COUNTRY_IDS = {x for x in range(0, 13)} | {x for x in range(15, 47)}
 
-    def __init__(self, terrain: Terrain = Caucasus()):
+    def __init__(self, terrain: Union[Caucasus, Nevada]=Caucasus()):
         self.current_unit_id = 0
         self.current_group_id = 0
         self.current_dict_id = 0
@@ -581,7 +581,7 @@ class Mission:
 
     def vehicle(self, name, _type: unittype.VehicleType):
         if not issubclass(_type, unittype.VehicleType):
-            raise TypeError("_type not a unittype.VehicleType class: " + _type)
+            raise TypeError("_type not a unittype.VehicleType class: " + repr(_type))
         return Vehicle(self.next_unit_id(), self.string(name), _type.id)
 
     def vehicle_group(self, _country, name, _type: unittype.VehicleType, x, y, heading=0, group_size=1, action="Off Road",
@@ -913,7 +913,7 @@ class Mission:
                       _country,
                       name: str,
                       plane_type: PlaneType,
-                      airport: Airport,
+                      airport: Optional[Airport],
                       x,
                       y,
                       race_distance=30 * 1000,
@@ -951,7 +951,7 @@ class Mission:
                      _country,
                      name: str,
                      plane_type: PlaneType,
-                     airport: Airport,
+                     airport: Optional[Airport],
                      x,
                      y,
                      race_distance=30 * 1000,
@@ -983,7 +983,7 @@ class Mission:
                       _country,
                       name: str,
                       escort_type: planes.PlaneType,
-                      airport: Airport,
+                      airport: Optional[Airport],
                       group_to_escort: unitgroup.FlyingGroup,
                       group_size=2):
 
@@ -1012,7 +1012,7 @@ class Mission:
                       _country,
                       name: str,
                       patrol_type: planes.PlaneType,
-                      airport: Airport,
+                      airport: Optional[Airport],
                       x1,
                       y1,
                       x2,
