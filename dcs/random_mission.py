@@ -312,7 +312,7 @@ class Refueling(BasicScenario):
 
             for u in pg.units:
                 if playercount > 1:
-                    u.set_player()
+                    u.set_client()
                 else:
                     u.set_player()
                 u.fuel *= fuel_percent
