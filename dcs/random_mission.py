@@ -58,7 +58,7 @@ class BasicScenario:
         else:
             slots = len(airport.parking_slots)
             airdef = int(round(random.random() + slots/20, 0))
-            x, y = airport.random_unit_zone().center()
+            x, y = airport.random_unit_zone().random_int_point()
             if airdef:
                 vg = self.m.vehicle_group(
                     self.m.country("Russia") if airport.is_red() else self.m.country("USA"),
