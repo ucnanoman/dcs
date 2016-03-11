@@ -1099,10 +1099,17 @@ class Mission:
         # pp.pprint(d)
         return d
 
+    def reload(self):
+        if self.filename:
+            return self.load_file(self.filename)
+        raise RuntimeError("Currently no file loaded to reload.")
+
     def save(self, filename=None, show_stats=False):
         filename = self.filename if filename is None else filename
         if not filename:
             raise RuntimeError("No filename given.")
+        self.filename = filename  # store filename
+
         with zipfile.ZipFile(filename, 'w', compression=zipfile.ZIP_DEFLATED) as zipf:
             # options
             zipf.writestr('options', str(self.options))
