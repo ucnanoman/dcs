@@ -3,7 +3,7 @@ import sys
 import os
 import tempfile
 from typing import List, Dict, Union, Optional
-from datetime import datetime
+from datetime import datetime, timezone
 from . import lua
 from . import unitgroup
 from . import unittype
@@ -193,7 +193,8 @@ class Mission:
         self.pictureFileNameB = []
         self.version = 11
         self.currentKey = 0
-        self.start_time = datetime.fromtimestamp(13039200 + 43200)
+        self.start_time = datetime(year=2011, month=6, day=1)
+        self.start_time = datetime.fromtimestamp(1306886400 + 43200, timezone.utc)
         self.terrain = terrain
         self.trigrules = {}
         self.triggers = Triggers()
@@ -494,7 +495,7 @@ class Mission:
             self.pictureFileNameB.append(imp_mission["pictureFileNameB"][pic])
         self.version = imp_mission["version"]
         self.currentKey = imp_mission["currentKey"]
-        self.start_time = datetime.fromtimestamp(13039200 + imp_mission["start_time"])
+        self.start_time = datetime.fromtimestamp(1306886400 + imp_mission["start_time"], timezone.utc)
         self.usedModules = imp_mission["usedModules"]
         self.needModules = imp_mission["needModules"]
 
@@ -1202,7 +1203,7 @@ class Mission:
         m["result"] = self.goals.generate_result()
         m["currentKey"] = self.currentKey
         m["maxDictId"] = self.current_dict_id
-        m["start_time"] = self.start_time.timestamp() - 13039200
+        m["start_time"] = self.start_time.timestamp() - 1306886400
         if m["start_time"] < 0:
             raise RuntimeError("Mission start time is < 0.")
         m["forcedOptions"] = self.forcedOptions
