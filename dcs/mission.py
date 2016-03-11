@@ -1105,6 +1105,34 @@ class Mission:
         # pp.pprint(d)
         return d
 
+    def print_stats(self, d):
+        print("Mission Statistics")
+        print(self.start_time.strftime("%d. %b %H:%M:%S"))
+        print("-"*60)
+        output = {"red": [], "blue": []}
+        for x in ["Blue", "Red"]:
+            low = x.lower()
+            output[low].append("{group:<15s} groups units".format(group=x))
+            output[low].append("{group:<15s} {gc:6d} {u:5d}".format(
+                group="Plane",
+                gc=d[low]["plane_groups"]["count"], u=d[low]["plane_groups"]["unit_count"]))
+            output[low].append("{group:<15s} {gc:6d} {u:5d}".format(
+                group="Helicopter",
+                gc=d[low]["helicopter_groups"]["count"], u=d[low]["helicopter_groups"]["unit_count"]))
+            output[low].append("{group:<15s} {gc:6d} {u:5d}".format(
+                group="Vehicle",
+                gc=d[low]["vehicle_groups"]["count"], u=d[low]["vehicle_groups"]["unit_count"]))
+            output[low].append("{group:<15s} {gc:6d} {u:5d}".format(
+                group="Ship",
+                gc=d[low]["ship_groups"]["count"], u=d[low]["ship_groups"]["unit_count"]))
+            output[low].append("-"*28)
+            output[low].append("{group:<15s} {gc:6d} {u:5d}".format(group="Sum", gc=d[low]["count"], u=d[low]["unit_count"]))
+
+        # merge tables
+        for i in range(0, len(output["blue"])):
+            print(output["blue"][i], "  ", output["red"][i])
+        print("Total {g} groups with {u} units".format(g=d["count"], u=d["unit_count"]))
+
     def reload(self):
         if self.filename:
             return self.load_file(self.filename)
@@ -1134,32 +1162,7 @@ class Mission:
             zipf.writestr('mission', str(self))
 
         if show_stats:
-            d = self.stats()
-            print("Mission Statistics")
-            print("-"*60)
-            output = {"red": [], "blue": []}
-            for x in ["Blue", "Red"]:
-                low = x.lower()
-                output[low].append("{group:<15s} groups units".format(group=x))
-                output[low].append("{group:<15s} {gc:6d} {u:5d}".format(
-                    group="Plane",
-                    gc=d[low]["plane_groups"]["count"], u=d[low]["plane_groups"]["unit_count"]))
-                output[low].append("{group:<15s} {gc:6d} {u:5d}".format(
-                    group="Helicopter",
-                    gc=d[low]["helicopter_groups"]["count"], u=d[low]["helicopter_groups"]["unit_count"]))
-                output[low].append("{group:<15s} {gc:6d} {u:5d}".format(
-                    group="Vehicle",
-                    gc=d[low]["vehicle_groups"]["count"], u=d[low]["vehicle_groups"]["unit_count"]))
-                output[low].append("{group:<15s} {gc:6d} {u:5d}".format(
-                    group="Ship",
-                    gc=d[low]["ship_groups"]["count"], u=d[low]["ship_groups"]["unit_count"]))
-                output[low].append("-"*28)
-                output[low].append("{group:<15s} {gc:6d} {u:5d}".format(group="Sum", gc=d[low]["count"], u=d[low]["unit_count"]))
-
-            # merge tables
-            for i in range(0, len(output["blue"])):
-                print(output["blue"][i], "  ", output["red"][i])
-            print("Total {g} groups with {u} units".format(g=d["count"], u=d["unit_count"]))
+            self.print_stats(self.stats())
         return True
 
     def dict(self):
