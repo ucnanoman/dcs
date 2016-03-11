@@ -1,5 +1,5 @@
 # terrain module
-from typing import List, Dict
+from typing import List, Dict, Optional
 from . import mapping
 import random
 
@@ -13,6 +13,11 @@ class ParkingSlot:
         self.large = large
         self.unit_id = None  # type: int
         self.slot_name = slot_name
+
+    def __repr__(self):
+        return "ParkingSlot({id}, {name}, large={large}, heli={heli})".format(
+            id=self.id, name=self.slot_name, large=self.large, heli=self.helicopter
+        )
 
 
 class Runway:
@@ -108,8 +113,8 @@ class Airport:
             return self.unit_zones[random.randrange(0, len(self.unit_zones))]
         return mapping.Rectangle.from_point(self.x + 500, self.y, 200)
 
-    def free_parking_slots(self, large: bool, helicopter: bool):
-        slots_sorted = sorted(self.parking_slots, reverse=True)
+    def free_parking_slots(self, large: bool, helicopter: bool) -> List[ParkingSlot]:
+        slots_sorted = sorted(self.parking_slots, key=lambda x: self.parking_slots[x].slot_name)
         free_large_slots = {x for x in slots_sorted
                             if self.parking_slots[x].unit_id is None and
                             self.parking_slots[x].large}
@@ -130,11 +135,13 @@ class Airport:
             else:
                 return []
 
-        free_slots = [x for x in slots_sorted if self.parking_slots[x].unit_id is None] + list(free_large_slots)
+        free_slots = [x for x in slots_sorted if self.parking_slots[x].unit_id is None and
+                      not self.parking_slots[x].large and
+                      not self.parking_slots[x].helicopter] + list(free_large_slots)
 
         return [self.parking_slots[x] for x in free_slots]
 
-    def free_parking_slot(self, large: bool, helicopter: bool):
+    def free_parking_slot(self, large: bool, helicopter: bool) -> Optional[ParkingSlot]:
         slots = self.free_parking_slots(large, helicopter)
         if slots:
             return slots[0]
