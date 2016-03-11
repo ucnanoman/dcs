@@ -139,11 +139,11 @@ class TriggerZone:
 class Triggers:
     def __init__(self):
         self.current_zone_id = 0
-        self.zones = []  # type: List[TriggerZone]
+        self._zones = []  # type: List[TriggerZone]
 
     def load_from_dict(self, data):
         self.current_zone_id = 0
-        self.zones = []
+        self._zones = []
         for x in data["zones"]:
             imp_zone = data["zones"][x]
             tz = TriggerZone(
@@ -155,16 +155,21 @@ class Triggers:
                 imp_zone["name"]
             )
             tz.color = imp_zone["color"]
-            self.zones.append(tz)
+            self._zones.append(tz)
             self.current_zone_id = max(self.current_zone_id, tz.id)
 
-    def triggerzone(self, x=0, y=0, radius=1500, hidden=False, name="") -> TriggerZone:
+    def add_triggerzone(self, x=0, y=0, radius=1500, hidden=False, name="") -> TriggerZone:
         self.current_zone_id += 1
-        return TriggerZone(self.current_zone_id, x, y, radius, hidden, name)
+        tz = TriggerZone(self.current_zone_id, x, y, radius, hidden, name)
+        self._zones.append(tz)
+        return tz
+
+    def zones(self) -> List[TriggerZone]:
+        return self._zones
 
     def dict(self):
         return {
-            "zones": {i + 1: self.zones[i].dict() for i in range(0, len(self.zones))}
+            "zones": {i + 1: self._zones[i].dict() for i in range(0, len(self._zones))}
         }
 
 
