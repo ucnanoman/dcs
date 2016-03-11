@@ -93,6 +93,14 @@ class Coalition:
     def country(self, country_name: str):
         return self.countries.get(country_name, None)
 
+    def find_group(self, group_name, search="exact"):
+        for c in self.countries:
+            g = self.countries[c].find_group(group_name, search)
+            if g:
+                return g
+
+        return None
+
     def dict(self):
         d = {"name": self.name}
         if self.bullseye:
@@ -1039,6 +1047,13 @@ class Mission:
                 return c
         return None
 
+    def find_group(self, group_name, search="exact"):
+        for k in self.coalition:
+            g = self.coalition[k].find_group(group_name, search)
+            if g:
+                return g
+        return None
+
     def is_red(self, _country: Country):
         return _country.name in self.coalition["red"].countries
 
@@ -1134,7 +1149,7 @@ class Mission:
             print("Total {g} groups with {u} units".format(g=d["count"], u=d["unit_count"]))
         return True
 
-    def __str__(self):
+    def dict(self):
         m = {
             "trig": self.trig
         }
@@ -1179,7 +1194,10 @@ class Mission:
         m["forcedOptions"] = self.forcedOptions
         m["failures"] = self.failures
 
-        return lua.dumps(m, "mission", 1)
+        return m
+
+    def __str__(self):
+        return lua.dumps(self.dict(), "mission", 1)
 
     def __repr__(self):
         rep = {"base": str(self), "options": self.options, "translation": self.translation}

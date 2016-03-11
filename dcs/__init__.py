@@ -6,3 +6,4 @@ from . import planes
 from . import helicopters
 from . import terrain
 from . import unit
+from . import unitgroup

@@ -2,6 +2,19 @@ from .unitgroup import VehicleGroup, ShipGroup, PlaneGroup, StaticGroup, Helicop
 from typing import List, Dict
 
 
+def find_exact(group_name, find_name):
+    return group_name == find_name
+
+
+def find_match(group_name, find_name):
+    return find_name in group_name
+
+find_map = {
+    "exact": find_exact,
+    "match": find_match
+}
+
+
 class Country:
     callsign = {}
     planes = []
@@ -33,30 +46,45 @@ class Country:
     def add_static_group(self, sgroup):
         self.static_group.append(sgroup)
 
-    def find_vehicle_group(self, name: str):
-        for vgroup in self.vehicle_group:
-            if name in vgroup.name.str():
-                return vgroup
+    def find_group(self, group_name, search="exact"):
+        groups = [self.vehicle_group,
+                  self.ship_group,
+                  self.plane_group,
+                  self.helicopter_group,
+                  self.static_group]
+        for search_group in groups:
+            for group in search_group:
+                if find_map[search](group.name.str(), group_name):
+                    return group
+        return None
 
-    def find_ship_group(self, name: str):
-        for sgroup in self.ship_group:
-            if name in sgroup.name.str():
-                return sgroup
+    def find_vehicle_group(self, name: str, search="exact"):
+        for group in self.vehicle_group:
+            if find_map[search](group.name.str(), name):
+                return group
+        return None
 
-    def find_plane_group(self, name: str):
+    def find_ship_group(self, name: str, search="exact"):
+        for group in self.ship_group:
+            if find_map[search](group.name.str(), name):
+                return group
+        return None
+
+    def find_plane_group(self, name: str, search="exact"):
         for group in self.plane_group:
-            if name in group.name.str():
+            if find_map[search](group.name.str(), name):
                 return group
 
-    def find_helicopter_group(self, name: str):
+    def find_helicopter_group(self, name: str, search="exact"):
         for group in self.helicopter_group:
-            if name in group.name.str():
+            if FindFunctions.find_map[search](group.name.str(), name):
                 return group
 
-    def find_static_group(self, name: str):
+    def find_static_group(self, name: str, search="exact"):
         for group in self.static_group:
-            if name in group.name.str():
+            if FindFunctions.find_map[search](group.name.str(), name):
                 return group
+        return None
 
     def next_callsign_id(self):
         self.current_callsign_id += 1
