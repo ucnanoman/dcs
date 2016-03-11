@@ -339,6 +339,13 @@ class Refueling(BasicScenario):
 
             pg.add_runway_waypoint(airport)
             pg.land_at(airport)
+            pg.load_loadout("Combat Air Patrol")
+
+        goal = dcs.goals.Goal("home and alive")
+        goal.rules.append(dcs.goals.UnitAlive(pg.units[0].id))
+        tz = self.m.triggers.add_triggerzone(pg.units[0].x, pg.units[0].y, 30, name="home")
+        goal.rules.append((dcs.goals.UnitInZone(pg.units[0].id, tz.id)))
+        self.m.goals.add_offline(goal)
 
         self.m.set_description_text("""Random generated refueling test mission.
 {count} {type} are/is prepared for a refueling training mission.""".format(
