@@ -192,7 +192,7 @@ class VehicleGroup(MovingGroup):
 
     def formation_scattered(self, heading=0, max_radius=None):
         unit_count = len(self.units)
-        max_r = max_radius if max_radius else random.randrange(10, unit_count * 20)
+        max_r = max_radius if max_radius else random.randrange(15, unit_count * 20)
 
         sx = self.units[0].x
         sy = self.units[0].y
@@ -202,7 +202,7 @@ class VehicleGroup(MovingGroup):
                 x, y = mapping.point_from_heading(sx, sy, random.randrange(0, 360), max_r)
 
                 collision = False
-                for j in range(1, i):
+                for j in range(0, i):
                     test_unit = self.units[j]
                     unit_rect = mapping.Rectangle.from_point(test_unit.x, test_unit.y, 14)
 
