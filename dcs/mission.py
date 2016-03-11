@@ -764,7 +764,7 @@ class Mission:
 
         i = 0
         for unit in group.units:
-            parking_slot = parking_slots.pop(i) if parking_slots else airport.free_parking_slot(
+            parking_slot = parking_slots.pop(0) if parking_slots else airport.free_parking_slot(
                 unit.unit_type.large_parking_slot, unit.unit_type.helicopter)
             if parking_slot is None:
                 raise RuntimeError("No free parking slot at " + airport.name)
