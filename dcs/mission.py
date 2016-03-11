@@ -1198,6 +1198,8 @@ class Mission:
         m["currentKey"] = self.currentKey
         m["maxDictId"] = self.current_dict_id
         m["start_time"] = self.start_time.timestamp() - 13039200
+        if m["start_time"] < 0:
+            raise RuntimeError("Mission start time is < 0.")
         m["forcedOptions"] = self.forcedOptions
         m["failures"] = self.failures
 
