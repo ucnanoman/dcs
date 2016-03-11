@@ -104,8 +104,10 @@ class BasicScenario:
                 pg = self.m.plane_group_from_parking(country, name, ptype, airport)
                 pg.uncontrolled = True
             else:
-                bound = dcs.mapping.Rectangle(dcs.terrain.Caucasus.bounds.top-100*1000, dcs.terrain.Caucasus.bounds.left+200*1000,
-                                              dcs.terrain.Caucasus.bounds.bottom+100*1000, dcs.terrain.Caucasus.bounds.right-130*1000)
+                bound = dcs.mapping.Rectangle(dcs.terrain.Caucasus.bounds.top-100*1000,
+                                              dcs.terrain.Caucasus.bounds.left+200*1000,
+                                              dcs.terrain.Caucasus.bounds.bottom+100*1000,
+                                              dcs.terrain.Caucasus.bounds.right-130*1000)
                 x, y = bound.random_int_point()
 
                 pg = self.m.plane_group_inflight(
@@ -142,6 +144,7 @@ class BasicScenario:
                 hg = self.m.helicopter_group_from_parking(country, name, htype, start_airport)
                 hg.uncontrolled = True
             else:
+                dest_airport = None
                 while True:
                     dest_airport = airports[random.randrange(0, len(airports))]
                     if dest_airport != start_airport:
@@ -204,12 +207,35 @@ class BasicScenario:
             pg.hidden = hidden
             g_idx += 1
 
+    def place_players(self, country, start, aircraft_types: List[str],
+                      airports: List[dcs.terrain.Airport],
+                      placement_rect,
+                      group_size) -> List[dcs.unitgroup.PlaneGroup]:
+
+        plane_groups = []
+        for aircraft_type in aircraft_types:
+            plane_type = dcs.planes.plane_map[aircraft_type]
+            airport = airports[random.randrange(0, len(airports))]
+
+            if start == "inflight":
+                x1, y1 = placement_rect.random_int_point()
+                pg = self.m.plane_group_inflight(
+                    country, "Refueler", plane_type, x1, y1, random.randrange(2000, 5000, 100), group_size=group_size)
+            elif start == "runway":
+                pg = self.m.plane_group_from_runway(country, "Refueler", plane_type, airport, group_size=group_size)
+            else:
+                pg = self.m.plane_group_from_parking(
+                    country, "Refueler", plane_type, airport, coldstart=start == "cold", group_size=group_size)
+            plane_groups.append(pg)
+
+        return plane_groups
+
     def save(self, filename, stats):
         self.m.save(filename, show_stats=stats)
 
 
 class Refueling(BasicScenario):
-    def __init__(self, aircraft_type:str, playercount: int, start:str):
+    def __init__(self, aircraft_types: List[str], playercount: int, start: str):
         super(Refueling, self).__init__()
 
         self.add_civil_airtraffic(hidden=False)
@@ -271,43 +297,37 @@ class Refueling(BasicScenario):
             race_distance=race_dist, heading=heading,
             altitude=random.randrange(4000, 5500, 100), frequency=frequency)
 
-        plane_type = dcs.planes.plane_map[aircraft_type]
-        airport = blue_military[random.randrange(0, len(blue_military))]
-        fuel_percent = 0.5
+        player_groups = self.place_players(usa, start, aircraft_types, blue_military, orbit_rect, playercount)
 
         if start == "inflight":
-            x1, y1, heading, race_dist = Refueling.random_orbit(orbit_rect)
-            pg = self.m.plane_group_inflight(
-                usa, "Refueler", plane_type, x1, y1, random.randrange(2000, 5000, 100), group_size=playercount)
             fuel_percent = 0.2
-        elif start == "runway":
-            pg = self.m.plane_group_from_runway(usa, "Refueler", plane_type, airport, group_size=playercount)
         else:
-            pg = self.m.plane_group_from_parking(
-                usa, "Refueler", plane_type, airport, coldstart=start == "cold", group_size=playercount)
+            fuel_percent = 0.3
 
-        for u in pg.units:
-            u.fuel *= fuel_percent
+        for pg in player_groups:
+            airport = caucasus.airport_by_id(pg.points[0].airdrome_id)
+            airport = airport if airport else blue_military[random.randrange(0, len(blue_military))]
+            if start != "inflight":
+                pg.add_runway_waypoint(airport)
 
-        if start != "inflight":
-            pg.add_runway_waypoint(airport)
-
-        if aircraft_type in [dcs.planes.A_10C]:
-            pg.add_waypoint(refuel_rod.points[1].x, refuel_rod.points[1].y, 4000)
-        else:
-            pg.add_waypoint(refuel_net.points[1].x, refuel_net.points[1].y, 4000)
-
-        pg.add_runway_waypoint(airport)
-        pg.land_at(airport)
-
-        if playercount > 1:
             for u in pg.units:
-                u.skill = dcs.unit.Skill.CLIENT
-        else:
-            pg.units[0].skill = dcs.unit.Skill.PLAYER
+                if playercount > 1:
+                    u.set_player()
+                else:
+                    u.set_player()
+                u.fuel *= fuel_percent
+
+            if pg.units[0].unit_type in [dcs.planes.A_10C]:
+                pg.add_waypoint(refuel_rod.points[1].x, refuel_rod.points[1].y, 4000)
+            else:
+                pg.add_waypoint(refuel_net.points[1].x, refuel_net.points[1].y, 4000)
+
+            pg.add_runway_waypoint(airport)
+            pg.land_at(airport)
 
         self.m.set_description_text("""Random generated refueling test mission.
-{count} {type} are/is prepared for a refueling training mission.""".format(count=playercount, type=plane_type.id))
+{count} {type} are/is prepared for a refueling training mission.""".format(
+            count=playercount, type=", ".join(aircraft_types)))
         self.m.set_description_bluetask_text("""Find your tanker and do a full refuel.
 Afterwards land at your designated homebase.
 
@@ -526,7 +546,9 @@ def main():
             missiontype = "CAS"
 
     if missiontype == "refuel":
-        s = Refueling(args.aircrafttype, args.playercount, args.start)
+        supported = [dcs.planes.A_10C.id, dcs.planes.M_2000C.id]
+        aircraft_types = supported if args.playercount > 1 else [args.aircrafttype]
+        s = Refueling(aircraft_types, args.playercount, args.start)
     else:
         s = Scenario()
 
