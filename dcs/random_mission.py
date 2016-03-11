@@ -9,6 +9,7 @@ import dcs.vehicles
 import random
 import argparse
 import os
+import datetime
 from typing import List, Dict, Tuple
 
 
@@ -33,6 +34,20 @@ class BasicScenario:
         self.red_airports = []  # type: List[Airport]
         self.blue_airports = []  # type: List[Airport]
         self.setup_airports()
+
+    def daytime(self, period):
+        self.m.start_time -= datetime.timedelta(hours=-12)
+        self.m.start_time += datetime.timedelta(days=random.randrange(0, 365))
+        map = {
+            "day": datetime.timedelta(minutes=random.randrange(480, 960)),
+            "night": datetime.timedelta(minutes=random.randrange(-120, 240)),
+            "dusk": datetime.timedelta(minutes=random.randrange(960, 1100)),
+            "dawn": datetime.timedelta(minutes=random.randrange(240, 480))
+        }
+        if period == "random":
+            k = list(map.keys())
+            period = k[random.randrange(0, len(k))]
+        self.m.start_time += map[period]
 
     def setup_airports(self):
         caucasus = self.m.terrain  # type: dcs.terrain.Caucasus
@@ -534,6 +549,7 @@ def main():
     parser.add_argument("-p", "--playercount", default=1, type=int)
     parser.add_argument("-s", "--start", default="inflight", choices=["inflight", "runway", "warm", "cold"])
     parser.add_argument("-t", "--missiontype", default="main", choices=["main", "CAS", "CAP", "refuel"])
+    parser.add_argument("-d", "--daytime", choices=["random", "day", "night", "dusk", "dawn"], default="random")
     parser.add_argument("--show-stats", action="store_true", default=False, help="Show generated missions stats")
     parser.add_argument("-o", "--output", default=os.path.join(os.path.expanduser("~"), "Saved Games\\DCS\\Missions\\random.miz"))
 
@@ -552,6 +568,7 @@ def main():
     else:
         s = Scenario()
 
+    s.daytime(args.daytime)
     s.save(args.output, args.show_stats)
 
 
