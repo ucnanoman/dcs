@@ -162,6 +162,9 @@ class Airport:
         }
         return d
 
+    def __repr__(self):
+        return "Airport(" + self.name + ")"
+
 
 class Terrain:
     def __init__(self, name: str):
