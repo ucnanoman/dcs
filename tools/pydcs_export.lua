@@ -131,7 +131,7 @@ local function export_aircraft(file, aircrafts, export_type, exportplane)
 
 from .weapons_data import Weapons
 from . import task
-from .flyingtype import FlyingType
+from .unittype import FlyingType
 
 
 ]])

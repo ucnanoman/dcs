@@ -10,7 +10,6 @@ class Russia(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -20,12 +19,10 @@ class Russia(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Infantry:
             Paratrooper_RPG_16 = vehicles.Infantry.Paratrooper_RPG_16
             Paratrooper_AKS = vehicles.Infantry.Paratrooper_AKS
             Infantry_Soldier_Rus = vehicles.Infantry.Infantry_Soldier_Rus
-
 
         class Unarmed:
             Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
@@ -52,7 +49,6 @@ class Russia(Country):
             GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
             APC_Tigr_233036 = vehicles.Unarmed.APC_Tigr_233036
 
-
         class Armor:
             APC_BTR_80 = vehicles.Armor.APC_BTR_80
             IFV_BMD_1 = vehicles.Armor.IFV_BMD_1
@@ -68,7 +64,6 @@ class Russia(Country):
             ARV_MTLB_U_BOMAN = vehicles.Armor.ARV_MTLB_U_BOMAN
             MBT_T_90 = vehicles.Armor.MBT_T_90
 
-
         class Artillery:
             SPH_2S19_Msta = vehicles.Artillery.SPH_2S19_Msta
             SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
@@ -78,7 +73,6 @@ class Russia(Country):
             MLRS_9A52_Smerch = vehicles.Artillery.MLRS_9A52_Smerch
             SPH_2S1_Gvozdika = vehicles.Artillery.SPH_2S1_Gvozdika
             _2B11_mortar = vehicles.Artillery._2B11_mortar
-
 
         class AirDefence:
             EWR_1L13 = vehicles.AirDefence.EWR_1L13
@@ -273,7 +267,6 @@ class Ukraine(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -283,11 +276,9 @@ class Ukraine(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Infantry:
             Paratrooper_RPG_16 = vehicles.Infantry.Paratrooper_RPG_16
             Paratrooper_AKS = vehicles.Infantry.Paratrooper_AKS
-
 
         class Unarmed:
             Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
@@ -312,7 +303,6 @@ class Ukraine(Country):
             Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
             GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
 
-
         class Armor:
             APC_BTR_80 = vehicles.Armor.APC_BTR_80
             IFV_BMD_1 = vehicles.Armor.IFV_BMD_1
@@ -326,7 +316,6 @@ class Ukraine(Country):
             MBT_T_72B = vehicles.Armor.MBT_T_72B
             MBT_T_55 = vehicles.Armor.MBT_T_55
 
-
         class Artillery:
             SPH_2S19_Msta = vehicles.Artillery.SPH_2S19_Msta
             SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
@@ -335,7 +324,6 @@ class Ukraine(Country):
             SPH_2S1_Gvozdika = vehicles.Artillery.SPH_2S1_Gvozdika
             MLRS_9A52_Smerch = vehicles.Artillery.MLRS_9A52_Smerch
             _2B11_mortar = vehicles.Artillery._2B11_mortar
-
 
         class AirDefence:
             EWR_1L13 = vehicles.AirDefence.EWR_1L13
@@ -473,7 +461,6 @@ class USA(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -483,11 +470,9 @@ class USA(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Infantry:
             Infantry_M4 = vehicles.Infantry.Infantry_M4
             Soldier_M249 = vehicles.Infantry.Soldier_M249
-
 
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
@@ -496,7 +481,6 @@ class USA(Country):
             CP_Predator_TrojanSpirit = vehicles.Unarmed.CP_Predator_TrojanSpirit
             Tanker_M978_HEMTT = vehicles.Unarmed.Tanker_M978_HEMTT
             HEMTT_TFFT = vehicles.Unarmed.HEMTT_TFFT
-
 
         class Armor:
             IFV_M2A2_Bradley = vehicles.Armor.IFV_M2A2_Bradley
@@ -510,12 +494,10 @@ class USA(Country):
             APC_M1043_HMMWV_Armament = vehicles.Armor.APC_M1043_HMMWV_Armament
             ATGM_M1045_HMMWV_TOW = vehicles.Armor.ATGM_M1045_HMMWV_TOW
 
-
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
             MLRS_M270 = vehicles.Artillery.MLRS_M270
             _2B11_mortar = vehicles.Artillery._2B11_mortar
-
 
         class AirDefence:
             SAM_Avenger_M1097 = vehicles.AirDefence.SAM_Avenger_M1097
@@ -759,7 +741,6 @@ class Turkey(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -769,13 +750,11 @@ class Turkey(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
             Tanker_M978_HEMTT = vehicles.Unarmed.Tanker_M978_HEMTT
             HEMTT_TFFT = vehicles.Unarmed.HEMTT_TFFT
-
 
         class Armor:
             APC_M113 = vehicles.Armor.APC_M113
@@ -786,11 +765,9 @@ class Turkey(Country):
             MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
             MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
 
-
         class Artillery:
             MLRS_M270 = vehicles.Artillery.MLRS_M270
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
-
 
         class AirDefence:
             SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
@@ -874,7 +851,6 @@ class UK(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -884,17 +860,14 @@ class UK(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
-
 
         class Armor:
             IFV_MCV_80 = vehicles.Armor.IFV_MCV_80
             MBT_Challenger_II = vehicles.Armor.MBT_Challenger_II
             TPz_Fuchs = vehicles.Armor.TPz_Fuchs
-
 
         class Artillery:
             MLRS_M270 = vehicles.Artillery.MLRS_M270
@@ -981,7 +954,6 @@ class France(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -991,18 +963,14 @@ class France(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Unarmed:
             Transport_M818 = vehicles.Unarmed.Transport_M818
-
 
         class Armor:
             MBT_Leclerc = vehicles.Armor.MBT_Leclerc
 
-
         class Artillery:
             MLRS_M270 = vehicles.Artillery.MLRS_M270
-
 
         class AirDefence:
             SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
@@ -1085,7 +1053,6 @@ class Germany(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -1095,13 +1062,11 @@ class Germany(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
             Tanker_M978_HEMTT = vehicles.Unarmed.Tanker_M978_HEMTT
             HEMTT_TFFT = vehicles.Unarmed.HEMTT_TFFT
-
 
         class Armor:
             APC_M113 = vehicles.Armor.APC_M113
@@ -1110,11 +1075,9 @@ class Germany(Country):
             IFV_Marder = vehicles.Armor.IFV_Marder
             TPz_Fuchs = vehicles.Armor.TPz_Fuchs
 
-
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
             MLRS_M270 = vehicles.Artillery.MLRS_M270
-
 
         class AirDefence:
             SAM_Patriot_STR_AN_MPQ_53 = vehicles.AirDefence.SAM_Patriot_STR_AN_MPQ_53
@@ -1199,7 +1162,6 @@ class USAFAggressors(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -1208,7 +1170,6 @@ class USAFAggressors(Country):
             Road_outpost = vehicles.Fortification.Road_outpost
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
-
 
         class Infantry:
             Paratrooper_RPG_16 = vehicles.Infantry.Paratrooper_RPG_16
@@ -1219,7 +1180,6 @@ class USAFAggressors(Country):
             Infantry_M4 = vehicles.Infantry.Infantry_M4
             Soldier_M249 = vehicles.Infantry.Soldier_M249
             Georgian_soldier_with_M4 = vehicles.Infantry.Georgian_soldier_with_M4
-
 
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
@@ -1252,7 +1212,6 @@ class USAFAggressors(Country):
             CP_Predator_GCS = vehicles.Unarmed.CP_Predator_GCS
             CP_Predator_TrojanSpirit = vehicles.Unarmed.CP_Predator_TrojanSpirit
             Transport_ZIL_4331 = vehicles.Unarmed.Transport_ZIL_4331
-
 
         class Armor:
             APC_M113 = vehicles.Armor.APC_M113
@@ -1288,7 +1247,6 @@ class USAFAggressors(Country):
             MBT_Leclerc = vehicles.Armor.MBT_Leclerc
             APC_Cobra = vehicles.Armor.APC_Cobra
 
-
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
             MLRS_M270 = vehicles.Artillery.MLRS_M270
@@ -1300,7 +1258,6 @@ class USAFAggressors(Country):
             SPH_2S19_Msta = vehicles.Artillery.SPH_2S19_Msta
             MLRS_9A52_Smerch = vehicles.Artillery.MLRS_9A52_Smerch
             MLRS_9K57_Uragan_BM_27 = vehicles.Artillery.MLRS_9K57_Uragan_BM_27
-
 
         class AirDefence:
             SAM_SA_15_Tor_9A331 = vehicles.AirDefence.SAM_SA_15_Tor_9A331
@@ -1562,7 +1519,6 @@ class Canada(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -1572,13 +1528,11 @@ class Canada(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
             Tanker_M978_HEMTT = vehicles.Unarmed.Tanker_M978_HEMTT
             HEMTT_TFFT = vehicles.Unarmed.HEMTT_TFFT
-
 
         class Armor:
             APC_M113 = vehicles.Armor.APC_M113
@@ -1586,10 +1540,8 @@ class Canada(Country):
             MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
             MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
 
-
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
-
 
         class AirDefence:
             SAM_Stinger_MANPADS = vehicles.AirDefence.SAM_Stinger_MANPADS
@@ -1656,7 +1608,6 @@ class Spain(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -1666,22 +1617,18 @@ class Spain(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
-
 
         class Armor:
             APC_M113 = vehicles.Armor.APC_M113
             MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
             MBT_M60A3_Patton = vehicles.Armor.MBT_M60A3_Patton
 
-
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
             _2B11_mortar = vehicles.Artillery._2B11_mortar
-
 
         class AirDefence:
             SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
@@ -1757,7 +1704,6 @@ class TheNetherlands(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -1767,21 +1713,17 @@ class TheNetherlands(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
-
 
         class Armor:
             MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
             MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
             TPz_Fuchs = vehicles.Armor.TPz_Fuchs
 
-
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
-
 
         class AirDefence:
             SAM_Patriot_STR_AN_MPQ_53 = vehicles.AirDefence.SAM_Patriot_STR_AN_MPQ_53
@@ -1865,7 +1807,6 @@ class Belgium(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -1875,20 +1816,16 @@ class Belgium(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
-
 
         class Armor:
             APC_M113 = vehicles.Armor.APC_M113
             MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
 
-
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
-
 
         class AirDefence:
             SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
@@ -1960,7 +1897,6 @@ class Norway(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -1970,11 +1906,9 @@ class Norway(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
-
 
         class Armor:
             APC_M113 = vehicles.Armor.APC_M113
@@ -1982,11 +1916,9 @@ class Norway(Country):
             MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
             TPz_Fuchs = vehicles.Armor.TPz_Fuchs
 
-
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
             MLRS_M270 = vehicles.Artillery.MLRS_M270
-
 
         class AirDefence:
             SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
@@ -2058,7 +1990,6 @@ class Denmark(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -2068,22 +1999,18 @@ class Denmark(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
-
 
         class Armor:
             APC_M113 = vehicles.Armor.APC_M113
             MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
             MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
 
-
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
             MLRS_M270 = vehicles.Artillery.MLRS_M270
-
 
         class AirDefence:
             SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
@@ -2155,7 +2082,6 @@ class Israel(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -2165,11 +2091,9 @@ class Israel(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
-
 
         class Armor:
             APC_M113 = vehicles.Armor.APC_M113
@@ -2177,11 +2101,9 @@ class Israel(Country):
             MBT_M60A3_Patton = vehicles.Armor.MBT_M60A3_Patton
             MBT_T_55 = vehicles.Armor.MBT_T_55
 
-
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
             MLRS_M270 = vehicles.Artillery.MLRS_M270
-
 
         class AirDefence:
             SAM_Avenger_M1097 = vehicles.AirDefence.SAM_Avenger_M1097
@@ -2279,7 +2201,6 @@ class Georgia(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -2289,11 +2210,9 @@ class Georgia(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Infantry:
             Georgian_soldier_with_M4 = vehicles.Infantry.Georgian_soldier_with_M4
             Soldier_RPG = vehicles.Infantry.Soldier_RPG
-
 
         class Unarmed:
             Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
@@ -2319,7 +2238,6 @@ class Georgia(Country):
             Transport_ZIL_4331 = vehicles.Unarmed.Transport_ZIL_4331
             Transport_M818 = vehicles.Unarmed.Transport_M818
 
-
         class Armor:
             APC_BTR_80 = vehicles.Armor.APC_BTR_80
             IFV_BMD_1 = vehicles.Armor.IFV_BMD_1
@@ -2331,13 +2249,11 @@ class Georgia(Country):
             MBT_T_55 = vehicles.Armor.MBT_T_55
             APC_Cobra = vehicles.Armor.APC_Cobra
 
-
         class Artillery:
             SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
             SPH_2S19_Msta = vehicles.Artillery.SPH_2S19_Msta
             MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
             _2B11_mortar = vehicles.Artillery._2B11_mortar
-
 
         class AirDefence:
             SAM_SA_9_Strela_1_9P31 = vehicles.AirDefence.SAM_SA_9_Strela_1_9P31
@@ -2434,7 +2350,6 @@ class Insurgents(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -2444,11 +2359,9 @@ class Insurgents(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Infantry:
             Soldier_AK = vehicles.Infantry.Soldier_AK
             Soldier_RPG = vehicles.Infantry.Soldier_RPG
-
 
         class Unarmed:
             Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
@@ -2469,7 +2382,6 @@ class Insurgents(Country):
             GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
             Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
 
-
         class Armor:
             APC_BTR_80 = vehicles.Armor.APC_BTR_80
             IFV_BMD_1 = vehicles.Armor.IFV_BMD_1
@@ -2479,13 +2391,11 @@ class Insurgents(Country):
             APC_MTLB = vehicles.Armor.APC_MTLB
             MBT_T_55 = vehicles.Armor.MBT_T_55
 
-
         class Artillery:
             SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
             SPH_2S9_Nona = vehicles.Artillery.SPH_2S9_Nona
             MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
             _2B11_mortar = vehicles.Artillery._2B11_mortar
-
 
         class AirDefence:
             SAM_SA_9_Strela_1_9P31 = vehicles.AirDefence.SAM_SA_9_Strela_1_9P31
@@ -2553,7 +2463,6 @@ class Abkhazia(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -2562,7 +2471,6 @@ class Abkhazia(Country):
             Road_outpost = vehicles.Fortification.Road_outpost
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
-
 
         class Unarmed:
             Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
@@ -2587,7 +2495,6 @@ class Abkhazia(Country):
             Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
             GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
 
-
         class Armor:
             APC_BTR_80 = vehicles.Armor.APC_BTR_80
             IFV_BMD_1 = vehicles.Armor.IFV_BMD_1
@@ -2599,14 +2506,12 @@ class Abkhazia(Country):
             MBT_T_72B = vehicles.Armor.MBT_T_72B
             MBT_T_55 = vehicles.Armor.MBT_T_55
 
-
         class Artillery:
             SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
             SPH_2S9_Nona = vehicles.Artillery.SPH_2S9_Nona
             MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
             SPH_2S1_Gvozdika = vehicles.Artillery.SPH_2S1_Gvozdika
             _2B11_mortar = vehicles.Artillery._2B11_mortar
-
 
         class AirDefence:
             SAM_SA_11_Buk_SR_9S18M1 = vehicles.AirDefence.SAM_SA_11_Buk_SR_9S18M1
@@ -2694,7 +2599,6 @@ class SouthOssetia(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -2703,7 +2607,6 @@ class SouthOssetia(Country):
             Road_outpost = vehicles.Fortification.Road_outpost
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
-
 
         class Unarmed:
             Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
@@ -2727,7 +2630,6 @@ class SouthOssetia(Country):
             Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
             GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
 
-
         class Armor:
             APC_BTR_80 = vehicles.Armor.APC_BTR_80
             IFV_BMD_1 = vehicles.Armor.IFV_BMD_1
@@ -2739,14 +2641,12 @@ class SouthOssetia(Country):
             MBT_T_72B = vehicles.Armor.MBT_T_72B
             MBT_T_55 = vehicles.Armor.MBT_T_55
 
-
         class Artillery:
             SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
             SPH_2S9_Nona = vehicles.Artillery.SPH_2S9_Nona
             MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
             SPH_2S1_Gvozdika = vehicles.Artillery.SPH_2S1_Gvozdika
             _2B11_mortar = vehicles.Artillery._2B11_mortar
-
 
         class AirDefence:
             SAM_SA_8_Osa_9A33 = vehicles.AirDefence.SAM_SA_8_Osa_9A33
@@ -2808,7 +2708,6 @@ class Italy(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -2818,25 +2717,21 @@ class Italy(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
             Tanker_M978_HEMTT = vehicles.Unarmed.Tanker_M978_HEMTT
             HEMTT_TFFT = vehicles.Unarmed.HEMTT_TFFT
 
-
         class Armor:
             APC_M113 = vehicles.Armor.APC_M113
             APC_AAV_7 = vehicles.Armor.APC_AAV_7
             MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
 
-
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
             MLRS_M270 = vehicles.Artillery.MLRS_M270
             _2B11_mortar = vehicles.Artillery._2B11_mortar
-
 
         class AirDefence:
             SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
@@ -2912,7 +2807,6 @@ class Australia(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -2922,10 +2816,8 @@ class Australia(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
-
 
         class Armor:
             MBT_M1A2_Abrams = vehicles.Armor.MBT_M1A2_Abrams
@@ -2996,7 +2888,6 @@ class Switzerland(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -3006,15 +2897,12 @@ class Switzerland(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Armor:
             MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
             APC_M113 = vehicles.Armor.APC_M113
 
-
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
-
 
         class AirDefence:
             SAM_Stinger_MANPADS = vehicles.AirDefence.SAM_Stinger_MANPADS
@@ -3075,7 +2963,6 @@ class Austria(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -3134,7 +3021,6 @@ class Belarus(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -3192,7 +3078,6 @@ class Bulgaria(Country):
     name = "Bulgaria"
 
     class Vehicle:
-
 
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
@@ -3254,7 +3139,6 @@ class CzechRepublic(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -3315,7 +3199,6 @@ class China(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -3324,7 +3207,6 @@ class China(Country):
             Road_outpost = vehicles.Fortification.Road_outpost
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
-
 
         class AirDefence:
             SAM_SA_15_Tor_9A331 = vehicles.AirDefence.SAM_SA_15_Tor_9A331
@@ -3400,7 +3282,6 @@ class Croatia(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -3458,7 +3339,6 @@ class Egypt(Country):
     name = "Egypt"
 
     class Vehicle:
-
 
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
@@ -3518,7 +3398,6 @@ class Finland(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -3577,7 +3456,6 @@ class Greece(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -3587,16 +3465,13 @@ class Greece(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
-
         class Infantry:
             Infantry_M4 = vehicles.Infantry.Infantry_M4
             Soldier_M249 = vehicles.Infantry.Soldier_M249
 
-
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
-
 
         class Armor:
             IFV_BMP_1 = vehicles.Armor.IFV_BMP_1
@@ -3606,11 +3481,9 @@ class Greece(Country):
             MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
             MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
 
-
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
             MLRS_M270 = vehicles.Artillery.MLRS_M270
-
 
         class AirDefence:
             SAM_SA_8_Osa_9A33 = vehicles.AirDefence.SAM_SA_8_Osa_9A33
@@ -3728,7 +3601,6 @@ class Hungary(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -3789,7 +3661,6 @@ class India(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -3847,7 +3718,6 @@ class Iran(Country):
     name = "Iran"
 
     class Vehicle:
-
 
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
@@ -3907,7 +3777,6 @@ class Iraq(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -3965,7 +3834,6 @@ class Japan(Country):
     name = "Japan"
 
     class Vehicle:
-
 
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
@@ -4025,7 +3893,6 @@ class Kazakhstan(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -4083,7 +3950,6 @@ class NorthKorea(Country):
     name = "North Korea"
 
     class Vehicle:
-
 
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
@@ -4143,7 +4009,6 @@ class Pakistan(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -4201,7 +4066,6 @@ class Poland(Country):
     name = "Poland"
 
     class Vehicle:
-
 
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
@@ -4261,7 +4125,6 @@ class Romania(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -4319,7 +4182,6 @@ class SaudiArabia(Country):
     name = "Saudi Arabia"
 
     class Vehicle:
-
 
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
@@ -4379,7 +4241,6 @@ class Serbia(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -4437,7 +4298,6 @@ class Slovakia(Country):
     name = "Slovakia"
 
     class Vehicle:
-
 
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
@@ -4499,7 +4359,6 @@ class SouthKorea(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -4558,7 +4417,6 @@ class Sweden(Country):
 
     class Vehicle:
 
-
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
             Bunker_1 = vehicles.Fortification.Bunker_1
@@ -4616,7 +4474,6 @@ class Syria(Country):
     name = "Syria"
 
     class Vehicle:
-
 
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
