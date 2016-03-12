@@ -52,6 +52,13 @@ def heading_between_points(x1, y1, x2, y2):
     return math.degrees(angle_trunc(math.atan2(deltay, deltax)))
 
 
+class Point:
+    def __init__(self, x, y, z=0):
+        self.x = x
+        self.y = y
+        self.z = z
+
+
 class Rectangle:
     def __init__(self, top, left, bottom, right):
         self.top = top
