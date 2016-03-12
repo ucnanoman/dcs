@@ -1,6 +1,7 @@
 from .terrain import ParkingSlot
 from .translation import String
 from .unittype import FlyingType
+from . import mapping
 import json
 import copy
 import math
@@ -19,22 +20,16 @@ class Skill:
 class Unit:
     def __init__(self, _id, name=None, type=""):
         self.type = type
-        self.x = 0
-        self.y = 0
+        self.position = mapping.Point(0, 0)
         self.heading = 0
         self.id = _id
         self.skill = Skill.AVERAGE
         self.name = name if name else String()
 
     def load_from_dict(self, d):
-        self.x = d["x"]
-        self.y = d["y"]
+        self.position = mapping.Point(d["x"], d["y"])
         self.heading = math.degrees(d["heading"])
         self.skill = d["skill"]
-
-    def set_position(self, pos):
-        self.x = pos.x()
-        self.y = pos.y()
 
     def clone(self, _id):
         new = copy.copy(self)
@@ -44,8 +39,8 @@ class Unit:
     def dict(self):
         d = {
             "type": self.type,
-            "x": self.x,
-            "y": self.y,
+            "x": self.position.x,
+            "y": self.position.y,
             "heading": round(math.radians(self.heading), 13),
             "skill": self.skill,
             "unitId": self.id,

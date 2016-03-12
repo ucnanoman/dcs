@@ -53,10 +53,19 @@ def heading_between_points(x1, y1, x2, y2):
 
 
 class Point:
-    def __init__(self, x, y, z=0):
+    def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.z = z
+
+    def point_from_heading(self, heading, distance):
+        x, y = point_from_heading(self.x, self.y, heading, distance)
+        return Point(x, y)
+
+    def heading_between_point(self, point):
+        return heading_between_points(self.x, self.y, point.x, point.y)
+
+    def distance_to_point(self, point):
+        return distance(self.x, self.y, point.x, point.y)
 
 
 class Rectangle:
@@ -67,15 +76,15 @@ class Rectangle:
         self.right = right
 
     @staticmethod
-    def from_point(x, y, side_length):
-        top = x + side_length / 2
-        left = y - side_length / 2
-        bottom = x - side_length / 2
-        right = y + side_length / 2
+    def from_point(point: Point, side_length):
+        top = point.x + side_length / 2
+        left = point.y - side_length / 2
+        bottom = point.x - side_length / 2
+        right = point.y + side_length / 2
         return Rectangle(top, left, bottom, right)
 
-    def point_in_rect(self, x, y):
-        return self.bottom <= x <= self.top and self.left <= y <= self.right
+    def point_in_rect(self, point: Point):
+        return self.bottom <= point.x <= self.top and self.left <= point.y <= self.right
 
     def height(self):
         return self.top - self.bottom
@@ -83,13 +92,16 @@ class Rectangle:
     def width(self):
         return self.right - self.left
 
-    def center(self) -> Tuple[float, float]:
-        return self.bottom + (self.height() / 2), self.left + (self.width() / 2)
+    def center(self) -> Point:
+        return Point(self.bottom + (self.height() / 2), self.left + (self.width() / 2))
 
-    def random_int_point(self) -> (float, float):
+    def random_int_point(self) -> Point:
         x = random.randrange(int(self.bottom), int(self.top))
         y = random.randrange(int(self.left), int(self.right))
-        return x, y
+        return Point(x, y)
+
+    def __repr__(self):
+        return "Rectangle({t}, {l}, {b}, {r})".format(t=self.top, l=self.left, b=self.bottom, r=self.right)
 
 
 def point_in_poly(x, y, poly: List[Tuple[float, float]]):

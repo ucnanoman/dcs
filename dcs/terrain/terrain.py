@@ -5,10 +5,9 @@ import random
 
 
 class ParkingSlot:
-    def __init__(self, _id, x, y, large=False, slot_name=None, heli=False):
+    def __init__(self, _id, pos: mapping.Point, large=False, slot_name=None, heli=False):
         self.id = _id
-        self.x = x
-        self.y = y
+        self.position = pos
         self.helicopter = heli
         self.large = large
         self.unit_id = None  # type: int
@@ -37,13 +36,12 @@ class Runway:
 
 
 class Airport:
-    def __init__(self, _id: int, name: str, frequency: float, x, y, tacan: str=None):
+    def __init__(self, _id: int, name: str, frequency: float, point: mapping.Point, tacan: str=None):
         self.id = _id
         self.name = name
         self.tacan = tacan
         self.frequency = frequency
-        self.x = x
-        self.y = y
+        self.position = point
         self.runways = []  # type: List[Runway]
         self.parking_slots = {}  # type: Dict[int,ParkingSlot]
         self.unit_zones = []  # type: List[mapping.Rectangle]
@@ -111,7 +109,7 @@ class Airport:
     def random_unit_zone(self) -> mapping.Rectangle:
         if self.unit_zones:
             return self.unit_zones[random.randrange(0, len(self.unit_zones))]
-        return mapping.Rectangle.from_point(self.x + 500, self.y, 200)
+        return mapping.Rectangle.from_point(mapping.Point(self.position.x + 500, self.position.y), 200)
 
     def free_parking_slots(self, large: bool, helicopter: bool) -> List[ParkingSlot]:
         slots_sorted = sorted(self.parking_slots, key=lambda x: self.parking_slots[x].slot_name)

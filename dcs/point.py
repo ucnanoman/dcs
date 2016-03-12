@@ -1,5 +1,6 @@
 from .translation import String
 from . import task
+from . import mapping
 from typing import List
 
 
@@ -8,8 +9,7 @@ class StaticPoint:
         self.alt = 0
         self.type = "Turning Point"
         self.name = String()
-        self.x = 0
-        self.y = 0
+        self.position = mapping.Point(0, 0)
         self.speed = 0
         self.formation_template = ""
         self.action = ""
@@ -17,8 +17,8 @@ class StaticPoint:
     def load_from_dict(self, d, translation):
         self.alt = d["alt"]
         self.type = d["type"]
-        self.x = d["x"]
-        self.y = d["y"]
+        self.position.x = d["x"]
+        self.position.y = d["y"]
         self.action = d["action"]
         self.formation_template = d["formation_template"]
         self.speed = d["speed"]
@@ -29,8 +29,8 @@ class StaticPoint:
             "alt": self.alt,
             "type": self.type,
             "name": self.name.id,
-            "x": self.x,
-            "y": self.y,
+            "x": self.position.x,
+            "y": self.position.y,
             "speed": round(self.speed, 13),
             "formation_template": self.formation_template,
             "action": self.action

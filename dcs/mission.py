@@ -2,6 +2,7 @@ import zipfile
 import sys
 import os
 import tempfile
+import copy
 from typing import List, Dict, Union, Optional
 from datetime import datetime, timezone
 from . import lua
@@ -58,18 +59,6 @@ class Warehouses:
         return lua.dumps(d, "warehouses", 1)
 
 
-class MapPosition:
-    def __init__(self, x, y):
-        self._x = x
-        self._y = y
-
-    def x(self):
-        return self._x
-
-    def y(self):
-        return self._y
-
-
 class Coalition:
     def __init__(self, name, bullseye=None):
         self.name = name
@@ -115,11 +104,10 @@ class Coalition:
 
 
 class TriggerZone:
-    def __init__(self, _id, x=0, y=0, radius=1500, hidden=False, name=""):
+    def __init__(self, _id, position: mapping.Point, radius=1500, hidden=False, name=""):
         self.id = _id
         self.radius = radius
-        self.x = x
-        self.y = y
+        self.position = copy.copy(position)
         self.hidden = hidden
         self.name = name
         self.color = {1: 1, 2: 1, 3: 1, 4: 0.15}
@@ -128,8 +116,8 @@ class TriggerZone:
         return {
             "name": self.name,
             "hidden": self.hidden,
-            "x": self.x,
-            "y": self.y,
+            "x": self.position.x,
+            "y": self.position.y,
             "zoneId": self.id,
             "radius": self.radius,
             "color": self.color
@@ -148,8 +136,7 @@ class Triggers:
             imp_zone = data["zones"][x]
             tz = TriggerZone(
                 imp_zone["zoneId"],
-                imp_zone["x"],
-                imp_zone["y"],
+                mapping.Point(imp_zone["x"], imp_zone["y"]),
                 imp_zone["radius"],
                 imp_zone["hidden"],
                 imp_zone["name"]
@@ -158,9 +145,9 @@ class Triggers:
             self._zones.append(tz)
             self.current_zone_id = max(self.current_zone_id, tz.id)
 
-    def add_triggerzone(self, x=0, y=0, radius=1500, hidden=False, name="") -> TriggerZone:
+    def add_triggerzone(self, position: mapping.Point, radius=1500, hidden=False, name="") -> TriggerZone:
         self.current_zone_id += 1
-        tz = TriggerZone(self.current_zone_id, x, y, radius, hidden, name)
+        tz = TriggerZone(self.current_zone_id, position, radius, hidden, name)
         self._zones.append(tz)
         return tz
 
@@ -590,18 +577,18 @@ class Mission:
             raise TypeError("_type not a unittype.VehicleType class: " + repr(_type))
         return Vehicle(self.next_unit_id(), self.string(name), _type.id)
 
-    def vehicle_group(self, _country, name, _type: unittype.VehicleType, x, y, heading=0, group_size=1, action="Off Road",
+    def vehicle_group(self, _country, name, _type: unittype.VehicleType, position: mapping.Point, heading=0, group_size=1, action="Off Road",
                       formation=unitgroup.VehicleGroup.Formation.Line) -> unitgroup.VehicleGroup:
         vg = unitgroup.VehicleGroup(self.next_group_id(), self.string(name))
 
         for i in range(1, group_size + 1):
             v = self.vehicle(name + " Unit #{nr}".format(nr=i), _type)
-            v.x = x
-            v.y = y + (i - 1) * 20
+            v.position.x = position.x
+            v.position.y = position.y + (i - 1) * 20
             v.heading = heading
             vg.add_unit(v)
 
-        wp = vg.add_waypoint(vg.units[0].x, vg.units[0].y, action, 0)
+        wp = vg.add_waypoint(vg.units[0].position, action, 0)
         wp.ETA_locked = True
 
         vg.formation(formation)
@@ -609,19 +596,19 @@ class Mission:
         _country.add_vehicle_group(vg)
         return vg
 
-    def vehicle_group_platoon(self, _country, name, types: List[unittype.VehicleType], x, y, heading=0, action="Off Road",
+    def vehicle_group_platoon(self, _country, name, types: List[unittype.VehicleType], position: mapping.Point, heading=0, action="Off Road",
                               formation=unitgroup.VehicleGroup.Formation.Line) -> unitgroup.VehicleGroup:
         vg = unitgroup.VehicleGroup(self.next_group_id(), self.string(name))
 
         for i in range(0, len(types)):
             utype = types[i]
             v = self.vehicle(name + " Unit #{nr}".format(nr=i + 1), utype)
-            v.x = x
-            v.y = y + i * 20
+            v.position.x = position.x
+            v.position.y = position.y + i * 20
             v.heading = heading
             vg.add_unit(v)
 
-        wp = vg.add_waypoint(vg.units[0].x, vg.units[0].y, action, 0)
+        wp = vg.add_waypoint(vg.units[0].position, action, 0)
         wp.ETA_locked = True
 
         vg.formation(formation)
@@ -632,17 +619,17 @@ class Mission:
     def ship(self, name, _type):
         return Ship(self.next_unit_id(), self.string(name), _type)
 
-    def ship_group(self, _country, name, _type: str, x, y, heading=0, group_size=1) -> unitgroup.ShipGroup:
+    def ship_group(self, _country, name, _type: str, position: mapping.Point, heading=0, group_size=1) -> unitgroup.ShipGroup:
         sg = unitgroup.ShipGroup(self.next_group_id(), self.string(name))
 
         for i in range(1, group_size + 1):
             v = self.ship(name + " Unit #{nr}".format(nr=i), _type)
-            v.x = x
-            v.y = y + (i - 1) * 20
+            v.position.x = position.x
+            v.position.y = position.y + (i - 1) * 20
             v.heading = heading
             sg.add_unit(v)
 
-        wp = sg.add_waypoint(x, y, 20)
+        wp = sg.add_waypoint(position, 20)
         wp.ETA_locked = True
 
         _country.add_ship_group(sg)
@@ -651,7 +638,7 @@ class Mission:
     def plane_group(self, name):
         return unitgroup.PlaneGroup(self.next_group_id(), self.string(name))
 
-    def plane_group_inflight(self, _country, name, plane_type: PlaneType, x, y, altitude, speed=600,
+    def plane_group_inflight(self, _country, name, plane_type: PlaneType, position: mapping.Point, altitude, speed=600,
                              maintask: task.MainTask = None, group_size=1):
         if maintask is None:
             maintask = plane_type.task_default
@@ -662,8 +649,7 @@ class Mission:
 
         for i in range(1, group_size + 1):
             p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type)
-            p.x = x
-            p.y = y
+            p.position = copy.copy(position)
             p.alt = altitude
             pg.add_unit(p)
 
@@ -774,8 +760,7 @@ class Mission:
                 unit.unit_type.large_parking_slot, unit.unit_type.helicopter)
             if parking_slot is None:
                 raise RuntimeError("No free parking slot at " + airport.name)
-            unit.x = parking_slot.x
-            unit.y = parking_slot.y
+            unit.position = copy.copy(parking_slot.position)
             unit.set_parking(parking_slot)
             i += 1
 
@@ -786,8 +771,7 @@ class Mission:
         mp = MovingPoint()
         mp.type = "TakeOffParking" if coldstart else "TakeOffParkingHot"
         mp.action = "From Parking Area" if coldstart else "From Parking Area Hot"
-        mp.x = group.units[0].x
-        mp.y = group.units[0].y
+        mp.position = copy.copy(group.units[0].position)
         mp.airdrome_id = airport.id
         mp.alt = group.units[0].alt
         Mission._load_tasks(mp, maintask)
@@ -798,8 +782,7 @@ class Mission:
 
     def _flying_group_runway(self, _country, group: unitgroup.FlyingGroup, maintask: task.MainTask, airport: Airport):
         for unit in group.units:
-            unit.x = airport.x
-            unit.y = airport.y
+            unit.position = copy.copy(airport.position)
 
         self._assign_callsign(_country, group)
 
@@ -808,8 +791,7 @@ class Mission:
         mp = MovingPoint()
         mp.type = "TakeOff"
         mp.action = "From Runway"
-        mp.x = group.units[0].x
-        mp.y = group.units[0].y
+        mp.position = copy.copy(group.units[0].position)
         mp.airdrome_id = airport.id
         mp.alt = group.units[0].alt
         Mission._load_tasks(mp, maintask)
@@ -823,7 +805,7 @@ class Mission:
         i = 0
         for unit in group.units:
             unit.alt = altitude
-            unit.x += i * 10
+            unit.position.x += i * 10
             unit.speed = speed / 3.6
             i += 1
 
@@ -834,8 +816,7 @@ class Mission:
         mp = MovingPoint()
         mp.type = "Turning Point"
         mp.action = mp.type
-        mp.x = group.units[0].x
-        mp.y = group.units[0].y
+        mp.position = copy.copy(group.units[0].position)
         mp.alt = altitude
         mp.speed = speed / 3.6
 
@@ -845,7 +826,7 @@ class Mission:
 
         return group
 
-    def helicopter_group_inflight(self, _country, name, helicopter_type, x, y, altitude, speed=200,
+    def helicopter_group_inflight(self, _country, name, helicopter_type, position: mapping.Point, altitude, speed=200,
                                   maintask: task.MainTask = None, group_size=1):
         if maintask is None:
             maintask = helicopter_type.task_default
@@ -856,8 +837,7 @@ class Mission:
 
         for i in range(1, group_size + 1):
             p = self.helicopter(name + " Pilot #{nr}".format(nr=i), helicopter_type)
-            p.x = x
-            p.y = y
+            p.position = copy.copy(position)
             hg.add_unit(p)
 
         _country.add_helicopter_group(self._flying_group_inflight(_country, hg, maintask, altitude, speed))
@@ -920,8 +900,7 @@ class Mission:
                       name: str,
                       plane_type: PlaneType,
                       airport: Optional[Airport],
-                      x,
-                      y,
+                      position: mapping.Point,
                       race_distance=30 * 1000,
                       heading=90,
                       altitude=4500,
@@ -933,10 +912,10 @@ class Mission:
             tanker = self.plane_group_from_parking(_country, name, plane_type, airport, coldstart=coldstart)
             wp = tanker.add_runway_waypoint(airport)
         else:
-            x2, y2 = mapping.point_from_heading(x, y, (heading + 180) % 360, 2000)
-            tanker = self.plane_group_inflight(_country, name, plane_type, x2, y2, altitude, speed, task.Refueling)
-            x2, y2 = mapping.point_from_heading(x, y, heading + 180, 1000)
-            wp = tanker.add_waypoint(x2, y2, altitude, speed)
+            p = position.point_from_heading((heading + 180) % 360, 2000)
+            tanker = self.plane_group_inflight(_country, name, plane_type, p, altitude, speed, task.Refueling)
+            p = position.point_from_heading(heading + 180, 1000)
+            wp = tanker.add_waypoint(p, altitude, speed)
 
         wp.tasks.append(task.SetFrequencyCommand(frequency))
 
@@ -945,11 +924,11 @@ class Mission:
             modechannel = tacanchannel[-1]
             tanker.points[0].tasks.append(task.ActivateBeaconCommand(channel, modechannel))
 
-        wp = tanker.add_waypoint(x, y, altitude, speed)
+        wp = tanker.add_waypoint(position, altitude, speed)
         wp.tasks.append(task.OrbitAction(altitude, speed, "Race-Track"))
 
-        x2, y2 = mapping.point_from_heading(x, y, heading, race_distance)
-        tanker.add_waypoint(x2, y2, altitude, speed)
+        p = position.point_from_heading(heading, race_distance)
+        tanker.add_waypoint(p, altitude, speed)
 
         return tanker
 
@@ -958,8 +937,7 @@ class Mission:
                      name: str,
                      plane_type: PlaneType,
                      airport: Optional[Airport],
-                     x,
-                     y,
+                     position: mapping.Point,
                      race_distance=30 * 1000,
                      heading=90,
                      altitude=4500,
@@ -970,18 +948,18 @@ class Mission:
             awacs = self.plane_group_from_parking(_country, name, plane_type, airport, coldstart=coldstart)
             wp = awacs.add_runway_waypoint(airport)
         else:
-            x2, y2 = mapping.point_from_heading(x, y, (heading + 180) % 360, 2000)
-            awacs = self.plane_group_inflight(_country, name, plane_type, x2, y2, altitude, speed, task.AWACS)
-            x2, y2 = mapping.point_from_heading(x, y, heading + 180, 1000)
-            wp = awacs.add_waypoint(x2, y2, altitude, speed)
+            p = position.point_from_heading((heading + 180) % 360, 2000)
+            awacs = self.plane_group_inflight(_country, name, plane_type, p, altitude, speed, task.AWACS)
+            p = position.point_from_heading(heading + 180, 1000)
+            wp = awacs.add_waypoint(p, altitude, speed)
 
         wp.tasks.append(task.SetFrequencyCommand(frequency))
 
-        wp = awacs.add_waypoint(x, y, altitude, speed)
+        wp = awacs.add_waypoint(position, altitude, speed)
         wp.tasks.append(task.OrbitAction(altitude, speed, task.OrbitAction.Pattern_RaceTrack))
 
-        x2, y2 = mapping.point_from_heading(x, y, heading, race_distance)
-        awacs.add_waypoint(x2, y2, altitude, speed)
+        p = position.point_from_heading(heading, race_distance)
+        awacs.add_waypoint(p, altitude, speed)
 
         return awacs
 
@@ -1001,14 +979,13 @@ class Mission:
         else:
             eg = self.plane_group_inflight(
                 _country, name, escort_type,
-                group_to_escort.points[0].x - 10 * 1000,
-                group_to_escort.points[0].y,
+                mapping.Point(group_to_escort.points[0].position.x - 10 * 1000, group_to_escort.points[0].position.y),
                 second_point_group.alt + 200,
                 maintask=task.Escort,
                 group_size=group_size
             )
 
-        eg.add_waypoint(second_point_group.x, second_point_group.y, second_point_group.alt)
+        eg.add_waypoint(second_point_group.position, second_point_group.alt)
         eg.points[0].tasks.clear()
         eg.points[0].tasks.append(task.EscortTaskAction(group_to_escort.id, lastwpt=len(group_to_escort.points)))
 
@@ -1019,10 +996,8 @@ class Mission:
                       name: str,
                       patrol_type: planes.PlaneType,
                       airport: Optional[Airport],
-                      x1,
-                      y1,
-                      x2,
-                      y2,
+                      pos1,
+                      pos2,
                       speed=600,
                       altitude=4000,
                       group_size=2):
@@ -1033,16 +1008,15 @@ class Mission:
         else:
             eg = self.plane_group_inflight(
                 _country, name, patrol_type,
-                x1 - 10 * 1000,
-                y1,
+                mapping.Point(pos1.x - 10 * 1000, pos1.y),
                 altitude,
                 maintask=task.CAP,
                 group_size=group_size
             )
 
-        wp = eg.add_waypoint(x1, y1, altitude, speed)
+        wp = eg.add_waypoint(pos1, altitude, speed)
         wp.tasks.append(task.OrbitAction(altitude, speed, task.OrbitAction.Pattern_RaceTrack))
-        eg.add_waypoint(x2, y2, altitude, speed)
+        eg.add_waypoint(pos2, altitude, speed)
 
         return eg
 

@@ -65,21 +65,19 @@ class BasicScenario:
         airport.set_coalition(side)
 
         if not airport.civilian:
-            x, y = airport.random_unit_zone().center()
             if airport.is_red():
-                dcs.templates.VehicleTemplate.Russia.sa10_site(self.m, x, y, 180)
+                dcs.templates.VehicleTemplate.Russia.sa10_site(self.m, airport.random_unit_zone().center(), 180)
             elif airport.is_blue():
-                dcs.templates.VehicleTemplate.USA.patriot_site(self.m, x, y, 330)
+                dcs.templates.VehicleTemplate.USA.patriot_site(self.m, airport.random_unit_zone().center(), 330)
         else:
             slots = len(airport.parking_slots)
             airdef = int(round(random.random() + slots/20, 0))
-            x, y = airport.random_unit_zone().random_int_point()
             if airdef:
                 vg = self.m.vehicle_group(
                     self.m.country("Russia") if airport.is_red() else self.m.country("USA"),
                     airport.name + " Air Defense",
                     air_def_units[random.randrange(0, len(air_def_units))],
-                    x, y, 180)
+                    airport.random_unit_zone().random_int_point(), 180)
 
                 for i in range(1, airdef):
                     _type = air_def_units[random.randrange(0, len(air_def_units))]
@@ -109,12 +107,13 @@ class BasicScenario:
             x = random.randrange(dcs.terrain.Caucasus.bounds.bottom+100*1000, dcs.terrain.Caucasus.bounds.top-100*1000)
             y = random.randrange(dcs.terrain.Caucasus.bounds.left+600*1000, dcs.terrain.Caucasus.bounds.right-130*1000)
 
+            pos = dcs.mapping.Point(x, y)
             name = "Civil " + str(c_count)
             rand = random.random()
             if 0.3 < rand < 0.5 and slots:
                 pg = self.m.plane_group_from_parking(country, name, ptype, airport, coldstart=random.getrandbits(1))
                 pg.add_runway_waypoint(airport, distance=random.randrange(6000, 8000, 100))
-                pg.add_waypoint(x, y, random.randrange(5000, 8000, 100), 400)
+                pg.add_waypoint(pos, random.randrange(5000, 8000, 100), 400)
             elif 0.5 < rand and slots:
                 pg = self.m.plane_group_from_parking(country, name, ptype, airport)
                 pg.uncontrolled = True
@@ -123,21 +122,19 @@ class BasicScenario:
                                               dcs.terrain.Caucasus.bounds.left+200*1000,
                                               dcs.terrain.Caucasus.bounds.bottom+100*1000,
                                               dcs.terrain.Caucasus.bounds.right-130*1000)
-                x, y = bound.random_int_point()
+                point = bound.random_int_point()
 
                 pg = self.m.plane_group_inflight(
-                    country, name, ptype, x, y, random.randrange(5000, 8000, 100), 400)
-                tmp = pg.add_waypoint(0, 0, pg.points[0].alt)
+                    country, name, ptype, point, random.randrange(5000, 8000, 100), 400)
+                tmp = pg.add_waypoint(dcs.mapping.Point(0, 0), pg.points[0].alt)
                 wp = pg.add_runway_waypoint(airport, distance=random.randrange(6000, 8000, 100))
-                heading = dcs.mapping.heading_between_points(wp.x, wp.y, x, y)
-                x, y = dcs.mapping.point_from_heading(wp.x, wp.y, heading, 30*1000)
-                tmp.x = x
-                tmp.y = y
+                heading = wp.position.heading_between_point(point)
+                tmp.position = wp.position.point_from_heading(heading, 30*1000)
                 pg.land_at(airport)
             pg.set_frequency(240)
             return pg
 
-        def heli_transport_flight(countries, airports):
+        def heli_transport_flight(countries, airports: List[dcs.terrain.Airport]):
             country_str = countries[random.randrange(0, len(countries))]
             country = self.m.country(country_str)
 
@@ -149,10 +146,10 @@ class BasicScenario:
             rand = random.random()
             name = "Helicopter Transport " + str(c_count)
             if 0.7 < rand:
-                bound = dcs.mapping.Rectangle.from_point(start_airport.x, start_airport.y, 100*1000)
-                x, y = bound.random_int_point()
+                bound = dcs.mapping.Rectangle.from_point(start_airport.position, 100*1000)
+                pos = bound.random_int_point()
                 hg = self.m.helicopter_group_inflight(
-                    country, name, htype, x, y, random.randrange(800, 1500, 100), 200)
+                    country, name, htype, pos, random.randrange(800, 1500, 100), 200)
                 hg.add_runway_waypoint(start_airport)
                 hg.land_at(start_airport)
             elif 0.4 < rand < 0.7:
@@ -278,37 +275,37 @@ class Refueling(BasicScenario):
 
         frequency = 140
         orbit_rect = dcs.mapping.Rectangle(
-            int(batumi.x + 120*1000), int(batumi.y - 100 * 1000), int(batumi.x), int(vaziani.y))
+            int(batumi.position.x + 120*1000), int(batumi.position.y - 100 * 1000), int(batumi.position.x), int(vaziani.position.y))
 
-        x1, y1, heading, race_dist = Refueling.random_orbit(orbit_rect)
+        pos, heading, race_dist = Refueling.random_orbit(orbit_rect)
         awacs = self.m.awacs_flight(
             usa,
             "AWACS",
             plane_type=dcs.planes.E_3A,
             airport=None,
-            x=x1, y=y1,
+            position=pos,
             race_distance=race_dist, heading=heading,
             altitude=random.randrange(4000, 5500, 100), frequency=frequency)
 
         self.m.escort_flight(usa, "AWACS Escort", dcs.planes.plane_map[dcs.countries.USA.Plane.F_15E], None, awacs, 2)
 
-        x1, y1, heading, race_dist = Refueling.random_orbit(orbit_rect)
+        pos, heading, race_dist = Refueling.random_orbit(orbit_rect)
         refuel_net = self.m.refuel_flight(
             ukraine,
             "Tanker IL",
             dcs.planes.IL_78M,
             airport=None,
-            x=x1, y=y1,
+            position=pos,
             race_distance=race_dist, heading=heading,
             altitude=random.randrange(4000, 5500, 100), frequency=frequency)
 
-        x1, y1, heading, race_dist = Refueling.random_orbit(orbit_rect)
+        pos, heading, race_dist = Refueling.random_orbit(orbit_rect)
         refuel_rod = self.m.refuel_flight(
             usa,
             "Tanker KC",
             dcs.planes.KC_135,
             airport=None,
-            x=x1, y=y1,
+            position=pos,
             race_distance=race_dist, heading=heading,
             altitude=random.randrange(4000, 5500, 100), frequency=frequency)
 
@@ -333,9 +330,9 @@ class Refueling(BasicScenario):
                 u.fuel *= fuel_percent
 
             if pg.units[0].unit_type in [dcs.planes.A_10C]:
-                pg.add_waypoint(refuel_rod.points[1].x, refuel_rod.points[1].y, 4000)
+                pg.add_waypoint(refuel_rod.points[1].position, 4000)
             else:
-                pg.add_waypoint(refuel_net.points[1].x, refuel_net.points[1].y, 4000)
+                pg.add_waypoint(refuel_net.points[1].position, 4000)
 
             pg.add_runway_waypoint(airport)
             pg.land_at(airport)
@@ -343,7 +340,7 @@ class Refueling(BasicScenario):
 
         goal = dcs.goals.Goal("home and alive")
         goal.rules.append(dcs.goals.UnitAlive(pg.units[0].id))
-        tz = self.m.triggers.add_triggerzone(pg.units[0].x, pg.units[0].y, 30, name="home")
+        tz = self.m.triggers.add_triggerzone(pg.units[0].position, 30, name="home")
         goal.rules.append((dcs.goals.UnitInZone(pg.units[0].id, tz.id)))
         self.m.goals.add_offline(goal)
 
@@ -363,7 +360,7 @@ AWACS and Tankers are reachable on {freq} Mhz VHF-AM.""".format(freq=frequency))
         heading = 90 if y1 < (sy + (rect.right - sy) / 2) else 270
         heading = random.randrange(heading - 20, heading + 20)
         race_dist = random.randrange(80*1000, 120*1000)
-        return x1, y1, heading, race_dist
+        return dcs.mapping.Point(x1, y1), heading, race_dist
 
 
 class CAS(BasicScenario):

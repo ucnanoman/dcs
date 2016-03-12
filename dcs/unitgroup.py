@@ -1,5 +1,6 @@
 import math
 import random
+import copy
 from typing import List, Union
 from .unit import Unit, Skill, FlyingUnit
 from .helicopter import Helicopter, HelicopterType
@@ -31,13 +32,16 @@ class Group:
 
     def x(self):
         if len(self.units) > 0:
-            return self.units[0].x
+            return self.units[0].position.x
         return None
 
     def y(self):
         if len(self.units) > 0:
-            return self.units[0].y
+            return self.units[0].position.y
         return None
+
+    def position(self) -> mapping.Point:
+        return self.units[0].position
 
     def dict(self):
         d = {
@@ -46,19 +50,15 @@ class Group:
             "groupId": self.id
         }
         if self.units:
-            d["x"] = self.units[0].x
-            d["y"] = self.units[0].y
+            d["x"] = self.units[0].position.x
+            d["y"] = self.units[0].position.y
             d["units"] = {}
             i = 1
             for unit in self.units:
                 d["units"][i] = unit.dict()
                 dunit = d["units"][i]
                 if len(self.points) > 1:
-                    p1x = self.points[0].x
-                    p1y = self.points[0].y
-                    p2x = self.points[1].x
-                    p2y = self.points[1].y
-                    hdg = mapping.heading_between_points(p1x, p1y, p2x, p2y)
+                    hdg = self.points[0].position.heading_between_point(self.points[1].position)
                     rhdg = math.radians(hdg)
                     dunit["heading"] = round(rhdg, 13)
                     if "psi" in dunit:
@@ -124,15 +124,14 @@ class VehicleGroup(MovingGroup):
         self.communication = d.get("communication", False)
         self.visible = d.get("visible", False)
 
-    def add_span(self, pos):
-        self.spans.append({"x": pos.x, "y": pos.y})
+    def add_span(self, position: mapping.Point):
+        self.spans.append({"x": position.x, "y": position.y})
 
-    def add_waypoint(self, x, y, _type="Off Road", speed=32) -> MovingPoint:
+    def add_waypoint(self, position: mapping.Point, _type="Off Road", speed=32) -> MovingPoint:
         mp = MovingPoint()
         mp.type = "Turning Point"
         mp.action = _type
-        mp.x = x
-        mp.y = y
+        mp.position = copy.copy(position)
         mp.speed = speed / 3.6
         mp.ETA_locked = False
 
@@ -140,24 +139,22 @@ class VehicleGroup(MovingGroup):
         return mp
 
     def formation_line(self, heading, distance=20):
-        x = self.units[0].x
-        y = self.units[0].y
+        pos = self.units[0].position
         for i in range(0, len(self.units)):
             unit = self.units[i]
-            unit.x = x
-            unit.y = y + i * distance
+            unit.position.x = pos.x
+            unit.position.y = pos.y + i * distance
 
             unit.heading = heading
 
     def formation_star(self, heading, distance=20):
-        x = self.units[0].x
-        y = self.units[0].y
+        pos = self.units[0].position
         units_count = len(self.units)
         iterations = math.ceil(units_count / 8)
         u_idx = 1
         for i in range(0, iterations):
-            sx = x - (i+1) * distance
-            sy = y - (i+1) * distance
+            sx = pos.x - (i+1) * distance
+            sy = pos.y - (i+1) * distance
             for j in range(0, 3):
                 dx = distance * (i + 1) * j
                 for k in range(0, 3):
@@ -165,8 +162,8 @@ class VehicleGroup(MovingGroup):
                     if u_idx >= units_count:
                         break
                     u = self.units[u_idx]
-                    u.x = sx + dx
-                    u.y = sy + dy
+                    u.position.x = sx + dx
+                    u.position.y = sy + dy
                     u.heading = heading
 
                     if not (j == 1 and k == 1):
@@ -185,8 +182,8 @@ class VehicleGroup(MovingGroup):
                 if u_idx >= units_count:
                     break
                 u = self.units[u_idx]
-                u.x = sx - dx
-                u.y = sy + dy
+                u.position.x = sx - dx
+                u.position.y = sy + dy
                 u.heading = heading
                 u_idx += 1
 
@@ -194,25 +191,25 @@ class VehicleGroup(MovingGroup):
         unit_count = len(self.units)
         max_r = max_radius if max_radius else random.randrange(15, unit_count * 20)
 
-        sx = self.units[0].x
-        sy = self.units[0].y
+        sx = self.units[0].position.x
+        sy = self.units[0].position.y
+        start_pos = self.units[0].position
 
         for i in range(1, unit_count):
             while True:
-                x, y = mapping.point_from_heading(sx, sy, random.randrange(0, 360), max_r)
+                pos = start_pos.point_from_heading(random.randrange(0, 360), max_r)
 
                 collision = False
                 for j in range(0, i):
                     test_unit = self.units[j]
-                    unit_rect = mapping.Rectangle.from_point(test_unit.x, test_unit.y, 14)
+                    unit_rect = mapping.Rectangle.from_point(test_unit.position, 14)
 
-                    if unit_rect.point_in_rect(x, y):
+                    if unit_rect.point_in_rect(pos):
                         collision = True
 
                 if not collision:
                     u = self.units[i]
-                    u.x = x
-                    u.y = y
+                    u.position = copy.copy(pos)
                     u.heading = heading
                     break
             i += 1
@@ -263,13 +260,12 @@ class FlyingGroup(MovingGroup):
         self.uncontrolled = d["uncontrolled"]
         self.radio_set = d.get("radioSet", False)
 
-    def add_waypoint(self, x, y, altitude, speed=600, name=String()) -> MovingPoint:
+    def add_waypoint(self, pos: mapping.Point, altitude, speed=600, name=String()) -> MovingPoint:
         mp = MovingPoint()
         mp.type = "Turning Point"
         mp.action = mp.type
         mp.name = name
-        mp.x = x
-        mp.y = y
+        mp.position = mapping.Point(pos.x, pos.y)
         mp.alt = altitude
         mp.speed = speed / 3.6
         mp.ETA_locked = False
@@ -294,7 +290,7 @@ class FlyingGroup(MovingGroup):
         mp.type = "Turning Point"
         mp.action = mp.type
         mp.alt_type = "RADIO"
-        mp.x, mp.y = mapping.point_from_heading(airport.x, airport.y, runway.heading, distance)
+        mp.position = airport.position.point_from_heading(runway.heading, distance)
         mp.alt = 300
         mp.speed = 200 / 3.6
         mp.ETA_locked = False
@@ -306,8 +302,7 @@ class FlyingGroup(MovingGroup):
         mp = MovingPoint()
         mp.type = "Land"
         mp.action = "Landing"
-        mp.x = airport.x
-        mp.y = airport.y
+        mp.position = copy.copy(airport.position)
         mp.airdrome_id = airport.id
         mp.alt = 0
         mp.speed = 0
@@ -397,12 +392,11 @@ class ShipGroup(MovingGroup):
         self.spans = None
         self.visible = False  # visible before start flag
 
-    def add_waypoint(self, x, y, speed=20) -> MovingPoint:
+    def add_waypoint(self, position: mapping.Point, speed=20) -> MovingPoint:
         mp = MovingPoint()
         mp.type = "Turning Point"
         mp.action = "Turning Point"
-        mp.x = x
-        mp.y = y
+        mp.position = copy.copy(position)
         mp.speed = speed / 3.6
         mp.ETA_locked = False
 

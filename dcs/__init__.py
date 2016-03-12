@@ -8,3 +8,4 @@ from . import terrain
 from . import unit
 from . import unitgroup
 from . import goals
+from .mapping import Point, Rectangle

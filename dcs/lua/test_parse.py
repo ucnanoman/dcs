@@ -1,5 +1,5 @@
 import unittest
-from .parse import loads
+from dcs.lua.parse import loads
 
 
 class TestNumber(unittest.TestCase):
