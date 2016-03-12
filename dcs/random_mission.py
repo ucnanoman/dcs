@@ -366,6 +366,11 @@ AWACS and Tankers are reachable on {freq} Mhz VHF-AM.""".format(freq=frequency))
         return x1, y1, heading, race_dist
 
 
+class CAS(BasicScenario):
+    def __init__(self):
+        super(CAS, self).__init__()
+
+
 class Scenario(BasicScenario):
 
     def __init__(self):
@@ -562,7 +567,10 @@ def main():
 
     args = parser.parse_args()
     missiontype = args.missiontype
-    if args.aircrafttype in [dcs.planes.Su_25T.id, dcs.helicopters.Ka_50.id]:
+    if args.aircrafttype in [
+        dcs.planes.Su_25T.id,
+        dcs.helicopters.Ka_50.id,
+        dcs.planes.A_10C.id] and args.missiontype == "main":
         missiontype = "CAS"
     if args.aircrafttype == dcs.planes.A_10C.id:
         if args.missiontype not in ["CAS", "refuel"]:
@@ -572,6 +580,8 @@ def main():
         supported = [dcs.planes.A_10C.id, dcs.planes.M_2000C.id]
         aircraft_types = supported if args.playercount > 1 else [args.aircrafttype]
         s = Refueling(aircraft_types, args.playercount, args.start)
+    elif missiontype == "CAS":
+        s = CAS()
     else:
         s = Scenario()
 
