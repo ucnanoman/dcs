@@ -3,7 +3,7 @@ from . import task
 from typing import List
 
 
-class Point:
+class StaticPoint:
     def __init__(self):
         self.alt = 0
         self.type = "Turning Point"
@@ -37,7 +37,7 @@ class Point:
         }
 
 
-class MovingPoint(Point):
+class MovingPoint(StaticPoint):
     def __init__(self):
         super(MovingPoint, self).__init__()
         self.alt_type = "BARO"

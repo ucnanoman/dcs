@@ -9,7 +9,7 @@ from . import unitgroup
 from . import unittype
 from .country import Country
 from . import countries
-from .point import Point, MovingPoint
+from .point import StaticPoint, MovingPoint
 from .vehicle import Vehicle
 from .ship import Ship
 from .plane import Plane, PlaneType
@@ -241,9 +241,9 @@ class Mission:
         self.coalition = {"blue": blue, "red": red}  # type: Dict[str, Coalition]
 
         self.map = {
-            "zoom": 1000000,
-            "centerY": 680571.42857143,
-            "centerX": -255714.28571428
+            "zoom": self.terrain.map_view_default["zoom"],
+            "centerY": self.terrain.map_view_default["center"].y,
+            "centerX": self.terrain.map_view_default["center"].x
         }
 
         self.failures = {}
@@ -300,7 +300,7 @@ class Mission:
     def _import_static_point(self, group: unitgroup.Group, imp_group) -> unitgroup.Group:
         for imp_point_idx in imp_group["route"]["points"]:
             imp_point = imp_group["route"]["points"][imp_point_idx]
-            point = Point()
+            point = StaticPoint()
             point.load_from_dict(imp_point, self.translation)
             group.add_point(point)
         return group

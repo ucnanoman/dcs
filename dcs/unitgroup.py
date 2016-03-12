@@ -4,7 +4,7 @@ from typing import List, Union
 from .unit import Unit, Skill, FlyingUnit
 from .helicopter import Helicopter, HelicopterType
 from .plane import Plane, PlaneType
-from .point import Point, MovingPoint
+from .point import StaticPoint, MovingPoint
 from .translation import String
 from .terrain import Airport, Runway
 from . import mapping
@@ -17,7 +17,7 @@ class Group:
         self.id = _id
         self.hidden = False
         self.units = []  # type: List[Unit]
-        self.points = []  # type: List[Union[Point, MovingPoint]
+        self.points = []  # type: List[Union[StaticPoint, MovingPoint]
         self.name = name if name else String()
 
     def load_from_dict(self, d):
@@ -26,7 +26,7 @@ class Group:
     def add_unit(self, unit: Unit):
         self.units.append(unit)
 
-    def add_point(self, point: Point):
+    def add_point(self, point: StaticPoint):
         self.points.append(point)
 
     def x(self):
