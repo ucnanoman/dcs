@@ -37,3 +37,5 @@ This code generates a mission with a AWACS flight starting cold from batumi.
  * Triggers are entirely missing
  * Failures
  * Forced options
+ * Farps
+ * Airgroup on ships
