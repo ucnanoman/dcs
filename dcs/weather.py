@@ -132,7 +132,7 @@ class Weather:
         d["season"] = {"iseason": self.season, "temperature": self.season_temperature}
         d["type_weather"] = self.type_weather
         d["qnh"] = self.qnh
-        d["cyclones"] = {x: self.cyclones[x].dict() for x in range(0, len(self.cyclones))}
+        d["cyclones"] = {x+1: self.cyclones[x].dict() for x in range(0, len(self.cyclones))}
         d["name"] = self.name
         d["fog"] = {"thickness": self.fog_thickness, "visibility": self.fog_visibility, "density": self.fog_density}
         d["visibility"] = {"distance": self.visibility_distance}
