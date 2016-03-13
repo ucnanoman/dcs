@@ -1,6 +1,7 @@
 import math
 import random
-from typing import List, Tuple
+import copy
+from typing import List
 
 
 def point_from_heading(_x, _y, heading, distance):
@@ -107,27 +108,49 @@ class Rectangle:
         return "Rectangle({t}, {l}, {b}, {r})".format(t=self.top, l=self.left, b=self.bottom, r=self.right)
 
 
-def point_in_poly(x, y, poly: List[Tuple[float, float]]):
-    """
-    Checks if the given point is within the polygon.
-    :param x: x coordinate
-    :param y: y coordinate
-    :param poly: polygon points
-    :return: True if point is within the polygon else False
-    """
-    n = len(poly)
-    inside = False
+class Polygon:
+    def __init__(self, points: List[Point]=None):
+        if points is None:
+            points = []
+        self.points = copy.copy(points)
 
-    p1x, p1y = poly[0]
-    for i in range(n+1):
-        p2x, p2y = poly[i % n]
-        if y > min(p1y, p2y):
-            if y <= max(p1y, p2y):
-                if x <= max(p1x, p2x):
-                    if p1y != p2y:
-                        xints = (y-p1y)*(p2x-p1x)/(p2y-p1y)+p1x
-                    if p1x == p2x or x <= xints:
-                        inside = not inside
-        p1x, p1y = p2x, p2y
+    def point_in_poly(self, point: Point):
+        """
+        Checks if the given point is within the polygon.
+        :param point: Point to test
+        :return: True if point is within the polygon else False
+        """
+        n = len(self.points)
+        inside = False
 
-    return inside
+        p1x = self.points[0].x
+        p1y = self.points[0].y
+        for i in range(n+1):
+            p = self.points[i % n]
+            p2x = p.x
+            p2y = p.y
+            if point.y > min(p1y, p2y):
+                if point.y <= max(p1y, p2y):
+                    if point.x <= max(p1x, p2x):
+                        if p1y != p2y:
+                            xints = (point.y-p1y)*(p2x-p1x)/(p2y-p1y)+p1x
+                        if p1x == p2x or point.x <= xints:
+                            inside = not inside
+            p1x, p1y = p2x, p2y
+
+        return inside
+
+    def random_point(self) -> Point:
+        # stupid and slow
+        minx = min([p.x for p in self.points])
+        maxx = max([p.x for p in self.points])
+        miny = min([p.y for p in self.points])
+        maxy = max([p.y for p in self.points])
+
+        r = Rectangle(maxx, miny, minx, maxy)
+        while True:
+            p = r.random_int_point()
+            if self.point_in_poly(p):
+                break
+
+        return p
