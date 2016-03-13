@@ -31,9 +31,12 @@ class BasicScenario:
 
         self.m.coalition["red"].swap_country(self.m.coalition["blue"], dcs.countries.Ukraine.name)
 
-        self.red_airports = []  # type: List[Airport]
-        self.blue_airports = []  # type: List[Airport]
+        self.red_airports = []  # type: List[dcs.terrain.Airport]
+        self.blue_airports = []  # type: List[dcs.terrain.Airport]
         self.setup_airports()
+
+    def dynamic_weather(self):
+        self.m.weather.dynamic_weather(random.randrange(1,2))
 
     def daytime(self, period):
         self.m.start_time -= datetime.timedelta(hours=-12)
@@ -559,6 +562,7 @@ def main():
     parser.add_argument("-s", "--start", default="inflight", choices=["inflight", "runway", "warm", "cold"])
     parser.add_argument("-t", "--missiontype", default="main", choices=["main", "CAS", "CAP", "refuel"])
     parser.add_argument("-d", "--daytime", choices=["random", "day", "night", "dusk", "dawn"], default="random")
+    parser.add_argument("-w", "--weather", choices=["dynamic", "clear"], default="dynamic")
     parser.add_argument("--show-stats", action="store_true", default=False, help="Show generated missions stats")
     parser.add_argument("-o", "--output", default=os.path.join(os.path.expanduser("~"), "Saved Games\\DCS\\Missions\\random.miz"))
 
@@ -583,6 +587,8 @@ def main():
         s = Scenario()
 
     s.daytime(args.daytime)
+    if args.weather == "dynamic":
+        s.dynamic_weather()
     s.save(args.output, args.show_stats)
 
 
