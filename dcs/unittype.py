@@ -92,3 +92,12 @@ class FlyingType(UnitType):
                     r = [(pylons[x]["num"], {"clsid": pylons[x]["CLSID"]}) for x in pylons]
                     return r
         return None
+
+    @classmethod
+    def default_livery(cls, country_name) -> str:
+        liveries = cls.Liveries
+        for x in liveries.__dict__:
+            clas = liveries.__dict__[x]
+            if clas and getattr(clas, "__name__", "") == country_name:
+                return list(clas)[0].value
+        return None

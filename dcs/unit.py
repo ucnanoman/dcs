@@ -50,11 +50,11 @@ class Unit:
 
 
 class FlyingUnit(Unit):
-    def __init__(self, _id=None, name=None, _type: FlyingType=None):
+    def __init__(self, _id=None, name=None, _type: FlyingType=None, _country=None):
         super(FlyingUnit, self).__init__(_id, name, _type.id)
         self.unit_type = _type  # for loadout validation
         self.unit_type.load_payloads()
-        self.livery_id = None
+        self.livery_id = self.unit_type.default_livery(_country.name)
         self.parking = None
         self.psi = 0
         self.onboard_num = "010"

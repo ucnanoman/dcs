@@ -1,5 +1,6 @@
 -- execute(dofile) this script at the end of
--- of 'DCS World\Scripts\Database\db_main.lua'
+-- of 'DCS World\MissionEditor\modules\me_mission.lua'
+-- base.dofile("path\\pydcs_export.lua")
 
 -------------------------------------------------------------------------------
 -- settings
@@ -8,6 +9,7 @@
 -- edit export_path to your export folder
 local export_path = "C:\\Users\\peint\\Documents\\dcs-cs\\dcs\\"
 
+local loadLiveries = require('loadLiveries')
 
 -------------------------------------------------------------------------------
 -- helper functions
@@ -18,11 +20,63 @@ end
 
 local function safe_name(name)
     local safeName = name
-    safeName = string.gsub(safeName, "[-()/., *']", "_")
-    safeName = string.gsub(safeName,"^([0-9])", "_%1")
+    safeName = string.gsub(safeName, "[-()/., *'+`#%[%]]", "_")
+    safeName = string.gsub(safeName, "_*$", "")  -- strip __ from end
+    safeName = string.gsub(safeName, "^([0-9])", "_%1")
     return safeName
 end
 
+-------------------------------------------------------------------------------
+-- country to shortname mapping
+-------------------------------------------------------------------------------
+local countries = {}
+countries["Russia"] = "RUS"
+countries["Ukraine"] = "UKR"
+countries["USA"] = "USA"
+countries["Turkey"] = "TUR"
+countries["UK"] = "UK"
+countries["France"] = "FRA"
+countries["Germany"] = "GER"
+countries["USAFAggressors"] = "AUSAF"
+countries["Canada"] = "CAN"
+countries["Spain"] = "SPN"
+countries["TheNetherlands"] = "NETH"
+countries["Belgium"] = "BEL"
+countries["Norway"] = "NOR"
+countries["Denmark"] = "DEN"
+countries["Israel"] = "ISR"
+countries["Georgia"] = "GRG"
+countries["Insurgents"] = "INS"
+countries["Abkhazia"] = "ABH"
+countries["SouthOssetia"] = "RSO"
+countries["Italy"] = "ITA"
+countries["Australia"] = "AUS"
+countries["Switzerland"] = "SUI"
+countries["Austria"] = "AUT"
+countries["Belarus"] = "BLR"
+countries["Bulgaria"] = "BGR"
+countries["CzechRepublic"] = "CZE"
+countries["China"] = "CHN"
+countries["Croatia"] = "HRV"
+countries["Egypt"] = "EGY"
+countries["Finland"] = "FIN"
+countries["Greece"] = "GRC"
+countries["Hungary"] = "HUN"
+countries["India"] = "IND"
+countries["Iran"] = "IRN"
+countries["Iraq"] = "IRQ"
+countries["Japan"] = "JPN"
+countries["Kazakhstan"] = "KAZ"
+countries["NorthKorea"] = "PRK"
+countries["Pakistan"] = "PAK"
+countries["Poland"] = "POL"
+countries["Romania"] = "ROU"
+countries["SaudiArabia"] = "SAU"
+countries["Serbia"] = "SRB"
+countries["Slovakia"] = "SVK"
+countries["SouthKorea"] = "KOR"
+countries["Sweden"] = "SWE"
+countries["Syria"] = "SYR"
 
 -------------------------------------------------------------------------------
 -- prepare and export weapons data
@@ -132,6 +186,7 @@ local function export_aircraft(file, aircrafts, export_type, exportplane)
 from .weapons_data import Weapons
 from . import task
 from .unittype import FlyingType
+from enum import Enum
 
 
 ]])
@@ -150,7 +205,7 @@ from .unittype import FlyingType
         safename = string.gsub(safename, "[-()/., *']", "_")
         safename = string.gsub(safename,"^([0-9])", "_%1")
         writeln(file, "class "..safename.."("..export_type.."Type):")
-        writeln(file, '    id = "'..plane.Name..'"')
+        writeln(file, '    id = "'..plane.type..'"')
         if plane.HumanCockpit or flyable[plane.Name] ~= nil then
             writeln(file, '    flyable = True')
         end
@@ -253,6 +308,20 @@ from .unittype import FlyingType
             writeln(file, '    }')
         end
 
+        writeln(file, '')
+        writeln(file, '    class Liveries:')
+        for j in pairs(countries) do
+            local schemes = loadLiveries.loadSchemes(plane.type, countries[j])
+            if schemes ~= nil and #schemes > 0 then
+                writeln(file, '')
+                writeln(file, '        class '..j..'(Enum):')
+                for k in pairs(schemes) do
+                    local liv_safe = safe_name(schemes[k].itemId)
+                    writeln(file, '            '..liv_safe..' = "'..schemes[k].itemId..'"')
+                end
+            end
+        end
+
         local pylons = {}
 
         for j in pairs(plane.Pylons) do
@@ -308,7 +377,7 @@ from .unittype import FlyingType
         local safename = plane.Name
         safename = string.gsub(safename, "[-()/., *']", "_")
         safename = string.gsub(safename,"^([0-9])", "_%1")
-        writeln(file, '    "'..plane.Name..'": '..safename..',')
+        writeln(file, '    "'..plane.type..'": '..safename..',')
     end
     writeln(file, "}")
 end
@@ -361,7 +430,7 @@ for i in pairs(unit_categories) do
         local safename = safe_name(unit.DisplayName)
         writeln(file, '')
         writeln(file, '    class '..safename..'(unittype.VehicleType):')
-        writeln(file, '        id = "'..unit.Name..'"')
+        writeln(file, '        id = "'..unit.type..'"')
         writeln(file, '        name = "'..unit.DisplayName..'"')
         --writeln(file, '        category = '..i)
     end
@@ -376,7 +445,7 @@ for i in pairs(db.Units.Cars.Car) do
     if unit.category ~= "Air Defence" then
         cat = unit.category
     end
-    writeln(file, '    "'..unit.Name..'": '..cat..'.'..safename..',')
+    writeln(file, '    "'..unit.type..'": '..cat..'.'..safename..',')
 end
 writeln(file, "}")
 file:close()
@@ -428,7 +497,7 @@ while i <= country.maxIndex do
             local unit = {}
             for i in pairs(db.Units.Cars.Car) do
                 unit = db.Units.Cars.Car[i]
-                if unit.Name == cars[u].Name then
+                if unit.type == cars[u].Name then
                     break
                 end
             end

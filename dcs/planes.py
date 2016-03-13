@@ -3,6 +3,7 @@
 from .weapons_data import Weapons
 from . import task
 from .unittype import FlyingType
+from enum import Enum
 
 
 class PlaneType(FlyingType):
@@ -21,6 +22,16 @@ class Tornado_GR4(PlaneType):
     charge_total = 180
     chaff_charge_size = 1
     flare_charge_size = 2
+
+    class Liveries:
+
+        class UK(Enum):
+            bb_of_14_squadron_raf_lossiemouth = "bb of 14 squadron raf lossiemouth"
+            no__12_squadron_raf_lossiemouth_ab__morayshire = "no. 12 squadron raf lossiemouth ab (morayshire)"
+            no__14_squadron_raf_lossiemouth_ab__morayshire = "no. 14 squadron raf lossiemouth ab (morayshire)"
+            no__617_squadron_raf_lossiemouth_ab__morayshire = "no. 617 squadron raf lossiemouth ab (morayshire)"
+            no__9_squadron_raf_marham_ab__norfolk = "no. 9 squadron raf marham ab (norfolk)"
+            o_of_ii__ac__squadron_raf_marham = "o of ii (ac) squadron raf marham"
 
     class Pylon1:
         BOZ_107 = (1, Weapons.BOZ_107)
@@ -90,6 +101,21 @@ class Tornado_IDS(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 2
 
+    class Liveries:
+
+        class Germany(Enum):
+            aufklarungsgeschwader_51__immelmann__jagel_ab_luftwaffe = "aufklarungsgeschwader 51 `immelmann` jagel ab luftwaffe"
+            jagdbombergeschwader_31__boelcke__norvenich_ab_luftwaffe = "jagdbombergeschwader 31 `boelcke` norvenich ab luftwaffe"
+            jagdbombergeschwader_32_lechfeld_ab_luftwaffe = "jagdbombergeschwader 32 lechfeld ab luftwaffe"
+            jagdbombergeschwader_33_buchel_ab_no__43_19_experimental_scheme = "jagdbombergeschwader 33 buchel ab no. 43+19 experimental scheme"
+            marinefliegergeschwader_2_eggebek_ab_marineflieger = "marinefliegergeschwader 2 eggebek ab marineflieger"
+
+        class Italy(Enum):
+            ITA_Tornado__Sesto_Stormo_Diavoli_Rossi = "ITA Tornado (Sesto Stormo Diavoli Rossi)"
+            ITA_Tornado_Black = "ITA Tornado Black"
+            ITA_Tornado_MM55004 = "ITA Tornado MM55004"
+            ITA_Tornado_MM7042 = "ITA Tornado MM7042"
+
     class Pylon1:
         BOZ_107 = (1, Weapons.BOZ_107)
         Sky_Shadow_ECM_Pod = (1, Weapons.Sky_Shadow_ECM_Pod)
@@ -157,6 +183,28 @@ class F_A_18A(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 2
     category = "Interceptor"
+
+    class Liveries:
+
+        class Spain(Enum):
+            grupo_15_eaf_zaragoza_ab = "grupo 15 eaf zaragoza ab"
+
+        class USA(Enum):
+            vfa_125__rough_riders__mc__lemoore = "vfa-125 `rough riders` mc (lemoore)"
+            vfa_131__wildcats__navy__cecil_field = "vfa-131 `wildcats` navy (cecil field)"
+            vfa_132__privateers__navy__lemoore = "vfa-132 `privateers` navy (lemoore)"
+            vfa_15__valions__navy__cecil_field = "vfa-15 `valions` navy (cecil field)"
+            vfa_151__vigilantes__navy__lemoore = "vfa-151 `vigilantes` navy (lemoore)"
+            vmfa_251__thunderbolts__mc__beaufort = "vmfa-251 `thunderbolts` mc (beaufort)"
+            vmfa_314__black_knights__mc__el_toro = "vmfa-314 `black knights` mc (el toro)"
+            vmfa_323__death_rattlers__mc__el_toro = "vmfa-323 `death rattlers` mc (el toro)"
+
+        class Canada(Enum):
+            _3th_wing_425th_tfs_rcaf__Bagotville_ab = "3th wing 425th tfs rcaf (Bagotville ab)"
+            _3th_wing_433th_tfs_rcaf__Bagotville_ab = "3th wing 433th tfs rcaf (Bagotville ab)"
+            _4th_wing_410th_tfs_rcaf__cold_lake_ab = "4th wing 410th tfs rcaf (cold lake ab)"
+            _4th_wing_416th_tfs_rcaf__cold_lake_ab = "4th wing 416th tfs rcaf (cold lake ab)"
+            _4th_wing_441th_tfs_rcaf__cold_lake_ab = "4th wing 441th tfs rcaf (cold lake ab)"
 
     class Pylon1:
         AIM_9M = (1, Weapons.AIM_9M)
@@ -247,6 +295,17 @@ class F_A_18C(PlaneType):
     flare_charge_size = 2
     eplrs = True
     category = "Interceptor"
+
+    class Liveries:
+
+        class Australia(Enum):
+            Australia_75_Sqn_RAAF = "Australia 75 Sqn RAAF"
+
+        class USA(Enum):
+            NSAWC_25 = "NSAWC_25"
+            NSAWC_44 = "NSAWC_44"
+            VFA_94 = "VFA-94"
+            VFC_12 = "VFC-12"
 
     class Pylon1:
         AIM_120B = (1, Weapons.AIM_120B)
@@ -428,6 +487,26 @@ class MiG_29S(PlaneType):
     category = "Interceptor"
     radio_frequency = 124
 
+    class Liveries:
+
+        class Ukraine(Enum):
+            _14th_army__vinnitsa_ab = "14th army, vinnitsa ab"
+            _9th_fw_belbek_ab = "9th fw belbek ab"
+            _ukrainian_falcons__paint_scheme = "`ukrainian falcons` paint scheme"
+
+        class Greece(Enum):
+            HAF_AEGEAN_BLUE = "HAF AEGEAN BLUE"
+            HAF_AEGEAN_GHOST = "HAF AEGEAN GHOST"
+
+        class Russia(Enum):
+            _1038th_guards_ctc__mary_ab = "1038th guards ctc, mary ab"
+            _115th_guards_regiment__termez_ab = "115th guards regiment, termez ab"
+            _120th_guards_regiment__domna_ab = "120th guards regiment, domna ab"
+            _2nd_fs__swifts__team__kubinka_ab = "2nd fs `swifts` team, kubinka ab"
+            _4th_ctc_lypetsk_ab = "4th ctc lypetsk ab"
+            _733th_guards_regiment__damgarten_ab__gdr = "733th guards regiment, damgarten ab (gdr)"
+            _73th_guards_regiment__merzeburg_ab__gdr = "73th guards regiment, merzeburg ab (gdr)"
+
     class Pylon1:
         R_60M = (1, Weapons.R_60M)
         R_73 = (1, Weapons.R_73)
@@ -587,6 +666,32 @@ class MiG_29A(PlaneType):
     category = "Interceptor"
     radio_frequency = 124
 
+    class Liveries:
+
+        class Germany(Enum):
+            luftwaffe_29_20_demo = "luftwaffe 29+20 demo"
+            luftwaffe_gray_early = "luftwaffe gray early"
+            luftwaffe_gray_1 = "luftwaffe gray-1"
+            luftwaffe_gray_2_worn_out = "luftwaffe gray-2(worn-out)"
+            luftwaffe_gray_3 = "luftwaffe gray-3"
+            luftwaffe_gray_4 = "luftwaffe gray-4"
+
+        class Ukraine(Enum):
+            _40th_fw__maestro__vasilkov_ab = "40th fw `maestro` vasilkov ab"
+            af_standard_1 = "af standard-1"
+            af_standard_2 = "af standard-2"
+
+        class Greece(Enum):
+            HAF_AEGEAN_BLUE = "HAF AEGEAN BLUE"
+            HAF_AEGEAN_GHOST = "HAF AEGEAN GHOST"
+
+        class Russia(Enum):
+            _120_gviap__45_domna_ab = "120 gviap #45 domna ab"
+            _33th_iap_wittstock_ab__germany = "33th iap wittstock ab (germany)"
+            _968th_iap_altenburg_ab__germany = "968th iap altenburg ab (germany)"
+            _swifts__team__44_kubinka_ab = "`swifts` team #44 kubinka ab"
+            demo_paint_scheme__999_mapo = "demo paint scheme #999 mapo"
+
     class Pylon1:
         R_60M = (1, Weapons.R_60M)
         R_73 = (1, Weapons.R_73)
@@ -739,6 +844,20 @@ class F_14A(PlaneType):
     flare_charge_size = 2
     category = "Interceptor"
 
+    class Liveries:
+
+        class USA(Enum):
+            black_demo_scheme = "black demo scheme"
+            vf_1__wolfpack = "vf-1 `wolfpack`"
+            vf_111__sundowners___1 = "vf-111 `sundowners`- 1"
+            vf_111__sundowners___2 = "vf-111 `sundowners`- 2"
+            vf_142__ghost_riders = "vf-142 `ghost riders`"
+            vf_143__pukin_s_dogs = "vf-143 `pukin's dogs`"
+            vf_33__starfighters = "vf-33 `starfighters`"
+            vf_41__black_aces = "vf-41 `black aces`"
+            vf_84__jolly_rogers = "vf-84 `jolly rogers`"
+            vf_xxx__aardvarks = "vf-xxx `aardvarks`"
+
     class Pylon1:
         AIM_9M = (1, Weapons.AIM_9M)
         AIM_9P = (1, Weapons.AIM_9P)
@@ -802,6 +921,14 @@ class Tu_22M3(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
 
+    class Liveries:
+
+        class Ukraine(Enum):
+            af_standard = "af standard"
+
+        class Russia(Enum):
+            af_standard = "af standard"
+
     class Pylon1:
         Kh_22N = (1, Weapons.Kh_22N)
         MER_9_FAB_250 = (1, Weapons.MER_9_FAB_250)
@@ -840,6 +967,14 @@ class F_4E(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 2
     category = "Interceptor"
+
+    class Liveries:
+
+        class Germany(Enum):
+            af_standard = "af standard"
+
+        class Greece(Enum):
+            HAF_Aegean_Ghost = "HAF Aegean Ghost"
 
     class Pylon1:
         GBU_10 = (1, Weapons.GBU_10)
@@ -934,6 +1069,11 @@ class B_52H(PlaneType):
     flare_charge_size = 1
     eplrs = True
 
+    class Liveries:
+
+        class USA(Enum):
+            usaf_standard = "usaf standard"
+
     class Pylon1:
         MER_12_Mk_82 = (1, Weapons.MER_12_Mk_82)
         HSAB_9_Mk_20_Rockeye = (1, Weapons.HSAB_9_Mk_20_Rockeye)
@@ -970,6 +1110,14 @@ class MiG_27K(PlaneType):
     charge_total = 120
     chaff_charge_size = 1
     flare_charge_size = 1
+
+    class Liveries:
+
+        class Ukraine(Enum):
+            af_standard = "af standard"
+
+        class Russia(Enum):
+            af_standard = "af standard"
 
     class Pylon2:
         Kh_25ML_ = (2, Weapons.Kh_25ML_)
@@ -1051,6 +1199,149 @@ class F_111F(PlaneType):
     charge_total = 180
     chaff_charge_size = 1
     flare_charge_size = 2
+
+    class Liveries:
+
+        class Georgia(Enum):
+            standard = "standard"
+
+        class Syria(Enum):
+            standard = "standard"
+
+        class Finland(Enum):
+            standard = "standard"
+
+        class Australia(Enum):
+            standard = "standard"
+
+        class Germany(Enum):
+            standard = "standard"
+
+        class SaudiArabia(Enum):
+            standard = "standard"
+
+        class Israel(Enum):
+            standard = "standard"
+
+        class Croatia(Enum):
+            standard = "standard"
+
+        class CzechRepublic(Enum):
+            standard = "standard"
+
+        class Norway(Enum):
+            standard = "standard"
+
+        class Romania(Enum):
+            standard = "standard"
+
+        class Spain(Enum):
+            standard = "standard"
+
+        class Ukraine(Enum):
+            standard = "standard"
+
+        class Belgium(Enum):
+            standard = "standard"
+
+        class Slovakia(Enum):
+            standard = "standard"
+
+        class Greece(Enum):
+            standard = "standard"
+
+        class UK(Enum):
+            standard = "standard"
+
+        class Insurgents(Enum):
+            standard = "standard"
+
+        class Hungary(Enum):
+            standard = "standard"
+
+        class France(Enum):
+            standard = "standard"
+
+        class Abkhazia(Enum):
+            standard = "standard"
+
+        class Russia(Enum):
+            standard = "standard"
+
+        class Sweden(Enum):
+            standard = "standard"
+
+        class Austria(Enum):
+            standard = "standard"
+
+        class Switzerland(Enum):
+            standard = "standard"
+
+        class Italy(Enum):
+            standard = "standard"
+
+        class SouthOssetia(Enum):
+            standard = "standard"
+
+        class SouthKorea(Enum):
+            standard = "standard"
+
+        class Iran(Enum):
+            standard = "standard"
+
+        class China(Enum):
+            standard = "standard"
+
+        class Pakistan(Enum):
+            standard = "standard"
+
+        class Belarus(Enum):
+            standard = "standard"
+
+        class NorthKorea(Enum):
+            standard = "standard"
+
+        class Iraq(Enum):
+            standard = "standard"
+
+        class Kazakhstan(Enum):
+            standard = "standard"
+
+        class Bulgaria(Enum):
+            standard = "standard"
+
+        class Serbia(Enum):
+            standard = "standard"
+
+        class India(Enum):
+            standard = "standard"
+
+        class USAFAggressors(Enum):
+            standard = "standard"
+
+        class USA(Enum):
+            standard = "standard"
+
+        class Denmark(Enum):
+            standard = "standard"
+
+        class Egypt(Enum):
+            standard = "standard"
+
+        class Canada(Enum):
+            standard = "standard"
+
+        class TheNetherlands(Enum):
+            standard = "standard"
+
+        class Turkey(Enum):
+            standard = "standard"
+
+        class Japan(Enum):
+            standard = "standard"
+
+        class Poland(Enum):
+            standard = "standard"
 
     class Pylon1:
         MER_6_Mk_82 = (1, Weapons.MER_6_Mk_82)
@@ -1138,6 +1429,86 @@ class A_10A(PlaneType):
             "Tusk",
         ]
     }
+
+    class Liveries:
+
+        class Georgia(Enum):
+            Fictional_Georgian_Grey = "Fictional Georgian Grey"
+            Fictional_Georgian_Olive = "Fictional Georgian Olive"
+
+        class Australia(Enum):
+            Australia_Notional_RAAF = "Australia Notional RAAF"
+
+        class Germany(Enum):
+            Fictional_German_3322 = "Fictional German 3322"
+            Fictional_German_3323 = "Fictional German 3323"
+
+        class Israel(Enum):
+            Fictional_Israel_115_Sqn_Flying_Dragon = "Fictional Israel 115 Sqn Flying Dragon"
+
+        class Norway(Enum):
+            Fictional_Royal_Norwegian_Air_Force = "Fictional Royal Norwegian Air Force"
+
+        class Spain(Enum):
+            Fictional_Spanish_12nd_Wing = "Fictional Spanish 12nd Wing"
+            Fictional_Spanish_AGA = "Fictional Spanish AGA"
+            Fictional_Spanish_Tritonal = "Fictional Spanish Tritonal"
+
+        class Ukraine(Enum):
+            Fictional_Ukraine_Air_Force_1 = "Fictional Ukraine Air Force 1"
+
+        class Belgium(Enum):
+            A_10_Grey = "A-10 Grey"
+
+        class Greece(Enum):
+            HAF_Fictional = "HAF Fictional"
+
+        class UK(Enum):
+            A_10_Grey = "A-10 Grey"
+
+        class France(Enum):
+            Fictional_France_Escadron_de_Chasse_03_003_ARDENNES = "Fictional France Escadron de Chasse 03.003 ARDENNES"
+
+        class Russia(Enum):
+            Fictional_Russian_Air_Force_1 = "Fictional Russian Air Force 1"
+            Fictional_Russian_Air_Force_2 = "Fictional Russian Air Force 2"
+
+        class Italy(Enum):
+            Fictional_Italian_AM__23Gruppo = "Fictional Italian AM (23Gruppo)"
+
+        class USA(Enum):
+            _104th_FS_Maryland_ANG__Baltimore__MD = "104th FS Maryland ANG, Baltimore (MD)"
+            _118th_FS_Bradley_ANGB__Connecticut__CT = "118th FS Bradley ANGB, Connecticut (CT)"
+            _118th_FS_Bradley_ANGB__Connecticut__CT__N621 = "118th FS Bradley ANGB, Connecticut (CT) N621"
+            _172nd_FS_Battle_Creek_ANGB__Michigan__BC = "172nd FS Battle Creek ANGB, Michigan (BC)"
+            _184th_FS_Arkansas_ANG__Fort_Smith__FS = "184th FS Arkansas ANG, Fort Smith (FS)"
+            _190th_FS_Boise_ANGB__Idaho__ID = "190th FS Boise ANGB, Idaho (ID)"
+            _23rd_TFW_England_AFB__EL = "23rd TFW England AFB (EL)"
+            _25th_FS_Osan_AB__Korea__OS = "25th FS Osan AB, Korea (OS)"
+            _354th_FS_Davis_Monthan_AFB__Arizona__DM = "354th FS Davis Monthan AFB, Arizona (DM)"
+            _355th_FS_Eielson_AFB__Alaska__AK = "355th FS Eielson AFB, Alaska (AK)"
+            _357th_FS_Davis_Monthan_AFB__Arizona__DM = "357th FS Davis Monthan AFB, Arizona (DM)"
+            _358th_FS_Davis_Monthan_AFB__Arizona__DM = "358th FS Davis Monthan AFB, Arizona (DM)"
+            _422nd_TES_Nellis_AFB__Nevada__OT = "422nd TES Nellis AFB, Nevada (OT)"
+            _47th_FS_Barksdale_AFB__Louisiana__BD = "47th FS Barksdale AFB, Louisiana (BD)"
+            _66th_WS_Nellis_AFB__Nevada__WA = "66th WS Nellis AFB, Nevada (WA)"
+            _74th_FS_Moody_AFB__Georgia__FT = "74th FS Moody AFB, Georgia (FT)"
+            _81st_FS_Spangdahlem_AB__Germany__SP__1 = "81st FS Spangdahlem AB, Germany (SP) 1"
+            _81st_FS_Spangdahlem_AB__Germany__SP__2 = "81st FS Spangdahlem AB, Germany (SP) 2"
+
+        class Denmark(Enum):
+            A_10_Grey = "A-10 Grey"
+
+        class Canada(Enum):
+            Fictional_Canadian_Air_Force_Pixel_Camo = "Fictional Canadian Air Force Pixel Camo"
+            Canada_RCAF_409_Squadron = "Canada RCAF 409 Squadron"
+            Canada_RCAF_442_Snow_Scheme = "Canada RCAF 442 Snow Scheme"
+
+        class TheNetherlands(Enum):
+            A_10_Grey = "A-10 Grey"
+
+        class Turkey(Enum):
+            A_10_Grey = "A-10 Grey"
 
     class Pylon1:
         LAU_105___2_AIM_9M = (1, Weapons.LAU_105___2_AIM_9M)
@@ -1422,6 +1793,44 @@ class Su_27(PlaneType):
     category = "Interceptor"
     radio_frequency = 127.5
 
+    class Liveries:
+
+        class Ukraine(Enum):
+            Air_Force_Ukraine_Standard = "Air Force Ukraine Standard"
+            Air_Force_Ukraine_Standard_Early = "Air Force Ukraine Standard Early"
+            Mirgorod_AFB__831th_brigade = "Mirgorod AFB (831th brigade)"
+            Mirgorod_AFB__Digital_camo = "Mirgorod AFB (Digital camo)"
+            Ozerne_AFB__9th_brigade = "Ozerne AFB (9th brigade)"
+
+        class Greece(Enum):
+            HAF_AEGEAN_GHOST = "HAF AEGEAN GHOST"
+
+        class Russia(Enum):
+            Air_Force_Standard = "Air Force Standard"
+            Air_Force_Standard_Early = "Air Force Standard Early"
+            Air_Force_Standard_old = "Air Force Standard old"
+            Besovets_AFB = "Besovets AFB"
+            Besovets_AFB_2_squadron = "Besovets AFB 2 squadron"
+            Chkalovsk_AFB__689_GvIAP = "Chkalovsk AFB (689 GvIAP)"
+            Hotilovo_AFB = "Hotilovo AFB"
+            Kazakhstan_Air_Defense_Forces = "Kazakhstan Air Defense Forces"
+            Kilpyavr_AFB__Maresyev = "Kilpyavr AFB (Maresyev)"
+            Kubinka_AFB__Russian_Knights_Old = "Kubinka AFB (Russian Knights Old)"
+            Kubinka_AFB__Russian_Knights = "Kubinka AFB (Russian Knights)"
+            Lodeynoye_pole_AFB__177_IAP = "Lodeynoye pole AFB (177 IAP)"
+            Lypetsk_AFB__Falcons_of_Russia = "Lypetsk AFB (Falcons of Russia)"
+            Lypetsk_AFB__Shark = "Lypetsk AFB (Shark)"
+            M_Gromov_FRI = "M Gromov FRI"
+
+        class China(Enum):
+            PLAAF_K1S_old = "PLAAF K1S old"
+            PLAAF_K2S_new = "PLAAF K2S new"
+            PLAAF_K2S_new_parade = "PLAAF K2S new parade"
+            PLAAF_K2S_old = "PLAAF K2S old"
+            PLAAF_K33S = "PLAAF K33S"
+            PLAAF_Standard = "PLAAF Standard"
+            PLANAF_HH8S = "PLANAF HH8S"
+
     class Pylon1:
         R_73 = (1, Weapons.R_73)
         L005_Sorbtsiya_ECM_pod__left_ = (1, Weapons.L005_Sorbtsiya_ECM_pod__left_)
@@ -1615,6 +2024,16 @@ class MiG_29G(PlaneType):
     category = "Interceptor"
     radio_frequency = 124
 
+    class Liveries:
+
+        class Germany(Enum):
+            luftwaffe_29_20_demo = "luftwaffe 29+20 demo"
+            luftwaffe_gray_early = "luftwaffe gray early"
+            luftwaffe_gray_1 = "luftwaffe gray-1"
+            luftwaffe_gray_2_worn_out = "luftwaffe gray-2(worn-out)"
+            luftwaffe_gray_3 = "luftwaffe gray-3"
+            luftwaffe_gray_4 = "luftwaffe gray-4"
+
     class Pylon1:
         R_60M = (1, Weapons.R_60M)
         R_73 = (1, Weapons.R_73)
@@ -1685,6 +2104,17 @@ class MiG_23MLD(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
     category = "Interceptor"
+
+    class Liveries:
+
+        class Ukraine(Enum):
+            af_standard = "af standard"
+
+        class Russia(Enum):
+            af_standard = "af standard"
+            af_standard_1 = "af standard-1"
+            af_standard_2 = "af standard-2"
+            af_standard_3__worn_out = "af standard-3 (worn-out)"
 
     class Pylon2:
         R_24R = (2, Weapons.R_24R)
@@ -1767,6 +2197,31 @@ class Su_25(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
     radio_frequency = 124
+
+    class Liveries:
+
+        class Georgia(Enum):
+            _scorpion__demo_scheme__native = "`scorpion` demo scheme (native)"
+            field_camo_scheme__1__native_01 = "field camo scheme #1 (native)01"
+
+        class Ukraine(Enum):
+            broken_camo_scheme__1__native___299th_oshap = "broken camo scheme #1 (native). 299th oshap"
+            broken_camo_scheme__2__native___452th_shap = "broken camo scheme #2 (native). 452th shap"
+            petal_camo_scheme__1__native___299th_brigade = "petal camo scheme #1 (native). 299th brigade"
+            petal_camo_scheme__2__native___299th_brigade = "petal camo scheme #2 (native). 299th brigade"
+
+        class Greece(Enum):
+            HAF_Aegean_Ghost = "HAF Aegean Ghost"
+            HAF_Camo = "HAF Camo"
+
+        class Abkhazia(Enum):
+            Abkhazian_Air_Force = "Abkhazian Air Force"
+
+        class Russia(Enum):
+            field_camo_scheme__1__native = "field camo scheme #1 (native)"
+            field_camo_scheme__2__native___960th_shap = "field camo scheme #2 (native). 960th shap"
+            field_camo_scheme__3__worn_out___960th_shap = "field camo scheme #3 (worn-out). 960th shap"
+            forest_camo_scheme__1__native = "forest camo scheme #1 (native)"
 
     class Pylon1:
         R_60M = (1, Weapons.R_60M)
@@ -1995,6 +2450,11 @@ class Su_25TM(PlaneType):
     charge_total = 256
     chaff_charge_size = 1
     flare_charge_size = 1
+
+    class Liveries:
+
+        class Russia(Enum):
+            Flight_Research_Institute__VVS = "Flight Research Institute  VVS"
 
     class Pylon1:
         R_60M = (1, Weapons.R_60M)
@@ -2254,6 +2714,20 @@ class Su_25T(PlaneType):
     flare_charge_size = 1
     radio_frequency = 124
 
+    class Liveries:
+
+        class Georgia(Enum):
+            af_standard = "af standard"
+            af_standard_101 = "af standard 101"
+
+        class Greece(Enum):
+            HAF___Fictional = "HAF - Fictional"
+
+        class Russia(Enum):
+            af_standard_1 = "af standard 1"
+            af_standard_2 = "af standard 2"
+            su_25t_test_scheme = "su-25t test scheme"
+
     class Pylon1:
         R_60M = (1, Weapons.R_60M)
         MPS_410 = (1, Weapons.MPS_410)
@@ -2504,6 +2978,21 @@ class Su_33(PlaneType):
     category = "Interceptor"
     radio_frequency = 124
 
+    class Liveries:
+
+        class Greece(Enum):
+            HAF___Aegean_Ghost = "HAF - Aegean Ghost"
+
+        class Russia(Enum):
+            _279th_kiap_1st_squad_navy = "279th kiap 1st squad navy"
+            _279th_kiap_2nd_squad_navy = "279th kiap 2nd squad navy"
+            standard_1_navy = "standard-1 navy"
+            standard_2_navy = "standard-2 navy"
+            t_10k_1_test_paint_scheme = "t-10k-1 test paint scheme"
+            t_10k_2_test_paint_scheme = "t-10k-2 test paint scheme"
+            t_10k_5_test_paint_scheme = "t-10k-5 test paint scheme"
+            t_10k_9_test_paint_scheme = "t-10k-9 test paint scheme"
+
     class Pylon1:
         R_73 = (1, Weapons.R_73)
         L005_Sorbtsiya_ECM_pod__left_ = (1, Weapons.L005_Sorbtsiya_ECM_pod__left_)
@@ -2726,6 +3215,14 @@ class MiG_25PD(PlaneType):
     flare_charge_size = 1
     category = "Interceptor"
 
+    class Liveries:
+
+        class Ukraine(Enum):
+            af_standard = "af standard"
+
+        class Russia(Enum):
+            af_standard = "af standard"
+
     class Pylon1:
         R_40R = (1, Weapons.R_40R)
         R_40T = (1, Weapons.R_40T)
@@ -2757,6 +3254,14 @@ class MiG_25RBT(PlaneType):
     length = 23.82
     fuel_max = 15245
     max_speed = 3000
+
+    class Liveries:
+
+        class Ukraine(Enum):
+            af_standard = "af standard"
+
+        class Russia(Enum):
+            af_standard = "af standard"
 
     class Pylon1:
         R_60M = (1, Weapons.R_60M)
@@ -2827,6 +3332,20 @@ class Su_30(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
     category = "Interceptor"
+
+    class Liveries:
+
+        class Russia(Enum):
+            _desert__test_paint_scheme = "`desert` test paint scheme"
+            _russian_knights__team__25 = "`russian knights` team #25"
+            _snow__test_paint_scheme = "`snow` test paint scheme"
+            _test_pilots__team__597 = "`test-pilots` team #597"
+            adf_148th_ctc_savasleyka_ab = "adf 148th ctc savasleyka ab"
+            af_standard = "af standard"
+            af_standard_early = "af standard early"
+            af_standard_early__worn_out = "af standard early (worn-out)"
+            af_standard_last = "af standard last"
+            af_standard_last__worn_out = "af standard last (worn-out)"
 
     class Pylon1:
         R_73 = (1, Weapons.R_73)
@@ -3001,6 +3520,12 @@ class Su_34(PlaneType):
     charge_total = 128
     chaff_charge_size = 1
     flare_charge_size = 1
+
+    class Liveries:
+
+        class Russia(Enum):
+            af_standard = "af standard"
+            af_standard_2 = "af standard 2"
 
     class Pylon1:
         R_73 = (1, Weapons.R_73)
@@ -3249,6 +3774,17 @@ class Su_17M4(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
 
+    class Liveries:
+
+        class Ukraine(Enum):
+            af_standard = "af standard"
+            af_standard__worn_out = "af standard (worn-out)"
+            shap_limanskoye_ab = "shap limanskoye ab"
+
+        class Russia(Enum):
+            af_standard__RUS = "af standard (RUS)"
+            af_standard__worn_out___RUS = "af standard (worn-out) (RUS)"
+
     class Pylon1:
         B_8M1___20_S_8OFP2 = (1, Weapons.B_8M1___20_S_8OFP2)
         FAB_100 = (1, Weapons.FAB_100)
@@ -3424,6 +3960,13 @@ class MiG_31(PlaneType):
     max_speed = 3000
     category = "Interceptor"
 
+    class Liveries:
+
+        class Russia(Enum):
+            _174_GvIAP_Boris_Safonov = "174 GvIAP_Boris Safonov"
+            _903_White = "903_White"
+            af_standard = "af standard"
+
     class Pylon1:
         R_40R = (1, Weapons.R_40R)
         R_40T = (1, Weapons.R_40T)
@@ -3467,6 +4010,14 @@ class Tu_95MS(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
 
+    class Liveries:
+
+        class Ukraine(Enum):
+            af_standard = "af standard"
+
+        class Russia(Enum):
+            af_standard = "af standard"
+
     class Pylon1:
         Kh_65_6 = (1, Weapons.Kh_65_6)
 
@@ -3488,6 +4039,14 @@ class Su_24M(PlaneType):
     charge_total = 192
     chaff_charge_size = 1
     flare_charge_size = 1
+
+    class Liveries:
+
+        class Ukraine(Enum):
+            af_standard = "af standard"
+
+        class Russia(Enum):
+            af_standard = "af standard"
 
     class Pylon1:
         R_60M_2 = (1, Weapons.R_60M_2)
@@ -3648,6 +4207,14 @@ class Su_24MR(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
 
+    class Liveries:
+
+        class Ukraine(Enum):
+            af_standard = "af standard"
+
+        class Russia(Enum):
+            af_standard = "af standard"
+
     class Pylon1:
         R_60M_2 = (1, Weapons.R_60M_2)
 
@@ -3686,6 +4253,11 @@ class Tu_160(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
 
+    class Liveries:
+
+        class Russia(Enum):
+            af_standard = "af standard"
+
     class Pylon1:
         Kh_65_6 = (1, Weapons.Kh_65_6)
 
@@ -3705,6 +4277,11 @@ class F_117A(PlaneType):
     length = 20.08
     fuel_max = 3840
     max_speed = 1000
+
+    class Liveries:
+
+        class USA(Enum):
+            usaf_standard = "usaf standard"
 
     class Pylon1:
         GBU_10 = (1, Weapons.GBU_10)
@@ -3737,6 +4314,11 @@ class B_1B(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 2
     eplrs = True
+
+    class Liveries:
+
+        class USA(Enum):
+            usaf_standard = "usaf standard"
 
     class Pylon1:
         MK_82_28 = (1, Weapons.MK_82_28)
@@ -3789,6 +4371,11 @@ class S_3B(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
     category = "Tanker"
+
+    class Liveries:
+
+        class USA(Enum):
+            usaf_standard = "usaf standard"
 
     class Pylon1:
         _3_Mk_82 = (1, Weapons._3_Mk_82)
@@ -3860,6 +4447,11 @@ class S_3B_Tanker(PlaneType):
     flare_charge_size = 1
     category = "Tanker"
 
+    class Liveries:
+
+        class USA(Enum):
+            usaf_standard = "usaf standard"
+
     pylons = {}
 
     tasks = [task.Refueling]
@@ -3879,6 +4471,19 @@ class Mirage_2000_5(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
     category = "Interceptor"
+
+    class Liveries:
+
+        class Greece(Enum):
+            Hellenic_Airforce = "Hellenic Airforce"
+
+        class France(Enum):
+            ec1_2__spa103__cigogne_de_fonck = "ec1_2  spa103 `cigogne de fonck`"
+            ec1_2__spa12__cigogne_a_ailes_ouvertes = "ec1_2  spa12 `cigogne a ailes ouvertes`"
+            ec1_2_spa3__cigogne_de_guynemer = "ec1_2 spa3 `cigogne de guynemer`"
+            ec2_2__cote_d_or__spa57__mouette = "ec2_2 `cote d'or` spa57 `mouette`"
+            ec2_2__cote_d_or__spa65__chimere = "ec2_2 `cote d'or` spa65 `chimere`"
+            ec2_2_spa94__lamort_qui_fauche = "ec2_2 spa94 `lamort qui fauche`"
 
     class Pylon1:
         R_550_Magic_2 = (1, Weapons.R_550_Magic_2)
@@ -3938,6 +4543,29 @@ class F_15C(PlaneType):
     flare_charge_size = 2
     category = "Interceptor"
     radio_frequency = 124
+
+    class Liveries:
+
+        class Israel(Enum):
+            _106th_SQN__8th_Airbase = "106th SQN (8th Airbase)"
+
+        class Greece(Enum):
+            HAF_AEGEAN_GHOST = "HAF AEGEAN GHOST"
+
+        class USAFAggressors(Enum):
+            _65th_Aggressor_SQN__WA__Flanker = "65th Aggressor SQN (WA) Flanker"
+            _65th_Aggressor_SQN__WA__MiG = "65th Aggressor SQN (WA) MiG"
+            _65th_Aggressor_SQN__WA__SUPER_Flanker = "65th Aggressor SQN (WA) SUPER_Flanker"
+
+        class USA(Enum):
+            _12th_Fighter_SQN__AK = "12th Fighter SQN (AK)"
+            _390th_Fighter_SQN = "390th Fighter SQN"
+            _493rd_Fighter_SQN__LN = "493rd Fighter SQN (LN)"
+            _58th_Fighter_SQN__EG = "58th Fighter SQN (EG)"
+            _65th_Aggressor_SQN__WA__Flanker = "65th Aggressor SQN (WA) Flanker"
+            _65th_Aggressor_SQN__WA__MiG = "65th Aggressor SQN (WA) MiG"
+            _65th_Aggressor_SQN__WA__SUPER_Flanker = "65th Aggressor SQN (WA) SUPER_Flanker"
+            Ferris_Scheme = "Ferris Scheme"
 
     class Pylon1:
         AIM_120B = (1, Weapons.AIM_120B)
@@ -4026,6 +4654,15 @@ class F_15E(PlaneType):
     flare_charge_size = 2
     eplrs = True
     category = "Interceptor"
+
+    class Liveries:
+
+        class Israel(Enum):
+            IDF_No_69_Hammers_Squadron = "IDF No 69 Hammers Squadron"
+
+        class USA(Enum):
+            _335th_Fighter_SQN__SJ = "335th Fighter SQN (SJ)"
+            _492d_Fighter_SQN__LN = "492d Fighter SQN (LN)"
 
     class Pylon1:
         AIM_120B = (1, Weapons.AIM_120B)
@@ -4283,6 +4920,572 @@ class MiG_29K(PlaneType):
     flare_charge_size = 1
     radio_frequency = 124
 
+    class Liveries:
+
+        class Georgia(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Syria(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Finland(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Australia(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Germany(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class SaudiArabia(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Israel(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Croatia(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class CzechRepublic(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Norway(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Romania(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Spain(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Ukraine(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Belgium(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Slovakia(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Greece(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class UK(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Insurgents(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Hungary(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class France(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Abkhazia(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Russia(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Sweden(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Austria(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Switzerland(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Italy(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class SouthOssetia(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class SouthKorea(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Iran(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class China(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Pakistan(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Belarus(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class NorthKorea(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Iraq(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Kazakhstan(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Bulgaria(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Serbia(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class India(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class USAFAggressors(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class USA(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Denmark(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Egypt(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Canada(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class TheNetherlands(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Turkey(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Japan(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
+        class Poland(Enum):
+            european1 = "european1"
+            european2 = "european2"
+            european3 = "european3"
+            european4 = "european4"
+            luftwaffe = "luftwaffe"
+            sea1 = "sea1"
+            sea2 = "sea2"
+            standard = "standard"
+            tiger = "tiger"
+            ukrainian = "ukrainian"
+
     class Pylon3:
         R_73 = (3, Weapons.R_73)
         L005_Sorbtsiya_ECM_pod__left_ = (3, Weapons.L005_Sorbtsiya_ECM_pod__left_)
@@ -4308,6 +5511,11 @@ class Tu_142(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
 
+    class Liveries:
+
+        class Russia(Enum):
+            af_standard = "af standard"
+
     class Pylon1:
         Kh_35_6 = (1, Weapons.Kh_35_6)
 
@@ -4332,6 +5540,44 @@ class C_130(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 2
 
+    class Liveries:
+
+        class Israel(Enum):
+            Israel_Defence_Force = "Israel Defence Force"
+
+        class Norway(Enum):
+            Royal_Norwegian_Air_Force = "Royal Norwegian Air Force"
+
+        class Spain(Enum):
+            Spanish_Air_Force = "Spanish Air Force"
+
+        class Belgium(Enum):
+            Belgian_Air_Force = "Belgian Air Force"
+
+        class Greece(Enum):
+            HAF_gray = "HAF gray"
+
+        class UK(Enum):
+            Royal_Air_Force = "Royal Air Force"
+
+        class France(Enum):
+            French_Air_Force = "French Air Force"
+
+        class USA(Enum):
+            US_Air_Force = "US Air Force"
+
+        class Denmark(Enum):
+            Royal_Danish_Air_Force = "Royal Danish Air Force"
+
+        class Canada(Enum):
+            Canada_s_Air_Force = "Canada's Air Force"
+
+        class TheNetherlands(Enum):
+            Royal_Netherlands_Air_Force = "Royal Netherlands Air Force"
+
+        class Turkey(Enum):
+            Turkish_Air_Force = "Turkish Air Force"
+
     pylons = {}
 
     tasks = [task.Transport]
@@ -4352,6 +5598,24 @@ class An_26B(PlaneType):
     charge_total = 768
     chaff_charge_size = 1
     flare_charge_size = 1
+
+    class Liveries:
+
+        class Georgia(Enum):
+            Georgian_AF = "Georgian AF"
+
+        class Ukraine(Enum):
+            Ukraine_AF = "Ukraine AF"
+
+        class Abkhazia(Enum):
+            Abkhazian_AF = "Abkhazian AF"
+
+        class Russia(Enum):
+            Aeroflot = "Aeroflot"
+            RF_Air_Force = "RF Air Force"
+
+        class China(Enum):
+            China_PLAAF = "China PLAAF"
 
     pylons = {}
 
@@ -4374,6 +5638,17 @@ class An_30M(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
 
+    class Liveries:
+
+        class Ukraine(Enum):
+            _15th_Transport_AB = "15th Transport AB"
+
+        class Russia(Enum):
+            RF_Air_Force = "RF Air Force"
+
+        class China(Enum):
+            China_CAAC = "China CAAC"
+
     pylons = {}
 
     tasks = [task.Transport, task.Reconnaissance]
@@ -4394,6 +5669,11 @@ class C_17A(PlaneType):
     charge_total = 240
     chaff_charge_size = 1
     flare_charge_size = 2
+
+    class Liveries:
+
+        class USA(Enum):
+            usaf_standard = "usaf standard"
 
     pylons = {}
 
@@ -4417,6 +5697,12 @@ class A_50(PlaneType):
     flare_charge_size = 1
     category = "AWACS"
 
+    class Liveries:
+
+        class Russia(Enum):
+            RF_Air_Force = "RF Air Force"
+            RF_Air_Force_new = "RF Air Force new"
+
     pylons = {}
 
     tasks = [task.AWACS]
@@ -4438,6 +5724,18 @@ class E_3A(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 2
     category = "AWACS"
+
+    class Liveries:
+
+        class UK(Enum):
+            nato = "nato"
+
+        class France(Enum):
+            nato = "nato"
+
+        class USA(Enum):
+            nato = "nato"
+            usaf_standard = "usaf standard"
 
     pylons = {}
 
@@ -4461,13 +5759,23 @@ class IL_78M(PlaneType):
     flare_charge_size = 1
     category = "Tanker"
 
+    class Liveries:
+
+        class Russia(Enum):
+            RF_Air_Force = "RF Air Force"
+            RF_Air_Force_aeroflot = "RF Air Force aeroflot"
+            RF_Air_Force_new = "RF Air Force new"
+
+        class China(Enum):
+            China_Air_Force = "China Air Force"
+
     pylons = {}
 
     tasks = [task.Refueling]
     task_default = task.Refueling
 
 
-class E_2C(PlaneType):
+class E_2D(PlaneType):
     id = "E-2C"
     group_size_max = 1
     large_parking_slot = True
@@ -4482,6 +5790,12 @@ class E_2C(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 2
     category = "AWACS"
+
+    class Liveries:
+
+        class USA(Enum):
+            E_2D_Demo = "E-2D Demo"
+            VAW_125_Tigertails = "VAW-125 Tigertails"
 
     pylons = {}
 
@@ -4504,6 +5818,21 @@ class IL_76MD(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
 
+    class Liveries:
+
+        class Ukraine(Enum):
+            Ukrainian_AF = "Ukrainian AF"
+            Ukrainian_AF_aeroflot = "Ukrainian AF aeroflot"
+
+        class Russia(Enum):
+            FSB_aeroflot = "FSB aeroflot"
+            MVD_aeroflot = "MVD aeroflot"
+            RF_Air_Force = "RF Air Force"
+
+        class China(Enum):
+            China_Air_Force_New = "China Air Force New"
+            China_Air_Force_Old = "China Air Force Old"
+
     pylons = {}
 
     tasks = [task.Transport]
@@ -4523,6 +5852,17 @@ class F_16C_bl_50(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 2
     category = "Interceptor"
+
+    class Liveries:
+
+        class Greece(Enum):
+            HAF___330sqn = "HAF - 330sqn"
+            HAF___341sqn = "HAF - 341sqn"
+            HAF___347sqn = "HAF - 347sqn"
+            HAF___Aegean_Ghost = "HAF - Aegean Ghost"
+
+        class Turkey(Enum):
+            af_f16_standard = "af f16 standard"
 
     class Pylon1:
         AIM_120B = (1, Weapons.AIM_120B)
@@ -4692,6 +6032,29 @@ class F_16C_bl_52d(PlaneType):
     eplrs = True
     category = "Interceptor"
 
+    class Liveries:
+
+        class Israel(Enum):
+            idf_af_f16c_standard = "idf_af f16c standard"
+
+        class Greece(Enum):
+            HAF___340sqn = "HAF - 340sqn"
+            HAF___343sqn = "HAF - 343sqn"
+            HAF___Aegean_Ghost = "HAF - Aegean Ghost"
+
+        class USAFAggressors(Enum):
+            usaf_414th_cts__wa__nellis_afb = "usaf 414th cts (wa) nellis afb"
+
+        class USA(Enum):
+            pacaf_14th_fs__mj__misawa_afb = "pacaf 14th fs (mj) misawa afb"
+            pacaf_35th_fw__ww__misawa_afb = "pacaf 35th fw (ww) misawa afb"
+            usaf_147th_fig__ef__ellington_afb = "usaf 147th fig (ef) ellington afb"
+            usaf_412th_tw__ed__edwards_afb = "usaf 412th tw (ed) edwards afb"
+            usaf_414th_cts__wa__nellis_afb = "usaf 414th cts (wa) nellis afb"
+            usaf_77th_fs__sw__shaw_afb = "usaf 77th fs (sw) shaw afb"
+            usafe_22nd_fs__sp__spangdahlem_afb = "usafe 22nd fs (sp) spangdahlem afb"
+            usafe_555th_fs__av__aviano_afb = "usafe 555th fs (av) aviano afb"
+
     class Pylon1:
         AIM_120B = (1, Weapons.AIM_120B)
         AIM_120C = (1, Weapons.AIM_120C)
@@ -4857,6 +6220,14 @@ class F_16A(PlaneType):
     flare_charge_size = 2
     category = "Interceptor"
 
+    class Liveries:
+
+        class USA(Enum):
+            usaf_f16_standard_1 = "usaf f16 standard-1"
+
+        class Denmark(Enum):
+            standard_denmark = "standard_denmark"
+
     class Pylon1:
         AIM_120B = (1, Weapons.AIM_120B)
         AIM_9M = (1, Weapons.AIM_9M)
@@ -4960,6 +6331,156 @@ class F_16A_MLU(PlaneType):
     flare_charge_size = 2
     eplrs = True
     category = "Interceptor"
+
+    class Liveries:
+
+        class Georgia(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Syria(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Finland(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Australia(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Germany(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class SaudiArabia(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Israel(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Croatia(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class CzechRepublic(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Norway(Enum):
+            CMD_extended_skins = "CMD extended skins"
+            norway_338_skvadron = "norway 338 skvadron"
+            norway_skv338 = "norway skv338"
+
+        class Romania(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Spain(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Ukraine(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Belgium(Enum):
+            _2nd_squadron__comet__florennes_ab = "2nd squadron `comet` florennes ab"
+            CMD_extended_skins = "CMD extended skins"
+
+        class Slovakia(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Greece(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class UK(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Insurgents(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Hungary(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class France(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Abkhazia(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Russia(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Sweden(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Austria(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Switzerland(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Italy(Enum):
+            rdaf_f16_standard_1 = "rdaf f16 standard-1"
+            CMD_extended_skins = "CMD extended skins"
+
+        class SouthOssetia(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class SouthKorea(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Iran(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class China(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Pakistan(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Belarus(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class NorthKorea(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Iraq(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Kazakhstan(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Bulgaria(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Serbia(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class India(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class USAFAggressors(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class USA(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Denmark(Enum):
+            rdaf_f16_standard_1 = "rdaf f16 standard-1"
+            CMD_extended_skins = "CMD extended skins"
+
+        class Egypt(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Canada(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class TheNetherlands(Enum):
+            CMD_extended_skins = "CMD extended skins"
+            the_netherlands__313th_squadron____twenthe_ab = "the netherlands (313th squadron `` twenthe ab)"
+            the_netherlands_313th__tigers__squadron = "the netherlands 313th `tigers` squadron"
+
+        class Turkey(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Japan(Enum):
+            CMD_extended_skins = "CMD extended skins"
+
+        class Poland(Enum):
+            CMD_extended_skins = "CMD extended skins"
 
     class Pylon1:
         AIM_120B = (1, Weapons.AIM_120B)
@@ -5081,7 +6602,7 @@ class F_16A_MLU(PlaneType):
     task_default = task.CAP
 
 
-class RQ_1A_Predator(PlaneType):
+class MQ_1A_Predator(PlaneType):
     id = "RQ-1A Predator"
     group_size_max = 1
     height = 2.21
@@ -5091,6 +6612,11 @@ class RQ_1A_Predator(PlaneType):
     max_speed = 220
     eplrs = True
     radio_frequency = 127.5
+
+    class Liveries:
+
+        class USA(Enum):
+            USAF_Standard = "USAF Standard"
 
     class Pylon1:
         AGM_114K = (1, Weapons.AGM_114K)
@@ -5113,6 +6639,20 @@ class Yak_40(PlaneType):
     length = 20.36
     fuel_max = 3080
     max_speed = 570
+
+    class Liveries:
+
+        class Georgia(Enum):
+            Georgian_Airlines = "Georgian Airlines"
+
+        class Ukraine(Enum):
+            Ukranian = "Ukranian"
+
+        class Greece(Enum):
+            Olympic_Airways = "Olympic Airways"
+
+        class Russia(Enum):
+            Aeroflot = "Aeroflot"
 
     pylons = {}
 
@@ -5143,6 +6683,86 @@ class A_10C(PlaneType):
             "Tusk",
         ]
     }
+
+    class Liveries:
+
+        class Georgia(Enum):
+            Fictional_Georgian_Grey = "Fictional Georgian Grey"
+            Fictional_Georgian_Olive = "Fictional Georgian Olive"
+
+        class Australia(Enum):
+            Australia_Notional_RAAF = "Australia Notional RAAF"
+
+        class Germany(Enum):
+            Fictional_German_3322 = "Fictional German 3322"
+            Fictional_German_3323 = "Fictional German 3323"
+
+        class Israel(Enum):
+            Fictional_Israel_115_Sqn_Flying_Dragon = "Fictional Israel 115 Sqn Flying Dragon"
+
+        class Norway(Enum):
+            Fictional_Royal_Norwegian_Air_Force = "Fictional Royal Norwegian Air Force"
+
+        class Spain(Enum):
+            Fictional_Spanish_12nd_Wing = "Fictional Spanish 12nd Wing"
+            Fictional_Spanish_AGA = "Fictional Spanish AGA"
+            Fictional_Spanish_Tritonal = "Fictional Spanish Tritonal"
+
+        class Ukraine(Enum):
+            Fictional_Ukraine_Air_Force_1 = "Fictional Ukraine Air Force 1"
+
+        class Belgium(Enum):
+            A_10_Grey = "A-10 Grey"
+
+        class Greece(Enum):
+            HAF_Fictional = "HAF Fictional"
+
+        class UK(Enum):
+            A_10_Grey = "A-10 Grey"
+
+        class France(Enum):
+            Fictional_France_Escadron_de_Chasse_03_003_ARDENNES = "Fictional France Escadron de Chasse 03.003 ARDENNES"
+
+        class Russia(Enum):
+            Fictional_Russian_Air_Force_1 = "Fictional Russian Air Force 1"
+            Fictional_Russian_Air_Force_2 = "Fictional Russian Air Force 2"
+
+        class Italy(Enum):
+            Fictional_Italian_AM__23Gruppo = "Fictional Italian AM (23Gruppo)"
+
+        class USA(Enum):
+            _104th_FS_Maryland_ANG__Baltimore__MD = "104th FS Maryland ANG, Baltimore (MD)"
+            _118th_FS_Bradley_ANGB__Connecticut__CT = "118th FS Bradley ANGB, Connecticut (CT)"
+            _118th_FS_Bradley_ANGB__Connecticut__CT__N621 = "118th FS Bradley ANGB, Connecticut (CT) N621"
+            _172nd_FS_Battle_Creek_ANGB__Michigan__BC = "172nd FS Battle Creek ANGB, Michigan (BC)"
+            _184th_FS_Arkansas_ANG__Fort_Smith__FS = "184th FS Arkansas ANG, Fort Smith (FS)"
+            _190th_FS_Boise_ANGB__Idaho__ID = "190th FS Boise ANGB, Idaho (ID)"
+            _23rd_TFW_England_AFB__EL = "23rd TFW England AFB (EL)"
+            _25th_FS_Osan_AB__Korea__OS = "25th FS Osan AB, Korea (OS)"
+            _354th_FS_Davis_Monthan_AFB__Arizona__DM = "354th FS Davis Monthan AFB, Arizona (DM)"
+            _355th_FS_Eielson_AFB__Alaska__AK = "355th FS Eielson AFB, Alaska (AK)"
+            _357th_FS_Davis_Monthan_AFB__Arizona__DM = "357th FS Davis Monthan AFB, Arizona (DM)"
+            _358th_FS_Davis_Monthan_AFB__Arizona__DM = "358th FS Davis Monthan AFB, Arizona (DM)"
+            _422nd_TES_Nellis_AFB__Nevada__OT = "422nd TES Nellis AFB, Nevada (OT)"
+            _47th_FS_Barksdale_AFB__Louisiana__BD = "47th FS Barksdale AFB, Louisiana (BD)"
+            _66th_WS_Nellis_AFB__Nevada__WA = "66th WS Nellis AFB, Nevada (WA)"
+            _74th_FS_Moody_AFB__Georgia__FT = "74th FS Moody AFB, Georgia (FT)"
+            _81st_FS_Spangdahlem_AB__Germany__SP__1 = "81st FS Spangdahlem AB, Germany (SP) 1"
+            _81st_FS_Spangdahlem_AB__Germany__SP__2 = "81st FS Spangdahlem AB, Germany (SP) 2"
+
+        class Denmark(Enum):
+            A_10_Grey = "A-10 Grey"
+
+        class Canada(Enum):
+            Fictional_Canadian_Air_Force_Pixel_Camo = "Fictional Canadian Air Force Pixel Camo"
+            Canada_RCAF_409_Squadron = "Canada RCAF 409 Squadron"
+            Canada_RCAF_442_Snow_Scheme = "Canada RCAF 442 Snow Scheme"
+
+        class TheNetherlands(Enum):
+            A_10_Grey = "A-10 Grey"
+
+        class Turkey(Enum):
+            A_10_Grey = "A-10 Grey"
 
     class Pylon1:
         LAU_105___2_AIM_9M = (1, Weapons.LAU_105___2_AIM_9M)
@@ -5594,6 +7214,149 @@ class KC_135(PlaneType):
     tacan = True
     category = "Tanker"
 
+    class Liveries:
+
+        class Georgia(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Syria(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Finland(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Australia(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Germany(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class SaudiArabia(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Israel(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Croatia(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class CzechRepublic(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Norway(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Romania(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Spain(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Ukraine(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Belgium(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Slovakia(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Greece(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class UK(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Insurgents(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Hungary(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class France(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Abkhazia(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Russia(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Sweden(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Austria(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Switzerland(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Italy(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class SouthOssetia(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class SouthKorea(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Iran(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class China(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Pakistan(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Belarus(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class NorthKorea(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Iraq(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Kazakhstan(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Bulgaria(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Serbia(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class India(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class USAFAggressors(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class USA(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Denmark(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Egypt(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Canada(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class TheNetherlands(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Turkey(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Japan(Enum):
+            Standard_USAF = "Standard USAF"
+
+        class Poland(Enum):
+            Standard_USAF = "Standard USAF"
+
     pylons = {}
 
     tasks = [task.Refueling]
@@ -5620,6 +7383,142 @@ class P_51D(PlaneType):
             },
         },
     }
+
+    class Liveries:
+
+        class Georgia(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Australia(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Germany(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+            Germany_Training_Staffel = "Germany Training Staffel"
+
+        class Israel(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+            Israeli_Air_Force = "Israeli Air Force"
+
+        class Norway(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Spain(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+            SPAIN_Roberto = "SPAIN Roberto"
+
+        class Ukraine(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+            Ukraine_Old = "Ukraine Old"
+            Ukraine_Modern = "Ukraine Modern"
+
+        class Belgium(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Greece(Enum):
+            Hellenic_Airforce_Green = "Hellenic Airforce Green"
+
+        class UK(Enum):
+            RAF_112_Sqdn = "RAF 112 Sqdn"
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Insurgents(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class France(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Abkhazia(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Russia(Enum):
+            Bare_Metal = "Bare Metal"
+            Russia_Blueback = "Russia Blueback"
+            Russia_DOSAAF = "Russia DOSAAF"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+            SPAIN_Roberto = "SPAIN Roberto"
+            Russia_SRI_VVS_USSR_1942 = "Russia SRI VVS USSR 1942"
+            USSR_Modern = "USSR Modern"
+            USSR_Old = "USSR Old"
+            Russia_Green_Black = "Russia Green Black"
+
+        class Italy(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+            Italia_Air_Force = "Italia Air Force"
+
+        class SouthOssetia(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class USA(Enum):
+            USAF_363rd_FS__357th_FG_DESERT_RAT = "USAF 363rd FS, 357th FG DESERT RAT"
+            USAF_364th_FS__HURRY_HOME_HONEY = "USAF 364th FS, HURRY HOME HONEY"
+            USAF_344th_FS__IRON_ASS = "USAF 344th FS, IRON ASS"
+            USAF_485th_FS__MOONBEAM_McSWINE = "USAF 485th FS, MOONBEAM McSWINE"
+            USAF_302nd_FS__RED_TAILS = "USAF 302nd FS, RED TAILS"
+            USAF_363rd_FS = "USAF 363rd FS"
+            USAF_364th_FS = "USAF 364th FS"
+            USAF_375th_FS = "USAF 375th FS"
+            USAF_485th_FS = "USAF 485th FS"
+            USAF_84th_FS = "USAF 84th FS"
+            Bare_Metal = "Bare Metal"
+            USAF_Big_Beautiful_Doll = "USAF Big Beautiful Doll"
+            USAF_DEE = "USAF DEE"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+            USAF_Ferocious_Frankie = "USAF Ferocious Frankie"
+            USAF_Gentleman_Jim = "USAF Gentleman Jim"
+            USAF_Miss_Velma = "USAF Miss Velma"
+            USAF_Voodoo_AirRace = "USAF Voodoo AirRace"
+
+        class Denmark(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Canada(Enum):
+            Canada_RAF_442_Sqdn = "Canada RAF 442 Sqdn"
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class TheNetherlands(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Turkey(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
 
     class Pylon1:
         HVAR = (1, Weapons.HVAR)
@@ -5663,7 +7562,7 @@ class P_51D(PlaneType):
     task_default = task.CAS
 
 
-class FW_190D9(PlaneType):
+class Fw_190_D_9(PlaneType):
     id = "FW-190D9"
     flyable = True
     height = 4.77
@@ -5685,6 +7584,25 @@ class FW_190D9(PlaneType):
         },
     }
 
+    class Liveries:
+
+        class Germany(Enum):
+            FW_190D9_13_JG_51_Heinz_Marquardt = "FW-190D9_13.JG 51_Heinz Marquardt"
+            FW_190D9_IV_JG_26_Hans_Dortenmann = "FW-190D9_IV.JG 26_Hans Dortenmann"
+            FW_190D9_Black_4_of_Stab_IIJG_6 = "FW-190D9_Black 4 of Stab IIJG 6"
+            FW_190D9_JG54 = "FW-190D9_JG54"
+            FW_190D9_5JG301 = "FW-190D9_5JG301"
+            FW_190D9_Red = "FW-190D9_Red"
+
+        class UK(Enum):
+            FW_190D9_GB = "FW-190D9_GB"
+
+        class Russia(Enum):
+            FW_190D9_USSR = "FW-190D9_USSR"
+
+        class USA(Enum):
+            FW_190D9_USA = "FW-190D9_USA"
+
     class Pylon1:
         FW109_FUEL_TANK = (1, Weapons.FW109_FUEL_TANK)
         SC_501_SC500 = (1, Weapons.SC_501_SC500)
@@ -5696,7 +7614,7 @@ class FW_190D9(PlaneType):
     task_default = task.CAP
 
 
-class Bf_109K_4(PlaneType):
+class Bf_109_K_4(PlaneType):
     id = "Bf-109K-4"
     flyable = True
     height = 4.77
@@ -5718,6 +7636,82 @@ class Bf_109K_4(PlaneType):
             },
         },
     }
+
+    class Liveries:
+
+        class Georgia(Enum):
+            Green = "Green"
+
+        class Australia(Enum):
+            Green = "Green"
+
+        class Germany(Enum):
+            Bf_109_K4_Jagdgeschwader_53 = "Bf-109 K4 Jagdgeschwader 53"
+            Bf_109_K4_1_NJG__11__White_5 = "Bf-109 K4 1.NJG  11 (White 5)"
+            Bf_109_K4_330xxx_batch = "Bf-109 K4 330xxx batch"
+            Bf_109_K4_334xxx_batch = "Bf-109 K4 334xxx batch"
+            Bf_109_K4_335xxx_batch = "Bf-109 K4 335xxx batch"
+            Bf_109_K4_9_JG27__W10_I = "Bf-109 K4 9.JG27 (W10+I)"
+            Bf_109_K4_9_JG77 = "Bf-109 K4 9.JG77"
+            Green = "Green"
+            Bf_109_K4_IIJG52 = "Bf-109 K4 IIJG52"
+            Bf_109_K4_IIIJG27 = "Bf-109 K4 IIIJG27"
+            Germany_standard = "Germany_standard"
+            Bf_109_K4_Jagdgeschwader_77 = "Bf-109 K4 Jagdgeschwader 77"
+            Bf_109_K4_1_NJG__11 = "Bf-109 K4 1.NJG  11"
+            Bf_109_K4_Stab_JG52 = "Bf-109 K4 Stab JG52"
+
+        class Israel(Enum):
+            Green = "Green"
+
+        class Norway(Enum):
+            Green = "Green"
+
+        class Spain(Enum):
+            Green = "Green"
+
+        class Ukraine(Enum):
+            Green = "Green"
+
+        class Belgium(Enum):
+            Green = "Green"
+
+        class UK(Enum):
+            Green = "Green"
+
+        class Insurgents(Enum):
+            Green = "Green"
+
+        class France(Enum):
+            Green = "Green"
+
+        class Abkhazia(Enum):
+            Green = "Green"
+
+        class Russia(Enum):
+            Green = "Green"
+
+        class Italy(Enum):
+            Green = "Green"
+
+        class SouthOssetia(Enum):
+            Green = "Green"
+
+        class USA(Enum):
+            Green = "Green"
+            Bf_109_K4_US_captured = "Bf-109 K4 US captured"
+
+        class Denmark(Enum):
+            Green = "Green"
+
+        class Canada(Enum):
+            Green = "Green"
+
+        class TheNetherlands(Enum):
+            Green = "Green"
+
+        class Turkey(Enum):
+            Green = "Green"
 
     class Pylon1:
         SC_501_SC500 = (1, Weapons.SC_501_SC500)
@@ -5788,6 +7782,74 @@ class C_101EB(PlaneType):
         },
     }
 
+    class Liveries:
+
+        class Georgia(Enum):
+            default = "default"
+
+        class Australia(Enum):
+            default = "default"
+
+        class Germany(Enum):
+            default = "default"
+
+        class Israel(Enum):
+            default = "default"
+
+        class Norway(Enum):
+            default = "default"
+
+        class Spain(Enum):
+            AGA__Spanish_Air_School = "AGA (Spanish Air School)"
+            AGA__Spanish_Air_School__1980 = "AGA (Spanish Air School) 1980"
+            AGA__Spanish_Air_School__1985 = "AGA (Spanish Air School) 1985"
+            default = "default"
+            Honduras02 = "Honduras02"
+            Chile_02 = "Chile 02"
+            Patrulla_Aguila_Spanish_AGA = "Patrulla Aguila Spanish AGA"
+
+        class Ukraine(Enum):
+            default = "default"
+
+        class Belgium(Enum):
+            default = "default"
+
+        class UK(Enum):
+            default = "default"
+
+        class Insurgents(Enum):
+            default = "default"
+
+        class France(Enum):
+            default = "default"
+
+        class Abkhazia(Enum):
+            default = "default"
+
+        class Russia(Enum):
+            default = "default"
+
+        class Italy(Enum):
+            default = "default"
+
+        class SouthOssetia(Enum):
+            default = "default"
+
+        class USA(Enum):
+            default = "default"
+
+        class Denmark(Enum):
+            default = "default"
+
+        class Canada(Enum):
+            default = "default"
+
+        class TheNetherlands(Enum):
+            default = "default"
+
+        class Turkey(Enum):
+            default = "default"
+
     class Pylon1:
         Aviojet_Red_Smoke = (1, Weapons.Aviojet_Red_Smoke)
 
@@ -5837,6 +7899,72 @@ class C_101CC(PlaneType):
             },
         },
     }
+
+    class Liveries:
+
+        class Georgia(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Australia(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Germany(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Israel(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Norway(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Spain(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+            CLAEX = "CLAEX"
+            Honduras02 = "Honduras02"
+            Chile_02 = "Chile 02"
+            SPAIN = "SPAIN"
+
+        class Ukraine(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Belgium(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class UK(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Insurgents(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class France(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Abkhazia(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Russia(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Italy(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class SouthOssetia(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class USA(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Denmark(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Canada(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class TheNetherlands(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Turkey(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
 
     class Pylon1:
         AIM_9M = (1, Weapons.AIM_9M)
@@ -5938,6 +8066,19 @@ class F_5E(PlaneType):
     flare_charge_size = 0
     category = "Air"
     radio_frequency = 305
+
+    class Liveries:
+
+        class USAFAggressors(Enum):
+            aggressor__desert__scheme = "aggressor `desert` scheme"
+            aggressor__marine__scheme = "aggressor `marine` scheme"
+            aggressor__snake__scheme = "aggressor `snake` scheme"
+
+        class USA(Enum):
+            USA_standard = "USA standard"
+            aggressor__desert__scheme = "aggressor `desert` scheme"
+            aggressor__marine__scheme = "aggressor `marine` scheme"
+            aggressor__snake__scheme = "aggressor `snake` scheme"
 
     class Pylon1:
         AIM_9P = (1, Weapons.AIM_9P)
@@ -6098,6 +8239,19 @@ class F_5E_3(PlaneType):
         },
     }
 
+    class Liveries:
+
+        class USAFAggressors(Enum):
+            aggressor__desert__scheme = "aggressor `desert` scheme"
+            aggressor__marine__scheme = "aggressor `marine` scheme"
+            aggressor__snake__scheme = "aggressor `snake` scheme"
+
+        class USA(Enum):
+            USA_standard = "USA standard"
+            aggressor__desert__scheme = "aggressor `desert` scheme"
+            aggressor__marine__scheme = "aggressor `marine` scheme"
+            aggressor__snake__scheme = "aggressor `snake` scheme"
+
     class Pylon1:
         AIM_9P = (1, Weapons.AIM_9P)
         Smokewinder___red = (1, Weapons.Smokewinder___red)
@@ -6215,9 +8369,8 @@ class F_5E_3(PlaneType):
     task_default = task.CAP
 
 
-class F_86F_Sabre(PlaneType):
+class F_86F(PlaneType):
     id = "F-86F Sabre"
-    flyable = True
     height = 4.496
     width = 11.9
     length = 11.43
@@ -6250,6 +8403,18 @@ class F_86F_Sabre(PlaneType):
             },
         },
     }
+
+    class Liveries:
+
+        class Greece(Enum):
+            HAF_341sqn = "HAF 341sqn"
+            HAF_342sqn = "HAF 342sqn"
+            HAF_Hellenic_Flame = "HAF Hellenic Flame"
+
+        class USA(Enum):
+            US_Air_Force = "US Air Force"
+            US_Air_Force__code_FU_178 = "US Air Force (code FU-178)"
+            US_Air_Force__ex_USAF_F_86A_Sabre = "US Air Force (ex-USAF F-86A Sabre)"
 
     class Pylon1:
         Fuel_Tank_200_gallons = (1, Weapons.Fuel_Tank_200_gallons)
@@ -6339,6 +8504,213 @@ class Hawk(PlaneType):
         },
     }
 
+    class Liveries:
+
+        class Georgia(Enum):
+            XX189___100Sqn = "XX189 - 100Sqn"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class Finland(Enum):
+            Finland_HW_373_Ex_Swiss_Air_Force = "Finland HW-373 Ex-Swiss Air Force"
+            Finland_HW_341_Grey = "Finland HW-341 Grey"
+
+        class Australia(Enum):
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class Germany(Enum):
+            XX189___100Sqn = "XX189 - 100Sqn"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class Israel(Enum):
+            XX189___100Sqn = "XX189 - 100Sqn"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class Norway(Enum):
+            XX189___100Sqn = "XX189 - 100Sqn"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class Spain(Enum):
+            XX189___100Sqn = "XX189 - 100Sqn"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class Ukraine(Enum):
+            XX189___100Sqn = "XX189 - 100Sqn"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class Belgium(Enum):
+            XX189___100Sqn = "XX189 - 100Sqn"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class UK(Enum):
+            XX189___100Sqn = "XX189 - 100Sqn"
+            XX218___208Sqn = "XX218 - 208Sqn"
+            XX226___74Sqn_1992_2000 = "XX226 - 74Sqn 1992-2000"
+            XX316___74Sqn_1998_2000 = "XX316 - 74Sqn 1998-2000"
+            XX179___Red_Arrows_1979_2007 = "XX179 - Red Arrows 1979-2007"
+            XX179___Red_Arrows_2008_2012 = "XX179 - Red Arrows 2008-2012"
+            XX159___FRADU_Royal_Navy_Anniversary = "XX159 - FRADU Royal Navy Anniversary"
+            XX175___FRADU_Royal_Navy = "XX175 - FRADU Royal Navy"
+            XX316___FRADU_Royal_Navy = "XX316 - FRADU Royal Navy"
+            XX100___TFC = "XX100 - TFC"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            _1018___United_Arab_Emirates = "1018 - United Arab Emirates"
+            XX228___VEAO = "XX228 - VEAO"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class Insurgents(Enum):
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class France(Enum):
+            XX189___100Sqn = "XX189 - 100Sqn"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class Abkhazia(Enum):
+            XX189___100Sqn = "XX189 - 100Sqn"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class Russia(Enum):
+            XX189___100Sqn = "XX189 - 100Sqn"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class Switzerland(Enum):
+            Swiss_U_1251___White = "Swiss U-1251 - White"
+            Swiss_U_1252___Normal = "Swiss U-1252 - Normal"
+            Swiss_U_1268___ByeByeHawk = "Swiss U-1268 - ByeByeHawk"
+            Swiss_U_1270___Wallis = "Swiss U-1270 - Wallis"
+
+        class Italy(Enum):
+            XX189___100Sqn = "XX189 - 100Sqn"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class SouthOssetia(Enum):
+            XX189___100Sqn = "XX189 - 100Sqn"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class USA(Enum):
+            XX189___100Sqn = "XX189 - 100Sqn"
+            _12th_FTW__Randolph_AFB__Texas__RA = "12th FTW, Randolph AFB, Texas (RA)"
+            _1st_RS__Beale_AFB__California__BB = "1st RS, Beale AFB, California (BB)"
+            _25th_FTS__Vance_AFB__Oklahoma__VN = "25th FTS, Vance AFB, Oklahoma (VN)"
+            _509th_BS__Whitman_AFB__Missouri__WM = "509th BS, Whitman AFB, Missouri (WM)"
+            _88th_FTS__Sheppard_AFB__Texas__EN = "88th FTS, Sheppard AFB, Texas (EN)"
+            NAS_Meridian__Mississippi_Seven__VT_7 = "NAS Meridian, Mississippi Seven (VT-7)"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class Denmark(Enum):
+            XX189___100Sqn = "XX189 - 100Sqn"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class Canada(Enum):
+            XX189___100Sqn = "XX189 - 100Sqn"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class TheNetherlands(Enum):
+            XX189___100Sqn = "XX189 - 100Sqn"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
+        class Turkey(Enum):
+            XX189___100Sqn = "XX189 - 100Sqn"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
+            XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
+            XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
+            XX201___2010_RAF_Hawk_Display = "XX201 - 2010 RAF Hawk Display"
+            XX245___2009_RAF_Hawk_Display = "XX245 - 2009 RAF Hawk Display"
+            XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
+
     class Pylon1:
         LAU_61___19_2_75__rockets_MK151_HE = (1, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
         CBU_87 = (1, Weapons.CBU_87)
@@ -6410,6 +8782,32 @@ class L_39C(PlaneType):
             },
         },
     }
+
+    class Liveries:
+
+        class Germany(Enum):
+            DDR_Luftwaffe = "DDR Luftwaffe"
+            DDR_Luftwaffe_Early = "DDR Luftwaffe Early"
+
+        class CzechRepublic(Enum):
+            Czech_Air_Force = "Czech Air Force"
+            Czech_Air_Force_CLV = "Czech Air Force CLV"
+            Czechoslovakia_Air_Force = "Czechoslovakia Air Force"
+
+        class Ukraine(Enum):
+            Ukraine_Air_Force_UKHW = "Ukraine Air Force UKHW"
+
+        class Slovakia(Enum):
+            Slovak_Air_Force = "Slovak Air Force"
+
+        class Russia(Enum):
+            Russian_Air_Force = "Russian Air Force"
+            Russian_Air_Force_Navy = "Russian Air Force Navy"
+            Russ_Jet_Team = "Russ Jet Team"
+            Russian_Air_Force_Old = "Russian Air Force Old"
+
+        class USA(Enum):
+            Black_Diamond_Jet_Team = "Black Diamond Jet Team"
 
     class Pylon1:
         FAB_100 = (1, Weapons.FAB_100)
@@ -6494,6 +8892,18 @@ class L_39ZA(PlaneType):
             },
         },
     }
+
+    class Liveries:
+
+        class CzechRepublic(Enum):
+            Czech_Air_Force = "Czech Air Force"
+            Czechoslovakia_Air_Force = "Czechoslovakia Air Force"
+
+        class Slovakia(Enum):
+            Slovak_Air_Force = "Slovak Air Force"
+
+        class Russia(Enum):
+            Russian_Air_Force = "Russian Air Force"
 
     class Pylon1:
         FAB_100 = (1, Weapons.FAB_100)
@@ -6635,6 +9045,25 @@ class M_2000C(PlaneType):
         },
     }
 
+    class Liveries:
+
+        class Greece(Enum):
+            Greek_Air_Force = "Greek Air Force"
+
+        class France(Enum):
+            _2003_Tigermeet = "2003 Tigermeet"
+            _2004_Tigermeet = "2004 Tigermeet"
+            _2010_Tigermeet = "2010 Tigermeet"
+            default = "default"
+            Cambresis = "Cambresis"
+            AdA_Chasse_2_5 = "AdA Chasse 2-5"
+            AdA_Alsace_LF_2 = "AdA Alsace LF-2"
+            Brasilian_Air_Force = "Brasilian Air Force"
+            Peru052 = "Peru052"
+            Peru064 = "Peru064"
+            Greek_Air_Force = "Greek Air Force"
+            UAE_Air_Force = "UAE Air Force"
+
     class Pylon1:
         R_550_Magic_2 = (1, Weapons.R_550_Magic_2)
         Matra_Magic_II = (1, Weapons.Matra_Magic_II)
@@ -6720,6 +9149,153 @@ class MiG_15bis(PlaneType):
     category = "Air"
     radio_frequency = 3.75
 
+    class Liveries:
+
+        class Georgia(Enum):
+            USSR_Air_Forces = "USSR_Air Forces"
+
+        class Syria(Enum):
+            default_livery = "default_livery"
+
+        class Finland(Enum):
+            default_livery = "default_livery"
+
+        class Australia(Enum):
+            default_livery = "default_livery"
+
+        class Germany(Enum):
+            GDR_Air_Force = "GDR_Air Force"
+
+        class SaudiArabia(Enum):
+            default_livery = "default_livery"
+
+        class Israel(Enum):
+            default_livery = "default_livery"
+
+        class Croatia(Enum):
+            default_livery = "default_livery"
+
+        class CzechRepublic(Enum):
+            Czechoslovakia_Air_Force = "Czechoslovakia_Air Force"
+
+        class Norway(Enum):
+            default_livery = "default_livery"
+
+        class Romania(Enum):
+            default_livery = "default_livery"
+
+        class Spain(Enum):
+            default_livery = "default_livery"
+
+        class Ukraine(Enum):
+            USSR_Air_Forces = "USSR_Air Forces"
+
+        class Belgium(Enum):
+            default_livery = "default_livery"
+
+        class Slovakia(Enum):
+            default_livery = "default_livery"
+
+        class Greece(Enum):
+            HAF_Fictional = "HAF Fictional"
+            default_livery = "default_livery"
+
+        class UK(Enum):
+            default_livery = "default_livery"
+
+        class Insurgents(Enum):
+            default_livery = "default_livery"
+
+        class Hungary(Enum):
+            default_livery = "default_livery"
+
+        class France(Enum):
+            default_livery = "default_livery"
+
+        class Abkhazia(Enum):
+            USSR_Air_Forces = "USSR_Air Forces"
+
+        class Russia(Enum):
+            USSR_Air_Forces = "USSR_Air Forces"
+            North_Korea_Air_Force_Major__Arkady__Boitsow = "North_Korea_Air Force_Major_ Arkady_ Boitsow"
+            USSR_Pepelyaev = "USSR_Pepelyaev"
+            USSR_Red = "USSR_Red"
+
+        class Sweden(Enum):
+            default_livery = "default_livery"
+
+        class Austria(Enum):
+            default_livery = "default_livery"
+
+        class Switzerland(Enum):
+            default_livery = "default_livery"
+
+        class Italy(Enum):
+            default_livery = "default_livery"
+
+        class SouthOssetia(Enum):
+            USSR_Air_Forces = "USSR_Air Forces"
+
+        class SouthKorea(Enum):
+            default_livery = "default_livery"
+
+        class Iran(Enum):
+            default_livery = "default_livery"
+
+        class China(Enum):
+            North_Korea_Air_Force_Major__Arkady__Boitsow = "North_Korea_Air Force_Major_ Arkady_ Boitsow"
+            China_Air_Force = "China_Air Force"
+            China_Volunteer_Air_Force = "China Volunteer Air Force"
+
+        class Pakistan(Enum):
+            default_livery = "default_livery"
+
+        class Belarus(Enum):
+            USSR_Air_Forces = "USSR_Air Forces"
+
+        class NorthKorea(Enum):
+            North_Korea_Air_Force = "North_Korea_Air Force"
+            North_Korea_Air_Force_Major__Arkady__Boitsow = "North_Korea_Air Force_Major_ Arkady_ Boitsow"
+
+        class Iraq(Enum):
+            default_livery = "default_livery"
+
+        class Kazakhstan(Enum):
+            USSR_Air_Forces = "USSR_Air Forces"
+
+        class Bulgaria(Enum):
+            default_livery = "default_livery"
+
+        class Serbia(Enum):
+            default_livery = "default_livery"
+
+        class India(Enum):
+            default_livery = "default_livery"
+
+        class USA(Enum):
+            default_livery = "default_livery"
+
+        class Denmark(Enum):
+            default_livery = "default_livery"
+
+        class Egypt(Enum):
+            default_livery = "default_livery"
+
+        class Canada(Enum):
+            default_livery = "default_livery"
+
+        class TheNetherlands(Enum):
+            default_livery = "default_livery"
+
+        class Turkey(Enum):
+            default_livery = "default_livery"
+
+        class Japan(Enum):
+            default_livery = "default_livery"
+
+        class Poland(Enum):
+            Polish_Air_Force = "Polish_Air Force"
+
     class Pylon1:
         FAB_50 = (1, Weapons.FAB_50)
         FAB_100M = (1, Weapons.FAB_100M)
@@ -6781,6 +9357,948 @@ class MiG_21Bis(PlaneType):
             },
         },
     }
+
+    class Liveries:
+
+        class Georgia(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Syria(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Finland(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Australia(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Germany(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class SaudiArabia(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Israel(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Croatia(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class CzechRepublic(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Norway(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Romania(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Spain(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Ukraine(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Belgium(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Slovakia(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Greece(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class UK(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Insurgents(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Hungary(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class France(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Abkhazia(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Russia(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Sweden(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Austria(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Switzerland(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Italy(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class SouthOssetia(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class SouthKorea(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Iran(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class China(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Pakistan(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Belarus(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class NorthKorea(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Iraq(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Kazakhstan(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Bulgaria(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Serbia(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class India(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class USAFAggressors(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class USA(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Denmark(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Egypt(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Canada(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class TheNetherlands(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Turkey(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Japan(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
+
+        class Poland(Enum):
+            Serbia___101_FS = "Serbia - 101 FS"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            Northeria___32_FS = "Northeria - 32 FS"
+            VVS_Camo = "VVS Camo"
+            VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
+            Bulgaria = "Bulgaria"
+            Croatia___1992 = "Croatia - 1992"
+            Cuba = "Cuba"
+            Draken_International = "Draken International"
+            Germany_East = "Germany East"
+            Egypt_Grey = "Egypt Grey"
+            Egypt_Tan = "Egypt Tan"
+            India___15_Sqn = "India - 15 Sqn"
+            Poland___1_DLMW = "Poland - 1 DLMW"
+            Poland___Metal = "Poland - Metal"
+            Southeria = "Southeria"
+            VVS_Demonstrator = "VVS Demonstrator"
 
     class Pylon1:
         UB_16UM___16_S_5M = (1, Weapons.UB_16UM___16_S_5M)
@@ -6905,6 +10423,21 @@ class MQ_9_Reaper(PlaneType):
     max_speed = 400
     eplrs = True
 
+    class Liveries:
+
+        class UK(Enum):
+            standard_UK = "standard UK"
+
+        class France(Enum):
+            standard_France = "standard France"
+
+        class Italy(Enum):
+            standard_Italy = "standard Italy"
+
+        class USA(Enum):
+            _camo__scheme = "'camo' scheme"
+            standard = "standard"
+
     class Pylon1:
         GBU_12 = (1, Weapons.GBU_12)
         GBU_38 = (1, Weapons.GBU_38)
@@ -6953,6 +10486,75 @@ class TF_51D(PlaneType):
             },
         },
     }
+
+    class Liveries:
+
+        class Georgia(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Australia(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Germany(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Israel(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Norway(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Spain(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Ukraine(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Belgium(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Greece(Enum):
+            Hellenic_Airforce_Trainer = "Hellenic Airforce Trainer"
+
+        class UK(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Insurgents(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class France(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Abkhazia(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Russia(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Italy(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class SouthOssetia(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class USA(Enum):
+            Bare_Metal = "Bare Metal"
+            TF_51_Gentleman_Jim = "TF-51 Gentleman Jim"
+            TF__51_Glamorous_Glen_III = "TF -51 Glamorous Glen III"
+            TF_51_Gunfighter = "TF-51 Gunfighter"
+            TF_51_Miss_Velma = "TF-51 Miss Velma"
+
+        class Denmark(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Canada(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class TheNetherlands(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Turkey(Enum):
+            Bare_Metal = "Bare Metal"
 
     pylons = {}
 
@@ -7007,24 +10609,24 @@ plane_map = {
     "A-50": A_50,
     "E-3A": E_3A,
     "IL-78M": IL_78M,
-    "E-2C": E_2C,
+    "E-2C": E_2D,
     "IL-76MD": IL_76MD,
     "F-16C bl.50": F_16C_bl_50,
     "F-16C bl.52d": F_16C_bl_52d,
     "F-16A": F_16A,
     "F-16A MLU": F_16A_MLU,
-    "RQ-1A Predator": RQ_1A_Predator,
+    "RQ-1A Predator": MQ_1A_Predator,
     "Yak-40": Yak_40,
     "A-10C": A_10C,
     "KC-135": KC_135,
     "P-51D": P_51D,
-    "FW-190D9": FW_190D9,
-    "Bf-109K-4": Bf_109K_4,
+    "FW-190D9": Fw_190_D_9,
+    "Bf-109K-4": Bf_109_K_4,
     "C-101EB": C_101EB,
     "C-101CC": C_101CC,
     "F-5E": F_5E,
     "F-5E-3": F_5E_3,
-    "F-86F Sabre": F_86F_Sabre,
+    "F-86F Sabre": F_86F,
     "Hawk": Hawk,
     "L-39C": L_39C,
     "L-39ZA": L_39ZA,
