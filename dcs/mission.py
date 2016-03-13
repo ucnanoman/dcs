@@ -123,6 +123,11 @@ class TriggerZone:
             "color": self.color
         }
 
+    def __repr__(self):
+        return "TriggerZone({id}, {x}, {y}, {r}, '{n}')".format(
+            id=self.id, x=self.position.x, y=self.position.y, r=self.radius, n=self.name
+        )
+
 
 class Triggers:
     def __init__(self):
