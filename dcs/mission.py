@@ -163,7 +163,10 @@ class Triggers:
 class Mission:
     COUNTRY_IDS = {x for x in range(0, 13)} | {x for x in range(15, 47)}
 
-    def __init__(self, terrain: Union[Caucasus, Nevada]=Caucasus()):
+    def __init__(self, terrain: Union[Caucasus, Nevada]=None):
+        if terrain is None:
+            terrain = Caucasus()
+
         self.current_unit_id = 0
         self.current_group_id = 0
         self.current_dict_id = 0
