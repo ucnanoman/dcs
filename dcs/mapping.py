@@ -67,6 +67,9 @@ class Point:
     def distance_to_point(self, point):
         return distance(self.x, self.y, point.x, point.y)
 
+    def __repr__(self):
+        return "Point({x}, {y})".format(x=self.x, y=self.y)
+
 
 class Rectangle:
     def __init__(self, top, left, bottom, right):
