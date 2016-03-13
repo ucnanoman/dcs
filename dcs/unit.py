@@ -97,7 +97,7 @@ class FlyingUnit(Unit):
 
     def set_parking(self, parking_slot: ParkingSlot):
         parking_slot.unit_id = self.id
-        self.parking = parking_slot.id
+        self.parking = parking_slot.crossroad_idx
 
     def load_pylon(self, weapon, pylon=None):
         if pylon is None:

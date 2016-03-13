@@ -5,17 +5,32 @@ import random
 
 
 class ParkingSlot:
-    def __init__(self, _id, pos: mapping.Point, large=False, slot_name=None, heli=False):
-        self.id = _id
-        self.position = pos
+    def __init__(self,
+                 crossroad_idx,
+                 position: mapping.Point,
+                 large=False,
+                 slot_name=None,
+                 heli=False,
+                 airplanes=True,
+                 length=None,
+                 width=None,
+                 height=None,
+                 shelter=False):
+        self.crossroad_idx = crossroad_idx
+        self.position = position
+        self.length = length
+        self.width = width
+        self.height = height
         self.helicopter = heli
+        self.airplanes = airplanes
         self.large = large
+        self.shelter = shelter
         self.unit_id = None  # type: int
         self.slot_name = slot_name
 
     def __repr__(self):
         return "ParkingSlot({id}, {name}, large={large}, heli={heli})".format(
-            id=self.id, name=self.slot_name, large=self.large, heli=self.helicopter
+            id=self.crossroad_idx, name=self.slot_name, large=self.large, heli=self.helicopter
         )
 
 
@@ -36,17 +51,19 @@ class Runway:
 
 
 class Airport:
-    def __init__(self, _id: int, name: str, frequency: float, point: mapping.Point, tacan: str=None):
-        self.id = _id
-        self.name = name
-        self.tacan = tacan
-        self.frequency = frequency
-        self.position = point
-        self.runways = []  # type: List[Runway]
-        self.parking_slots = {}  # type: Dict[int,ParkingSlot]
-        self.unit_zones = []  # type: List[mapping.Rectangle]
+    id = None
+    name = None
+    position = None
+    tacan = None
+    frequencies = []
+    unit_zones = []  # type: List[mapping.Rectangle]
+    civilian = True
+    slot_version = 1
+
+    def __init__(self):
         self.runway_free = True
-        self.civilian = True
+        self.runways = []  # type: List[Runway]
+        self.parking_slots = []  # type: List[ParkingSlot]
 
         # warehouse values
         self.coalition = "NEUTRAL"
@@ -112,7 +129,8 @@ class Airport:
         return mapping.Rectangle.from_point(mapping.Point(self.position.x + 500, self.position.y), 200)
 
     def free_parking_slots(self, large: bool, helicopter: bool) -> List[ParkingSlot]:
-        slots_sorted = sorted(self.parking_slots, key=lambda x: self.parking_slots[x].slot_name)
+        slots_index = range(0, len(self.parking_slots))
+        slots_sorted = sorted(slots_index, key=lambda x: self.parking_slots[x].slot_name)
         free_large_slots = {x for x in slots_sorted
                             if self.parking_slots[x].unit_id is None and
                             self.parking_slots[x].large}
