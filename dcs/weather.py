@@ -1,3 +1,7 @@
+from datetime import datetime, timezone
+import random
+
+
 class Wind:
     def __init__(self, direction=0, speed=0):
         self.direction = direction
@@ -45,7 +49,7 @@ class Weather:
         self.turbulence_at_2000 = 0
         self.turbulence_at_8000 = 0
         self.season_temperature = 20
-        self.season_iseason = Weather.Season.Summer
+        self.season = Weather.Season.Summer
         self.type_weather = 0
         self.qnh = 760
         self.cyclones = []
@@ -75,7 +79,7 @@ class Weather:
         self.turbulence_at_8000 = turbulence.get("at8000", 0)
         season = dict.get("season", {})
         self.season_temperature = season.get("temperature", 20)
-        self.season_iseason = season.get("iseason", 1)
+        self.season = season.get("iseason", 1)
         self.type_weather = dict.get("type_weather", 0)
         self.qnh = dict.get("qnh", 760)
         cyclones = dict.get("cyclones", {})
@@ -101,6 +105,20 @@ class Weather:
         self.clouds_base = clouds.get("base", 300)
         self.clouds_iprecptns = clouds.get("iprecptns", 0)
 
+    def set_season_from_datetime(self, dt: datetime):
+        if datetime(dt.year, 3, 1, tzinfo=timezone.utc) <= dt < datetime(dt.year, 6, 1, tzinfo=timezone.utc):
+            self.season = Weather.Season.Spring
+            self.season_temperature = random.randrange(11, 22)
+        elif datetime(dt.year, 6, 1, tzinfo=timezone.utc) <= dt < datetime(dt.year, 9, 1, tzinfo=timezone.utc):
+            self.season = Weather.Season.Summer
+            self.season_temperature = random.randrange(18, 35)
+        elif datetime(dt.year, 9, 1, tzinfo=timezone.utc) <= dt < datetime(dt.year, 12, 1, tzinfo=timezone.utc):
+            self.season = Weather.Season.Fall
+            self.season_temperature = random.randrange(10, 20)
+        else:
+            self.season = Weather.Season.Winter
+            self.season_temperature = random.randrange(-6, 6)
+
     def dict(self):
         d = {}
         d["atmosphere_type"] = self.atmosphere_type
@@ -111,7 +129,7 @@ class Weather:
         d["turbulence"] = {"atGround": self.turbulence_at_ground,
                            "at2000": self.turbulence_at_2000,
                            "at8000": self.turbulence_at_8000}
-        d["season"] = {"iseason": self.season_iseason, "temperature": self.season_temperature}
+        d["season"] = {"iseason": self.season, "temperature": self.season_temperature}
         d["type_weather"] = self.type_weather
         d["qnh"] = self.qnh
         d["cyclones"] = {x: self.cyclones[x].dict() for x in range(0, len(self.cyclones))}

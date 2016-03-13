@@ -183,8 +183,8 @@ class Mission:
         self.pictureFileNameB = []
         self.version = 11
         self.currentKey = 0
-        self.start_time = datetime(year=2011, month=6, day=1)
-        self.start_time = datetime.fromtimestamp(1306886400 + 43200, timezone.utc)
+        self.start_time = datetime.fromtimestamp(1306886400 + 43200, timezone.utc)  # 01-06-2011 12:00:00 UTC
+        self.season_from_start_time = True
         self.terrain = terrain
         self.trigrules = {}
         self.triggers = Triggers()
@@ -1146,6 +1146,11 @@ class Mission:
         m = {
             "trig": self.trig
         }
+        m["start_time"] = self.start_time.timestamp() - 1306886400
+        if m["start_time"] < 0:
+            raise RuntimeError("Mission start time is < 0.")
+        if self.season_from_start_time:
+            self.weather.set_season_from_datetime(self.start_time)
         m["groundControl"] = self.groundControl.dict()
         m["usedModules"] = self.usedModules
         m["resourceCounter"] = self.resourceCounter
@@ -1183,9 +1188,6 @@ class Mission:
         m["result"] = self.goals.generate_result()
         m["currentKey"] = self.currentKey
         m["maxDictId"] = self.current_dict_id
-        m["start_time"] = self.start_time.timestamp() - 1306886400
-        if m["start_time"] < 0:
-            raise RuntimeError("Mission start time is < 0.")
         m["forcedOptions"] = self.forcedOptions
         m["failures"] = self.failures
 
