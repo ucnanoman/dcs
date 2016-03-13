@@ -190,12 +190,14 @@ class Airport:
 
 
 class Terrain:
+    bounds = None  # type: mapping.Rectangle
+
     def __init__(self, name: str):
         self.name = name
         self.center = {"lat": 0, "long": 0}  # WGS84 decimal
         self.bullseye_blue = {"x": 0, "y": 0}
         self.bullseye_red = {"x": 0, "y": 0}
-        self.airports = {}  # type dict[str,Airport]
+        self.airports = {}  # type: Dict[str,Airport]
 
     def airport_by_id(self, id: int) -> Airport:
         for x in self.airports:

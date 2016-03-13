@@ -39,7 +39,13 @@ class Weather:
         Spring = 3
         Fall = 4
 
-    def __init__(self):
+    class BaricSystem:
+        Cyclone = 1
+        AntiCyclone = 2
+        None_ = 3
+
+    def __init__(self, terrain):
+        self.terrain = terrain
         self.atmosphere_type = 0
         self.wind_at_ground = Wind()
         self.wind_at_2000 = Wind()
@@ -118,6 +124,27 @@ class Weather:
         else:
             self.season = Weather.Season.Winter
             self.season_temperature = random.randrange(-6, 6)
+
+    def dynamic_weather(self, system: BaricSystem, cyclones: int=1):
+        self.cyclones.clear()
+
+        self.atmosphere_type = 1
+        for c in range(0, cyclones):
+            # TODO ask ED, if we are allowed to use generateCyclones code
+            c = Cyclone()
+            c.ellipticity = 1.4810203189526
+            c.centerZ = 268960.84456154
+            c.centerX = -107958.43961804
+            c.pressure_spread = 877063.35765298
+            c.rotation = 2.6744769369
+
+            c.pressure_excess = random.randrange(900, 1400)
+            c.ellipticity = 1 + random.random() * 0.25
+
+            if system == Weather.BaricSystem.Cyclone:
+                c.pressure_excess *= -1
+
+            self.cyclones.append(c)
 
     def dict(self):
         d = {}

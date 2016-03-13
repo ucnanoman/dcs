@@ -242,7 +242,7 @@ class Mission:
         self.forcedOptions = {}
         self.resourceCounter = {}  # keep default or empty, old format
         self.needModules = {}
-        self.weather = weather.Weather()
+        self.weather = weather.Weather(self.terrain)
         self.usedModules = {
             'Su-25A by Eagle Dynamics': True,
             'MiG-21Bis AI by Leatherneck Simulations': True,
@@ -518,7 +518,7 @@ class Mission:
 
         # weather
         imp_weather = imp_mission["weather"]
-        self.weather = weather.Weather()
+        self.weather = weather.Weather(self.terrain)
         self.weather.load_from_dict(imp_weather)
 
         # import coalition with countries and units
@@ -651,7 +651,7 @@ class Mission:
         group_size = min(group_size, plane_type.group_size_max)
 
         for i in range(1, group_size + 1):
-            p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type)
+            p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type, _country)
             p.position = copy.copy(position)
             p.alt = altitude
             pg.add_unit(p)
@@ -673,7 +673,7 @@ class Mission:
         group_size = min(group_size, plane_type.group_size_max)
 
         for i in range(1, group_size + 1):
-            p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type)
+            p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type, _country)
             pg.add_unit(p)
 
         _country.add_plane_group(self._flying_group_runway(_country, pg, maintask, airport))
@@ -708,7 +708,7 @@ class Mission:
         group_size = min(group_size, plane_type.group_size_max)
 
         for i in range(1, group_size + 1):
-            p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type)
+            p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type, _country)
             pg.add_unit(p)
 
         task_payload = plane_type.loadout(maintask)
@@ -720,11 +720,11 @@ class Mission:
         _country.add_plane_group(self._flying_group_ramp(_country, pg, maintask, airport, coldstart, parking_slots))
         return pg
 
-    def plane(self, name, _type: PlaneType):
-        return Plane(self.next_unit_id(), self.string(name), _type)
+    def plane(self, name, _type: PlaneType, _country: Country):
+        return Plane(self.next_unit_id(), self.string(name), _type, _country)
 
-    def helicopter(self, name, _type: HelicopterType):
-        return Helicopter(self.next_unit_id(), self.string(name), _type)
+    def helicopter(self, name, _type: HelicopterType, _country: Country):
+        return Helicopter(self.next_unit_id(), self.string(name), _type, _country)
 
     def helicopter_group(self, name):
         return unitgroup.HelicopterGroup(self.next_group_id(), self.string(name))
@@ -839,7 +839,7 @@ class Mission:
         group_size = min(group_size, helicopter_type.group_size_max)
 
         for i in range(1, group_size + 1):
-            p = self.helicopter(name + " Pilot #{nr}".format(nr=i), helicopter_type)
+            p = self.helicopter(name + " Pilot #{nr}".format(nr=i), helicopter_type, _country)
             p.position = copy.copy(position)
             hg.add_unit(p)
 
@@ -856,7 +856,7 @@ class Mission:
         group_size = min(group_size, heli_type.group_size_max)
 
         for i in range(1, group_size + 1):
-            p = self.helicopter(name + " Pilot #{nr}".format(nr=i), heli_type)
+            p = self.helicopter(name + " Pilot #{nr}".format(nr=i), heli_type, _country)
             hg.add_unit(p)
 
         _country.add_helicopter_group(self._flying_group_runway(_country, hg, maintask, airport))
@@ -891,7 +891,7 @@ class Mission:
         group_size = min(group_size, heli_type.group_size_max)
 
         for i in range(1, group_size + 1):
-            p = self.helicopter(name + " Pilot #{nr}".format(nr=i), heli_type)
+            p = self.helicopter(name + " Pilot #{nr}".format(nr=i), heli_type, _country)
             hg.add_unit(p)
 
         _country.add_helicopter_group(
