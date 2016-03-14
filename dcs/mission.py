@@ -371,7 +371,8 @@ class Mission:
                         plane = Plane(
                             _id=imp_unit["unitId"],
                             name=self.translation.get_string(imp_unit["name"]),
-                            _type=planes.plane_map[imp_unit["type"]])
+                            _type=planes.plane_map[imp_unit["type"]],
+                            _country=_country)
                         plane.load_from_dict(imp_unit)
 
                         self.current_unit_id = max(self.current_unit_id, plane.id)
@@ -396,7 +397,8 @@ class Mission:
                         heli = Helicopter(
                             _id=imp_unit["unitId"],
                             name=self.translation.get_string(imp_unit["name"]),
-                            _type=helicopters.helicopter_map[imp_unit["type"]])
+                            _type=helicopters.helicopter_map[imp_unit["type"]],
+                            _country=_country)
                         heli.load_from_dict(imp_unit)
 
                         self.current_unit_id = max(self.current_unit_id, heli.id)
