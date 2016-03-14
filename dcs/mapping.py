@@ -1,7 +1,7 @@
 import math
 import random
 import copy
-from typing import List
+from typing import List, Tuple, Union
 
 
 def point_from_heading(_x, _y, heading, distance):
@@ -68,8 +68,58 @@ class Point:
     def distance_to_point(self, point):
         return distance(self.x, self.y, point.x, point.y)
 
+    def __add__(self, other):
+        return Point(self.x + other.x, self.y + other.y)
+
+    def __radd__(self, other):
+        return self + other
+
+    def __sub__(self, other):
+        return Point(self.x - other.x, self.y - other.y)
+
+    def __rsub__(self, other):
+        return self + other
+
+    def __mul__(self, other):
+        return Point(self.x * other, self.y * other)
+
+    def __rmul__(self, other):
+        return self * other
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
+    def __ne__(self, other):
+        return not self == other
+
     def __repr__(self):
         return "Point({x}, {y})".format(x=self.x, y=self.y)
+
+
+class Triangle:
+    def __init__(self, points: Union[Tuple[Point, Point, Point], List[Point]]):
+        if len(points) != 3:
+            raise RuntimeError("Triangle needs 3 points.")
+        self.points = copy.copy(points)  # type: List[Point]
+
+    def area(self):
+        a = (self.points[0].x * self.points[1].y + self.points[1].x * self.points[2].y +
+             self.points[2].x * self.points[0].y - self.points[0].y * self.points[1].x -
+             self.points[1].y * self.points[2].x - self.points[2].y * self.points[0].x)
+        a /= 2
+        return a
+
+    def random_point(self) -> Point:
+        r = random.random()
+        s = random.random()
+        if r + s >= 1:
+            r = 1 - r
+            s = 1 - s
+
+        return self.points[0] + (r * (self.points[1] - self.points[0]) + s * (self.points[2] - self.points[0]))
+
+    def __repr__(self):
+        return "Triangle({points})".format(points=", ".join(map(repr, self.points)))
 
 
 class Rectangle:
@@ -99,9 +149,9 @@ class Rectangle:
     def center(self) -> Point:
         return Point(self.bottom + (self.height() / 2), self.left + (self.width() / 2))
 
-    def random_int_point(self) -> Point:
-        x = random.randrange(int(self.bottom), int(self.top))
-        y = random.randrange(int(self.left), int(self.right))
+    def random_point(self) -> Point:
+        x = self.bottom + random.random() * (self.top - self.bottom)
+        y = self.left + random.random() * (self.right - self.left)
         return Point(x, y)
 
     def __repr__(self):
@@ -141,16 +191,92 @@ class Polygon:
         return inside
 
     def random_point(self) -> Point:
-        # stupid and slow
-        minx = min([p.x for p in self.points])
-        maxx = max([p.x for p in self.points])
-        miny = min([p.y for p in self.points])
-        maxy = max([p.y for p in self.points])
+        """
+        Returns a random point within this polygon object
+        :return: a random point
+        """
+        # split polygon into triangles using ear clipping
+        tris = self.triangulate()
 
-        r = Rectangle(maxx, miny, minx, maxy)
-        while True:
-            p = r.random_int_point()
-            if self.point_in_poly(p):
+        # calculate areas of the triangles
+        areas = [(x, x.area()) for x in tris]
+        full_area = sum([x[1] for x in areas])  # calculate full area
+        rtri = random.random() * full_area  # get a random value from the area
+
+        # iterate through areas until we found "ours"
+        s = areas[0][1]
+        i = 1
+        while s <= rtri:
+            s += areas[i][1]
+            i += 1
+
+        # return a random point from this triangle
+        return areas[i-1][0].random_point()
+
+    @staticmethod
+    def is_convex(a: Point, b: Point, c: Point):
+        # only convex if traversing anti-clockwise!
+        crossp = (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x)
+        if crossp >= 0:
+            return True
+        return False
+
+    @staticmethod
+    def in_triangle(a, b, c, p):
+        l = [0, 0, 0]
+        eps = 0.0000001
+        # calculate barycentric coefficients for point p
+        # eps is needed as error correction since for very small distances denom->0
+        l[0] = ((b.y - c.y) * (p.x - c.x) + (c.x - b.x) * (p.y - c.y)) /\
+               (((b.y - c.y) * (a.x - c.x) + (c.x - b.x) * (a.y - c.y)) + eps)
+        l[1] = ((c.y - a.y) * (p.x - c.x) + (a.x - c.x) * (p.y - c.y)) /\
+               (((b.y - c.y) * (a.x - c.x) + (c.x - b.x) * (a.y - c.y)) + eps)
+        l[2] = 1 - l[0] - l[1]
+        # check if p lies in triangle (a, b, c)
+        for x in l:
+            if x >= 1 or x <= 0:
+                return False
+        return True
+
+    def is_clockwise(self):
+        poly_length = len(self.points)
+        # initialize sum with last element
+        sum_ = (self.points[0].x - self.points[poly_length-1].x) * (self.points[0].y + self.points[poly_length-1].y)
+        # iterate over all other elements (0 to n-1)
+        for i in range(poly_length-1):
+            sum_ += (self.points[i+1].x - self.points[i].x) * (self.points[i+1].y + self.points[i].y)
+        return sum_ > 0
+
+    @staticmethod
+    def get_ear(poly):
+        size = len(poly)
+        if size < 3:
+            return []
+        if size == 3:
+            tri = (poly[0], poly[1], poly[2])
+            del poly[:]
+            return tri
+        for i in range(size):
+            tritest = False
+            p1 = poly[(i-1) % size]
+            p2 = poly[i % size]
+            p3 = poly[(i+1) % size]
+            if Polygon.is_convex(p1, p2, p3):
+                for x in poly:
+                    if not (x in (p1, p2, p3)) and Polygon.in_triangle(p1, p2, p3, x):
+                        tritest = True
+                if not tritest:
+                    del poly[i % size]
+                    return p1, p2, p3
+        print('GetEar(): no ear found')
+        return []
+
+    def triangulate(self):
+        tri = []
+        plist = self.points[::-1] if self.is_clockwise() else self.points[:]
+        while len(plist) >= 3:
+            a = self.get_ear(plist)
+            if not a:
                 break
-
-        return p
+            tri.append(Triangle(a))
+        return tri
