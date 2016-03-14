@@ -80,7 +80,7 @@ class BasicScenario:
                     self.m.country("Russia") if airport.is_red() else self.m.country("USA"),
                     airport.name + " Air Defense",
                     air_def_units[random.randrange(0, len(air_def_units))],
-                    airport.random_unit_zone().random_int_point(), 180)
+                    airport.random_unit_zone().random_point(), 180)
 
                 for i in range(1, airdef):
                     _type = air_def_units[random.randrange(0, len(air_def_units))]
@@ -125,7 +125,7 @@ class BasicScenario:
                                               dcs.terrain.Caucasus.bounds.left+200*1000,
                                               dcs.terrain.Caucasus.bounds.bottom+100*1000,
                                               dcs.terrain.Caucasus.bounds.right-130*1000)
-                point = bound.random_int_point()
+                point = bound.random_point()
 
                 pg = self.m.plane_group_inflight(
                     country, name, ptype, point, random.randrange(5000, 8000, 100), 400)
@@ -150,7 +150,7 @@ class BasicScenario:
             name = "Helicopter Transport " + str(c_count)
             if 0.7 < rand:
                 bound = dcs.mapping.Rectangle.from_point(start_airport.position, 100*1000)
-                pos = bound.random_int_point()
+                pos = bound.random_point()
                 hg = self.m.helicopter_group_inflight(
                     country, name, htype, pos, random.randrange(800, 1500, 100), 200)
                 hg.add_runway_waypoint(start_airport)
@@ -233,9 +233,9 @@ class BasicScenario:
             airport = airports[random.randrange(0, len(airports))]
 
             if start == "inflight":
-                x1, y1 = placement_rect.random_int_point()
+                rp = placement_rect.random_point()
                 pg = self.m.plane_group_inflight(
-                    country, "Refueler", plane_type, x1, y1, random.randrange(2000, 5000, 100), group_size=group_size)
+                    country, "Refueler", plane_type, rp, random.randrange(2000, 5000, 100), group_size=group_size)
             elif start == "runway":
                 pg = self.m.plane_group_from_runway(country, "Refueler", plane_type, airport, group_size=group_size)
             else:
