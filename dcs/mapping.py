@@ -280,3 +280,6 @@ class Polygon:
                 break
             tri.append(Triangle(a))
         return tri
+
+    def __repr__(self):
+        return "Polygon([{points}])".format(points=", ".join(map(repr, self.points)))
