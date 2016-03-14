@@ -624,6 +624,11 @@ class Transport(MainTask):
     perform_task = []
 
 
+MainTask.map = {
+    SEAD.name: SEAD,
+    CAP.name: CAP
+}
+
 # options
 
 class Option(Task):
