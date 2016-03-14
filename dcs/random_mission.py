@@ -3,6 +3,7 @@ import dcs
 import dcs.mission
 import dcs.task
 import dcs.mapping
+from dcs.mapping import Point, Polygon
 import dcs.terrain
 import dcs.unittype
 import dcs.vehicles
@@ -26,108 +27,144 @@ class USPlatoon:
     ]
 
 
-class RedForce:
-    Armor = {
-        "Tank Platoon": (Russia.name, [
-            Russia.Vehicle.Armor.MBT_T_80U,
-            Russia.Vehicle.Armor.MBT_T_80U,
-            Russia.Vehicle.Armor.MBT_T_80U,
-            Russia.Vehicle.Armor.MBT_T_80U
-        ])
-    }
-
-    LightArmor = {
-        "Light Armor": (Russia.name, [
-            Russia.Vehicle.Armor.IFV_BMP_3,
-            Russia.Vehicle.Armor.IFV_BMP_3,
-            Russia.Vehicle.Armor.IFV_BMP_3
-        ])
-    }
-
-    Artillery = {
-        "Artillery": (Russia.name, [
-            Russia.Vehicle.Artillery.SPH_2S1_Gvozdika,
-            Russia.Vehicle.Artillery.SPH_2S1_Gvozdika,
-            Russia.Vehicle.Artillery.SPH_2S1_Gvozdika,
-            Russia.Vehicle.Artillery.SPH_2S1_Gvozdika,
-            Russia.Vehicle.Unarmed.Transport_Ural_4320T,
-            Russia.Vehicle.AirDefence.SAM_SA_19_Tunguska_2S6
-        ])
-    }
-
-    AirDefence = {
-        "Air Defense": (Russia.name, [
-            Russia.Vehicle.AirDefence.SAM_SA_6_Kub_LN_2P25,
-            Russia.Vehicle.AirDefence.SAM_SA_6_Kub_STR_9S91,
-            Russia.Vehicle.AirDefence.SAM_SA_6_Kub_LN_2P25,
-            Russia.Vehicle.AirDefence.SAM_SA_6_Kub_STR_9S91,
-            Russia.Vehicle.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
-        ])
-    }
-
-    Supply = {
-        "Russia Supply": (Russia.name, [
-            Russia.Vehicle.Unarmed.Transport_GAZ_66,
-            Russia.Vehicle.Unarmed.Fuel_Truck_ATZ_10,
-            Russia.Vehicle.Unarmed.Transport_ZIU_9,
-            Russia.Vehicle.Unarmed.Transport_ZIU_9,
-            Russia.Vehicle.Unarmed.Transport_ZIU_9
-        ])
-    }
-
-
-class BlueForce:
-    Armor = {
-        "1st Tank Platoon 01": (USA.name, [
-            USA.Vehicle.Armor.MBT_M1A2_Abrams,
-            USA.Vehicle.Armor.MBT_M1A2_Abrams,
-            USA.Vehicle.Armor.MBT_M1A2_Abrams,
-            USA.Vehicle.Armor.MBT_M1A2_Abrams
-        ])
-    }
-
-    LightArmor = {
-        "1st Light Armor Brigade 01": (USA.name, [
-            USA.Vehicle.Armor.IFV_M2A2_Bradley,
-            USA.Vehicle.Armor.IFV_M2A2_Bradley,
-            USA.Vehicle.Armor.IFV_M2A2_Bradley,
-        ])
-    }
-
-    Artillery = {
-        "1st Artillery Corps 01": (USA.name, [
-            USA.Vehicle.Artillery.SPH_M109_Paladin,
-            USA.Vehicle.Artillery.SPH_M109_Paladin,
-            USA.Vehicle.Artillery.SPH_M109_Paladin,
-            USA.Vehicle.Artillery.SPH_M109_Paladin,
-            USA.Vehicle.Unarmed.HEMTT_TFFT,
-            USA.Vehicle.AirDefence.SAM_Stinger_comm,
-            USA.Vehicle.AirDefence.SAM_Stinger_MANPADS
-        ])
-    }
-
-    AirDefence = {
-        "Air Defense Battery 01": (USA.name, [
-            USA.Vehicle.Unarmed.APC_M1025_HMMWV,
-            USA.Vehicle.Unarmed.APC_M1025_HMMWV,
-            USA.Vehicle.AirDefence.SAM_Avenger_M1097,
-            USA.Vehicle.AirDefence.SAM_Avenger_M1097,
-            USA.Vehicle.AirDefence.SAM_Avenger_M1097,
-            USA.Vehicle.AirDefence.SAM_Avenger_M1097
-        ])
-    }
-
-    Supply = {
-        "US Supply": (USA.name, [
-            USA.Vehicle.Unarmed.Transport_M818,
-            USA.Vehicle.Unarmed.Transport_M818,
-            USA.Vehicle.Unarmed.Tanker_M978_HEMTT,
-            USA.Vehicle.Unarmed.HEMTT_TFFT
-        ])
-    }
-
-
 class BasicScenario:
+    battle_zones = [
+        Polygon([Point(-270285.71428571, 609257.14285714), Point(-264342.85714286, 614142.85714286),
+                 Point(-257428.57142857, 619485.71428571), Point(-250857.14285714, 625171.42857143),
+                 Point(-248342.85714286, 627457.14285714), Point(-244600, 628800),
+                 Point(-238685.71428571, 635371.42857143), Point(-235257.14285714, 639942.85714285),
+                 Point(-238685.71428571, 640771.42857143), Point(-239342.85714286, 642714.28571428),
+                 Point(-235971.42857143, 644742.85714285), Point(-236600, 646142.85714285),
+                 Point(-234085.71428571, 650142.85714285), Point(-239200, 656428.57142857),
+                 Point(-249828.57142857, 653000), Point(-264400, 650000), Point(-264828.57142857, 644171.42857142),
+                 Point(-269885.71428571, 634542.85714285), Point(-273600, 635428.57142857),
+                 Point(-273657.14285714, 642571.42857142), Point(-285771.42857143, 640828.57142857),
+                 Point(-285800, 625514.28571428), Point(-279771.42857143, 625285.71428571),
+                 Point(-273942.85714286, 629371.42857142), Point(-272428.57142857, 624828.57142857),
+                 Point(-273342.85714286, 612285.71428571)])
+    ]
+
+    red_force = {
+        "Armor": {
+            "Tank Platoon": (Russia.name, [
+                Russia.Vehicle.Armor.MBT_T_90,
+                Russia.Vehicle.Armor.MBT_T_90,
+                Russia.Vehicle.Armor.MBT_T_90,
+                Russia.Vehicle.Armor.MBT_T_90
+            ]),
+            "Tank Platoon 2": (Russia.name, [
+                Russia.Vehicle.Armor.MBT_T_90,
+                Russia.Vehicle.Armor.MBT_T_90,
+                Russia.Vehicle.Armor.MBT_T_90,
+                Russia.Vehicle.Armor.MBT_T_90
+            ])
+        },
+        "LightArmor": {
+            "Light Armor 01": (Russia.name, [
+                Russia.Vehicle.Armor.IFV_BMP_3,
+                Russia.Vehicle.Armor.IFV_BMP_3,
+                Russia.Vehicle.Armor.IFV_BMP_3
+            ]),
+            "Light Armor 02": (Russia.name, [
+                Russia.Vehicle.Armor.IFV_BMP_3,
+                Russia.Vehicle.Armor.IFV_BMP_3,
+                Russia.Vehicle.Armor.IFV_BMP_3
+            ]),
+            "Light Armor 03": (Russia.name, [
+                Russia.Vehicle.Armor.IFV_BMP_3,
+                Russia.Vehicle.Armor.IFV_BMP_3,
+                Russia.Vehicle.Armor.IFV_BMP_3
+            ])
+        },
+        "Artillery": {
+            "Artillery": (Russia.name, [
+                Russia.Vehicle.Artillery.SPH_2S1_Gvozdika,
+                Russia.Vehicle.Artillery.SPH_2S1_Gvozdika,
+                Russia.Vehicle.Artillery.SPH_2S1_Gvozdika,
+                Russia.Vehicle.Artillery.SPH_2S1_Gvozdika,
+                Russia.Vehicle.Unarmed.Transport_Ural_4320T,
+                Russia.Vehicle.AirDefence.SAM_SA_19_Tunguska_2S6
+            ])
+        },
+        "AirDefence": {
+            "Air Defense": (Russia.name, [
+                Russia.Vehicle.AirDefence.SAM_SA_6_Kub_LN_2P25,
+                Russia.Vehicle.AirDefence.SAM_SA_6_Kub_STR_9S91,
+                Russia.Vehicle.AirDefence.SAM_SA_6_Kub_LN_2P25,
+                Russia.Vehicle.AirDefence.SAM_SA_6_Kub_STR_9S91,
+                Russia.Vehicle.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
+            ])
+        },
+        "Supply": {
+            "Russia Supply": (Russia.name, [
+                Russia.Vehicle.Unarmed.Transport_GAZ_66,
+                Russia.Vehicle.Unarmed.Fuel_Truck_ATZ_10,
+                Russia.Vehicle.Unarmed.Transport_ZIU_9,
+                Russia.Vehicle.Unarmed.Transport_ZIU_9,
+                Russia.Vehicle.Unarmed.Transport_ZIU_9
+            ])
+        }
+    }
+
+
+    blue_force = {
+        "Armor": {
+            "1st Tank Platoon 01": (USA.name, [
+                USA.Vehicle.Armor.MBT_M1A2_Abrams,
+                USA.Vehicle.Armor.MBT_M1A2_Abrams,
+                USA.Vehicle.Armor.MBT_M1A2_Abrams,
+                USA.Vehicle.Armor.MBT_M1A2_Abrams
+            ]),
+            "1st Tank Platoon 02": (USA.name, [
+                USA.Vehicle.Armor.MBT_M1A2_Abrams,
+                USA.Vehicle.Armor.MBT_M1A2_Abrams,
+                USA.Vehicle.Armor.MBT_M1A2_Abrams,
+                USA.Vehicle.Armor.MBT_M1A2_Abrams
+            ])
+        },
+        "LightArmor": {
+            "1st Light Armor Brigade 01": (USA.name, [
+                USA.Vehicle.Armor.IFV_M2A2_Bradley,
+                USA.Vehicle.Armor.IFV_M2A2_Bradley,
+                USA.Vehicle.Armor.IFV_M2A2_Bradley,
+            ]),
+            "1st Light Armor Brigade 02": (USA.name, [
+                USA.Vehicle.Armor.IFV_M2A2_Bradley,
+                USA.Vehicle.Armor.IFV_M2A2_Bradley,
+                USA.Vehicle.Armor.IFV_M2A2_Bradley,
+            ])
+        },
+        "Artillery": {
+            "1st Artillery Corps 01": (USA.name, [
+                USA.Vehicle.Artillery.SPH_M109_Paladin,
+                USA.Vehicle.Artillery.SPH_M109_Paladin,
+                USA.Vehicle.Artillery.SPH_M109_Paladin,
+                USA.Vehicle.Artillery.SPH_M109_Paladin,
+                USA.Vehicle.Unarmed.HEMTT_TFFT,
+                USA.Vehicle.AirDefence.SAM_Stinger_comm,
+                USA.Vehicle.AirDefence.SAM_Stinger_MANPADS
+            ])
+        },
+        "AirDefence": {
+            "Air Defense Battery 01": (USA.name, [
+                USA.Vehicle.Unarmed.APC_M1025_HMMWV,
+                USA.Vehicle.Unarmed.APC_M1025_HMMWV,
+                USA.Vehicle.AirDefence.SAM_Avenger_M1097,
+                USA.Vehicle.AirDefence.SAM_Avenger_M1097,
+                USA.Vehicle.AirDefence.SAM_Avenger_M1097,
+                USA.Vehicle.AirDefence.SAM_Avenger_M1097
+            ])
+        },
+        "Supply": {
+            "US Supply": (USA.name, [
+                USA.Vehicle.Unarmed.Transport_M818,
+                USA.Vehicle.Unarmed.Transport_M818,
+                USA.Vehicle.Unarmed.Tanker_M978_HEMTT,
+                USA.Vehicle.Unarmed.HEMTT_TFFT
+            ])
+        }
+    }
+
     def __init__(self):
         self.m = dcs.mission.Mission()
 
@@ -138,7 +175,7 @@ class BasicScenario:
         self.setup_airports()
 
     def dynamic_weather(self):
-        self.m.weather.dynamic_weather(random.randrange(1,2))
+        self.m.weather.dynamic_weather(random.randrange(1, 2))
 
     def daytime(self, period):
         self.m.start_time -= datetime.timedelta(hours=-12)
@@ -324,35 +361,64 @@ class BasicScenario:
             pg.hidden = hidden
             g_idx += 1
 
-    def place_players(self, country, start, aircraft_types: List[str],
+    def place_players(self, start, aircraft_types: List[Tuple[str, str]],
                       airports: List[dcs.terrain.Airport],
-                      placement_rect,
-                      group_size) -> List[dcs.unitgroup.PlaneGroup]:
+                      group_size,
+                      maintask,
+                      placement_rect=None) -> List[dcs.unitgroup.FlyingGroup]:
 
-        plane_groups = []
-        for aircraft_type in aircraft_types:
-            plane_type = dcs.planes.plane_map[aircraft_type]
-            airport = airports[random.randrange(0, len(airports))]
+        aircraft_groups = []  # type: List[dcs.unitgroup.FlyingGroup]
+        name = "Airmaster "
+        c = 1
+        for _type in aircraft_types:
+            country = self.m.country(_type[0])
+            aircraft_type = _type[1]
+            plane_type = dcs.planes.plane_map.get(aircraft_type, None)
+            if plane_type:
+                airport = airports[random.randrange(0, len(airports))]
 
-            if start == "inflight":
-                rp = placement_rect.random_point()
-                pg = self.m.plane_group_inflight(
-                    country, "Refueler", plane_type, rp, random.randrange(2000, 5000, 100), group_size=group_size)
-            elif start == "runway":
-                pg = self.m.plane_group_from_runway(country, "Refueler", plane_type, airport, group_size=group_size)
+                if start == "inflight":
+                    rp = placement_rect.random_point if placement_rect else dcs.mapping.Rectangle.from_point(
+                        airport.position, 20*1000).from_point()
+                    pg = self.m.plane_group_inflight(
+                        country, name + str(c), plane_type, rp, random.randrange(2000, 5000, 100), maintask=maintask, group_size=group_size)
+                elif start == "runway":
+                    pg = self.m.plane_group_from_runway(country, name + str(c), plane_type, airport, maintask=maintask, group_size=group_size)
+                else:
+                    pg = self.m.plane_group_from_parking(
+                        country, name + str(c), plane_type, airport, coldstart=start == "cold", maintask=maintask, group_size=group_size)
+                aircraft_groups.append(pg)
             else:
-                pg = self.m.plane_group_from_parking(
-                    country, "Refueler", plane_type, airport, coldstart=start == "cold", group_size=group_size)
-            plane_groups.append(pg)
+                heli_type = dcs.helicopters.helicopter_map[aircraft_type]
+                airport = airports[random.randrange(0, len(airports))]
 
-        return plane_groups
+                if start == "inflight":
+                    rp = placement_rect.random_point if placement_rect else dcs.mapping.Rectangle.from_point(
+                        airport.position, 20*1000).from_point()
+                    pg = self.m.helicopter_group_inflight(
+                        country, name + str(c), heli_type, rp, random.randrange(300, 1000, 100), maintask=maintask, group_size=group_size)
+                elif start == "runway":
+                    pg = self.m.helicopter_group_from_runway(country, name + str(c), heli_type, airport, maintask=maintask, group_size=group_size)
+                else:
+                    pg = self.m.helicopter_group_from_parking(
+                        country, name + str(c), heli_type, airport, coldstart=start == "cold", maintask=maintask, group_size=group_size)
+                aircraft_groups.append(pg)
+
+            for u in pg.units:
+                u.set_client()
+            c += 1
+
+        if group_size == 1:
+            aircraft_groups[0].units[0].set_player()
+
+        return aircraft_groups
 
     def save(self, filename, stats):
         self.m.save(filename, show_stats=stats)
 
 
 class Refueling(BasicScenario):
-    def __init__(self, aircraft_types: List[str], playercount: int, start: str):
+    def __init__(self, aircraft_types: List[Tuple[str,str]], playercount: int, start: str):
         super(Refueling, self).__init__()
 
         self.add_civil_airtraffic(hidden=False)
@@ -414,7 +480,7 @@ class Refueling(BasicScenario):
             race_distance=race_dist, heading=heading,
             altitude=random.randrange(4000, 5500, 100), frequency=frequency)
 
-        player_groups = self.place_players(usa, start, aircraft_types, blue_military, orbit_rect, playercount)
+        player_groups = self.place_players(start, aircraft_types, blue_military, orbit_rect, playercount, None)
 
         if start == "inflight":
             fuel_percent = 0.2
@@ -428,10 +494,6 @@ class Refueling(BasicScenario):
                 pg.add_runway_waypoint(airport)
 
             for u in pg.units:
-                if playercount > 1:
-                    u.set_client()
-                else:
-                    u.set_player()
                 u.fuel *= fuel_percent
 
             if pg.units[0].unit_type in [dcs.planes.A_10C]:
@@ -469,8 +531,67 @@ AWACS and Tankers are reachable on {freq} Mhz VHF-AM.""".format(freq=frequency))
 
 
 class CAS(BasicScenario):
-    def __init__(self):
+    blue_plane_force = {
+        "SEAD": {
+            "SEAD 01": (USA.name, 2, dcs.planes.F_16C_bl_52d)
+        },
+        "CAP": {
+            "Air Patrol": (USA.name, 2, dcs.planes.F_15C)
+        }
+    }
+
+    def __init__(self, aircraft_types: List[Tuple[str,str]], playercount: int, start: str):
         super(CAS, self).__init__()
+
+        caucasus = self.m.terrain  # type: dcs.terrain.Caucasus
+
+        usa = self.m.country(dcs.countries.USA.name)
+        kutaisi = caucasus.kutaisi()
+        kobuleti = caucasus.kobuleti()
+        blue_military_airport = [kutaisi, kobuleti]
+
+        battle_point = BasicScenario.battle_zones[0].random_point()
+
+        front_hdg = 30
+        i = 0
+        for force in [self.blue_force, self.red_force]:
+            attack_hdg = (300 + (180 if i > 0 else 0)) % 360
+            defense_hdg = (attack_hdg + 180) % 360
+            rp = battle_point.point_from_heading(defense_hdg, 3*1000)
+            for force_type in force:
+                for conf in force[force_type]:
+                    dist_hdg = front_hdg if random.getrandbits(1) else front_hdg + 180
+                    rp = rp.point_from_heading(dist_hdg, random.randrange(100, 1000))
+                    if force_type in ["Artillery", "Supply"]:
+                        rp = rp.point_from_heading(random.randrange(defense_hdg-30, defense_hdg+30), random.randrange(500, 3000))
+                    else:
+                        rp = rp.point_from_heading(random.randrange(attack_hdg-30, attack_hdg+30), random.randrange(0, 500))
+
+                    plat = force[force_type][conf]
+                    c = self.m.country(plat[0])
+                    g = self.m.vehicle_group_platoon(c, conf, plat[1], rp)
+                    g.formation_scattered(attack_hdg)
+
+                    if force_type not in ["Artillery", "Supply", "AirDefence"]:
+                        wp = g.add_waypoint(g.position.point_from_heading(attack_hdg, 3000))
+                        wp.action = "Vee"
+                        g.add_waypoint(wp.position.point_from_heading(random.randrange(attack_hdg-30, attack_hdg+30), 3000))
+            i += 1
+
+        for plane_force in [self.blue_plane_force]:
+            for force_type in plane_force:
+                for conf in plane_force[force_type]:
+                    conf_data = plane_force[force_type][conf]
+                    airport = blue_military_airport[random.randrange(0, len(blue_military_airport))]
+                    pg = self.m.plane_group_from_runway(self.m.country(conf_data[0]), conf, conf_data[2], airport,
+                                                        dcs.task.MainTask.map[force_type], group_size=conf_data[1])
+                    pg.add_runway_waypoint(airport)
+                    pg.add_waypoint(battle_point, 1000)
+
+        player_groups = self.place_players(start, aircraft_types, blue_military_airport, playercount, dcs.task.CAS)
+        for pg in player_groups:
+            pg.add_runway_waypoint(caucasus.airport_by_id(pg.points[0].airdrome_id))
+            pg.add_waypoint(battle_point, 0)
 
 
 class Scenario(BasicScenario):
@@ -651,14 +772,17 @@ class Scenario(BasicScenario):
 
 def main():
 
+    types = [
+        (dcs.countries.USA.name, dcs.planes.A_10C.id),
+        (dcs.countries.Georgia.name, dcs.planes.Su_25T.id),
+        (dcs.countries.USA.name, dcs.planes.M_2000C.id),
+        (dcs.countries.USA.name, dcs.helicopters.Ka_50.id)
+    ]
+    aircraft_types = [x[1] for x in types]
     parser = argparse.ArgumentParser(description="Random DCS mission generator")
 
     parser.add_argument("-a", "--aircrafttype", default=dcs.planes.Su_25T.id,
-                        choices=[
-                            dcs.planes.A_10C.id,
-                            dcs.planes.Su_25T.id,
-                            dcs.planes.M_2000C.id,
-                            dcs.helicopters.Ka_50.id],
+                        choices=aircraft_types,
                         help="Player aircraft type")
     parser.add_argument("-p", "--playercount", default=1, type=int)
     parser.add_argument("-s", "--start", default="inflight", choices=["inflight", "runway", "warm", "cold"])
@@ -681,10 +805,11 @@ def main():
 
     if missiontype == "refuel":
         supported = [dcs.planes.A_10C.id, dcs.planes.M_2000C.id]
-        aircraft_types = supported if args.playercount > 1 else [args.aircrafttype]
-        s = Refueling(aircraft_types, args.playercount, args.start)
+        types = [x for x in types if x[1] in supported] if args.playercount > 1 else [x for x in types if x[1] == args.aircrafttype]
+        s = Refueling(types, args.playercount, args.start)
     elif missiontype == "CAS":
-        s = CAS()
+        types = types if args.playercount > 1 else [x for x in types if x[1] == args.aircrafttype]
+        s = CAS(types, args.playercount, args.start)
     else:
         s = Scenario()
 
