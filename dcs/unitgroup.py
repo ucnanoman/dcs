@@ -84,7 +84,6 @@ class MovingGroup(Group):
 
     def load_from_dict(self, d):
         super(MovingGroup, self).load_from_dict(d)
-        print(d)
         self.frequency = d.get("frequency")
         self.task = d.get("task")  # ships don't have a task
         self.task_selected = d.get("taskSelected", False)
@@ -379,7 +378,6 @@ class HelicopterGroup(FlyingGroup):
 
     def add_unit(self, unit: Helicopter):
         if not issubclass(unit.unit_type, HelicopterType):
-            print(unit.unit_type)
             raise TypeError("unit.unit_type is not a helicopter")
         super(HelicopterGroup, self).add_unit(unit)
 
