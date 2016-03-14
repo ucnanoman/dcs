@@ -1,5 +1,6 @@
 payloads = {
 	["type"] = "A-10C",
+	["unitType"] = "A-10C",
 	["payloads"] = {
 		[1] = {
 			["category"] = "Mix",
