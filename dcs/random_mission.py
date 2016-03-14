@@ -583,10 +583,19 @@ class CAS(BasicScenario):
                 for conf in plane_force[force_type]:
                     conf_data = plane_force[force_type][conf]
                     airport = blue_military_airport[random.randrange(0, len(blue_military_airport))]
-                    pg = self.m.plane_group_from_runway(self.m.country(conf_data[0]), conf, conf_data[2], airport,
+                    country = self.m.country(conf_data[0])
+                    if force_type == "CAP":
+                        self.m.patrol_flight(country, conf, conf_data[2], airport,
+                                             caucasus.batumi().position, caucasus.lochini().position,
+                                             group_size=conf_data[1])
+                    else:
+                        pg = self.m.plane_group_from_runway(country, conf, conf_data[2], airport,
                                                         dcs.task.MainTask.map[force_type], group_size=conf_data[1])
-                    pg.add_runway_waypoint(airport)
-                    pg.add_waypoint(battle_point, 1000)
+                        pg.add_runway_waypoint(airport)
+
+                        if force_type in ["SEAD"]:
+                            pg.add_waypoint(battle_point, 1000)
+
 
         player_groups = self.place_players(start, aircraft_types, blue_military_airport, playercount, dcs.task.CAS)
         for pg in player_groups:
