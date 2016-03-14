@@ -40,6 +40,7 @@ class Group:
             return self.units[0].position.y
         return None
 
+    @property
     def position(self) -> mapping.Point:
         return self.units[0].position
 
