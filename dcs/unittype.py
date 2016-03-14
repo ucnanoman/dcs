@@ -1,5 +1,6 @@
 from . import lua
 import os
+import re
 
 
 class UnitType:
@@ -44,29 +45,53 @@ class FlyingType(UnitType):
     tasks = ['Nothing']
     task_default = None
 
+    _payload_cache = None
+
+    @classmethod
+    def scan_payload_dir(cls):
+        if FlyingType._payload_cache:
+            return
+        FlyingType._payload_cache = {}
+        for payload_dir in FlyingType.payload_dirs:
+            files = [file for file in os.listdir(payload_dir) if file.endswith('.lua')]
+            for file in files:
+                payload_filename = os.path.join(payload_dir, file)
+                if payload_filename not in FlyingType._payload_cache:
+                    with open(payload_filename, 'r') as payloadfile:
+                        for line in payloadfile:
+                            g = re.search(r'\["unitType"\]\s*=\s*"([^"]*)', line)
+                            if g:
+                                FlyingType._payload_cache[payload_filename] = g.group(1)
+                                break
+
+
     @classmethod
     def load_payloads(cls):
+        FlyingType.scan_payload_dir()
         if cls.payloads:
             return cls.payloads
 
         for payload_dir in FlyingType.payload_dirs:
-            payload_filename = os.path.join(payload_dir, cls.id + ".lua")
-            if os.path.exists(payload_filename):
-                with open(payload_filename, 'r') as payload:
-                    payload_main = lua.loads(payload.read())
-                    pays = payload_main[list(payload_main.keys())[0]]
-                    if cls.payloads:
-                        highestkey = max(pays["payloads"].keys()) + 1
-                        for load in pays["payloads"]:
-                            x = [x for x in cls.payloads["payloads"]
-                                 if cls.payloads["payloads"][x]["name"] == pays["payloads"][load]["name"]]
-                            if x:
-                                cls.payloads["payloads"][x[0]] = pays["payloads"][load]
+            files = [file for file in os.listdir(payload_dir) if file.endswith('.lua')]
+            for file in files:
+                payload_filename = os.path.join(payload_dir, file)
+                if FlyingType._payload_cache[payload_filename] == cls.id and os.path.exists(payload_filename):
+                    with open(payload_filename, 'r') as payload:
+                        payload_main = lua.loads(payload.read())
+                        pays = payload_main[list(payload_main.keys())[0]]
+                        if pays["unitType"] == cls.id:
+                            if cls.payloads:
+                                highestkey = max(pays["payloads"].keys()) + 1
+                                for load in pays["payloads"]:
+                                    x = [x for x in cls.payloads["payloads"]
+                                         if cls.payloads["payloads"][x]["name"] == pays["payloads"][load]["name"]]
+                                    if x:
+                                        cls.payloads["payloads"][x[0]] = pays["payloads"][load]
+                                    else:
+                                        cls.payloads["payloads"][highestkey] = pays["payloads"][load]
+                                        highestkey += 1
                             else:
-                                cls.payloads["payloads"][highestkey] = pays["payloads"][load]
-                                highestkey += 1
-                    else:
-                        cls.payloads = pays
+                                cls.payloads = pays
 
         return cls.payloads
 
