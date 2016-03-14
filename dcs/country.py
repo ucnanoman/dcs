@@ -77,12 +77,12 @@ class Country:
 
     def find_helicopter_group(self, name: str, search="exact"):
         for group in self.helicopter_group:
-            if FindFunctions.find_map[search](group.name.str(), name):
+            if find_map[search](group.name.str(), name):
                 return group
 
     def find_static_group(self, name: str, search="exact"):
         for group in self.static_group:
-            if FindFunctions.find_map[search](group.name.str(), name):
+            if find_map[search](group.name.str(), name):
                 return group
         return None
 
