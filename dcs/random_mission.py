@@ -6,6 +6,7 @@ import dcs.mapping
 import dcs.terrain
 import dcs.unittype
 import dcs.vehicles
+from dcs.countries import USA, Russia
 import random
 import argparse
 import os
@@ -23,6 +24,107 @@ class USPlatoon:
     maybe = [
         dcs.countries.USA.Vehicle.AirDefence.SAM_Avenger_M1097
     ]
+
+
+class RedForce:
+    Armor = {
+        "Tank Platoon": (Russia.name, [
+            Russia.Vehicle.Armor.MBT_T_80U,
+            Russia.Vehicle.Armor.MBT_T_80U,
+            Russia.Vehicle.Armor.MBT_T_80U,
+            Russia.Vehicle.Armor.MBT_T_80U
+        ])
+    }
+
+    LightArmor = {
+        "Light Armor": (Russia.name, [
+            Russia.Vehicle.Armor.IFV_BMP_3,
+            Russia.Vehicle.Armor.IFV_BMP_3,
+            Russia.Vehicle.Armor.IFV_BMP_3
+        ])
+    }
+
+    Artillery = {
+        "Artillery": (Russia.name, [
+            Russia.Vehicle.Artillery.SPH_2S1_Gvozdika,
+            Russia.Vehicle.Artillery.SPH_2S1_Gvozdika,
+            Russia.Vehicle.Artillery.SPH_2S1_Gvozdika,
+            Russia.Vehicle.Artillery.SPH_2S1_Gvozdika,
+            Russia.Vehicle.Unarmed.Transport_Ural_4320T,
+            Russia.Vehicle.AirDefence.SAM_SA_19_Tunguska_2S6
+        ])
+    }
+
+    AirDefence = {
+        "Air Defense": (Russia.name, [
+            Russia.Vehicle.AirDefence.SAM_SA_6_Kub_LN_2P25,
+            Russia.Vehicle.AirDefence.SAM_SA_6_Kub_STR_9S91,
+            Russia.Vehicle.AirDefence.SAM_SA_6_Kub_LN_2P25,
+            Russia.Vehicle.AirDefence.SAM_SA_6_Kub_STR_9S91,
+            Russia.Vehicle.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
+        ])
+    }
+
+    Supply = {
+        "Russia Supply": (Russia.name, [
+            Russia.Vehicle.Unarmed.Transport_GAZ_66,
+            Russia.Vehicle.Unarmed.Fuel_Truck_ATZ_10,
+            Russia.Vehicle.Unarmed.Transport_ZIU_9,
+            Russia.Vehicle.Unarmed.Transport_ZIU_9,
+            Russia.Vehicle.Unarmed.Transport_ZIU_9
+        ])
+    }
+
+
+class BlueForce:
+    Armor = {
+        "1st Tank Platoon 01": (USA.name, [
+            USA.Vehicle.Armor.MBT_M1A2_Abrams,
+            USA.Vehicle.Armor.MBT_M1A2_Abrams,
+            USA.Vehicle.Armor.MBT_M1A2_Abrams,
+            USA.Vehicle.Armor.MBT_M1A2_Abrams
+        ])
+    }
+
+    LightArmor = {
+        "1st Light Armor Brigade 01": (USA.name, [
+            USA.Vehicle.Armor.IFV_M2A2_Bradley,
+            USA.Vehicle.Armor.IFV_M2A2_Bradley,
+            USA.Vehicle.Armor.IFV_M2A2_Bradley,
+        ])
+    }
+
+    Artillery = {
+        "1st Artillery Corps 01": (USA.name, [
+            USA.Vehicle.Artillery.SPH_M109_Paladin,
+            USA.Vehicle.Artillery.SPH_M109_Paladin,
+            USA.Vehicle.Artillery.SPH_M109_Paladin,
+            USA.Vehicle.Artillery.SPH_M109_Paladin,
+            USA.Vehicle.Unarmed.HEMTT_TFFT,
+            USA.Vehicle.AirDefence.SAM_Stinger_comm,
+            USA.Vehicle.AirDefence.SAM_Stinger_MANPADS
+        ])
+    }
+
+    AirDefence = {
+        "Air Defense Battery 01": (USA.name, [
+            USA.Vehicle.Unarmed.APC_M1025_HMMWV,
+            USA.Vehicle.Unarmed.APC_M1025_HMMWV,
+            USA.Vehicle.AirDefence.SAM_Avenger_M1097,
+            USA.Vehicle.AirDefence.SAM_Avenger_M1097,
+            USA.Vehicle.AirDefence.SAM_Avenger_M1097,
+            USA.Vehicle.AirDefence.SAM_Avenger_M1097
+        ])
+    }
+
+    Supply = {
+        "US Supply": (USA.name, [
+            USA.Vehicle.Unarmed.Transport_M818,
+            USA.Vehicle.Unarmed.Transport_M818,
+            USA.Vehicle.Unarmed.Tanker_M978_HEMTT,
+            USA.Vehicle.Unarmed.HEMTT_TFFT
+        ])
+    }
 
 
 class BasicScenario:
