@@ -1288,7 +1288,7 @@ class Goals:
                                      for i in range(0, len(self.goals[side]))}
             d[side]["actions"] = {i + 1: "a_set_mission_result(" + str(self.goals[side][i].score) + ")"
                                   for i in range(0, len(self.goals[side])) if self.goals[side][i].rules}
-            d[side]["funcs"] = {
+            d[side]["func"] = {
                 i + 1: funcstr.format(side=side, idx=i+1)
                 for i in range(0, len(self.goals[side])) if self.goals[side][i].rules}
         return d
