@@ -53,6 +53,8 @@ class FlyingType(UnitType):
             return
         FlyingType._payload_cache = {}
         for payload_dir in FlyingType.payload_dirs:
+            if not os.path.exists(payload_dir):
+                continue
             files = [file for file in os.listdir(payload_dir) if file.endswith('.lua')]
             for file in files:
                 payload_filename = os.path.join(payload_dir, file)
@@ -72,6 +74,8 @@ class FlyingType(UnitType):
             return cls.payloads
 
         for payload_dir in FlyingType.payload_dirs:
+            if not os.path.exists(payload_dir):
+                continue
             files = [file for file in os.listdir(payload_dir) if file.endswith('.lua')]
             for file in files:
                 payload_filename = os.path.join(payload_dir, file)
