@@ -253,6 +253,9 @@ class FlyingGroup(MovingGroup):
         self.task = "CAS"
         self.units = []  # type: List[FlyingUnit]
 
+    def starts_from_airport(self) -> bool:
+        return self.points[0].airdrome_id if self.points else False
+
     def load_from_dict(self, d):
         super(FlyingGroup, self).load_from_dict(d)
         self.modulation = d.get("modulation")
@@ -283,7 +286,6 @@ class FlyingGroup(MovingGroup):
         :param distance: distance of the waypoint from the airport
         :return:
         """
-
         runway = runway if runway else airport.runways[0]
 
         mp = MovingPoint()

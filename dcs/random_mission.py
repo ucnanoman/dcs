@@ -253,11 +253,13 @@ class BasicScenario:
             name = "Civil " + str(c_count)
             rand = random.random()
             if 0.3 < rand < 0.5 and slots:
-                pg = self.m.plane_group_from_parking(country, name, ptype, airport, coldstart=random.getrandbits(1))
+                pg = self.m.flight_group_from_airport(
+                    country, name, ptype, airport,
+                    start_type=random.choice([dcs.mission.StartType.Cold, dcs.mission.StartType.Warm]))
                 pg.add_runway_waypoint(airport, distance=random.randrange(6000, 8000, 100))
                 pg.add_waypoint(pos, random.randrange(5000, 8000, 100), 400)
             elif 0.5 < rand and slots:
-                pg = self.m.plane_group_from_parking(country, name, ptype, airport)
+                pg = self.m.flight_group_from_airport(country, name, ptype, airport)
                 pg.uncontrolled = True
             else:
                 bound = dcs.mapping.Rectangle(dcs.terrain.Caucasus.bounds.top-100*1000,
@@ -266,8 +268,9 @@ class BasicScenario:
                                               dcs.terrain.Caucasus.bounds.right-130*1000)
                 point = bound.random_point()
 
-                pg = self.m.plane_group_inflight(
-                    country, name, ptype, point, random.randrange(5000, 8000, 100), 400)
+                pg = self.m.flight_group_inflight(
+                    country, name, ptype, point, random.randrange(5000, 8000, 100), 400
+                )
                 tmp = pg.add_waypoint(dcs.mapping.Point(0, 0), pg.points[0].alt)
                 wp = pg.add_runway_waypoint(airport, distance=random.randrange(6000, 8000, 100))
                 heading = wp.position.heading_between_point(point)
@@ -284,18 +287,17 @@ class BasicScenario:
                           if dcs.helicopters.helicopter_map[x].task_default == dcs.task.Transport]
             htype = dcs.helicopters.helicopter_map[transports[random.randrange(0, len(transports))]]
 
-            start_airport = airports[random.randrange(0, len(airports))]
+            start_airport = random.choice(airports)
             rand = random.random()
             name = "Helicopter Transport " + str(c_count)
             if 0.7 < rand:
                 bound = dcs.mapping.Rectangle.from_point(start_airport.position, 100*1000)
                 pos = bound.random_point()
-                hg = self.m.helicopter_group_inflight(
-                    country, name, htype, pos, random.randrange(800, 1500, 100), 200)
+                hg = self.m.flight_group_inflight(country, name, htype, pos, random.randrange(800, 1500, 100), 200)
                 hg.add_runway_waypoint(start_airport)
                 hg.land_at(start_airport)
             elif 0.4 < rand < 0.7:
-                hg = self.m.helicopter_group_from_parking(country, name, htype, start_airport)
+                hg = self.m.flight_group_from_airport(country, name, htype, start_airport)
                 hg.uncontrolled = True
             else:
                 dest_airport = None
@@ -304,8 +306,9 @@ class BasicScenario:
                     if dest_airport != start_airport:
                         break
 
-                hg = self.m.helicopter_group_from_parking(
-                    country, name, htype, start_airport, coldstart=random.getrandbits(1))
+                hg = self.m.flight_group_from_airport(
+                    country, name, htype, start_airport, start_type=random.choice(list(dcs.mission.StartType))
+                )
                 hg.add_runway_waypoint(start_airport)
                 hg.add_runway_waypoint(dest_airport)
                 hg.land_at(dest_airport)
@@ -346,17 +349,17 @@ class BasicScenario:
         while planes:
             country, strtype, group_size = planes.pop()
 
+            ptype = dict(dcs.planes.plane_map, **dcs.helicopters.helicopter_map)[strtype]
             while True:
                 airport = airports[random.randrange(0, len(airports))]
 
-                ptype = dcs.planes.plane_map[strtype]
                 slots = airport.free_parking_slots(ptype.large_parking_slot, False)
                 if len(slots) >= group_size:
                     break
 
             c = self.m.country(country)
-            pg = self.m.plane_group_from_parking(c, strtype + " Flight #" + str(g_idx),
-                                                 ptype, airport, parking_slots=slots, group_size=group_size)
+            pg = self.m.flight_group_from_airport(c, strtype + " Flight #" + str(g_idx),
+                                                  ptype, airport, parking_slots=slots, group_size=group_size)
             pg.uncontrolled = True
             pg.hidden = hidden
             g_idx += 1
@@ -373,36 +376,22 @@ class BasicScenario:
         for _type in aircraft_types:
             country = self.m.country(_type[0])
             aircraft_type = _type[1]
-            plane_type = dcs.planes.plane_map.get(aircraft_type, None)
-            if plane_type:
-                airport = airports[random.randrange(0, len(airports))]
+            aircraft_type = dict(dcs.planes.plane_map, **dcs.helicopters.helicopter_map)[aircraft_type]
 
-                if start == "inflight":
-                    rp = placement_rect.random_point if placement_rect else dcs.mapping.Rectangle.from_point(
-                        airport.position, 20*1000).from_point()
-                    pg = self.m.plane_group_inflight(
-                        country, name + str(c), plane_type, rp, random.randrange(2000, 5000, 100), maintask=maintask, group_size=group_size)
-                elif start == "runway":
-                    pg = self.m.plane_group_from_runway(country, name + str(c), plane_type, airport, maintask=maintask, group_size=group_size)
-                else:
-                    pg = self.m.plane_group_from_parking(
-                        country, name + str(c), plane_type, airport, coldstart=start == "cold", maintask=maintask, group_size=group_size)
-                aircraft_groups.append(pg)
+            airport = airports[random.randrange(0, len(airports))]
+            if start == "inflight":
+                rp = placement_rect.random_point() if placement_rect else dcs.mapping.Rectangle.from_point(
+                        airport.position, 20*1000).random_point()
+                altitude = random.randrange(300, 1000, 100) if aircraft_type.helicopter else random.randrange(2000, 5000, 100)
+                pg = self.m.flight_group_inflight(
+                    country, name + str(c), aircraft_type, rp, altitude,
+                    maintask=maintask, group_size=group_size)
             else:
-                heli_type = dcs.helicopters.helicopter_map[aircraft_type]
-                airport = airports[random.randrange(0, len(airports))]
-
-                if start == "inflight":
-                    rp = placement_rect.random_point if placement_rect else dcs.mapping.Rectangle.from_point(
-                        airport.position, 20*1000).from_point()
-                    pg = self.m.helicopter_group_inflight(
-                        country, name + str(c), heli_type, rp, random.randrange(300, 1000, 100), maintask=maintask, group_size=group_size)
-                elif start == "runway":
-                    pg = self.m.helicopter_group_from_runway(country, name + str(c), heli_type, airport, maintask=maintask, group_size=group_size)
-                else:
-                    pg = self.m.helicopter_group_from_parking(
-                        country, name + str(c), heli_type, airport, coldstart=start == "cold", maintask=maintask, group_size=group_size)
-                aircraft_groups.append(pg)
+                pg = self.m.flight_group_from_airport(
+                    country, name + str(c), aircraft_type, airport,
+                    maintask=maintask, start_type=dcs.mission.StartType.from_string(start), group_size=group_size
+                )
+            aircraft_groups.append(pg)
 
             for u in pg.units:
                 u.set_client()
@@ -480,7 +469,9 @@ class Refueling(BasicScenario):
             race_distance=race_dist, heading=heading,
             altitude=random.randrange(4000, 5500, 100), frequency=frequency)
 
-        player_groups = self.place_players(start, aircraft_types, blue_military, orbit_rect, playercount, None)
+        player_groups = self.place_players(start, aircraft_types, blue_military,
+                                           placement_rect=orbit_rect,
+                                           group_size=playercount, maintask=None)
 
         if start == "inflight":
             fuel_percent = 0.2
@@ -513,7 +504,7 @@ class Refueling(BasicScenario):
 
         self.m.set_description_text("""Random generated refueling test mission.
 {count} {type} are/is prepared for a refueling training mission.""".format(
-            count=playercount, type=", ".join(aircraft_types)))
+            count=playercount, type=", ".join([x[1] for x in aircraft_types])))
         self.m.set_description_bluetask_text("""Find your tanker and do a full refuel.
 Afterwards land at your designated homebase.
 
@@ -589,17 +580,19 @@ class CAS(BasicScenario):
                                              caucasus.batumi().position, caucasus.lochini().position,
                                              group_size=conf_data[1])
                     else:
-                        pg = self.m.plane_group_from_runway(country, conf, conf_data[2], airport,
-                                                        dcs.task.MainTask.map[force_type], group_size=conf_data[1])
+                        pg = self.m.flight_group_from_airport(
+                            country, conf, conf_data[2], airport, dcs.task.MainTask.map[force_type],
+                            dcs.mission.StartType.Runway, group_size=conf_data[1]
+                        )
                         pg.add_runway_waypoint(airport)
 
                         if force_type in ["SEAD"]:
                             pg.add_waypoint(battle_point, 1000)
 
-
         player_groups = self.place_players(start, aircraft_types, blue_military_airport, playercount, dcs.task.CAS)
         for pg in player_groups:
-            pg.add_runway_waypoint(caucasus.airport_by_id(pg.points[0].airdrome_id))
+            if pg.starts_from_airport():
+                pg.add_runway_waypoint(caucasus.airport_by_id(pg.points[0].airdrome_id))
             pg.add_waypoint(battle_point, 0)
 
 

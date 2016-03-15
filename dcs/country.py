@@ -1,4 +1,4 @@
-from .unitgroup import VehicleGroup, ShipGroup, PlaneGroup, StaticGroup, HelicopterGroup
+from .unitgroup import VehicleGroup, ShipGroup, PlaneGroup, StaticGroup, HelicopterGroup, FlyingGroup
 from typing import List, Dict
 
 
@@ -42,6 +42,12 @@ class Country:
 
     def add_helicopter_group(self, hgroup):
         self.helicopter_group.append(hgroup)
+
+    def add_aircraft_group(self, group: FlyingGroup):
+        if group.units[0].unit_type.helicopter:
+            self.helicopter_group.append(group)
+        else:
+            self.plane_group.append(group)
 
     def add_static_group(self, sgroup):
         self.static_group.append(sgroup)

@@ -3,6 +3,7 @@ import sys
 import os
 import tempfile
 import copy
+from enum import Enum
 from typing import List, Dict, Union, Optional
 from datetime import datetime, timezone
 from . import lua
@@ -163,6 +164,21 @@ class Triggers:
         return {
             "zones": {i + 1: self._zones[i].dict() for i in range(0, len(self._zones))}
         }
+
+
+class StartType(Enum):
+    Cold = 1
+    Warm = 2
+    Runway = 3
+
+    @staticmethod
+    def from_string(s):
+        st_map = {
+            "cold": StartType.Cold,
+            "warm": StartType.Warm,
+            "runway": StartType.Runway
+        }
+        return st_map[s.lower()]
 
 
 class Mission:
@@ -649,90 +665,16 @@ class Mission:
     def plane_group(self, name):
         return unitgroup.PlaneGroup(self.next_group_id(), self.string(name))
 
-    def plane_group_inflight(self, _country, name, plane_type: PlaneType, position: mapping.Point, altitude, speed=600,
-                             maintask: task.MainTask = None, group_size=1):
-        if maintask is None:
-            maintask = plane_type.task_default
-
-        pg = self.plane_group(name)
-        pg.task = maintask.name
-        group_size = min(group_size, plane_type.group_size_max)
-
-        for i in range(1, group_size + 1):
-            p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type, _country)
-            p.position = copy.copy(position)
-            p.alt = altitude
-            pg.add_unit(p)
-
-        _country.add_plane_group(self._flying_group_inflight(_country, pg, maintask, altitude, speed))
-        return pg
-
-    def plane_group_from_runway(self, _country, name, plane_type: PlaneType, airport: Airport,
-                                maintask: task.MainTask = None, group_size=1):
-        if not airport.runway_free:
-            raise RuntimeError("Runway already occupied.")
-
-        airport.runway_free = False
-        if maintask is None:
-            maintask = plane_type.task_default
-
-        pg = self.plane_group(name)
-        pg.task = maintask.name
-        group_size = min(group_size, plane_type.group_size_max)
-
-        for i in range(1, group_size + 1):
-            p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type, _country)
-            pg.add_unit(p)
-
-        _country.add_plane_group(self._flying_group_runway(_country, pg, maintask, airport))
-        return pg
-
-    def plane_group_from_parking(self,
-                                 _country: Country,
-                                 name,
-                                 plane_type: PlaneType,
-                                 airport: Airport,
-                                 maintask: task.MainTask = None,
-                                 coldstart=True,
-                                 parking_slots: ParkingSlot = None,
-                                 group_size=1) -> unitgroup.PlaneGroup:
-        """
-        Add a new PlaneGroup at parking position on the given airport.
-        :param _country: Country object the plane group belongs to
-        :param name: Name of the plane group
-        :param maintask: Task of the plane group
-        :param plane_type: PlaneType object representing the plane
-        :param airport: Airport object on which to spawn the plane
-        :param coldstart: Coldstart yes or no
-        :param parking_slots: List of parking slots to use for planes
-        :param group_size: Group size 1-4
-        :return: the new PlaneGroup
-        """
-        if maintask is None:
-            maintask = plane_type.task_default
-
-        pg = self.plane_group(name)
-        pg.task = maintask.name
-        group_size = min(group_size, plane_type.group_size_max)
-
-        for i in range(1, group_size + 1):
-            p = self.plane(name + " Pilot #{nr}".format(nr=i), plane_type, _country)
-            pg.add_unit(p)
-
-        task_payload = plane_type.loadout(maintask)
-        if task_payload:
-            for p in pg.units:
-                for x in task_payload:
-                    p.load_pylon(x)
-
-        _country.add_plane_group(self._flying_group_ramp(_country, pg, maintask, airport, coldstart, parking_slots))
-        return pg
-
     def plane(self, name, _type: PlaneType, _country: Country):
         return Plane(self.next_unit_id(), self.string(name), _type, _country)
 
     def helicopter(self, name, _type: HelicopterType, _country: Country):
         return Helicopter(self.next_unit_id(), self.string(name), _type, _country)
+
+    def aircraft(self, name, _type: unittype.FlyingType, _country: Country):
+        if _type.helicopter:
+            return Helicopter(self.next_unit_id(), self.string(name), _type, _country)
+        return Plane(self.next_unit_id(), self.string(name), _type, _country)
 
     def helicopter_group(self, name):
         return unitgroup.HelicopterGroup(self.next_group_id(), self.string(name))
@@ -761,27 +703,35 @@ class Mission:
             mp.tasks.append(ptask)
         return mp
 
-    def _flying_group_ramp(self, _country, group: unitgroup.FlyingGroup, maintask: task.MainTask, airport: Airport,
-                           coldstart=True,
-                           parking_slots: List[ParkingSlot] = None):
+    def _flying_group_from_airport(self, _country, group: unitgroup.FlyingGroup,
+                                   maintask: task.MainTask,
+                                   airport: Airport,
+                                   start_type: StartType=StartType.Cold,
+                                   parking_slots: List[ParkingSlot] = None) -> unitgroup.FlyingGroup:
 
-        i = 0
         for unit in group.units:
-            parking_slot = parking_slots.pop(0) if parking_slots else airport.free_parking_slot(
-                unit.unit_type.large_parking_slot, unit.unit_type.helicopter)
-            if parking_slot is None:
-                raise RuntimeError("No free parking slot at " + airport.name)
-            unit.position = copy.copy(parking_slot.position)
-            unit.set_parking(parking_slot)
-            i += 1
+            spos = airport.position
+            if start_type != StartType.Runway:
+                parking_slot = parking_slots.pop(0) if parking_slots else airport.free_parking_slot(
+                    unit.unit_type.large_parking_slot, unit.unit_type.helicopter)
+                if parking_slot is None:
+                    raise RuntimeError("No free parking slot at " + airport.name)
+                spos = parking_slot.position
+                unit.set_parking(parking_slot)
+            unit.position = copy.copy(spos)
 
         group.load_task_default_loadout(maintask)
 
         self._assign_callsign(_country, group)
 
+        point_start_type_map = {
+            StartType.Cold: ("TakeOffParking", "From Parking Area"),
+            StartType.Warm: ("TakeOffParkingHot", "From Parking Area Hot"),
+            StartType.Runway: ("TakeOff", "From Runway")
+        }
         mp = MovingPoint()
-        mp.type = "TakeOffParking" if coldstart else "TakeOffParkingHot"
-        mp.action = "From Parking Area" if coldstart else "From Parking Area Hot"
+        mp.type = point_start_type_map[start_type][0]
+        mp.action = point_start_type_map[start_type][1]
         mp.position = copy.copy(group.units[0].position)
         mp.airdrome_id = airport.id
         mp.alt = group.units[0].alt
@@ -791,27 +741,8 @@ class Mission:
 
         return group
 
-    def _flying_group_runway(self, _country, group: unitgroup.FlyingGroup, maintask: task.MainTask, airport: Airport):
-        for unit in group.units:
-            unit.position = copy.copy(airport.position)
-
-        self._assign_callsign(_country, group)
-
-        group.load_task_default_loadout(maintask)
-
-        mp = MovingPoint()
-        mp.type = "TakeOff"
-        mp.action = "From Runway"
-        mp.position = copy.copy(group.units[0].position)
-        mp.airdrome_id = airport.id
-        mp.alt = group.units[0].alt
-        Mission._load_tasks(mp, maintask)
-
-        group.add_point(mp)
-
-        return group
-
-    def _flying_group_inflight(self, _country, group: unitgroup.FlyingGroup, maintask: task.MainTask, altitude, speed):
+    def _flying_group_inflight(self, _country, group: unitgroup.FlyingGroup,
+                               maintask: task.MainTask, altitude, speed) -> unitgroup.FlyingGroup:
 
         i = 0
         for unit in group.units:
@@ -837,74 +768,103 @@ class Mission:
 
         return group
 
-    def helicopter_group_inflight(self, _country, name, helicopter_type, position: mapping.Point, altitude, speed=200,
-                                  maintask: task.MainTask = None, group_size=1):
+    def flight_group_inflight(self,
+                              _country,
+                              name: str,
+                              aircraft_type: unittype.FlyingType,
+                              position: mapping.Point,
+                              altitude: int,
+                              speed=None,
+                              maintask: Optional[task.MainTask] = None,
+                              group_size: int=1
+                              ):
         if maintask is None:
-            maintask = helicopter_type.task_default
+            maintask = aircraft_type.task_default
 
-        hg = self.helicopter_group(name)
-        hg.task = maintask.name
-        group_size = min(group_size, helicopter_type.group_size_max)
+        if aircraft_type.helicopter:
+            ag = self.helicopter_group(name)
+            speed = speed if speed else 200
+        else:
+            ag = self.plane_group(name)
+            speed = speed if speed else 600
+        ag.task = maintask.name
+        group_size = min(group_size, aircraft_type.group_size_max)
 
         for i in range(1, group_size + 1):
-            p = self.helicopter(name + " Pilot #{nr}".format(nr=i), helicopter_type, _country)
+            p = self.aircraft(name + " Pilot #{nr}".format(nr=i), aircraft_type, _country)
             p.position = copy.copy(position)
-            hg.add_unit(p)
+            ag.add_unit(p)
 
-        _country.add_helicopter_group(self._flying_group_inflight(_country, hg, maintask, altitude, speed))
-        return hg
+        _country.add_aircraft_group(self._flying_group_inflight(_country, ag, maintask, altitude, speed))
+        return ag
 
-    def helicopter_group_from_runway(self, _country, name, heli_type: HelicopterType, airport: Airport,
-                                     maintask: task.MainTask = None, group_size=1):
-        if maintask is None:
-            maintask = heli_type.task_default
-
-        hg = self.helicopter_group(name)
-        hg.task = maintask.name
-        group_size = min(group_size, heli_type.group_size_max)
-
-        for i in range(1, group_size + 1):
-            p = self.helicopter(name + " Pilot #{nr}".format(nr=i), heli_type, _country)
-            hg.add_unit(p)
-
-        _country.add_helicopter_group(self._flying_group_runway(_country, hg, maintask, airport))
-        return hg
-
-    def helicopter_group_from_parking(self,
-                                      _country: Country,
-                                      name,
-                                      heli_type: HelicopterType,
-                                      airport: Airport,
-                                      maintask: task.MainTask = None,
-                                      coldstart=True,
-                                      parking_slots: List[ParkingSlot] = None,
-                                      group_size=1) -> unitgroup.PlaneGroup:
+    def flight_group_from_airport(self,
+                                  _country: Country,
+                                  name,
+                                  aircraft_type: unittype.FlyingType,
+                                  airport: Airport,
+                                  maintask: task.MainTask = None,
+                                  start_type: StartType=StartType.Cold,
+                                  group_size=1,
+                                  parking_slots: List[ParkingSlot] = None) -> unitgroup.PlaneGroup:
         """
-        Add a new PlaneGroup at parking position on the given airport.
+        Add a new PlaneGroup/Helicopter group at the given airport.
+        Runway, warm/cold start depends on the given start_type.
         :param _country: Country object the plane group belongs to
-        :param name: Name of the helicopter group
-        :param maintask: Task of the helicopter group
-        :param heli_type: HelicopterType object representing the helicopter
+        :param name: Name of the aircraft group
+        :param maintask: Task of the aircraft group
+        :param aircraft_type: FlyingType class that describes the aircraft_type
         :param airport: Airport object on which to spawn the helicopter
-        :param coldstart: Coldstart yes or no
-        :param parking_slots: List of parking slots to use for helicopters
+        :param start_type: Start from runway, cold or warm parking position
+        :param parking_slots: List of parking slots to use for aircrafts
         :param group_size: Group size 1-4
-        :return: the new PlaneGroup
+        :return: the new FlyingGroup
         """
         if maintask is None:
-            maintask = heli_type.task_default
+            maintask = aircraft_type.task_default
 
-        hg = self.helicopter_group(name)
-        hg.task = maintask.name
-        group_size = min(group_size, heli_type.group_size_max)
+        ag = self.helicopter_group(name) if aircraft_type.helicopter else self.plane_group(name)
+        ag.task = maintask.name
+        group_size = min(group_size, aircraft_type.group_size_max)
 
         for i in range(1, group_size + 1):
-            p = self.helicopter(name + " Pilot #{nr}".format(nr=i), heli_type, _country)
-            hg.add_unit(p)
+            p = self.aircraft(name + " Pilot #{nr}".format(nr=i), aircraft_type, _country)
+            ag.add_unit(p)
 
-        _country.add_helicopter_group(
-            self._flying_group_ramp(_country, hg, maintask, airport, coldstart, parking_slots))
-        return hg
+        _country.add_aircraft_group(
+            self._flying_group_from_airport(_country, ag, maintask, airport, start_type, parking_slots))
+        return ag
+
+    def awacs_flight(self,
+                     _country,
+                     name: str,
+                     plane_type: PlaneType,
+                     airport: Optional[Airport],
+                     position: mapping.Point,
+                     race_distance=30 * 1000,
+                     heading=90,
+                     altitude=4500,
+                     speed=550,
+                     start_type: StartType=StartType.Cold,
+                     frequency=140) -> unitgroup.PlaneGroup:
+        if airport:
+            awacs = self.flight_group_from_airport(_country, name, plane_type, airport, task.AWACS, start_type)
+            wp = awacs.add_runway_waypoint(airport)
+        else:
+            p = position.point_from_heading((heading + 180) % 360, 2000)
+            awacs = self.flight_group_inflight(_country, name, plane_type, p, altitude, speed, task.AWACS)
+            p = position.point_from_heading(heading + 180, 1000)
+            wp = awacs.add_waypoint(p, altitude, speed)
+
+        wp.tasks.append(task.SetFrequencyCommand(frequency))
+
+        wp = awacs.add_waypoint(position, altitude, speed)
+        wp.tasks.append(task.OrbitAction(altitude, speed, task.OrbitAction.Pattern_RaceTrack))
+
+        p = position.point_from_heading(heading, race_distance)
+        awacs.add_waypoint(p, altitude, speed)
+
+        return awacs
 
     def refuel_flight(self,
                       _country,
@@ -916,15 +876,16 @@ class Mission:
                       heading=90,
                       altitude=4500,
                       speed=407,
-                      coldstart=True,
+                      start_type: StartType=StartType.Cold,
                       frequency=140,
                       tacanchannel="10X") -> unitgroup.PlaneGroup:
         if airport:
-            tanker = self.plane_group_from_parking(_country, name, plane_type, airport, coldstart=coldstart)
+            tanker = self.flight_group_from_airport(_country, name, plane_type, airport,
+                                                    task.Refueling, start_type=start_type)
             wp = tanker.add_runway_waypoint(airport)
         else:
             p = position.point_from_heading((heading + 180) % 360, 2000)
-            tanker = self.plane_group_inflight(_country, name, plane_type, p, altitude, speed, task.Refueling)
+            tanker = self.flight_group_inflight(_country, name, plane_type, p, altitude, speed, task.Refueling)
             p = position.point_from_heading(heading + 180, 1000)
             wp = tanker.add_waypoint(p, altitude, speed)
 
@@ -943,52 +904,23 @@ class Mission:
 
         return tanker
 
-    def awacs_flight(self,
-                     _country,
-                     name: str,
-                     plane_type: PlaneType,
-                     airport: Optional[Airport],
-                     position: mapping.Point,
-                     race_distance=30 * 1000,
-                     heading=90,
-                     altitude=4500,
-                     speed=550,
-                     coldstart=True,
-                     frequency=140) -> unitgroup.PlaneGroup:
-        if airport:
-            awacs = self.plane_group_from_parking(_country, name, plane_type, airport, coldstart=coldstart)
-            wp = awacs.add_runway_waypoint(airport)
-        else:
-            p = position.point_from_heading((heading + 180) % 360, 2000)
-            awacs = self.plane_group_inflight(_country, name, plane_type, p, altitude, speed, task.AWACS)
-            p = position.point_from_heading(heading + 180, 1000)
-            wp = awacs.add_waypoint(p, altitude, speed)
-
-        wp.tasks.append(task.SetFrequencyCommand(frequency))
-
-        wp = awacs.add_waypoint(position, altitude, speed)
-        wp.tasks.append(task.OrbitAction(altitude, speed, task.OrbitAction.Pattern_RaceTrack))
-
-        p = position.point_from_heading(heading, race_distance)
-        awacs.add_waypoint(p, altitude, speed)
-
-        return awacs
-
     def escort_flight(self,
                       _country,
                       name: str,
                       escort_type: planes.PlaneType,
                       airport: Optional[Airport],
                       group_to_escort: unitgroup.FlyingGroup,
+                      start_type: StartType=StartType.Cold,
                       group_size=2):
 
         second_point_group = group_to_escort.points[1]
         if airport:
-            eg = self.plane_group_from_parking(
-                _country, name, escort_type, airport, task.Escort, group_size=group_size)
+            eg = self.flight_group_from_airport(
+                _country, name, escort_type, airport, task.Escort, start_type=start_type, group_size=group_size
+            )
             eg.add_runway_waypoint(airport)
         else:
-            eg = self.plane_group_inflight(
+            eg = self.flight_group_inflight(
                 _country, name, escort_type,
                 mapping.Point(group_to_escort.points[0].position.x - 10 * 1000, group_to_escort.points[0].position.y),
                 second_point_group.alt + 200,
@@ -1009,15 +941,17 @@ class Mission:
                       airport: Optional[Airport],
                       pos1,
                       pos2,
+                      start_type: StartType=StartType.Cold,
                       speed=600,
                       altitude=4000,
                       group_size=2):
         if airport:
-            eg = self.plane_group_from_parking(
-                _country, name, patrol_type, airport, maintask=task.CAP, group_size=group_size)
+            eg = self.flight_group_from_airport(
+                _country, name, patrol_type, airport, maintask=task.CAP, start_type=start_type, group_size=group_size
+            )
             eg.add_runway_waypoint(airport)
         else:
-            eg = self.plane_group_inflight(
+            eg = self.flight_group_inflight(
                 _country, name, patrol_type,
                 mapping.Point(pos1.x - 10 * 1000, pos1.y),
                 altitude,
