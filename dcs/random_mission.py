@@ -93,19 +93,25 @@ class BasicScenario:
                 Russia.Vehicle.AirDefence.SAM_SA_6_Kub_LN_2P25,
                 Russia.Vehicle.AirDefence.SAM_SA_6_Kub_STR_9S91,
                 Russia.Vehicle.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
+            ]),
+            "Air Defense 02": (Russia.name, [
+                Russia.Vehicle.AirDefence.SAM_SA_6_Kub_LN_2P25,
+                Russia.Vehicle.AirDefence.SAM_SA_6_Kub_STR_9S91,
+                Russia.Vehicle.AirDefence.SAM_SA_6_Kub_LN_2P25,
+                Russia.Vehicle.AirDefence.SAM_SA_6_Kub_STR_9S91,
+                Russia.Vehicle.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
             ])
         },
         "Supply": {
             "Russia Supply": (Russia.name, [
                 Russia.Vehicle.Unarmed.Transport_GAZ_66,
                 Russia.Vehicle.Unarmed.Fuel_Truck_ATZ_10,
-                Russia.Vehicle.Unarmed.Transport_ZIU_9,
-                Russia.Vehicle.Unarmed.Transport_ZIU_9,
-                Russia.Vehicle.Unarmed.Transport_ZIU_9
+                Russia.Vehicle.Unarmed.Transport_GAZ_3308,
+                Russia.Vehicle.Unarmed.Transport_GAZ_3308,
+                Russia.Vehicle.Unarmed.Transport_GAZ_3308
             ])
         }
     }
-
 
     blue_force = {
         "Armor": {
@@ -114,21 +120,10 @@ class BasicScenario:
                 USA.Vehicle.Armor.MBT_M1A2_Abrams,
                 USA.Vehicle.Armor.MBT_M1A2_Abrams,
                 USA.Vehicle.Armor.MBT_M1A2_Abrams
-            ]),
-            "1st Tank Platoon 02": (USA.name, [
-                USA.Vehicle.Armor.MBT_M1A2_Abrams,
-                USA.Vehicle.Armor.MBT_M1A2_Abrams,
-                USA.Vehicle.Armor.MBT_M1A2_Abrams,
-                USA.Vehicle.Armor.MBT_M1A2_Abrams
             ])
         },
         "LightArmor": {
             "1st Light Armor Brigade 01": (USA.name, [
-                USA.Vehicle.Armor.IFV_M2A2_Bradley,
-                USA.Vehicle.Armor.IFV_M2A2_Bradley,
-                USA.Vehicle.Armor.IFV_M2A2_Bradley,
-            ]),
-            "1st Light Armor Brigade 02": (USA.name, [
                 USA.Vehicle.Armor.IFV_M2A2_Bradley,
                 USA.Vehicle.Armor.IFV_M2A2_Bradley,
                 USA.Vehicle.Armor.IFV_M2A2_Bradley,
@@ -522,14 +517,30 @@ AWACS and Tankers are reachable on {freq} Mhz VHF-AM.""".format(freq=frequency))
 
 
 class CAS(BasicScenario):
-    blue_plane_force = {
-        "SEAD": {
-            "SEAD 01": (USA.name, 2, dcs.planes.F_16C_bl_52d)
+    air_force = {
+        "blue": {
+            "SEAD": {
+                "SEAD 01": (USA.name, 2, dcs.planes.F_16C_bl_52d)
+            },
+            "CAP": {
+                "Air Patrol": (USA.name, 2, dcs.planes.F_15C)
+            },
+            "CAS": {
+                "AirCav": (USA.name, 2, dcs.helicopters.AH_64D)
+            }
         },
-        "CAP": {
-            "Air Patrol": (USA.name, 2, dcs.planes.F_15C)
+        "red": {
+            "CAS": {
+                "Hindis": (Russia.name, 2, dcs.helicopters.Mi_24V)
+            }
         }
     }
+
+    nato_airspace = Polygon([
+        Point(-272807.14285714, 563521.42857143),Point(-267949.99999999, 608950), Point(-235092.85714285, 638950),
+        Point(-208521.42857142, 672950), Point(-225949.99999999, 738950), Point(-242521.42857142, 820950),
+        Point(-243092.85714285, 912857.14285714), Point(-273949.99999999, 963714.28571429),
+        Point(-415664.28571428, 963714.28571429), Point(-392807.14285714, 569142.85714286)])
 
     def __init__(self, aircraft_types: List[Tuple[str,str]], playercount: int, start: str):
         super(CAS, self).__init__()
@@ -541,6 +552,8 @@ class CAS(BasicScenario):
         kobuleti = caucasus.kobuleti()
         blue_military_airport = [kutaisi, kobuleti]
 
+        red_military_airport = [caucasus.sochi()]
+
         battle_point = BasicScenario.battle_zones[0].random_point()
 
         front_hdg = 30
@@ -548,7 +561,7 @@ class CAS(BasicScenario):
         for force in [self.blue_force, self.red_force]:
             attack_hdg = (300 + (180 if i > 0 else 0)) % 360
             defense_hdg = (attack_hdg + 180) % 360
-            rp = battle_point.point_from_heading(defense_hdg, 3*1000)
+            rp = battle_point.point_from_heading(defense_hdg, 7*1000)
             for force_type in force:
                 for conf in force[force_type]:
                     dist_hdg = front_hdg if random.getrandbits(1) else front_hdg + 180
@@ -563,21 +576,30 @@ class CAS(BasicScenario):
                     g = self.m.vehicle_group_platoon(c, conf, plat[1], rp)
                     g.formation_scattered(attack_hdg)
 
-                    if force_type not in ["Artillery", "Supply", "AirDefence"]:
-                        wp = g.add_waypoint(g.position.point_from_heading(attack_hdg, 3000))
+                    if force_type not in ["Artillery", "Supply"] and i == 1:
+                        wp = g.add_waypoint(g.position.point_from_heading(attack_hdg, 12000))
                         wp.action = "Vee"
-                        g.add_waypoint(wp.position.point_from_heading(random.randrange(attack_hdg-30, attack_hdg+30), 3000))
+                        g.add_waypoint(wp.position.point_from_heading(random.randrange(attack_hdg-10, attack_hdg+30), 5000))
+
+                    if force_type in ["Artillery"]:
+                        for x in range(0, 10):
+                            rect = dcs.mapping.Rectangle.from_point(battle_point.point_from_heading(attack_hdg, 7000), 2000)
+                            g.points[0].tasks.append(dcs.task.FireAtPoint(rect.random_point(), 30, 30))
             i += 1
 
-        for plane_force in [self.blue_plane_force]:
-            for force_type in plane_force:
-                for conf in plane_force[force_type]:
-                    conf_data = plane_force[force_type][conf]
-                    airport = blue_military_airport[random.randrange(0, len(blue_military_airport))]
+        for air_force_idx in self.air_force:
+            air_force = self.air_force[air_force_idx]
+            airports = blue_military_airport if air_force_idx == "blue" else red_military_airport
+            for force_type in air_force:
+                for conf in air_force[force_type]:
+                    conf_data = air_force[force_type][conf]
+                    airport = random.choice(airports)
                     country = self.m.country(conf_data[0])
                     if force_type == "CAP":
+                        pp1 = self.nato_airspace.random_point()
+                        pp2 = self.nato_airspace.random_point()
                         self.m.patrol_flight(country, conf, conf_data[2], airport,
-                                             caucasus.batumi().position, caucasus.lochini().position,
+                                             pp1, pp2,
                                              group_size=conf_data[1])
                     else:
                         pg = self.m.flight_group_from_airport(
@@ -586,7 +608,7 @@ class CAS(BasicScenario):
                         )
                         pg.add_runway_waypoint(airport)
 
-                        if force_type in ["SEAD"]:
+                        if force_type in ["SEAD", "CAS"]:
                             pg.add_waypoint(battle_point, 1000)
 
         player_groups = self.place_players(start, aircraft_types, blue_military_airport, playercount, dcs.task.CAS)
