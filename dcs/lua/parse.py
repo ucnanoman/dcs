@@ -2,11 +2,11 @@ def loads(tablestr):
 
     class Parser:
 
-        def __init__(self, buffer):
+        def __init__(self, buffer: str):
             self.buffer = buffer
             self.buflen = len(buffer)
-            self.pos = 0
-            self.lineno = 1
+            self.pos = 0  # type: int
+            self.lineno = 1  # type: int
 
         def value(self):
             self.eat_ws()
