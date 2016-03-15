@@ -1,4 +1,6 @@
 from typing import List, Dict
+from enum import Enum
+from .mapping import Point
 
 
 class Task:
@@ -324,6 +326,8 @@ class EngageTargetsInZone(Task):
             "zoneRadius": radius
         }
 
+class WeaponType(Enum):
+    Auto = 1073741822
 
 class EngageGroup(Task):
     Id = "EngageGroup"
@@ -358,6 +362,23 @@ class EngageUnit(Task):
             "altitudeEnabled": False,
             "attackQtyLimit": False,
             "attackQty": 0
+        }
+
+
+class FireAtPoint(Task):
+    Id = "FireAtPoint"
+
+    def __init__(self, position: Point, rounds=None, radius=0):
+        super(FireAtPoint, self).__init__(FireAtPoint.Id)
+        self.auto = False
+        self.params = {
+            "y": position.y,
+            "x": position.x,
+            "expendQty": rounds if rounds else 1,
+            "expendQtyEnabled": rounds is not None,
+            "templateId": "",
+            "weaponType": WeaponType.Auto.value,
+            "zoneRadius": radius
         }
 
 
