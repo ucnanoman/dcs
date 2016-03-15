@@ -625,11 +625,26 @@ class Transport(MainTask):
 
 
 MainTask.map = {
+    Nothing.name: Nothing,
+    AFAC.name: AFAC,
+    AntishipStrike.name: AntishipStrike,
+    CAS.name: CAS,
     SEAD.name: SEAD,
-    CAP.name: CAP
+    CAP.name: CAP,
+    Escort.name: Escort,
+    FighterSweep.name: FighterSweep,
+    Intercept.name: Intercept,
+    PinpointStrike.name: PinpointStrike,
+    GroundAttack.name: GroundAttack,
+    RunwayAttack.name: RunwayAttack,
+    AWACS.name: AWACS,
+    Reconnaissance.name: Reconnaissance,
+    Refueling.name: Refueling,
+    Transport.name: Transport
 }
 
 # options
+
 
 class Option(Task):
     Id = "WrappedAction"
