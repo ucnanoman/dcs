@@ -11,7 +11,7 @@ def loads(tablestr):
         def value(self):
             self.eat_ws()
 
-            c = self.char()
+            c = self.buffer[self.pos]
             if c == '{':
                 return self.object()
             elif c == '"':
@@ -27,12 +27,12 @@ def loads(tablestr):
                     self.eat_ws()
                     varname = self.eatvarname()
                 self.eat_ws()
-                if not self.eob() and self.char() == '=':
+                if not self.eob() and self.buffer[self.pos] == '=':
                     self.pos += 1
                     return {varname: self.value()}
                 else:
                     se = SyntaxError()
-                    se.text = varname + " '" + self.char() + "'"
+                    se.text = varname + " '" + self.buffer[self.pos] + "'"
                     se.lineno = self.lineno
                     se.offset = self.pos
                     raise se
@@ -40,11 +40,11 @@ def loads(tablestr):
             return {}
 
         def string(self):
-            if self.char() != '"':
+            if self.buffer[self.pos] != '"':
                 se = SyntaxError()
                 se.lineno = self.lineno
                 se.offset = self.pos
-                se.text = "Expected character '\"', got '{char}'".format(char=self.char())
+                se.text = "Expected character '\"', got '{char}'".format(char=self.buffer[self.pos])
                 raise se
 
             state = 0
@@ -53,7 +53,7 @@ def loads(tablestr):
                 if self.advance():
                     raise self.eob_exception()
 
-                c = self.char()
+                c = self.buffer[self.pos]
                 if state == 0:
                     if c == '"':
                         state = 1
@@ -70,15 +70,15 @@ def loads(tablestr):
         def number(self):
             n = ''
             sign = 1
-            if self.char() == '-':
+            if self.buffer[self.pos] == '-':
                 sign = -1
                 if self.advance():
                     raise self.eob_exception()
 
             while (not self.eob() and
-                    (self.char().isnumeric() or self.char() == '.' or
-                        self.char().lower() == 'e')):
-                n += self.char()
+                    (self.buffer[self.pos].isnumeric() or self.buffer[self.pos] == '.' or
+                        self.buffer[self.pos].lower() == 'e')):
+                n += self.buffer[self.pos]
                 self.pos += 1
 
             num = float(n) * sign
@@ -88,11 +88,11 @@ def loads(tablestr):
 
         def object(self):
             d = {}
-            if self.char() != '{':
+            if self.buffer[self.pos] != '{':
                 se = SyntaxError()
                 se.lineno = self.lineno
                 se.offset = self.pos
-                se.text = "Expected character '{', got '{char}'".format(char=self.char())
+                se.text = "Expected character '{', got '{char}'".format(char=self.buffer[self.pos])
                 raise se
 
             if self.advance():
@@ -100,21 +100,21 @@ def loads(tablestr):
 
             self.eat_ws()
 
-            while self.char() != '}':
+            while self.buffer[self.pos] != '}':
                 self.eat_ws()
 
-                if self.char() != '[':
+                if self.buffer[self.pos] != '[':
                     se = SyntaxError()
                     se.lineno = self.lineno
                     se.offset = self.pos
-                    se.text = "Expected character '[', got '{char}'".format(char=self.char())
+                    se.text = "Expected character '[', got '{char}'".format(char=self.buffer[self.pos])
                     raise se
 
                 if self.advance():
                     raise self.eob_exception()
 
                 self.eat_ws()
-                if self.char() == '"':
+                if self.buffer[self.pos] == '"':
                     key = self.string()
                 else:
                     key = self.number()
@@ -124,11 +124,11 @@ def loads(tablestr):
 
                 self.eat_ws()
 
-                if self.char() != ']':
+                if self.buffer[self.pos] != ']':
                     se = SyntaxError()
                     se.lineno = self.lineno
                     se.offset = self.pos
-                    se.text = "Expected character ']', got '{char}'".format(char=self.char())
+                    se.text = "Expected character ']', got '{char}'".format(char=self.buffer[self.pos])
                     raise se
 
                 if self.advance():
@@ -136,11 +136,11 @@ def loads(tablestr):
 
                 self.eat_ws()
 
-                if self.char() != '=':
+                if self.buffer[self.pos] != '=':
                     se = SyntaxError()
                     se.lineno = self.lineno
                     se.offset = self.pos
-                    se.text = "Expected character '=', got '{char}'".format(char=self.char())
+                    se.text = "Expected character '=', got '{char}'".format(char=self.buffer[self.pos])
                     raise se
 
                 if self.advance():
@@ -153,7 +153,7 @@ def loads(tablestr):
                 d[key] = val
                 # print(key, ':', val)
 
-                c = self.char()
+                c = self.buffer[self.pos]
                 if c == '}':
                     break
                 elif c == ',':
@@ -164,7 +164,7 @@ def loads(tablestr):
                     se = SyntaxError()
                     se.lineno = self.lineno
                     se.offset = self.pos
-                    se.text = "Unexpected character '{char}'".format(char=self.char())
+                    se.text = "Unexpected character '{char}'".format(char=self.buffer[self.pos])
                     raise se
 
             self.pos += 1
@@ -180,25 +180,25 @@ def loads(tablestr):
             return varname
 
         def eat_comment(self):
-            if (self.char() == '-' and
+            if (self.buffer[self.pos] == '-' and
                 self.pos + 1 < self.buflen and
                 self.buffer[self.pos + 1] == '-'):
-                while not self.eob() and self.char() != '\n':
+                while not self.eob() and self.buffer[self.pos] != '\n':
                     self.pos += 1
 
         def eat_ws(self):
             self.eat_comment()
             while True:
-                if self.eob():
-                    break
-                c = self.char()
+                if self.pos >= self.buflen:
+                    return
+                c = self.buffer[self.pos]  # type: str
                 if c == '\n':
                     self.lineno += 1
                 if c == '-':
                     self.eat_comment()
-                    c = self.char()
+                    c = self.buffer[self.pos]
                 if not c.isspace():
-                    break
+                    return
 
                 self.pos += 1
 
