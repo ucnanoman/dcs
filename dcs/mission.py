@@ -524,6 +524,7 @@ class Mission:
         self.map = imp_mission["map"]
 
         # weather
+        self.season_from_start_time = False
         imp_weather = imp_mission["weather"]
         self.weather = weather.Weather(self.terrain)
         self.weather.load_from_dict(imp_weather)
