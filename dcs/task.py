@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List, Dict, Optional
 from enum import Enum
 from .mapping import Point
 
@@ -59,6 +59,10 @@ class Task:
         t.number = d["number"]
         t.params = d["params"]
         return t
+
+
+class WeaponType(Enum):
+    Auto = 1073741822
 
 
 class TargetType(type):
@@ -140,6 +144,55 @@ class Targets(metaclass=TargetType):
                     id = "Unarmed ships"
             class Submarines(metaclass=TargetType):
                 id = "Submarines"
+
+
+class NoTask(Task):
+    Id = "NoTask"
+
+    def __init__(self):
+        super(NoTask, self).__init__(self.Id)
+
+
+class AttackGroup(Task):
+    Id = "AttackGroup"
+
+    def __init__(self, group_id, weapon_type:WeaponType=WeaponType.Auto):
+        super(AttackGroup, self).__init__(AttackGroup.Id)
+        self.params = {
+            "groupId": group_id,
+            "weaponType": weapon_type.value
+        }
+
+
+class AttackUnit(Task):
+    Id = "AttackUnit"
+
+    def __init__(self, unit_id, attack_limit: Optional[int]=None,
+                 weapon_type:WeaponType=WeaponType.Auto, group_attack=False):
+        super(AttackUnit, self).__init__(self.Id)
+        self.params = {
+            "groupId": unit_id,
+            "weaponType": weapon_type.value,
+            "groupAttack": group_attack,
+            "attackQty": attack_limit,
+            "attackQtyLimit": attack_limit is not None
+        }
+
+
+class AttackMapObject(Task):
+    Id = "AttackMapObject"
+
+    def __init__(self, position: Point, attack_limit: Optional[int]=None,
+                 weapon_type:WeaponType=WeaponType.Auto, group_attack=False):
+        super(AttackMapObject, self).__init__(self.Id)
+        self.params = {
+            "x": position.x,
+            "y": position.y,
+            "weaponType": weapon_type.value,
+            "groupAttack": group_attack,
+            "attackQty": attack_limit,
+            "attackQtyLimit": attack_limit is not None
+        }
 
 
 # TODO check
@@ -265,17 +318,6 @@ class EscortTaskAction(Task):
             self.params["lastWptIndex"] = lastwpt
 
 
-class AttackGroup(Task):
-    Id = "AttackGroup"
-
-    def __init__(self, group_id):
-        super(AttackGroup, self).__init__(AttackGroup.Id)
-        self.params = {
-            "groupId": group_id,
-            "weaponType": 1069547520
-        }
-
-
 class Bombing(Task):
     Id = "Bombing"
 
@@ -326,8 +368,6 @@ class EngageTargetsInZone(Task):
             "zoneRadius": radius
         }
 
-class WeaponType(Enum):
-    Auto = 1073741822
 
 class EngageGroup(Task):
     Id = "EngageGroup"
