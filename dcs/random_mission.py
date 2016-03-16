@@ -386,6 +386,7 @@ class BasicScenario:
                     country, name + str(c), aircraft_type, airport,
                     maintask=maintask, start_type=dcs.mission.StartType.from_string(start), group_size=group_size
                 )
+                pg.add_runway_waypoint(airport)
             aircraft_groups.append(pg)
 
             for u in pg.units:
@@ -474,10 +475,9 @@ class Refueling(BasicScenario):
             fuel_percent = 0.3
 
         for pg in player_groups:
-            airport = caucasus.airport_by_id(pg.points[0].airdrome_id)
-            airport = airport if airport else blue_military[random.randrange(0, len(blue_military))]
-            if start != "inflight":
-                pg.add_runway_waypoint(airport)
+            airport = self.m.terrain.airport_by_id(pg.points[0].airdrome_id)
+            if not airport:
+                airport = random.choice(blue_military)
 
             for u in pg.units:
                 u.fuel *= fuel_percent
@@ -493,7 +493,7 @@ class Refueling(BasicScenario):
 
         goal = dcs.goals.Goal("home and alive")
         goal.rules.append(dcs.goals.UnitAlive(pg.units[0].id))
-        tz = self.m.triggers.add_triggerzone(pg.units[0].position, 30, name="home")
+        tz = self.m.triggers.add_triggerzone(airport.position, 1000, name="home")
         goal.rules.append((dcs.goals.UnitInZone(pg.units[0].id, tz.id)))
         self.m.goals.add_offline(goal)
 
@@ -613,185 +613,34 @@ class CAS(BasicScenario):
 
         player_groups = self.place_players(start, aircraft_types, blue_military_airport, playercount, dcs.task.CAS)
         for pg in player_groups:
-            if pg.starts_from_airport():
-                pg.add_runway_waypoint(caucasus.airport_by_id(pg.points[0].airdrome_id))
             pg.add_waypoint(battle_point, 0)
 
 
-class Scenario(BasicScenario):
-
-    def __init__(self):
-        super(Scenario, self).__init__()
-
-        self.red_airforce = {
-            dcs.planes.MiG_29A.id: 1,
-            dcs.planes.Su_24M.id: 1,
-            dcs.planes.Su_25T.id: 1,
-            dcs.planes.A_50.id: 1}
-
-        self.red_airforce_escort = [
-            dcs.planes.MiG_29S
-        ]
-
-        self.red_helicopter = [
-            dcs.helicopters.Mi_24V.id
-        ]
-
-        self.red_ground = {
-            dcs.countries.Russia.Vehicle.Armor.MBT_T_80U: 8,
-            dcs.countries.Russia.Vehicle.Armor.IFV_BMP_3: 10,
-            dcs.countries.Russia.Vehicle.AirDefence.SAM_SA_9_Strela_1_9P31: 6
+class CAP(BasicScenario):
+    air_force = {
+        "red": {
+            "CAS": {
+                "Hindis": (Russia.name, 2, 10, dcs.helicopters.Mi_24V),
+                "Blackies": (Russia.name, 2, 10, Russia.Helicopter.Ka_50)
+            },
+            "CAP": {
+                "Mig 21": (Russia.name, 2, 40, dcs.planes.MiG_21Bis),
+                "Mig 15": (Russia.name, 2, 20, dcs.planes.MiG_15bis),
+                "Mig 29": (Russia.name, 2, 70, dcs.planes.MiG_29K),
+                "Su 33": (Russia.name, 2, 80, dcs.planes.Su_33)
+            }
         }
+    }
 
-        self.blue_ground = [
-            USPlatoon,
-            USPlatoon,
-            USPlatoon,
-            USPlatoon,
-            USPlatoon,
-            USPlatoon
-        ]
+    def __init__(self, aircraft_types: List[Tuple[str,str]], playercount: int, start: str):
+        super(CAP, self).__init__()
 
-        self.blue_targets = []  # list[dcs.group.VehicleGroup]
+        caucasus = self.m.terrain()
+        blue_military_airport = [caucasus.kobuleti(), caucasus.kutaisi(), self.m.terrain.batumi()]
 
-        caucasus = self.m.terrain  # type: dcs.terrain.Caucasus
-        ukraine = self.m.country(dcs.countries.Ukraine.name)
-
-        nalchik = self.m.terrain.nalchik()
-        beslan = self.m.terrain.beslan()
-        mozdok = caucasus.mozdok()
-        sochi = caucasus.sochi()
-
-        senaki = self.m.terrain.senaki()
-        batumi = self.m.terrain.batumi()
-        soganlug = self.m.terrain.soganlug()
-        vaziani = caucasus.vaziani()
-
-        usa = self.m.country("USA")
-        self.distribute_ground(usa, senaki.x, senaki.y, senaki.x + 20*1000, senaki.y - 30*1000, self.blue_ground)
-
-        awacs = self.m.awacs_flight(usa, "AWACS", dcs.planes.E_3A, vaziani, vaziani.x - 5000, vaziani.y - 70000, race_distance=120 * 1000, heading=270)
-        self.m.escort_flight(usa, str(awacs.name) + " escort us", dcs.planes.F_16C_bl_52d, vaziani, awacs)
-        refuel = self.m.refuel_flight(ukraine, "Tanker", dcs.planes.IL_78M, batumi, batumi.x + 40000, batumi.y + 30000, race_distance=80*1000, heading=90)
-
-        patrol = self.m.patrol_flight(usa, "patrolium", dcs.planes.F_15C, soganlug,
-                                      soganlug.x, soganlug.y - 20*1000, soganlug.x + 20*1000, soganlug.y - 200*1000)
-
-        pg = self.m.plane_group_from_parking(usa, "Airgroup", dcs.planes.M_2000C, batumi)
-        pg.units[0].set_player()
-        pg.load_loadout("air2air")
-
-        russia = self.m.country("Russia")
-        self.distribute_air(russia, [sochi, mozdok, nalchik, caucasus.mineralnye()], self.red_airforce, self.red_airforce_escort)
-
-    def distribute_ground(self, _country, x1, y1, x2, y2, groundforce):
-        xmin = int(min(x1, x2))
-        xmax = int(max(x1, x2))
-        ymin = int(min(y1, y2))
-        ymax = int(max(y1, y2))
-        i = 0
-        isblue = self.m.is_blue(_country)
-        side = "Blue" if isblue else "Red"
-        for uname in groundforce:
-            x = random.randrange(xmin, xmax, 10)
-            y = random.randrange(ymin, ymax, 10)
-            units = list(uname.units)
-            if random.randrange(0, 100) > 80:
-                units += uname.maybe
-            vg = self.m.vehicle_group_platoon(_country, side + " " + str(uname.__name__) + " " + str(i), units, x, y, random.randrange(0, 359))
-            vg.formation_scattered()
-            if isblue:
-                self.blue_targets.append(vg)
-            i += 1
-
-    def distribute_air(self, _country, airports, airforce, escort):
-        air_distr = dict(airforce)
-        escort_distr = list(escort)
-
-        isblue = self.m.is_blue(_country)
-        if isblue:
-            ground_targets = self.red_targets
-        else:
-            ground_targets = self.blue_targets
-        i = 100
-        while sum([air_distr[x] for x in air_distr]) > 0:
-            port = random.randrange(len(airports))
-
-            types = [x for x in airforce if air_distr[x] > 0]
-
-            print(types)
-            _type_id = types[random.randrange(len(types))]
-
-            _type = dcs.planes.plane_map[_type_id]
-            if not airports[port].free_parking_slot(_type.large_parking_slot, False):
-                continue
-
-            airport = airports[port]
-            if airport.name == "Nalchik":
-                airports.pop(port)
-
-            if _type.task_default == dcs.task.AWACS:
-                if self.m.is_red(_country):
-                    sochi = self.m.terrain.sochi()
-                    x = random.randrange(int(sochi.x + 20*1000), -10000)
-                    y = sochi.y + random.randrange(20000, 50000)
-
-                awacs = self.m.awacs_flight(_country, "AWACS", _type, airport, x, y, random.randrange(30*1000, 120*1000), random.randrange(60, 110), random.randrange(3800, 5000))
-
-                if escort_distr:
-                    escort_type = escort_distr.pop()
-                    self.m.escort_flight(_country, str(awacs.name) + " escort", escort_type, airport, awacs, group_size=2)
-            elif _type.task_default in [dcs.task.CAS, dcs.task.GroundAttack]:
-                target = ground_targets[random.randrange(0, len(ground_targets))]
-
-                if True:
-                    if airport.runway_free:
-                        pg = self.m.plane_group_from_runway(_country, "Airgroup " + str(i), _type, airport, maintask=dcs.task.CAS, group_size=2)
-                    else:
-                        pg = self.m.plane_group_from_parking(_country, "Airgroup " + str(i), _type, airport, maintask=dcs.task.CAS, group_size=2)
-                    last_wp = pg.add_runway_waypoint(airport)
-                else:
-                    heading = int(dcs.mapping.heading_between_points(target.x(), target.y(), airport.x, airport.y) + 360)
-                    heading = random.randrange(heading - 20, heading + 20) - 360
-                    x, y = dcs.mapping.point_from_heading(target.x(), target.y(), heading, random.randrange(50, 80)*1000)
-                    pg = self.m.plane_group_inflight(_country, "Airgroup " + str(i), _type, x, y, 1000, maintask=dcs.task.CAS, group_size=2)
-                    last_wp = pg.points[0]
-                pg.points[0].tasks.clear()
-                pg.points[0].tasks.append(dcs.task.EngageTargets(20*1000, [dcs.task.Targets.All.GroundUnits.GroundVehicles]))
-
-                if _type == dcs.planes.Su_25T:
-                    pg.load_loadout("APU-8 Vikhr-M*2,S-25L*2,R-73*2,SPPU-22*2,Mercury LLTV Pod,MPS-410")
-
-                heading = dcs.mapping.heading_between_points(last_wp.x, last_wp.y, target.x(), target.y())
-                distance = dcs.mapping.distance(last_wp.x, last_wp.y, target.x(), target.y())
-                x, y = dcs.mapping.point_from_heading(last_wp.x, last_wp.y, heading, distance - 5000)
-                last_wp = pg.add_waypoint(x, y, 4000)
-                last_wp.tasks.append(dcs.task.CAS.EnrouteTasks.EngageGroup(target.id))
-                pg.add_waypoint(last_wp.x + 1000 * 10, last_wp.y, 4000)
-                pg.add_runway_waypoint(airport)
-                pg.land_at(airport)
-            else:
-                pg = self.m.plane_group_from_parking(_country, "Airgroup " + str(i), _type, airport, group_size=2)
-                if pg.task == dcs.task.CAP.name:
-                    pg.points[0].tasks.clear()
-                    pg.points[0].tasks.append(dcs.task.CAP.EnrouteTasks.EngageTargets(50*1000, [dcs.task.Targets.All.Air.Planes]))
-
-                last_wp = pg.add_runway_waypoint(airport)
-
-                hdg = 230
-                waypoints = 5
-                for i in range(0, waypoints):
-                    if i > waypoints - 3:
-                        hdg = (hdg + 180) % 360
-                    hdg = random.randrange(hdg - 70, hdg + 70)
-                    x, y = dcs.mapping.point_from_heading(last_wp.x, last_wp.y, hdg, random.randrange(10*1000, 60*1000, 1000))
-                    last_wp = pg.add_waypoint(x, y, 4000)
-
-                pg.add_runway_waypoint(airport)
-                pg.land_at(airport)
-
-            air_distr[_type_id] -= 1
-            i += 1
+        player_groups = self.place_players(start, aircraft_types, blue_military_airport, playercount, dcs.task.CAS)
+        # for pg in player_groups:
+        #     pg.add_waypoint(battle_point, 0)
 
 
 def main():
@@ -834,8 +683,10 @@ def main():
     elif missiontype == "CAS":
         types = types if args.playercount > 1 else [x for x in types if x[1] == args.aircrafttype]
         s = CAS(types, args.playercount, args.start)
+    elif missiontype == "CAP":
+        s = CAP(types, args.playercount, args.start)
     else:
-        s = Scenario()
+        raise NotImplementedError(missiontype + " not implemented")
 
     s.daytime(args.daytime)
     if args.weather == "dynamic":
