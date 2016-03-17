@@ -162,6 +162,31 @@ class Rectangle:
         y = self.left + random.random() * (self.right - self.left)
         return Point(x, y)
 
+    def random_distant_points(self, distance) -> Tuple[Point, Point]:
+        # determine vertical/horizontal
+        if self.width() > self.height():
+            axis_y = self.width()
+            axis_x = self.height()
+            sy = self.left
+            sx = self.bottom
+            hdg_start = 60
+        else:
+            axis_y = self.height()
+            axis_x = self.width()
+            sy = self.bottom
+            sx = self.left
+            hdg_start = 330
+
+        d = distance if distance < axis_y else axis_y * 0.2
+        sy += random.random() * (axis_y - d)
+        sx += random.random() * axis_x
+        p1 = Point(sx, sy)
+        while True:
+            hdg = random.random() * 60
+            p2 = p1.point_from_heading(hdg_start + hdg, d)
+            if self.point_in_rect(p2):
+                return p1, p2
+
     def __eq__(self, other):
         return self.top == other.top and self.bottom == other.bottom \
             and self.left == other.left and self.right == other.right
