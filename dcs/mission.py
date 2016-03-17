@@ -944,6 +944,7 @@ class Mission:
                       start_type: StartType=StartType.Cold,
                       speed=600,
                       altitude=4000,
+                      max_engage_distance=60*1000,
                       group_size=2):
         if airport:
             eg = self.flight_group_from_airport(
@@ -958,7 +959,8 @@ class Mission:
                 maintask=task.CAP,
                 group_size=group_size
             )
-
+        eg.points[0].tasks.clear()
+        eg.points[0].tasks.append(task.EngageTargets(max_engage_distance, [task.Targets.All.Air]))
         wp = eg.add_waypoint(pos1, altitude, speed)
         wp.tasks.append(task.OrbitAction(altitude, speed, task.OrbitAction.Pattern_RaceTrack))
         eg.add_waypoint(pos2, altitude, speed)
