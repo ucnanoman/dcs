@@ -356,15 +356,15 @@ class EngageTargets(Task):
 class EngageTargetsInZone(Task):
     Id = "EngageTargetsInZone"
 
-    def __init__(self, x, y, radius=5000, targets: List[str]=None):
+    def __init__(self, position: Point, radius=5000, targets: List[str]=None):
         super(EngageTargetsInZone, self).__init__(EngageTargetsInZone.Id)
         if targets is None:
             targets = [Targets.All]
         self.params = {
             "targetTypes": {i: targets[i-1] for i in range(1, len(targets)+1)},
             "priority": 0,
-            "x": x,
-            "y": y,
+            "x": position.x,
+            "y": position.y,
             "zoneRadius": radius
         }
 
