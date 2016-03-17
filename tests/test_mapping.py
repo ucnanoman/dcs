@@ -24,6 +24,15 @@ class RectangleTests(unittest.TestCase):
 
         self.assertEqual(r.center(), Point(5, 5))
 
+    def test_resize(self):
+        r = Rectangle(0, 0, 10, 10)
+
+        r2 = r.resize(0.5)
+        self.assertEqual(r2, Rectangle(2.5, 2.5, 7.5, 7.5))
+
+        r2 = r.resize(2)
+        self.assertEqual(r2, Rectangle(-5, -5, 15, 15))
+
     def test_random_point(self):
         r = Rectangle(10, 0, 0, 10)
 

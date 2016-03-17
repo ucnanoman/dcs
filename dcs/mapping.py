@@ -149,10 +149,25 @@ class Rectangle:
     def center(self) -> Point:
         return Point(self.bottom + (self.height() / 2), self.left + (self.width() / 2))
 
+    def resize(self, percentage: float):
+        w = self.width()
+        h = self.height()
+        w *= percentage / 2
+        h *= percentage / 2
+        c = self.center()
+        return Rectangle(c.x + h, c.y - w, c.x - h, c.y + w)
+
     def random_point(self) -> Point:
         x = self.bottom + random.random() * (self.top - self.bottom)
         y = self.left + random.random() * (self.right - self.left)
         return Point(x, y)
+
+    def __eq__(self, other):
+        return self.top == other.top and self.bottom == other.bottom \
+            and self.left == other.left and self.right == other.right
+
+    def __ne__(self, other):
+        return not self == other
 
     def __repr__(self):
         return "Rectangle({t}, {l}, {b}, {r})".format(t=self.top, l=self.left, b=self.bottom, r=self.right)
@@ -280,6 +295,13 @@ class Polygon:
                 break
             tri.append(Triangle(a))
         return tri
+
+    def outbound_rectangle(self) -> Rectangle:
+        top = max([x.x for x in self.points])
+        bot = min([x.x for x in self.points])
+        right = max([x.y for x in self.points])
+        left = min([x.y for x in self.points])
+        return Rectangle(top, left, bot, right)
 
     def __repr__(self):
         return "Polygon([{points}])".format(points=", ".join(map(repr, self.points)))
