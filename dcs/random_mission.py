@@ -254,8 +254,8 @@ class BasicScenario:
 
             airport = airports[random.randrange(0, len(airports))]
 
-            transports = [x for x in country.planes if dcs.planes.plane_map[x].task_default == dcs.task.Transport]
-            ptype = dcs.planes.plane_map[transports[random.randrange(0, len(transports))]]
+            transports = [x for x in country.planes if x.task_default == dcs.task.Transport]
+            ptype = random.choice(transports)
 
             slots = airport.free_parking_slot(ptype.large_parking_slot, False)
 
@@ -297,8 +297,8 @@ class BasicScenario:
             country = self.m.country(country_str)
 
             transports = [x for x in country.helicopters
-                          if dcs.helicopters.helicopter_map[x].task_default == dcs.task.Transport]
-            htype = dcs.helicopters.helicopter_map[transports[random.randrange(0, len(transports))]]
+                          if x.task_default == dcs.task.Transport]
+            htype = random.choice(transports)
 
             start_airport = random.choice(airports)
             rand = random.random()
@@ -360,18 +360,17 @@ class BasicScenario:
 
         g_idx = 1
         while planes:
-            country, strtype, group_size = planes.pop()
+            country, ptype, group_size = planes.pop()
 
-            ptype = dict(dcs.planes.plane_map, **dcs.helicopters.helicopter_map)[strtype]
             while True:
-                airport = airports[random.randrange(0, len(airports))]
+                airport = random.choice(airports)
 
                 slots = airport.free_parking_slots(ptype.large_parking_slot, False)
                 if len(slots) >= group_size:
                     break
 
             c = self.m.country(country)
-            pg = self.m.flight_group_from_airport(c, strtype + " Flight #" + str(g_idx),
+            pg = self.m.flight_group_from_airport(c, ptype.id + " Flight #" + str(g_idx),
                                                   ptype, airport, parking_slots=slots, group_size=group_size)
             pg.uncontrolled = True
             pg.hidden = hidden
@@ -461,7 +460,7 @@ class Refueling(BasicScenario):
             race_distance=race_dist, heading=heading,
             altitude=random.randrange(4000, 5500, 100), frequency=frequency)
 
-        self.m.escort_flight(usa, "AWACS Escort", dcs.planes.plane_map[dcs.countries.USA.Plane.F_15E], None, awacs, 2)
+        self.m.escort_flight(usa, "AWACS Escort", dcs.countries.USA.Plane.F_15E, None, awacs, 2)
 
         pos, heading, race_dist = Refueling.random_orbit(orbit_rect)
         refuel_net = self.m.refuel_flight(
@@ -639,7 +638,7 @@ class CAP(BasicScenario):
         "red": {
             "CAS": {
                 "Hindis": (Russia.name, 2, 10, dcs.helicopters.Mi_24V, "4x9M114, 80xS-8"),
-                "Blackies": (Russia.name, 2, 10, dcs.helicopters.helicopter_map[Russia.Helicopter.Ka_50], None)
+                "Blackies": (Russia.name, 2, 10, Russia.Helicopter.Ka_50, None)
             },
             "CAP": {
                 "Mig 21": (Russia.name, 2, 40, dcs.planes.MiG_21Bis, None),
@@ -680,7 +679,7 @@ class CAP(BasicScenario):
             race_distance=race_dist, heading=p1.heading_between_point(p2),
             altitude=random.randrange(4000, 5500, 100), frequency=vhf_am)
 
-        self.m.escort_flight(usa, "AWACS Escort", dcs.planes.plane_map[dcs.countries.USA.Plane.F_15E], None, awacs, 2)
+        self.m.escort_flight(usa, "AWACS Escort", dcs.countries.USA.Plane.F_15E, None, awacs, 2)
 
         race_dist = random.randrange(80*1000, 120*1000, 1000)
         p1, p2 = patrol_zone.random_distant_points(race_dist)

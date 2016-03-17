@@ -206,7 +206,7 @@ from enum import Enum
         safename = string.gsub(safename,"^([0-9])", "_%1")
         writeln(file, "class "..safename.."("..export_type.."Type):")
         writeln(file, '    id = "'..plane.type..'"')
-        if plane.HumanCockpit or flyable[plane.Name] ~= nil then
+        if plane.HumanCockpit or flyable[plane.type] ~= nil then
             writeln(file, '    flyable = True')
         end
         if plane.singleInFlight then
@@ -464,10 +464,20 @@ local categories = {
     'Ground Units'
 }
 
+local name_mapping = {}
+name_mapping["FW_190D9"] = "Fw_190_D_9"
+name_mapping["Bf_109K_4"] = "Bf_109_K_4"
+name_mapping["F_86F_Sabre"] = "F_86F"
+name_mapping["Mi_8MT"] = "Mi_8MTV2"
+name_mapping["E_2C"] = "E_2D"
+name_mapping["RQ_1A_Predator"] = "MQ_1A_Predator"
+
 writeln(file, '# This file is generated from pydcs_export.lua')
 writeln(file, '')
 writeln(file, 'from .country import Country')
 writeln(file, 'from . import vehicles')
+writeln(file, 'from . import planes')
+writeln(file, 'from . import helicopters')
 local i = 0
 while i <= country.maxIndex do
     local c = country.by_idx[i]
@@ -527,7 +537,11 @@ while i <= country.maxIndex do
             writeln(file, '    class Plane:')
             for u in pairs(planes) do
                 local safeName = safe_name(planes[u].Name)
-                writeln(file, '        '..safeName..' = "'..planes[u].Name..'"')
+                local idname = safeName
+                if name_mapping[safeName] ~= nil then
+                    idname = name_mapping[safeName]
+                end
+                writeln(file, '        '..safeName..' = planes.'..idname)
             end
 
             writeln(file, '')
@@ -545,7 +559,11 @@ while i <= country.maxIndex do
             writeln(file, '    class Helicopter:')
             for u in pairs(helis) do
                 local safeName = safe_name(helis[u].Name)
-                writeln(file, '        '..safeName..' = "'..helis[u].Name..'"')
+                local idname = safeName
+                if name_mapping[safeName] ~= nil then
+                    idname = name_mapping[safeName]
+                end
+                writeln(file, '        '..safeName..' = helicopters.'..idname)
             end
 
             writeln(file, '')

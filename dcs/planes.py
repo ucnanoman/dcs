@@ -8371,6 +8371,7 @@ class F_5E_3(PlaneType):
 
 class F_86F(PlaneType):
     id = "F-86F Sabre"
+    flyable = True
     height = 4.496
     width = 11.9
     length = 11.43
@@ -8718,7 +8719,7 @@ class Hawk(PlaneType):
         _3_Mk_82 = (1, Weapons._3_Mk_82)
 
     class Pylon2:
-        AIM_9M = (2, Weapons.AIM_9M)
+        LAU_7_AIM_9M = (2, Weapons.LAU_7_AIM_9M)
 
     class Pylon3:
         Smoke_Generator___red = (3, Weapons.Smoke_Generator___red)
@@ -8727,7 +8728,7 @@ class Hawk(PlaneType):
         UPK_23_250 = (3, Weapons.UPK_23_250)
 
     class Pylon4:
-        AIM_9M = (4, Weapons.AIM_9M)
+        LAU_7_AIM_9M = (4, Weapons.LAU_7_AIM_9M)
 
     class Pylon5:
         LAU_61___19_2_75__rockets_MK151_HE = (5, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
@@ -9361,12 +9362,12 @@ class MiG_21Bis(PlaneType):
     class Liveries:
 
         class Georgia(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9381,12 +9382,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Syria(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9401,12 +9402,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Finland(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9421,12 +9422,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Australia(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9441,12 +9442,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Germany(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9461,12 +9462,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class SaudiArabia(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9481,12 +9482,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Israel(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9501,12 +9502,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Croatia(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9521,12 +9522,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class CzechRepublic(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9541,12 +9542,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Norway(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9561,12 +9562,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Romania(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9581,12 +9582,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Spain(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9601,12 +9602,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Ukraine(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9621,12 +9622,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Belgium(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9641,12 +9642,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Slovakia(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9661,12 +9662,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Greece(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9681,12 +9682,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class UK(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9701,12 +9702,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Insurgents(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9721,12 +9722,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Hungary(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9741,12 +9742,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class France(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9761,12 +9762,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Abkhazia(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9781,12 +9782,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Russia(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9801,12 +9802,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Sweden(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9821,12 +9822,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Austria(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9841,12 +9842,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Switzerland(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9861,12 +9862,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Italy(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9881,12 +9882,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class SouthOssetia(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9901,12 +9902,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class SouthKorea(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9921,12 +9922,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Iran(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9941,12 +9942,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class China(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9961,12 +9962,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Pakistan(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -9981,12 +9982,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Belarus(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10001,12 +10002,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class NorthKorea(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10021,12 +10022,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Iraq(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10041,12 +10042,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Kazakhstan(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10061,12 +10062,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Bulgaria(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10081,12 +10082,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Serbia(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10101,12 +10102,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class India(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10121,12 +10122,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class USAFAggressors(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10141,12 +10142,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class USA(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10161,12 +10162,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Denmark(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10181,12 +10182,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Egypt(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10201,12 +10202,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Canada(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10221,12 +10222,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class TheNetherlands(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10241,12 +10242,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Turkey(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10261,12 +10262,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Japan(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10281,12 +10282,12 @@ class MiG_21Bis(PlaneType):
             VVS_Demonstrator = "VVS Demonstrator"
 
         class Poland(Enum):
+            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
-            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"

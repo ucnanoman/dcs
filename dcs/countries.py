@@ -2,6 +2,8 @@
 
 from .country import Country
 from . import vehicles
+from . import planes
+from . import helicopters
 
 
 class Russia(Country):
@@ -105,49 +107,49 @@ class Russia(Country):
             SAM_SA_3_S_125_SR_P_19 = vehicles.AirDefence.SAM_SA_3_S_125_SR_P_19
 
     class Plane:
-        A_10C = "A-10C"
-        Su_33 = "Su-33"
-        Su_25 = "Su-25"
-        MiG_29S = "MiG-29S"
-        MiG_29A = "MiG-29A"
-        Su_27 = "Su-27"
-        Su_25TM = "Su-25TM"
-        Su_25T = "Su-25T"
-        MiG_31 = "MiG-31"
-        MiG_27K = "MiG-27K"
-        Su_30 = "Su-30"
-        Tu_160 = "Tu-160"
-        Su_34 = "Su-34"
-        Tu_95MS = "Tu-95MS"
-        Tu_142 = "Tu-142"
-        MiG_25PD = "MiG-25PD"
-        Tu_22M3 = "Tu-22M3"
-        A_50 = "A-50"
-        Yak_40 = "Yak-40"
-        An_26B = "An-26B"
-        An_30M = "An-30M"
-        Su_17M4 = "Su-17M4"
-        MiG_23MLD = "MiG-23MLD"
-        MiG_25RBT = "MiG-25RBT"
-        Su_24M = "Su-24M"
-        Su_24MR = "Su-24MR"
-        IL_78M = "IL-78M"
-        IL_76MD = "IL-76MD"
-        L_39ZA = "L-39ZA"
-        P_51D = "P-51D"
-        FW_190D9 = "FW-190D9"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
-        TF_51D = "TF-51D"
+        A_10C = planes.A_10C
+        Su_33 = planes.Su_33
+        Su_25 = planes.Su_25
+        MiG_29S = planes.MiG_29S
+        MiG_29A = planes.MiG_29A
+        Su_27 = planes.Su_27
+        Su_25TM = planes.Su_25TM
+        Su_25T = planes.Su_25T
+        MiG_31 = planes.MiG_31
+        MiG_27K = planes.MiG_27K
+        Su_30 = planes.Su_30
+        Tu_160 = planes.Tu_160
+        Su_34 = planes.Su_34
+        Tu_95MS = planes.Tu_95MS
+        Tu_142 = planes.Tu_142
+        MiG_25PD = planes.MiG_25PD
+        Tu_22M3 = planes.Tu_22M3
+        A_50 = planes.A_50
+        Yak_40 = planes.Yak_40
+        An_26B = planes.An_26B
+        An_30M = planes.An_30M
+        Su_17M4 = planes.Su_17M4
+        MiG_23MLD = planes.MiG_23MLD
+        MiG_25RBT = planes.MiG_25RBT
+        Su_24M = planes.Su_24M
+        Su_24MR = planes.Su_24MR
+        IL_78M = planes.IL_78M
+        IL_76MD = planes.IL_76MD
+        L_39ZA = planes.L_39ZA
+        P_51D = planes.P_51D
+        FW_190D9 = planes.Fw_190_D_9
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
+        TF_51D = planes.TF_51D
 
     planes = [
         Plane.A_10C,
@@ -196,13 +198,13 @@ class Russia(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        Mi_24V = "Mi-24V"
-        Mi_8MT = "Mi-8MT"
-        Mi_26 = "Mi-26"
-        Ka_27 = "Ka-27"
-        Mi_28N = "Mi-28N"
-        UH_1H = "UH-1H"
+        Ka_50 = helicopters.Ka_50
+        Mi_24V = helicopters.Mi_24V
+        Mi_8MT = helicopters.Mi_8MTV2
+        Mi_26 = helicopters.Mi_26
+        Ka_27 = helicopters.Ka_27
+        Mi_28N = helicopters.Mi_28N
+        UH_1H = helicopters.UH_1H
 
     helicopters = [
         Helicopter.Ka_50,
@@ -353,39 +355,39 @@ class Ukraine(Country):
             SAM_SA_18_Igla_S_comm = vehicles.AirDefence.SAM_SA_18_Igla_S_comm
 
     class Plane:
-        A_10C = "A-10C"
-        Su_27 = "Su-27"
-        MiG_29A = "MiG-29A"
-        MiG_29S = "MiG-29S"
-        Su_17M4 = "Su-17M4"
-        Tu_95MS = "Tu-95MS"
-        Su_24M = "Su-24M"
-        Su_24MR = "Su-24MR"
-        Su_25 = "Su-25"
-        MiG_25PD = "MiG-25PD"
-        An_26B = "An-26B"
-        An_30M = "An-30M"
-        MiG_23MLD = "MiG-23MLD"
-        IL_78M = "IL-78M"
-        IL_76MD = "IL-76MD"
-        MiG_27K = "MiG-27K"
-        Tu_22M3 = "Tu-22M3"
-        MiG_25RBT = "MiG-25RBT"
-        Yak_40 = "Yak-40"
-        L_39ZA = "L-39ZA"
-        P_51D = "P-51D"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
-        TF_51D = "TF-51D"
+        A_10C = planes.A_10C
+        Su_27 = planes.Su_27
+        MiG_29A = planes.MiG_29A
+        MiG_29S = planes.MiG_29S
+        Su_17M4 = planes.Su_17M4
+        Tu_95MS = planes.Tu_95MS
+        Su_24M = planes.Su_24M
+        Su_24MR = planes.Su_24MR
+        Su_25 = planes.Su_25
+        MiG_25PD = planes.MiG_25PD
+        An_26B = planes.An_26B
+        An_30M = planes.An_30M
+        MiG_23MLD = planes.MiG_23MLD
+        IL_78M = planes.IL_78M
+        IL_76MD = planes.IL_76MD
+        MiG_27K = planes.MiG_27K
+        Tu_22M3 = planes.Tu_22M3
+        MiG_25RBT = planes.MiG_25RBT
+        Yak_40 = planes.Yak_40
+        L_39ZA = planes.L_39ZA
+        P_51D = planes.P_51D
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
+        TF_51D = planes.TF_51D
 
     planes = [
         Plane.A_10C,
@@ -424,12 +426,12 @@ class Ukraine(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        Mi_24V = "Mi-24V"
-        Mi_8MT = "Mi-8MT"
-        Mi_26 = "Mi-26"
-        Ka_27 = "Ka-27"
-        UH_1H = "UH-1H"
+        Ka_50 = helicopters.Ka_50
+        Mi_24V = helicopters.Mi_24V
+        Mi_8MT = helicopters.Mi_8MTV2
+        Mi_26 = helicopters.Mi_26
+        Ka_27 = helicopters.Ka_27
+        UH_1H = helicopters.UH_1H
 
     helicopters = [
         Helicopter.Ka_50,
@@ -519,42 +521,41 @@ class USA(Country):
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
-        A_10C = "A-10C"
-        A_10A = "A-10A"
-        F_117A = "F-117A"
-        C_17A = "C-17A"
-        F_15C = "F-15C"
-        F_15E = "F-15E"
-        F_16C_bl_52d = "F-16C bl.52d"
-        B_1B = "B-1B"
-        B_52H = "B-52H"
-        E_3A = "E-3A"
-        KC_135 = "KC-135"
-        C_130 = "C-130"
-        F_14A = "F-14A"
-        S_3B = "S-3B"
-        S_3B_Tanker = "S-3B Tanker"
-        F_A_18C = "F/A-18C"
-        E_2C = "E-2C"
-        F_16A = "F-16A"
-        F_5E = "F-5E"
-        RQ_1A_Predator = "RQ-1A Predator"
-        P_51D = "P-51D"
-        L_39ZA = "L-39ZA"
-        FW_190D9 = "FW-190D9"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
-        MQ_9_Reaper = "MQ-9 Reaper"
-        TF_51D = "TF-51D"
+        A_10C = planes.A_10C
+        A_10A = planes.A_10A
+        F_117A = planes.F_117A
+        C_17A = planes.C_17A
+        F_15C = planes.F_15C
+        F_15E = planes.F_15E
+        F_16C_bl_52d = planes.F_16C_bl_52d
+        B_1B = planes.B_1B
+        B_52H = planes.B_52H
+        E_3A = planes.E_3A
+        KC_135 = planes.KC_135
+        C_130 = planes.C_130
+        F_14A = planes.F_14A
+        S_3B = planes.S_3B
+        S_3B_Tanker = planes.S_3B_Tanker
+        F_A_18C = planes.F_A_18C
+        E_2C = planes.E_2D
+        F_16A = planes.F_16A
+        F_5E = planes.F_5E
+        RQ_1A_Predator = planes.MQ_1A_Predator
+        P_51D = planes.P_51D
+        L_39ZA = planes.L_39ZA
+        FW_190D9 = planes.Fw_190_D_9
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
+        MQ_9_Reaper = planes.MQ_9_Reaper
+        TF_51D = planes.TF_51D
 
     planes = [
         Plane.A_10C,
@@ -596,17 +597,17 @@ class USA(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        AH_64A = "AH-64A"
-        AH_64D = "AH-64D"
-        AH_1W = "AH-1W"
-        UH_60A = "UH-60A"
-        CH_47D = "CH-47D"
-        SH_60B = "SH-60B"
-        CH_53E = "CH-53E"
-        OH_58D = "OH-58D"
-        UH_1H = "UH-1H"
-        Mi_8MT = "Mi-8MT"
+        Ka_50 = helicopters.Ka_50
+        AH_64A = helicopters.AH_64A
+        AH_64D = helicopters.AH_64D
+        AH_1W = helicopters.AH_1W
+        UH_60A = helicopters.UH_60A
+        CH_47D = helicopters.CH_47D
+        SH_60B = helicopters.SH_60B
+        CH_53E = helicopters.CH_53E
+        OH_58D = helicopters.OH_58D
+        UH_1H = helicopters.UH_1H
+        Mi_8MT = helicopters.Mi_8MTV2
 
     helicopters = [
         Helicopter.Ka_50,
@@ -780,25 +781,24 @@ class Turkey(Country):
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
-        A_10C = "A-10C"
-        F_16C_bl_50 = "F-16C bl.50"
-        F_4E = "F-4E"
-        F_5E = "F-5E"
-        C_130 = "C-130"
-        P_51D = "P-51D"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
-        MQ_9_Reaper = "MQ-9 Reaper"
-        TF_51D = "TF-51D"
+        A_10C = planes.A_10C
+        F_16C_bl_50 = planes.F_16C_bl_50
+        F_4E = planes.F_4E
+        F_5E = planes.F_5E
+        C_130 = planes.C_130
+        P_51D = planes.P_51D
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
+        MQ_9_Reaper = planes.MQ_9_Reaper
+        TF_51D = planes.TF_51D
 
     planes = [
         Plane.A_10C,
@@ -823,11 +823,11 @@ class Turkey(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        UH_60A = "UH-60A"
-        Mi_8MT = "Mi-8MT"
-        AH_1W = "AH-1W"
-        UH_1H = "UH-1H"
+        Ka_50 = helicopters.Ka_50
+        UH_60A = helicopters.UH_60A
+        Mi_8MT = helicopters.Mi_8MTV2
+        AH_1W = helicopters.AH_1W
+        UH_1H = helicopters.UH_1H
 
     helicopters = [
         Helicopter.Ka_50,
@@ -873,24 +873,24 @@ class UK(Country):
             MLRS_M270 = vehicles.Artillery.MLRS_M270
 
     class Plane:
-        A_10C = "A-10C"
-        Tornado_GR4 = "Tornado GR4"
-        C_130 = "C-130"
-        P_51D = "P-51D"
-        FW_190D9 = "FW-190D9"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
-        MQ_9_Reaper = "MQ-9 Reaper"
-        TF_51D = "TF-51D"
+        A_10C = planes.A_10C
+        Tornado_GR4 = planes.Tornado_GR4
+        C_130 = planes.C_130
+        P_51D = planes.P_51D
+        FW_190D9 = planes.Fw_190_D_9
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
+        MQ_9_Reaper = planes.MQ_9_Reaper
+        TF_51D = planes.TF_51D
 
     planes = [
         Plane.A_10C,
@@ -914,12 +914,12 @@ class UK(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        AH_64A = "AH-64A"
-        AH_64D = "AH-64D"
-        CH_47D = "CH-47D"
-        UH_1H = "UH-1H"
-        Mi_8MT = "Mi-8MT"
+        Ka_50 = helicopters.Ka_50
+        AH_64A = helicopters.AH_64A
+        AH_64D = helicopters.AH_64D
+        CH_47D = helicopters.CH_47D
+        UH_1H = helicopters.UH_1H
+        Mi_8MT = helicopters.Mi_8MTV2
 
     helicopters = [
         Helicopter.Ka_50,
@@ -980,23 +980,23 @@ class France(Country):
             SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
 
     class Plane:
-        A_10C = "A-10C"
-        Mirage_2000_5 = "Mirage 2000-5"
-        C_130 = "C-130"
-        P_51D = "P-51D"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
-        MQ_9_Reaper = "MQ-9 Reaper"
-        TF_51D = "TF-51D"
+        A_10C = planes.A_10C
+        Mirage_2000_5 = planes.Mirage_2000_5
+        C_130 = planes.C_130
+        P_51D = planes.P_51D
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
+        MQ_9_Reaper = planes.MQ_9_Reaper
+        TF_51D = planes.TF_51D
 
     planes = [
         Plane.A_10C,
@@ -1019,9 +1019,9 @@ class France(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        Mi_8MT = "Mi-8MT"
-        UH_1H = "UH-1H"
+        Ka_50 = helicopters.Ka_50
+        Mi_8MT = helicopters.Mi_8MTV2
+        UH_1H = helicopters.UH_1H
 
     helicopters = [
         Helicopter.Ka_50,
@@ -1098,24 +1098,24 @@ class Germany(Country):
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
-        A_10C = "A-10C"
-        MiG_29G = "MiG-29G"
-        F_4E = "F-4E"
-        Tornado_IDS = "Tornado IDS"
-        P_51D = "P-51D"
-        FW_190D9 = "FW-190D9"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
-        TF_51D = "TF-51D"
+        A_10C = planes.A_10C
+        MiG_29G = planes.MiG_29G
+        F_4E = planes.F_4E
+        Tornado_IDS = planes.Tornado_IDS
+        P_51D = planes.P_51D
+        FW_190D9 = planes.Fw_190_D_9
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
+        TF_51D = planes.TF_51D
 
     planes = [
         Plane.A_10C,
@@ -1139,9 +1139,9 @@ class Germany(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        Mi_8MT = "Mi-8MT"
-        UH_1H = "UH-1H"
+        Ka_50 = helicopters.Ka_50
+        Mi_8MT = helicopters.Mi_8MTV2
+        UH_1H = helicopters.UH_1H
 
     helicopters = [
         Helicopter.Ka_50,
@@ -1211,7 +1211,6 @@ class USAFAggressors(Country):
             APC_Tigr_233036 = vehicles.Unarmed.APC_Tigr_233036
             CP_Predator_GCS = vehicles.Unarmed.CP_Predator_GCS
             CP_Predator_TrojanSpirit = vehicles.Unarmed.CP_Predator_TrojanSpirit
-            Transport_ZIL_4331 = vehicles.Unarmed.Transport_ZIL_4331
 
         class Armor:
             APC_M113 = vehicles.Armor.APC_M113
@@ -1317,73 +1316,72 @@ class USAFAggressors(Country):
             SAM_Stinger_comm_dsr = vehicles.AirDefence.SAM_Stinger_comm_dsr
 
     class Plane:
-        A_10C = "A-10C"
-        Su_27 = "Su-27"
-        IL_76MD = "IL-76MD"
-        IL_78M = "IL-78M"
-        An_26B = "An-26B"
-        An_30M = "An-30M"
-        C_130 = "C-130"
-        F_16A_MLU = "F-16A MLU"
-        P_51D = "P-51D"
-        MiG_29A = "MiG-29A"
-        MiG_29S = "MiG-29S"
-        Su_17M4 = "Su-17M4"
-        Tu_95MS = "Tu-95MS"
-        Su_24M = "Su-24M"
-        Su_24MR = "Su-24MR"
-        Su_25 = "Su-25"
-        MiG_25PD = "MiG-25PD"
-        MiG_23MLD = "MiG-23MLD"
-        MiG_27K = "MiG-27K"
-        Tu_22M3 = "Tu-22M3"
-        MiG_25RBT = "MiG-25RBT"
-        Yak_40 = "Yak-40"
-        L_39ZA = "L-39ZA"
-        F_A_18C = "F/A-18C"
-        F_5E = "F-5E"
-        Tornado_IDS = "Tornado IDS"
-        Tornado_GR4 = "Tornado GR4"
-        Su_33 = "Su-33"
-        Su_25TM = "Su-25TM"
-        Su_25T = "Su-25T"
-        MiG_31 = "MiG-31"
-        Su_30 = "Su-30"
-        Tu_160 = "Tu-160"
-        Su_34 = "Su-34"
-        Tu_142 = "Tu-142"
-        A_50 = "A-50"
-        A_10A = "A-10A"
-        F_117A = "F-117A"
-        C_17A = "C-17A"
-        F_15C = "F-15C"
-        F_15E = "F-15E"
-        F_16C_bl_52d = "F-16C bl.52d"
-        B_1B = "B-1B"
-        B_52H = "B-52H"
-        E_3A = "E-3A"
-        KC_135 = "KC-135"
-        F_14A = "F-14A"
-        S_3B = "S-3B"
-        S_3B_Tanker = "S-3B Tanker"
-        E_2C = "E-2C"
-        F_16A = "F-16A"
-        RQ_1A_Predator = "RQ-1A Predator"
-        MiG_29G = "MiG-29G"
-        F_4E = "F-4E"
-        Mirage_2000_5 = "Mirage 2000-5"
-        F_16C_bl_50 = "F-16C bl.50"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Su_27 = planes.Su_27
+        IL_76MD = planes.IL_76MD
+        IL_78M = planes.IL_78M
+        An_26B = planes.An_26B
+        An_30M = planes.An_30M
+        C_130 = planes.C_130
+        F_16A_MLU = planes.F_16A_MLU
+        P_51D = planes.P_51D
+        MiG_29A = planes.MiG_29A
+        MiG_29S = planes.MiG_29S
+        Su_17M4 = planes.Su_17M4
+        Tu_95MS = planes.Tu_95MS
+        Su_24M = planes.Su_24M
+        Su_24MR = planes.Su_24MR
+        Su_25 = planes.Su_25
+        MiG_25PD = planes.MiG_25PD
+        MiG_23MLD = planes.MiG_23MLD
+        MiG_27K = planes.MiG_27K
+        Tu_22M3 = planes.Tu_22M3
+        MiG_25RBT = planes.MiG_25RBT
+        Yak_40 = planes.Yak_40
+        L_39ZA = planes.L_39ZA
+        F_A_18C = planes.F_A_18C
+        F_5E = planes.F_5E
+        Tornado_IDS = planes.Tornado_IDS
+        Tornado_GR4 = planes.Tornado_GR4
+        Su_33 = planes.Su_33
+        Su_25TM = planes.Su_25TM
+        Su_25T = planes.Su_25T
+        MiG_31 = planes.MiG_31
+        Su_30 = planes.Su_30
+        Tu_160 = planes.Tu_160
+        Su_34 = planes.Su_34
+        Tu_142 = planes.Tu_142
+        A_50 = planes.A_50
+        A_10A = planes.A_10A
+        F_117A = planes.F_117A
+        C_17A = planes.C_17A
+        F_15C = planes.F_15C
+        F_15E = planes.F_15E
+        F_16C_bl_52d = planes.F_16C_bl_52d
+        B_1B = planes.B_1B
+        B_52H = planes.B_52H
+        E_3A = planes.E_3A
+        KC_135 = planes.KC_135
+        F_14A = planes.F_14A
+        S_3B = planes.S_3B
+        S_3B_Tanker = planes.S_3B_Tanker
+        E_2C = planes.E_2D
+        F_16A = planes.F_16A
+        RQ_1A_Predator = planes.MQ_1A_Predator
+        MiG_29G = planes.MiG_29G
+        F_4E = planes.F_4E
+        Mirage_2000_5 = planes.Mirage_2000_5
+        F_16C_bl_50 = planes.F_16C_bl_50
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -1456,21 +1454,21 @@ class USAFAggressors(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        Mi_8MT = "Mi-8MT"
-        Mi_26 = "Mi-26"
-        Ka_27 = "Ka-27"
-        UH_1H = "UH-1H"
-        Mi_24V = "Mi-24V"
-        CH_47D = "CH-47D"
-        AH_64A = "AH-64A"
-        AH_64D = "AH-64D"
-        Mi_28N = "Mi-28N"
-        AH_1W = "AH-1W"
-        UH_60A = "UH-60A"
-        SH_60B = "SH-60B"
-        CH_53E = "CH-53E"
-        OH_58D = "OH-58D"
+        Ka_50 = helicopters.Ka_50
+        Mi_8MT = helicopters.Mi_8MTV2
+        Mi_26 = helicopters.Mi_26
+        Ka_27 = helicopters.Ka_27
+        UH_1H = helicopters.UH_1H
+        Mi_24V = helicopters.Mi_24V
+        CH_47D = helicopters.CH_47D
+        AH_64A = helicopters.AH_64A
+        AH_64D = helicopters.AH_64D
+        Mi_28N = helicopters.Mi_28N
+        AH_1W = helicopters.AH_1W
+        UH_60A = helicopters.UH_60A
+        SH_60B = helicopters.SH_60B
+        CH_53E = helicopters.CH_53E
+        OH_58D = helicopters.OH_58D
 
     helicopters = [
         Helicopter.Ka_50,
@@ -1548,22 +1546,22 @@ class Canada(Country):
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
-        A_10C = "A-10C"
-        C_130 = "C-130"
-        P_51D = "P-51D"
-        F_A_18C = "F/A-18C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
-        TF_51D = "TF-51D"
+        A_10C = planes.A_10C
+        C_130 = planes.C_130
+        P_51D = planes.P_51D
+        F_A_18C = planes.F_A_18C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
+        TF_51D = planes.TF_51D
 
     planes = [
         Plane.A_10C,
@@ -1585,9 +1583,9 @@ class Canada(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        Mi_8MT = "Mi-8MT"
-        UH_1H = "UH-1H"
+        Ka_50 = helicopters.Ka_50
+        Mi_8MT = helicopters.Mi_8MTV2
+        UH_1H = helicopters.UH_1H
 
     helicopters = [
         Helicopter.Ka_50,
@@ -1642,22 +1640,22 @@ class Spain(Country):
             SAM_Roland_EWR = vehicles.AirDefence.SAM_Roland_EWR
 
     class Plane:
-        A_10C = "A-10C"
-        C_130 = "C-130"
-        P_51D = "P-51D"
-        F_A_18C = "F/A-18C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
-        TF_51D = "TF-51D"
+        A_10C = planes.A_10C
+        C_130 = planes.C_130
+        P_51D = planes.P_51D
+        F_A_18C = planes.F_A_18C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
+        TF_51D = planes.TF_51D
 
     planes = [
         Plane.A_10C,
@@ -1679,10 +1677,10 @@ class Spain(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        CH_47D = "CH-47D"
-        Mi_8MT = "Mi-8MT"
-        UH_1H = "UH-1H"
+        Ka_50 = helicopters.Ka_50
+        CH_47D = helicopters.CH_47D
+        Mi_8MT = helicopters.Mi_8MTV2
+        UH_1H = helicopters.UH_1H
 
     helicopters = [
         Helicopter.Ka_50,
@@ -1741,22 +1739,22 @@ class TheNetherlands(Country):
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
-        A_10C = "A-10C"
-        C_130 = "C-130"
-        F_16A_MLU = "F-16A MLU"
-        P_51D = "P-51D"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
-        TF_51D = "TF-51D"
+        A_10C = planes.A_10C
+        C_130 = planes.C_130
+        F_16A_MLU = planes.F_16A_MLU
+        P_51D = planes.P_51D
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
+        TF_51D = planes.TF_51D
 
     planes = [
         Plane.A_10C,
@@ -1778,12 +1776,12 @@ class TheNetherlands(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        AH_64A = "AH-64A"
-        AH_64D = "AH-64D"
-        CH_47D = "CH-47D"
-        Mi_8MT = "Mi-8MT"
-        UH_1H = "UH-1H"
+        Ka_50 = helicopters.Ka_50
+        AH_64A = helicopters.AH_64A
+        AH_64D = helicopters.AH_64D
+        CH_47D = helicopters.CH_47D
+        Mi_8MT = helicopters.Mi_8MTV2
+        UH_1H = helicopters.UH_1H
 
     helicopters = [
         Helicopter.Ka_50,
@@ -1837,22 +1835,22 @@ class Belgium(Country):
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
-        A_10C = "A-10C"
-        C_130 = "C-130"
-        F_16A_MLU = "F-16A MLU"
-        P_51D = "P-51D"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
-        TF_51D = "TF-51D"
+        A_10C = planes.A_10C
+        C_130 = planes.C_130
+        F_16A_MLU = planes.F_16A_MLU
+        P_51D = planes.P_51D
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
+        TF_51D = planes.TF_51D
 
     planes = [
         Plane.A_10C,
@@ -1874,9 +1872,9 @@ class Belgium(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        Mi_8MT = "Mi-8MT"
-        UH_1H = "UH-1H"
+        Ka_50 = helicopters.Ka_50
+        Mi_8MT = helicopters.Mi_8MTV2
+        UH_1H = helicopters.UH_1H
 
     helicopters = [
         Helicopter.Ka_50,
@@ -1930,22 +1928,22 @@ class Norway(Country):
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
-        A_10C = "A-10C"
-        C_130 = "C-130"
-        F_16A_MLU = "F-16A MLU"
-        P_51D = "P-51D"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
-        TF_51D = "TF-51D"
+        A_10C = planes.A_10C
+        C_130 = planes.C_130
+        F_16A_MLU = planes.F_16A_MLU
+        P_51D = planes.P_51D
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
+        TF_51D = planes.TF_51D
 
     planes = [
         Plane.A_10C,
@@ -1967,9 +1965,9 @@ class Norway(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        Mi_8MT = "Mi-8MT"
-        UH_1H = "UH-1H"
+        Ka_50 = helicopters.Ka_50
+        Mi_8MT = helicopters.Mi_8MTV2
+        UH_1H = helicopters.UH_1H
 
     helicopters = [
         Helicopter.Ka_50,
@@ -2022,22 +2020,22 @@ class Denmark(Country):
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
-        A_10C = "A-10C"
-        C_130 = "C-130"
-        F_16A_MLU = "F-16A MLU"
-        P_51D = "P-51D"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
-        TF_51D = "TF-51D"
+        A_10C = planes.A_10C
+        C_130 = planes.C_130
+        F_16A_MLU = planes.F_16A_MLU
+        P_51D = planes.P_51D
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
+        TF_51D = planes.TF_51D
 
     planes = [
         Plane.A_10C,
@@ -2059,9 +2057,9 @@ class Denmark(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        Mi_8MT = "Mi-8MT"
-        UH_1H = "UH-1H"
+        Ka_50 = helicopters.Ka_50
+        Mi_8MT = helicopters.Mi_8MTV2
+        UH_1H = helicopters.UH_1H
 
     helicopters = [
         Helicopter.Ka_50,
@@ -2127,25 +2125,25 @@ class Israel(Country):
             AAA_ZU_23_Closed = vehicles.AirDefence.AAA_ZU_23_Closed
 
     class Plane:
-        A_10C = "A-10C"
-        F_15C = "F-15C"
-        F_15E = "F-15E"
-        F_16C_bl_52d = "F-16C bl.52d"
-        C_130 = "C-130"
-        F_4E = "F-4E"
-        P_51D = "P-51D"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
-        TF_51D = "TF-51D"
+        A_10C = planes.A_10C
+        F_15C = planes.F_15C
+        F_15E = planes.F_15E
+        F_16C_bl_52d = planes.F_16C_bl_52d
+        C_130 = planes.C_130
+        F_4E = planes.F_4E
+        P_51D = planes.P_51D
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
+        TF_51D = planes.TF_51D
 
     planes = [
         Plane.A_10C,
@@ -2170,13 +2168,13 @@ class Israel(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        AH_64A = "AH-64A"
-        AH_1W = "AH-1W"
-        UH_60A = "UH-60A"
-        AH_64D = "AH-64D"
-        UH_1H = "UH-1H"
-        Mi_8MT = "Mi-8MT"
+        Ka_50 = helicopters.Ka_50
+        AH_64A = helicopters.AH_64A
+        AH_1W = helicopters.AH_1W
+        UH_60A = helicopters.UH_60A
+        AH_64D = helicopters.AH_64D
+        UH_1H = helicopters.UH_1H
+        Mi_8MT = helicopters.Mi_8MTV2
 
     helicopters = [
         Helicopter.Ka_50,
@@ -2235,7 +2233,6 @@ class Georgia(Country):
             Transport_fire_Engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_Engine_Ural_ATsP_6
             GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
             Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
-            Transport_ZIL_4331 = vehicles.Unarmed.Transport_ZIL_4331
             Transport_M818 = vehicles.Unarmed.Transport_M818
 
         class Armor:
@@ -2270,31 +2267,32 @@ class Georgia(Country):
             EWR_1L13 = vehicles.AirDefence.EWR_1L13
             SAM_SA_18_Igla_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_MANPADS
             SAM_SA_18_Igla_comm = vehicles.AirDefence.SAM_SA_18_Igla_comm
+            SAM_Stinger_MANPADS = vehicles.AirDefence.SAM_Stinger_MANPADS
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
             SAM_SA_3_S_125_LN_5P73 = vehicles.AirDefence.SAM_SA_3_S_125_LN_5P73
             SAM_SA_3_S_125_TR_SNR = vehicles.AirDefence.SAM_SA_3_S_125_TR_SNR
             SAM_SA_3_S_125_SR_P_19 = vehicles.AirDefence.SAM_SA_3_S_125_SR_P_19
 
     class Plane:
-        A_10C = "A-10C"
-        Su_25 = "Su-25"
-        An_26B = "An-26B"
-        Su_25T = "Su-25T"
-        L_39ZA = "L-39ZA"
-        Yak_40 = "Yak-40"
-        P_51D = "P-51D"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
-        TF_51D = "TF-51D"
+        A_10C = planes.A_10C
+        Su_25 = planes.Su_25
+        An_26B = planes.An_26B
+        Su_25T = planes.Su_25T
+        L_39ZA = planes.L_39ZA
+        Yak_40 = planes.Yak_40
+        P_51D = planes.P_51D
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
+        TF_51D = planes.TF_51D
 
     planes = [
         Plane.A_10C,
@@ -2319,10 +2317,10 @@ class Georgia(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        UH_1H = "UH-1H"
-        Mi_8MT = "Mi-8MT"
-        Mi_24V = "Mi-24V"
+        Ka_50 = helicopters.Ka_50
+        UH_1H = helicopters.UH_1H
+        Mi_8MT = helicopters.Mi_8MTV2
+        Mi_24V = helicopters.Mi_24V
 
     helicopters = [
         Helicopter.Ka_50,
@@ -2410,17 +2408,17 @@ class Insurgents(Country):
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
-        P_51D = "P-51D"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
+        P_51D = planes.P_51D
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
 
     planes = [
         Plane.P_51D,
@@ -2437,8 +2435,8 @@ class Insurgents(Country):
     ]
 
     class Helicopter:
-        Mi_8MT = "Mi-8MT"
-        UH_1H = "UH-1H"
+        Mi_8MT = helicopters.Mi_8MTV2
+        UH_1H = helicopters.UH_1H
 
     helicopters = [
         Helicopter.Mi_8MT,
@@ -2532,22 +2530,22 @@ class Abkhazia(Country):
             SAM_SA_18_Igla_comm = vehicles.AirDefence.SAM_SA_18_Igla_comm
 
     class Plane:
-        Su_25 = "Su-25"
-        An_26B = "An-26B"
-        L_39ZA = "L-39ZA"
-        P_51D = "P-51D"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
-        TF_51D = "TF-51D"
+        Su_25 = planes.Su_25
+        An_26B = planes.An_26B
+        L_39ZA = planes.L_39ZA
+        P_51D = planes.P_51D
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
+        TF_51D = planes.TF_51D
 
     planes = [
         Plane.Su_25,
@@ -2569,10 +2567,10 @@ class Abkhazia(Country):
     ]
 
     class Helicopter:
-        Mi_24V = "Mi-24V"
-        Mi_8MT = "Mi-8MT"
-        Ka_50 = "Ka-50"
-        UH_1H = "UH-1H"
+        Mi_24V = helicopters.Mi_24V
+        Mi_8MT = helicopters.Mi_8MTV2
+        Ka_50 = helicopters.Ka_50
+        UH_1H = helicopters.UH_1H
 
     helicopters = [
         Helicopter.Mi_24V,
@@ -2661,16 +2659,16 @@ class SouthOssetia(Country):
             SAM_SA_18_Igla_comm = vehicles.AirDefence.SAM_SA_18_Igla_comm
 
     class Plane:
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
 
     planes = [
         Plane.Bf_109K_4,
@@ -2686,10 +2684,10 @@ class SouthOssetia(Country):
     ]
 
     class Helicopter:
-        Mi_24V = "Mi-24V"
-        Mi_8MT = "Mi-8MT"
-        Ka_50 = "Ka-50"
-        UH_1H = "UH-1H"
+        Mi_24V = helicopters.Mi_24V
+        Mi_8MT = helicopters.Mi_8MTV2
+        Ka_50 = helicopters.Ka_50
+        UH_1H = helicopters.UH_1H
 
     helicopters = [
         Helicopter.Mi_24V,
@@ -2743,24 +2741,24 @@ class Italy(Country):
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
-        A_10C = "A-10C"
-        C_130 = "C-130"
-        F_16A_MLU = "F-16A MLU"
-        P_51D = "P-51D"
-        Tornado_IDS = "Tornado IDS"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
-        MQ_9_Reaper = "MQ-9 Reaper"
-        TF_51D = "TF-51D"
+        A_10C = planes.A_10C
+        C_130 = planes.C_130
+        F_16A_MLU = planes.F_16A_MLU
+        P_51D = planes.P_51D
+        Tornado_IDS = planes.Tornado_IDS
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
+        MQ_9_Reaper = planes.MQ_9_Reaper
+        TF_51D = planes.TF_51D
 
     planes = [
         Plane.A_10C,
@@ -2784,9 +2782,9 @@ class Italy(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        Mi_8MT = "Mi-8MT"
-        UH_1H = "UH-1H"
+        Ka_50 = helicopters.Ka_50
+        Mi_8MT = helicopters.Mi_8MTV2
+        UH_1H = helicopters.UH_1H
 
     helicopters = [
         Helicopter.Ka_50,
@@ -2826,22 +2824,22 @@ class Australia(Country):
             APC_M113 = vehicles.Armor.APC_M113
 
     class Plane:
-        A_10C = "A-10C"
-        C_130 = "C-130"
-        P_51D = "P-51D"
-        F_A_18C = "F/A-18C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
-        TF_51D = "TF-51D"
+        A_10C = planes.A_10C
+        C_130 = planes.C_130
+        P_51D = planes.P_51D
+        F_A_18C = planes.F_A_18C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
+        TF_51D = planes.TF_51D
 
     planes = [
         Plane.A_10C,
@@ -2863,10 +2861,10 @@ class Australia(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        CH_47D = "CH-47D"
-        UH_1H = "UH-1H"
-        UH_60A = "UH-60A"
+        Ka_50 = helicopters.Ka_50
+        CH_47D = helicopters.CH_47D
+        UH_1H = helicopters.UH_1H
+        UH_60A = helicopters.UH_60A
 
     helicopters = [
         Helicopter.Ka_50,
@@ -2909,21 +2907,20 @@ class Switzerland(Country):
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
 
     class Plane:
-        A_10C = "A-10C"
-        F_A_18C = "F/A-18C"
-        F_5E = "F-5E"
-        P_51D = "P-51D"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        F_A_18C = planes.F_A_18C
+        F_5E = planes.F_5E
+        P_51D = planes.P_51D
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -2944,7 +2941,7 @@ class Switzerland(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -2973,18 +2970,18 @@ class Austria(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -3002,7 +2999,7 @@ class Austria(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -3031,18 +3028,18 @@ class Belarus(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -3060,7 +3057,7 @@ class Belarus(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -3089,19 +3086,19 @@ class Bulgaria(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        L_39ZA = "L-39ZA"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        L_39ZA = planes.L_39ZA
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -3120,7 +3117,7 @@ class Bulgaria(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -3149,19 +3146,19 @@ class CzechRepublic(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        L_39ZA = "L-39ZA"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        L_39ZA = planes.L_39ZA
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -3180,7 +3177,7 @@ class CzechRepublic(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -3218,23 +3215,23 @@ class China(Country):
             SAM_SA_10_S_300PS_CP_54K6 = vehicles.AirDefence.SAM_SA_10_S_300PS_CP_54K6
 
     class Plane:
-        A_10C = "A-10C"
-        Su_27 = "Su-27"
-        IL_76MD = "IL-76MD"
-        IL_78M = "IL-78M"
-        An_26B = "An-26B"
-        An_30M = "An-30M"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Su_27 = planes.Su_27
+        IL_76MD = planes.IL_76MD
+        IL_78M = planes.IL_78M
+        An_26B = planes.An_26B
+        An_30M = planes.An_30M
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -3257,10 +3254,10 @@ class China(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        Mi_8MT = "Mi-8MT"
-        Mi_26 = "Mi-26"
-        Ka_27 = "Ka-27"
+        Ka_50 = helicopters.Ka_50
+        Mi_8MT = helicopters.Mi_8MTV2
+        Mi_26 = helicopters.Mi_26
+        Ka_27 = helicopters.Ka_27
 
     helicopters = [
         Helicopter.Ka_50,
@@ -3292,18 +3289,18 @@ class Croatia(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -3321,7 +3318,7 @@ class Croatia(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -3350,18 +3347,18 @@ class Egypt(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -3379,7 +3376,7 @@ class Egypt(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -3408,18 +3405,18 @@ class Finland(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -3437,7 +3434,7 @@ class Finland(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -3509,34 +3506,33 @@ class Greece(Country):
             SAM_SA_10_S_300PS_CP_54K6 = vehicles.AirDefence.SAM_SA_10_S_300PS_CP_54K6
 
     class Plane:
-        A_10C = "A-10C"
-        C_130 = "C-130"
-        F_4E = "F-4E"
-        F_5E = "F-5E"
-        F_16C_bl_50 = "F-16C bl.50"
-        F_16C_bl_52d = "F-16C bl.52d"
-        Mirage_2000_5 = "Mirage 2000-5"
-        Yak_40 = "Yak-40"
-        F_15C = "F-15C"
-        MiG_29A = "MiG-29A"
-        MiG_29S = "MiG-29S"
-        Su_33 = "Su-33"
-        Su_27 = "Su-27"
-        Su_25T = "Su-25T"
-        Su_25 = "Su-25"
-        P_51D = "P-51D"
-        A_10A = "A-10A"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        C_130 = planes.C_130
+        F_4E = planes.F_4E
+        F_5E = planes.F_5E
+        F_16C_bl_50 = planes.F_16C_bl_50
+        F_16C_bl_52d = planes.F_16C_bl_52d
+        Mirage_2000_5 = planes.Mirage_2000_5
+        Yak_40 = planes.Yak_40
+        F_15C = planes.F_15C
+        MiG_29A = planes.MiG_29A
+        MiG_29S = planes.MiG_29S
+        Su_33 = planes.Su_33
+        Su_27 = planes.Su_27
+        Su_25T = planes.Su_25T
+        Su_25 = planes.Su_25
+        P_51D = planes.P_51D
+        A_10A = planes.A_10A
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -3570,13 +3566,13 @@ class Greece(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
-        AH_64A = "AH-64A"
-        AH_64D = "AH-64D"
-        CH_47D = "CH-47D"
-        UH_1H = "UH-1H"
-        SH_60B = "SH-60B"
-        Mi_8MT = "Mi-8MT"
+        Ka_50 = helicopters.Ka_50
+        AH_64A = helicopters.AH_64A
+        AH_64D = helicopters.AH_64D
+        CH_47D = helicopters.CH_47D
+        UH_1H = helicopters.UH_1H
+        SH_60B = helicopters.SH_60B
+        Mi_8MT = helicopters.Mi_8MTV2
 
     helicopters = [
         Helicopter.Ka_50,
@@ -3611,19 +3607,19 @@ class Hungary(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        L_39ZA = "L-39ZA"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        L_39ZA = planes.L_39ZA
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -3642,7 +3638,7 @@ class Hungary(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -3671,18 +3667,18 @@ class India(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -3700,7 +3696,7 @@ class India(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -3729,18 +3725,18 @@ class Iran(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -3758,7 +3754,7 @@ class Iran(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -3787,18 +3783,18 @@ class Iraq(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -3816,7 +3812,7 @@ class Iraq(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -3845,18 +3841,18 @@ class Japan(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -3874,7 +3870,7 @@ class Japan(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -3903,18 +3899,18 @@ class Kazakhstan(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -3932,7 +3928,7 @@ class Kazakhstan(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -3961,18 +3957,18 @@ class NorthKorea(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -3990,7 +3986,7 @@ class NorthKorea(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -4019,18 +4015,18 @@ class Pakistan(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -4048,7 +4044,7 @@ class Pakistan(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -4077,18 +4073,18 @@ class Poland(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -4106,7 +4102,7 @@ class Poland(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -4135,18 +4131,18 @@ class Romania(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -4164,7 +4160,7 @@ class Romania(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -4193,18 +4189,18 @@ class SaudiArabia(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -4222,7 +4218,7 @@ class SaudiArabia(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -4251,18 +4247,18 @@ class Serbia(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -4280,7 +4276,7 @@ class Serbia(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -4309,19 +4305,19 @@ class Slovakia(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        L_39ZA = "L-39ZA"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        L_39ZA = planes.L_39ZA
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -4340,7 +4336,7 @@ class Slovakia(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -4369,18 +4365,18 @@ class SouthKorea(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -4398,7 +4394,7 @@ class SouthKorea(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -4427,18 +4423,18 @@ class Sweden(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -4456,7 +4452,7 @@ class Sweden(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,
@@ -4485,19 +4481,19 @@ class Syria(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
     class Plane:
-        A_10C = "A-10C"
-        L_39ZA = "L-39ZA"
-        Bf_109K_4 = "Bf-109K-4"
-        C_101EB = "C-101EB"
-        C_101CC = "C-101CC"
-        F_5E = "F-5E"
-        F_5E_3 = "F-5E-3"
-        F_86F_Sabre = "F-86F Sabre"
-        Hawk = "Hawk"
-        L_39C = "L-39C"
-        M_2000C = "M-2000C"
-        MiG_15bis = "MiG-15bis"
-        MiG_21Bis = "MiG-21Bis"
+        A_10C = planes.A_10C
+        L_39ZA = planes.L_39ZA
+        Bf_109K_4 = planes.Bf_109_K_4
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
@@ -4516,7 +4512,7 @@ class Syria(Country):
     ]
 
     class Helicopter:
-        Ka_50 = "Ka-50"
+        Ka_50 = helicopters.Ka_50
 
     helicopters = [
         Helicopter.Ka_50,

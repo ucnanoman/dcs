@@ -533,6 +533,7 @@ class Mi_24V(HelicopterType):
 
 class Mi_8MTV2(HelicopterType):
     id = "Mi-8MT"
+    flyable = True
     large_parking_slot = True
     height = 4.908
     width = 21.33

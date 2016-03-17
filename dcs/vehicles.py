@@ -488,6 +488,10 @@ class AirDefence:
         id = "Stinger comm"
         name = "SAM Stinger comm"
 
+    class SAM_Stinger_MANPADS(unittype.VehicleType):
+        id = "Stinger manpad GRG"
+        name = "SAM Stinger MANPADS"
+
     class SPAAA_ZSU_23_4_Shilka(unittype.VehicleType):
         id = "ZSU-23-4 Shilka"
         name = "SPAAA ZSU-23-4 Shilka"
@@ -664,6 +668,7 @@ vehicle_map = {
     "Stinger comm dsr": AirDefence.SAM_Stinger_comm_dsr,
     "Stinger manpad": AirDefence.SAM_Stinger_MANPADS,
     "Stinger comm": AirDefence.SAM_Stinger_comm,
+    "Stinger manpad GRG": AirDefence.SAM_Stinger_MANPADS,
     "ZSU-23-4 Shilka": AirDefence.SPAAA_ZSU_23_4_Shilka,
     "ZU-23 Emplacement Closed": AirDefence.AAA_ZU_23_Closed,
     "ZU-23 Emplacement": AirDefence.AAA_ZU_23_Emplacement,
