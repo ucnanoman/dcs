@@ -15,18 +15,6 @@ import datetime
 from typing import List, Dict, Tuple
 
 
-class USPlatoon:
-    units = [
-        dcs.countries.USA.Vehicle.Armor.APC_M1043_HMMWV_Armament,
-        dcs.countries.USA.Vehicle.Armor.APC_M1043_HMMWV_Armament,
-        dcs.countries.USA.Vehicle.Armor.APC_M1126_Stryker_ICV,
-        dcs.countries.USA.Vehicle.AirDefence.AAA_Vulcan_M163
-    ]
-    maybe = [
-        dcs.countries.USA.Vehicle.AirDefence.SAM_Avenger_M1097
-    ]
-
-
 class BasicScenario:
     battle_zones = {
         "zugidi": Polygon([Point(-270285.71428571, 609257.14285714), Point(-264342.85714286, 614142.85714286),
@@ -567,7 +555,7 @@ class CAS(BasicScenario):
     }
 
     nato_airspace = Polygon([
-        Point(-272807.14285714, 563521.42857143),Point(-267949.99999999, 608950), Point(-235092.85714285, 638950),
+        Point(-272807.14285714, 563521.42857143), Point(-267949.99999999, 608950), Point(-235092.85714285, 638950),
         Point(-208521.42857142, 672950), Point(-225949.99999999, 738950), Point(-242521.42857142, 820950),
         Point(-243092.85714285, 912857.14285714), Point(-273949.99999999, 963714.28571429),
         Point(-415664.28571428, 963714.28571429), Point(-392807.14285714, 569142.85714286)])
@@ -626,8 +614,8 @@ class CAS(BasicScenario):
                     airport = random.choice(airports)
                     country = self.m.country(conf_data[0])
                     if force_type == "CAP":
-                        pp1 = self.nato_airspace.random_point()
-                        pp2 = self.nato_airspace.random_point()
+                        nato_rect = self.nato_airspace.outbound_rectangle()
+                        pp1, pp2 = nato_rect.random_distant_points(nato_rect.width() * 0.6)
                         self.m.patrol_flight(country, conf, conf_data[2], airport,
                                              pp1, pp2,
                                              group_size=conf_data[1])
@@ -662,15 +650,88 @@ class CAP(BasicScenario):
         }
     }
 
-    def __init__(self, aircraft_types: List[Tuple[str,str]], playercount: int, start: str):
+    def __init__(self, aircraft_types: List[Tuple[str, str]], playercount: int, start: str):
         super(CAP, self).__init__()
 
         caucasus = self.m.terrain
         blue_military_airport = [caucasus.kobuleti(), caucasus.kutaisi(), self.m.terrain.batumi()]
 
         player_groups = self.place_players(start, aircraft_types, blue_military_airport, playercount, dcs.task.CAP)
-        # for pg in player_groups:
-        #     pg.add_waypoint(battle_point, 0)
+        patrol_zone = self.air_zones["nato"].outbound_rectangle().resize(0.7)
+        p1, p2 = patrol_zone.random_distant_points(patrol_zone.width() * 0.6)
+        for pg in player_groups:
+            pg.add_waypoint(p1, 5000)
+            pg.add_waypoint(p2, 5000)
+
+        vhf_am = 140
+
+        usa = self.m.country("USA")
+        ukraine = self.m.country(dcs.countries.Ukraine.name)
+        race_dist = random.randrange(80*1000, 120*1000, 1000)
+        p1, p2 = patrol_zone.random_distant_points(race_dist)
+        p1.heading_between_point(p2)
+        awacs = self.m.awacs_flight(
+            usa,
+            "AWACS",
+            plane_type=dcs.planes.E_3A,
+            airport=None,
+            position=p1,
+            race_distance=race_dist, heading=p1.heading_between_point(p2),
+            altitude=random.randrange(4000, 5500, 100), frequency=vhf_am)
+
+        self.m.escort_flight(usa, "AWACS Escort", dcs.planes.plane_map[dcs.countries.USA.Plane.F_15E], None, awacs, 2)
+
+        race_dist = random.randrange(80*1000, 120*1000, 1000)
+        p1, p2 = patrol_zone.random_distant_points(race_dist)
+        p1.heading_between_point(p2)
+        refuel_net = self.m.refuel_flight(
+            ukraine,
+            "Tanker IL",
+            dcs.planes.IL_78M,
+            airport=None,
+            position=p1,
+            race_distance=race_dist, heading=p1.heading_between_point(p2),
+            altitude=random.randrange(4000, 5500, 100), frequency=vhf_am)
+
+        for zone in ["russia_east", "russia_west"]:
+            rcaps = list(self.air_force["red"]["CAP"].keys())
+            rcap = self.air_force["red"]["CAP"][random.choice(rcaps)]
+            cap_country = self.m.country(rcap[0])
+            p1, p2 = self.air_zones[zone].outbound_rectangle().random_distant_points(80*1000)
+            self.m.patrol_flight(cap_country, cap_country.name + " CAP", rcap[3], None,
+                                 p1, p2, group_size=rcap[1])
+
+        attack_type = random.choice(list(self.air_force["red"].keys()))
+
+        af = self.air_force["red"][attack_type][random.choice(list(self.air_force["red"][attack_type].keys()))]
+        spawn_rect = self.air_zones["russia_east"].outbound_rectangle()
+        spawn_rect = dcs.mapping.Rectangle(spawn_rect.bottom + 20000, spawn_rect.left,
+                                           spawn_rect.bottom, spawn_rect.right)
+        att_country = self.m.country(af[0])
+        start_airport = random.choice(self.red_airports)
+
+        if start == "inflight":
+            attack_flight = self.m.flight_group_inflight(
+                att_country,
+                att_country.name + " " + attack_type,
+                af[3], spawn_rect.random_point(), random.randrange(2000, 4000, 100),
+                maintask=dcs.task.MainTask.map[attack_type], group_size=af[1])
+        else:
+            attack_flight = self.m.flight_group_from_airport(
+                att_country,
+                att_country.name + " " + attack_type,
+                af[3], start_airport, maintask=dcs.task.MainTask.map[attack_type], group_size=af[1]
+            )
+            attack_flight.add_runway_waypoint(start_airport)
+        if attack_type == "CAS":
+            attack_airport = random.choice(self.blue_airports)
+            wp = attack_flight.add_waypoint(attack_airport, 2000)
+            wp.tasks.append(dcs.task.EngageTargetsInZone(attack_airport.position))
+        else:
+            attack_flight.add_waypoint(awacs.position, 6000)
+
+        attack_flight.add_runway_waypoint(start_airport)
+        attack_flight.land_at(start_airport)
 
 
 def main():
