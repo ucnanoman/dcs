@@ -471,7 +471,7 @@ class Refueling(BasicScenario):
             airport=None,
             position=pos,
             race_distance=race_dist, heading=heading,
-            altitude=random.randrange(4000, 5500, 100), frequency=frequency)
+            altitude=random.randrange(4000, 5500, 100), speed=750, frequency=frequency)
 
         pos, heading, race_dist = Refueling.random_orbit(orbit_rect)
         refuel_rod = self.m.refuel_flight(
@@ -691,7 +691,7 @@ class CAP(BasicScenario):
             airport=None,
             position=p1,
             race_distance=race_dist, heading=p1.heading_between_point(p2),
-            altitude=random.randrange(4000, 5500, 100), frequency=vhf_am)
+            altitude=random.randrange(4000, 5500, 100), speed=750, frequency=vhf_am)
 
         for zone in ["russia_east", "russia_west"]:
             rcaps = list(self.air_force["red"]["CAP"].keys())
