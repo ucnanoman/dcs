@@ -584,7 +584,7 @@ class CAS(BasicScenario):
 
         red_military_airport = [caucasus.sochi()]
 
-        battle_point = BasicScenario.battle_zones[0].random_point()
+        battle_point = BasicScenario.battle_zones["zugidi"].random_point()
 
         front_hdg = 30
         i = 0
