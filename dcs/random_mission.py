@@ -424,7 +424,7 @@ class Refueling(BasicScenario):
     def __init__(self, aircraft_types: List[Tuple[str,str]], playercount: int, start: str):
         super(Refueling, self).__init__()
 
-        self.add_civil_airtraffic(hidden=False)
+        self.add_civil_airtraffic(hidden=True)
 
         caucasus = self.m.terrain  # type: dcs.terrain.Caucasus
 
