@@ -638,14 +638,14 @@ class CAP(BasicScenario):
     air_force = {
         "red": {
             "CAS": {
-                "Hindis": (Russia.name, 2, 10, dcs.helicopters.Mi_24V),
-                "Blackies": (Russia.name, 2, 10, Russia.Helicopter.Ka_50)
+                "Hindis": (Russia.name, 2, 10, dcs.helicopters.Mi_24V, "4x9M114, 80xS-8"),
+                "Blackies": (Russia.name, 2, 10, dcs.helicopters.helicopter_map[Russia.Helicopter.Ka_50], None)
             },
             "CAP": {
-                "Mig 21": (Russia.name, 2, 40, dcs.planes.MiG_21Bis),
-                "Mig 15": (Russia.name, 2, 20, dcs.planes.MiG_15bis),
-                "Mig 29": (Russia.name, 2, 70, dcs.planes.MiG_29K),
-                "Su 33": (Russia.name, 2, 80, dcs.planes.Su_33)
+                "Mig 21": (Russia.name, 2, 40, dcs.planes.MiG_21Bis, None),
+                "Mig 15": (Russia.name, 2, 20, dcs.planes.MiG_15bis, None),
+                "Mig 29": (Russia.name, 2, 70, dcs.planes.MiG_29A, None),
+                "Su 33": (Russia.name, 2, 80, dcs.planes.Su_33, "R-73*2,R-27ET*2,R-27ER*6,ECM")
             }
         }
     }
@@ -654,12 +654,13 @@ class CAP(BasicScenario):
         super(CAP, self).__init__()
 
         caucasus = self.m.terrain
-        blue_military_airport = [caucasus.kobuleti(), caucasus.kutaisi(), self.m.terrain.batumi()]
+        blue_military_airport = [caucasus.kobuleti(), caucasus.kutaisi()]
 
         player_groups = self.place_players(start, aircraft_types, blue_military_airport, playercount, dcs.task.CAP)
         patrol_zone = self.air_zones["nato"].outbound_rectangle().resize(0.7)
         p1, p2 = patrol_zone.random_distant_points(patrol_zone.width() * 0.6)
         for pg in player_groups:
+            pg.load_loadout("Combat Air Patrol")
             pg.add_waypoint(p1, 5000)
             pg.add_waypoint(p2, 5000)
 
@@ -693,45 +694,54 @@ class CAP(BasicScenario):
             race_distance=race_dist, heading=p1.heading_between_point(p2),
             altitude=random.randrange(4000, 5500, 100), speed=750, frequency=vhf_am)
 
+        i = 0
         for zone in ["russia_east", "russia_west"]:
             rcaps = list(self.air_force["red"]["CAP"].keys())
             rcap = self.air_force["red"]["CAP"][random.choice(rcaps)]
             cap_country = self.m.country(rcap[0])
-            p1, p2 = self.air_zones[zone].outbound_rectangle().random_distant_points(80*1000)
-            self.m.patrol_flight(cap_country, cap_country.name + " CAP", rcap[3], None,
+            p1, p2 = self.air_zones[zone].outbound_rectangle().resize(0.6).random_distant_points(80*1000)
+            pf = self.m.patrol_flight(cap_country, cap_country.name + " CAP " + str(i), rcap[3], None,
                                  p1, p2, group_size=rcap[1])
+            if rcap[4]:
+                pf.load_loadout(rcap[4])
+            i += 1
 
         attack_type = random.choice(list(self.air_force["red"].keys()))
 
-        af = self.air_force["red"][attack_type][random.choice(list(self.air_force["red"][attack_type].keys()))]
-        spawn_rect = self.air_zones["russia_east"].outbound_rectangle()
-        spawn_rect = dcs.mapping.Rectangle(spawn_rect.bottom + 20000, spawn_rect.left,
-                                           spawn_rect.bottom, spawn_rect.right)
-        att_country = self.m.country(af[0])
-        start_airport = random.choice(self.red_airports)
-
-        if start == "inflight":
-            attack_flight = self.m.flight_group_inflight(
-                att_country,
-                att_country.name + " " + attack_type,
-                af[3], spawn_rect.random_point(), random.randrange(2000, 4000, 100),
-                maintask=dcs.task.MainTask.map[attack_type], group_size=af[1])
-        else:
-            attack_flight = self.m.flight_group_from_airport(
-                att_country,
-                att_country.name + " " + attack_type,
-                af[3], start_airport, maintask=dcs.task.MainTask.map[attack_type], group_size=af[1]
-            )
-            attack_flight.add_runway_waypoint(start_airport)
-        if attack_type == "CAS":
+        for attack_type in self.air_force["red"].keys():
+            af = self.air_force["red"][attack_type][random.choice(list(self.air_force["red"][attack_type].keys()))]
+            spawn_rect = self.air_zones["russia_east"].outbound_rectangle()
+            spawn_rect = dcs.mapping.Rectangle(spawn_rect.bottom + 20000, spawn_rect.left,
+                                               spawn_rect.bottom, spawn_rect.right)
+            att_country = self.m.country(af[0])
+            start_airport = caucasus.sochi() if af[3].helicopter else random.choice(self.red_airports)
             attack_airport = random.choice(self.blue_airports)
-            wp = attack_flight.add_waypoint(attack_airport, 2000)
-            wp.tasks.append(dcs.task.EngageTargetsInZone(attack_airport.position))
-        else:
-            attack_flight.add_waypoint(awacs.position, 6000)
 
-        attack_flight.add_runway_waypoint(start_airport)
-        attack_flight.land_at(start_airport)
+            if start == "inflight":
+                pos = attack_airport.position.point_from_heading(random.randrange(290, 410), 40*1000) if af[3].helicopter else spawn_rect.random_point()
+                attack_flight = self.m.flight_group_inflight(
+                    att_country,
+                    att_country.name + " " + attack_type,
+                    af[3], pos, random.randrange(2000, 4000, 100),
+                    maintask=dcs.task.MainTask.map[attack_type], group_size=af[1])
+            else:
+                attack_flight = self.m.flight_group_from_airport(
+                    att_country,
+                    att_country.name + " " + attack_type,
+                    af[3], start_airport, maintask=dcs.task.MainTask.map[attack_type], group_size=af[1]
+                )
+                attack_flight.add_runway_waypoint(start_airport)
+
+            if af[4]:
+                attack_flight.load_loadout(af[4])
+            if attack_type == "CAS":
+                wp = attack_flight.add_waypoint(attack_airport.position, 2000)
+                wp.tasks.append(dcs.task.EngageTargetsInZone(attack_airport.position))
+            else:
+                attack_flight.add_waypoint(awacs.position, 6000)
+
+            attack_flight.add_runway_waypoint(start_airport)
+            attack_flight.land_at(start_airport)
 
 
 def main():
