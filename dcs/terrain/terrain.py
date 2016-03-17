@@ -53,7 +53,7 @@ class Runway:
 class Airport:
     id = None
     name = None
-    position = None
+    position = None  # type: mapping.Point
     tacan = None
     frequencies = []
     unit_zones = []  # type: List[mapping.Rectangle]
