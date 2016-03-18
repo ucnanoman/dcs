@@ -3,6 +3,27 @@ from enum import Enum
 from .mapping import Point
 
 
+def create_from_dict(d):
+    _id = d["id"]
+    t = None
+    if _id == "WrappedAction":
+        actionid = d["params"]["action"]["id"]
+        if actionid == "Option":
+            t = options[d["params"]["action"]["params"]["name"]].create_from_dict(d)
+        else:
+            t = wrappedactions[actionid].create_from_dict(d)
+    elif _id == "EngageTargets":
+        t = engagetargets_tasks[d["key"]].create_from_dict(d)
+    else:
+        t = tasks_map[_id].create_from_dict(d)
+
+    t.auto = d["auto"]
+    t.enabled = d["enabled"]
+    t.number = d["number"]
+    t.params = d["params"]
+    return t
+
+
 class Task:
     def __init__(self, _id):
         self.id = _id
@@ -14,6 +35,12 @@ class Task:
     def main_task_name(self) -> str:
         return self.id
 
+    @classmethod
+    def create_from_dict(cls, d):
+        t = cls()
+        t.params = d["params"]
+        return t
+
     def dict(self):
         return {
             "id": self.id,
@@ -22,43 +49,6 @@ class Task:
             "params": self.params,
             "number": self.number
         }
-
-    @staticmethod
-    def create_from_dict(d):
-        _id = d["id"]
-        t = None
-        if _id == "WrappedAction":
-            actionid = d["params"]["action"]["id"]
-            if actionid == "EPLRS":
-                t = EPLRS(None)
-            if actionid == "SetFrequency":
-                t = SetFrequencyCommand(1)
-            if actionid == "ActivateBeacon":
-                t = ActivateBeaconCommand(10)
-            if actionid == "Option":
-                t = OptDisparseUnderFire()
-        elif _id == "EngageTargets":
-            t = engagetargets_tasks[d["key"]]()
-        elif _id == OrbitAction.Id:
-            t = OrbitAction(0, 0)
-        elif _id == AttackGroup.Id:
-            t = AttackGroup(0)
-        elif _id == Bombing.Id:
-            t = Bombing(0, 0)
-        elif _id == EngageTargetsInZone.Id:
-            t = EngageTargetsInZone(0, 0)
-        elif _id == EngageGroup.Id:
-            t = EngageGroup(0)
-        elif _id == EngageUnit.Id:
-            t = EngageUnit(0)
-        else:
-            t = tasks_map[_id]()
-
-        t.auto = d["auto"]
-        t.enabled = d["enabled"]
-        t.number = d["number"]
-        t.params = d["params"]
-        return t
 
 
 class WeaponType(Enum):
@@ -163,6 +153,12 @@ class AttackGroup(Task):
             "weaponType": weapon_type.value
         }
 
+    @classmethod
+    def create_from_dict(cls, d):
+        ag = AttackGroup(0, WeaponType.Auto)
+        ag.params = d["params"]
+        return ag
+
 
 class AttackUnit(Task):
     Id = "AttackUnit"
@@ -177,6 +173,12 @@ class AttackUnit(Task):
             "attackQty": attack_limit,
             "attackQtyLimit": attack_limit is not None
         }
+
+    @classmethod
+    def create_from_dict(cls, d):
+        t = cls(0)
+        t.params = d["params"]
+        return t
 
 
 class AttackMapObject(Task):
@@ -193,6 +195,12 @@ class AttackMapObject(Task):
             "attackQty": attack_limit,
             "attackQtyLimit": attack_limit is not None
         }
+
+    @classmethod
+    def create_from_dict(cls, d):
+        t = cls(None)
+        t.params = d["params"]
+        return t
 
 
 # TODO check
@@ -321,7 +329,7 @@ class EscortTaskAction(Task):
 class Bombing(Task):
     Id = "Bombing"
 
-    def __init__(self, x, y):
+    def __init__(self, position: Point):
         super(Bombing, self).__init__(Bombing.Id)
         self.params = {
             "directionEnabled": False,
@@ -329,13 +337,19 @@ class Bombing(Task):
             "attackQtyLimit": False,
             "attackQty": 1,
             "expend": "Auto",
-            "y": y,
+            "x": position.x,
+            "y": position.y,
             "groupAttack": False,
             "altitude": 88,
             "altitudeEnabled": False,
-            "weaponType": 1073741822,
-            "x": x
+            "weaponType": 1073741822
         }
+
+    @classmethod
+    def create_from_dict(cls, d):
+        t = cls(None)
+        t.params = d["params"]
+        return t
 
 
 class EngageTargets(Task):
@@ -368,6 +382,12 @@ class EngageTargetsInZone(Task):
             "zoneRadius": radius
         }
 
+    @classmethod
+    def create_from_dict(cls, d):
+        t = cls(None)
+        t.params = d["params"]
+        return t
+
 
 class EngageGroup(Task):
     Id = "EngageGroup"
@@ -381,6 +401,12 @@ class EngageGroup(Task):
             "priority": 1,
             "weaponType": 1073741822
         }
+
+    @classmethod
+    def create_from_dict(cls, d):
+        t = cls(0)
+        t.params = d["params"]
+        return t
 
 # weapontype 14 => guided bombs
 
@@ -421,6 +447,12 @@ class FireAtPoint(Task):
             "zoneRadius": radius
         }
 
+    @classmethod
+    def create_from_dict(cls, d):
+        t = cls(None)
+        t.params = d["params"]
+        return t
+
 
 class AWACSTaskAction(Task):
     Id = "AWACS"
@@ -454,6 +486,12 @@ class OrbitAction(Task):
             "speedEdited": True
         }
 
+    @classmethod
+    def create_from_dict(cls, d):
+        t = cls(0, 0)
+        t.params = d["params"]
+        return t
+
 tasks_map = {
     EscortTaskAction.Id: EscortTaskAction,
     AttackGroup.Id: AttackGroup,
@@ -482,6 +520,12 @@ class EPLRS(WrappedAction):
         self.params = {
             "action": {"id": EPLRS.Key, "params": {"value": True, "groupId": group_id}}
         }
+
+    @classmethod
+    def create_from_dict(cls, d):
+        t = cls(0)
+        t.params = d["params"]
+        return t
 
 
 class ActivateBeaconCommand(WrappedAction):
@@ -519,6 +563,12 @@ class ActivateBeaconCommand(WrappedAction):
             }
         }
 
+    @classmethod
+    def create_from_dict(cls, d):
+        t = cls(0)
+        t.params = d["params"]
+        return t
+
 
 class SetFrequencyCommand(WrappedAction):
     Key = "SetFrequency"
@@ -533,6 +583,12 @@ class SetFrequencyCommand(WrappedAction):
                 "params": {"modulation": modulation, "frequency": frequency * 1000000}
             }
         }
+
+    @classmethod
+    def create_from_dict(cls, d):
+        t = cls(0)
+        t.params = d["params"]
+        return t
 
 
 class SetInvisibleCommand(WrappedAction):
@@ -559,6 +615,14 @@ class SetImmortalCommand(WrappedAction):
                 "params": {"value": value}
             }
         }
+
+wrappedactions = {
+    EPLRS.Key: EPLRS,
+    ActivateBeaconCommand.Key: ActivateBeaconCommand,
+    SetFrequencyCommand.Key: SetFrequencyCommand,
+    SetInvisibleCommand.Key: SetInvisibleCommand,
+    SetImmortalCommand.Key: SetImmortalCommand
+}
 
 
 class MainTask:
@@ -787,3 +851,10 @@ class OptDisparseUnderFire(Option):
 
     def __init__(self, value=None):
         super(OptDisparseUnderFire, self).__init__(value)
+
+
+options = {
+    OptDisparseUnderFire.Key: OptDisparseUnderFire,
+    OptReactOnThreat.Key: OptReactOnThreat,
+    OptROE.Key: OptROE
+}
