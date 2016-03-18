@@ -178,7 +178,8 @@ class BasicScenario:
         }
     }
 
-    def __init__(self):
+    def __init__(self, hide=True):
+        self.hide = hide
         self.m = dcs.mission.Mission()
 
         self.m.coalition["red"].swap_country(self.m.coalition["blue"], dcs.countries.Ukraine.name)
@@ -194,10 +195,11 @@ class BasicScenario:
         self.m.start_time -= datetime.timedelta(hours=-12)
         self.m.start_time += datetime.timedelta(days=random.randrange(0, 365))
         map = {
-            "day": datetime.timedelta(minutes=random.randrange(480, 960)),
+            "day": datetime.timedelta(minutes=random.randrange(420, 1140)),
             "night": datetime.timedelta(minutes=random.randrange(-120, 240)),
             "dusk": datetime.timedelta(minutes=random.randrange(960, 1100)),
-            "dawn": datetime.timedelta(minutes=random.randrange(240, 480))
+            "dawn": datetime.timedelta(minutes=random.randrange(240, 480)),
+            "noon": datetime.timedelta(hours=random.randrange(600, 840))
         }
         if period == "random":
             k = list(map.keys())
@@ -221,7 +223,8 @@ class BasicScenario:
 
         if not airport.civilian:
             if airport.is_red():
-                dcs.templates.VehicleTemplate.Russia.sa10_site(self.m, airport.random_unit_zone().center(), 180)
+                vg = dcs.templates.VehicleTemplate.Russia.sa10_site(self.m, airport.random_unit_zone().center(), 180)
+                vg.hidden = self.hide
             elif airport.is_blue():
                 dcs.templates.VehicleTemplate.USA.patriot_site(self.m, airport.random_unit_zone().center(), 330)
         else:
@@ -233,6 +236,8 @@ class BasicScenario:
                     airport.name + " Air Defense",
                     air_def_units[random.randrange(0, len(air_def_units))],
                     airport.random_unit_zone().random_point(), 180)
+                if airport.is_red():
+                    vg.hidden = self.hide
 
                 for i in range(1, airdef):
                     _type = air_def_units[random.randrange(0, len(air_def_units))]
@@ -420,10 +425,10 @@ class BasicScenario:
 
 
 class Refueling(BasicScenario):
-    def __init__(self, aircraft_types: List[Tuple[str,str]], playercount: int, start: str):
+    def __init__(self, aircraft_types: List[Tuple[str,str]], playercount: int, start: str, unhide):
         super(Refueling, self).__init__()
 
-        self.add_civil_airtraffic(hidden=True)
+        self.add_civil_airtraffic(hidden=not unhide)
 
         caucasus = self.m.terrain  # type: dcs.terrain.Caucasus
 
@@ -559,8 +564,8 @@ class CAS(BasicScenario):
         Point(-243092.85714285, 912857.14285714), Point(-273949.99999999, 963714.28571429),
         Point(-415664.28571428, 963714.28571429), Point(-392807.14285714, 569142.85714286)])
 
-    def __init__(self, aircraft_types: List[Tuple[str,str]], playercount: int, start: str):
-        super(CAS, self).__init__()
+    def __init__(self, aircraft_types: List[Tuple[str,str]], playercount: int, start: str, unhide):
+        super(CAS, self).__init__(not unhide)
 
         caucasus = self.m.terrain  # type: dcs.terrain.Caucasus
 
@@ -574,9 +579,9 @@ class CAS(BasicScenario):
         battle_point = BasicScenario.battle_zones["zugidi"].random_point()
 
         front_hdg = 30
-        i = 0
+        isred = False
         for force in [self.blue_force, self.red_force]:
-            attack_hdg = (300 + (180 if i > 0 else 0)) % 360
+            attack_hdg = (300 + (180 if isred else 0)) % 360
             defense_hdg = (attack_hdg + 180) % 360
             rp = battle_point.point_from_heading(defense_hdg, 7*1000)
             for force_type in force:
@@ -592,8 +597,10 @@ class CAS(BasicScenario):
                     c = self.m.country(plat[0])
                     g = self.m.vehicle_group_platoon(c, conf, plat[1], rp)
                     g.formation_scattered(attack_hdg)
+                    if isred:
+                        g.hidden = self.hide
 
-                    if force_type not in ["Artillery", "Supply"] and i == 1:
+                    if force_type not in ["Artillery", "Supply"] and isred:
                         wp = g.add_waypoint(g.position.point_from_heading(attack_hdg, 12000))
                         wp.action = "Vee"
                         g.add_waypoint(wp.position.point_from_heading(random.randrange(attack_hdg-10, attack_hdg+30), 5000))
@@ -602,7 +609,7 @@ class CAS(BasicScenario):
                         for x in range(0, 10):
                             rect = dcs.mapping.Rectangle.from_point(battle_point.point_from_heading(attack_hdg, 7000), 2000)
                             g.points[0].tasks.append(dcs.task.FireAtPoint(rect.random_point(), 30, 30))
-            i += 1
+            isred = True
 
         for air_force_idx in self.air_force:
             air_force = self.air_force[air_force_idx]
@@ -624,6 +631,8 @@ class CAS(BasicScenario):
                             dcs.mission.StartType.Runway, group_size=conf_data[1]
                         )
                         pg.add_runway_waypoint(airport)
+                        if air_force_idx == "red":
+                            pg.hidden = self.hide
 
                         if force_type in ["SEAD", "CAS"]:
                             pg.add_waypoint(battle_point, 1000)
@@ -685,8 +694,8 @@ class CAP(BasicScenario):
         }
     }
 
-    def __init__(self, aircraft_types: List[Tuple[str, str]], playercount: int, start: str):
-        super(CAP, self).__init__()
+    def __init__(self, aircraft_types: List[Tuple[str, str]], playercount: int, start: str, unhide=False):
+        super(CAP, self).__init__(not unhide)
 
         caucasus = self.m.terrain
         blue_military_airport = [caucasus.kobuleti(), caucasus.kutaisi()]
@@ -737,6 +746,7 @@ class CAP(BasicScenario):
             p1, p2 = self.air_zones[zone].outbound_rectangle().resize(0.6).random_distant_points(80*1000)
             pf = self.m.patrol_flight(cap_country, cap_country.name + " CAP " + str(i), rcap["type"], None,
                                  p1, p2, group_size=rcap["size"])
+            pf.hidden = not unhide
             if rcap["loadout"]:
                 pf.load_loadout(rcap["loadout"])
             i += 1
@@ -759,6 +769,7 @@ class CAP(BasicScenario):
                 att_country.name + " " + attack_type,
                 af["type"], None if start == "inflight" else start_airport, pos, random.randrange(2000, 4000, 100),
                 maintask=dcs.task.MainTask.map[attack_type], group_size=af["size"])
+            attack_flight.hidden = not unhide
             if attack_flight.starts_from_airport():
                 attack_flight.add_runway_waypoint(start_airport)
 
@@ -792,8 +803,9 @@ def main():
     parser.add_argument("-p", "--playercount", default=1, type=int)
     parser.add_argument("-s", "--start", default="inflight", choices=["inflight", "runway", "warm", "cold"])
     parser.add_argument("-t", "--missiontype", default="main", choices=["main", "CAS", "CAP", "refuel"])
-    parser.add_argument("-d", "--daytime", choices=["random", "day", "night", "dusk", "dawn"], default="random")
+    parser.add_argument("-d", "--daytime", choices=["random", "day", "night", "dusk", "dawn", "noon"], default="random")
     parser.add_argument("-w", "--weather", choices=["dynamic", "clear"], default="dynamic")
+    parser.add_argument("-u", "--unhide", action="store_true", default=False, help="Show enemy pre mission")
     parser.add_argument("--show-stats", action="store_true", default=False, help="Show generated missions stats")
     parser.add_argument("-o", "--output", default=os.path.join(os.path.expanduser("~"), "Saved Games\\DCS\\Missions\\random.miz"))
 
@@ -813,14 +825,14 @@ def main():
     if missiontype == "refuel":
         supported = [dcs.planes.A_10C.id, dcs.planes.M_2000C.id]
         types = [x for x in types if x[1] in supported] if args.playercount > 1 else [x for x in types if x[1] == args.aircrafttype]
-        s = Refueling(types, args.playercount, args.start)
+        s = Refueling(types, args.playercount, args.start, args.unhide)
     elif missiontype == "CAS":
         types = types if args.playercount > 1 else [x for x in types if x[1] == args.aircrafttype]
-        s = CAS(types, args.playercount, args.start)
+        s = CAS(types, args.playercount, args.start, args.unhide)
     elif missiontype == "CAP":
         supported = [dcs.planes.M_2000C.id, dcs.planes.MiG_21Bis]
         types = [x for x in types if x[1] in supported] if args.playercount > 1 else [x for x in types if x[1] == args.aircrafttype]
-        s = CAP(types, args.playercount, args.start)
+        s = CAP(types, args.playercount, args.start, args.unhide)
     else:
         raise NotImplementedError(missiontype + " not implemented")
 
