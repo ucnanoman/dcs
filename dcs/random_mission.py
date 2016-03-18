@@ -637,14 +637,50 @@ class CAP(BasicScenario):
     air_force = {
         "red": {
             "CAS": {
-                "Hindis": (Russia.name, 2, 10, dcs.helicopters.Mi_24V, "4x9M114, 80xS-8"),
-                "Blackies": (Russia.name, 2, 10, Russia.Helicopter.Ka_50, None)
+                "Hindis": {
+                    "country": Russia.name,
+                    "size": 2,
+                    "rating": 10,
+                    "type": dcs.helicopters.Mi_24V,
+                    "loadout": "4x9M114, 80xS-8"
+                },
+                "Blackies": {
+                    "country": Russia.name,
+                    "size": 2,
+                    "rating": 10,
+                    "type": Russia.Helicopter.Ka_50,
+                    "loadout": None
+                }
             },
             "CAP": {
-                "Mig 21": (Russia.name, 2, 40, dcs.planes.MiG_21Bis, None),
-                "Mig 15": (Russia.name, 2, 20, dcs.planes.MiG_15bis, None),
-                "Mig 29": (Russia.name, 2, 70, dcs.planes.MiG_29A, None),
-                "Su 33": (Russia.name, 2, 80, dcs.planes.Su_33, "R-73*2,R-27ET*2,R-27ER*6,ECM")
+                "Mig 21": {
+                    "country": Russia.name,
+                    "size": 2,
+                    "rating": 40,
+                    "type": dcs.planes.MiG_21Bis,
+                    "loadout": None
+                },
+                "Mig 15": {
+                    "country": Russia.name,
+                    "size": 2,
+                    "rating": 20,
+                    "type": dcs.planes.MiG_15bis,
+                    "loadout": None
+                },
+                "Mig 29": {
+                    "country": Russia.name,
+                    "size": 2,
+                    "rating": 70,
+                    "type": dcs.planes.MiG_29A,
+                    "loadout": None
+                },
+                "Su 33": {
+                    "country": Russia.name,
+                    "size": 2,
+                    "rating": 80,
+                    "type": dcs.planes.Su_33,
+                    "loadout": "R-73*2,R-27ET*2,R-27ER*6,ECM"
+                }
             }
         }
     }
@@ -697,12 +733,12 @@ class CAP(BasicScenario):
         for zone in ["russia_east", "russia_west"]:
             rcaps = list(self.air_force["red"]["CAP"].keys())
             rcap = self.air_force["red"]["CAP"][random.choice(rcaps)]
-            cap_country = self.m.country(rcap[0])
+            cap_country = self.m.country(rcap["country"])
             p1, p2 = self.air_zones[zone].outbound_rectangle().resize(0.6).random_distant_points(80*1000)
-            pf = self.m.patrol_flight(cap_country, cap_country.name + " CAP " + str(i), rcap[3], None,
-                                 p1, p2, group_size=rcap[1])
-            if rcap[4]:
-                pf.load_loadout(rcap[4])
+            pf = self.m.patrol_flight(cap_country, cap_country.name + " CAP " + str(i), rcap["type"], None,
+                                 p1, p2, group_size=rcap["size"])
+            if rcap["loadout"]:
+                pf.load_loadout(rcap["loadout"])
             i += 1
 
         attack_type = random.choice(list(self.air_force["red"].keys()))
@@ -712,27 +748,28 @@ class CAP(BasicScenario):
             spawn_rect = self.air_zones["russia_east"].outbound_rectangle()
             spawn_rect = dcs.mapping.Rectangle(spawn_rect.bottom + 20000, spawn_rect.left,
                                                spawn_rect.bottom, spawn_rect.right)
-            att_country = self.m.country(af[0])
-            start_airport = caucasus.sochi() if af[3].helicopter else random.choice(self.red_airports)
+            att_country = self.m.country(af["country"])
+            start_airport = caucasus.sochi() if af["type"].helicopter else random.choice(self.red_airports)
             attack_airport = random.choice(self.blue_airports)
 
             if start == "inflight":
-                pos = attack_airport.position.point_from_heading(random.randrange(290, 410), 40*1000) if af[3].helicopter else spawn_rect.random_point()
+                pos = attack_airport.position.point_from_heading(
+                    random.randrange(290, 410), 40*1000) if af["type"].helicopter else spawn_rect.random_point()
                 attack_flight = self.m.flight_group_inflight(
                     att_country,
                     att_country.name + " " + attack_type,
-                    af[3], pos, random.randrange(2000, 4000, 100),
-                    maintask=dcs.task.MainTask.map[attack_type], group_size=af[1])
+                    af["type"], pos, random.randrange(2000, 4000, 100),
+                    maintask=dcs.task.MainTask.map[attack_type], group_size=af["size"])
             else:
                 attack_flight = self.m.flight_group_from_airport(
                     att_country,
                     att_country.name + " " + attack_type,
-                    af[3], start_airport, maintask=dcs.task.MainTask.map[attack_type], group_size=af[1]
+                    af["type"], start_airport, maintask=dcs.task.MainTask.map[attack_type], group_size=af["size"]
                 )
                 attack_flight.add_runway_waypoint(start_airport)
 
-            if af[4]:
-                attack_flight.load_loadout(af[4])
+            if af["loadout"]:
+                attack_flight.load_loadout(af["loadout"])
             if attack_type == "CAS":
                 wp = attack_flight.add_waypoint(attack_airport.position, 2000)
                 wp.tasks.append(dcs.task.EngageTargetsInZone(attack_airport.position))
