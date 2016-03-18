@@ -835,8 +835,29 @@ class Mission:
             self._flying_group_from_airport(_country, ag, maintask, airport, start_type, parking_slots))
         return ag
 
+    def flight_group(self,
+                     country: Country,
+                     name: str,
+                     aircraft_type: unittype.FlyingType,
+                     airport: Optional[Airport],
+                     position: Optional[mapping.Point],
+                     altitude=3000,
+                     speed=500,
+                     maintask: Optional[task.MainTask]=None,
+                     start_type: StartType=StartType.Runway,
+                     group_size=1
+                     ) -> unitgroup.FlyingGroup:
+        if airport:
+            fg = self.flight_group_from_airport(country, name, aircraft_type,
+                                                airport, maintask, start_type, group_size)
+        else:
+            fg = self.flight_group_inflight(country, name, aircraft_type,
+                                            position, altitude, speed, maintask, group_size)
+
+        return fg
+
     def awacs_flight(self,
-                     _country,
+                     _country: Country,
                      name: str,
                      plane_type: PlaneType,
                      airport: Optional[Airport],
