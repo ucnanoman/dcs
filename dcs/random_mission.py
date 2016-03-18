@@ -752,20 +752,14 @@ class CAP(BasicScenario):
             start_airport = caucasus.sochi() if af["type"].helicopter else random.choice(self.red_airports)
             attack_airport = random.choice(self.blue_airports)
 
-            if start == "inflight":
-                pos = attack_airport.position.point_from_heading(
-                    random.randrange(290, 410), 40*1000) if af["type"].helicopter else spawn_rect.random_point()
-                attack_flight = self.m.flight_group_inflight(
-                    att_country,
-                    att_country.name + " " + attack_type,
-                    af["type"], pos, random.randrange(2000, 4000, 100),
-                    maintask=dcs.task.MainTask.map[attack_type], group_size=af["size"])
-            else:
-                attack_flight = self.m.flight_group_from_airport(
-                    att_country,
-                    att_country.name + " " + attack_type,
-                    af["type"], start_airport, maintask=dcs.task.MainTask.map[attack_type], group_size=af["size"]
-                )
+            pos = attack_airport.position.point_from_heading(
+                random.randrange(290, 410), 40*1000) if af["type"].helicopter else spawn_rect.random_point()
+            attack_flight = self.m.flight_group(
+                att_country,
+                att_country.name + " " + attack_type,
+                af["type"], None if start == "inflight" else start_airport, pos, random.randrange(2000, 4000, 100),
+                maintask=dcs.task.MainTask.map[attack_type], group_size=af["size"])
+            if attack_flight.starts_from_airport():
                 attack_flight.add_runway_waypoint(start_airport)
 
             if af["loadout"]:
