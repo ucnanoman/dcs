@@ -793,6 +793,7 @@ class Mission:
         for i in range(1, group_size + 1):
             p = self.aircraft(name + " Pilot #{nr}".format(nr=i), aircraft_type, _country)
             p.position = copy.copy(position)
+            p.fuel *= 0.9
             ag.add_unit(p)
 
         _country.add_aircraft_group(self._flying_group_inflight(_country, ag, maintask, altitude, speed))
