@@ -25,6 +25,7 @@ from . import planes
 from . import helicopters
 from . import task
 from . import weather
+from .forcedoptions import ForcedOptions
 from .groundcontrol import GroundControl
 
 
@@ -260,7 +261,7 @@ class Mission:
         self.failures = {}
         self.trig = {}
         self.groundControl = GroundControl()
-        self.forcedOptions = {}
+        self.forced_options = ForcedOptions()
         self.resourceCounter = {}  # keep default or empty, old format
         self.needModules = {}
         self.weather = weather.Weather(self.terrain)
@@ -534,7 +535,7 @@ class Mission:
         self.failures = imp_mission["failures"]  # TODO
 
         # forced options
-        self.forcedOptions = imp_mission["forcedOptions"]  # TODO
+        self.forced_options.load_from_dict(imp_mission["forcedOptions"])
 
         # map
         self.map = imp_mission["map"]
@@ -1154,7 +1155,7 @@ class Mission:
         m["result"] = self.goals.generate_result()
         m["currentKey"] = self.currentKey
         m["maxDictId"] = self.current_dict_id
-        m["forcedOptions"] = self.forcedOptions
+        m["forcedOptions"] = self.forced_options.dict()
         m["failures"] = self.failures
 
         return m
