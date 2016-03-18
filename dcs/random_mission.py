@@ -786,7 +786,8 @@ def main():
         (dcs.countries.USA.name, dcs.planes.A_10C.id),
         (dcs.countries.Georgia.name, dcs.planes.Su_25T.id),
         (dcs.countries.USA.name, dcs.planes.M_2000C.id),
-        (dcs.countries.USA.name, dcs.helicopters.Ka_50.id)
+        (dcs.countries.USA.name, dcs.helicopters.Ka_50.id),
+        (dcs.countries.USA.name, USA.Plane.MiG_21Bis.id)
     ]
     aircraft_types = [x[1] for x in types]
     parser = argparse.ArgumentParser(description="Random DCS mission generator")
@@ -809,6 +810,8 @@ def main():
         dcs.helicopters.Ka_50.id,
         dcs.planes.A_10C.id] and args.missiontype == "main":
         missiontype = "CAS"
+    if args.aircrafttype in [dcs.planes.M_2000C.id, dcs.planes.MiG_21Bis.id] and args.missiontype == "main":
+        missiontype = "CAP"
     if args.aircrafttype == dcs.planes.A_10C.id:
         if args.missiontype not in ["CAS", "refuel"]:
             missiontype = "CAS"
@@ -821,7 +824,7 @@ def main():
         types = types if args.playercount > 1 else [x for x in types if x[1] == args.aircrafttype]
         s = CAS(types, args.playercount, args.start)
     elif missiontype == "CAP":
-        supported = [dcs.planes.M_2000C.id]
+        supported = [dcs.planes.M_2000C.id, dcs.planes.MiG_21Bis]
         types = [x for x in types if x[1] in supported] if args.playercount > 1 else [x for x in types if x[1] == args.aircrafttype]
         s = CAP(types, args.playercount, args.start)
     else:
