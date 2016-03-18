@@ -8,6 +8,7 @@ from .plane import Plane, PlaneType
 from .point import StaticPoint, MovingPoint
 from .translation import String
 from .terrain import Airport, Runway
+from . import task
 from . import mapping
 
 
@@ -78,7 +79,7 @@ class MovingGroup(Group):
     def __init__(self, _id, name=None, start_time=0):
         super(MovingGroup, self).__init__(_id, name)
         self.task = ""
-        self.tasks = {}
+        self.tasks = []
         self.start_time = start_time
         self.frequency = 251
         self.task_selected = True
@@ -87,13 +88,15 @@ class MovingGroup(Group):
         super(MovingGroup, self).load_from_dict(d)
         self.frequency = d.get("frequency")
         self.task = d.get("task")  # ships don't have a task
+        for t in d.get("tasks", []):
+            self.tasks.append(task.create_from_dict(d["task"]["params"]["tasks"][t]))
         self.task_selected = d.get("taskSelected", False)
 
     def dict(self):
         d = super(MovingGroup, self).dict()
         if self.task:
             d["task"] = self.task
-        d["tasks"] = self.tasks
+        d["tasks"] = {i+1: self.tasks[i].dict() for i in range(0, len(self.tasks))}
         d["start_time"] = self.start_time
         if self.frequency:
             d["frequency"] = self.frequency
