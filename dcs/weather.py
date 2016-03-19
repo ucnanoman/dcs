@@ -133,6 +133,7 @@ class Weather:
         center = self.terrain.bounds.center()  # type: mapping.Point
         self.atmosphere_type = 1
         self.type_weather = system.value
+        min_pressure = 0
         for c in range(0, cyclones):
             # TODO ask ED, if we are allowed to use generateCyclones code
             c = Cyclone()
@@ -149,8 +150,15 @@ class Weather:
             if system in [Weather.BaricSystem.Cyclone, Weather.BaricSystem.None_]:
                 c.pressure_excess *= -1
 
-            print(system, c.pressure_excess)
+            min_pressure = min(min_pressure, c.pressure_excess)
+
             self.cyclones.append(c)
+        if min_pressure > -800:
+            self.turbulence_at_ground = random.randrange(0, 10)
+        elif -1500 < min_pressure < -800:
+            self.turbulence_at_ground = random.randrange(10, 25)
+        else:
+            self.turbulence_at_ground = random.randrange(25, 60)
 
     def dict(self):
         d = {}
