@@ -1,6 +1,7 @@
 import math
 import random
 import copy
+from enum import Enum
 from typing import List, Union
 from .unit import Unit, Skill, FlyingUnit
 from .helicopter import Helicopter, HelicopterType
@@ -106,7 +107,7 @@ class MovingGroup(Group):
 
 
 class VehicleGroup(MovingGroup):
-    class Formation:
+    class Formation(Enum):
         Line = 1
         Star = 2
         Rectangle = 3
