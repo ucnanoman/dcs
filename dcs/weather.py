@@ -1,5 +1,7 @@
 from datetime import datetime, timezone
 import random
+from enum import Enum
+from . import mapping
 
 
 class Wind:
@@ -39,10 +41,10 @@ class Weather:
         Spring = 3
         Fall = 4
 
-    class BaricSystem:
-        Cyclone = 1
-        AntiCyclone = 2
-        None_ = 3
+    class BaricSystem(Enum):
+        Cyclone = 0
+        AntiCyclone = 1
+        None_ = 2
 
     def __init__(self, terrain):
         self.terrain = terrain
@@ -128,22 +130,26 @@ class Weather:
     def dynamic_weather(self, system: BaricSystem, cyclones: int=1):
         self.cyclones.clear()
 
+        center = self.terrain.bounds.center()  # type: mapping.Point
         self.atmosphere_type = 1
+        self.type_weather = system.value
         for c in range(0, cyclones):
             # TODO ask ED, if we are allowed to use generateCyclones code
             c = Cyclone()
-            c.ellipticity = 1.4810203189526
-            c.centerZ = 268960.84456154
-            c.centerX = -107958.43961804
+            pos = center.point_from_heading(random.randrange(0, 360), random.randrange(10*1000, 1000*1000, 1000))
+            c.centerZ = pos.y
+            c.centerX = pos.x
             c.pressure_spread = 877063.35765298
             c.rotation = 2.6744769369
 
-            c.pressure_excess = random.randrange(900, 1400)
+            c.pressure_excess = random.randrange(500, 2500) if random.random() > 0.8 else random.randrange(600, 1300)
+
             c.ellipticity = 1 + random.random() * 0.25
 
-            if system == Weather.BaricSystem.Cyclone:
+            if system in [Weather.BaricSystem.Cyclone, Weather.BaricSystem.None_]:
                 c.pressure_excess *= -1
 
+            print(system, c.pressure_excess)
             self.cyclones.append(c)
 
     def dict(self):

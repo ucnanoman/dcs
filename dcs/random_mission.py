@@ -188,8 +188,15 @@ class BasicScenario:
         self.blue_airports = []  # type: List[dcs.terrain.Airport]
         self.setup_airports()
 
-    def dynamic_weather(self):
-        self.m.weather.dynamic_weather(random.randrange(1, 2))
+    def dynamic_weather(self, baricsystem: str):
+        if baricsystem == "dyncyclone":
+            self.m.weather.dynamic_weather(dcs.weather.Weather.BaricSystem.Cyclone, 2)
+        elif baricsystem == "dynanti":
+            self.m.weather.dynamic_weather(dcs.weather.Weather.BaricSystem.AntiCyclone, 2)
+        elif baricsystem == "dynnone":
+            self.m.weather.dynamic_weather(dcs.weather.Weather.BaricSystem.None_, 2)
+        else:
+            self.m.weather.dynamic_weather(random.choice(list(dcs.weather.Weather.BaricSystem)), 2)
 
     def daytime(self, period):
         self.m.start_time -= datetime.timedelta(hours=-12)
@@ -804,7 +811,7 @@ def main():
     parser.add_argument("-s", "--start", default="inflight", choices=["inflight", "runway", "warm", "cold"])
     parser.add_argument("-t", "--missiontype", default="main", choices=["main", "CAS", "CAP", "refuel"])
     parser.add_argument("-d", "--daytime", choices=["random", "day", "night", "dusk", "dawn", "noon"], default="random")
-    parser.add_argument("-w", "--weather", choices=["dynamic", "clear"], default="dynamic")
+    parser.add_argument("-w", "--weather", choices=["dynamic", "dyncyclone", "dynanti", "dynone", "clear"], default="dynamic")
     parser.add_argument("-u", "--unhide", action="store_true", default=False, help="Show enemy pre mission")
     parser.add_argument("--show-stats", action="store_true", default=False, help="Show generated missions stats")
     parser.add_argument("-o", "--output", default=os.path.join(os.path.expanduser("~"), "Saved Games\\DCS\\Missions\\random.miz"))
@@ -838,7 +845,7 @@ def main():
 
     s.daytime(args.daytime)
     if args.weather == "dynamic":
-        s.dynamic_weather()
+        s.dynamic_weather(args.weather)
     s.save(args.output, args.show_stats)
 
 
