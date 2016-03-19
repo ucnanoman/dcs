@@ -143,11 +143,9 @@ class VehicleGroup(MovingGroup):
 
     def formation_line(self, heading, distance=20):
         pos = self.units[0].position
-        for i in range(0, len(self.units)):
+        for i in range(1, len(self.units)):
             unit = self.units[i]
-            unit.position.x = pos.x
-            unit.position.y = pos.y + i * distance
-
+            unit.position = pos.point_from_heading(heading + 90, i * distance)
             unit.heading = heading
 
     def formation_star(self, heading, distance=20):
