@@ -204,13 +204,18 @@ class AttackMapObject(Task):
         return t
 
 
-# TODO check
 class AntishipStrikeTaskAction(Task):
     Id = "EngageTargets"
-    Key = "AntishipStrike"
+    Key = "Antiship"
 
     def __init__(self):
         super(AntishipStrikeTaskAction, self).__init__(AntishipStrikeTaskAction.Id)
+        self.params = {
+            "targetTypes": {
+                1: Targets.All.Naval.Ships
+            },
+            "priority": 0
+        }
 
     def dict(self):
         d = super(AntishipStrikeTaskAction, self).dict()
@@ -682,7 +687,7 @@ class AWACS(MainTask):
 
 class AntishipStrike(MainTask):
     id = 30
-    name = "AntishipStrike"
+    name = "Antiship Strike"
     sub_tasks = [OrbitAction, Follow, AttackGroup, AttackUnit]
     perform_task = [AntishipStrikeTaskAction]
 
