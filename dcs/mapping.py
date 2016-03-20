@@ -5,8 +5,8 @@ from typing import List, Tuple, Union
 
 
 def point_from_heading(_x, _y, heading, distance):
-    """
-    Calculates a point from a given point, heading and distance.
+    """Calculates a point from a given point, heading and distance.
+
     :param _x: source point x
     :param _y: source point y
     :param heading: heading in degrees from source point
@@ -24,8 +24,8 @@ def point_from_heading(_x, _y, heading, distance):
 
 
 def distance(x1, y1, x2, y2):
-    """
-    Returns the distance between 2 points
+    """Returns the distance between 2 points
+
     :param x1: x coordinate of point 1
     :param y1: y coordinate of point 1
     :param x2: x coordinate of point 2
@@ -36,8 +36,8 @@ def distance(x1, y1, x2, y2):
 
 
 def heading_between_points(x1, y1, x2, y2):
-    """
-    Returns the angle between 2 points in degrees.
+    """Returns the angle between 2 points in degrees.
+
     :param x1: x coordinate of point 1
     :param y1: y coordinate of point 1
     :param x2: x coordinate of point 2
@@ -205,8 +205,8 @@ class Polygon:
         self.points = copy.copy(points)
 
     def point_in_poly(self, point: Point):
-        """
-        Checks if the given point is within the polygon.
+        """Checks if the given point is within the polygon.
+
         :param point: Point to test
         :return: True if point is within the polygon else False
         """
@@ -231,8 +231,8 @@ class Polygon:
         return inside
 
     def random_point(self) -> Point:
-        """
-        Returns a random point within this polygon object
+        """Returns a random point within this polygon object
+
         :return: a random point
         """
         # split polygon into triangles using ear clipping

@@ -809,9 +809,10 @@ class Mission:
                                   start_type: StartType=StartType.Cold,
                                   group_size=1,
                                   parking_slots: List[ParkingSlot] = None) -> unitgroup.PlaneGroup:
-        """
-        Add a new PlaneGroup/Helicopter group at the given airport.
+        """Add a new PlaneGroup/Helicopter group at the given airport.
+
         Runway, warm/cold start depends on the given start_type.
+
         :param _country: Country object the plane group belongs to
         :param name: Name of the aircraft group
         :param maintask: Task of the aircraft group

@@ -4,3 +4,4 @@ missions
 build/
 dist/
 pydcs.egg-info/
+doc/_*

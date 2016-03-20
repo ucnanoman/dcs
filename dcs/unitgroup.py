@@ -280,13 +280,12 @@ class FlyingGroup(MovingGroup):
 
     def add_runway_waypoint(self, airport: Airport, runway: Runway=None,
                             distance=random.randrange(6000, 8000, 100)) -> MovingPoint:
-        """
-        Adds a waypoint parallel to the given runway heading, for start or approach.
+        """Adds a waypoint parallel to the given runway heading, for start or approach.
+
         :param airport: start airport object
-        :param runway: runway for heading direction
-                        if None first(default) airport runway will be used.
+        :param runway: runway for heading direction, if None first(default) airport runway will be used.
         :param distance: distance of the waypoint from the airport
-        :return:
+        :return: MovePoint object describing the waypoint
         """
         runway = runway if runway else airport.runways[0]
 
