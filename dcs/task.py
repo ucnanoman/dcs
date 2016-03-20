@@ -448,7 +448,7 @@ class EngageTargets(Task):
 class EngageTargetsInZone(Task):
     Id = "EngageTargetsInZone"
 
-    def __init__(self, position: Point=Point(0,0), radius=5000, targets: List[str]=None):
+    def __init__(self, position: Point=Point(0, 0), radius=5000, targets: List[str]=None):
         super(EngageTargetsInZone, self).__init__(EngageTargetsInZone.Id)
         if targets is None:
             targets = [Targets.All]
@@ -576,6 +576,7 @@ tasks_map = {
     EscortTaskAction.Id: EscortTaskAction,
     AttackGroup.Id: AttackGroup,
     Bombing.Id: Bombing,
+    BombingRunway.Id: BombingRunway,
     EngageTargetsInZone.Id: EngageTargetsInZone,
     EngageGroup.Id: EngageGroup,
     EngageUnit.Id: EngageUnit,
