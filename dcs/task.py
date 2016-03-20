@@ -31,6 +31,7 @@ class Task:
         self.auto = False
         self.number = 1
         self.enabled = True
+        # TODO params my have a condition dict
 
     def main_task_name(self) -> str:
         return self.id
@@ -146,7 +147,7 @@ class NoTask(Task):
 class AttackGroup(Task):
     Id = "AttackGroup"
 
-    def __init__(self, group_id, weapon_type:WeaponType=WeaponType.Auto):
+    def __init__(self, group_id=0, weapon_type: WeaponType=WeaponType.Auto):
         super(AttackGroup, self).__init__(AttackGroup.Id)
         self.params = {
             "groupId": group_id,
@@ -163,8 +164,8 @@ class AttackGroup(Task):
 class AttackUnit(Task):
     Id = "AttackUnit"
 
-    def __init__(self, unit_id, attack_limit: Optional[int]=None,
-                 weapon_type:WeaponType=WeaponType.Auto, group_attack=False):
+    def __init__(self, unit_id=0, attack_limit: Optional[int]=None,
+                 weapon_type: WeaponType=WeaponType.Auto, group_attack=False):
         super(AttackUnit, self).__init__(self.Id)
         self.params = {
             "groupId": unit_id,
@@ -184,8 +185,8 @@ class AttackUnit(Task):
 class AttackMapObject(Task):
     Id = "AttackMapObject"
 
-    def __init__(self, position: Point, attack_limit: Optional[int]=None,
-                 weapon_type:WeaponType=WeaponType.Auto, group_attack=False):
+    def __init__(self, position: Point=Point(0, 0), attack_limit: Optional[int]=None,
+                 weapon_type: WeaponType=WeaponType.Auto, group_attack=False):
         super(AttackMapObject, self).__init__(self.Id)
         self.params = {
             "x": position.x,
@@ -326,30 +327,56 @@ class EscortTaskAction(Task):
             self.params["lastWptIndex"] = lastwpt
 
 
+class Expend(Enum):
+    Auto = "Auto"
+    One = "One"
+    Two = "Two"
+    Four = "Four"
+    Quarter = "Quarter"
+    Half = "Half"
+
+
 class Bombing(Task):
     Id = "Bombing"
 
-    def __init__(self, position: Point):
+    def __init__(self, position: Point=Point(0, 0), weapon_type: WeaponType=WeaponType.Auto,
+                 expend: Expend=Expend.Auto, attack_qty=1, group_attack=False,
+                 direction: Optional[int]=None, altitude: Optional[int]=None):
         super(Bombing, self).__init__(Bombing.Id)
         self.params = {
-            "directionEnabled": False,
-            "direction": 0,
-            "attackQtyLimit": False,
-            "attackQty": 1,
-            "expend": "Auto",
+            "directionEnabled": direction is not None,
+            "direction": direction if direction is not None else 0,
+            "attackQtyLimit": attack_qty > 1,
+            "attackQty": attack_qty if attack_qty > 1 else 1,
+            "expend": expend.value,
             "x": position.x,
             "y": position.y,
-            "groupAttack": False,
-            "altitude": 88,
-            "altitudeEnabled": False,
-            "weaponType": 1073741822
+            "groupAttack": group_attack,
+            "altitude": altitude if altitude is not None else 0,
+            "altitudeEnabled": altitude is not None,
+            "weaponType": weapon_type.value
         }
 
-    @classmethod
-    def create_from_dict(cls, d):
-        t = cls(None)
-        t.params = d["params"]
-        return t
+
+class BombingRunway(Task):
+    Id = "BombingRunway"
+
+    def __init__(self, airport_id: int=0, weapon_type: WeaponType=WeaponType.Auto,
+                 expend: Expend=Expend.Auto, attack_qty=1, group_attack=False,
+                 direction: Optional[int]=None, altitude: Optional[int]=None):
+        super(BombingRunway, self).__init__(BombingRunway.Id)
+        self.params = {
+            "directionEnabled": direction is not None,
+            "direction": direction if direction is not None else 0,
+            "attackQtyLimit": attack_qty > 1,
+            "attackQty": attack_qty if attack_qty > 1 else 1,
+            "expend": expend.value,
+            "runwayId": airport_id,
+            "groupAttack": group_attack,
+            "altitude": altitude if altitude is not None else 0,
+            "altitudeEnabled": altitude is not None,
+            "weaponType": weapon_type.value
+        }
 
 
 class EngageTargets(Task):
@@ -370,7 +397,7 @@ class EngageTargets(Task):
 class EngageTargetsInZone(Task):
     Id = "EngageTargetsInZone"
 
-    def __init__(self, position: Point, radius=5000, targets: List[str]=None):
+    def __init__(self, position: Point=Point(0,0), radius=5000, targets: List[str]=None):
         super(EngageTargetsInZone, self).__init__(EngageTargetsInZone.Id)
         if targets is None:
             targets = [Targets.All]
@@ -382,17 +409,11 @@ class EngageTargetsInZone(Task):
             "zoneRadius": radius
         }
 
-    @classmethod
-    def create_from_dict(cls, d):
-        t = cls(None)
-        t.params = d["params"]
-        return t
-
 
 class EngageGroup(Task):
     Id = "EngageGroup"
 
-    def __init__(self, group_id, visible=False):
+    def __init__(self, group_id=0, visible=False):
         super(EngageGroup, self).__init__(EngageGroup.Id)
         self.auto = False
         self.params = {
@@ -402,19 +423,11 @@ class EngageGroup(Task):
             "weaponType": 1073741822
         }
 
-    @classmethod
-    def create_from_dict(cls, d):
-        t = cls(0)
-        t.params = d["params"]
-        return t
-
-# weapontype 14 => guided bombs
-
 
 class EngageUnit(Task):
     Id = "EngageUnit"
 
-    def __init__(self, unit_id, visible=False):
+    def __init__(self, unit_id=0, visible=False):
         super(EngageUnit, self).__init__(EngageUnit.Id)
         self.auto = False
         self.params = {
@@ -434,7 +447,7 @@ class EngageUnit(Task):
 class FireAtPoint(Task):
     Id = "FireAtPoint"
 
-    def __init__(self, position: Point, rounds=None, radius=0):
+    def __init__(self, position: Point=Point(0, 0), rounds=None, radius=0):
         super(FireAtPoint, self).__init__(FireAtPoint.Id)
         self.auto = False
         self.params = {
@@ -447,12 +460,6 @@ class FireAtPoint(Task):
             "zoneRadius": radius
         }
 
-    @classmethod
-    def create_from_dict(cls, d):
-        t = cls(None)
-        t.params = d["params"]
-        return t
-
 
 class AWACSTaskAction(Task):
     Id = "AWACS"
@@ -462,7 +469,7 @@ class AWACSTaskAction(Task):
 
 
 class RefuelingTaskAction(Task):
-    Id = "Tanker"
+    Id = "Refueling"
 
     def __init__(self):
         super(RefuelingTaskAction, self).__init__(RefuelingTaskAction.Id)
@@ -470,27 +477,48 @@ class RefuelingTaskAction(Task):
 
 class OrbitAction(Task):
     Id = "Orbit"
-    Pattern_RaceTrack = "Race-Track"
-    Pattern_Circle = "Circle"
-    supported_pattern = [Pattern_RaceTrack, Pattern_Circle]
 
-    def __init__(self, altitude, speed, pattern=Pattern_RaceTrack):
+    class OrbitPattern(Enum):
+        RaceTrack = "Race-Track"
+        Circle = "Circle"
+
+    def __init__(self, altitude=4000, speed=600, pattern: OrbitPattern=OrbitPattern.RaceTrack):
         super(OrbitAction, self).__init__(OrbitAction.Id)
-        if pattern not in OrbitAction.supported_pattern:
-            raise RuntimeError("Orbit patter '{pattern}' unknown. Use one of {patterns}.".format(
-                pattern=pattern, patterns=','.join(OrbitAction.supported_pattern)))
         self.params = {
             "altitude": altitude,
-            "pattern": pattern,
+            "pattern": pattern.value,
             "speed": speed / 3.6,
             "speedEdited": True
         }
 
-    @classmethod
-    def create_from_dict(cls, d):
-        t = cls(0, 0)
-        t.params = d["params"]
-        return t
+
+class Follow(Task):
+    Id = "Follow"
+
+    def __init__(self, groupid=None, position: Point=Point(-200, 0), altitude_difference=-200, last_wpt=None):
+        super(Follow, self).__init__(self.Id)
+
+        self.params = {
+            "pos": {"x": position.x, "z": position.y, "y": altitude_difference}
+        }
+        if groupid is not None:
+            self.params["groupId"] = groupid
+        if last_wpt:
+            self.params["lastWptIndexFlag"] = True
+            self.params["lastWptIndex"] = last_wpt
+            self.params["lastWptIndexFlagChangedManually"] = False
+
+
+class Aerobatics(Task):
+    Id = "Aerobatics"
+
+    def __init__(self):
+        super(Aerobatics, self).__init__(self.Id)
+
+        self.params = {
+            "maneuversSequency": [],  # TODO
+            "maneuversParams": {}
+        }
 
 tasks_map = {
     EscortTaskAction.Id: EscortTaskAction,
@@ -501,7 +529,9 @@ tasks_map = {
     EngageUnit.Id: EngageUnit,
     AWACSTaskAction.Id: AWACSTaskAction,
     RefuelingTaskAction.Id: RefuelingTaskAction,
-    OrbitAction.Id: OrbitAction
+    OrbitAction.Id: OrbitAction,
+    Follow.Id: Follow,
+    Aerobatics.Id: Aerobatics
 }
 
 
@@ -634,33 +664,33 @@ class MainTask:
 class Nothing(MainTask):
     id = 15
     name = "Nothing"
-    sub_tasks = ["Orbit", "Follow", "Aerobatics"]
+    sub_tasks = [OrbitAction, Follow, Aerobatics]
 
 
 class AFAC(MainTask):
     id = 16
     name = "AFAC"
-    sub_tasks = ["Orbit", "Follow", "AttackGroup", "AttackUnit", "Bombing", "AttackMapObject"]
+    sub_tasks = [OrbitAction, Follow, AttackGroup, AttackUnit, Bombing, AttackMapObject]
 
 
 class AWACS(MainTask):
     id = 14
     name = "AWACS"
-    sub_tasks = ["Orbit", "Follow", "Refueling"]
+    sub_tasks = [OrbitAction, Follow, RefuelingTaskAction]
     perform_task = [AWACSTaskAction]
 
 
 class AntishipStrike(MainTask):
     id = 30
     name = "AntishipStrike"
-    sub_tasks = ["Orbit", "Follow", "AttackGroup", "AttackUnit"]
+    sub_tasks = [OrbitAction, Follow, AttackGroup, AttackUnit]
     perform_task = [AntishipStrikeTaskAction]
 
 
 class CAS(MainTask):
     id = 31
     name = "CAS"
-    sub_tasks = ["Orbit", "Follow", "AttackGroup", "AttackUnit", "Aerobatics", "Refueling"]
+    sub_tasks = [OrbitAction, Follow, AttackGroup, AttackUnit, Aerobatics, RefuelingTaskAction]
     perform_task = [CASTaskAction]
 
     class EnrouteTasks:
@@ -672,7 +702,7 @@ class CAS(MainTask):
 class CAP(MainTask):
     id = 11
     name = "CAP"
-    sub_tasks = ["Orbit", "Follow", "Aerobatics"]
+    sub_tasks = [OrbitAction, Follow, Aerobatics]
     perform_task = [CAPTaskAction]
 
     class EnrouteTasks:
@@ -685,67 +715,67 @@ class CAP(MainTask):
 class Escort(MainTask):
     id = 18
     name = "Escort"
-    sub_tasks = ["Orbit", "Follow", "Escort"]
+    sub_tasks = [OrbitAction, Follow, EscortTaskAction]
     perform_task = [EscortTaskAction]
 
 
 class FighterSweep(MainTask):
     id = 19
     name = "Fighter Sweep"
-    sub_tasks = ["Orbit", "Follow", "Aerobatics"]
+    sub_tasks = [OrbitAction, Follow, Aerobatics]
     perform_task = [FighterSweepTaskAction]
 
 
 class GroundAttack(MainTask):
     id = 32
     name = "Ground Attack"
-    sub_tasks = ["Orbit", "Follow", "Bombing", "AttackMapObject", "Aerobatics"]
+    sub_tasks = [OrbitAction, Follow, Bombing, AttackMapObject, Aerobatics]
 
 
 class Intercept(MainTask):
     id = 10
     name = "Intercept"
-    sub_tasks = ["Orbit", "Follow", "AttackGroup", "AttackUnit", "Aerobatics"]
+    sub_tasks = [OrbitAction, Follow, AttackGroup, AttackUnit, Aerobatics]
 
 
 class PinpointStrike(MainTask):
     id = 33
     name = "Pinpoint Strike"
-    sub_tasks = ["Orbit", "Follow", "Bombing", "AttackMapObject"]
+    sub_tasks = [OrbitAction, Follow, Bombing, AttackMapObject]
 
 
 class Reconnaissance(MainTask):
     id = 17
     name = "Reconnaissance"
-    sub_tasks = ["Orbit", "Follow", "Aerobatics"]
+    sub_tasks = [OrbitAction, Follow, Aerobatics]
     perform_task = []
 
 
 class Refueling(MainTask):
     id = 13
     name = "Refueling"
-    sub_tasks = ["Orbit", "Follow"]
+    sub_tasks = [OrbitAction, Follow]
     perform_task = [RefuelingTaskAction]
 
 
 class RunwayAttack(MainTask):
     id = 34
     name = "Ground Attack"
-    sub_tasks = ["Orbit", "Follow", "Bombing", "BombingRunway", "AttackMapObject"]
+    sub_tasks = [OrbitAction, Follow, Bombing, BombingRunway, AttackMapObject]
     perform_task = []
 
 
 class SEAD(MainTask):
     id = 29
     name = "SEAD"
-    sub_tasks = ["Orbit", "Follow", "AttackGroup", "AttackUnit", "Escort"]
+    sub_tasks = [OrbitAction, Follow, AttackGroup, AttackUnit, EscortTaskAction]
     perform_task = [SEADTaskAction]
 
 
 class Transport(MainTask):
     id = 35
     name = "Transport"
-    sub_tasks = ["Orbit", "Follow", "Aerobatics"]
+    sub_tasks = [OrbitAction, Follow, Aerobatics]
     perform_task = []
 
 

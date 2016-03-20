@@ -882,7 +882,7 @@ class Mission:
         wp.tasks.append(task.SetFrequencyCommand(frequency))
 
         wp = awacs.add_waypoint(position, altitude, speed)
-        wp.tasks.append(task.OrbitAction(altitude, speed, task.OrbitAction.Pattern_RaceTrack))
+        wp.tasks.append(task.OrbitAction(altitude, speed, task.OrbitAction.OrbitPattern.RaceTrack))
 
         p = position.point_from_heading(heading, race_distance)
         awacs.add_waypoint(p, altitude, speed)
@@ -920,7 +920,7 @@ class Mission:
             tanker.points[0].tasks.append(task.ActivateBeaconCommand(channel, modechannel))
 
         wp = tanker.add_waypoint(position, altitude, speed)
-        wp.tasks.append(task.OrbitAction(altitude, speed, "Race-Track"))
+        wp.tasks.append(task.OrbitAction(altitude, speed, task.OrbitAction.OrbitPattern.RaceTrack))
 
         p = position.point_from_heading(heading, race_distance)
         tanker.add_waypoint(p, altitude, speed)
