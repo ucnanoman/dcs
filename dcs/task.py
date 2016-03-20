@@ -23,6 +23,11 @@ def create_from_dict(d):
     return t
 
 
+class Modulation(Enum):
+    AM = 0
+    FM = 1
+
+
 class Task:
     def __init__(self, _id):
         self.id = _id
@@ -571,6 +576,53 @@ class Aerobatics(Task):
             "maneuversParams": {}
         }
 
+
+class Designation(Enum):
+    No = "No"
+    Auto = "Auto"
+    WP = "WP"
+    IRPointer = "IR-Pointer"
+    Laser = "Laser"
+
+
+class FAC(Task):
+    Id = "FAC"
+
+    def __init__(self, callsign: int=1, designation: Designation=Designation.Auto,
+                 frequency: int=30, modulation: Modulation=Modulation.FM, number: int=1):
+        super(FAC, self).__init__(self.Id)
+
+        self.params = {
+            "designation": designation.value,
+            "frequency": frequency * 1000000,
+            "modulation": modulation.value,
+            "datalink": True,
+            "callname": callsign,
+            "number": number
+        }
+
+
+class FACEngageGroup(Task):
+    Id = "FAC_EngageGroup"
+
+    def __init__(self, group_id: int=0, visible=False, weapon_type: WeaponType=WeaponType.Auto, priority: int=0,
+                 callsign: int=1, designation: Designation=Designation.Auto,
+                 frequency: int=30, modulation: Modulation=Modulation.FM, datalink=True, number: int=1):
+        super(FACEngageGroup, self).__init__(self.Id)
+
+        self.params = {
+            "groupId": group_id,
+            "visible": visible,
+            "weaponType": weapon_type.value,
+            "designation": designation.value,
+            "frequency": frequency * 1000000,
+            "modulation": modulation.value,
+            "datalink": datalink,
+            "callname": callsign,
+            "number": number,
+            "priority": priority
+        }
+
 tasks_map = {
     ControlledTask.Id: ControlledTask,
     EscortTaskAction.Id: EscortTaskAction,
@@ -584,7 +636,9 @@ tasks_map = {
     RefuelingTaskAction.Id: RefuelingTaskAction,
     OrbitAction.Id: OrbitAction,
     Follow.Id: Follow,
-    Aerobatics.Id: Aerobatics
+    Aerobatics.Id: Aerobatics,
+    FAC.Id: FAC,
+    FACEngageGroup.Id: FACEngageGroup
 }
 
 
@@ -655,15 +709,13 @@ class ActivateBeaconCommand(WrappedAction):
 
 class SetFrequencyCommand(WrappedAction):
     Key = "SetFrequency"
-    Modulation_AM = 0
-    Modulation_FM = 1
 
-    def __init__(self, frequency, modulation=Modulation_AM):
+    def __init__(self, frequency, modulation: Modulation=Modulation.AM):
         super(SetFrequencyCommand, self).__init__()
         self.params = {
             "action": {
                 "id": SetFrequencyCommand.Key,
-                "params": {"modulation": modulation, "frequency": frequency * 1000000}
+                "params": {"modulation": modulation.value, "frequency": frequency * 1000000}
             }
         }
 
