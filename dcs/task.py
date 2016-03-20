@@ -5,7 +5,6 @@ from .mapping import Point
 
 def create_from_dict(d):
     _id = d["id"]
-    t = None
     if _id == "WrappedAction":
         actionid = d["params"]["action"]["id"]
         if actionid == "Option":
@@ -31,7 +30,6 @@ class Task:
         self.auto = False
         self.number = 1
         self.enabled = True
-        # TODO params my have a condition dict
 
     def main_task_name(self) -> str:
         return self.id
@@ -50,6 +48,54 @@ class Task:
             "params": self.params,
             "number": self.number
         }
+
+
+class ControlledTask(Task):
+    Id = "ControlledTask"
+
+    def __init__(self, task: Task=None):
+        super(ControlledTask, self).__init__(self.Id)
+        if task:
+            self.params["task"] = task.dict()
+
+    def start_after_time(self, time: int):
+        self.params.setdefault("condition", {})
+        self.params["condition"]["time"] = time
+
+    def start_if_user_flag(self, user_flag, value: bool):
+        self.params.setdefault("condition", {})
+        self.params["condition"]["userFlag"] = str(user_flag)
+        self.params["condition"]["userFlagValue"] = value
+
+    def start_probability(self, probability: int):
+        self.params.setdefault("condition", {})
+        self.params["condition"]["probability"] = probability
+
+    def start_if_lua_predicate(self, lua_predicate: str):
+        self.params.setdefault("condition", {})
+        self.params["condition"]["condition"] = lua_predicate
+
+    def stop_after_time(self, time: int):
+        self.params.setdefault("stopCondition", {})
+        self.params["stopCondition"]["time"] = time
+
+    def stop_if_user_flag(self, user_flag, value: bool):
+        self.params.setdefault("stopCondition", {})
+        self.params["stopCondition"]["userFlag"] = str(user_flag)
+        self.params["stopCondition"]["userFlagValue"] = value
+
+    def stop_if_lua_predicate(self, lua_predicate: str):
+        self.params.setdefault("stopCondition", {})
+        self.params["stopCondition"]["condition"] = lua_predicate
+
+    def stop_after_duration(self, duration: int):
+        """
+        Stop task after duration seconds
+        :param duration: in seconds
+        :return: None
+        """
+        self.params.setdefault("stopCondition", {})
+        self.params["stopCondition"]["duration"] = duration
 
 
 class WeaponType(Enum):
@@ -526,6 +572,7 @@ class Aerobatics(Task):
         }
 
 tasks_map = {
+    ControlledTask.Id: ControlledTask,
     EscortTaskAction.Id: EscortTaskAction,
     AttackGroup.Id: AttackGroup,
     Bombing.Id: Bombing,
