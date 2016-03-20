@@ -996,7 +996,7 @@ class Mission:
         eg.points[0].tasks.clear()
         eg.points[0].tasks.append(task.EngageTargets(max_engage_distance, [task.Targets.All.Air]))
         wp = eg.add_waypoint(pos1, altitude, speed)
-        wp.tasks.append(task.OrbitAction(altitude, speed, task.OrbitAction.Pattern_RaceTrack))
+        wp.tasks.append(task.OrbitAction(altitude, speed, task.OrbitAction.OrbitPattern.RaceTrack))
         eg.add_waypoint(pos2, altitude, speed)
 
         return eg
