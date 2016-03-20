@@ -9,7 +9,7 @@ class UnitType:
 
 
 class VehicleType(UnitType):
-    pass
+    eplrs = False
 
 
 class FlyingType(UnitType):

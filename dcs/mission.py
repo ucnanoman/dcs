@@ -605,7 +605,8 @@ class Mission:
             raise TypeError("_type not a unittype.VehicleType class: " + repr(_type))
         return Vehicle(self.next_unit_id(), self.string(name), _type.id)
 
-    def vehicle_group(self, _country, name, _type: unittype.VehicleType, position: mapping.Point, heading=0, group_size=1, action="Off Road",
+    def vehicle_group(self, _country, name, _type: unittype.VehicleType, position: mapping.Point,
+                      heading=0, group_size=1, action="Off Road",
                       formation=unitgroup.VehicleGroup.Formation.Line) -> unitgroup.VehicleGroup:
         vg = unitgroup.VehicleGroup(self.next_group_id(), self.string(name))
 
@@ -618,6 +619,8 @@ class Mission:
 
         wp = vg.add_waypoint(vg.units[0].position, action, 0)
         wp.ETA_locked = True
+        if _type.eplrs:
+            wp.tasks.append(task.EPLRS(1))
 
         vg.formation(formation)
 
@@ -628,16 +631,21 @@ class Mission:
                               formation=unitgroup.VehicleGroup.Formation.Line) -> unitgroup.VehicleGroup:
         vg = unitgroup.VehicleGroup(self.next_group_id(), self.string(name))
 
+        eplrs = False
         for i in range(0, len(types)):
             utype = types[i]
             v = self.vehicle(name + " Unit #{nr}".format(nr=i + 1), utype)
             v.position.x = position.x
             v.position.y = position.y + i * 20
             v.heading = heading
+            if utype.eplrs:
+                eplrs = True
             vg.add_unit(v)
 
         wp = vg.add_waypoint(vg.units[0].position, action, 0)
         wp.ETA_locked = True
+        if eplrs:
+            wp.tasks.append(task.EPLRS(1))
 
         vg.formation(formation)
 
@@ -697,11 +705,13 @@ class Mission:
             i += 1
 
     @staticmethod
-    def _load_tasks(mp: MovingPoint, maintask: task.MainTask):
+    def _load_tasks(mp: MovingPoint, maintask: task.MainTask, eplrs: bool):
         for t in maintask.perform_task:
             ptask = t()
             ptask.auto = True
             mp.tasks.append(ptask)
+        if eplrs:
+            mp.tasks.append(task.EPLRS(1))
         return mp
 
     def _flying_group_from_airport(self, _country, group: unitgroup.FlyingGroup,
@@ -736,7 +746,7 @@ class Mission:
         mp.position = copy.copy(group.units[0].position)
         mp.airdrome_id = airport.id
         mp.alt = group.units[0].alt
-        Mission._load_tasks(mp, maintask)
+        Mission._load_tasks(mp, maintask, group.units[0].unit_type.eplrs)
 
         group.add_point(mp)
 
@@ -763,7 +773,7 @@ class Mission:
         mp.alt = altitude
         mp.speed = speed / 3.6
 
-        Mission._load_tasks(mp, maintask)
+        Mission._load_tasks(mp, maintask, group.units[0].unit_type.eplrs)
 
         group.add_point(mp)
 

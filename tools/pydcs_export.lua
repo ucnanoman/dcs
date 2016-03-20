@@ -432,6 +432,9 @@ for i in pairs(unit_categories) do
         writeln(file, '    class '..safename..'(unittype.VehicleType):')
         writeln(file, '        id = "'..unit.type..'"')
         writeln(file, '        name = "'..unit.DisplayName..'"')
+        if unit.EPLRS then
+            writeln(file, '        eprls = True')
+        end
         --writeln(file, '        category = '..i)
     end
 end

@@ -118,6 +118,7 @@ class Unarmed:
     class APC_M1025_HMMWV(unittype.VehicleType):
         id = "Hummer"
         name = "APC M1025 HMMWV"
+        eprls = True
 
     class Transport_M818(unittype.VehicleType):
         id = "M 818"
@@ -237,26 +238,32 @@ class Armor:
     class APC_M1043_HMMWV_Armament(unittype.VehicleType):
         id = "M1043 HMMWV Armament"
         name = "APC M1043 HMMWV Armament"
+        eprls = True
 
     class ATGM_M1045_HMMWV_TOW(unittype.VehicleType):
         id = "M1045 HMMWV TOW"
         name = "ATGM M1045 HMMWV TOW"
+        eprls = True
 
     class APC_M1126_Stryker_ICV(unittype.VehicleType):
         id = "M1126 Stryker ICV"
         name = "APC M1126 Stryker ICV"
+        eprls = True
 
     class APC_M113(unittype.VehicleType):
         id = "M-113"
         name = "APC M113"
+        eprls = True
 
     class ATGM_M1134_Stryker(unittype.VehicleType):
         id = "M1134 Stryker ATGM"
         name = "ATGM M1134 Stryker"
+        eprls = True
 
     class IFV_M2A2_Bradley(unittype.VehicleType):
         id = "M-2 Bradley"
         name = "IFV M2A2 Bradley"
+        eprls = True
 
     class IFV_MCV_80(unittype.VehicleType):
         id = "MCV-80"
@@ -297,10 +304,12 @@ class Armor:
     class SPG_M1128_Stryker_MGS(unittype.VehicleType):
         id = "M1128 Stryker MGS"
         name = "SPG M1128 Stryker MGS"
+        eprls = True
 
     class MBT_M1A2_Abrams(unittype.VehicleType):
         id = "M-1 Abrams"
         name = "MBT M1A2 Abrams"
+        eprls = True
 
     class MBT_T_55(unittype.VehicleType):
         id = "T-55"
@@ -348,6 +357,7 @@ class Artillery:
     class SPH_M109_Paladin(unittype.VehicleType):
         id = "M-109"
         name = "SPH M109 Paladin"
+        eprls = True
 
     class MLRS_BM_21_Grad(unittype.VehicleType):
         id = "Grad-URAL"
@@ -364,6 +374,7 @@ class Artillery:
     class MLRS_M270(unittype.VehicleType):
         id = "MLRS"
         name = "MLRS M270"
+        eprls = True
 
 
 class AirDefence:
@@ -423,6 +434,7 @@ class AirDefence:
     class SAM_Patriot_ECS_AN_MSQ_104(unittype.VehicleType):
         id = "Patriot ECS"
         name = "SAM Patriot ECS AN/MSQ-104"
+        eprls = True
 
     class SPAAA_Gepard(unittype.VehicleType):
         id = "Gepard"
@@ -435,6 +447,7 @@ class AirDefence:
     class AAA_Vulcan_M163(unittype.VehicleType):
         id = "Vulcan"
         name = "AAA Vulcan M163"
+        eprls = True
 
     class SAM_Hawk_LN_M192(unittype.VehicleType):
         id = "Hawk ln"
@@ -443,10 +456,12 @@ class AirDefence:
     class SAM_Chaparral_M48(unittype.VehicleType):
         id = "M48 Chaparral"
         name = "SAM Chaparral M48"
+        eprls = True
 
     class SAM_Linebacker_M6(unittype.VehicleType):
         id = "M6 Linebacker"
         name = "SAM Linebacker M6"
+        eprls = True
 
     class SAM_Patriot_LN_M901(unittype.VehicleType):
         id = "Patriot ln"
@@ -455,6 +470,7 @@ class AirDefence:
     class SAM_Avenger_M1097(unittype.VehicleType):
         id = "M1097 Avenger"
         name = "SAM Avenger M1097"
+        eprls = True
 
     class SAM_Patriot_EPP_III(unittype.VehicleType):
         id = "Patriot EPP"
@@ -575,6 +591,7 @@ class AirDefence:
     class SAM_Hawk_SR_AN_MPQ_50(unittype.VehicleType):
         id = "Hawk sr"
         name = "SAM Hawk SR AN/MPQ-50"
+        eprls = True
 
     class SAM_Patriot_STR_AN_MPQ_53(unittype.VehicleType):
         id = "Patriot str"
@@ -583,6 +600,7 @@ class AirDefence:
     class SAM_Hawk_CWAR_AN_MPQ_55(unittype.VehicleType):
         id = "Hawk cwar"
         name = "SAM Hawk CWAR AN/MPQ-55"
+        eprls = True
 
     class SAM_SA_3_S_125_SR_P_19(unittype.VehicleType):
         id = "p-19 s-125 sr"
