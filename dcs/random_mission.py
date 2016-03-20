@@ -618,6 +618,13 @@ class CAS(BasicScenario):
                             g.points[0].tasks.append(dcs.task.FireAtPoint(rect.random_point(), 30, 30))
             isred = True
 
+        # rp = dcs.mapping.Rectangle.from_point(rp, 200).random_point()
+        # fac = self.m.vehicle_group(usa, "FAC", USA.Vehicle.Armor.APC_M1126_Stryker_ICV, rp)
+        # fac.points[0].tasks.append(dcs.task.EPLRS(1))
+        # fac.points[0].tasks.append(dcs.task.FAC())
+        # fac.points[0].tasks.append(dcs.task.SetInvisibleCommand())
+        # fac.points[0].tasks.append(dcs.task.OptROE(dcs.task.OptROE.Values.WeaponHold))
+
         for air_force_idx in self.air_force:
             air_force = self.air_force[air_force_idx]
             airports = blue_military_airport if air_force_idx == "blue" else red_military_airport
