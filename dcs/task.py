@@ -41,15 +41,14 @@ class Modulation(Enum):
 
 
 class Task:
+    """Base class for task actions."""
+
     def __init__(self, _id):
         self.id = _id
         self.params = {}
         self.auto = False
         self.number = 1
         self.enabled = True
-
-    def main_task_name(self) -> str:
-        return self.id
 
     @classmethod
     def create_from_dict(cls, d):
@@ -68,6 +67,13 @@ class Task:
 
 
 class ControlledTask(Task):
+    """A ControlledTask is a task action with start and stop conditions.
+
+    ControlledTask is a wrapper around a normal task action that has special
+    methods to add start/stop conditions.
+
+    :param task: to wrap
+    """
     Id = "ControlledTask"
 
     def __init__(self, task: Task=None):
@@ -76,40 +82,69 @@ class ControlledTask(Task):
             self.params["task"] = task.dict()
 
     def start_after_time(self, time: int):
+        """Start the wrapped task after time seconds.
+
+        :param time: start after x seconds.
+        """
         self.params.setdefault("condition", {})
         self.params["condition"]["time"] = time
 
     def start_if_user_flag(self, user_flag, value: bool):
+        """Start the wrapped task if user_flag has value.
+
+        :param user_flag: id of the userflag
+        :param value: bool value of the flag
+        """
         self.params.setdefault("condition", {})
         self.params["condition"]["userFlag"] = str(user_flag)
         self.params["condition"]["userFlagValue"] = value
 
     def start_probability(self, probability: int):
+        """Chance that the wrapped task will actually start.
+
+        :param probability: start chance in %
+        """
         self.params.setdefault("condition", {})
         self.params["condition"]["probability"] = probability
 
     def start_if_lua_predicate(self, lua_predicate: str):
+        """Start wrapped task if lua condition is true.
+
+        :param lua_predicate: lua condition as string
+        """
         self.params.setdefault("condition", {})
         self.params["condition"]["condition"] = lua_predicate
 
     def stop_after_time(self, time: int):
+        """Stop the wrapped task after time seconds.
+
+        :param time: start after x seconds.
+        """
         self.params.setdefault("stopCondition", {})
         self.params["stopCondition"]["time"] = time
 
     def stop_if_user_flag(self, user_flag, value: bool):
+        """Stop the wrapped task if user_flag has value.
+
+        :param user_flag: id of the userflag
+        :param value: bool value of the flag
+        """
         self.params.setdefault("stopCondition", {})
         self.params["stopCondition"]["userFlag"] = str(user_flag)
         self.params["stopCondition"]["userFlagValue"] = value
 
     def stop_if_lua_predicate(self, lua_predicate: str):
+        """Stop wrapped task if lua condition is true.
+
+        :param lua_predicate: lua condition as string
+        """
         self.params.setdefault("stopCondition", {})
         self.params["stopCondition"]["condition"] = lua_predicate
 
     def stop_after_duration(self, duration: int):
-        """
-        Stop task after duration seconds
+        """Stop task after duration seconds.
+
         :param duration: in seconds
-        :return: None
         """
         self.params.setdefault("stopCondition", {})
         self.params["stopCondition"]["duration"] = duration
@@ -208,6 +243,11 @@ class NoTask(Task):
 
 
 class AttackGroup(Task):
+    """Attack group task action
+
+    :param group_id: group id to attack
+    :param weapon_type: :py:class:`WeaponType` to use for the attack
+    """
     Id = "AttackGroup"
 
     def __init__(self, group_id=0, weapon_type: WeaponType=WeaponType.Auto):
@@ -217,14 +257,15 @@ class AttackGroup(Task):
             "weaponType": weapon_type.value
         }
 
-    @classmethod
-    def create_from_dict(cls, d):
-        ag = AttackGroup(0, WeaponType.Auto)
-        ag.params = d["params"]
-        return ag
-
 
 class AttackUnit(Task):
+    """Attack unit task action
+
+    :param unit_id: unit id to attack
+    :param attack_limit: how much attack runs
+    :param weapon_type: :py:class:`WeaponType` to use for the attack
+    :param group_attack: indicate if the unit must be attacked by all aircrafts in the group.
+    """
     Id = "AttackUnit"
 
     def __init__(self, unit_id=0, attack_limit: Optional[int]=None,
@@ -237,12 +278,6 @@ class AttackUnit(Task):
             "attackQty": attack_limit,
             "attackQtyLimit": attack_limit is not None
         }
-
-    @classmethod
-    def create_from_dict(cls, d):
-        t = cls(0)
-        t.params = d["params"]
-        return t
 
 
 class AttackMapObject(Task):
@@ -259,12 +294,6 @@ class AttackMapObject(Task):
             "attackQty": attack_limit,
             "attackQtyLimit": attack_limit is not None
         }
-
-    @classmethod
-    def create_from_dict(cls, d):
-        t = cls(None)
-        t.params = d["params"]
-        return t
 
 
 class AntishipStrikeTaskAction(Task):
@@ -664,17 +693,11 @@ class WrappedAction(Task):
 class EPLRS(WrappedAction):
     Key = "EPLRS"
 
-    def __init__(self, group_id):
+    def __init__(self, group_id=1):
         super(EPLRS, self).__init__()
         self.params = {
             "action": {"id": EPLRS.Key, "params": {"value": True, "groupId": group_id}}
         }
-
-    @classmethod
-    def create_from_dict(cls, d):
-        t = cls(0)
-        t.params = d["params"]
-        return t
 
 
 class ActivateBeaconCommand(WrappedAction):
@@ -695,7 +718,7 @@ class ActivateBeaconCommand(WrappedAction):
 
         return freq * 1000000
 
-    def __init__(self, channel, modechannel="X", callsign="TKR", bearing=True):
+    def __init__(self, channel=10, modechannel="X", callsign="TKR", bearing=True):
         super(ActivateBeaconCommand, self).__init__()
         self.params = {
             "action": {
@@ -712,17 +735,11 @@ class ActivateBeaconCommand(WrappedAction):
             }
         }
 
-    @classmethod
-    def create_from_dict(cls, d):
-        t = cls(0)
-        t.params = d["params"]
-        return t
-
 
 class SetFrequencyCommand(WrappedAction):
     Key = "SetFrequency"
 
-    def __init__(self, frequency, modulation: Modulation=Modulation.AM):
+    def __init__(self, frequency=133, modulation: Modulation=Modulation.AM):
         super(SetFrequencyCommand, self).__init__()
         self.params = {
             "action": {
@@ -730,12 +747,6 @@ class SetFrequencyCommand(WrappedAction):
                 "params": {"modulation": modulation.value, "frequency": frequency * 1000000}
             }
         }
-
-    @classmethod
-    def create_from_dict(cls, d):
-        t = cls(0)
-        t.params = d["params"]
-        return t
 
 
 class SetInvisibleCommand(WrappedAction):
