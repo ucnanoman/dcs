@@ -558,6 +558,18 @@ class FireAtPoint(Task):
         }
 
 
+class Hold(Task):
+    """Unit will hold current position"""
+    Id = "Hold"
+
+    def __init__(self):
+        super(Hold, self).__init__(self.Id)
+
+        self.params = {
+            "templateId": ""
+        }
+
+
 class AWACSTaskAction(Task):
     Id = "AWACS"
 
@@ -673,6 +685,115 @@ class FACEngageGroup(Task):
             "priority": priority
         }
 
+
+class Land(Task):
+    """Helicopter landing task.
+
+    If added to a helicopter group, the group will land at the given coordinates for the given duration.
+
+    :param position: :py:class:`dcs.mapping.Point` where to land
+    :param duration: how long the helicopter should stay on ground in seconds.
+    """
+    Id = "Land"
+
+    def __init__(self, position: Point=Point(0, 0), duration: int=None):
+        super(Land, self).__init__(self.Id)
+
+        self.params = {
+            "x": position.x,
+            "y": position.y,
+            "duration": duration if duration else 300,
+            "durationFlag": duration is not None
+        }
+
+
+class Embarking(Task):
+    """Pickup task for helicopters.
+
+    Helicopter group will land at the given coordinates and will pickup the given groups.
+
+    :param position: :py:class:`dcs.mapping.Point` where to land and pickup
+    :param groupids: list of groups to pickup
+    :param distribution: dictionary with heli unit to groups to pickup mapping {heliunit: [grp1, grp2], ..}
+    :param duration: how long the helicopter should stay on ground  and wait in seconds.
+    """
+    Id = "Embarking"
+
+    def __init__(self, position: Point=Point(0, 0), groupids: List[int]=None,
+                 distribution: Dict[int, List[int]]=None, duration: int=None):
+        super(Embarking, self).__init__(self.Id)
+
+        groupids = [] if groupids is None else groupids
+        distribution = {} if distribution is None else distribution
+
+        self.params = {
+            "x": position.x,
+            "y": position.y,
+            "duration": duration if duration else 300,
+            "durationFlag": duration is not None,
+            "groupsForEmbarking": {x: x for x in groupids},
+            "distributionFlag": len(distribution) > 0,
+            "distribution": {x: {y: y for y in distribution[x]} for x in distribution}
+        }
+
+
+class EmbarkToTransport(Task):
+    """Task for ground units that will get picked up by a helicopter
+
+    :param position: :py:class:`dcs.mapping.Point` where to wait to get picked up.
+    :param zone_radius: radius around the point where the group will embark.
+    :param concrete_unitid: if specified the group will embark to exaclty this unit.
+    """
+    Id = "EmbarkToTransport"
+
+    def __init__(self, position: Point=Point(0, 0), zone_radius=200, concrete_unitid=None):
+        super(EmbarkToTransport, self).__init__(self.Id)
+
+        self.params = {
+            "x": position.x,
+            "y": position.y,
+            "zoneRadius": zone_radius,
+            "concretteUnitChecked": concrete_unitid is not None,
+            "selectedUnit": concrete_unitid if concrete_unitid else -1
+        }
+
+
+class DisembarkFromTransport(Task):
+    """Task for ground units that will disembark a transport helicopter
+
+    :param position: :py:class:`dcs.mapping.Point` where the group will disembark
+    :param zone_radius: radius around the point where the group will disembark.
+    """
+    Id = "DisembarkFromTransport"
+
+    def __init__(self, position: Point=Point(0, 0), zone_radius=200):
+        super(DisembarkFromTransport, self).__init__(self.Id)
+
+        self.params = {
+            "x": position.x,
+            "y": position.y,
+            "zoneRadius": zone_radius
+        }
+
+
+class CargoTransportation(Task):
+    """Task for Cargo transportation.
+
+    :param groupid: cargo group id
+    :param zoneid: zone id to transport to??
+    """
+    Id = "CargoTransportation"
+
+    def __init__(self, groupid=None, zoneid=None):
+        super(CargoTransportation, self).__init__(self.Id)
+
+        self.params = {}
+        if groupid:
+            self.params["groupId"] = groupid
+        if zoneid:
+            self.params["zoneId"] = zoneid
+
+
 tasks_map = {
     ControlledTask.Id: ControlledTask,
     EscortTaskAction.Id: EscortTaskAction,
@@ -689,7 +810,13 @@ tasks_map = {
     Follow.Id: Follow,
     Aerobatics.Id: Aerobatics,
     FAC.Id: FAC,
-    FACEngageGroup.Id: FACEngageGroup
+    FACEngageGroup.Id: FACEngageGroup,
+    Hold.Id: Hold,
+    Land.Id: Land,
+    Embarking.Id: Embarking,
+    EmbarkToTransport.Id: EmbarkToTransport,
+    DisembarkFromTransport.Id: DisembarkFromTransport,
+    CargoTransportation.Id: CargoTransportation
 }
 
 
@@ -746,7 +873,91 @@ class ActivateBeaconCommand(WrappedAction):
         }
 
 
+class RunScript(WrappedAction):
+    """Runs a given script string
+
+    :param script: to be executed
+    """
+    Key = "Script"
+
+    def __init__(self, script: str=""):
+        super(RunScript, self).__init__()
+        self.params = {
+            "action": {
+                "id": self.Key,
+                "params": {"command": script}
+            }
+        }
+
+
+class RunScriptFile(WrappedAction):
+    """Runs a script attached to the mission
+
+    :param resourcekey: resource key to the script file, see :py:class:`dcs.mission.MapResource`
+    """
+    Key = "ScriptFile"
+
+    def __init__(self, resourcekey: str=""):
+        super(RunScriptFile, self).__init__()
+        self.params = {
+            "action": {
+                "id": self.Key,
+                "params": {"file": resourcekey}
+            }
+        }
+
+
+class TransmitMessage(WrappedAction):
+    """Transmits a given sound file over the current radio channel.
+
+    :param soundfile_reskey: resource key to the sound file to transmit, see :py:class:`dcs.mission.MapResource`
+    :param subtitle_resstring: string resource key to subtitle displayed,
+                               see :py:member:`dcs.mission.Mission.translation`
+    :param loop: True or False if the sound file should be looped.
+    :param subtitle_duration: how long the subtitle should be displayed in seconds.
+    """
+    Key = "TransmitMessage"
+
+    def __init__(self, soundfile_reskey: Optional[str]=None, subtitle_resstring: Optional[str]=None,
+                 loop=False, subtitle_duration=5):
+        super(TransmitMessage, self).__init__()
+
+        self.params = {
+            "action": {
+                "id": self.Key,
+                "params": {
+                    "file": soundfile_reskey,
+                    "loop": loop,
+                    "duration": subtitle_duration
+                }
+            }
+        }
+        if subtitle_resstring:
+            self.params["action"]["params"]["subtitle"] = subtitle_resstring
+
+
+class StopTransmission(WrappedAction):
+    """Stops any :py:class:`dcs.task.TransmitMessage` task currently ongoing.
+    """
+    Key = "StopTransmission"
+
+    def __init__(self):
+        super(StopTransmission, self).__init__()
+
+        self.params = {
+            "action": {
+                "id": self.Key,
+                "params": {}
+            }
+        }
+
+
 class SetFrequencyCommand(WrappedAction):
+    """Set the groups radio frequency.
+
+    :param frequency: frequency band in mhz.
+    :param modulation: AM or FM, see :py:class:`dcs.task.Modulation`
+    """
     Key = "SetFrequency"
 
     def __init__(self, frequency=133, modulation: Modulation=Modulation.AM):
@@ -755,6 +966,27 @@ class SetFrequencyCommand(WrappedAction):
             "action": {
                 "id": SetFrequencyCommand.Key,
                 "params": {"modulation": modulation.value, "frequency": frequency * 1000000}
+            }
+        }
+
+
+class SwitchWaypoint(WrappedAction):
+    """Switch to a different waypoint.
+
+    :param from_waypoint: from which waypoint to switch.??
+    :param to_waypoint: new current waypoint
+    """
+    Key = "SwitchWaypoint"
+
+    def __init__(self, from_waypoint=1, to_waypoint=2):
+        super(SwitchWaypoint, self).__init__()
+        self.params = {
+            "action": {
+                "id": self.Key,
+                "params": {
+                    "goToWaypointIndex": to_waypoint,
+                    "fromWaypointIndex": from_waypoint
+                }
             }
         }
 
@@ -789,7 +1021,12 @@ wrappedactions = {
     ActivateBeaconCommand.Key: ActivateBeaconCommand,
     SetFrequencyCommand.Key: SetFrequencyCommand,
     SetInvisibleCommand.Key: SetInvisibleCommand,
-    SetImmortalCommand.Key: SetImmortalCommand
+    SetImmortalCommand.Key: SetImmortalCommand,
+    RunScript.Key: RunScript,
+    RunScriptFile.Key: RunScriptFile,
+    TransmitMessage.Key: TransmitMessage,
+    StopTransmission.Key: StopTransmission,
+    SwitchWaypoint.Key: SwitchWaypoint
 }
 
 
