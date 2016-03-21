@@ -30,7 +30,7 @@ This code generates a mission with a AWACS flight starting cold from batumi.
 
 ## Install
 
-    pip install dcs-mission
+    pip install pydcs
 
 ## TODO
 
