@@ -22,7 +22,7 @@ class Group:
         self.name = name if name else String()
 
     def load_from_dict(self, d):
-        self.hidden = d["hidden"]
+        self.hidden = d.get("hidden")
 
     def add_unit(self, unit: Unit):
         self.units.append(unit)
@@ -46,10 +46,11 @@ class Group:
 
     def dict(self):
         d = {
-            "hidden": self.hidden,
             "name": self.name.id,
             "groupId": self.id
         }
+        if self.hidden is not None:
+            d["hidden"] = self.hidden
         if self.units:
             d["x"] = self.units[0].position.x
             d["y"] = self.units[0].position.y
@@ -418,7 +419,6 @@ class StaticGroup(Group):
     def load_from_dict(self, d):
         super(StaticGroup, self).load_from_dict(d)
         self.heading = math.degrees(d["heading"])
-        self.hidden = d["hidden"]
         self.dead = d["dead"]
 
     def dict(self):
