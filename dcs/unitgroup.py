@@ -3,9 +3,7 @@ import random
 import copy
 from enum import Enum
 from typing import List, Union
-from .unit import Unit, Skill, FlyingUnit
-from .helicopter import Helicopter, HelicopterType
-from .plane import Plane, PlaneType
+from .unit import Unit, Skill, FlyingUnit, Plane, PlaneType, Helicopter, HelicopterType
 from .point import StaticPoint, MovingPoint
 from .translation import String
 from .terrain import Airport, Runway

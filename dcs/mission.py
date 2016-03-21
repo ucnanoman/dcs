@@ -12,11 +12,7 @@ from . import unittype
 from .country import Country
 from . import countries
 from .point import StaticPoint, MovingPoint
-from .vehicle import Vehicle
-from .ship import Ship
-from .plane import Plane, PlaneType
-from .helicopter import Helicopter, HelicopterType
-from .static import Static
+from .unit import Plane, Helicopter, Ship, Vehicle, Static
 from .translation import Translation
 from .terrain import Terrain, Caucasus, Nevada, ParkingSlot, Airport
 from .goals import Goals
@@ -688,21 +684,87 @@ class Mission:
         _country.add_ship_group(sg)
         return sg
 
-    def plane_group(self, name):
+    def plane_group(self, name) -> unitgroup.PlaneGroup:
+        """This creates a plain plane group without any units or starting points.
+
+        This method is a advanced interface method not intended for simple use.
+        For adding full featured plane group see
+
+         * :py:meth:`flight_group`
+         * :py:meth:`flight_group_inflight`
+         * :py:meth:`flight_group_from_airport`
+
+        :param name: Group name
+        :return: A new :py:class:`dcs.unitgroup.PlaneGroup`
+        """
         return unitgroup.PlaneGroup(self.next_group_id(), self.string(name))
 
-    def plane(self, name, _type: PlaneType, _country: Country):
-        return Plane(self.next_unit_id(), self.string(name), _type, _country)
+    def plane(self, name, _type: planes.PlaneType, country: Country):
+        """Creates a new plane unit.
 
-    def helicopter(self, name, _type: HelicopterType, _country: Country):
-        return Helicopter(self.next_unit_id(), self.string(name), _type, _country)
+        This method is a advanced interface method not intended for simple usage.
+        For adding full a featured plane group see
 
-    def aircraft(self, name, _type: unittype.FlyingType, _country: Country):
+         * :py:meth:`flight_group`
+         * :py:meth:`flight_group_inflight`
+         * :py:meth:`flight_group_from_airport`
+
+        :param name: unit name
+        :param _type: type of the plane
+        :param country: the plane belongs, needed for default liveries
+        :return: A new :py:class:`dcs.unit.Plane`
+        """
+        return Plane(self.next_unit_id(), self.string(name), _type, country)
+
+    def helicopter(self, name, _type: helicopters.HelicopterType, country: Country):
+        """Creates a new helicopter unit.
+
+        This method is a advanced interface method not intended for simple usage.
+        For adding full a featured helicopter group see
+
+         * :py:meth:`flight_group`
+         * :py:meth:`flight_group_inflight`
+         * :py:meth:`flight_group_from_airport`
+
+        :param name: unit name
+        :param _type: type of the helicopter
+        :param country: the helicopter belongs, needed for default liveries
+        :return: A new :py:class:`dcs.unit.Helicopter`
+        """
+        return Helicopter(self.next_unit_id(), self.string(name), _type, country)
+
+    def aircraft(self, name, _type: unittype.FlyingType, country: Country) -> Union[Plane, Helicopter]:
+        """Creates a new plane or helicopter unit, depending on the _type.
+
+        This method is a advanced interface method not intended for simple usage.
+        For adding full a featured plane/helicopter group see
+
+         * :py:meth:`flight_group`
+         * :py:meth:`flight_group_inflight`
+         * :py:meth:`flight_group_from_airport`
+
+        :param name: unit name
+        :param _type: type of the aircraft
+        :param country: the aircraft belongs, needed for default liveries
+        :return: A new :py:class:`dcs.unit.Plane` or :py:class:`dcs.unit.Helicopter`
+        """
         if _type.helicopter:
-            return Helicopter(self.next_unit_id(), self.string(name), _type, _country)
-        return Plane(self.next_unit_id(), self.string(name), _type, _country)
+            return Helicopter(self.next_unit_id(), self.string(name), _type, country)
+        return Plane(self.next_unit_id(), self.string(name), _type, country)
 
-    def helicopter_group(self, name):
+    def helicopter_group(self, name) -> unitgroup.HelicopterGroup:
+        """Creates a plain helicopter group without any units or starting points.
+
+        This method is a advanced interface method not intended for simple usage.
+        For adding a full featured helicopter group see
+
+         * :py:meth:`flight_group`
+         * :py:meth:`flight_group_inflight`
+         * :py:meth:`flight_group_from_airport`
+
+        :param name: Group name
+        :return: A new :py:class:`dcs.unitgroup.HelicopterGroup`
+        """
         return unitgroup.HelicopterGroup(self.next_group_id(), self.string(name))
 
     @classmethod
@@ -797,7 +859,7 @@ class Mission:
         return group
 
     def flight_group_inflight(self,
-                              _country,
+                              country,
                               name: str,
                               aircraft_type: unittype.FlyingType,
                               position: mapping.Point,
@@ -805,7 +867,21 @@ class Mission:
                               speed=None,
                               maintask: Optional[task.MainTask] = None,
                               group_size: int=1
-                              ):
+                              ) -> Union[unitgroup.PlaneGroup, unitgroup.HelicopterGroup]:
+        """Add a new Plane/Helicopter group inflight.
+
+        The type of the resulting group depends on the given aircraft_type.
+
+        :param country: the new group will belong to
+        :param name: of the new group
+        :param aircraft_type: type of all units in the group
+        :param position: :py:class:`Point` where the new group will be placed
+        :param altitude: of the new group
+        :param speed: of the new group, if none a default will be picked
+        :param maintask: if none the default task for the aircraft_type wil be used
+        :param group_size: number of units in the group(maximum 4 or 1 for certain types)
+        :return: a new :py:class:`dcs.unitgroup.PlaneGroup` or :py:class:`dcs.unitgroup.HelicopterGroup`
+        """
         if maintask is None:
             maintask = aircraft_type.task_default
 
@@ -819,36 +895,37 @@ class Mission:
         group_size = min(group_size, aircraft_type.group_size_max)
 
         for i in range(1, group_size + 1):
-            p = self.aircraft(name + " Pilot #{nr}".format(nr=i), aircraft_type, _country)
+            p = self.aircraft(name + " Pilot #{nr}".format(nr=i), aircraft_type, country)
             p.position = copy.copy(position)
             p.fuel *= 0.9
             ag.add_unit(p)
 
-        _country.add_aircraft_group(self._flying_group_inflight(_country, ag, maintask, altitude, speed))
+        country.add_aircraft_group(self._flying_group_inflight(country, ag, maintask, altitude, speed))
         return ag
 
     def flight_group_from_airport(self,
-                                  _country: Country,
+                                  country: Country,
                                   name,
                                   aircraft_type: unittype.FlyingType,
                                   airport: Airport,
                                   maintask: task.MainTask = None,
                                   start_type: StartType=StartType.Cold,
                                   group_size=1,
-                                  parking_slots: List[ParkingSlot] = None) -> unitgroup.PlaneGroup:
-        """Add a new PlaneGroup/Helicopter group at the given airport.
+                                  parking_slots: List[ParkingSlot] = None) -> \
+            Union[unitgroup.PlaneGroup, unitgroup.HelicopterGroup]:
+        """Add a new Plane/Helicopter group at the given airport.
 
         Runway, warm/cold start depends on the given start_type.
 
-        :param _country: Country object the plane group belongs to
+        :param country: Country object the plane group belongs to
         :param name: Name of the aircraft group
         :param maintask: Task of the aircraft group
         :param aircraft_type: FlyingType class that describes the aircraft_type
         :param airport: Airport object on which to spawn the helicopter
         :param start_type: Start from runway, cold or warm parking position
         :param parking_slots: List of parking slots to use for aircrafts
-        :param group_size: Group size 1-4
-        :return: the new FlyingGroup
+        :param group_size: number of units in the group(maximum 4 or 1 for certain types)
+        :return: a new :py:class:`dcs.unitgroup.PlaneGroup` or :py:class:`dcs.unitgroup.HelicopterGroup`
         """
         if maintask is None:
             maintask = aircraft_type.task_default
@@ -858,11 +935,11 @@ class Mission:
         group_size = min(group_size, aircraft_type.group_size_max)
 
         for i in range(1, group_size + 1):
-            p = self.aircraft(name + " Pilot #{nr}".format(nr=i), aircraft_type, _country)
+            p = self.aircraft(name + " Pilot #{nr}".format(nr=i), aircraft_type, country)
             ag.add_unit(p)
 
-        _country.add_aircraft_group(
-            self._flying_group_from_airport(_country, ag, maintask, airport, start_type, parking_slots))
+        country.add_aircraft_group(
+            self._flying_group_from_airport(country, ag, maintask, airport, start_type, parking_slots))
         return ag
 
     def flight_group(self,
@@ -889,7 +966,7 @@ class Mission:
     def awacs_flight(self,
                      _country: Country,
                      name: str,
-                     plane_type: PlaneType,
+                     plane_type: planes.PlaneType,
                      airport: Optional[Airport],
                      position: mapping.Point,
                      race_distance=30 * 1000,
@@ -920,7 +997,7 @@ class Mission:
     def refuel_flight(self,
                       _country,
                       name: str,
-                      plane_type: PlaneType,
+                      plane_type: planes.PlaneType,
                       airport: Optional[Airport],
                       position: mapping.Point,
                       race_distance=30 * 1000,

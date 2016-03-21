@@ -1,6 +1,8 @@
 from .terrain import ParkingSlot
 from .translation import String
 from .unittype import FlyingType
+from .planes import PlaneType, A_10C
+from .helicopters import HelicopterType, Ka_50
 from . import mapping
 import json
 import copy
@@ -168,4 +170,78 @@ class FlyingUnit(Unit):
             d["callsign"] = self.callsign_dict
         if self.radio:
             d["Radio"] = self.radio
+        return d
+
+
+class Plane(FlyingUnit):
+    def __init__(self, _id=None, name=None, _type: PlaneType=A_10C, _country=None):
+        super(Plane, self).__init__(_id, name, _type, _country)
+
+
+class Helicopter(FlyingUnit):
+    def __init__(self, _id=None, name=None, _type: HelicopterType=Ka_50, _country=None):
+        super(Helicopter, self).__init__(_id, name, _type, _country)
+        self.rope_length = 15
+
+    def load_from_dict(self, d):
+        super(Helicopter, self).load_from_dict(d)
+        self.rope_length = d["ropeLength"]
+
+    def dict(self):
+        d = super(Helicopter, self).dict()
+        d["ropeLength"] = self.rope_length
+        return d
+
+
+class Vehicle(Unit):
+    def __init__(self, id=None, name=None, _type="Sandbox"):
+        super(Vehicle, self).__init__(id, name, _type)
+        self.player_can_drive = False
+        self.transportable = {"randomTransportable": False}
+
+    def load_from_dict(self, d):
+        super(Vehicle, self).load_from_dict(d)
+        self.player_can_drive = d["playerCanDrive"]
+        self.transportable = d["transportable"]
+
+    def dict(self):
+        d = super(Vehicle, self).dict()
+        d["playerCanDrive"] = self.player_can_drive
+        d["transportable"] = self.transportable
+        return d
+
+
+class Ship(Unit):
+    def __init__(self, id=None, name=None, _type="speedboat"):
+        super(Ship, self).__init__(id, name, _type)
+        self.transportable = {"randomTransportable": False}
+
+    def load_from_dict(self, d):
+        super(Ship, self).load_from_dict(d)
+        self.transportable = d["transportable"]
+
+    def dict(self):
+        d = super(Ship, self).dict()
+        d["transportable"] = self.transportable
+        return d
+
+
+class Static(Unit):
+    def __init__(self, id=None, name=None, _type=""):
+        super(Static, self).__init__(id, name, _type)
+        self.category = "Warehouses"
+        self.can_cargo = False
+        self.shape_name = ""
+
+    def load_from_dict(self, d):
+        super(Static, self).load_from_dict(d)
+        self.can_cargo = d["canCargo"]
+        self.category = d["category"]
+        self.shape_name = d["shape_name"]
+
+    def dict(self):
+        d = super(Static, self).dict()
+        d["category"] = self.category
+        d["canCargo"] = self.can_cargo
+        d["shape_name"] = self.shape_name
         return d

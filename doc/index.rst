@@ -15,6 +15,7 @@ Contents:
 
    quickstart
    random_mission
+   mission
    task
    modules
 

@@ -566,10 +566,19 @@ class AWACSTaskAction(Task):
 
 
 class RefuelingTaskAction(Task):
+    """Assigns the aircraft group to refuel at the nearest tanker aircraft."""
     Id = "Refueling"
 
     def __init__(self):
         super(RefuelingTaskAction, self).__init__(RefuelingTaskAction.Id)
+
+
+class Tanker(Task):
+    """Assigns the aircraft to act as an Airborne tanker."""
+    Id = "Tanker"
+
+    def __init__(self):
+        super(Tanker, self).__init__(Tanker.Id)
 
 
 class OrbitAction(Task):
@@ -675,6 +684,7 @@ tasks_map = {
     EngageUnit.Id: EngageUnit,
     AWACSTaskAction.Id: AWACSTaskAction,
     RefuelingTaskAction.Id: RefuelingTaskAction,
+    Tanker.Id: Tanker,
     OrbitAction.Id: OrbitAction,
     Follow.Id: Follow,
     Aerobatics.Id: Aerobatics,
@@ -884,7 +894,7 @@ class Refueling(MainTask):
     id = 13
     name = "Refueling"
     sub_tasks = [OrbitAction, Follow]
-    perform_task = [RefuelingTaskAction]
+    perform_task = [Tanker]
 
 
 class RunwayAttack(MainTask):

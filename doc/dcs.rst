@@ -44,14 +44,6 @@ dcs.groundcontrol module
     :undoc-members:
     :show-inheritance:
 
-dcs.helicopter module
----------------------
-
-.. automodule:: dcs.helicopter
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 dcs.mapping module
 ------------------
 
@@ -60,42 +52,10 @@ dcs.mapping module
     :undoc-members:
     :show-inheritance:
 
-dcs.mission module
-------------------
-
-.. automodule:: dcs.mission
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-dcs.plane module
-----------------
-
-.. automodule:: dcs.plane
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 dcs.point module
 ----------------
 
 .. automodule:: dcs.point
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-dcs.ship module
----------------
-
-.. automodule:: dcs.ship
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-dcs.static module
------------------
-
-.. automodule:: dcs.static
     :members:
     :undoc-members:
     :show-inheritance:
@@ -136,14 +96,6 @@ dcs.unittype module
 -------------------
 
 .. automodule:: dcs.unittype
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-dcs.vehicle module
-------------------
-
-.. automodule:: dcs.vehicle
     :members:
     :undoc-members:
     :show-inheritance:
