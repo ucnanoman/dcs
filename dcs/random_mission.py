@@ -180,7 +180,7 @@ class BasicScenario:
 
     def __init__(self, hide=True):
         self.hide = hide
-        self.m = dcs.mission.Mission()
+        self.m = dcs.Mission()
 
         self.m.coalition["red"].swap_country(self.m.coalition["blue"], dcs.countries.Ukraine.name)
 

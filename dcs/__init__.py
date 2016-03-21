@@ -10,3 +10,4 @@ from . import unitgroup
 from . import goals
 from . import weather
 from .mapping import Point, Rectangle
+from .mission import Mission
