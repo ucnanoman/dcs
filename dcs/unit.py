@@ -233,16 +233,24 @@ class Static(Unit):
         self.category = "Warehouses"
         self.can_cargo = False
         self.shape_name = ""
+        self.rate = None
+        self.mass = 1000
 
     def load_from_dict(self, d):
         super(Static, self).load_from_dict(d)
         self.can_cargo = d["canCargo"]
         self.category = d["category"]
         self.shape_name = d["shape_name"]
+        self.rate = d.get("rate")
+        self.mass = d.get("mass")
 
     def dict(self):
         d = super(Static, self).dict()
         d["category"] = self.category
         d["canCargo"] = self.can_cargo
         d["shape_name"] = self.shape_name
+        if self.rate is not None:
+            d["rate"] = self.rate
+        if self.mass is not None:
+            d["mass"] = self.mass
         return d
