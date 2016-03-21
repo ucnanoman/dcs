@@ -183,6 +183,22 @@ class StartType(Enum):
 
 
 class Mission:
+    """This class represents the whole dcs .miz file.
+
+    A .miz file is a zip file containing all needed files to run a mission.
+    example.miz:
+
+      * mission
+      * options
+      * warehouses
+      * i10n
+
+        * DEFAULT
+        * dictionary
+
+          * mapResource
+          * [localized resource files, .wav, .jpg, ...]
+    """
     COUNTRY_IDS = {x for x in range(0, 13)} | {x for x in range(15, 47)}
 
     def __init__(self, terrain: Union[Caucasus, Nevada]=None):
@@ -265,6 +281,7 @@ class Mission:
         self.resourceCounter = {}  # keep default or empty, old format
         self.needModules = {}
         self.weather = weather.Weather(self.terrain)
+        # TODO used modules
         self.usedModules = {
             'Su-25A by Eagle Dynamics': True,
             'MiG-21Bis AI by Leatherneck Simulations': True,

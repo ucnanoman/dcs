@@ -265,11 +265,11 @@ class FlyingGroup(MovingGroup):
         self.uncontrolled = d["uncontrolled"]
         self.radio_set = d.get("radioSet", False)
 
-    def add_waypoint(self, pos: mapping.Point, altitude, speed=600, name=String()) -> MovingPoint:
+    def add_waypoint(self, pos: mapping.Point, altitude, speed=600, name: String=None) -> MovingPoint:
         mp = MovingPoint()
         mp.type = "Turning Point"
         mp.action = mp.type
-        mp.name = name
+        mp.name = name if name else String()
         mp.position = mapping.Point(pos.x, pos.y)
         mp.alt = altitude
         mp.speed = speed / 3.6

@@ -821,7 +821,8 @@ def main():
     parser.add_argument("-w", "--weather", choices=["dynamic", "dyncyclone", "dynanti", "dynone", "clear"], default="dynamic")
     parser.add_argument("-u", "--unhide", action="store_true", default=False, help="Show enemy pre mission")
     parser.add_argument("--show-stats", action="store_true", default=False, help="Show generated missions stats")
-    parser.add_argument("-o", "--output", default=os.path.join(os.path.expanduser("~"), "Saved Games\\DCS\\Missions\\random.miz"))
+    parser.add_argument("-o", "--output", help="Name and path of the generated mission",
+                        default=os.path.join(os.path.expanduser("~"),"Saved Games\\DCS\\Missions\\random.miz"))
 
     args = parser.parse_args()
     missiontype = args.missiontype

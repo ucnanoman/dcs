@@ -6,11 +6,17 @@
 Welcome to pydcs's documentation!
 =================================
 
+pydcs is a Python(3) framework for creating digital combat simulator missions.
+
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
+   quickstart
+   random_mission
+   task
+   modules
 
 Indices and tables
 ==================

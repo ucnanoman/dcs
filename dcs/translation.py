@@ -1,5 +1,6 @@
 from typing import Dict
 
+
 class String:
     def __init__(self, _id='', translation=None):
         self.translation = translation

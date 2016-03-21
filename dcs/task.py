@@ -1,3 +1,12 @@
+"""This module holds all Tasks that are possible to specifiy in dcs.
+
+There are 2 type of tasks, a MainTask and a Task action.
+ * MainTasks are the flight groups main objective like :py:class:`CAS`, :py:class:`CAP`, :py:class:`SEAD`, ...
+ * Task actions on the otherhand are specific tasks within a MainTask, these
+   cover things like :py:class:`AttackGroup`, :py:class:`Orbit`, :py:class:`Follow`, :py:class:`Escort`, ...
+
+Also options and commands are task actions.
+"""
 from typing import List, Dict, Optional
 from enum import Enum
 from .mapping import Point
@@ -24,8 +33,11 @@ def create_from_dict(d):
 
 
 class Modulation(Enum):
+    """Enum for VHF frequency bands"""
     AM = 0
+    """AM frequency band"""
     FM = 1
+    """FM frequency band"""
 
 
 class Task:

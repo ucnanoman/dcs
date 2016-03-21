@@ -100,14 +100,6 @@ dcs.static module
     :undoc-members:
     :show-inheritance:
 
-dcs.task module
----------------
-
-.. automodule:: dcs.task
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 dcs.templates module
 --------------------
 

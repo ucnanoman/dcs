@@ -20,15 +20,6 @@ dcs.lua.serialize module
     :undoc-members:
     :show-inheritance:
 
-dcs.lua.test_parse module
--------------------------
-
-.. automodule:: dcs.lua.test_parse
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
 Module contents
 ---------------
 
