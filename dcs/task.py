@@ -12,7 +12,7 @@ from enum import Enum
 from .mapping import Point
 
 
-def create_from_dict(d):
+def _create_from_dict(d):
     _id = d["id"]
     if _id == "WrappedAction":
         actionid = d["params"]["action"]["id"]

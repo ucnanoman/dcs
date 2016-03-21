@@ -56,7 +56,7 @@ class MovingPoint(StaticPoint):
         self.ETA = d["ETA"]
         self.speed_locked = d["speed_locked"]
         for t in d["task"]["params"]["tasks"]:
-            self.tasks.append(task.create_from_dict(d["task"]["params"]["tasks"][t]))
+            self.tasks.append(task._create_from_dict(d["task"]["params"]["tasks"][t]))
         self.airdrome_id = d.get("airdromeId", None)
         self.properties = d.get("properties", None)
 

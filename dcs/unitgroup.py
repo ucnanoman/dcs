@@ -90,7 +90,7 @@ class MovingGroup(Group):
         self.frequency = d.get("frequency")
         self.task = d.get("task")  # ships don't have a task
         for t in d.get("tasks", []):
-            self.tasks.append(task.create_from_dict(d["task"]["params"]["tasks"][t]))
+            self.tasks.append(task._create_from_dict(d["task"]["params"]["tasks"][t]))
         self.task_selected = d.get("taskSelected", False)
 
     def dict(self):
