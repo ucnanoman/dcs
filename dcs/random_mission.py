@@ -368,7 +368,7 @@ class BasicScenario:
             c_count += 1
 
     def add_uncontrolled_military_planes(self, airports: List[dcs.terrain.Airport],
-                                         planes: List[Tuple[str, str, int]], hidden=True):
+                                         planes: List[Tuple[str, dcs.unittype.FlyingType, int]], hidden=True):
 
         g_idx = 1
         while planes:
@@ -432,7 +432,7 @@ class BasicScenario:
 
 
 class Refueling(BasicScenario):
-    def __init__(self, aircraft_types: List[Tuple[str,str]], playercount: int, start: str, unhide):
+    def __init__(self, aircraft_types: List[Tuple[str, str]], playercount: int, start: str, unhide):
         super(Refueling, self).__init__()
 
         self.add_civil_airtraffic(hidden=not unhide)
@@ -472,7 +472,7 @@ class Refueling(BasicScenario):
             race_distance=race_dist, heading=heading,
             altitude=random.randrange(4000, 5500, 100), frequency=frequency)
 
-        self.m.escort_flight(usa, "AWACS Escort", dcs.countries.USA.Plane.F_15E, None, awacs, 2)
+        self.m.escort_flight(usa, "AWACS Escort", dcs.countries.USA.Plane.F_15E, None, awacs, group_size=2)
 
         pos, heading, race_dist = Refueling.random_orbit(orbit_rect)
         refuel_net = self.m.refuel_flight(
@@ -743,7 +743,7 @@ class CAP(BasicScenario):
         race_dist = random.randrange(80*1000, 120*1000, 1000)
         p1, p2 = patrol_zone.random_distant_points(race_dist)
         p1.heading_between_point(p2)
-        refuel_net = self.m.refuel_flight(
+        self.m.refuel_flight(
             ukraine,
             "Tanker IL",
             dcs.planes.IL_78M,

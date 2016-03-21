@@ -787,6 +787,7 @@ class MainTask:
     name = None
     sub_tasks = []
     perform_task = []  # type: List[Task]
+    map = {}  # type: Dict[str, MainTask]
 
 
 class Nothing(MainTask):
