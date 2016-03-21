@@ -31,7 +31,7 @@ class Unit:
     def load_from_dict(self, d):
         self.position = mapping.Point(d["x"], d["y"])
         self.heading = math.degrees(d["heading"])
-        self.skill = d["skill"]
+        self.skill = d.get("skill")
 
     def clone(self, _id):
         new = copy.copy(self)
@@ -44,10 +44,11 @@ class Unit:
             "x": self.position.x,
             "y": self.position.y,
             "heading": round(math.radians(self.heading), 13),
-            "skill": self.skill,
             "unitId": self.id,
             "name": self.name.id
         }
+        if self.skill is not None:
+            d["skill"] = self.skill
         return d
 
 
