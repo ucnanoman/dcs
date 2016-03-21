@@ -875,7 +875,7 @@ class Mission:
         :param country: the new group will belong to
         :param name: of the new group
         :param aircraft_type: type of all units in the group
-        :param position: :py:class:`Point` where the new group will be placed
+        :param position: :py:class:`dcs.mapping.Point` where the new group will be placed
         :param altitude: of the new group
         :param speed: of the new group, if none a default will be picked
         :param maintask: if none the default task for the aircraft_type wil be used
