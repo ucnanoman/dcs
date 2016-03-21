@@ -298,7 +298,7 @@ class AttackMapObject(Task):
 
 class AntishipStrikeTaskAction(Task):
     Id = "EngageTargets"
-    Key = "Antiship"
+    Key = "AntiShip"
 
     def __init__(self):
         super(AntishipStrikeTaskAction, self).__init__(AntishipStrikeTaskAction.Id)
