@@ -74,6 +74,7 @@ class FlyingUnit(Unit):
         self.speed = 0
         self.radio = None
         self.hardpoint_racks = True
+        self.addpropaircraft = None
 
     def load_from_dict(self, d):
         super(FlyingUnit, self).load_from_dict(d)
@@ -96,6 +97,7 @@ class FlyingUnit(Unit):
         self.parking = d.get("parking", None)
         self.radio = d.get("Radio")
         self.hardpoint_racks = d.get("hardpoint_racks", None)
+        self.addpropaircraft = d.get("AddPropAircraft")
         return True
 
     def set_parking(self, parking_slot: ParkingSlot):
@@ -154,8 +156,10 @@ class FlyingUnit(Unit):
         d["psi"] = self.psi
         d["onboard_num"] = self.onboard_num
         d["speed"] = round(self.speed, 13)
-        if self.hardpoint_racks:
+        if self.hardpoint_racks is not None:
             d["hardpoint_racks"] = self.hardpoint_racks
+        if self.addpropaircraft is not None:
+            d["AddPropAircraft"] = self.addpropaircraft
         d["payload"] = {
             "flare": self.flare,
             "chaff": self.chaff,
