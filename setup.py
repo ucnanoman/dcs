@@ -9,7 +9,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name="pydcs",
-    version='0.6.0',
+    version='0.8.2',
     description="A Digital Combat Simulator mission builder framework",
     long_description=long_description,
     url='https://github.com/pydcs/dcs',
@@ -21,12 +21,12 @@ setup(
         'Topic :: Games/Entertainment :: Simulation',
         'Intended Audience :: Developers',
         'Intended Audience :: End Users/Desktop',
-        'License :: OSI Approved :: GNU General Public License v3 (LGPLv3)',
+        'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3 :: Only'
     ],
     keywords='dcs digital combat simulator eagle dynamics mission framework',
-    packages=['dcs', 'dcs/lua'],
+    packages=['dcs', 'dcs/terrain', 'dcs/lua'],
     entry_points={
         'console_scripts': [
             'dcs_random=dcs.random_mission:main'
