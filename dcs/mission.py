@@ -11,7 +11,7 @@ from . import unitgroup
 from . import unittype
 from .country import Country
 from . import countries
-from .point import StaticPoint, MovingPoint
+from .point import StaticPoint, MovingPoint, PointAction
 from .unit import Plane, Helicopter, Ship, Vehicle, Static
 from .translation import Translation
 from .terrain import Terrain, Caucasus, Nevada, ParkingSlot, Airport
@@ -655,7 +655,8 @@ class Mission:
         return Vehicle(self.next_unit_id(), self.string(name), _type.id)
 
     def vehicle_group(self, _country, name, _type: unittype.VehicleType, position: mapping.Point,
-                      heading=0, group_size=1, action="Off Road",
+                      heading=0, group_size=1,
+                      move_formation: PointAction=PointAction.OffRoad,
                       formation=unitgroup.VehicleGroup.Formation.Line) -> unitgroup.VehicleGroup:
         vg = unitgroup.VehicleGroup(self.next_group_id(), self.string(name))
 
@@ -666,7 +667,7 @@ class Mission:
             v.heading = heading
             vg.add_unit(v)
 
-        wp = vg.add_waypoint(vg.units[0].position, action, 0)
+        wp = vg.add_waypoint(vg.units[0].position, move_formation, 0)
         wp.ETA_locked = True
         if _type.eplrs:
             wp.tasks.append(task.EPLRS(self.next_eplrs("vehicle")))
@@ -676,7 +677,9 @@ class Mission:
         _country.add_vehicle_group(vg)
         return vg
 
-    def vehicle_group_platoon(self, _country, name, types: List[unittype.VehicleType], position: mapping.Point, heading=0, action="Off Road",
+    def vehicle_group_platoon(self, _country, name, types: List[unittype.VehicleType], position: mapping.Point,
+                              heading=0,
+                              move_formation: PointAction=PointAction.OffRoad,
                               formation=unitgroup.VehicleGroup.Formation.Line) -> unitgroup.VehicleGroup:
         vg = unitgroup.VehicleGroup(self.next_group_id(), self.string(name))
 
@@ -691,7 +694,7 @@ class Mission:
                 eplrs = True
             vg.add_unit(v)
 
-        wp = vg.add_waypoint(vg.units[0].position, action, 0)
+        wp = vg.add_waypoint(vg.units[0].position, move_formation, 0)
         wp.ETA_locked = True
         if eplrs:
             wp.tasks.append(task.EPLRS(self.next_eplrs("vehicle")))
@@ -849,9 +852,9 @@ class Mission:
         self._assign_callsign(_country, group)
 
         point_start_type_map = {
-            StartType.Cold: ("TakeOffParking", "From Parking Area"),
-            StartType.Warm: ("TakeOffParkingHot", "From Parking Area Hot"),
-            StartType.Runway: ("TakeOff", "From Runway")
+            StartType.Cold: ("TakeOffParking", PointAction.FromParkingArea),
+            StartType.Warm: ("TakeOffParkingHot", PointAction.FromParkingAreaHot),
+            StartType.Runway: ("TakeOff", PointAction.FromRunway)
         }
         mp = MovingPoint()
         mp.type = point_start_type_map[start_type][0]
@@ -884,7 +887,7 @@ class Mission:
 
         mp = MovingPoint()
         mp.type = "Turning Point"
-        mp.action = mp.type
+        mp.action = PointAction.TurningPoint
         mp.position = copy.copy(group.units[0].position)
         mp.alt = altitude
         mp.speed = speed / 3.6

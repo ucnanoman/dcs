@@ -4,7 +4,7 @@ import copy
 from enum import Enum
 from typing import List, Union
 from .unit import Unit, Skill, FlyingUnit, Plane, PlaneType, Helicopter, HelicopterType
-from .point import StaticPoint, MovingPoint
+from .point import StaticPoint, MovingPoint, PointAction
 from .translation import String
 from .terrain import Airport, Runway
 from . import task
@@ -130,10 +130,11 @@ class VehicleGroup(MovingGroup):
     def add_span(self, position: mapping.Point):
         self.spans.append({"x": position.x, "y": position.y})
 
-    def add_waypoint(self, position: mapping.Point, _type="Off Road", speed=32) -> MovingPoint:
+    def add_waypoint(self, position: mapping.Point,
+                     move_formation: PointAction=PointAction.OffRoad, speed=32) -> MovingPoint:
         mp = MovingPoint()
         mp.type = "Turning Point"
-        mp.action = _type
+        mp.action = move_formation
         mp.position = copy.copy(position)
         mp.speed = speed / 3.6
         mp.ETA_locked = False
@@ -267,7 +268,7 @@ class FlyingGroup(MovingGroup):
     def add_waypoint(self, pos: mapping.Point, altitude, speed=600, name: String=None) -> MovingPoint:
         mp = MovingPoint()
         mp.type = "Turning Point"
-        mp.action = mp.type
+        mp.action = PointAction.TurningPoint
         mp.name = name if name else String()
         mp.position = mapping.Point(pos.x, pos.y)
         mp.alt = altitude
@@ -290,7 +291,7 @@ class FlyingGroup(MovingGroup):
 
         mp = MovingPoint()
         mp.type = "Turning Point"
-        mp.action = mp.type
+        mp.action = PointAction.TurningPoint
         mp.alt_type = "RADIO"
         mp.position = airport.position.point_from_heading(runway.heading, distance)
         mp.alt = 300
@@ -303,7 +304,7 @@ class FlyingGroup(MovingGroup):
     def land_at(self, airport: Airport) -> MovingPoint:
         mp = MovingPoint()
         mp.type = "Land"
-        mp.action = "Landing"
+        mp.action = PointAction.Landing
         mp.position = copy.copy(airport.position)
         mp.airdrome_id = airport.id
         mp.alt = 0
@@ -396,7 +397,7 @@ class ShipGroup(MovingGroup):
     def add_waypoint(self, position: mapping.Point, speed=20) -> MovingPoint:
         mp = MovingPoint()
         mp.type = "Turning Point"
-        mp.action = "Turning Point"
+        mp.action = PointAction.TurningPoint
         mp.position = copy.copy(position)
         mp.speed = speed / 3.6
         mp.ETA_locked = False

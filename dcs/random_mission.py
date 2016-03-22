@@ -3,6 +3,7 @@ import dcs
 import dcs.mission
 import dcs.task
 import dcs.mapping
+import dcs.point
 from dcs.mapping import Point, Polygon
 import dcs.terrain
 import dcs.unittype
@@ -609,7 +610,7 @@ class CAS(BasicScenario):
 
                     if force_type not in ["Artillery", "Supply"] and isred:
                         wp = g.add_waypoint(g.position.point_from_heading(attack_hdg, 12000))
-                        wp.action = "Vee"
+                        wp.action = dcs.point.PointAction.Vee
                         g.add_waypoint(wp.position.point_from_heading(random.randrange(attack_hdg-10, attack_hdg+30), 5000))
 
                     if force_type in ["Artillery"]:

@@ -2,6 +2,26 @@ from .translation import String
 from . import task
 from . import mapping
 from typing import List
+from enum import Enum
+
+
+class PointAction(Enum):
+    None_ = ""
+    TurningPoint = "Turning Point"
+    FlyOverPoint = "Fly Over Point"
+    FromParkingArea = "From Parking Area"
+    FromParkingAreaHot = "From Parking Area Hot"
+    FromRunway = "From Runway"
+    Landing = "Landing"
+    OnRoad = "On Road"
+    OffRoad = "Off Road"
+    LineAbreast = "Rank"
+    Cone = "Cone"
+    Vee = "Vee"
+    Diamond = "Diamond"
+    EchelonLeft = "EchelonL"
+    EchelonRight = "EchelonR"
+    Custom = "Custom"
 
 
 class StaticPoint:
@@ -12,14 +32,14 @@ class StaticPoint:
         self.position = mapping.Point(0, 0)
         self.speed = 0
         self.formation_template = ""
-        self.action = ""
+        self.action = PointAction.TurningPoint  # type: PointAction
 
     def load_from_dict(self, d, translation):
         self.alt = d["alt"]
         self.type = d["type"]
         self.position.x = d["x"]
         self.position.y = d["y"]
-        self.action = d["action"]
+        self.action = PointAction(d["action"])
         self.formation_template = d["formation_template"]
         self.speed = d["speed"]
         self.name = translation.get_string(d["name"])
@@ -33,7 +53,7 @@ class StaticPoint:
             "y": self.position.y,
             "speed": round(self.speed, 13),
             "formation_template": self.formation_template,
-            "action": self.action
+            "action": self.action.value
         }
 
 
@@ -47,7 +67,6 @@ class MovingPoint(StaticPoint):
         self.tasks = []  # type: List[task.Task]
         self.properties = None
         self.airdrome_id = None
-        self.action = "Off Road"
 
     def load_from_dict(self, d, translation):
         super(MovingPoint, self).load_from_dict(d, translation)
