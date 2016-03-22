@@ -60,6 +60,17 @@ class MovingPoint(StaticPoint):
         self.airdrome_id = d.get("airdromeId", None)
         self.properties = d.get("properties", None)
 
+    def find_task(self, task_type):
+        """Searches tasks in this point for the given task class
+
+        :param task_type: task class to search, :py:mod:`dcs.task`
+        :return: task instance if found, else None
+        """
+        for t in self.tasks:
+            if isinstance(t, task_type):
+                return t
+        return None
+
     def dict(self):
         d = super(MovingPoint, self).dict()
         d["alt_type"] = self.alt_type

@@ -604,6 +604,42 @@ class Mission:
         self.current_dict_id += 1
         return self.current_dict_id
 
+    def eplrs_for(self, group: str) -> Dict[int, int]:
+        """Searches all vehicle eplrs using groups and writes them in a mapping
+
+        :param group: which group to look for eplrs task, ["helicopter", "plane", "vehicle"]
+        :return: a dict mapping groups to used eplrs id
+        """
+        eplrs_map = {}
+        for col in self.coalition:
+            for c_name, country in self.coalition[col].countries.items():
+                if group == "helicopter":
+                    search_group = country.helicopter_group
+                elif group == "plane":
+                    search_group = country.plane_group
+                elif group == "vehicle":
+                    search_group = country.vehicle_group
+                for grp in search_group:
+                    if grp.points:
+                        eplrs = grp.points[0].find_task(task.EPLRS)
+                        if eplrs:
+                            eplrs_map[grp.id] = eplrs.eplrs
+        return eplrs_map
+
+    def next_eplrs(self, group_type: str) -> int:
+        """Get next eplrs for the given group type.
+
+        :param group_type: one of "vehicle", "helicopter" or "plane"
+        :return: the next eplrs id to use
+        """
+        eplrs_usage = self.eplrs_for(group_type)
+        eplrs_id = 1
+        for ep_id in [eplrs_usage[x] for x in eplrs_usage]:
+            if ep_id != eplrs_id:
+                return eplrs_id
+            eplrs_id += 1
+        return eplrs_id
+
     def string(self, s, lang='DEFAULT'):
         """
         Create a new String() object for translation
@@ -633,7 +669,7 @@ class Mission:
         wp = vg.add_waypoint(vg.units[0].position, action, 0)
         wp.ETA_locked = True
         if _type.eplrs:
-            wp.tasks.append(task.EPLRS(1))
+            wp.tasks.append(task.EPLRS(self.next_eplrs("vehicle")))
 
         vg.formation(formation)
 
@@ -658,7 +694,7 @@ class Mission:
         wp = vg.add_waypoint(vg.units[0].position, action, 0)
         wp.ETA_locked = True
         if eplrs:
-            wp.tasks.append(task.EPLRS(1))
+            wp.tasks.append(task.EPLRS(self.next_eplrs("vehicle")))
 
         vg.formation(formation)
 
@@ -784,13 +820,11 @@ class Mission:
             i += 1
 
     @staticmethod
-    def _load_tasks(mp: MovingPoint, maintask: task.MainTask, eplrs: bool):
+    def _load_tasks(mp: MovingPoint, maintask: task.MainTask):
         for t in maintask.perform_task:
             ptask = t()
             ptask.auto = True
             mp.tasks.append(ptask)
-        if eplrs:
-            mp.tasks.append(task.EPLRS(1))
         return mp
 
     def _flying_group_from_airport(self, _country, group: unitgroup.FlyingGroup,
@@ -825,7 +859,10 @@ class Mission:
         mp.position = copy.copy(group.units[0].position)
         mp.airdrome_id = airport.id
         mp.alt = group.units[0].alt
-        Mission._load_tasks(mp, maintask, group.units[0].unit_type.eplrs)
+        Mission._load_tasks(mp, maintask)
+        first_unit = group.units[0]
+        if first_unit.unit_type.eplrs:
+            mp.tasks.append(task.EPLRS(self.next_eplrs("helicopter" if first_unit.unit_type.helicopter else "plane")))
 
         group.add_point(mp)
 
@@ -852,7 +889,10 @@ class Mission:
         mp.alt = altitude
         mp.speed = speed / 3.6
 
-        Mission._load_tasks(mp, maintask, group.units[0].unit_type.eplrs)
+        Mission._load_tasks(mp, maintask)
+        first_unit = group.units[0]
+        if first_unit.unit_type.eplrs:
+            mp.tasks.append(task.EPLRS(self.next_eplrs("helicopter" if first_unit.unit_type.helicopter else "plane")))
 
         group.add_point(mp)
 

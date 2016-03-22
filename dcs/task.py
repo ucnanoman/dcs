@@ -836,6 +836,10 @@ class EPLRS(WrappedAction):
             "action": {"id": EPLRS.Key, "params": {"value": True, "groupId": group_id}}
         }
 
+    @property
+    def eplrs(self):
+        return self.params["action"]["params"]["groupId"]
+
 
 class ActivateBeaconCommand(WrappedAction):
     Key = "ActivateBeacon"
@@ -912,7 +916,7 @@ class TransmitMessage(WrappedAction):
 
     :param soundfile_reskey: resource key to the sound file to transmit, see :py:class:`dcs.mission.MapResource`
     :param subtitle_resstring: string resource key to subtitle displayed,
-                               see :py:member:`dcs.mission.Mission.translation`
+                               see :py:attr:`dcs.mission.Mission.translation`
     :param loop: True or False if the sound file should be looped.
     :param subtitle_duration: how long the subtitle should be displayed in seconds.
     """
