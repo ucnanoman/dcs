@@ -13,7 +13,7 @@ Possible use cases are:
 
 ## Sample
 
-    m = dcs.mission.Mission()
+    m = dcs.Mission()
 
     batumi = m.terrain.batumi()
     batumi.set_blue()
@@ -34,8 +34,8 @@ This code generates a mission with a AWACS flight starting cold from batumi.
 
 ## TODO
 
- * Triggers are entirely missing
+ * Triggers and trigger rules
  * Failures
- * Forced options
+ * Options
  * Farps
  * Airgroup on ships

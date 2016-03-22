@@ -4,8 +4,12 @@ from os import path
 
 here = path.abspath(path.dirname(__file__))
 
+long_description = ''
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
-    long_description = f.read()
+    for line in f:
+        if line.startswith('## Sample'):
+            break
+        long_description += line
 
 setup(
     name="pydcs",
