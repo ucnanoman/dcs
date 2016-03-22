@@ -7,7 +7,7 @@ from . import mapping
 class VehicleTemplate:
     class Russia:
         @staticmethod
-        def sa10_site(mission: Mission, position: mapping.Point, heading, prefix="", skill=unit.Skill.AVERAGE):
+        def sa10_site(mission: Mission, position: mapping.Point, heading, prefix="", skill=unit.Skill.Average):
             russia = mission.country("Russia")
             vg = mission.vehicle_group(russia, prefix + "SA10 site",
                                        Russia.Vehicle.AirDefence.SAM_SA_10_S_300PS_CP_54K6, position, heading)
@@ -41,7 +41,7 @@ class VehicleTemplate:
 
     class USA:
         @staticmethod
-        def patriot_site(mission: Mission, position, heading, prefix="", skill=unit.Skill.AVERAGE):
+        def patriot_site(mission: Mission, position, heading, prefix="", skill=unit.Skill.Average):
             usa = mission.country("USA")
             vg = mission.vehicle_group(usa, prefix + "Patriot site", USA.Vehicle.AirDefence.SAM_Patriot_ICC, position, heading)
             u = mission.vehicle("Operator 1", USA.Vehicle.Infantry.Infantry_M4)
@@ -85,7 +85,7 @@ class VehicleTemplate:
                 u.skill = skill
 
         @staticmethod
-        def hawk_site(mission: Mission, position, heading, prefix="", skill=unit.Skill.AVERAGE):
+        def hawk_site(mission: Mission, position, heading, prefix="", skill=unit.Skill.Average):
             usa = mission.country("USA")
             vg = mission.vehicle_group(usa, prefix + "Hawk site", USA.Vehicle.AirDefence.SAM_Hawk_PCP, position, heading)
 

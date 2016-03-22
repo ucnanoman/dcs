@@ -351,7 +351,7 @@ class FlyingGroup(MovingGroup):
         # if a player/client is in the group
         # make sure his 1. preset channel is at frequency
         for u in self.units:
-            if u.skill in [Skill.CLIENT, Skill.PLAYER]:
+            if u.skill in [Skill.Client, Skill.Player]:
                 u.set_default_preset_channel(self.frequency)
 
         d = super(FlyingGroup, self).dict()

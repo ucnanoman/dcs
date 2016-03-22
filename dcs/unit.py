@@ -7,16 +7,17 @@ from . import mapping
 import json
 import copy
 import math
+from enum import Enum
 
 
-class Skill:
-    AVERAGE = "Average"
-    GOOD = "Good"
-    HIGH = "High"
-    EXCELLENT = "Excellent"
-    RANDOM = "Random"
-    PLAYER = "Player"
-    CLIENT = "Client"
+class Skill(Enum):
+    Average = "Average"
+    Good = "Good"
+    High = "High"
+    Excellent = "Excellent"
+    Random = "Random"
+    Player = "Player"
+    Client = "Client"
 
 
 class Unit:
@@ -25,13 +26,13 @@ class Unit:
         self.position = mapping.Point(0, 0)
         self.heading = 0
         self.id = _id
-        self.skill = Skill.AVERAGE
+        self.skill = Skill.Average  # type: Skill
         self.name = name if name else String()
 
     def load_from_dict(self, d):
         self.position = mapping.Point(d["x"], d["y"])
         self.heading = math.degrees(d["heading"])
-        self.skill = d.get("skill")
+        self.skill = Skill(d.get("skill")) if d.get("skill") else None
 
     def clone(self, _id):
         new = copy.copy(self)
@@ -48,7 +49,7 @@ class Unit:
             "name": self.name.id
         }
         if self.skill is not None:
-            d["skill"] = self.skill
+            d["skill"] = self.skill.value
         return d
 
 
@@ -138,11 +139,11 @@ class FlyingUnit(Unit):
             self.radio = self.unit_type.panel_radio
 
     def set_player(self):
-        self.skill = Skill.PLAYER
+        self.skill = Skill.Player
         self.set_radio_preset()
 
     def set_client(self):
-        self.skill = Skill.CLIENT
+        self.skill = Skill.Client
         self.set_radio_preset()
 
     def dict(self):
