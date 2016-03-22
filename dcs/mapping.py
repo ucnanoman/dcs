@@ -72,13 +72,14 @@ class Point:
         return Point(self.x + other.x, self.y + other.y)
 
     def __radd__(self, other):
-        return self + other
+        if isinstance(other, Point):
+            return self + other
+        return Point(self.x + other, self.y + other)
 
     def __sub__(self, other):
-        return Point(self.x - other.x, self.y - other.y)
-
-    def __rsub__(self, other):
-        return self + other
+        if isinstance(other, Point):
+            return Point(self.x - other.x, self.y - other.y)
+        return Point(self.x - other, self.y - other)
 
     def __mul__(self, other):
         return Point(self.x * other, self.y * other)

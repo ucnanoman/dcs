@@ -10,12 +10,24 @@ class PointTests(unittest.TestCase):
         self.assertEqual(p2.x, 3)
         self.assertEqual(p2.y, 3)
 
+        p2 = 1 + p1
+        self.assertEqual(p2.x, 3)
+        self.assertEqual(p2.y, 3)
+
         self.assertEqual(3 * p2, Point(9, 9))
 
         self.assertEqual(p2.x, 3)
         self.assertEqual(p2.y, 3)
 
         self.assertEqual(p2 * 0.5, Point(1.5, 1.5))
+
+        p2 = p1 - 1
+        self.assertEqual(p2.x, 1)
+        self.assertEqual(p2.y, 1)
+
+        p2 = p1 - p2
+        self.assertEqual(p2.x, 1)
+        self.assertEqual(p2.y, 1)
 
 
 class RectangleTests(unittest.TestCase):
