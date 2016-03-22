@@ -1057,8 +1057,7 @@ class Mission:
             )
 
         eg.add_waypoint(second_point_group.position, second_point_group.alt)
-        eg.points[0].tasks.clear()
-        eg.points[0].tasks.append(task.EscortTaskAction(group_to_escort.id, lastwpt=len(group_to_escort.points)))
+        eg.points[0].tasks[0] = task.EscortTaskAction(group_to_escort.id, lastwpt=len(group_to_escort.points))
 
         return eg
 
@@ -1087,8 +1086,7 @@ class Mission:
                 maintask=task.CAP,
                 group_size=group_size
             )
-        eg.points[0].tasks.clear()
-        eg.points[0].tasks.append(task.EngageTargets(max_engage_distance, [task.Targets.All.Air]))
+        eg.points[0].tasks[0] = task.EngageTargets(max_engage_distance, [task.Targets.All.Air])
         wp = eg.add_waypoint(pos1, altitude, speed)
         wp.tasks.append(task.OrbitAction(altitude, speed, task.OrbitAction.OrbitPattern.RaceTrack))
         eg.add_waypoint(pos2, altitude, speed)
