@@ -99,6 +99,7 @@ class Mission:
         self.currentKey = 0
         self.start_time = datetime.fromtimestamp(1306886400 + 43200, timezone.utc)  # 01-06-2011 12:00:00 UTC
         self.season_from_start_time = True
+        """If set to True the mission season will be set by the value of :py:attr:`Mission.start_time`"""
         self.terrain = terrain
         self.trigrules = {}
         self.triggers = Triggers()
