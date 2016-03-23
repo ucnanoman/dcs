@@ -3,18 +3,20 @@ import argparse
 import re
 from itertools import groupby
 
+import dcs.triggers
+
 
 def dump_polyzones(mfile: str):
 
     m = dcs.mission.Mission()
     m.load_file(mfile)
 
-    def sortkey(x: dcs.mission.TriggerZone):
+    def sortkey(x: dcs.triggers.TriggerZone):
         g = re.match(r"([^0-9]*)([0-9]*)", x.name)
         if g:
             return g.group(1).strip()
 
-    def num(x: dcs.mission.TriggerZone):
+    def num(x: dcs.triggers.TriggerZone):
         g = re.match(r"([^0-9]*)([0-9]*)", x.name)
         if g:
             return int(g.group(2) if g.group(2) else 0)
