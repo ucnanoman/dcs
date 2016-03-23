@@ -132,10 +132,10 @@ class Mission:
         self.translation = Translation(self)
         self.map_resource = MapResource(self)
 
-        self._description_text = self.string("dcs mission")
-        self._description_bluetask = self.string("blue task")
-        self._description_redtask = self.string("red task")
-        self.sortie = self.string("sortie text")
+        self._description_text = self.string("")
+        self._description_bluetask = self.string("")
+        self._description_redtask = self.string("")
+        self.sortie = self.string("")
         self.pictureFileNameR = []
         self.pictureFileNameB = []
         self.version = 11
