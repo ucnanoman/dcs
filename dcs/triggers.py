@@ -11,7 +11,7 @@ class TriggerZone:
         self.position = copy.copy(position)
         self.hidden = hidden
         self.name = name
-        self.color = {1: 1, 2: 1, 3: 1, 4: 0.15}
+        self.color = {1: 1, 2: 1, 3: 1, 4: 0.15}  # TODO color attributes
 
     def dict(self):
         return {
