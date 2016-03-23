@@ -328,14 +328,26 @@ class Mission:
         self.pictureFileNameB.append(self.map_resource.add_resource_file(filepath))
 
     def next_group_id(self):
+        """Get the next free group id
+
+        :return: a new group id
+        """
         self.current_group_id += 1
         return self.current_group_id
 
     def next_unit_id(self):
+        """Get the next free unit id
+
+        :return: a new unit id
+        """
         self.current_unit_id += 1
         return self.current_unit_id
 
     def next_dict_id(self):
+        """Get the next free dictionary id
+
+        :return: a new dictionary id
+        """
         self.current_dict_id += 1
         return self.current_dict_id
 
@@ -348,6 +360,7 @@ class Mission:
         eplrs_map = {}
         for col in self.coalition:
             for c_name, country in self.coalition[col].countries.items():
+                search_group = []
                 if group == "helicopter":
                     search_group = country.helicopter_group
                 elif group == "plane":
@@ -376,8 +389,8 @@ class Mission:
         return eplrs_id
 
     def string(self, s, lang='DEFAULT'):
-        """
-        Create a new String() object for translation
+        """Create a new String() object for translation
+
         :param s: string for lang
         :param lang: language for s
         :return: A new String() object for string s
@@ -389,10 +402,22 @@ class Mission:
             raise TypeError("_type not a unittype.VehicleType class: " + repr(_type))
         return Vehicle(self.next_unit_id(), self.string(name), _type.id)
 
-    def vehicle_group(self, _country, name, _type: unittype.VehicleType, position: mapping.Point,
+    def vehicle_group(self, country, name, _type: unittype.VehicleType, position: mapping.Point,
                       heading=0, group_size=1,
-                      move_formation: PointAction=PointAction.OffRoad,
-                      formation=unitgroup.VehicleGroup.Formation.Line) -> unitgroup.VehicleGroup:
+                      formation=unitgroup.VehicleGroup.Formation.Line,
+                      move_formation: PointAction=PointAction.OffRoad) -> unitgroup.VehicleGroup:
+        """Adds a new vehicle group to the given country.
+
+        :param country: which the vehicle group will belong too
+        :param name: of the vehicle group
+        :param _type: type of vehicle
+        :param position: :py:class:`dcs.mapping.Point` where the new group will be placed
+        :param heading: initial heading of the group, only used if no additional waypoints
+        :param group_size: how many vehicles to add
+        :param formation: formation in which the group should be placed
+        :param move_formation: formation the group should use for moving
+        :return: the new vehicle group object
+        """
         vg = unitgroup.VehicleGroup(self.next_group_id(), self.string(name))
 
         for i in range(1, group_size + 1):
@@ -409,13 +434,26 @@ class Mission:
 
         vg.formation(formation)
 
-        _country.add_vehicle_group(vg)
+        country.add_vehicle_group(vg)
         return vg
 
-    def vehicle_group_platoon(self, _country, name, types: List[unittype.VehicleType], position: mapping.Point,
+    def vehicle_group_platoon(self, country, name,
+                              types: List[unittype.VehicleType],
+                              position: mapping.Point,
                               heading=0,
-                              move_formation: PointAction=PointAction.OffRoad,
-                              formation=unitgroup.VehicleGroup.Formation.Line) -> unitgroup.VehicleGroup:
+                              formation=unitgroup.VehicleGroup.Formation.Line,
+                              move_formation: PointAction=PointAction.OffRoad) -> unitgroup.VehicleGroup:
+        """Adds a new vehicle group to the given country and given vehicle types.
+
+        :param country: which the vehicle group will belong too
+        :param name: of the vehicle group
+        :param types: a list of vehicle types that will be used the units
+        :param position: :py:class:`dcs.mapping.Point` where the new group will be placed
+        :param heading: initial heading of the group, only used if no additional waypoints
+        :param formation: formation in which the group should be placed
+        :param move_formation: formation the group should use for moving
+        :return: the new vehicle group object
+        """
         vg = unitgroup.VehicleGroup(self.next_group_id(), self.string(name))
 
         eplrs = False
@@ -436,13 +474,24 @@ class Mission:
 
         vg.formation(formation)
 
-        _country.add_vehicle_group(vg)
+        country.add_vehicle_group(vg)
         return vg
 
     def ship(self, name, _type):
         return Ship(self.next_unit_id(), self.string(name), _type)
 
-    def ship_group(self, _country, name, _type: str, position: mapping.Point, heading=0, group_size=1) -> unitgroup.ShipGroup:
+    def ship_group(self, country, name, _type: str,
+                   position: mapping.Point, heading=0, group_size=1) -> unitgroup.ShipGroup:
+        """Adds a ship group to the given country.
+
+        :param country: which the ship group will belong too
+        :param name: of the ship group
+        :param _type: which kind of ship to add
+        :param position: :py:class:`dcs.mapping.Point` where the new group will be placed
+        :param heading: initial heading of the group, only used if no additional waypoints
+        :param group_size: how many ships of _type
+        :return: the new ship group object
+        """
         sg = unitgroup.ShipGroup(self.next_group_id(), self.string(name))
 
         for i in range(1, group_size + 1):
@@ -455,7 +504,7 @@ class Mission:
         wp = sg.add_waypoint(position, 20)
         wp.ETA_locked = True
 
-        _country.add_ship_group(sg)
+        country.add_ship_group(sg)
         return sg
 
     def plane_group(self, name) -> unitgroup.PlaneGroup:
