@@ -270,7 +270,7 @@ class BasicScenario:
             transports = [x for x in country.planes if x.task_default == dcs.task.Transport]
             ptype = random.choice(transports)
 
-            slots = airport.free_parking_slot(ptype.large_parking_slot, False)
+            slots = airport.free_parking_slot(ptype)
 
             x = random.randrange(dcs.terrain.Caucasus.bounds.bottom+100*1000, dcs.terrain.Caucasus.bounds.top-100*1000)
             y = random.randrange(dcs.terrain.Caucasus.bounds.left+600*1000, dcs.terrain.Caucasus.bounds.right-130*1000)
@@ -378,7 +378,7 @@ class BasicScenario:
             while True:
                 airport = random.choice(airports)
 
-                slots = airport.free_parking_slots(ptype.large_parking_slot, False)
+                slots = airport.free_parking_slots(ptype)
                 if len(slots) >= group_size:
                     break
 

@@ -1,6 +1,7 @@
 # terrain module
 from typing import List, Dict, Optional
 from dcs import mapping, lua
+from dcs import unittype
 import random
 
 
@@ -29,7 +30,7 @@ class ParkingSlot:
         self.slot_name = slot_name
 
     def __repr__(self):
-        return "ParkingSlot({id}, {name}, large={large}, heli={heli})".format(
+        return 'ParkingSlot({id}, "{name}", large={large}, heli={heli})'.format(
             id=self.crossroad_idx, name=self.slot_name, large=self.large, heli=self.helicopter
         )
 
@@ -128,37 +129,49 @@ class Airport:
             return self.unit_zones[random.randrange(0, len(self.unit_zones))]
         return mapping.Rectangle.from_point(mapping.Point(self.position.x + 500, self.position.y), 200)
 
-    def free_parking_slots(self, large: bool, helicopter: bool) -> List[ParkingSlot]:
+    def _free_parking_slots_resolve_v1(self, large: bool, helicopter: bool) -> List[ParkingSlot]:
         slots_index = range(0, len(self.parking_slots))
-        slots_sorted = sorted(slots_index, key=lambda x: self.parking_slots[x].slot_name)
-        free_large_slots = {x for x in slots_sorted
+        free_large_slots = {x for x in slots_index
                             if self.parking_slots[x].unit_id is None and
                             self.parking_slots[x].large}
 
+        large_slots = sorted([self.parking_slots[x] for x in free_large_slots], key=lambda x: x.slot_name)
         if large:
-            if free_large_slots:
-                return [self.parking_slots[x] for x in free_large_slots]
-            else:
-                return []
+            return large_slots
 
-        free_heli_slots = {x for x in slots_sorted
+        free_heli_slots = {x for x in slots_index
                            if self.parking_slots[x].unit_id is None and
-                           self.parking_slots[x].helicopter}
+                           self.parking_slots[x].helicopter and not self.parking_slots[x].large}
+
+        heli_slots = sorted([self.parking_slots[x] for x in free_heli_slots], key=lambda x: x.crossroad_idx)
         if helicopter:
-            free_slots = list(free_heli_slots) + list(free_large_slots)
-            if free_slots:
-                return [self.parking_slots[x] for x in free_slots]
-            else:
-                return []
+            return heli_slots + large_slots
 
-        free_slots = [x for x in slots_sorted if self.parking_slots[x].unit_id is None and
-                      not self.parking_slots[x].large and
-                      not self.parking_slots[x].helicopter] + list(free_large_slots)
+        free_slots = list(self.parking_slots[x] for x in slots_index if self.parking_slots[x].unit_id is None and
+                          not self.parking_slots[x].large and not self.parking_slots[x].helicopter)
+        free_slots = sorted(free_slots, key=lambda x: x.crossroad_idx)
+        return free_slots + heli_slots + large_slots
 
-        return [self.parking_slots[x] for x in free_slots]
+    def _free_parking_slots_resolve_v2(self, aircraft_type: unittype.FlyingType) -> List[ParkingSlot]:
+        free_slots = [x for x in self.parking_slots
+                      if x.unit_id is None and
+                      aircraft_type.width < x.width and
+                      aircraft_type.height < (x.height or 1000) and
+                      aircraft_type.length < x.length and
+                      aircraft_type.helicopter == x.helicopter and
+                      not aircraft_type.helicopter == x.airplanes]
 
-    def free_parking_slot(self, large: bool, helicopter: bool) -> Optional[ParkingSlot]:
-        slots = self.free_parking_slots(large, helicopter)
+        slots_sorted = sorted(free_slots, key=lambda x: x.crossroad_idx)
+        return slots_sorted
+
+    def free_parking_slots(self, aircraft_type: unittype.FlyingType) -> List[ParkingSlot]:
+        if self.slot_version == 1:
+            return self._free_parking_slots_resolve_v1(aircraft_type.large_parking_slot, aircraft_type.helicopter)
+        else:
+            return self._free_parking_slots_resolve_v2(aircraft_type)
+
+    def free_parking_slot(self, aircraft_type: unittype.FlyingType) -> Optional[ParkingSlot]:
+        slots = self.free_parking_slots(aircraft_type)
         if slots:
             return slots[0]
         return None

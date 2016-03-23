@@ -574,7 +574,7 @@ class Mission:
             spos = airport.position
             if start_type != StartType.Runway:
                 parking_slot = parking_slots.pop(0) if parking_slots else airport.free_parking_slot(
-                    unit.unit_type.large_parking_slot, unit.unit_type.helicopter)
+                    unit.unit_type)
                 if parking_slot is None:
                     raise RuntimeError("No free parking slot at " + airport.name)
                 spos = parking_slot.position
