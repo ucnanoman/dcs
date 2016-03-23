@@ -48,7 +48,7 @@ class ForcedOptions:
         self.easy_radar = d.get("easyRadar")
         self.mini_hud = d.get("miniHUD")
         self.accidental_failures = d.get("accidental_failures")
-        if d.get("optionsView"):
+        if d.get("optionsView") is not None:
             self.options_view = ForcedOptions.Views(d["optionsView"])
         self.permit_crash = d.get("permitCrash")
         self.immportal = d.get("immortal")
@@ -57,11 +57,11 @@ class ForcedOptions:
         self.easy_flight = d.get("easyFlight")
         self.radio = d.get("radio")
         self.tips = d.get("tips")
-        if d.get("geffect"):
+        if d.get("geffect") is not None:
             self.geffect = ForcedOptions.GEffect(d["geffect"])
         self.external_views = d.get("externalViews")
         self.birds = d.get("birds")
-        if d.get("civTraffic"):
+        if d.get("civTraffic") is not None:
             self.civil_traffic = ForcedOptions.CivilTraffic(d["civTraffic"])
         self.weapons = d.get("weapons")
         self.padlock = d.get("padlock")
@@ -70,44 +70,44 @@ class ForcedOptions:
 
     def dict(self):
         d = {}
-        if self.fuel:
+        if self.fuel is not None:
             d["fuel"] = self.fuel
-        if self.easy_radar:
+        if self.easy_radar is not None:
             d["easyRadar"] = self.easy_radar
-        if self.mini_hud:
+        if self.mini_hud is not None:
             d["miniHUD"] = self.mini_hud
-        if self.accidental_failures:
+        if self.accidental_failures is not None:
             d["accidental_failures"] = self.accidental_failures
-        if self.options_view:
+        if self.options_view is not None:
             d["optionsView"] = self.options_view.value
-        if self.permit_crash:
+        if self.permit_crash is not None:
             d["permitCrash"] = self.permit_crash
-        if self.immportal:
+        if self.immportal is not None:
             d["immortal"] = self.immportal
-        if self.easy_communication:
+        if self.easy_communication is not None:
             d["easyCommunication"] = self.easy_communication
-        if self.cockpit_visual_recon_mode:
+        if self.cockpit_visual_recon_mode is not None:
             d["cockpitVisualRM"] = self.cockpit_visual_recon_mode
-        if self.easy_flight:
+        if self.easy_flight is not None:
             d["easyFlight"] = self.easy_flight
-        if self.radio:
+        if self.radio is not None:
             d["radio"] = self.radio
-        if self.tips:
+        if self.tips is not None:
             d["tips"] = self.tips
-        if self.geffect:
+        if self.geffect is not None:
             d["geffect"] = self.geffect.value
-        if self.external_views:
+        if self.external_views is not None:
             d["externalViews"] = self.external_views
-        if self.birds:
+        if self.birds is not None:
             d["birds"] = self.birds
-        if self.civil_traffic:
+        if self.civil_traffic is not None:
             d["civTraffic"] = self.civil_traffic.value
-        if self.weapons:
+        if self.weapons is not None:
             d["weapons"] = self.weapons
-        if self.padlock:
+        if self.padlock is not None:
             d["padlock"] = self.padlock
-        if self.labels:
+        if self.labels is not None:
             d["labels"] = self.labels
-        if self.scenes:
+        if self.scenes is not None:
             d["scenes"] = self.scenes
         return d
