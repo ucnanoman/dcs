@@ -19,6 +19,9 @@ class FlyingType(UnitType):
     helicopter = False
     fuel_max = 0
     max_speed = 500
+    height = 0
+    width = 0
+    length = 0
     ammo_type = None
     chaff = 0
     flare = 0
