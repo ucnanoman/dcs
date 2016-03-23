@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 from enum import Enum
 from typing import List, Dict, Union, Optional
 
+from dcs.coalition import Coalition
 from dcs.terrain.terrain import Warehouses
 from dcs.triggers import Triggers
 from . import countries
@@ -22,10 +23,10 @@ from .country import Country
 from .forcedoptions import ForcedOptions
 from .goals import Goals
 from .groundcontrol import GroundControl
-from .point import StaticPoint, MovingPoint, PointAction
+from .point import MovingPoint, PointAction
 from .terrain import Caucasus, Nevada, ParkingSlot, Airport
 from .translation import Translation
-from .unit import Plane, Helicopter, Ship, Vehicle, Static
+from .unit import Plane, Helicopter, Ship, Vehicle
 
 
 class Options:
@@ -40,50 +41,6 @@ class Options:
 
     def __repr__(self):
         return repr(self.options)
-
-
-class Coalition:
-    def __init__(self, name, bullseye=None):
-        self.name = name
-        self.countries = {}  # type: Dict[str, Country]
-        self.bullseye = bullseye
-        self.nav_points = []  # TODO
-
-    def set_bullseye(self, bulls):
-        self.bullseye = bulls
-
-    def add_country(self, country):
-        self.countries[country.name] = country
-        return country
-
-    def remove_country(self, name):
-        return self.countries.pop(name)
-
-    def swap_country(self, coalition, name):
-        return coalition.add_country(self.remove_country(name))
-
-    def country(self, country_name: str):
-        return self.countries.get(country_name, None)
-
-    def find_group(self, group_name, search="exact"):
-        for c in self.countries:
-            g = self.countries[c].find_group(group_name, search)
-            if g:
-                return g
-
-        return None
-
-    def dict(self):
-        d = {"name": self.name}
-        if self.bullseye:
-            d["bullseye"] = self.bullseye
-        d["country"] = {}
-        i = 1
-        for country in sorted(self.countries.keys()):
-            d["country"][i] = self.country(country).dict()
-            i += 1
-        d["nav_points"] = {}
-        return d
 
 
 class StartType(Enum):
@@ -237,151 +194,6 @@ class Mission:
             'F-86F Sabre AI by Eagle Dynamics': True
         }
 
-    def _import_moving_point(self, group: unitgroup.Group, imp_group) -> unitgroup.Group:
-        for imp_point_idx in imp_group["route"]["points"]:
-            imp_point = imp_group["route"]["points"][imp_point_idx]
-            point = MovingPoint()
-            point.load_from_dict(imp_point, self.translation)
-            group.add_point(point)
-        return group
-
-    def _import_static_point(self, group: unitgroup.Group, imp_group) -> unitgroup.Group:
-        for imp_point_idx in imp_group["route"]["points"]:
-            imp_point = imp_group["route"]["points"][imp_point_idx]
-            point = StaticPoint()
-            point.load_from_dict(imp_point, self.translation)
-            group.add_point(point)
-        return group
-
-    def _imp_coalition(self, coalition, key):
-        if key not in coalition:
-            return None
-        imp_col = coalition[key]
-        col = Coalition(key, imp_col["bullseye"])
-        for country_idx in imp_col["country"]:
-            imp_country = imp_col["country"][country_idx]
-            _country = countries.get_by_id(imp_country["id"])
-
-            if "vehicle" in imp_country:
-                for vgroup_idx in imp_country["vehicle"]["group"]:
-                    vgroup = imp_country["vehicle"]["group"][vgroup_idx]
-                    vg = unitgroup.VehicleGroup(vgroup["groupId"], self.translation.get_string(vgroup["name"]),
-                                                vgroup["start_time"])
-                    vg.load_from_dict(vgroup)
-                    self.current_group_id = max(self.current_group_id, vg.id)
-
-                    self._import_moving_point(vg, vgroup)
-
-                    # units
-                    for imp_unit_idx in vgroup["units"]:
-                        imp_unit = vgroup["units"][imp_unit_idx]
-                        unit = Vehicle(
-                            id=imp_unit["unitId"],
-                            name=self.translation.get_string(imp_unit["name"]),
-                            _type=imp_unit["type"])
-                        unit.load_from_dict(imp_unit)
-
-                        self.current_unit_id = max(self.current_unit_id, unit.id)
-                        vg.add_unit(unit)
-                    _country.add_vehicle_group(vg)
-
-            if "ship" in imp_country:
-                for group_idx in imp_country["ship"]["group"]:
-                    imp_group = imp_country["ship"]["group"][group_idx]
-                    vg = unitgroup.ShipGroup(imp_group["groupId"], self.translation.get_string(imp_group["name"]),
-                                             imp_group["start_time"])
-                    vg.load_from_dict(imp_group)
-                    self.current_group_id = max(self.current_group_id, vg.id)
-
-                    self._import_moving_point(vg, imp_group)
-
-                    # units
-                    for imp_unit_idx in imp_group["units"]:
-                        imp_unit = imp_group["units"][imp_unit_idx]
-                        unit = Ship(
-                            id=imp_unit["unitId"],
-                            name=self.translation.get_string(imp_unit["name"]),
-                            _type=imp_unit["type"])
-                        unit.load_from_dict(imp_unit)
-
-                        self.current_unit_id = max(self.current_unit_id, unit.id)
-                        vg.add_unit(unit)
-                    _country.add_ship_group(vg)
-
-            if "plane" in imp_country:
-                for pgroup_idx in imp_country["plane"]["group"]:
-                    pgroup = imp_country["plane"]["group"][pgroup_idx]
-                    plane_group = unitgroup.PlaneGroup(pgroup["groupId"], self.translation.get_string(pgroup["name"]),
-                                                       pgroup["start_time"])
-                    plane_group.load_from_dict(pgroup)
-                    self.current_group_id = max(self.current_group_id, plane_group.id)
-
-                    self._import_moving_point(plane_group, pgroup)
-
-                    # units
-                    for imp_unit_idx in pgroup["units"]:
-                        imp_unit = pgroup["units"][imp_unit_idx]
-                        plane = Plane(
-                            _id=imp_unit["unitId"],
-                            name=self.translation.get_string(imp_unit["name"]),
-                            _type=planes.plane_map[imp_unit["type"]],
-                            _country=_country)
-                        plane.load_from_dict(imp_unit)
-
-                        self.current_unit_id = max(self.current_unit_id, plane.id)
-                        plane_group.add_unit(plane)
-                    _country.add_plane_group(plane_group)
-
-            if "helicopter" in imp_country:
-                for pgroup_idx in imp_country["helicopter"]["group"]:
-                    pgroup = imp_country["helicopter"]["group"][pgroup_idx]
-                    helicopter_group = unitgroup.HelicopterGroup(
-                        pgroup["groupId"],
-                        self.translation.get_string(pgroup["name"]),
-                        pgroup["start_time"])
-                    helicopter_group.load_from_dict(pgroup)
-                    self.current_group_id = max(self.current_group_id, helicopter_group.id)
-
-                    self._import_moving_point(helicopter_group, pgroup)
-
-                    # units
-                    for imp_unit_idx in pgroup["units"]:
-                        imp_unit = pgroup["units"][imp_unit_idx]
-                        heli = Helicopter(
-                            _id=imp_unit["unitId"],
-                            name=self.translation.get_string(imp_unit["name"]),
-                            _type=helicopters.helicopter_map[imp_unit["type"]],
-                            _country=_country)
-                        heli.load_from_dict(imp_unit)
-
-                        self.current_unit_id = max(self.current_unit_id, heli.id)
-                        helicopter_group.add_unit(heli)
-                    _country.add_helicopter_group(helicopter_group)
-
-            if "static" in imp_country:
-                for sgroup_idx in imp_country["static"]["group"]:
-                    sgroup = imp_country["static"]["group"][sgroup_idx]
-                    static_group = unitgroup.StaticGroup(sgroup["groupId"], self.translation.get_string(sgroup["name"]))
-                    static_group.load_from_dict(sgroup)
-                    self.current_group_id = max(self.current_group_id, static_group.id)
-
-                    self._import_static_point(static_group, sgroup)
-
-                    # units
-                    for imp_unit_idx in sgroup["units"]:
-                        imp_unit = sgroup["units"][imp_unit_idx]
-                        static = Static(
-                            id=imp_unit["unitId"],
-                            name=self.translation.get_string(imp_unit["name"]),
-                            _type=imp_unit["type"])
-                        static.load_from_dict(imp_unit)
-
-                        self.current_unit_id = max(self.current_unit_id, static.id)
-                        static_group.add_unit(static)
-                    _country.add_static_group(static_group)
-            col.add_country(_country)
-        return col
-
     def load_file(self, filename):
         self.filename = filename
         mission_dict = {}
@@ -483,11 +295,10 @@ class Mission:
         self.weather.load_from_dict(imp_weather)
 
         # import coalition with countries and units
-        self.coalition["blue"] = self._imp_coalition(imp_mission["coalition"], "blue")
-        self.coalition["red"] = self._imp_coalition(imp_mission["coalition"], "red")
-        neutral_col = self._imp_coalition(imp_mission["coalition"], "neutral")
-        if neutral_col:
-            self.coalition["neutral"] = neutral_col
+        for col_name in ["blue", "red", "neutral"]:
+            if col_name in imp_mission["coalition"]:
+                self.coalition[col_name] = Coalition(col_name, imp_mission["coalition"][col_name]["bullseye"])
+                self.coalition[col_name].load_from_dict(self, imp_mission["coalition"][col_name])
 
         return True
 
