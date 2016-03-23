@@ -34,8 +34,7 @@ This code generates a mission with a AWACS flight starting cold from batumi.
 
 ## TODO
 
- * Triggers and trigger rules
+ * Trigger rule sets
  * Failures
- * Options
  * Farps
  * Airgroup on ships
