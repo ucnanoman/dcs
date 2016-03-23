@@ -1,28 +1,30 @@
-import zipfile
-import sys
-import os
-import tempfile
 import copy
+import os
+import sys
+import tempfile
+import zipfile
+from datetime import datetime, timezone
 from enum import Enum
 from typing import List, Dict, Union, Optional
-from datetime import datetime, timezone
-from . import lua
-from . import unitgroup
-from . import unittype
-from .country import Country
+
+from dcs.terrain.terrain import Warehouses
 from . import countries
-from .point import StaticPoint, MovingPoint, PointAction
-from .unit import Plane, Helicopter, Ship, Vehicle, Static
-from .translation import Translation
-from .terrain import Terrain, Caucasus, Nevada, ParkingSlot, Airport
-from .goals import Goals
+from . import helicopters
+from . import lua
 from . import mapping
 from . import planes
-from . import helicopters
 from . import task
+from . import unitgroup
+from . import unittype
 from . import weather
+from .country import Country
 from .forcedoptions import ForcedOptions
+from .goals import Goals
 from .groundcontrol import GroundControl
+from .point import StaticPoint, MovingPoint, PointAction
+from .terrain import Caucasus, Nevada, ParkingSlot, Airport
+from .translation import Translation
+from .unit import Plane, Helicopter, Ship, Vehicle, Static
 
 
 class Options:
@@ -37,24 +39,6 @@ class Options:
 
     def __repr__(self):
         return repr(self.options)
-
-
-class Warehouses:
-    def __init__(self, terrain: Terrain):
-        self.terrain = terrain
-        self.warehouses = {}
-
-    def load_dict(self, data):
-        for x in data.get("airports", {}):
-            self.terrain.airport_by_id(x).load_from_dict(data["airports"][x])
-
-    def __str__(self):
-        airports = self.terrain.airports
-        d = {
-            "warehouses": self.warehouses,
-            "airports": {airports[x].id: airports[x].dict() for x in airports}
-        }
-        return lua.dumps(d, "warehouses", 1)
 
 
 class Coalition:

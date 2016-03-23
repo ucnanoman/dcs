@@ -1,6 +1,6 @@
 # terrain module
 from typing import List, Dict, Optional
-from dcs import mapping
+from dcs import mapping, lua
 import random
 
 
@@ -204,3 +204,21 @@ class Terrain:
             if self.airports[x].id == id:
                 return self.airports[x]
         return None
+
+
+class Warehouses:
+    def __init__(self, terrain: Terrain):
+        self.terrain = terrain
+        self.warehouses = {}
+
+    def load_dict(self, data):
+        for x in data.get("airports", {}):
+            self.terrain.airport_by_id(x).load_from_dict(data["airports"][x])
+
+    def __str__(self):
+        airports = self.terrain.airports
+        d = {
+            "warehouses": self.warehouses,
+            "airports": {airports[x].id: airports[x].dict() for x in airports}
+        }
+        return lua.dumps(d, "warehouses", 1)
