@@ -1,3 +1,6 @@
+"""
+The mission module is the entry point to all pydcs functions.
+"""
 import copy
 import os
 import sys
@@ -29,27 +32,27 @@ from .translation import Translation
 from .unit import Plane, Helicopter, Ship, Vehicle
 
 
-class Options:
-    def __init__(self):
-        self.options = {}
-
-    def load_from_dict(self, d):
-        self.options = d
-
-    def __str__(self):
-        return lua.dumps(self.options, "options", 1)
-
-    def __repr__(self):
-        return repr(self.options)
-
-
 class StartType(Enum):
+    """Enum class for start types."""
     Cold = 1
+    """Coldstart from ramp."""
     Warm = 2
+    """Warmstart from ramp."""
     Runway = 3
+    """Start from runway."""
 
     @staticmethod
-    def from_string(s):
+    def from_string(s: str):
+        """Returns the StartType enum for a string value.
+
+        ["cold", "warm", "runway"]
+
+        Args:
+            s: string representation of the starttype
+
+        Returns:
+            the correct StartType.
+        """
         st_map = {
             "cold": StartType.Cold,
             "warm": StartType.Warm,
@@ -74,8 +77,11 @@ class Mission:
 
           * mapResource
           * [localized resource files, .wav, .jpg, ...]
+
+    Args:
+        terrain: the used terrain for this mission.
     """
-    COUNTRY_IDS = {x for x in range(0, 13)} | {x for x in range(15, 47)}
+    _COUNTRY_IDS = {x for x in range(0, 13)} | {x for x in range(15, 47)}
 
     def __init__(self, terrain: Union[Caucasus, Nevada]=None):
         if terrain is None:
@@ -195,7 +201,18 @@ class Mission:
             'F-86F Sabre AI by Eagle Dynamics': True
         }
 
-    def load_file(self, filename):
+    def load_file(self, filename: str):
+        """Load a mission file (.miz) file, replacing all current data.
+
+        Args:
+            filename: path to the mission(.miz) file.
+
+        Returns:
+            bool: True if everything loaded correctly
+
+        Raises:
+            RuntimeError: if an unknown value is encountered
+        """
         self.filename = filename
         mission_dict = {}
         options_dict = {}
@@ -303,34 +320,84 @@ class Mission:
 
         return True
 
-    def description_text(self):
+    def description_text(self) -> str:
+        """Returns the mission description text.
+
+        Returns:
+            the mission description text
+        """
         return str(self._description_text)
 
-    def set_description_text(self, text):
+    def set_description_text(self, text: str):
+        """Sets the mission descsription text.
+
+        Args:
+            text: text to set.
+        """
         self._description_text.set(text)
 
-    def description_bluetask_text(self):
+    def description_bluetask_text(self) -> str:
+        """Returns the blue task description text.
+
+        Returns:
+            the blue task description text
+        """
         return str(self._description_bluetask)
 
-    def set_description_bluetask_text(self, text):
+    def set_description_bluetask_text(self, text: str):
+        """Sets the red coalitions task description text.
+
+        Args:
+            text: text to set.
+        """
         self._description_bluetask.set(text)
 
-    def description_redtask_text(self):
+    def description_redtask_text(self) -> str:
+        """Returns the red task description text.
+
+        Returns:
+            the red task description text
+        """
         return str(self._description_redtask)
 
-    def set_description_redtask_text(self, text):
+    def set_description_redtask_text(self, text: str):
+        """Sets the red coalitions task description text.
+
+        Args:
+            text: text to set.
+        """
         self._description_redtask.set(text)
 
-    def add_picture_red(self, filepath):
-        self.pictureFileNameR.append(self.map_resource.add_resource_file(filepath))
+    def add_picture_red(self, filepath: str) -> str:
+        """Adds a new briefing picture to the red coalition.
 
-    def add_picture_blue(self, filepath):
-        self.pictureFileNameB.append(self.map_resource.add_resource_file(filepath))
+        Args:
+            filepath: path to the image, jpg or bmp.
+
+        Returns:
+            the resource key of the picture
+        """
+        reskey = self.map_resource.add_resource_file(filepath)
+        self.pictureFileNameR.append(reskey)
+
+    def add_picture_blue(self, filepath: str) -> str:
+        """Adds a new briefing picture to the blue coalition.
+
+        Args:
+            filepath: path to the image, jpg or bmp.
+
+        Returns:
+            the resource key of the picture
+        """
+        reskey = self.map_resource.add_resource_file(filepath)
+        self.pictureFileNameB.append(reskey)
+        return reskey
 
     def next_group_id(self):
         """Get the next free group id
 
-        :return: a new group id
+        Returns:
+            a new group id
         """
         self.current_group_id += 1
         return self.current_group_id
@@ -338,7 +405,8 @@ class Mission:
     def next_unit_id(self):
         """Get the next free unit id
 
-        :return: a new unit id
+        Returns:
+            a new unit id
         """
         self.current_unit_id += 1
         return self.current_unit_id
@@ -346,7 +414,8 @@ class Mission:
     def next_dict_id(self):
         """Get the next free dictionary id
 
-        :return: a new dictionary id
+        Returns:
+            a new dictionary id
         """
         self.current_dict_id += 1
         return self.current_dict_id
@@ -354,8 +423,11 @@ class Mission:
     def eplrs_for(self, group: str) -> Dict[int, int]:
         """Searches all vehicle eplrs using groups and writes them in a mapping
 
-        :param group: which group to look for eplrs task, ["helicopter", "plane", "vehicle"]
-        :return: a dict mapping groups to used eplrs id
+        Args:
+            group: which group to look for eplrs task, ["helicopter", "plane", "vehicle"]
+
+        Returns:
+            a dict mapping groups to used eplrs id
         """
         eplrs_map = {}
         for col in self.coalition:
@@ -377,8 +449,11 @@ class Mission:
     def next_eplrs(self, group_type: str) -> int:
         """Get next eplrs for the given group type.
 
-        :param group_type: one of "vehicle", "helicopter" or "plane"
-        :return: the next eplrs id to use
+        Args:
+            group_type: one of "vehicle", "helicopter" or "plane"
+
+        Returns:
+            int: the next eplrs id to use
         """
         eplrs_usage = self.eplrs_for(group_type)
         eplrs_id = 1
@@ -391,13 +466,25 @@ class Mission:
     def string(self, s, lang='DEFAULT'):
         """Create a new String() object for translation
 
-        :param s: string for lang
-        :param lang: language for s
-        :return: A new String() object for string s
+        Args:
+            s: string for lang
+            lang: language for s
+
+        Returns:
+            String: A new String() object for string s
         """
         return self.translation.create_string(s, lang)
 
-    def vehicle(self, name, _type: unittype.VehicleType):
+    def vehicle(self, name, _type: unittype.VehicleType) -> Vehicle:
+        """Creates a plain vehicle unit to be added to a group
+
+        Args:
+            name: of the vehicle
+            _type: vehicle type
+
+        Returns:
+            Vehicle: a new vehicle unit.
+        """
         if not issubclass(_type, unittype.VehicleType):
             raise TypeError("_type not a unittype.VehicleType class: " + repr(_type))
         return Vehicle(self.next_unit_id(), self.string(name), _type.id)
@@ -408,15 +495,18 @@ class Mission:
                       move_formation: PointAction=PointAction.OffRoad) -> unitgroup.VehicleGroup:
         """Adds a new vehicle group to the given country.
 
-        :param country: which the vehicle group will belong too
-        :param name: of the vehicle group
-        :param _type: type of vehicle
-        :param position: :py:class:`dcs.mapping.Point` where the new group will be placed
-        :param heading: initial heading of the group, only used if no additional waypoints
-        :param group_size: how many vehicles to add
-        :param formation: formation in which the group should be placed
-        :param move_formation: formation the group should use for moving
-        :return: the new vehicle group object
+        Args:
+                country(Country):which the vehicle group will belong too
+            name: of the vehicle group
+            _type: type of vehicle
+            position: :py:class:`dcs.mapping.Point` where the new group will be placed
+            heading: initial heading of the group, only used if no additional waypoints
+            group_size: how many vehicles to add
+            formation: formation in which the group should be placed
+            move_formation: formation the group should use for moving
+
+        Returns:
+            VehicleGroup: the new vehicle group object
         """
         vg = unitgroup.VehicleGroup(self.next_group_id(), self.string(name))
 
@@ -445,14 +535,17 @@ class Mission:
                               move_formation: PointAction=PointAction.OffRoad) -> unitgroup.VehicleGroup:
         """Adds a new vehicle group to the given country and given vehicle types.
 
-        :param country: which the vehicle group will belong too
-        :param name: of the vehicle group
-        :param types: a list of vehicle types that will be used the units
-        :param position: :py:class:`dcs.mapping.Point` where the new group will be placed
-        :param heading: initial heading of the group, only used if no additional waypoints
-        :param formation: formation in which the group should be placed
-        :param move_formation: formation the group should use for moving
-        :return: the new vehicle group object
+        Args:
+                country(Country):which the vehicle group will belong too
+            name: of the vehicle group
+            types: a list of vehicle types that will be used the units
+            position: :py:class:`dcs.mapping.Point` where the new group will be placed
+            heading: initial heading of the group, only used if no additional waypoints
+            formation: formation in which the group should be placed
+            move_formation: formation the group should use for moving
+
+        Returns:
+            VehicleGroup: the new vehicle group object
         """
         vg = unitgroup.VehicleGroup(self.next_group_id(), self.string(name))
 
@@ -477,20 +570,32 @@ class Mission:
         country.add_vehicle_group(vg)
         return vg
 
-    def ship(self, name, _type):
+    def ship(self, name, _type) -> Ship:
+        """Creates a plain ship unit to be added to a group
+
+        Args:
+            name: of the ship
+            _type: ship type
+
+        Returns:
+            Ship: a new ship unit.
+        """
         return Ship(self.next_unit_id(), self.string(name), _type)
 
     def ship_group(self, country, name, _type: str,
                    position: mapping.Point, heading=0, group_size=1) -> unitgroup.ShipGroup:
         """Adds a ship group to the given country.
 
-        :param country: which the ship group will belong too
-        :param name: of the ship group
-        :param _type: which kind of ship to add
-        :param position: :py:class:`dcs.mapping.Point` where the new group will be placed
-        :param heading: initial heading of the group, only used if no additional waypoints
-        :param group_size: how many ships of _type
-        :return: the new ship group object
+        Args:
+            country(Country): which the ship group will belong too
+            name: of the ship group
+            _type: which kind of ship to add
+            position(dcs.mapping.Point): where the new group will be placed
+            heading: initial heading of the group, only used if no additional waypoints
+            group_size: how many ships of _type
+
+        Returns:
+            ShipGroup: the new ship group object
         """
         sg = unitgroup.ShipGroup(self.next_group_id(), self.string(name))
 
@@ -517,8 +622,11 @@ class Mission:
          * :py:meth:`flight_group_inflight`
          * :py:meth:`flight_group_from_airport`
 
-        :param name: Group name
-        :return: A new :py:class:`dcs.unitgroup.PlaneGroup`
+        Args:
+            name: Group name
+
+        Returns:
+            PlaneGroup: A new :py:class:`dcs.unitgroup.PlaneGroup`
         """
         return unitgroup.PlaneGroup(self.next_group_id(), self.string(name))
 
@@ -532,10 +640,13 @@ class Mission:
          * :py:meth:`flight_group_inflight`
          * :py:meth:`flight_group_from_airport`
 
-        :param name: unit name
-        :param _type: type of the plane
-        :param country: the plane belongs, needed for default liveries
-        :return: A new :py:class:`dcs.unit.Plane`
+        Args:
+            name: unit name
+            _type: type of the plane
+            country(Country): the plane belongs, needed for default liveries
+
+        Return:
+            Plane: A new :py:class:`dcs.unit.Plane`
         """
         return Plane(self.next_unit_id(), self.string(name), _type, country)
 
@@ -549,10 +660,13 @@ class Mission:
          * :py:meth:`flight_group_inflight`
          * :py:meth:`flight_group_from_airport`
 
-        :param name: unit name
-        :param _type: type of the helicopter
-        :param country: the helicopter belongs, needed for default liveries
-        :return: A new :py:class:`dcs.unit.Helicopter`
+        Args:
+            name: unit name
+            _type: type of the helicopter
+            country(Country): the helicopter belongs, needed for default liveries
+
+        Returns:
+            Helicopter: A new :py:class:`dcs.unit.Helicopter`
         """
         return Helicopter(self.next_unit_id(), self.string(name), _type, country)
 
@@ -566,10 +680,13 @@ class Mission:
          * :py:meth:`flight_group_inflight`
          * :py:meth:`flight_group_from_airport`
 
-        :param name: unit name
-        :param _type: type of the aircraft
-        :param country: the aircraft belongs, needed for default liveries
-        :return: A new :py:class:`dcs.unit.Plane` or :py:class:`dcs.unit.Helicopter`
+        Args:
+            name: unit name
+            _type: type of the aircraft
+            country(Country): the aircraft belongs, needed for default liveries
+
+        Returns:
+            Helicopter: A new :py:class:`dcs.unit.Plane` or :py:class:`dcs.unit.Helicopter`
         """
         if _type.helicopter:
             return Helicopter(self.next_unit_id(), self.string(name), _type, country)
@@ -585,8 +702,11 @@ class Mission:
          * :py:meth:`flight_group_inflight`
          * :py:meth:`flight_group_from_airport`
 
-        :param name: Group name
-        :return: A new :py:class:`dcs.unitgroup.HelicopterGroup`
+        Args:
+             name: Group name
+
+        Returns:
+            HelicopterGroup: A new :py:class:`dcs.unitgroup.HelicopterGroup`
         """
         return unitgroup.HelicopterGroup(self.next_group_id(), self.string(name))
 
@@ -699,15 +819,18 @@ class Mission:
 
         The type of the resulting group depends on the given aircraft_type.
 
-        :param country: the new group will belong to
-        :param name: of the new group
-        :param aircraft_type: type of all units in the group
-        :param position: :py:class:`dcs.mapping.Point` where the new group will be placed
-        :param altitude: of the new group
-        :param speed: of the new group, if none a default will be picked
-        :param maintask: if none the default task for the aircraft_type wil be used
-        :param group_size: number of units in the group(maximum 4 or 1 for certain types)
-        :return: a new :py:class:`dcs.unitgroup.PlaneGroup` or :py:class:`dcs.unitgroup.HelicopterGroup`
+        Args:
+            country(Country): the new group will belong to
+            name: of the new group
+            aircraft_type(FlyingType): type of all units in the group
+            position(dcs.mapping.Point): where the new group will be placed
+            altitude: of the new group
+            speed: of the new group, if none a default will be picked
+            maintask(MainTask): if none the default task for the aircraft_type wil be used
+            group_size: number of units in the group(maximum 4 or 1 for certain types)
+
+        Returns:
+            FlyingGroup: a new :py:class:`dcs.unitgroup.PlaneGroup` or :py:class:`dcs.unitgroup.HelicopterGroup`
         """
         if maintask is None:
             maintask = aircraft_type.task_default
@@ -744,15 +867,18 @@ class Mission:
 
         Runway, warm/cold start depends on the given start_type.
 
-        :param country: Country object the plane group belongs to
-        :param name: Name of the aircraft group
-        :param maintask: Task of the aircraft group
-        :param aircraft_type: FlyingType class that describes the aircraft_type
-        :param airport: Airport object on which to spawn the helicopter
-        :param start_type: Start from runway, cold or warm parking position
-        :param parking_slots: List of parking slots to use for aircrafts
-        :param group_size: number of units in the group(maximum 4 or 1 for certain types)
-        :return: a new :py:class:`dcs.unitgroup.PlaneGroup` or :py:class:`dcs.unitgroup.HelicopterGroup`
+        Args:
+            country(Country): Country object the plane group belongs to
+            name: Name of the aircraft group
+            maintask(MainTask): Task of the aircraft group
+            aircraft_type(FlyingType): FlyingType class that describes the aircraft_type
+            airport(Airport): Airport object on which to spawn the helicopter
+            start_type(StartType): Start from runway, cold or warm parking position
+            parking_slots: List of parking slots to use for aircrafts
+            group_size: number of units in the group(maximum 4 or 1 for certain types)
+
+        Returns:
+            FlyingGroup: a new :py:class:`dcs.unitgroup.PlaneGroup` or :py:class:`dcs.unitgroup.HelicopterGroup`
         """
         if maintask is None:
             maintask = aircraft_type.task_default
@@ -781,6 +907,25 @@ class Mission:
                      start_type: StartType=StartType.Runway,
                      group_size=1
                      ) -> unitgroup.FlyingGroup:
+        """This is wrapper around flight_group_inflight and flight_group_from_airport.
+
+        Depending on the airport parameter a flight group will added inflight or on an airport.
+
+        Args:
+            country(Country): Country object the plane group belongs to
+            name: Name of the aircraft group
+            aircraft_type(FlyingType): FlyingType class that describes the aircraft_type
+            airport(Airport): Airport object on which to spawn the helicopter
+            position(dcs.mapping.Point): where the new group will be placed, if inflight
+            altitude: initial altitude of the group if inflight
+            speed: initial speed of the group if inflight
+            maintask(MainTask): Task of the aircraft group
+            start_type(StartType): Start from runway, cold or warm parking position
+            group_size: number of units in the group(maximum 4 or 1 for certain types)
+
+        Returns:
+            FlyingGroup: a new :py:class:`dcs.unitgroup.PlaneGroup` or :py:class:`dcs.unitgroup.HelicopterGroup`
+        """
         if airport:
             fg = self.flight_group_from_airport(country, name, aircraft_type,
                                                 airport, maintask, start_type, group_size)
@@ -791,7 +936,7 @@ class Mission:
         return fg
 
     def awacs_flight(self,
-                     _country: Country,
+                     country: Country,
                      name: str,
                      plane_type: planes.PlaneType,
                      airport: Optional[Airport],
@@ -802,12 +947,36 @@ class Mission:
                      speed=550,
                      start_type: StartType=StartType.Cold,
                      frequency=140) -> unitgroup.PlaneGroup:
+        """Add an AWACS flight group.
+
+        This is simple way to add an AWACS flight group to your mission.
+        It needs an initial orbit point, race distance and heading from this point.
+
+        If an airport is given the AWACS flight will start from there otherwise,
+        it will placed 2 km in front of the reference position.
+
+        Args:
+            country(Country): Country object the awacs group belongs to
+            name: of the AWACS flight
+            plane_type(PlaneType): AWACS plane type. e.g E_3A
+            airport(Airport): starting airport, use None if you want it to spawn inflight
+            position(dcs.mapping.Point): reference point for the race-track
+            race_distance: distance for the race-track pattern
+            heading: direction from the referene position
+            altitude: of the AWACS race-track
+            speed: of the AWACS flight
+            start_type(StartType): of the flight if starts from airport
+            frequency: VHF-AM frequencey in mhz
+
+        Returns:
+            PlaneGroup: the created AWACS flight group
+        """
         if airport:
-            awacs = self.flight_group_from_airport(_country, name, plane_type, airport, task.AWACS, start_type)
+            awacs = self.flight_group_from_airport(country, name, plane_type, airport, task.AWACS, start_type)
             wp = awacs.add_runway_waypoint(airport)
         else:
             p = position.point_from_heading((heading + 180) % 360, 2000)
-            awacs = self.flight_group_inflight(_country, name, plane_type, p, altitude, speed, task.AWACS)
+            awacs = self.flight_group_inflight(country, name, plane_type, p, altitude, speed, task.AWACS)
             p = position.point_from_heading(heading + 180, 1000)
             wp = awacs.add_waypoint(p, altitude, speed)
 
@@ -822,7 +991,7 @@ class Mission:
         return awacs
 
     def refuel_flight(self,
-                      _country,
+                      country,
                       name: str,
                       plane_type: planes.PlaneType,
                       airport: Optional[Airport],
@@ -834,13 +1003,38 @@ class Mission:
                       start_type: StartType=StartType.Cold,
                       frequency=140,
                       tacanchannel="10X") -> unitgroup.PlaneGroup:
+        """Add an refuel flight group.
+
+        This is simple way to add an refuel flight group to your mission.
+        It needs an initial orbit point, race distance and heading from this point.
+
+        If an airport is given the refuel flight will start from there otherwise,
+        it will placed 2 km in front of the reference position.
+
+        Args:
+            country(Country): Country object the awacs group belongs to
+            name: of the AWACS flight
+            plane_type(PlaneType): refuel plane type. e.g KC_135
+            airport(Airport): starting airport, use None if you want it to spawn inflight
+            position(dcs.mapping.Point): reference point for the race-track
+            race_distance: distance for the race-track pattern
+            heading: direction from the referene position
+            altitude: of the AWACS race-track
+            speed: of the AWACS flight
+            start_type(StartType): of the flight if starts from airport
+            frequency: VHF-AM frequencey in mhz
+            tacanchannel: if the PlaneType supports tacan this channel will be set.
+
+        Returns:
+            PlaneGroup: the created refuel flight group
+        """
         if airport:
-            tanker = self.flight_group_from_airport(_country, name, plane_type, airport,
+            tanker = self.flight_group_from_airport(country, name, plane_type, airport,
                                                     task.Refueling, start_type=start_type)
             wp = tanker.add_runway_waypoint(airport)
         else:
             p = position.point_from_heading((heading + 180) % 360, 2000)
-            tanker = self.flight_group_inflight(_country, name, plane_type, p, altitude, speed, task.Refueling)
+            tanker = self.flight_group_inflight(country, name, plane_type, p, altitude, speed, task.Refueling)
             p = position.point_from_heading(heading + 180, 1000)
             wp = tanker.add_waypoint(p, altitude, speed)
 
@@ -860,23 +1054,41 @@ class Mission:
         return tanker
 
     def escort_flight(self,
-                      _country,
+                      country,
                       name: str,
                       escort_type: planes.PlaneType,
                       airport: Optional[Airport],
                       group_to_escort: unitgroup.FlyingGroup,
                       start_type: StartType=StartType.Cold,
                       group_size=2):
+        """Add an escort flight group to the mission.
 
+        An escort flight is a flight group that will use the :py:class:`dcs.task.EscortTaskAction`
+        to escort another flight group.
+
+        If no airport is given, the escort flight will spawn near the group to escort.
+
+        Args:
+            country(Country): the escort flight belongs too
+            name: of the flight group
+            escort_type(PlaneType): PlaneType for the escort task
+            airport(Airport): starting airport, use None if you want it to spawn inflight
+            group_to_escort: id of the group to escort
+            start_type(StartType): of the flight if starts from airport
+            group_size: how many planes should be in the escort flight
+
+        Returns:
+            PlaneGroup: the created escort group
+        """
         second_point_group = group_to_escort.points[1]
         if airport:
             eg = self.flight_group_from_airport(
-                _country, name, escort_type, airport, task.Escort, start_type=start_type, group_size=group_size
+                country, name, escort_type, airport, task.Escort, start_type=start_type, group_size=group_size
             )
             eg.add_runway_waypoint(airport)
         else:
             eg = self.flight_group_inflight(
-                _country, name, escort_type,
+                country, name, escort_type,
                 mapping.Point(group_to_escort.points[0].position.x - 10 * 1000, group_to_escort.points[0].position.y),
                 second_point_group.alt + 200,
                 maintask=task.Escort,
@@ -889,7 +1101,7 @@ class Mission:
         return eg
 
     def patrol_flight(self,
-                      _country,
+                      country,
                       name: str,
                       patrol_type: planes.PlaneType,
                       airport: Optional[Airport],
@@ -900,14 +1112,37 @@ class Mission:
                       altitude=4000,
                       max_engage_distance=60*1000,
                       group_size=2):
+        """Add an patrol flight group to the mission.
+
+        A patrol flight is a flight group that will fly a orbit between 2 given points and
+        will engage any incoming air threats within max_engage_distance.
+
+        If no airport is given, the patrol flight will spawn near the first patrol point(pos1).
+
+        Args:
+            country(Country): the flight belongs too
+            name: name of the patrol flight
+            patrol_type(PlaneType): PlaneType for the patrol flight
+            airport(Airport): starting airport, use None if you want it to spawn inflight
+            pos1(dcs.mapping.Point): first orbit waypoint
+            pos2(dcs.mapping.Point): second orbit waypoint
+            start_type(StartType): of the flight if starts from airport
+            speed: orbit speed
+            altitude: initial altitude and orbit altitude
+            max_engage_distance: the distance in KM the patrol flight will respond to enemy threats
+            group_size: how many planes should be in the flight group
+
+        Returns:
+            PlaneGroup: the created patrol group
+        """
         if airport:
             eg = self.flight_group_from_airport(
-                _country, name, patrol_type, airport, maintask=task.CAP, start_type=start_type, group_size=group_size
+                country, name, patrol_type, airport, maintask=task.CAP, start_type=start_type, group_size=group_size
             )
             eg.add_runway_waypoint(airport)
         else:
             eg = self.flight_group_inflight(
-                _country, name, patrol_type,
+                country, name, patrol_type,
                 mapping.Point(pos1.x - 10 * 1000, pos1.y),
                 altitude,
                 maintask=task.CAP,
@@ -921,26 +1156,70 @@ class Mission:
         return eg
 
     def country(self, name):
+        """Returns the country object for the mission by the given string
+
+        Args:
+            name: string representation of the country
+
+        Returns:
+            Country: the object of the country, None if not found.
+        """
         for k in self.coalition:
             c = self.coalition[k].country(name)
             if c:
                 return c
         return None
 
-    def find_group(self, group_name, search="exact"):
+    def find_group(self, group_name, search="exact") -> Optional[unitgroup.Group]:
+        """Searches a group with the given name.
+
+        Args:
+            group_name: part or exact name of the group
+            search: search mode to use
+
+                      * 'exact': whole name must match
+                      * 'match': part of the name must match
+
+        Returns:
+            Group: the group found, otherwise None
+        """
         for k in self.coalition:
             g = self.coalition[k].find_group(group_name, search)
             if g:
                 return g
         return None
 
-    def is_red(self, _country: Country):
-        return _country.name in self.coalition["red"].countries
+    def is_red(self, country: Country) -> bool:
+        """Checks if the given country object is part o the red coalition.
 
-    def is_blue(self, _country: Country):
-        return _country.name in self.coalition["blue"].countries
+        Args:
+            country(Country): object to check
+
+        Returns:
+            bool: True if it is part of the red coalition, else False.
+        """
+        return country.name in self.coalition["red"].countries
+
+    def is_blue(self, country: Country) -> bool:
+        """Checks if the given country object is part o the blue coalition.
+
+        Args:
+                country(Country):object to check
+
+        Returns:
+            bool: True if it is part of the blue coalition, else False.
+        """
+        return country.name in self.coalition["blue"].countries
 
     def stats(self) -> Dict:
+        """Gather some mission stats.
+
+        This method counts up the different group types and used units
+        and returns them as easy to print dict.
+
+        Returns:
+            dict containing various group and unit counts.
+        """
         d = {
             "red": {},
             "blue": {},
@@ -980,6 +1259,11 @@ class Mission:
         return d
 
     def print_stats(self, d):
+        """Print the given mission stats to standard output.
+
+        Args:
+            d: stats dict to print, :py:meth:`dcs.mission.Mission.stats`
+        """
         print("Mission Statistics")
         print(self.start_time.strftime("%d. %b %H:%M:%S"))
         print("-"*60)
@@ -1008,11 +1292,22 @@ class Mission:
         print("Total {g} groups with {u} units".format(g=d["count"], u=d["unit_count"]))
 
     def reload(self):
+        """Reloads the current loaded file
+
+        Raises:
+            RuntimeError: if there is currently no file loaded.
+        """
         if self.filename:
             return self.load_file(self.filename)
         raise RuntimeError("Currently no file loaded to reload.")
 
     def save(self, filename=None, show_stats=False):
+        """Save the current Mission object to the given file.
+
+        Args:
+            filename: filepath to save the Mission object
+            show_stats(bool): if True print mission stats to standard out.
+        """
         filename = self.filename if filename is None else filename
         if not filename:
             raise RuntimeError("No filename given.")
@@ -1071,7 +1366,7 @@ class Mission:
             m["coalition"][col] = self.coalition[col].dict()
         col_blue = {self.coalition["blue"].country(x).id for x in self.coalition["blue"].countries.keys()}
         col_red = {self.coalition["red"].country(x).id for x in self.coalition["red"].countries.keys()}
-        col_neutral = list(Mission.COUNTRY_IDS - col_blue - col_red)
+        col_neutral = list(Mission._COUNTRY_IDS - col_blue - col_red)
         col_blue = list(col_blue)
         col_red = list(col_red)
         m["coalitions"] = {
@@ -1099,6 +1394,13 @@ class Mission:
 
 
 class MapResource:
+    """MapResource is responsibly to manage all additional mission resource files.
+
+    Mission resource files are briefing images, lua scripts, sounds files.
+
+    Args:
+        mission(Mission): the mission this MapResource belongs too, needed for dictionary ids
+    """
     def __init__(self, mission: Mission):
         self.files = {}
         self.mission = mission
@@ -1112,6 +1414,16 @@ class MapResource:
             self.add_resource_file(extractedpath, lang, key)
 
     def add_resource_file(self, filepath, lang='DEFAULT', key=None):
+        """Adds a file to the mission resource depot.
+
+        Args:
+            filepath: path to the file to add
+            lang: language this file belongs too.
+            key: should None, needed for loading
+
+        Returns:
+            resource key to use in scripts
+        """
         abspath = os.path.abspath(filepath)
         resource_key = key if key else "ResKey_" + str(self.mission.next_dict_id())
         if lang not in self.files:
@@ -1134,3 +1446,20 @@ class MapResource:
                     d[mr["reskey"]] = nameinzip
 
         return d
+
+
+class Options:
+    """Should be a representation for the mission options file
+    might be removed in the future.
+    """
+    def __init__(self):
+        self.options = {}
+
+    def load_from_dict(self, d):
+        self.options = d
+
+    def __str__(self):
+        return lua.dumps(self.options, "options", 1)
+
+    def __repr__(self):
+        return repr(self.options)

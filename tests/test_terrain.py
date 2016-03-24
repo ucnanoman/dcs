@@ -83,4 +83,3 @@ class NevataTest(unittest.TestCase):
         self.assertEqual(len(hslots), 14)
 
         slots = m.terrain.nellis().free_parking_slots(dcs.planes.KC_135)
-        print(len(slots))
