@@ -26,10 +26,10 @@ from .country import Country
 from .forcedoptions import ForcedOptions
 from .goals import Goals
 from .groundcontrol import GroundControl
-from .point import MovingPoint, PointAction
+from .point import StaticPoint, MovingPoint, PointAction
 from .terrain import Caucasus, Nevada, ParkingSlot, Airport
 from .translation import Translation
-from .unit import Plane, Helicopter, Ship, Vehicle
+from .unit import Plane, Helicopter, Ship, Vehicle, Static
 
 
 class StartType(Enum):
@@ -474,6 +474,51 @@ class Mission:
             String: A new String() object for string s
         """
         return self.translation.create_string(s, lang)
+
+    def static(self, name, _type: unittype.UnitType) -> Static:
+        """Creates a plain static object to be added to a group
+
+        Args:
+            name: of the static object
+            _type(StaticType): type of the static
+
+        Returns:
+            Static: a new static object
+        """
+        return Static(self.next_unit_id(), self.string(name), _type)
+
+    def static_group(self, country, name, _type: unittype.UnitType, position: mapping.Point,
+                      heading=0, hidden=False, dead=False):
+        """Add a static group with 1 static object.
+
+        Args:
+            country(Country): the object belongs too
+            name: name of the group
+            _type: what kind of object
+            position(dcs.mapping.Point): where to place the object
+            heading: of the object
+            hidden: should the object be hidden on the map
+            dead: should the object be rendered as dead
+
+        Returns:
+            StaticGroup: the new static group
+        """
+        sg = unitgroup.StaticGroup(self.next_group_id(), self.string(name))
+
+        s = self.static(name + " object", _type)
+        s.position = copy.copy(position)
+        s.heading = heading
+        sg.add_unit(s)
+
+        sg.hidden = hidden
+        sg.dead = dead
+
+        sp = StaticPoint()
+        sp.position = s.position
+        sg.add_point(sp)
+
+        country.add_static_group(sg)
+        return sg
 
     def vehicle(self, name, _type: unittype.VehicleType) -> Vehicle:
         """Creates a plain vehicle unit to be added to a group

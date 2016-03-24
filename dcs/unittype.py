@@ -12,6 +12,15 @@ class VehicleType(UnitType):
     eplrs = False
 
 
+class StaticType(UnitType):
+    shape_name = None
+    rate = 0
+    category = "Fortifications"
+    sea_object = False
+    can_cargo = False
+    mass = None
+
+
 class FlyingType(UnitType):
     flyable = False
     group_size_max = 4

@@ -149,7 +149,7 @@ class Coalition:
                     for imp_unit_idx in sgroup["units"]:
                         imp_unit = sgroup["units"][imp_unit_idx]
                         static = Static(
-                            id=imp_unit["unitId"],
+                            unit_id=imp_unit["unitId"],
                             name=mission.translation.get_string(imp_unit["name"]),
                             _type=imp_unit["type"])
                         static.load_from_dict(imp_unit)

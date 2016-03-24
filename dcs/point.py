@@ -27,12 +27,12 @@ class PointAction(Enum):
 class StaticPoint:
     def __init__(self):
         self.alt = 0
-        self.type = "Turning Point"
+        self.type = ""
         self.name = String()
         self.position = mapping.Point(0, 0)
         self.speed = 0
         self.formation_template = ""
-        self.action = PointAction.TurningPoint  # type: PointAction
+        self.action = PointAction.None_  # type: PointAction
 
     def load_from_dict(self, d, translation):
         self.alt = d["alt"]
@@ -60,6 +60,8 @@ class StaticPoint:
 class MovingPoint(StaticPoint):
     def __init__(self):
         super(MovingPoint, self).__init__()
+        self.type = "Turning Point"
+        self.action = PointAction.TurningPoint  # type: PointAction
         self.alt_type = "BARO"
         self.ETA = 0
         self.ETA_locked = True

@@ -1,6 +1,6 @@
 from .terrain import ParkingSlot
 from .translation import String
-from .unittype import FlyingType
+from .unittype import UnitType, FlyingType, StaticType
 from .planes import PlaneType, A_10C
 from .helicopters import HelicopterType, Ka_50
 from . import mapping
@@ -233,13 +233,26 @@ class Ship(Unit):
 
 
 class Static(Unit):
-    def __init__(self, id=None, name=None, _type=""):
-        super(Static, self).__init__(id, name, _type)
-        self.category = "Warehouses"
-        self.can_cargo = False
-        self.shape_name = ""
-        self.rate = None
-        self.mass = 1000
+    def __init__(self, unit_id=None, name=None, _type: UnitType=None):
+        if not isinstance(_type, str):
+            type = _type.id
+        else:
+            type = _type
+        super(Static, self).__init__(unit_id, name, type)
+        self.skill = None
+
+        if isinstance(_type, StaticType):
+            self.category = _type.category
+            self.can_cargo = _type.can_cargo
+            self.shape_name = _type.shape_name
+            self.rate = _type.rate
+            self.mass = 1000 if _type.can_cargo else None
+        elif isinstance(_type, PlaneType):
+            self.category = "Planes"
+            self.can_cargo = False
+        elif isinstance(_type, HelicopterType):
+            self.category = "Helicopters"
+            self.can_cargo = False
 
     def load_from_dict(self, d):
         super(Static, self).load_from_dict(d)
@@ -253,7 +266,8 @@ class Static(Unit):
         d = super(Static, self).dict()
         d["category"] = self.category
         d["canCargo"] = self.can_cargo
-        d["shape_name"] = self.shape_name
+        if self.shape_name is not None:
+            d["shape_name"] = self.shape_name
         if self.rate is not None:
             d["rate"] = self.rate
         if self.mass is not None:

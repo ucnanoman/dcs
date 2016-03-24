@@ -7,7 +7,7 @@
 -------------------------------------------------------------------------------
 
 -- edit export_path to your export folder
-local export_path = "C:\\Users\\peint\\Documents\\dcs-cs\\dcs\\"
+local export_path = "C:\\Users\\peint\\Documents\\dcs\\dcs\\"
 
 local loadLiveries = require('loadLiveries')
 
@@ -482,10 +482,12 @@ writeln(file, 'class Fortification:')
 for i in pairs(db.Units.Fortifications.Fortification) do
     local unit = db.Units.Fortifications.Fortification[i]
     local safename = safe_name(unit.DisplayName)
+    writeln(file, '')
     writeln(file, '    class '..safename..'(unittype.StaticType):')
     writeln(file, '        id = "'..unit.type..'"')
     writeln(file, '        name = "'..unit.DisplayName..'"')
-    writeln(file, '        rate = "'..unit.Rate..'"')
+    writeln(file, '        shape_name = "'..unit.ShapeName..'"')
+    writeln(file, '        rate = '..unit.Rate)
     if unit.SeaObject ~= nil and unit.SeaObject then
         writeln(file, '        sea_object = True')
     end
@@ -499,9 +501,11 @@ writeln(file, 'class GroundObject:')
 for i in pairs(db.Units.GroundObjects.GroundObject) do
     local unit = db.Units.GroundObjects.GroundObject[i]
     local safename = safe_name(unit.DisplayName)
+    writeln(file, '')
     writeln(file, '    class '..safename..'(unittype.StaticType):')
     writeln(file, '        id = "'..unit.type..'"')
     writeln(file, '        name = "'..unit.DisplayName..'"')
+    writeln(file, '        category = ""')
 end
 
 lookup_map(file, "GroundObject", db.Units.GroundObjects.GroundObject)
@@ -512,10 +516,13 @@ writeln(file, 'class Warehouse:')
 for i in pairs(db.Units.Warehouses.Warehouse) do
     local unit = db.Units.Warehouses.Warehouse[i]
     local safename = safe_name(unit.DisplayName)
+    writeln(file, '')
     writeln(file, '    class '..safename..'(unittype.StaticType):')
     writeln(file, '        id = "'..unit.type..'"')
     writeln(file, '        name = "'..unit.DisplayName..'"')
-    writeln(file, '        rate = "'..unit.Rate..'"')
+    writeln(file, '        shape_name = "'..unit.ShapeName..'"')
+    writeln(file, '        category = "Warehouses"')
+    writeln(file, '        rate = '..unit.Rate)
     if unit.SeaObject ~= nil and unit.SeaObject then
         writeln(file, '        sea_object = True')
     end
@@ -529,10 +536,13 @@ writeln(file, 'class Cargo:')
 for i in pairs(db.Units.Cargos.Cargo) do
     local unit = db.Units.Cargos.Cargo[i]
     local safename = safe_name(unit.DisplayName)
+    writeln(file, '')
     writeln(file, '    class '..safename..'(unittype.StaticType):')
     writeln(file, '        id = "'..unit.type..'"')
     writeln(file, '        name = "'..unit.DisplayName..'"')
-    writeln(file, '        rate = "'..unit.Rate..'"')
+    writeln(file, '        shape_name = "'..unit.ShapeName..'"')
+    writeln(file, '        category = "Cargos"')
+    writeln(file, '        rate = '..unit.Rate)
     writeln(file, '        can_cargo = True')
 end
 
