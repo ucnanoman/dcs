@@ -67,6 +67,7 @@ class MovingPoint(StaticPoint):
         self.tasks = []  # type: List[task.Task]
         self.properties = None
         self.airdrome_id = None
+        self.helipad_id = None
 
     def load_from_dict(self, d, translation):
         super(MovingPoint, self).load_from_dict(d, translation)
@@ -77,6 +78,7 @@ class MovingPoint(StaticPoint):
         for t in d["task"]["params"]["tasks"]:
             self.tasks.append(task._create_from_dict(d["task"]["params"]["tasks"][t]))
         self.airdrome_id = d.get("airdromeId", None)
+        self.helipad_id = d.get("helipadId", None)
         self.properties = d.get("properties", None)
 
     def find_task(self, task_type):
@@ -108,6 +110,8 @@ class MovingPoint(StaticPoint):
         }
         if self.airdrome_id is not None:
             d["airdromeId"] = self.airdrome_id
+        if self.helipad_id is not None:
+                d["helipadId"] = self.helipad_id
         if self.properties is not None:
             d["properties"] = self.properties
         return d
