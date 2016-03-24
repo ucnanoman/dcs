@@ -382,12 +382,12 @@ from enum import Enum
     writeln(file, "}")
 end
 
-file = io.open(export_path.."planes.py", "w")
+local file = io.open(export_path.."planes.py", "w")
 export_aircraft(file, db.Units.Planes.Plane, 'Plane', true)
 file:close()
 
 aircrafts = db.Units.Helicopters.Helicopter
-file = io.open(export_path.."helicopters.py", "w")
+local file = io.open(export_path.."helicopters.py", "w")
 export_aircraft(file, db.Units.Helicopters.Helicopter, 'Helicopter', false)
 file:close()
 
@@ -395,7 +395,7 @@ file:close()
 -------------------------------------------------------------------------------
 -- ground units
 -------------------------------------------------------------------------------
-file = io.open(export_path.."vehicles.py", "w")
+local file = io.open(export_path.."vehicles.py", "w")
 
 file:write(
 [[# This file is generated from pydcs_export.lua
@@ -451,6 +451,93 @@ for i in pairs(db.Units.Cars.Car) do
     writeln(file, '    "'..unit.type..'": '..cat..'.'..safename..',')
 end
 writeln(file, "}")
+file:close()
+
+
+-------------------------------------------------------------------------------
+-- static units
+-------------------------------------------------------------------------------
+local file = io.open(export_path.."statics.py", "w")
+
+file:write(
+[[# This file is generated from pydcs_export.lua
+
+from . import unittype
+]])
+
+local function lookup_map(file, parent, arr)
+    writeln(file, '')
+    writeln(file, string.lower(parent).."_map = {")
+    for i in pairs(arr) do
+        local unit = arr[i];
+        local safename = safe_name(unit.DisplayName)
+        writeln(file, '    "'..unit.type..'": '..parent..'.'..safename..',')
+    end
+    writeln(file, "}")
+end
+
+writeln(file, '')
+writeln(file, '')
+writeln(file, 'class Fortification:')
+for i in pairs(db.Units.Fortifications.Fortification) do
+    local unit = db.Units.Fortifications.Fortification[i]
+    local safename = safe_name(unit.DisplayName)
+    writeln(file, '    class '..safename..'(unittype.StaticType):')
+    writeln(file, '        id = "'..unit.type..'"')
+    writeln(file, '        name = "'..unit.DisplayName..'"')
+    writeln(file, '        rate = "'..unit.Rate..'"')
+    if unit.SeaObject ~= nil and unit.SeaObject then
+        writeln(file, '        sea_object = True')
+    end
+end
+
+lookup_map(file, "Fortification", db.Units.Fortifications.Fortification)
+
+writeln(file, '')
+writeln(file, '')
+writeln(file, 'class GroundObject:')
+for i in pairs(db.Units.GroundObjects.GroundObject) do
+    local unit = db.Units.GroundObjects.GroundObject[i]
+    local safename = safe_name(unit.DisplayName)
+    writeln(file, '    class '..safename..'(unittype.StaticType):')
+    writeln(file, '        id = "'..unit.type..'"')
+    writeln(file, '        name = "'..unit.DisplayName..'"')
+end
+
+lookup_map(file, "GroundObject", db.Units.GroundObjects.GroundObject)
+
+writeln(file, '')
+writeln(file, '')
+writeln(file, 'class Warehouse:')
+for i in pairs(db.Units.Warehouses.Warehouse) do
+    local unit = db.Units.Warehouses.Warehouse[i]
+    local safename = safe_name(unit.DisplayName)
+    writeln(file, '    class '..safename..'(unittype.StaticType):')
+    writeln(file, '        id = "'..unit.type..'"')
+    writeln(file, '        name = "'..unit.DisplayName..'"')
+    writeln(file, '        rate = "'..unit.Rate..'"')
+    if unit.SeaObject ~= nil and unit.SeaObject then
+        writeln(file, '        sea_object = True')
+    end
+end
+
+lookup_map(file, "Warehouse", db.Units.Warehouses.Warehouse)
+
+writeln(file, '')
+writeln(file, '')
+writeln(file, 'class Cargo:')
+for i in pairs(db.Units.Cargos.Cargo) do
+    local unit = db.Units.Cargos.Cargo[i]
+    local safename = safe_name(unit.DisplayName)
+    writeln(file, '    class '..safename..'(unittype.StaticType):')
+    writeln(file, '        id = "'..unit.type..'"')
+    writeln(file, '        name = "'..unit.DisplayName..'"')
+    writeln(file, '        rate = "'..unit.Rate..'"')
+    writeln(file, '        can_cargo = True')
+end
+
+lookup_map(file, "Cargo", db.Units.Cargos.Cargo)
+
 file:close()
 
 
