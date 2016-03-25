@@ -12,6 +12,12 @@ class VehicleType(UnitType):
     eplrs = False
 
 
+class ShipType(UnitType):
+    helicopter_num = 0
+    plane_num = 0
+    parking = 0
+
+
 class StaticType(UnitType):
     shape_name = None
     rate = 0

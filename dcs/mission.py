@@ -615,7 +615,7 @@ class Mission:
         country.add_vehicle_group(vg)
         return vg
 
-    def ship(self, name, _type) -> Ship:
+    def ship(self, name, _type: unittype.ShipType) -> Ship:
         """Creates a plain ship unit to be added to a group
 
         Args:
@@ -627,7 +627,7 @@ class Mission:
         """
         return Ship(self.next_unit_id(), self.string(name), _type)
 
-    def ship_group(self, country, name, _type: str,
+    def ship_group(self, country, name, _type: unittype.ShipType,
                    position: mapping.Point, heading=0, group_size=1) -> unitgroup.ShipGroup:
         """Adds a ship group to the given country.
 

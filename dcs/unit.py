@@ -218,8 +218,8 @@ class Vehicle(Unit):
 
 
 class Ship(Unit):
-    def __init__(self, id=None, name=None, _type="speedboat"):
-        super(Ship, self).__init__(id, name, _type)
+    def __init__(self, id=None, name=None, _type=None):
+        super(Ship, self).__init__(id, name, _type.id)
         self.transportable = {"randomTransportable": False}
 
     def load_from_dict(self, d):

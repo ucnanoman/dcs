@@ -6,6 +6,7 @@ from . import planes
 from . import helicopters
 from . import statics
 from . import vehicles
+from . import ships
 from . import terrain
 from . import unit
 from . import unitgroup
