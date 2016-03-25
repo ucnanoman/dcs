@@ -488,7 +488,7 @@ class Mission:
         return Static(self.next_unit_id(), self.string(name), _type)
 
     def static_group(self, country, name, _type: unittype.UnitType, position: mapping.Point,
-                      heading=0, hidden=False, dead=False):
+                     heading=0, hidden=False, dead=False):
         """Add a static group with 1 static object.
 
         Args:
@@ -1058,14 +1058,14 @@ class Mission:
 
         Args:
             country(Country): Country object the awacs group belongs to
-            name: of the AWACS flight
+            name: of the refuel flight
             plane_type(PlaneType): refuel plane type. e.g KC_135
             airport(Airport): starting airport, use None if you want it to spawn inflight
             position(dcs.mapping.Point): reference point for the race-track
             race_distance: distance for the race-track pattern
             heading: direction from the referene position
-            altitude: of the AWACS race-track
-            speed: of the AWACS flight
+            altitude: of the refuel race-track
+            speed: of the refuel flight
             start_type(StartType): of the flight if starts from airport
             frequency: VHF-AM frequencey in mhz
             tacanchannel: if the PlaneType supports tacan this channel will be set.
