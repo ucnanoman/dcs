@@ -471,7 +471,11 @@ local function lookup_map(file, parent, arr)
     for i in pairs(arr) do
         local unit = arr[i];
         local safename = safe_name(unit.DisplayName)
-        writeln(file, '    "'..unit.type..'": '..parent..'.'..safename..',')
+        if parent ~= nil then
+            writeln(file, '    "'..unit.type..'": '..parent..'.'..safename..',')
+        else
+            writeln(file, '    "'..unit.type..'": '..safename..',')
+        end
     end
     writeln(file, "}")
 end
@@ -550,6 +554,34 @@ lookup_map(file, "Cargo", db.Units.Cargos.Cargo)
 
 file:close()
 
+
+-------------------------------------------------------------------------------
+-- ship units
+-------------------------------------------------------------------------------
+local file = io.open(export_path.."ships.py", "w")
+
+file:write(
+[[# This file is generated from pydcs_export.lua
+
+from . import unittype
+]])
+
+for i in pairs(db.Units.Ships.Ship) do
+    local unit = db.Units.Ships.Ship[i]
+    local safename = safe_name(unit.DisplayName)
+    writeln(file, '')
+    writeln(file, '')
+    writeln(file, 'class '..safename..'(unittype.ShipType):')
+    writeln(file, '    id = "'..unit.type..'"')
+    writeln(file, '    name = "'..unit.DisplayName..'"')
+    writeln(file, '    plane_num = "'..unit.Plane_Num_..'"')
+    writeln(file, '    helicopter_num = "'..unit.Helicopter_Num_..'"')
+    writeln(file, '    parking = "'..unit.numParking..'"')
+--    writeln(file, '    shape_name = "'..unit.ShapeName..'"')
+--    writeln(file, '    rate = '..unit.Rate)
+end
+
+lookup_map(file, nil, db.Units.Ships.Ship)
 
 -------------------------------------------------------------------------------
 -- export country data
@@ -681,7 +713,7 @@ while i <= country.maxIndex do
             writeln(file, '    class Ship:')
             for u in pairs(ships) do
                 local safeName = safe_name(ships[u].Name)
-                writeln(file, '        '..safeName..' = "'..ships[u].Name..'"')
+                writeln(file, '        '..safeName..' = ships."'..safeName..'"')
             end
         end
 
