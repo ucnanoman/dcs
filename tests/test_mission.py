@@ -43,3 +43,100 @@ class BasicTests(unittest.TestCase):
         found_g = m.find_group("Airgroup 1")
         self.assertIsInstance(found_g, dcs.unitgroup.PlaneGroup)
         self.assertEqual(found_g.units[0].unit_type, dcs.planes.A_10C)
+
+    def test_basic_mission(self):
+        m = dcs.mission.Mission()
+        kobuleti = m.terrain.airports["Kobuleti"]
+        kobuleti.set_blue()
+        batumi = m.terrain.airports["Batumi"]
+        batumi.set_blue()
+
+        usa = m.coalition["blue"].country("USA")
+        self.assertIsNotNone(usa)
+
+        house = m.static_group(usa, "house", dcs.statics.Fortification.Small_house_1A,
+                       batumi.unit_zones[0].random_point(), 230)
+        self.assertEqual(str(house.name), "house")
+
+        pg = m.flight_group_from_airport(usa, "Airgroup", dcs.planes.A_10C, kobuleti,
+                                         start_type=dcs.mission.StartType.Warm)
+        pg.units[0].set_player()
+
+        pg.add_runway_waypoint(kobuleti)
+
+        pg.add_runway_waypoint(batumi, batumi.runways[0], 8000)
+        pg.land_at(batumi)
+
+        awacs = m.awacs_flight(usa, "AWACS", dcs.planes.E_3A, batumi, batumi.position, race_distance=120 * 1000,
+                               heading=90)
+        self.assertIsNotNone(awacs)
+        self.assertIsNotNone(awacs.points[0].find_task(dcs.task.AWACSTaskAction))
+
+        soganlug = m.terrain.soganlug()
+        soganlug.set_blue()
+        tanker = m.refuel_flight(usa, "Tanker", dcs.planes.KC_135, None, soganlug.position, race_distance=120 * 1000,
+                                 heading=270)
+        self.assertIsNotNone(tanker)
+        self.assertIsNotNone(tanker.points[0].find_task(dcs.task.Tanker))
+
+        ustanks = m.vehicle_group(usa, "DefTanks", dcs.countries.USA.Vehicle.Armor.MBT_M1A2_Abrams,
+                                  dcs.mapping.Point(-283177.42857144, 659188), 300, 3)
+        ustanks.add_unit(m.vehicle("airdef", dcs.countries.USA.Vehicle.AirDefence.SAM_Avenger_M1097))
+        ustanks.add_unit(m.vehicle("aaa", dcs.countries.USA.Vehicle.AirDefence.AAA_Vulcan_M163))
+        ustanks.units[-1].skill = dcs.unit.Skill.High
+        ustanks.formation(heading=310)
+
+        heli = m.flight_group_inflight(usa, "heli", dcs.helicopters.UH_60A,
+                                       dcs.mapping.Point(batumi.position.x + 1000 * 5, batumi.position.y),
+                                       300, speed=150)
+        heli.add_runway_waypoint(kobuleti)
+        heli.land_at(kobuleti)
+
+        apache = m.flight_group_from_airport(usa, "AirCav", dcs.helicopters.AH_64A, kobuleti, group_size=2)
+        apache.load_loadout("8xAGM-114, 38xHYDRA-70 WP")
+        apache.add_runway_waypoint(kobuleti)
+        apache.add_waypoint(ustanks.position, 300, 200)
+
+        senaki = m.terrain.airports["Senaki"]
+        senaki.set_red()
+        russia = m.coalition["red"].country("Russia")
+        bg = m.vehicle_group(russia, "Tanks", dcs.countries.Russia.Vehicle.Armor.MBT_T_90,
+                             dcs.mapping.Point(-281599.97853068, 645570.27528559), 180, 4,
+                             move_formation=dcs.point.PointAction.OnRoad)
+        bg.add_waypoint(dcs.mapping.Point(-317423.36510278, 636737.32119577), dcs.point.PointAction.OnRoad, 50)
+
+        mozdok = m.terrain.airports["Mozdok"]
+        mozdok.set_red()
+        rfighter = m.flight_group_from_airport(russia, "Migs", dcs.planes.MiG_29A, mozdok, group_size=2)
+        last_wp = rfighter.add_runway_waypoint(mozdok)
+        rfighter.add_waypoint(dcs.mapping.Point(last_wp.position.x - 1000 * 80, last_wp.position.y - 1000 * 150), 6000,
+                              800)
+
+        sukhumi = m.terrain.airports["Sukhumi"]
+        sukhumi.set_red()
+        su25 = m.flight_group_from_airport(russia, "Su25 attack", dcs.planes.Su_25T, sukhumi,
+                                           start_type=dcs.mission.StartType.Runway, group_size=2)
+        su25.load_loadout("APU-8 Vikhr-M*2,Kh-25ML,R-73*2,SPPU-22*2,Mercury LLTV Pod,MPS-410")
+
+        last_wp = su25.add_runway_waypoint(sukhumi)
+        heading = last_wp.position.heading_between_point(ustanks.position)
+        distance = last_wp.position.distance_to_point(ustanks.position)
+        p = last_wp.position.point_from_heading(heading, distance - 1000)
+        last_wp = su25.add_waypoint(p, 3000)
+        last_wp.tasks.append(dcs.task.CAS.EnrouteTasks.EngageGroup(ustanks.id))
+        last_wp = su25.add_waypoint(dcs.mapping.Point(last_wp.position.x + 1000 * 10, last_wp.position.y), 3000)
+        su25.add_runway_waypoint(sukhumi)
+        su25.land_at(sukhumi)
+
+        sg = m.ship_group(russia, "TaskForce", dcs.ships.CG_1164_Moskva,
+                          dcs.mapping.Point(-209571.42857143, 500728.57142858), 0)
+        wp = sg.add_waypoint(dcs.mapping.Point(sg.x() - 1000 * 60, sg.y() + 1000 * 10))
+
+        batumi_zone = m.triggers.add_triggerzone(batumi.position, 200, False, "batumi zone")
+
+        goal = dcs.goals.Goal("land at batumi")
+
+        gr = dcs.goals.UnitInZone(pg.units[0].id, batumi_zone.id)
+        goal.rules.append(gr)
+        goal.rules.append(dcs.goals.UnitAlive(pg.units[0].id))
+        m.goals.add_offline(goal)
