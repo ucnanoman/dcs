@@ -465,13 +465,16 @@ file:write(
 from . import unittype
 ]])
 
-local function lookup_map(file, parent, arr)
+local function lookup_map(file, parent, arr, b_parent)
+    if b_parent == nil then
+        b_parent = true
+    end
     writeln(file, '')
     writeln(file, string.lower(parent).."_map = {")
     for i in pairs(arr) do
         local unit = arr[i];
         local safename = safe_name(unit.DisplayName)
-        if parent ~= nil then
+        if b_parent then
             writeln(file, '    "'..unit.type..'": '..parent..'.'..safename..',')
         else
             writeln(file, '    "'..unit.type..'": '..safename..',')
@@ -574,14 +577,20 @@ for i in pairs(db.Units.Ships.Ship) do
     writeln(file, 'class '..safename..'(unittype.ShipType):')
     writeln(file, '    id = "'..unit.type..'"')
     writeln(file, '    name = "'..unit.DisplayName..'"')
-    writeln(file, '    plane_num = "'..unit.Plane_Num_..'"')
-    writeln(file, '    helicopter_num = "'..unit.Helicopter_Num_..'"')
-    writeln(file, '    parking = "'..unit.numParking..'"')
+    if unit.Plane_Num_ ~= nil then
+        writeln(file, '    plane_num = '..unit.Plane_Num_)
+    end
+    if unit.Helicopter_Num_ ~= nil then
+        writeln(file, '    helicopter_num = '..unit.Helicopter_Num_)
+    end
+    if unit.numParking ~= nil then
+        writeln(file, '    parking = '..unit.numParking)
+    end
 --    writeln(file, '    shape_name = "'..unit.ShapeName..'"')
 --    writeln(file, '    rate = '..unit.Rate)
 end
 
-lookup_map(file, nil, db.Units.Ships.Ship)
+lookup_map(file, "ship", db.Units.Ships.Ship, false)
 
 -------------------------------------------------------------------------------
 -- export country data
@@ -610,6 +619,7 @@ writeln(file, 'from .country import Country')
 writeln(file, 'from . import vehicles')
 writeln(file, 'from . import planes')
 writeln(file, 'from . import helicopters')
+writeln(file, 'from . import ships')
 local i = 0
 while i <= country.maxIndex do
     local c = country.by_idx[i]
@@ -713,7 +723,7 @@ while i <= country.maxIndex do
             writeln(file, '    class Ship:')
             for u in pairs(ships) do
                 local safeName = safe_name(ships[u].Name)
-                writeln(file, '        '..safeName..' = ships."'..safeName..'"')
+                writeln(file, '        '..safeName..' = ships.'..safeName)
             end
         end
 

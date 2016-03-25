@@ -4,6 +4,7 @@ from .country import Country
 from . import vehicles
 from . import planes
 from . import helicopters
+from . import ships
 
 
 class Russia(Country):
@@ -217,20 +218,20 @@ class Russia(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
-        KUZNECOW = "KUZNECOW"
-        MOSCOW = "MOSCOW"
-        PIOTR = "PIOTR"
-        ELNYA = "ELNYA"
-        ALBATROS = "ALBATROS"
-        REZKY = "REZKY"
-        MOLNIYA = "MOLNIYA"
-        KILO = "KILO"
-        SOM = "SOM"
-        ZWEZDNY = "ZWEZDNY"
-        NEUSTRASH = "NEUSTRASH"
-        Dry_cargo_ship_1 = "Dry-cargo ship-1"
-        Dry_cargo_ship_2 = "Dry-cargo ship-2"
+        speedboat = ships.speedboat
+        KUZNECOW = ships.KUZNECOW
+        MOSCOW = ships.MOSCOW
+        PIOTR = ships.PIOTR
+        ELNYA = ships.ELNYA
+        ALBATROS = ships.ALBATROS
+        REZKY = ships.REZKY
+        MOLNIYA = ships.MOLNIYA
+        KILO = ships.KILO
+        SOM = ships.SOM
+        ZWEZDNY = ships.ZWEZDNY
+        NEUSTRASH = ships.NEUSTRASH
+        Dry_cargo_ship_1 = ships.Dry_cargo_ship_1
+        Dry_cargo_ship_2 = ships.Dry_cargo_ship_2
 
     class CallsignHelipad:
         Otkrytka = "Otkrytka"
@@ -443,15 +444,15 @@ class Ukraine(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
-        ELNYA = "ELNYA"
-        ALBATROS = "ALBATROS"
-        MOLNIYA = "MOLNIYA"
-        KILO = "KILO"
-        ZWEZDNY = "ZWEZDNY"
-        Dry_cargo_ship_1 = "Dry-cargo ship-1"
-        Dry_cargo_ship_2 = "Dry-cargo ship-2"
-        REZKY = "REZKY"
+        speedboat = ships.speedboat
+        ELNYA = ships.ELNYA
+        ALBATROS = ships.ALBATROS
+        MOLNIYA = ships.MOLNIYA
+        KILO = ships.KILO
+        ZWEZDNY = ships.ZWEZDNY
+        Dry_cargo_ship_1 = ships.Dry_cargo_ship_1
+        Dry_cargo_ship_2 = ships.Dry_cargo_ship_2
+        REZKY = ships.REZKY
 
     def __init__(self):
         super(Ukraine, self).__init__(Ukraine.id, Ukraine.name)
@@ -547,6 +548,7 @@ class USA(Country):
         Bf_109K_4 = planes.Bf_109_K_4
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
         F_5E_3 = planes.F_5E_3
         F_86F_Sabre = planes.F_86F
         Hawk = planes.Hawk
@@ -624,10 +626,10 @@ class USA(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
-        VINSON = "VINSON"
-        PERRY = "PERRY"
-        TICONDEROG = "TICONDEROG"
+        speedboat = ships.speedboat
+        VINSON = ships.VINSON
+        PERRY = ships.PERRY
+        TICONDEROG = ships.TICONDEROG
 
     class CallsignAWACS:
         Overlord = "Overlord"
@@ -790,6 +792,7 @@ class Turkey(Country):
         Bf_109K_4 = planes.Bf_109_K_4
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
         F_5E_3 = planes.F_5E_3
         F_86F_Sabre = planes.F_86F
         Hawk = planes.Hawk
@@ -838,8 +841,8 @@ class Turkey(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
-        PERRY = "PERRY"
+        speedboat = ships.speedboat
+        PERRY = ships.PERRY
 
     def __init__(self):
         super(Turkey, self).__init__(Turkey.id, Turkey.name)
@@ -931,7 +934,7 @@ class UK(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     class CallsignAWACS:
         Solex = "Solex"
@@ -1030,7 +1033,7 @@ class France(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     class CallsignAWACS:
         Cyrano = "Cyrano"
@@ -1150,7 +1153,7 @@ class Germany(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Germany, self).__init__(Germany.id, Germany.name)
@@ -1314,6 +1317,7 @@ class USAFAggressors(Country):
             SPAAA_Gepard = vehicles.AirDefence.SPAAA_Gepard
             SAM_Stinger_MANPADS_dsr = vehicles.AirDefence.SAM_Stinger_MANPADS_dsr
             SAM_Stinger_comm_dsr = vehicles.AirDefence.SAM_Stinger_comm_dsr
+            SAM_Stinger_MANPADS = vehicles.AirDefence.SAM_Stinger_MANPADS
 
     class Plane:
         A_10C = planes.A_10C
@@ -1375,6 +1379,7 @@ class USAFAggressors(Country):
         Bf_109K_4 = planes.Bf_109_K_4
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
         F_5E_3 = planes.F_5E_3
         F_86F_Sabre = planes.F_86F
         Hawk = planes.Hawk
@@ -1489,23 +1494,23 @@ class USAFAggressors(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
-        ELNYA = "ELNYA"
-        ALBATROS = "ALBATROS"
-        MOLNIYA = "MOLNIYA"
-        KILO = "KILO"
-        ZWEZDNY = "ZWEZDNY"
-        Dry_cargo_ship_1 = "Dry-cargo ship-1"
-        Dry_cargo_ship_2 = "Dry-cargo ship-2"
-        REZKY = "REZKY"
-        KUZNECOW = "KUZNECOW"
-        MOSCOW = "MOSCOW"
-        PIOTR = "PIOTR"
-        SOM = "SOM"
-        NEUSTRASH = "NEUSTRASH"
-        VINSON = "VINSON"
-        PERRY = "PERRY"
-        TICONDEROG = "TICONDEROG"
+        speedboat = ships.speedboat
+        ELNYA = ships.ELNYA
+        ALBATROS = ships.ALBATROS
+        MOLNIYA = ships.MOLNIYA
+        KILO = ships.KILO
+        ZWEZDNY = ships.ZWEZDNY
+        Dry_cargo_ship_1 = ships.Dry_cargo_ship_1
+        Dry_cargo_ship_2 = ships.Dry_cargo_ship_2
+        REZKY = ships.REZKY
+        KUZNECOW = ships.KUZNECOW
+        MOSCOW = ships.MOSCOW
+        PIOTR = ships.PIOTR
+        SOM = ships.SOM
+        NEUSTRASH = ships.NEUSTRASH
+        VINSON = ships.VINSON
+        PERRY = ships.PERRY
+        TICONDEROG = ships.TICONDEROG
 
     def __init__(self):
         super(USAFAggressors, self).__init__(USAFAggressors.id, USAFAggressors.name)
@@ -1594,7 +1599,7 @@ class Canada(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Canada, self).__init__(Canada.id, Canada.name)
@@ -1690,7 +1695,7 @@ class Spain(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Spain, self).__init__(Spain.id, Spain.name)
@@ -1793,7 +1798,7 @@ class TheNetherlands(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(TheNetherlands, self).__init__(TheNetherlands.id, TheNetherlands.name)
@@ -1883,7 +1888,7 @@ class Belgium(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Belgium, self).__init__(Belgium.id, Belgium.name)
@@ -1976,7 +1981,7 @@ class Norway(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Norway, self).__init__(Norway.id, Norway.name)
@@ -2068,7 +2073,7 @@ class Denmark(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Denmark, self).__init__(Denmark.id, Denmark.name)
@@ -2187,7 +2192,7 @@ class Israel(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Israel, self).__init__(Israel.id, Israel.name)
@@ -2330,13 +2335,13 @@ class Georgia(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
-        ELNYA = "ELNYA"
-        ALBATROS = "ALBATROS"
-        MOLNIYA = "MOLNIYA"
-        Dry_cargo_ship_1 = "Dry-cargo ship-1"
-        Dry_cargo_ship_2 = "Dry-cargo ship-2"
-        ZWEZDNY = "ZWEZDNY"
+        speedboat = ships.speedboat
+        ELNYA = ships.ELNYA
+        ALBATROS = ships.ALBATROS
+        MOLNIYA = ships.MOLNIYA
+        Dry_cargo_ship_1 = ships.Dry_cargo_ship_1
+        Dry_cargo_ship_2 = ships.Dry_cargo_ship_2
+        ZWEZDNY = ships.ZWEZDNY
 
     def __init__(self):
         super(Georgia, self).__init__(Georgia.id, Georgia.name)
@@ -2444,12 +2449,12 @@ class Insurgents(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
-        ELNYA = "ELNYA"
-        MOLNIYA = "MOLNIYA"
-        Dry_cargo_ship_1 = "Dry-cargo ship-1"
-        Dry_cargo_ship_2 = "Dry-cargo ship-2"
-        ZWEZDNY = "ZWEZDNY"
+        speedboat = ships.speedboat
+        ELNYA = ships.ELNYA
+        MOLNIYA = ships.MOLNIYA
+        Dry_cargo_ship_1 = ships.Dry_cargo_ship_1
+        Dry_cargo_ship_2 = ships.Dry_cargo_ship_2
+        ZWEZDNY = ships.ZWEZDNY
 
     def __init__(self):
         super(Insurgents, self).__init__(Insurgents.id, Insurgents.name)
@@ -2580,12 +2585,12 @@ class Abkhazia(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
-        ELNYA = "ELNYA"
-        MOLNIYA = "MOLNIYA"
-        ZWEZDNY = "ZWEZDNY"
-        Dry_cargo_ship_1 = "Dry-cargo ship-1"
-        Dry_cargo_ship_2 = "Dry-cargo ship-2"
+        speedboat = ships.speedboat
+        ELNYA = ships.ELNYA
+        MOLNIYA = ships.MOLNIYA
+        ZWEZDNY = ships.ZWEZDNY
+        Dry_cargo_ship_1 = ships.Dry_cargo_ship_1
+        Dry_cargo_ship_2 = ships.Dry_cargo_ship_2
 
     def __init__(self):
         super(Abkhazia, self).__init__(Abkhazia.id, Abkhazia.name)
@@ -2793,7 +2798,7 @@ class Italy(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Italy, self).__init__(Italy.id, Italy.name)
@@ -2874,7 +2879,7 @@ class Australia(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Australia, self).__init__(Australia.id, Australia.name)
@@ -2914,6 +2919,7 @@ class Switzerland(Country):
         Bf_109K_4 = planes.Bf_109_K_4
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
         F_5E_3 = planes.F_5E_3
         F_86F_Sabre = planes.F_86F
         Hawk = planes.Hawk
@@ -2948,7 +2954,7 @@ class Switzerland(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Switzerland, self).__init__(Switzerland.id, Switzerland.name)
@@ -3006,7 +3012,7 @@ class Austria(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Austria, self).__init__(Austria.id, Austria.name)
@@ -3064,7 +3070,7 @@ class Belarus(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Belarus, self).__init__(Belarus.id, Belarus.name)
@@ -3124,7 +3130,7 @@ class Bulgaria(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Bulgaria, self).__init__(Bulgaria.id, Bulgaria.name)
@@ -3184,7 +3190,7 @@ class CzechRepublic(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(CzechRepublic, self).__init__(CzechRepublic.id, CzechRepublic.name)
@@ -3267,7 +3273,7 @@ class China(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(China, self).__init__(China.id, China.name)
@@ -3325,7 +3331,7 @@ class Croatia(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Croatia, self).__init__(Croatia.id, Croatia.name)
@@ -3383,7 +3389,7 @@ class Egypt(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Egypt, self).__init__(Egypt.id, Egypt.name)
@@ -3441,7 +3447,7 @@ class Finland(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Finland, self).__init__(Finland.id, Finland.name)
@@ -3526,6 +3532,7 @@ class Greece(Country):
         Bf_109K_4 = planes.Bf_109_K_4
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
         F_5E_3 = planes.F_5E_3
         F_86F_Sabre = planes.F_86F
         Hawk = planes.Hawk
@@ -3585,7 +3592,7 @@ class Greece(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Greece, self).__init__(Greece.id, Greece.name)
@@ -3645,7 +3652,7 @@ class Hungary(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Hungary, self).__init__(Hungary.id, Hungary.name)
@@ -3703,7 +3710,7 @@ class India(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(India, self).__init__(India.id, India.name)
@@ -3761,7 +3768,7 @@ class Iran(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Iran, self).__init__(Iran.id, Iran.name)
@@ -3819,7 +3826,7 @@ class Iraq(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Iraq, self).__init__(Iraq.id, Iraq.name)
@@ -3877,7 +3884,7 @@ class Japan(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Japan, self).__init__(Japan.id, Japan.name)
@@ -3935,7 +3942,7 @@ class Kazakhstan(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Kazakhstan, self).__init__(Kazakhstan.id, Kazakhstan.name)
@@ -3993,7 +4000,7 @@ class NorthKorea(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(NorthKorea, self).__init__(NorthKorea.id, NorthKorea.name)
@@ -4051,7 +4058,7 @@ class Pakistan(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Pakistan, self).__init__(Pakistan.id, Pakistan.name)
@@ -4109,7 +4116,7 @@ class Poland(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Poland, self).__init__(Poland.id, Poland.name)
@@ -4167,7 +4174,7 @@ class Romania(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Romania, self).__init__(Romania.id, Romania.name)
@@ -4225,7 +4232,7 @@ class SaudiArabia(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(SaudiArabia, self).__init__(SaudiArabia.id, SaudiArabia.name)
@@ -4283,7 +4290,7 @@ class Serbia(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Serbia, self).__init__(Serbia.id, Serbia.name)
@@ -4343,7 +4350,7 @@ class Slovakia(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Slovakia, self).__init__(Slovakia.id, Slovakia.name)
@@ -4401,7 +4408,7 @@ class SouthKorea(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(SouthKorea, self).__init__(SouthKorea.id, SouthKorea.name)
@@ -4459,7 +4466,7 @@ class Sweden(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Sweden, self).__init__(Sweden.id, Sweden.name)
@@ -4519,7 +4526,7 @@ class Syria(Country):
     ]
 
     class Ship:
-        speedboat = "speedboat"
+        speedboat = ships.speedboat
 
     def __init__(self):
         super(Syria, self).__init__(Syria.id, Syria.name)
