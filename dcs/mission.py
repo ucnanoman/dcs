@@ -210,6 +210,9 @@ class Mission:
             RuntimeError: if an unknown value is encountered
         """
         self.filename = filename
+        self.current_unit_id = 0
+        self.current_group_id = 0
+        self.current_dict_id = 0
         mission_dict = {}
         options_dict = {}
         warehouse_dict = {}
