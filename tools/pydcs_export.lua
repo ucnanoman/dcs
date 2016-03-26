@@ -605,6 +605,16 @@ local categories = {
     'Ground Units'
 }
 
+local function getUnit(arr, _type)
+    for i in pairs(arr) do
+        local unit = arr[i]
+        if unit.type == _type then
+            return unit
+        end
+    end
+    return nil
+end
+
 local name_mapping = {}
 name_mapping["FW_190D9"] = "Fw_190_D_9"
 name_mapping["Bf_109K_4"] = "Bf_109_K_4"
@@ -722,7 +732,8 @@ while i <= country.maxIndex do
             writeln(file, '')
             writeln(file, '    class Ship:')
             for u in pairs(ships) do
-                local safeName = safe_name(ships[u].Name)
+                local funit = getUnit(db.Units.Ships.Ship, ships[u].Name)
+                local safeName = safe_name(funit.DisplayName)
                 writeln(file, '        '..safeName..' = ships.'..safeName)
             end
         end
