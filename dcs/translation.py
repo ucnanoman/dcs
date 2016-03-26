@@ -45,7 +45,8 @@ class Translation:
 
     def delete_string(self, _id):
         for lang in self.strings:
-            del self.strings[lang][_id]
+            if _id in self.strings[lang]:
+                del self.strings[lang][_id]
 
     def languages(self) -> [str]:
         return self.strings.keys()
