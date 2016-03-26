@@ -28,13 +28,46 @@ Possible use cases are:
 
 This code generates a mission with a AWACS flight starting cold from batumi.
 
+## Random mission scripts
+
+pydcs comes with 2 proof of concept scripts:
+
+### dcs_random
+
+This script can generate 3 different mission types
+
+ * refuel
+
+   Generates a refuel mission for A-10C or M-2000C aircrafts, search your tanker and refuel.
+
+ * CAS
+
+   Support ground troops.
+
+ * CAP
+
+   Take care of your tanker and AWACS.
+
+For options see the script help with `dcs_random --help`
+
+### dcs_dogfight_wwii
+
+This script randomly generates WWII dogfights with a given number of planes near a random airport.
+For options also see the script help `dcs_dogfight_wwii --help`
+
+###
+
 ## Install
 
     pip install pydcs
+
+## Documentation
+
+The current documentation can be found [here](http://dcs.readthedocs.org/en/latest)
 
 ## TODO
 
  * Trigger rule sets
  * Failures
  * Farps
- * Airgroup on ships
+ * More/better documentation
