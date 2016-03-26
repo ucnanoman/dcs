@@ -940,6 +940,67 @@ class Mission:
             self._flying_group_from_airport(country, ag, maintask, airport, start_type, parking_slots))
         return ag
 
+    def flight_group_from_unit(self,
+                               country: Country,
+                               name,
+                               aircraft_type: unittype.FlyingType,
+                               carrier_unit: Union[Ship, Static],
+                               maintask: task.MainTask = None,
+                               start_type: StartType = StartType.Cold,
+                               group_size=1) -> Union[unitgroup.PlaneGroup, unitgroup.HelicopterGroup]:
+        """Add a new Plane/Helicopter group at the given FARP or carrier unit.
+
+        Args:
+            country(Country): Country object the plane group belongs to
+            name: Name of the aircraft group
+            maintask(MainTask): Task of the aircraft group
+            aircraft_type(FlyingType): FlyingType class that describes the aircraft_type
+            carrier_unit(Unit): Group(Ship, FARP) on which to spawn
+            start_type(StartType): Start from runway, cold or warm parking position, ignored for now
+            group_size: number of units in the group(maximum 4 or 1 for certain types)
+
+        Returns:
+            FlyingGroup: a new :py:class:`dcs.unitgroup.PlaneGroup` or :py:class:`dcs.unitgroup.HelicopterGroup`
+        """
+        if maintask is None:
+            maintask = aircraft_type.task_default
+
+        ag = self.helicopter_group(name) if aircraft_type.helicopter else self.plane_group(name)
+        ag.task = maintask.name
+        group_size = min(group_size, aircraft_type.group_size_max)
+
+        for i in range(1, group_size + 1):
+            p = self.aircraft(name + " Pilot #{nr}".format(nr=i), aircraft_type, country)
+            ag.add_unit(p)
+
+        ag.units[0].position = copy.copy(carrier_unit.position)
+        ag.formation_rectangle(carrier_unit.heading, 10)
+
+        ag.load_task_default_loadout(maintask)
+
+        self._assign_callsign(country, ag)
+
+        point_start_type_map = {
+            StartType.Cold: ("TakeOffParking", PointAction.FromParkingArea),
+            StartType.Warm: ("TakeOffParkingHot", PointAction.FromParkingAreaHot),
+            StartType.Runway: ("TakeOff", PointAction.FromRunway)
+        }
+        mp = MovingPoint()
+        mp.type = point_start_type_map[start_type][0]
+        mp.action = point_start_type_map[start_type][1]
+        mp.position = copy.copy(ag.units[0].position)
+        mp.helipad_id = carrier_unit.id
+        mp.alt = ag.units[0].alt
+        Mission._load_tasks(mp, maintask)
+        first_unit = ag.units[0]
+        if first_unit.unit_type.eplrs:
+            mp.tasks.append(task.EPLRS(self.next_eplrs("helicopter" if first_unit.unit_type.helicopter else "plane")))
+
+        ag.add_point(mp)
+
+        country.add_aircraft_group(ag)
+        return ag
+
     def flight_group(self,
                      country: Country,
                      name: str,

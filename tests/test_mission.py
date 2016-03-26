@@ -130,16 +130,22 @@ class BasicTests(unittest.TestCase):
 
         sg = m.ship_group(russia, "TaskForce", dcs.ships.CG_1164_Moskva,
                           dcs.mapping.Point(-209571.42857143, 500728.57142858), 0)
-        wp = sg.add_waypoint(dcs.mapping.Point(sg.x() - 1000 * 60, sg.y() + 1000 * 10))
+        wp = sg.add_waypoint(dcs.mapping.Point(sg.x - 1000 * 60, sg.y + 1000 * 10))
+
+        seapoint = batumi.unit_zones[0].random_point()
+        seapoint.y -= 10 * 1000
+
+        # carrier with aircraft
+        sg = m.ship_group(usa, "CVN", dcs.countries.USA.Ship.CVN_70_Carl_Vinson, seapoint)
+        m.flight_group_from_unit(usa, "F18 Carrier", dcs.planes.F_A_18C, sg.units[0], group_size=4)
 
         # some statics
         m.static_group(usa, "Static", dcs.statics.Fortification.Cafe, batumi.unit_zones[0].random_point())
         m.static_group(usa, "SPlane", dcs.planes.B_1B, batumi.unit_zones[0].random_point())
         m.static_group(usa, "SHeli", dcs.countries.USA.Helicopter.Mi_8MT, batumi.unit_zones[0].random_point())
         m.static_group(usa, "SVehicle", dcs.countries.USA.Vehicle.Armor.IFV_LAV_25, batumi.unit_zones[0].random_point())
-        seapoint = batumi.unit_zones[0].random_point()
-        seapoint.y -= 10 * 1000
-        m.static_group(usa, "SShip", dcs.countries.USA.Ship.FFG_7CL_Oliver_Hazzard_Perry, seapoint)
+        m.static_group(usa, "SShip", dcs.countries.USA.Ship.FFG_7CL_Oliver_Hazzard_Perry,
+                       dcs.Rectangle.from_point(seapoint, 10000).random_point())
 
         batumi_zone = m.triggers.add_triggerzone(batumi.position, 200, False, "batumi zone")
 
