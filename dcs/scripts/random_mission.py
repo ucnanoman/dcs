@@ -529,13 +529,15 @@ class Refueling(BasicScenario):
         goal.rules.append((dcs.goals.UnitInZone(pg.units[0].id, tz.id)))
         self.m.goals.add_offline(goal)
 
+        self.m.set_sortie_text("Refuel your plane")
         self.m.set_description_text("""Random generated refueling test mission.
 {count} {type} are/is prepared for a refueling training mission.""".format(
             count=playercount, type=", ".join([x[1] for x in aircraft_types])))
         self.m.set_description_bluetask_text("""Find your tanker and do a full refuel.
 Afterwards land at your designated homebase.
 
-AWACS and Tankers are reachable on {freq} Mhz VHF-AM.""".format(freq=frequency))
+AWACS and Tankers are reachable on {freq} Mhz VHF-AM.
+KC-135 Tanker has TACAN 10X activated.""".format(freq=frequency))
 
     @staticmethod
     def random_orbit(rect: dcs.mapping.Rectangle):
@@ -579,7 +581,6 @@ class CAS(BasicScenario):
 
         caucasus = self.m.terrain  # type: dcs.terrain.Caucasus
 
-        usa = self.m.country(dcs.countries.USA.name)
         kutaisi = caucasus.kutaisi()
         kobuleti = caucasus.kobuleti()
         blue_military_airport = [kutaisi, kobuleti]
@@ -657,6 +658,14 @@ class CAS(BasicScenario):
         player_groups = self.place_players(start, aircraft_types, blue_military_airport, playercount, dcs.task.CAS)
         for pg in player_groups:
             pg.add_waypoint(battle_point, 0)
+
+        self.m.set_sortie_text("Random CAS")
+        self.m.set_description_text("""Random generated CAS test mission.""")
+        self.m.set_description_bluetask_text(
+"""Support your ground troops at waypoint 2.
+Take care of enemy air defense.
+
+2 F-16 are supporting you with a SEAD strike""")
 
 
 class CAP(BasicScenario):
@@ -800,6 +809,13 @@ class CAP(BasicScenario):
 
             attack_flight.add_runway_waypoint(start_airport)
             attack_flight.land_at(start_airport)
+
+            self.m.set_sortie_text("Random CAP")
+            self.m.set_description_text("""Random generated CAP test mission.""")
+            self.m.set_description_bluetask_text(
+"""Protect your AWACS and Tanker
+
+AWACS and tanker are reachable on VHF-AM {freq} Mhz.""".format(freq=vhf_am))
 
 
 def main():
