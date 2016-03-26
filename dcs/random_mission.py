@@ -857,6 +857,8 @@ def main():
         s.dynamic_weather(args.weather)
     s.save(args.output, args.show_stats)
 
+    return 0
+
 
 if __name__ == '__main__':
     sys.exit(main())
