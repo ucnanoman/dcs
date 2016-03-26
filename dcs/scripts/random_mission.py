@@ -857,6 +857,7 @@ def main():
         s.dynamic_weather(args.weather)
     s.save(args.output, args.show_stats)
 
+    print("Mission created: " + args.output)
     return 0
 
 

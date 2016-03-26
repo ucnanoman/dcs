@@ -31,10 +31,12 @@ setup(
         'Programming Language :: Python :: 3 :: Only'
     ],
     keywords='dcs digital combat simulator eagle dynamics mission framework',
-    packages=['dcs', 'dcs/terrain', 'dcs/lua'],
+#    install_requires=['typing'],
+    packages=['dcs', 'dcs/terrain', 'dcs/lua', 'dcs/scripts'],
     entry_points={
         'console_scripts': [
-            'dcs_random=dcs.random_mission:main'
+            'dcs_random=dcs.scripts.random_mission:main',
+            'dcs_dogfight_wwii=dcs.scripts.dogfight_wwii:main'
         ]
     },
     test_suite="tests"
