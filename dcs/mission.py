@@ -773,7 +773,7 @@ class Mission:
     @classmethod
     def _assign_callsign(cls, _country, group):
         callsign_name = None
-        category = group.units[0].unit_type.category
+        category = "Air" if group.units[0].unit_type.category == "Interceptor" else group.units[0].unit_type.category
         if category in _country.callsign:
             callsign_name = _country.next_callsign_category(category)
 
