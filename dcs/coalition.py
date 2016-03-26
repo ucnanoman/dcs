@@ -3,6 +3,7 @@ from . import countries
 from . import unitgroup
 from . import planes
 from . import helicopters
+from . import ships
 from dcs.unit import Vehicle, Plane, Helicopter, Static, Ship
 from dcs.point import MovingPoint, StaticPoint
 from dcs.country import Country
@@ -77,7 +78,7 @@ class Coalition:
                         unit = Ship(
                             id=imp_unit["unitId"],
                             name=mission.translation.get_string(imp_unit["name"]),
-                            _type=imp_unit["type"])
+                            _type=ships.ship_map[imp_unit["type"]])
                         unit.load_from_dict(imp_unit)
 
                         mission.current_unit_id = max(mission.current_unit_id, unit.id)
