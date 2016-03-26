@@ -109,6 +109,8 @@ class Mission:
         self.terrain = terrain
         self.trigrules = {}
         self.triggers = Triggers()
+        self.init_script_file = None
+        self.init_script = None
         self.options = Options()
         self.warehouses = Warehouses(self.terrain)
         self.goals = Goals()
@@ -285,6 +287,9 @@ class Mission:
         # goals
         self.goals = Goals()
         self.goals.load_from_dict(imp_mission["goals"])
+
+        self.init_script_file = imp_mission.get("initScriptFile")
+        self.init_script = imp_mission.get("initScript")
 
         # trig
         self.trig = imp_mission["trig"]  # TODO
@@ -1483,6 +1488,10 @@ class Mission:
         m["descriptionBlueTask"] = self._description_bluetask.id
         m["descriptionRedTask"] = self._description_redtask.id
         m["trigrules"] = self.trigrules
+        if self.init_script_file is not None:
+            m["initScriptFile"] = self.init_script_file
+        if self.init_script is not None:
+            m["initScript"] = self.init_script
         m["coalition"] = {}
         for col in self.coalition.keys():
             m["coalition"][col] = self.coalition[col].dict()
