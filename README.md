@@ -68,6 +68,7 @@ The current documentation can be found [here](http://dcs.readthedocs.org/en/late
 ## TODO
 
  * Trigger rule sets
+ * additional aircraft properties
  * Failures
  * Farps
  * More/better documentation
