@@ -202,8 +202,26 @@ class Airport:
         return "Airport(" + self.name + ")"
 
 
+class MapView:
+    def __init__(self, center: mapping.Point, zoom=1000000):
+        self.position = center
+        self.zoom = zoom
+
+    def load_from_dict(self, d):
+        self.position = mapping.Point(d["centerX"], d["centerY"])
+        self.zoom = d["zoom"]
+
+    def dict(self):
+        return {
+            "centerX": self.position.x,
+            "centerY": self.position.y,
+            "zoom": self.zoom
+        }
+
+
 class Terrain:
     bounds = None  # type: mapping.Rectangle
+    map_view_default = None  # type: MapView
 
     def __init__(self, name: str):
         self.name = name

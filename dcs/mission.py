@@ -151,11 +151,7 @@ class Mission:
 
         self.coalition = {"blue": blue, "red": red}  # type: Dict[str, Coalition]
 
-        self.map = {
-            "zoom": self.terrain.map_view_default["zoom"],
-            "centerY": self.terrain.map_view_default["center"].y,
-            "centerX": self.terrain.map_view_default["center"].x
-        }
+        self.map = self.terrain.map_view_default  # type: terrain.MapView
 
         self.failures = {}
         self.trig = {}
@@ -304,7 +300,7 @@ class Mission:
         self.forced_options.load_from_dict(imp_mission["forcedOptions"])
 
         # map
-        self.map = imp_mission["map"]
+        self.map.load_from_dict(imp_mission["map"])
 
         # weather
         self.season_from_start_time = False
@@ -1456,7 +1452,7 @@ class Mission:
         m["weather"] = self.weather.dict()
         m["theatre"] = self.terrain.name
         m["needModules"] = self.needModules
-        m["map"] = self.map
+        m["map"] = self.map.dict()
         m["descriptionText"] = self._description_text.id
         m["pictureFileNameR"] = {}
         for i in range(0, len(self.pictureFileNameR)):
