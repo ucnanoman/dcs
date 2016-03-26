@@ -139,6 +139,10 @@ class Group:
 
         return True
 
+    def set_skill(self, skill: Skill):
+        for u in self.units:
+            u.skill = skill
+
     def dict(self):
         d = {
             "name": self.name.id,
