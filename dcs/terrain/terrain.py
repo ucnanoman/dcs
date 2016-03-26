@@ -236,6 +236,10 @@ class Terrain:
                 return self.airports[x]
         return None
 
+    def airport_list(self) -> List[Airport]:
+        for x in self.airports:
+            yield self.airports[x]
+
 
 class Warehouses:
     def __init__(self, terrain: Terrain):
