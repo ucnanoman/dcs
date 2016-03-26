@@ -1,6 +1,6 @@
 from .terrain import ParkingSlot
 from .translation import String
-from .unittype import UnitType, FlyingType, StaticType
+from .unittype import UnitType, FlyingType, StaticType, ShipType, VehicleType
 from .planes import PlaneType, A_10C
 from .helicopters import HelicopterType, Ka_50
 from . import mapping
@@ -235,23 +235,34 @@ class Ship(Unit):
 class Static(Unit):
     def __init__(self, unit_id=None, name=None, _type: UnitType=None):
         if not isinstance(_type, str):
-            type = _type.id
+            _id = _type.id
+            _class = _type
         else:
-            type = _type
-        super(Static, self).__init__(unit_id, name, type)
+            _id = _type
+            _class = str
+        super(Static, self).__init__(unit_id, name, _id)
         self.skill = None
+        self.shape_name = None
+        self.rate = None
+        self.mass = None
 
-        if isinstance(_type, StaticType):
+        if issubclass(_class, StaticType):
             self.category = _type.category
             self.can_cargo = _type.can_cargo
             self.shape_name = _type.shape_name
             self.rate = _type.rate
             self.mass = 1000 if _type.can_cargo else None
-        elif isinstance(_type, PlaneType):
+        elif issubclass(_class, PlaneType):
             self.category = "Planes"
             self.can_cargo = False
-        elif isinstance(_type, HelicopterType):
+        elif issubclass(_class, HelicopterType):
             self.category = "Helicopters"
+            self.can_cargo = False
+        elif issubclass(_class, ShipType):
+            self.category = "Ships"
+            self.can_cargo = False
+        elif issubclass(_class, VehicleType):
+            self.category = "Vehicles"
             self.can_cargo = False
 
     def load_from_dict(self, d):
