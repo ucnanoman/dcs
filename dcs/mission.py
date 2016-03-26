@@ -98,7 +98,7 @@ class Mission:
         self._description_text = self.string("")
         self._description_bluetask = self.string("")
         self._description_redtask = self.string("")
-        self.sortie = self.string("")
+        self._sortie = self.string("")
         self.pictureFileNameR = []
         self.pictureFileNameB = []
         self.version = 11
@@ -264,7 +264,7 @@ class Mission:
         self._description_text = self.translation.get_string(imp_mission["descriptionText"])
         self._description_bluetask = self.translation.get_string(imp_mission["descriptionBlueTask"])
         self._description_redtask = self.translation.get_string(imp_mission["descriptionRedTask"])
-        self.sortie = self.translation.get_string(imp_mission["sortie"])
+        self._sortie = self.translation.get_string(imp_mission["sortie"])
         for pic in sorted(imp_mission["pictureFileNameR"]):
             self.pictureFileNameR.append(imp_mission["pictureFileNameR"][pic])
         for pic in sorted(imp_mission["pictureFileNameB"]):
@@ -315,6 +315,22 @@ class Mission:
                 self.coalition[col_name].load_from_dict(self, imp_mission["coalition"][col_name])
 
         return True
+
+    def sortie_text(self) -> str:
+        """Returns the mission sortie text.
+
+        Returns:
+            the mission sortie text
+        """
+        return str(self._sortie)
+
+    def set_sortie_text(self, text: str):
+        """Sets the mission sortie text.
+
+        Args:
+            text: text to set.
+        """
+        self._sortie.set(text)
 
     def description_text(self) -> str:
         """Returns the mission description text.
@@ -1476,7 +1492,7 @@ class Mission:
             "blue": {x + 1: col_blue[x] for x in range(0, len(col_blue))},
             "red": {x + 1: col_red[x] for x in range(0, len(col_red))}
         }
-        m["sortie"] = self.sortie.id
+        m["sortie"] = self._sortie.id
         m["version"] = self.version
         m["goals"] = self.goals.dict()
         m["result"] = self.goals.generate_result()
