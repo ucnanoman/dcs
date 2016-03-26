@@ -35,5 +35,6 @@ setup(
         'console_scripts': [
             'dcs_random=dcs.random_mission:main'
         ]
-    }
+    },
+    test_suite="tests"
 )
