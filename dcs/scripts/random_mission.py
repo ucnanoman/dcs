@@ -429,7 +429,9 @@ class BasicScenario:
         return aircraft_groups
 
     def save(self, filename, stats):
-        self.m.save(filename, show_stats=stats)
+        self.m.save(filename)
+        if stats:
+            self.m.print_stats(self.m.stats())
 
 
 class Refueling(BasicScenario):

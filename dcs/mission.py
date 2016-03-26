@@ -1422,7 +1422,7 @@ class Mission:
             return self.load_file(self.filename)
         raise RuntimeError("Currently no file loaded to reload.")
 
-    def save(self, filename=None, show_stats=False):
+    def save(self, filename=None):
         """Save the current Mission object to the given file.
 
         Args:
@@ -1451,8 +1451,6 @@ class Mission:
 
             zipf.writestr('mission', str(self))
 
-        if show_stats:
-            self.print_stats(self.stats())
         return True
 
     def dict(self):
