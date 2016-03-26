@@ -4,7 +4,7 @@ import copy
 from enum import Enum
 from typing import List, Union
 from .unit import Unit, Skill, FlyingUnit, Plane, PlaneType, Helicopter, HelicopterType
-from .point import StaticPoint, MovingPoint, PointAction
+from .point import StaticPoint, MovingPoint, PointAction, PointProperties
 from .translation import String
 from .terrain import Airport, Runway
 from . import task
@@ -281,6 +281,7 @@ class FlyingGroup(MovingGroup):
         mp.alt = altitude
         mp.speed = speed / 3.6
         mp.ETA_locked = False
+        mp.properties = PointProperties()
 
         self.add_point(mp)
         return mp
@@ -304,6 +305,7 @@ class FlyingGroup(MovingGroup):
         mp.alt = 300
         mp.speed = 200 / 3.6
         mp.ETA_locked = False
+        mp.properties = PointProperties()
 
         self.add_point(mp)
         return mp
@@ -317,6 +319,7 @@ class FlyingGroup(MovingGroup):
         mp.alt = 0
         mp.speed = 0
         mp.ETA_locked = False
+        mp.properties = PointProperties()
 
         self.add_point(mp)
         return mp

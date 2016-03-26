@@ -57,6 +57,56 @@ class StaticPoint:
         }
 
 
+class VNav(Enum):
+    V2D = 0
+    V3D = 1
+    VNone = 2
+
+
+class Scale(Enum):
+    Enroute = 0
+    Terminal = 1
+    Approach = 2
+    HighAcc = 3
+    None_ = 4
+
+
+class Steer(Enum):
+    ToFrom = 0
+    Direct = 1
+    ToTo = 2
+    None_ = 3
+
+
+class PointProperties:
+    def __init__(self, vnav: VNav=VNav.V2D, scale: Scale=Scale.Enroute, steer: Steer=Steer.ToTo, angle=None):
+        self.vnav = vnav
+        self.scale = scale
+        self.steer = steer
+        if angle is not None:
+            self.angle = 1
+            self.vangle = angle
+        else:
+            self.angle = 0
+            self.vangle = 0
+
+    def load_from_dict(self, d):
+        self.vnav = VNav(d["vnav"])
+        self.scale = Scale(d["scale"])
+        self.steer = Steer(d["steer"])
+        self.angle = d["angle"]
+        self.vangle = d["vangle"]
+
+    def dict(self):
+        return {
+            "vnav": self.vnav.value,
+            "scale": self.scale.value,
+            "angle": self.angle,
+            "vangle": self.vangle,
+            "steer": self.steer.value
+        }
+
+
 class MovingPoint(StaticPoint):
     def __init__(self):
         super(MovingPoint, self).__init__()
@@ -67,7 +117,7 @@ class MovingPoint(StaticPoint):
         self.ETA_locked = True
         self.speed_locked = True
         self.tasks = []  # type: List[task.Task]
-        self.properties = None
+        self.properties = None  # type: PointProperties
         self.airdrome_id = None
         self.helipad_id = None
 
@@ -81,7 +131,11 @@ class MovingPoint(StaticPoint):
             self.tasks.append(task._create_from_dict(d["task"]["params"]["tasks"][t]))
         self.airdrome_id = d.get("airdromeId", None)
         self.helipad_id = d.get("helipadId", None)
-        self.properties = d.get("properties", None)
+        if d.get("properties"):
+            self.properties = PointProperties()
+            self.properties.load_from_dict(d.get("properties"))
+        else:
+            self.properties = None
 
     def find_task(self, task_type):
         """Searches tasks in this point for the given task class
@@ -115,5 +169,5 @@ class MovingPoint(StaticPoint):
         if self.helipad_id is not None:
                 d["helipadId"] = self.helipad_id
         if self.properties is not None:
-            d["properties"] = self.properties
+            d["properties"] = self.properties.dict()
         return d

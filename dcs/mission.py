@@ -26,7 +26,7 @@ from .country import Country
 from .forcedoptions import ForcedOptions
 from .goals import Goals
 from .groundcontrol import GroundControl
-from .point import StaticPoint, MovingPoint, PointAction
+from .point import StaticPoint, MovingPoint, PointAction, PointProperties
 from .terrain import Caucasus, Nevada, ParkingSlot, Airport
 from .translation import Translation
 from .unit import Plane, Helicopter, Ship, Vehicle, Static
@@ -826,6 +826,7 @@ class Mission:
         mp.position = copy.copy(group.units[0].position)
         mp.airdrome_id = airport.id
         mp.alt = group.units[0].alt
+        mp.properties = PointProperties()
         Mission._load_tasks(mp, maintask)
         first_unit = group.units[0]
         if first_unit.unit_type.eplrs:
@@ -855,6 +856,7 @@ class Mission:
         mp.position = copy.copy(group.units[0].position)
         mp.alt = altitude
         mp.speed = speed / 3.6
+        mp.properties = PointProperties()
 
         Mission._load_tasks(mp, maintask)
         first_unit = group.units[0]
@@ -1006,6 +1008,7 @@ class Mission:
         mp.position = copy.copy(ag.units[0].position)
         mp.helipad_id = carrier_unit.id
         mp.alt = ag.units[0].alt
+        mp.properties = PointProperties()
         Mission._load_tasks(mp, maintask)
         first_unit = ag.units[0]
         if first_unit.unit_type.eplrs:
