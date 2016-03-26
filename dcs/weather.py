@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 import random
+import math
 from enum import Enum
 from . import mapping
 
@@ -140,10 +141,10 @@ class Weather:
             pos = center.point_from_heading(random.randrange(0, 360), random.randrange(10*1000, 1000*1000, 1000))
             c.centerZ = pos.y
             c.centerX = pos.x
-            c.pressure_spread = 877063.35765298
-            c.rotation = 2.6744769369
+            c.pressure_spread = random.random() * 100000 + 800000
+            c.rotation = random.random() * math.pi
 
-            c.pressure_excess = random.randrange(500, 2500) if random.random() > 0.8 else random.randrange(600, 1300)
+            c.pressure_excess = random.randrange(1200, 1800) if random.random() > 0.8 else random.randrange(600, 1300)
 
             c.ellipticity = 1 + random.random() * 0.25
 
