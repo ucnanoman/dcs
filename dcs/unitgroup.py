@@ -12,6 +12,12 @@ from . import mapping
 
 
 class Group:
+    class Formation(Enum):
+        Line = 1
+        Star = 2
+        Rectangle = 3
+        Scattered = 4
+
     def __init__(self, _id: int, name=None):
         if not isinstance(_id, int):
             raise TypeError("id must be an integer")
@@ -30,11 +36,14 @@ class Group:
     def add_point(self, point: StaticPoint):
         self.points.append(point)
 
+    @property
     def x(self):
         if len(self.units) > 0:
             return self.units[0].position.x
         return None
 
+
+    @property
     def y(self):
         if len(self.units) > 0:
             return self.units[0].position.y
@@ -43,6 +52,92 @@ class Group:
     @property
     def position(self) -> mapping.Point:
         return self.units[0].position
+
+    def formation_line(self, heading, distance=20):
+        pos = self.units[0].position
+        for i in range(1, len(self.units)):
+            unit = self.units[i]
+            unit.position = pos.point_from_heading(heading + 90, i * distance)
+            unit.heading = heading
+
+    def formation_star(self, heading, distance=20):
+        pos = self.units[0].position
+        units_count = len(self.units)
+        iterations = math.ceil(units_count / 8)
+        u_idx = 1
+        for i in range(0, iterations):
+            sx = pos.x - (i + 1) * distance
+            sy = pos.y - (i + 1) * distance
+            for j in range(0, 3):
+                dx = distance * (i + 1) * j
+                for k in range(0, 3):
+                    dy = distance * (i + 1) * k
+                    if u_idx >= units_count:
+                        break
+                    u = self.units[u_idx]
+                    u.position.x = sx + dx
+                    u.position.y = sy + dy
+                    u.heading = heading
+
+                    if not (j == 1 and k == 1):
+                        u_idx += 1
+
+    def formation_rectangle(self, heading, distance=20):
+        units_count = len(self.units)
+        size = math.ceil(math.sqrt(units_count))
+        sx = self.units[0].position.x
+        sy = self.units[0].position.y
+        u_idx = 0
+        for i in range(0, size):
+            dx = distance * i
+            for j in range(0, size):
+                dy = distance * j
+                if u_idx >= units_count:
+                    break
+                u = self.units[u_idx]
+                u.position.x = sx - dx
+                u.position.y = sy + dy
+                u.heading = heading
+                u_idx += 1
+
+    def formation_scattered(self, heading=0, max_radius=None):
+        unit_count = len(self.units)
+        max_r = max_radius if max_radius else random.randrange(15, unit_count * 20)
+
+        sx = self.units[0].position.x
+        sy = self.units[0].position.y
+        start_pos = self.units[0].position
+
+        for i in range(1, unit_count):
+            while True:
+                pos = start_pos.point_from_heading(random.randrange(0, 360), max_r)
+
+                collision = False
+                for j in range(0, i):
+                    test_unit = self.units[j]
+                    unit_rect = mapping.Rectangle.from_point(test_unit.position, 14)
+
+                    if unit_rect.point_in_rect(pos):
+                        collision = True
+
+                if not collision:
+                    u = self.units[i]
+                    u.position = copy.copy(pos)
+                    u.heading = heading
+                    break
+            i += 1
+
+    def formation(self, _type=Formation.Line, heading=0):
+        form_map = {
+            VehicleGroup.Formation.Line: self.formation_line,
+            VehicleGroup.Formation.Star: self.formation_star,
+            VehicleGroup.Formation.Rectangle: self.formation_rectangle,
+            VehicleGroup.Formation.Scattered: self.formation_scattered
+        }
+
+        form_map[_type](heading)
+
+        return True
 
     def dict(self):
         d = {
@@ -106,12 +201,6 @@ class MovingGroup(Group):
 
 
 class VehicleGroup(MovingGroup):
-    class Formation(Enum):
-        Line = 1
-        Star = 2
-        Rectangle = 3
-        Scattered = 4
-
     def __init__(self, _id, name=None, start_time=0):
         super(VehicleGroup, self).__init__(_id, name, start_time)
         self.task = "Ground Nothing"
@@ -141,92 +230,6 @@ class VehicleGroup(MovingGroup):
 
         self.add_point(mp)
         return mp
-
-    def formation_line(self, heading, distance=20):
-        pos = self.units[0].position
-        for i in range(1, len(self.units)):
-            unit = self.units[i]
-            unit.position = pos.point_from_heading(heading + 90, i * distance)
-            unit.heading = heading
-
-    def formation_star(self, heading, distance=20):
-        pos = self.units[0].position
-        units_count = len(self.units)
-        iterations = math.ceil(units_count / 8)
-        u_idx = 1
-        for i in range(0, iterations):
-            sx = pos.x - (i+1) * distance
-            sy = pos.y - (i+1) * distance
-            for j in range(0, 3):
-                dx = distance * (i + 1) * j
-                for k in range(0, 3):
-                    dy = distance * (i + 1) * k
-                    if u_idx >= units_count:
-                        break
-                    u = self.units[u_idx]
-                    u.position.x = sx + dx
-                    u.position.y = sy + dy
-                    u.heading = heading
-
-                    if not (j == 1 and k == 1):
-                        u_idx += 1
-
-    def formation_rectangle(self, heading, distance=20):
-        units_count = len(self.units)
-        size = math.ceil(math.sqrt(units_count))
-        sx = self.units[0].x
-        sy = self.units[0].y
-        u_idx = 0
-        for i in range(0, size):
-            dx = distance * i
-            for j in range(0, size):
-                dy = distance * j
-                if u_idx >= units_count:
-                    break
-                u = self.units[u_idx]
-                u.position.x = sx - dx
-                u.position.y = sy + dy
-                u.heading = heading
-                u_idx += 1
-
-    def formation_scattered(self, heading=0, max_radius=None):
-        unit_count = len(self.units)
-        max_r = max_radius if max_radius else random.randrange(15, unit_count * 20)
-
-        sx = self.units[0].position.x
-        sy = self.units[0].position.y
-        start_pos = self.units[0].position
-
-        for i in range(1, unit_count):
-            while True:
-                pos = start_pos.point_from_heading(random.randrange(0, 360), max_r)
-
-                collision = False
-                for j in range(0, i):
-                    test_unit = self.units[j]
-                    unit_rect = mapping.Rectangle.from_point(test_unit.position, 14)
-
-                    if unit_rect.point_in_rect(pos):
-                        collision = True
-
-                if not collision:
-                    u = self.units[i]
-                    u.position = copy.copy(pos)
-                    u.heading = heading
-                    break
-            i += 1
-
-    def formation(self, _type=Formation.Line, heading=0):
-        form_map = {
-            VehicleGroup.Formation.Line: self.formation_line,
-            VehicleGroup.Formation.Star: self.formation_star,
-            VehicleGroup.Formation.Rectangle: self.formation_rectangle,
-            VehicleGroup.Formation.Scattered: self.formation_scattered
-        }
-
-        form_map[_type](heading)
-
-        return True
 
     def dict(self):
         d = super(VehicleGroup, self).dict()
