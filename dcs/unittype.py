@@ -53,12 +53,13 @@ class FlyingType(UnitType):
 
     pylons = {}
     payloads = None
+    dcs_dir = "C:\\Program Files\\Eagle Dynamics\\DCS World\\"
     payload_dirs = [
-        "C:\\Program Files\\Eagle Dynamics\\DCS World\\MissionEditor\\data\\scripts\\UnitPayloads",
-        "C:\\Program Files\\Eagle Dynamics\\DCS World\\CoreMods\\aircraft\\M-2000C\\UnitPayloads",
-        "C:\\Program Files\\Eagle Dynamics\\DCS World\\CoreMods\\aircraft\\MiG-21BIS\\UnitPayloads",
-        "C:\\Program Files\\Eagle Dynamics\\DCS World\\CoreMods\\aircraft\\F-5E\\UnitPayloads",
-        "C:\\Program Files\\Eagle Dynamics\\DCS World\\CoreMods\\aircraft\\C-101\\UnitPayloads",
+        dcs_dir + "MissionEditor\\data\\scripts\\UnitPayloads",
+        dcs_dir + "CoreMods\\aircraft\\M-2000C\\UnitPayloads",
+        dcs_dir + "CoreMods\\aircraft\\MiG-21BIS\\UnitPayloads",
+        dcs_dir + "CoreMods\\aircraft\\F-5E\\UnitPayloads",
+        dcs_dir + "CoreMods\\aircraft\\C-101\\UnitPayloads",
         os.path.join(os.path.expanduser("~"), "Saved Games\\DCS\\MissionEditor\\UnitPayloads"),
         os.path.join(os.path.dirname(os.path.realpath(__file__)), "payloads")
     ]
