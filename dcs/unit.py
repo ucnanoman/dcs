@@ -96,6 +96,8 @@ class FlyingUnit(Unit):
         else:
             self.callsign_dict = d["callsign"]
         self.parking = d.get("parking", None)
+        if self.parking:
+            self.parking = int(self.parking)
         self.radio = d.get("Radio")
         self.hardpoint_racks = d.get("hardpoint_racks", None)
         self.addpropaircraft = d.get("AddPropAircraft")
