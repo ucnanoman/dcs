@@ -88,7 +88,6 @@ class FlyingType(UnitType):
                                 FlyingType._payload_cache[payload_filename] = g.group(1)
                                 break
 
-
     @classmethod
     def load_payloads(cls):
         FlyingType.scan_payload_dir()
