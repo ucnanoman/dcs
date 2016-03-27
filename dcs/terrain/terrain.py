@@ -129,6 +129,20 @@ class Airport:
             return self.unit_zones[random.randrange(0, len(self.unit_zones))]
         return mapping.Rectangle.from_point(mapping.Point(self.position.x + 500, self.position.y), 200)
 
+    def parking_slot(self, index: int) -> ParkingSlot:
+        """Searches the parking slot with the given crossroad index.
+
+        Args:
+            index: crossroad index of the parkings slot
+
+        Returns:
+            ParkingSlot: the found slot or None if not found.
+        """
+        for x in self.parking_slots:
+            if x.crossroad_idx == index:
+                return x
+        return None
+
     def _free_parking_slots_resolve_v1(self, large: bool, helicopter: bool) -> List[ParkingSlot]:
         slots_index = range(0, len(self.parking_slots))
         free_large_slots = {x for x in slots_index
