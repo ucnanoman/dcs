@@ -106,6 +106,11 @@ class Coalition:
                             _country=_country)
                         plane.load_from_dict(imp_unit)
 
+                        if plane_group.points[0].airdrome_id is not None and plane.parking is not None:
+                            airport = mission.terrain.airport_by_id(plane_group.points[0].airdrome_id)
+                            slot = airport.parking_slot(plane.parking)
+                            plane.set_parking(slot)
+
                         mission.current_unit_id = max(mission.current_unit_id, plane.id)
                         plane_group.add_unit(plane)
                     _country.add_plane_group(plane_group)
@@ -131,6 +136,11 @@ class Coalition:
                             _type=helicopters.helicopter_map[imp_unit["type"]],
                             _country=_country)
                         heli.load_from_dict(imp_unit)
+
+                        if helicopter_group.points[0].airdrome_id is not None and heli.parking is not None:
+                            airport = mission.terrain.airport_by_id(helicopter_group.points[0].airdrome_id)
+                            slot = airport.parking_slot(heli.parking)
+                            heli.set_parking(slot)
 
                         mission.current_unit_id = max(mission.current_unit_id, heli.id)
                         helicopter_group.add_unit(heli)
