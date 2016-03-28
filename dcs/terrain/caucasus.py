@@ -3120,6 +3120,10 @@ class Caucasus(Terrain):
         self.vaziani().unit_zones.append(mapping.Rectangle(-318435.71428571, 904565.71428572, -319435.71428571, 905565.71428572))
         self.vaziani().unit_zones.append(mapping.Rectangle(-316582.85714285, 903304.28571429, -317582.85714285, 904304.28571429))
 
+        self.sochi().unit_zones.append(mapping.Rectangle(-164637.14285714, 461964.28571428, -165237.14285714, 462564.28571428))
+        self.sochi().unit_zones.append(mapping.Rectangle(-162801.42857142, 460978.57142857, -163601.42857142, 461778.57142857))
+        self.sochi().unit_zones.append(mapping.Rectangle(-165514.28571428, 461815.71428571, -165914.28571428, 462215.71428571))
+
         # for x in sorted(self.airports, key=lambda x: self.airports[x].id):
         #     airport = self.airports[x]
         #     print("airports[{id}] = {{'id': {id}, 'name': '{name}', 'tacan':{tacan}, 'runways': []}}".format(
