@@ -122,7 +122,7 @@ def main():
     stats = m.stats()
     m.set_description_text("""A WWII dogfight encounter
 There are {pc} planes in the air battling for life and death.""".format(
-        pc=stats["red"]["plane_groups"]["count"]+stats["blue"]["plane_groups"]["count"]))
+        pc=stats["red"]["plane_groups"]["unit_count"]+stats["blue"]["plane_groups"]["unit_count"]))
     m.set_description_redtask_text("Fight the other planes!")
     m.set_description_bluetask_text("Fight the other planes!")
 
