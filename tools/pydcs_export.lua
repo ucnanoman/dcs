@@ -23,6 +23,9 @@ local function safe_name(name)
     safeName = string.gsub(safeName, "[-()/., *'+`#%[%]]", "_")
     safeName = string.gsub(safeName, "_*$", "")  -- strip __ from end
     safeName = string.gsub(safeName, "^([0-9])", "_%1")
+    if safeName == 'None' then
+        safeName = 'None_'
+    end
     return safeName
 end
 
@@ -306,6 +309,41 @@ from enum import Enum
                 writeln(file, '        ]')
             end
             writeln(file, '    }')
+        end
+
+        if plane.AddPropAircraft then
+            writeln(file, '')
+            -- default dict
+            writeln(file, '    property_defaults = {')
+            for j in pairs(plane.AddPropAircraft) do
+                local prop = plane.AddPropAircraft[j]
+                local defval = prop.defValue
+                if defval == true then
+                    defval = 'True'
+                elseif defval == false then
+                    defval = 'False'
+                else
+                    defval = tostring(defval)
+                end
+                writeln(file, '        "'..safe_name(prop.id)..'": '..defval..',')
+            end
+            writeln(file, '    }')
+
+            writeln(file, '')
+            writeln(file, '    class Properties:')
+            for j in pairs(plane.AddPropAircraft) do
+                local prop = plane.AddPropAircraft[j]
+                writeln(file, '')
+                writeln(file, '        class '..safe_name(prop.id)..':')
+                writeln(file, '            id = "'..prop.id..'"')
+                if prop.values then
+                    writeln(file, '')
+                    writeln(file, '            class Values:')
+                    for k, val in pairs(prop.values) do
+                        writeln(file, '                '..safe_name(val.dispName)..' = '..tostring(val.id))
+                    end
+                end
+            end
         end
 
         writeln(file, '')

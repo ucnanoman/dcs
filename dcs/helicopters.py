@@ -587,6 +587,27 @@ class Mi_8MTV2(HelicopterType):
         },
     }
 
+    property_defaults = {
+        "ExhaustScreen": True,
+        "LeftEngineResource": 90,
+        "RightEngineResource": 90,
+        "AdditionalArmor": True,
+    }
+
+    class Properties:
+
+        class ExhaustScreen:
+            id = "ExhaustScreen"
+
+        class LeftEngineResource:
+            id = "LeftEngineResource"
+
+        class RightEngineResource:
+            id = "RightEngineResource"
+
+        class AdditionalArmor:
+            id = "AdditionalArmor"
+
     class Liveries:
 
         class Georgia(Enum):
@@ -1496,6 +1517,23 @@ class UH_1H(HelicopterType):
             },
         },
     }
+
+    property_defaults = {
+        "ExhaustScreen": True,
+        "GunnersAISkill": 90,
+        "EngineResource": 90,
+    }
+
+    class Properties:
+
+        class ExhaustScreen:
+            id = "ExhaustScreen"
+
+        class GunnersAISkill:
+            id = "GunnersAISkill"
+
+        class EngineResource:
+            id = "EngineResource"
 
     class Liveries:
 

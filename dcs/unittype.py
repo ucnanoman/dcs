@@ -51,6 +51,8 @@ class FlyingType(UnitType):
     radio_frequency = 251
     panel_radio = None
 
+    property_defaults = None
+
     pylons = {}
     payloads = None
     dcs_dir = "C:\\Program Files\\Eagle Dynamics\\DCS World\\"

@@ -75,7 +75,7 @@ class FlyingUnit(Unit):
         self.speed = 0
         self.radio = None
         self.hardpoint_racks = True
-        self.addpropaircraft = None
+        self.addpropaircraft = _type.property_defaults if _type.property_defaults else None
 
     def load_from_dict(self, d):
         super(FlyingUnit, self).load_from_dict(d)
@@ -106,6 +106,11 @@ class FlyingUnit(Unit):
     def set_parking(self, parking_slot: ParkingSlot):
         parking_slot.unit_id = self.id
         self.parking = parking_slot.crossroad_idx
+
+    def set_property(self, prop_name, value):
+        if self.addpropaircraft is None:
+            self.addpropaircraft = {}
+        self.addpropaircraft[prop_name] = value
 
     def load_pylon(self, weapon, pylon=None):
         if pylon is None:

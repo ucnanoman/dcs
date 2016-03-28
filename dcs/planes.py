@@ -7584,6 +7584,20 @@ class Fw_190_D_9(PlaneType):
         },
     }
 
+    property_defaults = {
+        "FW_MW50TankContents": 1,
+    }
+
+    class Properties:
+
+        class FW_MW50TankContents:
+            id = "FW_MW50TankContents"
+
+            class Values:
+                Empty = 0
+                MW_50_Mix = 1
+                B_4_Gasoline = 2
+
     class Liveries:
 
         class Germany(Enum):
@@ -7636,6 +7650,28 @@ class Bf_109_K_4(PlaneType):
             },
         },
     }
+
+    property_defaults = {
+        "MW50TankContents": 1,
+        "Flare_Gun": 1,
+    }
+
+    class Properties:
+
+        class MW50TankContents:
+            id = "MW50TankContents"
+
+            class Values:
+                Empty = 0
+                MW_50_Mix = 1
+                B_4_Gasoline = 2
+
+        class Flare_Gun:
+            id = "Flare_Gun"
+
+            class Values:
+                None_ = 0
+                Flare_Gun = 1
 
     class Liveries:
 
@@ -7782,6 +7818,25 @@ class C_101EB(PlaneType):
         },
     }
 
+    property_defaults = {
+        "SoloFlight": False,
+        "NetCrewControlPriority": 1,
+    }
+
+    class Properties:
+
+        class SoloFlight:
+            id = "SoloFlight"
+
+        class NetCrewControlPriority:
+            id = "NetCrewControlPriority"
+
+            class Values:
+                Pilot = 0
+                Instructor = 1
+                Ask_Always = -1
+                Equally_Responsible = -2
+
     class Liveries:
 
         class Georgia(Enum):
@@ -7899,6 +7954,25 @@ class C_101CC(PlaneType):
             },
         },
     }
+
+    property_defaults = {
+        "SoloFlight": False,
+        "NetCrewControlPriority": 1,
+    }
+
+    class Properties:
+
+        class SoloFlight:
+            id = "SoloFlight"
+
+        class NetCrewControlPriority:
+            id = "NetCrewControlPriority"
+
+            class Values:
+                Pilot = 0
+                Instructor = 1
+                Ask_Always = -1
+                Equally_Responsible = -2
 
     class Liveries:
 
@@ -8784,6 +8858,29 @@ class L_39C(PlaneType):
         },
     }
 
+    property_defaults = {
+        "SoloFlight": False,
+        "NetCrewControlPriority": 1,
+        "DismountIFRHood": False,
+    }
+
+    class Properties:
+
+        class SoloFlight:
+            id = "SoloFlight"
+
+        class NetCrewControlPriority:
+            id = "NetCrewControlPriority"
+
+            class Values:
+                Pilot = 0
+                Instructor = 1
+                Ask_Always = -1
+                Equally_Responsible = -2
+
+        class DismountIFRHood:
+            id = "DismountIFRHood"
+
     class Liveries:
 
         class Germany(Enum):
@@ -8893,6 +8990,29 @@ class L_39ZA(PlaneType):
             },
         },
     }
+
+    property_defaults = {
+        "SoloFlight": False,
+        "NetCrewControlPriority": 1,
+        "DismountIFRHood": False,
+    }
+
+    class Properties:
+
+        class SoloFlight:
+            id = "SoloFlight"
+
+        class NetCrewControlPriority:
+            id = "NetCrewControlPriority"
+
+            class Values:
+                Pilot = 0
+                Instructor = 1
+                Ask_Always = -1
+                Equally_Responsible = -2
+
+        class DismountIFRHood:
+            id = "DismountIFRHood"
 
     class Liveries:
 
