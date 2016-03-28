@@ -96,7 +96,8 @@ def main():
             pos = pos.point_from_heading(hdg+90, random.randrange(-5000, 5000, 100))
             fg = m.flight_group_inflight(country, planetype[0] + " " + planetype[1] + " #" + str(gc),
                                          dcs.planes.plane_map[planetype[1]],
-                                         position=pos, altitude=random.randrange(altitude-200, altitude+200), speed=500,
+                                         position=pos, altitude=random.randrange(altitude - 400, altitude + 400, 50),
+                                         speed=500,
                                          maintask=dcs.task.FighterSweep,
                                          group_size=4)
             fg.set_skill(dcs.unit.Skill(args.skill))
@@ -111,7 +112,7 @@ def main():
             pos = pos.point_from_heading(hdg + 90, random.randrange(-5000, 5000, 100))
             fg = m.flight_group_inflight(m.country(planetype[0]), planetype[0] + " " + planetype[1] + " #" + str(gc),
                                          dcs.planes.plane_map[planetype[1]],
-                                         position=pos, altitude=random.randrange(altitude - 200, altitude + 200),
+                                         position=pos, altitude=random.randrange(altitude - 400, altitude + 400, 50),
                                          speed=500,
                                          maintask=dcs.task.FighterSweep,
                                          group_size=last_group_size)
