@@ -826,7 +826,7 @@ while i <= country.maxIndex do
     if c then
         local pyName = c.Name
         pyName = string.gsub(pyName, "[-()/., *']", "")
-        writeln(file, '    '..pyName..'.id: '..pyName..'(),')
+        writeln(file, '    '..pyName..'.id: '..pyName..',')
     end
     i = i + 1
 end
@@ -836,6 +836,14 @@ writeln(file, [[
 
 
 def get_by_id(_id: int):
-    return country_dict[_id]
+    """Returns a new country object for the given country id
+
+    Args:
+        _id: id for the country
+
+    Returns:
+        Country: a new country object
+    """
+    return country_dict[_id]()
 ]])
 file:close()
