@@ -151,7 +151,7 @@ class BasicTests(unittest.TestCase):
 
         goal = dcs.goals.Goal("land at batumi")
 
-        gr = dcs.goals.UnitInZone(pg.units[0].id, batumi_zone.id)
+        gr = dcs.condition.UnitInZone(pg.units[0].id, batumi_zone.id)
         goal.rules.append(gr)
-        goal.rules.append(dcs.goals.UnitAlive(pg.units[0].id))
+        goal.rules.append(dcs.condition.UnitAlive(pg.units[0].id))
         m.goals.add_offline(goal)
