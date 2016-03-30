@@ -13,5 +13,6 @@ from . import unitgroup
 from . import goals
 from . import weather
 from . import point
+from . import condition
 from .mapping import Point, Rectangle
 from .mission import Mission
