@@ -1,7 +1,10 @@
 import copy
 from typing import List
+from enum import Enum
 
 from dcs import mapping
+from dcs import action
+from dcs import condition
 
 
 class TriggerZone:
@@ -64,3 +67,75 @@ class Triggers:
         return {
             "zones": {i + 1: self._zones[i].dict() for i in range(0, len(self._zones))}
         }
+
+
+class Event(Enum):
+    NoEvent = ""
+    Destroy = "dead"
+    Shot = "shot"
+    Crash = "crash"
+    Eject = "eject"
+    Refuel = "refuel"
+    PilotDead = "pilot dead"
+    BaseCaptured = "base captured"
+    TookControl = "took control"
+    RefuelStop = "refuel stop"
+    Failure = "failure"
+
+
+class TriggerRule:
+    predicate = None
+
+    def __init__(self, event, comment):
+        self.comment = comment
+        self.eventlist = event
+        self.rules = []  # type: List[condition.Condition]
+        self.actions = []  # type: List[action.Action]
+
+    def dict(self):
+        return {
+            "comment": self.comment,
+            "eventlist": self.eventlist.value,
+            "predicate": self.predicate,
+            "rules": {i + 1: self.rules[i].dict() for i in range(0, len(self.rules))},
+            "actions": {i + 1: self.actions[i].dict() for i in range(0, len(self.actions))}
+        }
+
+
+class TriggerOnce(TriggerRule):
+    predicate = "triggerOnce"
+
+    def __init__(self, event: Event=Event.NoEvent, comment=""):
+        super(TriggerOnce, self).__init__(event, comment)
+
+
+class TriggerContinious(TriggerRule):
+    predicate = "triggerContinious"
+
+    def __init__(self, event: Event=Event.NoEvent, comment=""):
+        super(TriggerContinious, self).__init__(event, comment)
+
+
+class TriggerStart(TriggerRule):
+    predicate = "triggerStart"
+
+    def __init__(self, comment=""):
+        super(TriggerStart, self).__init__(Event.NoEvent, comment)
+
+
+class TriggerCondition(TriggerRule):
+    predicate = "triggerFront"
+
+    def __init__(self, comment=""):
+        super(TriggerCondition, self).__init__(Event.NoEvent, comment)
+
+
+class Rules:
+    def __init__(self):
+        self.triggers = []  # type: List[TriggerRule]
+
+    def trig(self):
+        return {}  # TODO
+
+    def trigrules(self):
+        return {i + 1: self.triggers[i].dict() for i in range(0, len(self.triggers))}
