@@ -835,26 +835,26 @@ actions = {
             },
         ]
     },
-    "SetAITask": {
-        "name": "a_set_ai_task",
-        "fields": [
-            {
-                "id": "set_ai_task",
-                "type": "combo",
-                "default": {"", ""},
-            }
-        ]
-    },
-    "PushAITask": {
-        "name": "a_ai_task",
-        "fields": [
-            {
-                "id": "ai_task",
-                "type": "combo",
-                "default": {"", ""},
-            }
-        ]
-    },
+    # "SetAITask": {
+    #     "name": "a_set_ai_task",
+    #     "fields": [
+    #         {
+    #             "id": "set_ai_task",
+    #             "type": "combo",
+    #             "default": {"", ""},
+    #         }
+    #     ]
+    # },
+    # "PushAITask": {
+    #     "name": "a_ai_task",
+    #     "fields": [
+    #         {
+    #             "id": "ai_task",
+    #             "type": "combo",
+    #             "default": {"", ""},
+    #         }
+    #     ]
+    # },
     "PreventControlsSynchronization": {
         "name": "a_prevent_controls_synchronization",
         "fields": [{"id": "value", "default": False}]
