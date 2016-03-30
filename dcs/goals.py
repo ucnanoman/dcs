@@ -3,7 +3,6 @@ from typing import List
 
 class GoalRule:
     def __init__(self, predicate):
-        self.coalitionlist = ""
         self.predicate = predicate
         self.params = []
 
