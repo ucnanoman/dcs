@@ -155,3 +155,7 @@ class BasicTests(unittest.TestCase):
         goal.rules.append(gr)
         goal.rules.append(dcs.condition.UnitAlive(pg.units[0].id))
         m.goals.add_offline(goal)
+
+        t = dcs.triggers.TriggerStart(comment='start test')
+        t.actions.append(dcs.action.MessageToAll(m.string('Hi there fellow flyers!')))
+        m.triggerrules.triggers.append(t)
