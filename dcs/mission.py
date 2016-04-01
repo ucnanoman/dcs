@@ -22,6 +22,7 @@ from . import task
 from . import unitgroup
 from . import unittype
 from . import weather
+from . import triggers
 from .country import Country
 from .forcedoptions import ForcedOptions
 from .goals import Goals
@@ -107,7 +108,7 @@ class Mission:
         self.season_from_start_time = True
         """If set to True the mission season will be set by the value of :py:attr:`Mission.start_time`"""
         self.terrain = terrain
-        self.trigrules = {}
+        self.triggerrules = triggers.Rules()
         self.triggers = Triggers()
         self.init_script_file = None
         self.init_script = None
@@ -156,7 +157,6 @@ class Mission:
         self.map = self.terrain.map_view_default  # type: terrain.MapView
 
         self.failures = {}
-        self.trig = {}
         self.groundControl = GroundControl()
         self.forced_options = ForcedOptions()
         self.resourceCounter = {}  # keep default or empty, old format
@@ -291,15 +291,12 @@ class Mission:
         self.init_script_file = imp_mission.get("initScriptFile")
         self.init_script = imp_mission.get("initScript")
 
-        # trig
-        self.trig = imp_mission["trig"]  # TODO
-
         # triggers
         self.triggers = Triggers()
         self.triggers.load_from_dict(imp_mission["triggers"])
 
-        # trigrules
-        self.trigrules = imp_mission["trigrules"]  # TODO
+        # this will import trigrules and trig
+        self.triggerrules.load_from_dict(self, imp_mission["trigrules"])
 
         # failures
         self.failures = imp_mission["failures"]  # TODO
@@ -1463,9 +1460,10 @@ class Mission:
 
     def dict(self):
         m = {
-            "trig": self.trig
+            "trig": self.triggerrules.trig(),
+            "trigrules": self.triggerrules.trigrules(),
+            "start_time": self.start_time.timestamp() - 1306886400
         }
-        m["start_time"] = self.start_time.timestamp() - 1306886400
         if m["start_time"] < 0:
             raise RuntimeError("Mission start time is < 0.")
         if self.season_from_start_time:
@@ -1487,7 +1485,6 @@ class Mission:
             m["pictureFileNameB"][i + 1] = self.pictureFileNameB[i]
         m["descriptionBlueTask"] = self._description_bluetask.id
         m["descriptionRedTask"] = self._description_redtask.id
-        m["trigrules"] = self.trigrules
         if self.init_script_file is not None:
             m["initScriptFile"] = self.init_script_file
         if self.init_script is not None:

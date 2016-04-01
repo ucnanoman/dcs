@@ -1,10 +1,19 @@
+from .translation import String
+
+
 class Action:
     def __init__(self, predicate):
         self.predicate = predicate
         self.params = []
 
     def __repr__(self):
-        return self.predicate + "(" + ",".join(map(str, self.params)) + ")"
+        s = []
+        for x in self.params:
+            if isinstance(x, String):
+                s.append('getValueDictByKey("' + x.id + '")')
+            else:
+                s.append(str(x))
+        return self.predicate + "(" + ", ".join(s) + ")"
 
     def dict(self):
         d = {
@@ -16,13 +25,13 @@ class Action:
 class ActivateGroup(Action):
     predicate = "a_activate_group"
 
-    def __init__(self, group=""):
+    def __init__(self, group=0):
         super(ActivateGroup, self).__init__(ActivateGroup.predicate)
         self.group = group
         self.params.append(self.group)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["group"])
 
     def dict(self):
@@ -34,7 +43,7 @@ class ActivateGroup(Action):
 class AddRadioItem(Action):
     predicate = "a_add_radio_item"
 
-    def __init__(self, radiotext="", flag=1, value=1):
+    def __init__(self, radiotext=String(), flag=1, value=1):
         super(AddRadioItem, self).__init__(AddRadioItem.predicate)
         self.radiotext = radiotext
         self.params.append(self.radiotext)
@@ -44,12 +53,12 @@ class AddRadioItem(Action):
         self.params.append(self.value)
 
     @classmethod
-    def create_from_dict(cls, d):
-        return cls(d["radiotext"], d["flag"], d["value"])
+    def create_from_dict(cls, d, mission):
+        return cls(mission.translation.get_string(d["radiotext"]), d["flag"], d["value"])
 
     def dict(self):
         d = super(AddRadioItem, self).dict()
-        d["radiotext"] = self.radiotext
+        d["radiotext"] = self.radiotext.id
         d["flag"] = self.flag
         d["value"] = self.value
         return d
@@ -58,7 +67,7 @@ class AddRadioItem(Action):
 class AddRadioItemForCoalition(Action):
     predicate = "a_add_radio_item_for_coalition"
 
-    def __init__(self, coalitionlist=all, radiotext="", flag=1, value=1):
+    def __init__(self, coalitionlist=all, radiotext=String(), flag=1, value=1):
         super(AddRadioItemForCoalition, self).__init__(AddRadioItemForCoalition.predicate)
         self.coalitionlist = coalitionlist
         self.params.append(self.coalitionlist)
@@ -70,13 +79,13 @@ class AddRadioItemForCoalition(Action):
         self.params.append(self.value)
 
     @classmethod
-    def create_from_dict(cls, d):
-        return cls(d["coalitionlist"], d["radiotext"], d["flag"], d["value"])
+    def create_from_dict(cls, d, mission):
+        return cls(d["coalitionlist"], mission.translation.get_string(d["radiotext"]), d["flag"], d["value"])
 
     def dict(self):
         d = super(AddRadioItemForCoalition, self).dict()
         d["coalitionlist"] = self.coalitionlist
-        d["radiotext"] = self.radiotext
+        d["radiotext"] = self.radiotext.id
         d["flag"] = self.flag
         d["value"] = self.value
         return d
@@ -85,7 +94,7 @@ class AddRadioItemForCoalition(Action):
 class AddRadioItemForGroup(Action):
     predicate = "a_add_radio_item_for_group"
 
-    def __init__(self, group="", radiotext="", flag=1, value=1):
+    def __init__(self, group=0, radiotext=String(), flag=1, value=1):
         super(AddRadioItemForGroup, self).__init__(AddRadioItemForGroup.predicate)
         self.group = group
         self.params.append(self.group)
@@ -97,13 +106,13 @@ class AddRadioItemForGroup(Action):
         self.params.append(self.value)
 
     @classmethod
-    def create_from_dict(cls, d):
-        return cls(d["group"], d["radiotext"], d["flag"], d["value"])
+    def create_from_dict(cls, d, mission):
+        return cls(d["group"], mission.translation.get_string(d["radiotext"]), d["flag"], d["value"])
 
     def dict(self):
         d = super(AddRadioItemForGroup, self).dict()
         d["group"] = self.group
-        d["radiotext"] = self.radiotext
+        d["radiotext"] = self.radiotext.id
         d["flag"] = self.flag
         d["value"] = self.value
         return d
@@ -118,7 +127,7 @@ class BeginPlayingActor(Action):
         self.params.append(self.number)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["number"])
 
     def dict(self):
@@ -136,7 +145,7 @@ class ClearFlag(Action):
         self.params.append(self.flag)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["flag"])
 
     def dict(self):
@@ -158,7 +167,7 @@ class CockpitHighlightElement(Action):
         self.params.append(self.size_of_box)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["highlight_id"], d["element_name"], d["size_of_box"])
 
     def dict(self):
@@ -184,7 +193,7 @@ class CockpitHighlightIndication(Action):
         self.params.append(self.size_of_box)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["highlight_id"], d["indicator_id"], d["element_name"], d["size_of_box"])
 
     def dict(self):
@@ -217,7 +226,7 @@ class CockpitHighlightPosition(Action):
         self.params.append(self.size_of_box_z)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["highlight_id"], d["in_cockpit_position_x"], d["in_cockpit_position_y"], d["in_cockpit_position_z"], d["size_of_box_x"], d["size_of_box_y"], d["size_of_box_z"])
 
     def dict(self):
@@ -243,7 +252,7 @@ class CockpitParamSaveAs(Action):
         self.params.append(self.destination)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["source"], d["destination"])
 
     def dict(self):
@@ -266,7 +275,7 @@ class CockpitPerformClickableAction(Action):
         self.params.append(self.value)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["cockpit_device"], d["command"], d["value"])
 
     def dict(self):
@@ -286,7 +295,7 @@ class CockpitRemoveHighlight(Action):
         self.params.append(self.highlight_id)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["highlight_id"])
 
     def dict(self):
@@ -298,13 +307,13 @@ class CockpitRemoveHighlight(Action):
 class DeactivateGroup(Action):
     predicate = "a_deactivate_group"
 
-    def __init__(self, group=""):
+    def __init__(self, group=0):
         super(DeactivateGroup, self).__init__(DeactivateGroup.predicate)
         self.group = group
         self.params.append(self.group)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["group"])
 
     def dict(self):
@@ -324,7 +333,7 @@ class DecreaseFlag(Action):
         self.params.append(self.value)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["flag"], d["value"])
 
     def dict(self):
@@ -337,18 +346,18 @@ class DecreaseFlag(Action):
 class DoScript(Action):
     predicate = "a_do_script"
 
-    def __init__(self, text=""):
+    def __init__(self, text=String()):
         super(DoScript, self).__init__(DoScript.predicate)
         self.text = text
         self.params.append(self.text)
 
     @classmethod
-    def create_from_dict(cls, d):
-        return cls(d["text"])
+    def create_from_dict(cls, d, mission):
+        return cls(mission.translation.get_string(d["text"]))
 
     def dict(self):
         d = super(DoScript, self).dict()
-        d["text"] = self.text
+        d["text"] = self.text.id
         return d
 
 
@@ -361,7 +370,7 @@ class DoScriptFile(Action):
         self.params.append(self.file)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["file"])
 
     def dict(self):
@@ -373,7 +382,7 @@ class DoScriptFile(Action):
 class EndMission(Action):
     predicate = "a_end_mission"
 
-    def __init__(self, winner="", text=""):
+    def __init__(self, winner="", text=String()):
         super(EndMission, self).__init__(EndMission.predicate)
         self.winner = winner
         self.params.append(self.winner)
@@ -381,13 +390,13 @@ class EndMission(Action):
         self.params.append(self.text)
 
     @classmethod
-    def create_from_dict(cls, d):
-        return cls(d["winner"], d["text"])
+    def create_from_dict(cls, d, mission):
+        return cls(d["winner"], mission.translation.get_string(d["text"]))
 
     def dict(self):
         d = super(EndMission, self).dict()
         d["winner"] = self.winner
-        d["text"] = self.text
+        d["text"] = self.text.id
         return d
 
 
@@ -402,7 +411,7 @@ class ExplodeUnit(Action):
         self.params.append(self.volume)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["volume"])
 
     def dict(self):
@@ -425,7 +434,7 @@ class ExplodeWPMarker(Action):
         self.params.append(self.color)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["zone"], d["altitude"], d["color"])
 
     def dict(self):
@@ -447,7 +456,7 @@ class ExplodeWPMarkerOnUnit(Action):
         self.params.append(self.color)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["color"])
 
     def dict(self):
@@ -470,7 +479,7 @@ class Explosion(Action):
         self.params.append(self.volume)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["zone"], d["altitude"], d["volume"])
 
     def dict(self):
@@ -484,7 +493,7 @@ class Explosion(Action):
 class FallInTemplate(Action):
     predicate = "a_fall_in_template"
 
-    def __init__(self, group="", template=""):
+    def __init__(self, group=0, template=""):
         super(FallInTemplate, self).__init__(FallInTemplate.predicate)
         self.group = group
         self.params.append(self.group)
@@ -492,7 +501,7 @@ class FallInTemplate(Action):
         self.params.append(self.template)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["group"], d["template"])
 
     def dict(self):
@@ -505,13 +514,13 @@ class FallInTemplate(Action):
 class GroupAIOff(Action):
     predicate = "a_group_off"
 
-    def __init__(self, group=""):
+    def __init__(self, group=0):
         super(GroupAIOff, self).__init__(GroupAIOff.predicate)
         self.group = group
         self.params.append(self.group)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["group"])
 
     def dict(self):
@@ -523,13 +532,13 @@ class GroupAIOff(Action):
 class GroupAIOn(Action):
     predicate = "a_group_on"
 
-    def __init__(self, group=""):
+    def __init__(self, group=0):
         super(GroupAIOn, self).__init__(GroupAIOn.predicate)
         self.group = group
         self.params.append(self.group)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["group"])
 
     def dict(self):
@@ -541,13 +550,13 @@ class GroupAIOn(Action):
 class GroupResume(Action):
     predicate = "a_group_resume"
 
-    def __init__(self, group=""):
+    def __init__(self, group=0):
         super(GroupResume, self).__init__(GroupResume.predicate)
         self.group = group
         self.params.append(self.group)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["group"])
 
     def dict(self):
@@ -559,13 +568,13 @@ class GroupResume(Action):
 class GroupStop(Action):
     predicate = "a_group_stop"
 
-    def __init__(self, group=""):
+    def __init__(self, group=0):
         super(GroupStop, self).__init__(GroupStop.predicate)
         self.group = group
         self.params.append(self.group)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["group"])
 
     def dict(self):
@@ -585,7 +594,7 @@ class IlluminatingBomb(Action):
         self.params.append(self.altitude)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["zone"], d["altitude"])
 
     def dict(self):
@@ -606,7 +615,7 @@ class IncreaseFlag(Action):
         self.params.append(self.value)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["flag"], d["value"])
 
     def dict(self):
@@ -625,7 +634,7 @@ class LoadMission(Action):
         self.params.append(self.file)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["file"])
 
     def dict(self):
@@ -637,7 +646,7 @@ class LoadMission(Action):
 class MessageToAll(Action):
     predicate = "a_out_text_delay"
 
-    def __init__(self, text="", seconds=10, clearview=False):
+    def __init__(self, text=String(), seconds=10, clearview=False):
         super(MessageToAll, self).__init__(MessageToAll.predicate)
         self.text = text
         self.params.append(self.text)
@@ -647,12 +656,12 @@ class MessageToAll(Action):
         self.params.append(self.clearview)
 
     @classmethod
-    def create_from_dict(cls, d):
-        return cls(d["text"], d["seconds"], d["clearview"])
+    def create_from_dict(cls, d, mission):
+        return cls(mission.translation.get_string(d["text"]), d["seconds"], d["clearview"])
 
     def dict(self):
         d = super(MessageToAll, self).dict()
-        d["text"] = self.text
+        d["text"] = self.text.id
         d["seconds"] = self.seconds
         d["clearview"] = self.clearview
         return d
@@ -661,7 +670,7 @@ class MessageToAll(Action):
 class MessageToCoalition(Action):
     predicate = "a_out_text_delay_s"
 
-    def __init__(self, coalitionlist="", text="", seconds=10, clearview=False):
+    def __init__(self, coalitionlist="", text=String(), seconds=10, clearview=False):
         super(MessageToCoalition, self).__init__(MessageToCoalition.predicate)
         self.coalitionlist = coalitionlist
         self.params.append(self.coalitionlist)
@@ -673,13 +682,13 @@ class MessageToCoalition(Action):
         self.params.append(self.clearview)
 
     @classmethod
-    def create_from_dict(cls, d):
-        return cls(d["coalitionlist"], d["text"], d["seconds"], d["clearview"])
+    def create_from_dict(cls, d, mission):
+        return cls(d["coalitionlist"], mission.translation.get_string(d["text"]), d["seconds"], d["clearview"])
 
     def dict(self):
         d = super(MessageToCoalition, self).dict()
         d["coalitionlist"] = self.coalitionlist
-        d["text"] = self.text
+        d["text"] = self.text.id
         d["seconds"] = self.seconds
         d["clearview"] = self.clearview
         return d
@@ -688,7 +697,7 @@ class MessageToCoalition(Action):
 class MessageToCountry(Action):
     predicate = "a_out_text_delay_c"
 
-    def __init__(self, countrylist="", text="", seconds=10, clearview=False):
+    def __init__(self, countrylist="", text=String(), seconds=10, clearview=False):
         super(MessageToCountry, self).__init__(MessageToCountry.predicate)
         self.countrylist = countrylist
         self.params.append(self.countrylist)
@@ -700,13 +709,13 @@ class MessageToCountry(Action):
         self.params.append(self.clearview)
 
     @classmethod
-    def create_from_dict(cls, d):
-        return cls(d["countrylist"], d["text"], d["seconds"], d["clearview"])
+    def create_from_dict(cls, d, mission):
+        return cls(d["countrylist"], mission.translation.get_string(d["text"]), d["seconds"], d["clearview"])
 
     def dict(self):
         d = super(MessageToCountry, self).dict()
         d["countrylist"] = self.countrylist
-        d["text"] = self.text
+        d["text"] = self.text.id
         d["seconds"] = self.seconds
         d["clearview"] = self.clearview
         return d
@@ -715,7 +724,7 @@ class MessageToCountry(Action):
 class MessageToGroup(Action):
     predicate = "a_out_text_delay_g"
 
-    def __init__(self, group="", text="", seconds=10, clearview=False):
+    def __init__(self, group=0, text=String(), seconds=10, clearview=False):
         super(MessageToGroup, self).__init__(MessageToGroup.predicate)
         self.group = group
         self.params.append(self.group)
@@ -727,13 +736,13 @@ class MessageToGroup(Action):
         self.params.append(self.clearview)
 
     @classmethod
-    def create_from_dict(cls, d):
-        return cls(d["group"], d["text"], d["seconds"], d["clearview"])
+    def create_from_dict(cls, d, mission):
+        return cls(d["group"], mission.translation.get_string(d["text"]), d["seconds"], d["clearview"])
 
     def dict(self):
         d = super(MessageToGroup, self).dict()
         d["group"] = self.group
-        d["text"] = self.text
+        d["text"] = self.text.id
         d["seconds"] = self.seconds
         d["clearview"] = self.clearview
         return d
@@ -756,7 +765,7 @@ class PlayArgument(Action):
         self.params.append(self.speed)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["object"], d["argument"], d["start"], d["stop"], d["speed"])
 
     def dict(self):
@@ -778,7 +787,7 @@ class PreventControlsSynchronization(Action):
         self.params.append(self.value)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["value"])
 
     def dict(self):
@@ -808,7 +817,7 @@ class RadioTransmission(Action):
         self.params.append(self.name)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["file"], d["zone"], d["modulation"], d["loop"], d["frequency"], d["power"], d["name"])
 
     def dict(self):
@@ -826,25 +835,25 @@ class RadioTransmission(Action):
 class RemoveRadioItem(Action):
     predicate = "a_remove_radio_item"
 
-    def __init__(self, radiotext=""):
+    def __init__(self, radiotext=String()):
         super(RemoveRadioItem, self).__init__(RemoveRadioItem.predicate)
         self.radiotext = radiotext
         self.params.append(self.radiotext)
 
     @classmethod
-    def create_from_dict(cls, d):
-        return cls(d["radiotext"])
+    def create_from_dict(cls, d, mission):
+        return cls(mission.translation.get_string(d["radiotext"]))
 
     def dict(self):
         d = super(RemoveRadioItem, self).dict()
-        d["radiotext"] = self.radiotext
+        d["radiotext"] = self.radiotext.id
         return d
 
 
 class RemoveRadioItemForCoalition(Action):
     predicate = "a_remove_radio_item_for_coalition"
 
-    def __init__(self, coalitionlist=all, radiotext=""):
+    def __init__(self, coalitionlist=all, radiotext=String()):
         super(RemoveRadioItemForCoalition, self).__init__(RemoveRadioItemForCoalition.predicate)
         self.coalitionlist = coalitionlist
         self.params.append(self.coalitionlist)
@@ -852,20 +861,20 @@ class RemoveRadioItemForCoalition(Action):
         self.params.append(self.radiotext)
 
     @classmethod
-    def create_from_dict(cls, d):
-        return cls(d["coalitionlist"], d["radiotext"])
+    def create_from_dict(cls, d, mission):
+        return cls(d["coalitionlist"], mission.translation.get_string(d["radiotext"]))
 
     def dict(self):
         d = super(RemoveRadioItemForCoalition, self).dict()
         d["coalitionlist"] = self.coalitionlist
-        d["radiotext"] = self.radiotext
+        d["radiotext"] = self.radiotext.id
         return d
 
 
 class RemoveRadioItemForGroup(Action):
     predicate = "a_remove_radio_item_for_group"
 
-    def __init__(self, group="", radiotext=""):
+    def __init__(self, group=0, radiotext=String()):
         super(RemoveRadioItemForGroup, self).__init__(RemoveRadioItemForGroup.predicate)
         self.group = group
         self.params.append(self.group)
@@ -873,13 +882,13 @@ class RemoveRadioItemForGroup(Action):
         self.params.append(self.radiotext)
 
     @classmethod
-    def create_from_dict(cls, d):
-        return cls(d["group"], d["radiotext"])
+    def create_from_dict(cls, d, mission):
+        return cls(d["group"], mission.translation.get_string(d["radiotext"]))
 
     def dict(self):
         d = super(RemoveRadioItemForGroup, self).dict()
         d["group"] = self.group
-        d["radiotext"] = self.radiotext
+        d["radiotext"] = self.radiotext.id
         return d
 
 
@@ -894,7 +903,7 @@ class SetActiveHelperGateToPoint(Action):
         self.params.append(self.number)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["number"])
 
     def dict(self):
@@ -913,7 +922,7 @@ class SetCommand(Action):
         self.params.append(self.command)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["command"])
 
     def dict(self):
@@ -933,7 +942,7 @@ class SetCommandWithValue(Action):
         self.params.append(self.value)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["command"], d["value"])
 
     def dict(self):
@@ -956,7 +965,7 @@ class SetFailure(Action):
         self.params.append(self.random_pause)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["failure"], d["probability"], d["random_pause"])
 
     def dict(self):
@@ -976,7 +985,7 @@ class SetFlag(Action):
         self.params.append(self.flag)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["flag"])
 
     def dict(self):
@@ -998,7 +1007,7 @@ class SetFlagRandom(Action):
         self.params.append(self.max_value)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["flag"], d["min_value"], d["max_value"])
 
     def dict(self):
@@ -1020,7 +1029,7 @@ class SetFlagValue(Action):
         self.params.append(self.value)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["flag"], d["value"])
 
     def dict(self):
@@ -1039,7 +1048,7 @@ class SetInternalCargo(Action):
         self.params.append(self.cargo_mass)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["cargo_mass"])
 
     def dict(self):
@@ -1063,7 +1072,7 @@ class ShowHelperGate(Action):
         self.params.append(self.course)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["x"], d["z"], d["y"], d["course"])
 
     def dict(self):
@@ -1086,7 +1095,7 @@ class ShowHelperGatesForUnit(Action):
         self.params.append(self.flag)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["flag"])
 
     def dict(self):
@@ -1111,7 +1120,7 @@ class SignalFlare(Action):
         self.params.append(self.bearing)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["zone"], d["altitude"], d["color"], d["bearing"])
 
     def dict(self):
@@ -1136,7 +1145,7 @@ class SignalFlareOnUnit(Action):
         self.params.append(self.bearing)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["color"], d["bearing"])
 
     def dict(self):
@@ -1156,7 +1165,7 @@ class SoundToAll(Action):
         self.params.append(self.file)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["file"])
 
     def dict(self):
@@ -1176,7 +1185,7 @@ class SoundToCoalition(Action):
         self.params.append(self.file)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["coalitionlist"], d["file"])
 
     def dict(self):
@@ -1197,7 +1206,7 @@ class SoundToCountry(Action):
         self.params.append(self.file)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["countrylist"], d["file"])
 
     def dict(self):
@@ -1210,7 +1219,7 @@ class SoundToCountry(Action):
 class SoundToGroup(Action):
     predicate = "a_out_sound_g"
 
-    def __init__(self, group="", file=""):
+    def __init__(self, group=0, file=""):
         super(SoundToGroup, self).__init__(SoundToGroup.predicate)
         self.group = group
         self.params.append(self.group)
@@ -1218,7 +1227,7 @@ class SoundToGroup(Action):
         self.params.append(self.file)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["group"], d["file"])
 
     def dict(self):
@@ -1239,7 +1248,7 @@ class StartListenCockpitEvent(Action):
         self.params.append(self.flag)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["event"], d["flag"])
 
     def dict(self):
@@ -1268,7 +1277,7 @@ class StartListenCommand(Action):
         self.params.append(self.cockpit_device)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["command"], d["flag"], d["hit_count"], d["min_value"], d["max_value"], d["cockpit_device"])
 
     def dict(self):
@@ -1291,7 +1300,7 @@ class StartPlayerSeatLock(Action):
         self.params.append(self.number)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["number"])
 
     def dict(self):
@@ -1311,7 +1320,7 @@ class StartWaitUserResponse(Action):
         self.params.append(self.flag_black)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["flag"], d["flag_black"])
 
     def dict(self):
@@ -1328,7 +1337,7 @@ class StopLastSound(Action):
         super(StopLastSound, self).__init__(StopLastSound.predicate)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls()
 
     def dict(self):
@@ -1344,7 +1353,7 @@ class StopPlayerSeatLock(Action):
         super(StopPlayerSeatLock, self).__init__(StopPlayerSeatLock.predicate)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls()
 
     def dict(self):
@@ -1360,7 +1369,7 @@ class StopPlayingActor(Action):
         super(StopPlayingActor, self).__init__(StopPlayingActor.predicate)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls()
 
     def dict(self):
@@ -1378,7 +1387,7 @@ class StopRadioTransmission(Action):
         self.params.append(self.name)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["name"])
 
     def dict(self):
@@ -1394,7 +1403,7 @@ class StopWaitUserResponse(Action):
         super(StopWaitUserResponse, self).__init__(StopWaitUserResponse.predicate)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls()
 
     def dict(self):
@@ -1412,7 +1421,7 @@ class UnitAIOff(Action):
         self.params.append(self.unit)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"])
 
     def dict(self):
@@ -1430,7 +1439,7 @@ class UnitAIOn(Action):
         self.params.append(self.unit)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"])
 
     def dict(self):
@@ -1448,7 +1457,7 @@ class UnitEmissionOff(Action):
         self.params.append(self.unit)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"])
 
     def dict(self):
@@ -1466,7 +1475,7 @@ class UnitEmissionOn(Action):
         self.params.append(self.unit)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"])
 
     def dict(self):
