@@ -576,7 +576,7 @@ class CAS(BasicScenario):
         Point(-243092.85714285, 912857.14285714), Point(-273949.99999999, 963714.28571429),
         Point(-415664.28571428, 963714.28571429), Point(-392807.14285714, 569142.85714286)])
 
-    def __init__(self, aircraft_types: List[Tuple[str,str]], playercount: int, start: str, unhide):
+    def __init__(self, aircraft_types: List[Tuple[str, str]], playercount: int, start: str, unhide):
         super(CAS, self).__init__(not unhide)
 
         caucasus = self.m.terrain  # type: dcs.terrain.Caucasus
@@ -644,10 +644,16 @@ class CAS(BasicScenario):
                                              pp1, pp2,
                                              group_size=conf_data[1])
                     else:
-                        pg = self.m.flight_group_from_airport(
-                            country, conf, conf_data[2], airport, dcs.task.MainTask.map[force_type],
-                            dcs.mission.StartType.Runway, group_size=conf_data[1]
-                        )
+                        try:
+                            pg = self.m.flight_group_from_airport(
+                                country, conf, conf_data[2], airport, dcs.task.MainTask.map[force_type],
+                                dcs.mission.StartType.Runway, group_size=conf_data[1]
+                            )
+                        except dcs.terrain.RunwayOccupiedError:
+                            pg = self.m.flight_group_from_airport(
+                                country, conf, conf_data[2], airport, dcs.task.MainTask.map[force_type],
+                                dcs.mission.StartType.Warm, group_size=conf_data[1]
+                            )
                         pg.add_runway_waypoint(airport)
                         if air_force_idx == "red":
                             pg.hidden = self.hide
