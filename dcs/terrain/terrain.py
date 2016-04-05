@@ -51,6 +51,14 @@ class Runway:
         self.leftright = leftright
 
 
+class RunwayOccupiedError(RuntimeError):
+    pass
+
+
+class NoParkingSlotError(RuntimeError):
+    pass
+
+
 class Airport:
     id = None
     name = None
@@ -62,7 +70,7 @@ class Airport:
     slot_version = 1
 
     def __init__(self):
-        self.runway_free = True
+        self.runway_used = None
         self.runways = []  # type: List[Runway]
         self.parking_slots = []  # type: List[ParkingSlot]
 
@@ -128,6 +136,12 @@ class Airport:
         if self.unit_zones:
             return self.unit_zones[random.randrange(0, len(self.unit_zones))]
         return mapping.Rectangle.from_point(mapping.Point(self.position.x + 500, self.position.y), 200)
+
+    def occupy_runway(self, group):
+        if self.runway_used is not None:
+            raise RunwayOccupiedError("Runway already in use by group {gname}".format(gname=self.runway_used.name))
+        self.runway_used = group
+        return self.runway_used
 
     def parking_slot(self, index: int) -> ParkingSlot:
         """Searches the parking slot with the given crossroad index.
