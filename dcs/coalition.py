@@ -107,12 +107,16 @@ class Coalition:
                         plane.load_from_dict(imp_unit)
 
                         if plane_group.points[0].airdrome_id is not None and plane.parking is not None:
-                            airport = mission.terrain.airport_by_id(plane_group.points[0].airdrome_id)
                             slot = airport.parking_slot(plane.parking)
                             plane.set_parking(slot)
 
                         mission.current_unit_id = max(mission.current_unit_id, plane.id)
                         plane_group.add_unit(plane)
+
+                    # check runway start
+                    if plane_group.points[0].airdrome_id is not None and plane_group.units[0].parking is None:
+                        airport = mission.terrain.airport_by_id(plane_group.points[0].airdrome_id)
+                        airport.occupy_runway(plane_group)
                     _country.add_plane_group(plane_group)
 
             if "helicopter" in imp_country:
@@ -144,6 +148,11 @@ class Coalition:
 
                         mission.current_unit_id = max(mission.current_unit_id, heli.id)
                         helicopter_group.add_unit(heli)
+
+                    # check runway start
+                    if helicopter_group.points[0].airdrome_id is not None and helicopter_group.units[0].parking is None:
+                        airport = mission.terrain.airport_by_id(helicopter_group.points[0].airdrome_id)
+                        airport.occupy_runway(helicopter_group)
                     _country.add_helicopter_group(helicopter_group)
 
             if "static" in imp_country:

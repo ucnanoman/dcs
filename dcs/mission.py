@@ -28,7 +28,7 @@ from .forcedoptions import ForcedOptions
 from .goals import Goals
 from .groundcontrol import GroundControl
 from .point import StaticPoint, MovingPoint, PointAction, PointProperties
-from .terrain import Caucasus, Nevada, ParkingSlot, Airport
+from .terrain import Caucasus, Nevada, ParkingSlot, Airport, NoParkingSlotError
 from .translation import Translation
 from .unit import Plane, Helicopter, Ship, Vehicle, Static
 
@@ -808,10 +808,13 @@ class Mission:
                 parking_slot = parking_slots.pop(0) if parking_slots else airport.free_parking_slot(
                     unit.unit_type)
                 if parking_slot is None:
-                    raise RuntimeError("No free parking slot at " + airport.name)
+                    raise NoParkingSlotError("No free parking slot at " + airport.name)
                 spos = parking_slot.position
                 unit.set_parking(parking_slot)
             unit.position = copy.copy(spos)
+
+        if start_type == StartType.Runway:
+            airport.occupy_runway(group)
 
         group.load_task_default_loadout(maintask)
 
