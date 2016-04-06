@@ -182,11 +182,13 @@ class MovingGroup(Group):
         self.start_time = start_time
         self.frequency = 251
         self.task_selected = True
+        self.spawn_probability = 1.0
 
     def load_from_dict(self, d):
         super(MovingGroup, self).load_from_dict(d)
         self.frequency = d.get("frequency")
         self.task = d.get("task")  # ships don't have a task
+        self.spawn_probability = d.get("probability", 1.0)
         for t in d.get("tasks", []):
             self.tasks.append(task._create_from_dict(d["task"]["params"]["tasks"][t]))
         self.task_selected = d.get("taskSelected", False)
@@ -201,6 +203,8 @@ class MovingGroup(Group):
             d["frequency"] = self.frequency
         if self.task_selected:
             d["taskSelected"] = self.task_selected
+        if self.spawn_probability != 1.0:
+            d["probability"] = self.spawn_probability
         return d
 
 
