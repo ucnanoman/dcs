@@ -107,6 +107,7 @@ class Coalition:
                         plane.load_from_dict(imp_unit)
 
                         if plane_group.points[0].airdrome_id is not None and plane.parking is not None:
+                            airport = mission.terrain.airport_by_id(plane_group.points[0].airdrome_id)
                             slot = airport.parking_slot(plane.parking)
                             plane.set_parking(slot)
 
