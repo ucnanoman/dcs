@@ -1,8 +1,12 @@
 import unittest
+import os
 import dcs
 
 
 class BasicTests(unittest.TestCase):
+
+    def setUp(self):
+        os.makedirs('missions', exist_ok=True)
 
     def test_basic_keys(self):
         m = dcs.mission.Mission()
