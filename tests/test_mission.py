@@ -159,3 +159,11 @@ class BasicTests(unittest.TestCase):
         t = dcs.triggers.TriggerStart(comment='start test')
         t.actions.append(dcs.action.MessageToAll(m.string('Hi there fellow flyers!')))
         m.triggerrules.triggers.append(t)
+
+        m.save('missions/basic_mission.miz')
+
+    def test_loadmission(self):
+        m = dcs.mission.Mission()
+        self.assertTrue(m.load_file('tests/loadtest.miz'))
+
+        m.save('missions/loadtest.miz')
