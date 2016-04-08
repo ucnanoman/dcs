@@ -524,9 +524,9 @@ class Refueling(BasicScenario):
             pg.load_loadout("Combat Air Patrol")
 
         goal = dcs.goals.Goal("home and alive")
-        goal.rules.append(dcs.goals.UnitAlive(pg.units[0].id))
+        goal.rules.append(dcs.condition.UnitAlive(pg.units[0].id))
         tz = self.m.triggers.add_triggerzone(airport.position, 1000, name="home")
-        goal.rules.append((dcs.goals.UnitInZone(pg.units[0].id, tz.id)))
+        goal.rules.append((dcs.condition.UnitInZone(pg.units[0].id, tz.id)))
         self.m.goals.add_offline(goal)
 
         self.m.set_sortie_text("Refuel your plane")
