@@ -1,8 +1,10 @@
 # terrain module
-from typing import List, Dict, Optional
-from dcs import mapping, lua
+from typing import List, Dict, Optional, Tuple
+from collections import defaultdict, deque
+from dcs import mapping, lua, point, mission
 from dcs import unittype
 import random
+import pickle
 
 
 class ParkingSlot:
@@ -285,3 +287,150 @@ class Warehouses:
             "airports": {airports[x].id: airports[x].dict() for x in airports}
         }
         return lua.dumps(d, "warehouses", 1)
+
+
+class Node:
+    def __init__(self, name, rating, position: mapping.Point):
+        self.name = name
+        self.rating = rating
+        self.position = position  # type: dcs.Point
+
+    def __repr__(self):
+        return 'Node("{name}", {r})'.format(name=self.name, r=self.rating)
+
+
+class Graph:
+    Edge_indicators = {'N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'}
+
+    def __init__(self):
+        self.nodes = set()
+        self.edges = defaultdict(list)
+        self.edge_properties = {}
+
+    def node(self, node_name):
+        for x in self.nodes:
+            if x.name == node_name:
+                return x
+        raise RuntimeError('Node not found: ' + node_name)
+
+    def node_names(self):
+        return {x.name for x in self.nodes}
+
+    def add_node(self, node: Node):
+        self.nodes.add(node)
+
+    def add_edge(self, from_node: Node, to_node: Node, distance: int, on_road: bool=True):
+        self.edges[from_node.name].append(to_node.name)
+        self.edges[to_node.name].append(from_node.name)
+        self.edge_properties[(from_node.name, to_node.name)] = (distance, on_road)
+
+    def load_graph(self, mission_file):
+        m = mission.Mission()
+        m.load_file(mission_file)
+
+        self.nodes.clear()
+        self.edges.clear()
+        self.edge_properties.clear()
+
+        for g in m.country('USA').vehicle_group:
+            splitname = str(g.name).split(' ')
+            rating = g.spawn_probability * 100 if not splitname[-1] in Graph.Edge_indicators and not splitname[-1].startswith('#') and not splitname[-1] == 'shortcut' else None
+            self.add_node(Node(str(g.name), rating, mapping.Point(g.position.x, g.position.y)))
+
+        for g in m.country('USA').vehicle_group:
+            nodename = str(g.name)
+            splitname = nodename.split(' ')
+            if splitname[-1] in Graph.Edge_indicators or splitname[-1].startswith('#') or splitname[-1] == 'shortcut':
+                from_node = self.node(nodename)
+
+                if not nodename.endswith('shortcut'):
+                    mainnode_name = ' '.join(splitname[:-1])
+                    main_node = self.node(mainnode_name)
+                    self.add_edge(from_node, main_node, g.position.distance_to_point(main_node.position))
+                    self.add_edge(main_node, from_node, g.position.distance_to_point(main_node.position))
+                    #print(from_node, main_node)
+
+                targets = str(g.units[0].name)
+                targets = targets.split(',')
+                for target in targets:
+                    target = target.strip()
+                    r = target.find('#')
+                    if r >= 0:
+                        target = target[:r].strip()
+
+                    if target.endswith('.'):
+                        on_road = False
+                        target = target[:-1]
+                    else:
+                        on_road = True
+
+                    print(from_node, target)
+                    to_node = self.node(target)
+                    dist = g.position.distance_to_point(to_node.position)
+                    self.add_edge(from_node, to_node, dist, on_road)
+
+        #print(self.nodes)
+
+        return self
+
+    def _dijkstra(self, initial):
+        visited = {initial: 0}
+        path = {}
+
+        nodes = self.node_names()
+
+        while nodes:
+            min_node = None
+            for node in nodes:
+                if node in visited:
+                    if min_node is None:
+                        min_node = node
+                    elif visited[node] < visited[min_node]:
+                        min_node = node
+            if min_node is None:
+                break
+
+            nodes.remove(min_node)
+            current_weight = visited[min_node]
+
+            for edge in self.edges[min_node]:
+                try:
+                    weight = current_weight + self.edge_properties[(min_node, edge)][0]
+                except KeyError:
+                    continue
+                if edge not in visited or weight < visited[edge]:
+                    visited[edge] = weight
+                    path[edge] = min_node
+
+        return visited, path
+
+    def shortest_path(self, origin, destination) -> Tuple[int, List[str]]:
+        visited, paths = self._dijkstra(origin)
+        full_path = deque()
+        _destination = paths[destination]
+
+        while _destination != origin:
+            full_path.appendleft(_destination)
+            _destination = paths[_destination]
+
+        full_path.appendleft(origin)
+        full_path.append(destination)
+
+        return visited[destination], list(full_path)
+
+    def travel(self, vehicle_group, from_node: Node, to_node: Node):
+        distance, path = self.shortest_path(from_node.name, to_node.name)
+        last = path[0]
+        for p in path[1:]:
+            current_node = self.node(p)
+            if not self.edge_properties[(last, p)][1]:
+                vehicle_group.add_waypoint(current_node.position + mapping.Point(1, 0),
+                                           move_formation=point.PointAction.OffRoad)
+                vehicle_group.add_waypoint(current_node.position, move_formation=point.PointAction.OnRoad)
+            else:
+                vehicle_group.add_waypoint(current_node.position, move_formation=point.PointAction.OnRoad)
+            last = p
+
+    def store(self, file_name):
+        with open(file_name, 'wb') as file:
+            pickle.dump(self, file)
