@@ -68,6 +68,21 @@ class Point:
     def distance_to_point(self, point):
         return distance(self.x, self.y, point.x, point.y)
 
+    def random_point_within(self, distance, min_distance=0):
+        """Returns a random point within the given distance.
+
+        This is a shortcut for Rectangle.from_point().random_point().
+
+        Args:
+            distance: max distance for the random point.
+            min_distance: minimum distance the random point should have from origin
+
+        Returns:
+            Point: a new random point within the given distance from the point.
+        """
+        return self.point_from_heading(random.randrange(0, 360),
+                                       random.random() * (distance - min_distance) + min_distance)
+
     def __add__(self, other):
         return Point(self.x + other.x, self.y + other.y)
 
