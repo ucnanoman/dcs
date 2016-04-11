@@ -1,6 +1,7 @@
-from .terrain import Terrain, Airport, Runway, ParkingSlot, MapView
+from .terrain import Terrain, Airport, Runway, ParkingSlot, MapView, Graph
 from .. import mapping
 from typing import List
+import os
 
 
 class Anapa(Airport):
@@ -3010,6 +3011,7 @@ class Caucasus(Terrain):
     center = {"lat": 45.12945, "long": 34.26527}
     bounds = mapping.Rectangle(380*1000, -560*1000, -600*1000, 1130*1000)
     map_view_default = MapView(mapping.Point(-255714.28571428, 680571.42857143), 1000000)
+    city_graph = Graph.from_pickle(os.path.join(os.path.dirname(__file__), 'caucasus.p'))
 
     def __init__(self):
         super(Caucasus, self).__init__("Caucasus")
