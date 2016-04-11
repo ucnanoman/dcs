@@ -403,6 +403,13 @@ class Graph:
         with open(file_name, 'wb') as file:
             pickle.dump(self, file)
 
+    def __str__(self):
+        s = "digraph city_graph {\n"
+        for x in self.nodes:
+            s += '  "' + x.name + '" -> ' + ",".join([ '"' + y + '"' for y in self.edges[x.name]]) + "\n"
+        s += "}\n"
+        return s
+
 
 class Terrain:
     bounds = None  # type: mapping.Rectangle
