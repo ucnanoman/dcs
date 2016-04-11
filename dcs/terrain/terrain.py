@@ -281,8 +281,10 @@ class Graph:
         self.nodes.add(node)
 
     def add_edge(self, from_node: Node, to_node: Node, distance: int, on_road: bool=True):
-        self.edges[from_node.name].append(to_node.name)
-        self.edges[to_node.name].append(from_node.name)
+        if to_node.name not in self.edges[from_node.name]:
+            self.edges[from_node.name].append(to_node.name)
+        if from_node.name not in self.edges[to_node.name]:
+            self.edges[to_node.name].append(from_node.name)
         self.edge_properties[(from_node.name, to_node.name)] = (distance, on_road)
 
     @staticmethod
