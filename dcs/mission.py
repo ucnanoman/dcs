@@ -584,7 +584,7 @@ class Mission:
         if _type.eplrs:
             wp.tasks.append(task.EPLRS(self.next_eplrs("vehicle")))
 
-        vg.formation(formation)
+        vg.formation(formation, heading)
 
         country.add_vehicle_group(vg)
         return vg
@@ -627,7 +627,7 @@ class Mission:
         if eplrs:
             wp.tasks.append(task.EPLRS(self.next_eplrs("vehicle")))
 
-        vg.formation(formation)
+        vg.formation(formation, heading)
 
         country.add_vehicle_group(vg)
         return vg
