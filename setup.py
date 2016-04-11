@@ -33,6 +33,9 @@ setup(
     keywords='dcs digital combat simulator eagle dynamics mission framework',
 #    install_requires=['typing'],
     packages=['dcs', 'dcs/terrain', 'dcs/lua', 'dcs/scripts'],
+    package_data={
+        'dcs/terrain': ['caucasus.p', 'nevada.p']
+    },
     entry_points={
         'console_scripts': [
             'dcs_random=dcs.scripts.random_mission:main',
