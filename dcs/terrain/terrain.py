@@ -250,46 +250,6 @@ class MapView:
         }
 
 
-class Terrain:
-    bounds = None  # type: mapping.Rectangle
-    map_view_default = None  # type: MapView
-
-    def __init__(self, name: str):
-        self.name = name
-        self.center = {"lat": 0, "long": 0}  # WGS84 decimal
-        self.bullseye_blue = {"x": 0, "y": 0}
-        self.bullseye_red = {"x": 0, "y": 0}
-        self.airports = {}  # type: Dict[str,Airport]
-
-    def airport_by_id(self, id: int) -> Airport:
-        for x in self.airports:
-            if self.airports[x].id == id:
-                return self.airports[x]
-        return None
-
-    def airport_list(self) -> List[Airport]:
-        for x in self.airports:
-            yield self.airports[x]
-
-
-class Warehouses:
-    def __init__(self, terrain: Terrain):
-        self.terrain = terrain
-        self.warehouses = {}
-
-    def load_dict(self, data):
-        for x in data.get("airports", {}):
-            self.terrain.airport_by_id(x).load_from_dict(data["airports"][x])
-
-    def __str__(self):
-        airports = self.terrain.airports
-        d = {
-            "warehouses": self.warehouses,
-            "airports": {airports[x].id: airports[x].dict() for x in airports}
-        }
-        return lua.dumps(d, "warehouses", 1)
-
-
 class Node:
     def __init__(self, name, rating, position: mapping.Point):
         self.name = name
@@ -324,6 +284,11 @@ class Graph:
         self.edges[from_node.name].append(to_node.name)
         self.edges[to_node.name].append(from_node.name)
         self.edge_properties[(from_node.name, to_node.name)] = (distance, on_road)
+
+    @staticmethod
+    def from_pickle(pickle_file):
+        with open(pickle_file, 'rb') as f:
+            return pickle.load(f)
 
     def load_graph(self, mission_file):
         m = dcs.mission.Mission()
@@ -432,6 +397,47 @@ class Graph:
                 vehicle_group.add_waypoint(current_node.position, move_formation=point.PointAction.OnRoad)
             last = p
 
-    def store(self, file_name):
+    def store_pickle(self, file_name):
         with open(file_name, 'wb') as file:
             pickle.dump(self, file)
+
+
+class Terrain:
+    bounds = None  # type: mapping.Rectangle
+    map_view_default = None  # type: MapView
+    city_graph = Graph()  # type: Graph
+
+    def __init__(self, name: str):
+        self.name = name
+        self.center = {"lat": 0, "long": 0}  # WGS84 decimal
+        self.bullseye_blue = {"x": 0, "y": 0}
+        self.bullseye_red = {"x": 0, "y": 0}
+        self.airports = {}  # type: Dict[str,Airport]
+
+    def airport_by_id(self, id: int) -> Airport:
+        for x in self.airports:
+            if self.airports[x].id == id:
+                return self.airports[x]
+        return None
+
+    def airport_list(self) -> List[Airport]:
+        for x in self.airports:
+            yield self.airports[x]
+
+
+class Warehouses:
+    def __init__(self, terrain: Terrain):
+        self.terrain = terrain
+        self.warehouses = {}
+
+    def load_dict(self, data):
+        for x in data.get("airports", {}):
+            self.terrain.airport_by_id(x).load_from_dict(data["airports"][x])
+
+    def __str__(self):
+        airports = self.terrain.airports
+        d = {
+            "warehouses": self.warehouses,
+            "airports": {airports[x].id: airports[x].dict() for x in airports}
+        }
+        return lua.dumps(d, "warehouses", 1)
