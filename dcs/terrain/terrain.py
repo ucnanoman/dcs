@@ -1,8 +1,9 @@
 # terrain module
 from typing import List, Dict, Optional, Tuple
 from collections import defaultdict, deque
-from dcs import mapping, lua, point, mission
+from dcs import mapping, lua, point
 from dcs import unittype
+import dcs.mission
 import random
 import pickle
 
@@ -325,7 +326,7 @@ class Graph:
         self.edge_properties[(from_node.name, to_node.name)] = (distance, on_road)
 
     def load_graph(self, mission_file):
-        m = mission.Mission()
+        m = dcs.mission.Mission()
         m.load_file(mission_file)
 
         self.nodes.clear()
@@ -364,7 +365,7 @@ class Graph:
                     else:
                         on_road = True
 
-                    print(from_node, target)
+                    #print(from_node, target)
                     to_node = self.node(target)
                     dist = g.position.distance_to_point(to_node.position)
                     self.add_edge(from_node, to_node, dist, on_road)
