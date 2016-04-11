@@ -2,6 +2,7 @@ from .countries import Russia, USA
 from . import unit
 from .mission import Mission
 from . import mapping
+import dcs.vehicles
 
 
 class VehicleTemplate:
@@ -123,3 +124,31 @@ class VehicleTemplate:
 
             for u in vg.units:
                 u.skill = skill
+
+    @staticmethod
+    def sa11_site(mission, country, position, heading, prefix="", skill=unit.Skill.Average):
+        vg = mission.vehicle_group(country, prefix + "SA10 site",
+                                   dcs.vehicles.AirDefence.SAM_SA_11_Buk_CC_9S470M1, position, heading)
+
+        u = mission.vehicle("Operator 1", Russia.Vehicle.Infantry.Infantry_Soldier_Rus)
+        u.position = position.point_from_heading(heading + 180, 10)
+        u.heading = heading
+        vg.add_unit(u)
+
+        hdg = 90
+        for i in range(0, 2):  # 2 launchers
+            u = mission.vehicle("launcher #" + str(i + 1), dcs.vehicles.AirDefence.SAM_SA_11_Buk_LN_9A310M1)
+            u.position = position.point_from_heading(heading + hdg, 50)
+            u.heading = heading
+            vg.add_unit(u)
+            hdg += 90
+
+        u = mission.vehicle("radar", dcs.vehicles.AirDefence.SAM_SA_11_Buk_SR_9S18M1)
+        u.position = position.point_from_heading(heading, 80)
+        u.heading = heading
+        vg.add_unit(u)
+
+        for u in vg.units:
+            u.skill = skill
+
+        return vg
