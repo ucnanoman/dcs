@@ -386,17 +386,22 @@ class Graph:
 
         return visited[destination], list(full_path)
 
-    def travel(self, vehicle_group, from_node: Node, to_node: Node):
+    def travel(self, vehicle_group, from_node: Node, to_node: Node, speed=32):
         distance, path = self.shortest_path(from_node.name, to_node.name)
         last = path[0]
         for p in path[1:]:
             current_node = self.node(p)
             if not self.edge_properties[(last, p)][1]:
                 vehicle_group.add_waypoint(current_node.position + mapping.Point(1, 0),
+                                           speed=speed,
                                            move_formation=point.PointAction.OffRoad)
-                vehicle_group.add_waypoint(current_node.position, move_formation=point.PointAction.OnRoad)
+                vehicle_group.add_waypoint(current_node.position,
+                                           speed=speed,
+                                           move_formation=point.PointAction.OnRoad)
             else:
-                vehicle_group.add_waypoint(current_node.position, move_formation=point.PointAction.OnRoad)
+                vehicle_group.add_waypoint(current_node.position,
+                                           speed=speed,
+                                           move_formation=point.PointAction.OnRoad)
             last = p
 
     def store_pickle(self, file_name):
