@@ -70,8 +70,8 @@ def main():
     fg.units[0].set_player()
 
     _, path = city_graph.shortest_path(start_node.name, destination_node.name)
-    notifier_node = city_graph.node(random.choice(path[:6]))
-    notify_zone = m.triggers.add_triggerzone(notifier_node.position, 500, hidden=False, name='notify_zone')
+    notifier_node = city_graph.node(random.choice(path[2:6]))
+    notify_zone = m.triggers.add_triggerzone(notifier_node.position, 300, hidden=False, name='notify_zone')
     trig_notify = dcs.triggers.TriggerOnce(comment='NotifyConvoyPosition')
     trig_notify.rules.append(dcs.condition.PartOfGroupInZone(oil_convoy.id, notify_zone.id))
     trig_notify.actions.append(dcs.action.MessageToGroup(
