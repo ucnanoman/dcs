@@ -268,7 +268,7 @@ class Graph:
         self.edges = defaultdict(list)
         self.edge_properties = {}
 
-    def node(self, node_name):
+    def node(self, node_name) -> Node:
         for x in self.nodes:
             if x.name == node_name:
                 return x
@@ -276,6 +276,9 @@ class Graph:
 
     def node_names(self):
         return {x.name for x in self.nodes}
+
+    def rated_nodes(self, min_rating=0):
+        return {x.name for x in self.nodes if x.rating and x.rating > min_rating}
 
     def add_node(self, node: Node):
         self.nodes.add(node)
