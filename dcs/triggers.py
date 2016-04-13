@@ -144,6 +144,9 @@ class TriggerRule:
             "actions": {i + 1: self.actions[i].dict() for i in range(0, len(self.actions))}
         }
 
+    def __repr__(self):
+        return self.__class__.__name__ + '(' + str(self.dict()) + ')'
+
 
 class TriggerOnce(TriggerRule):
     predicate = "triggerOnce"
