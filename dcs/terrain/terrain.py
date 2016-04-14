@@ -1,9 +1,10 @@
 # terrain module
-from typing import List, Dict, Optional, Tuple
+from typing import List, Dict, Optional, Tuple, Set
 from collections import defaultdict, deque
 from dcs import mapping, lua, point
 from dcs import unittype
 import dcs.mission
+import dcs.vehicles
 import random
 import pickle
 
@@ -255,6 +256,8 @@ class Node:
         self.name = name
         self.rating = rating
         self.position = position  # type: dcs.Point
+        """Air defence positions for small arms, mostly on buildings"""
+        self.air_defence_pos_small = []  # type: List[dcs.Point]
 
     def __repr__(self):
         return 'Node("{name}", {r})'.format(name=self.name, r=self.rating)
@@ -303,12 +306,25 @@ class Graph:
         self.edges.clear()
         self.edge_properties.clear()
 
-        for g in m.country('USA').vehicle_group:
+        # add nodes
+        for g in [x for x in m.country('USA').vehicle_group if x.units[0].type == dcs.vehicles.Armor.APC_AAV_7.id]:
             splitname = str(g.name).split(' ')
-            rating = g.spawn_probability * 100 if not splitname[-1] in Graph.Edge_indicators and not splitname[-1].startswith('#') and not splitname[-1] == 'shortcut' else None
+            rating = None
+            if not splitname[-1] in Graph.Edge_indicators \
+                    and not splitname[-1].startswith('#') \
+                    and not splitname[-1] == 'shortcut':
+                rating = g.spawn_probability * 100
             self.add_node(Node(str(g.name), rating, mapping.Point(g.position.x, g.position.y)))
 
-        for g in m.country('USA').vehicle_group:
+        # add building air defence positions
+        for g in [x for x in m.country('USA').vehicle_group
+                  if x.units[0].type == dcs.vehicles.AirDefence.SAM_Stinger_MANPADS.id]:
+            nodename = str(g.name)
+            nodename = nodename.split(' ')[:-1][0]
+            self.node(nodename).air_defence_pos_small.append(g.position)
+
+        # add node edges
+        for g in [x for x in m.country('USA').vehicle_group if x.units[0].type == dcs.vehicles.Armor.APC_AAV_7.id]:
             nodename = str(g.name)
             splitname = nodename.split(' ')
             if splitname[-1] in Graph.Edge_indicators or splitname[-1].startswith('#') or splitname[-1] == 'shortcut':
