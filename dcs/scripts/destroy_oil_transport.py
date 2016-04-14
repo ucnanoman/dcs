@@ -4,6 +4,11 @@ import os
 import random
 import argparse
 
+zone_abkhazia = dcs.Polygon([dcs.Point(-187092.85714285, 460857.14285714), dcs.Point(-149378.57142856, 476285.71428571),
+                             dcs.Point(-147664.28571428, 520000), dcs.Point(-175378.57142856, 599714.28571429),
+                             dcs.Point(-174521.42857142, 644000), dcs.Point(-199664.28571428, 624000),
+                             dcs.Point(-233949.99999999, 632857.14285714), dcs.Point(-271092.85714285, 596000)])
+
 
 def main():
     aircrafts = [x for x in dcs.planes.plane_map.values() if x.flyable]
@@ -35,11 +40,14 @@ def main():
     m = dcs.Mission(terrain_map[args.terrain]())
 
     city_graph = m.terrain.city_graph
-    distance, path = city_graph.shortest_path('Gali', 'Gudauta')
+    # distance, path = city_graph.shortest_path('Gali', 'Gudauta')
+    #
+    # print(path)
+    # start_node = city_graph.node(random.choice(path))
+    # print(start_node)
 
-    print(path)
-    start_node = city_graph.node(random.choice(path))
-    print(start_node)
+    start_node = random.choice(city_graph.rated_node_within(zone_abkhazia))
+    print('start_node', start_node)
 
     # create the oil convoy
     abkhazia = m.country(dcs.countries.Abkhazia.name)
@@ -59,29 +67,45 @@ def main():
         "Oil Convoy",
         convoy_vehicles,
         start_node.position)
-    city_graph.travel(oil_convoy, start_node, destination_node, 60)
+    _, path = city_graph.travel(oil_convoy, start_node, destination_node, 60)
 
     # add light air defence around and in cities on path
+    for city in {x for x in city_graph.rated_nodes(50) if x.name in path}:
+        use_building_pos = int(random.random() * len(city.air_defence_pos_small))
+        small_aaa_pos = list(city.air_defence_pos_small)
+        for i in range(0, use_building_pos):
+            p = small_aaa_pos.pop(random.randrange(0, len(small_aaa_pos)))
+            aaa_def = [[dcs.countries.Abkhazia.Vehicle.AirDefence.AAA_ZU_23_Emplacement],
+                       [dcs.countries.Abkhazia.Vehicle.AirDefence.SAM_SA_18_Igla_MANPADS,
+                        dcs.countries.Abkhazia.Vehicle.AirDefence.SAM_SA_18_Igla_comm]]
+            m.vehicle_group_platoon(abkhazia,
+                                    city.name + " AAA #" + str(len(small_aaa_pos)),
+                                    random.choice(aaa_def),
+                                    p,
+                                    random.randrange(0, 360))
 
     # place player
     aircraft_type = [x for x in aircrafts if x.id == args.aircrafttype][0]
-    fg = m.flight_group_from_airport(m.country('USA'), "Player", aircraft_type, m.terrain.senaki(), dcs.task.CAS)
-    fg.add_runway_waypoint(m.terrain.senaki())
-    fg.units[0].set_player()
+    player_fg = m.flight_group_from_airport(m.country('USA'), "Player", aircraft_type, m.terrain.senaki(), dcs.task.CAS)
+    player_fg.add_runway_waypoint(m.terrain.senaki())
+    player_fg.units[0].set_player()
 
-    _, path = city_graph.shortest_path(start_node.name, destination_node.name)
     notifier_node = city_graph.node(random.choice(path[2:6]))
     notify_zone = m.triggers.add_triggerzone(notifier_node.position, 300, hidden=False, name='notify_zone')
     trig_notify = dcs.triggers.TriggerOnce(comment='NotifyConvoyPosition')
     trig_notify.rules.append(dcs.condition.PartOfGroupInZone(oil_convoy.id, notify_zone.id))
     trig_notify.actions.append(dcs.action.MessageToGroup(
-        fg.id, m.string('An agent just reported that the convoy just arrived at ' + notifier_node.name)))
+        player_fg.id, m.string('An agent just reported that the convoy just arrived at ' + notifier_node.name)))
     m.triggerrules.triggers.append(trig_notify)
     print(trig_notify)
-    print(len(path))
-
 
     m.forced_options.civil_traffic = dcs.forcedoptions.ForcedOptions.CivilTraffic.Low
+
+    g = dcs.goals.Goal("convoy destroyed", score=100)
+    g.rules.append(dcs.condition.GroupDead(oil_convoy.id))
+    g.rules.append(dcs.condition.GroupAlive(player_fg.id))
+    m.goals.add_blue(g)
+    m.goals.add_offline(g)
 
     m.set_sortie_text("Search and destroy the oil convoy")
     m.set_description_text("""Abkhazia is selling oil to Russia to silently finance their military investments.
