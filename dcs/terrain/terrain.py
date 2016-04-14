@@ -277,11 +277,14 @@ class Graph:
                 return x
         raise RuntimeError('Node not found: ' + node_name)
 
-    def node_names(self):
+    def node_names(self) -> Set[str]:
         return {x.name for x in self.nodes}
 
-    def rated_nodes(self, min_rating=0):
-        return {x.name for x in self.nodes if x.rating and x.rating > min_rating}
+    def rated_nodes(self, min_rating=0) -> Set[Node]:
+        return {x for x in self.nodes if x.rating and x.rating > min_rating}
+
+    def rated_node_within(self, polygon: dcs.mapping.Polygon, min_rating=0):
+        return {x for x in self.rated_nodes(min_rating) if polygon.point_in_poly(x.position)}
 
     def add_node(self, node: Node):
         self.nodes.add(node)
