@@ -284,7 +284,7 @@ class Graph:
         return {x for x in self.nodes if x.rating and x.rating > min_rating}
 
     def rated_node_within(self, polygon: dcs.mapping.Polygon, min_rating=0):
-        return {x for x in self.rated_nodes(min_rating) if polygon.point_in_poly(x.position)}
+        return [x for x in self.rated_nodes(min_rating) if polygon.point_in_poly(x.position)]
 
     def add_node(self, node: Node):
         self.nodes.add(node)
