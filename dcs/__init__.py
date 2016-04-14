@@ -17,5 +17,5 @@ from . import triggers
 from . import condition
 from . import action
 from . import forcedoptions
-from .mapping import Point, Rectangle
+from .mapping import Point, Rectangle, Polygon
 from .mission import Mission
