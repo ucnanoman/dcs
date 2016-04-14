@@ -67,6 +67,7 @@ def main():
         "Oil Convoy",
         convoy_vehicles,
         start_node.position)
+    oil_convoy.formation_scattered(0, 50)
     _, path = city_graph.travel(oil_convoy, start_node, destination_node, 60)
 
     # add light air defence around and in cities on path
@@ -78,11 +79,12 @@ def main():
             aaa_def = [[dcs.countries.Abkhazia.Vehicle.AirDefence.AAA_ZU_23_Emplacement],
                        [dcs.countries.Abkhazia.Vehicle.AirDefence.SAM_SA_18_Igla_MANPADS,
                         dcs.countries.Abkhazia.Vehicle.AirDefence.SAM_SA_18_Igla_comm]]
-            m.vehicle_group_platoon(abkhazia,
-                                    city.name + " AAA #" + str(len(small_aaa_pos)),
-                                    random.choice(aaa_def),
-                                    p,
-                                    random.randrange(0, 360))
+            vg = m.vehicle_group_platoon(abkhazia,
+                                         city.name + " AAA #" + str(len(small_aaa_pos)),
+                                         random.choice(aaa_def),
+                                         p,
+                                         0)
+            vg.formation_scattered(random.randrange(0, 360), 10)
 
     # place player
     aircraft_type = [x for x in aircrafts if x.id == args.aircrafttype][0]
