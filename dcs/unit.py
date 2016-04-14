@@ -52,6 +52,9 @@ class Unit:
             d["skill"] = self.skill.value
         return d
 
+    def __repr__(self):
+        return self.__class__.__name__ + '(' + str(self.dict()) + ')'
+
 
 class FlyingUnit(Unit):
     def __init__(self, _id=None, name=None, _type: FlyingType=None, _country=None):
