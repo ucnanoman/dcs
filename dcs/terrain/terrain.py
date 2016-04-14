@@ -406,6 +406,7 @@ class Graph:
                                            speed=speed,
                                            move_formation=point.PointAction.OnRoad)
             last = p
+        return distance, path
 
     def store_pickle(self, file_name):
         with open(file_name, 'wb') as file:
