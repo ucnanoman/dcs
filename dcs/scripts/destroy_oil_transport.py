@@ -46,8 +46,12 @@ def main():
     # start_node = city_graph.node(random.choice(path))
     # print(start_node)
 
+    destination_node = city_graph.node('Adler')
+
+    # find a startnode far away enough
     start_node = random.choice(city_graph.rated_node_within(zone_abkhazia))
-    print('start_node', start_node)
+    while start_node.position.distance_to_point(destination_node.position) < 70000:
+        start_node = random.choice(city_graph.rated_node_within(zone_abkhazia))
 
     # create the oil convoy
     abkhazia = m.country(dcs.countries.Abkhazia.name)
@@ -61,7 +65,6 @@ def main():
     if random.getrandbits(1):
         convoy_vehicles.append(random.choice(airdef))
 
-    destination_node = city_graph.node('Adler')
     oil_convoy = m.vehicle_group_platoon(
         abkhazia,
         "Oil Convoy",
