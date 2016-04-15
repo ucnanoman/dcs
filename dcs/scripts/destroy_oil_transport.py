@@ -74,7 +74,7 @@ def main():
     _, path = city_graph.travel(oil_convoy, start_node, destination_node, 60)
 
     # add light air defence around and in cities on path
-    for city in {x for x in city_graph.rated_nodes(50) if x.name in path}:
+    for city in {x for x in city_graph.rated_node_within(zone_abkhazia, 50)}:
         use_building_pos = int(random.random() * len(city.air_defence_pos_small))
         small_aaa_pos = list(city.air_defence_pos_small)
         for i in range(0, use_building_pos):
