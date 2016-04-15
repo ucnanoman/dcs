@@ -33,6 +33,8 @@ def main():
     if args.output is None:
         if args.terrain == "caucasus":
             args.output = os.path.join(os.path.expanduser("~"), "Saved Games\\DCS\\Missions\\oil_transport.miz")
+            zone_enemy = zone_abkhazia
+            desination_city = 'Adler'
         else:
             args.output = os.path.join(os.path.expanduser("~"),
                                        "Saved Games\\DCS.openalpha\\Missions\\oil_transport.miz")
@@ -40,18 +42,13 @@ def main():
     m = dcs.Mission(terrain_map[args.terrain]())
 
     city_graph = m.terrain.city_graph
-    # distance, path = city_graph.shortest_path('Gali', 'Gudauta')
-    #
-    # print(path)
-    # start_node = city_graph.node(random.choice(path))
-    # print(start_node)
 
-    destination_node = city_graph.node('Adler')
+    destination_node = city_graph.node(desination_city)
 
     # find a startnode far away enough
-    start_node = random.choice(city_graph.rated_node_within(zone_abkhazia))
+    start_node = random.choice(city_graph.rated_node_within(zone_enemy))
     while start_node.position.distance_to_point(destination_node.position) < 70000:
-        start_node = random.choice(city_graph.rated_node_within(zone_abkhazia))
+        start_node = random.choice(city_graph.rated_node_within(zone_enemy))
 
     # create the oil convoy
     abkhazia = m.country(dcs.countries.Abkhazia.name)
@@ -74,7 +71,7 @@ def main():
     _, path = city_graph.travel(oil_convoy, start_node, destination_node, 60)
 
     # add light air defence around and in cities on path
-    for city in {x for x in city_graph.rated_node_within(zone_abkhazia, 50)}:
+    for city in {x for x in city_graph.rated_node_within(zone_enemy, 50)}:
         use_building_pos = int(random.random() * len(city.air_defence_pos_small))
         small_aaa_pos = list(city.air_defence_pos_small)
         for i in range(0, use_building_pos):
