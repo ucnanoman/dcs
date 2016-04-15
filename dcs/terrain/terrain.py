@@ -3,8 +3,6 @@ from typing import List, Dict, Optional, Tuple, Set
 from collections import defaultdict, deque
 from dcs import mapping, lua, point
 from dcs import unittype
-import dcs.mission
-import dcs.vehicles
 import random
 import pickle
 
@@ -283,7 +281,7 @@ class Graph:
     def rated_nodes(self, min_rating=0) -> Set[Node]:
         return {x for x in self.nodes if x.rating and x.rating > min_rating}
 
-    def rated_node_within(self, polygon: dcs.mapping.Polygon, min_rating=0):
+    def rated_node_within(self, polygon: mapping.Polygon, min_rating=0):
         return [x for x in self.rated_nodes(min_rating) if polygon.point_in_poly(x.position)]
 
     def add_node(self, node: Node):
@@ -300,68 +298,6 @@ class Graph:
     def from_pickle(pickle_file):
         with open(pickle_file, 'rb') as f:
             return pickle.load(f)
-
-    def load_graph(self, mission_file):
-        m = dcs.mission.Mission()
-        m.load_file(mission_file)
-
-        self.nodes.clear()
-        self.edges.clear()
-        self.edge_properties.clear()
-
-        # add nodes
-        for g in [x for x in m.country('USA').vehicle_group if x.units[0].type == dcs.vehicles.Armor.APC_AAV_7.id]:
-            splitname = str(g.name).split(' ')
-            rating = None
-            if not splitname[-1] in Graph.Edge_indicators \
-                    and not splitname[-1].startswith('#') \
-                    and not splitname[-1] == 'shortcut':
-                rating = g.spawn_probability * 100
-            self.add_node(Node(str(g.name), rating, mapping.Point(g.position.x, g.position.y)))
-
-        # add building air defence positions
-        for g in [x for x in m.country('USA').vehicle_group
-                  if x.units[0].type == dcs.vehicles.AirDefence.SAM_Stinger_MANPADS.id]:
-            nodename = str(g.name)
-            nodename = nodename.split(' ')[:-1][0]
-            self.node(nodename).air_defence_pos_small.append(g.position)
-
-        # add node edges
-        for g in [x for x in m.country('USA').vehicle_group if x.units[0].type == dcs.vehicles.Armor.APC_AAV_7.id]:
-            nodename = str(g.name)
-            splitname = nodename.split(' ')
-            if splitname[-1] in Graph.Edge_indicators or splitname[-1].startswith('#') or splitname[-1] == 'shortcut':
-                from_node = self.node(nodename)
-
-                if not nodename.endswith('shortcut'):
-                    mainnode_name = ' '.join(splitname[:-1])
-                    main_node = self.node(mainnode_name)
-                    self.add_edge(from_node, main_node, g.position.distance_to_point(main_node.position))
-                    self.add_edge(main_node, from_node, g.position.distance_to_point(main_node.position))
-                    #print(from_node, main_node)
-
-                targets = str(g.units[0].name)
-                targets = targets.split(',')
-                for target in targets:
-                    target = target.strip()
-                    r = target.find('#')
-                    if r >= 0:
-                        target = target[:r].strip()
-
-                    if target.endswith('.'):
-                        on_road = False
-                        target = target[:-1]
-                    else:
-                        on_road = True
-
-                    #print(from_node, target)
-                    to_node = self.node(target)
-                    dist = g.position.distance_to_point(to_node.position)
-                    self.add_edge(from_node, to_node, dist, on_road)
-
-        #print(self.nodes)
-
-        return self
 
     def _dijkstra(self, initial):
         visited = {initial: 0}
@@ -434,7 +370,7 @@ class Graph:
     def __str__(self):
         s = "digraph city_graph {\n"
         for x in self.nodes:
-            s += '  "' + x.name + '" -> ' + ",".join([ '"' + y + '"' for y in self.edges[x.name]]) + "\n"
+            s += '  "' + x.name + '" -> ' + ",".join(['"' + y + '"' for y in self.edges[x.name]]) + "\n"
         s += "}\n"
         return s
 
