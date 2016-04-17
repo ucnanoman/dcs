@@ -66,8 +66,10 @@ def main():
         abkhazia,
         "Oil Convoy",
         convoy_vehicles,
-        start_node.position)
+        start_node.position.random_point_within(50))
+    oil_convoy.hidden = not args.unhide
     oil_convoy.formation_scattered(0, 50)
+    oil_convoy.add_waypoint(start_node.position, dcs.point.PointAction.OnRoad)
     _, path = city_graph.travel(oil_convoy, start_node, destination_node, 60)
 
     # add light air defence around and in cities on path
@@ -84,6 +86,7 @@ def main():
                                          random.choice(aaa_def),
                                          p,
                                          0)
+            vg.hidden = not args.unhide
             vg.formation_scattered(random.randrange(0, 360), 10)
 
     # place player
