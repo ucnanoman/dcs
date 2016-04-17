@@ -253,9 +253,9 @@ class Node:
     def __init__(self, name, rating, position: mapping.Point):
         self.name = name
         self.rating = rating
-        self.position = position  # type: dcs.Point
+        self.position = position  # type: mapping.Point
         """Air defence positions for small arms, mostly on buildings"""
-        self.air_defence_pos_small = []  # type: List[dcs.Point]
+        self.air_defence_pos_small = []  # type: List[mapping.Point]
 
     def __repr__(self):
         return 'Node("{name}", {r})'.format(name=self.name, r=self.rating)
@@ -281,7 +281,7 @@ class Graph:
     def rated_nodes(self, min_rating=0) -> Set[Node]:
         return {x for x in self.nodes if x.rating and x.rating > min_rating}
 
-    def rated_node_within(self, polygon: mapping.Polygon, min_rating=0):
+    def rated_node_within(self, polygon: mapping.Polygon, min_rating=0) -> Node:
         return [x for x in self.rated_nodes(min_rating) if polygon.point_in_poly(x.position)]
 
     def add_node(self, node: Node):
