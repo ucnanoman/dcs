@@ -40,6 +40,8 @@ def main():
                                        "Saved Games\\DCS.openalpha\\Missions\\oil_transport.miz")
 
     m = dcs.Mission(terrain_map[args.terrain]())
+    m.random_weather = True
+    m.random_date()
 
     city_graph = m.terrain.city_graph
 
@@ -129,6 +131,7 @@ Mission objectives:
   * Destroy the convoy
   * Head back in one piece to Senaki airport.""")
 
+    m.print_stats(m.stats())
     #m.save(args.output)
 
     return 0
