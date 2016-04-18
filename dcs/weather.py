@@ -161,6 +161,15 @@ class Weather:
         else:
             self.turbulence_at_ground = random.randrange(25, 60)
 
+    def random(self, dt: datetime=None):
+        # check if there might be the season for thunderstorms
+        if 4 < dt.month < 11:
+            if random.random() > 0.9:
+                self.atmosphere_type = 0
+                return
+
+        self.dynamic_weather(random.choice(list(Weather.BaricSystem)), random.randrange(1, 3))
+
     def dict(self):
         d = {}
         d["atmosphere_type"] = self.atmosphere_type

@@ -6,7 +6,8 @@ import os
 import sys
 import tempfile
 import zipfile
-from datetime import datetime, timezone
+import random
+from datetime import datetime, timezone, timedelta
 from enum import Enum
 from typing import List, Dict, Union, Optional
 
@@ -107,6 +108,8 @@ class Mission:
         self.start_time = datetime.fromtimestamp(1306886400 + 43200, timezone.utc)  # 01-06-2011 12:00:00 UTC
         self.season_from_start_time = True
         """If set to True the mission season will be set by the value of :py:attr:`Mission.start_time`"""
+        self.random_weather = False
+        """If set to True a random weather will be generated"""
         self.terrain = terrain
         self.triggerrules = triggers.Rules()
         self.triggers = Triggers()
@@ -309,6 +312,7 @@ class Mission:
 
         # weather
         self.season_from_start_time = False
+        self.random_weather = False
         imp_weather = imp_mission["weather"]
         self.weather = weather.Weather(self.terrain)
         self.weather.load_from_dict(imp_weather)
@@ -1340,6 +1344,11 @@ class Mission:
         """
         return country.name in self.coalition["blue"].countries
 
+    def random_date(self):
+        """Sets a random date for the mission"""
+        self.start_time = datetime.fromtimestamp(1306886400 + 43200, timezone.utc)  # 01-06-2011 12:00:00 UTC
+        self.start_time += timedelta(days=random.randrange(0, 365))
+
     def stats(self) -> Dict:
         """Gather some mission stats.
 
@@ -1471,6 +1480,8 @@ class Mission:
             raise RuntimeError("Mission start time is < 0.")
         if self.season_from_start_time:
             self.weather.set_season_from_datetime(self.start_time)
+        if self.random_weather:
+            self.weather.random(self.start_time)
         m["groundControl"] = self.groundControl.dict()
         m["usedModules"] = self.usedModules
         m["resourceCounter"] = self.resourceCounter

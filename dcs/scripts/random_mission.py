@@ -200,8 +200,8 @@ class BasicScenario:
             self.m.weather.dynamic_weather(random.choice(list(dcs.weather.Weather.BaricSystem)), 2)
 
     def daytime(self, period):
+        self.m.random_date()
         self.m.start_time -= datetime.timedelta(hours=-12)
-        self.m.start_time += datetime.timedelta(days=random.randrange(0, 365))
         map = {
             "day": datetime.timedelta(minutes=random.randrange(420, 1140)),
             "night": datetime.timedelta(minutes=random.randrange(-120, 240)),
