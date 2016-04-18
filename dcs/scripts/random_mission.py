@@ -197,7 +197,7 @@ class BasicScenario:
         elif baricsystem == "dynnone":
             self.m.weather.dynamic_weather(dcs.weather.Weather.BaricSystem.None_, 2)
         else:
-            self.m.weather.dynamic_weather(random.choice(list(dcs.weather.Weather.BaricSystem)), 2)
+            self.m.random_weather = True
 
     def daytime(self, period):
         self.m.random_date()

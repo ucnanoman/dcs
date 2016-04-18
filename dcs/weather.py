@@ -47,6 +47,11 @@ class Weather:
         AntiCyclone = 1
         None_ = 2
 
+    class Preceptions(Enum):
+        None_ = 0
+        Rain = 1
+        Thunderstorm = 2
+
     def __init__(self, terrain):
         self.terrain = terrain
         self.atmosphere_type = 0
@@ -70,7 +75,7 @@ class Weather:
         self.clouds_thickness = 200
         self.clouds_density = 0
         self.clouds_base = 300
-        self.clouds_iprecptns = 0
+        self.clouds_iprecptns = Weather.Preceptions.None_
 
     def load_from_dict(self, d):
         self.atmosphere_type = d["atmosphere_type"]
@@ -112,7 +117,7 @@ class Weather:
         self.clouds_thickness = clouds.get("thickness", 200)
         self.clouds_density = clouds.get("density", 0)
         self.clouds_base = clouds.get("base", 300)
-        self.clouds_iprecptns = clouds.get("iprecptns", 0)
+        self.clouds_iprecptns = Weather.Preceptions(clouds.get("iprecptns", 0))
 
     def set_season_from_datetime(self, dt: datetime):
         if datetime(dt.year, 3, 1, tzinfo=timezone.utc) <= dt < datetime(dt.year, 6, 1, tzinfo=timezone.utc):
@@ -161,11 +166,40 @@ class Weather:
         else:
             self.turbulence_at_ground = random.randrange(25, 60)
 
+    def _random_thunderstorm(self):
+        self.atmosphere_type = 0
+        wind_dir = random.randrange(0, 359) + 180
+        wind_speed = random.randrange(10, 30)
+        self.wind_at_ground.direction = (wind_dir + random.randrange(-90, 90) - 180) % 360
+        self.wind_at_ground.speed = wind_speed + random.randrange(-5, 10)
+        self.wind_at_2000.direction = (wind_dir + random.randrange(-90, 90) - 180) % 360
+        self.wind_at_2000.speed = wind_speed + random.randrange(-5, 10)
+        self.wind_at_8000.direction = (wind_dir + random.randrange(-90, 90) - 180) % 360
+        self.wind_at_8000.speed = wind_speed + random.randrange(-5, 10)
+
+        self.clouds_iprecptns = Weather.Preceptions.Thunderstorm
+        self.clouds_base = random.randrange(800, 1000)
+        self.clouds_density = 10
+        self.clouds_thickness = random.randrange(300, 900)
+
+        self.turbulence_at_ground = random.randrange(30, 70)
+        self.turbulence_at_2000 = random.randrange(2, 10)
+        self.turbulence_at_8000 = random.randrange(2, 10)
+
+        self.qnh = random.randrange(715, 750)
+        self.visibility_distance = 80000
+
+        fog_base = min(0.8, random.random())
+        self.enable_fog = True
+        self.fog_density = 3
+        self.fog_thickness = int(700 * fog_base)
+        self.fog_visibility = int(5500 - (4000 * fog_base))
+
     def random(self, dt: datetime=None):
         # check if there might be the season for thunderstorms
         if 4 < dt.month < 11:
             if random.random() > 0.9:
-                self.atmosphere_type = 0
+                self._random_thunderstorm()
                 return
 
         self.dynamic_weather(random.choice(list(Weather.BaricSystem)), random.randrange(1, 3))
@@ -190,5 +224,5 @@ class Weather:
         d["clouds"] = {"thickness": self.clouds_thickness,
                        "density": self.clouds_density,
                        "base": self.clouds_base,
-                       "iprecptns": self.clouds_iprecptns}
+                       "iprecptns": self.clouds_iprecptns.value}
         return d
