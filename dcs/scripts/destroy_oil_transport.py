@@ -53,6 +53,12 @@ def main():
     m.random_date()
     m.random_daytime('day')
 
+    for a in m.terrain.default_red_airports():
+        a.set_red()
+
+    for b in m.terrain.default_blue_airports():
+        b.set_blue()
+
     city_graph = m.terrain.city_graph
 
     destination_node = city_graph.node(desination_city)
@@ -80,6 +86,7 @@ def main():
         convoy_vehicles,
         start_node.position.random_point_within(50))
     oil_convoy.hidden = not args.unhide
+    oil_convoy.points[0].tasks.append(dcs.task.OptDisparseUnderFire())
     oil_convoy.set_skill(dcs.unit.Skill.from_percentage(difficulty))
     oil_convoy.formation_scattered(0, 50)
     oil_convoy.add_waypoint(start_node.position, dcs.point.PointAction.OnRoad)
@@ -106,21 +113,24 @@ def main():
     # add a buk site if difficulty is hard or higher
     if difficulty > 0.5:
         buk_node = random.choice(city_graph.rated_node_within(zone_enemy, 50))
-        dcs.templates.VehicleTemplate.sa11_site(
+        sa11 = dcs.templates.VehicleTemplate.sa11_site(
             m,
             abkhazia,
             buk_node.position.random_point_within(80, 30),
             120,
             skill=dcs.unit.Skill.from_percentage(difficulty))
+        sa11.hidden = not args.unhide
 
     # place player
     usa = m.country('USA')
     player_fg = None
     if args.multiplayer:
         for x in aircrafts:
-            fg = m.flight_group_from_airport(usa, x.id + " Client", x, m.terrain.senaki(), dcs.task.CAS, group_size=2)
-            fg.add_runway_waypoint(m.terrain.senaki())
-            fg.set_client()
+            if dcs.task.CAS in x.tasks and x not in [dcs.planes.Su_33, dcs.planes.MiG_29A, dcs.planes.MiG_29S]:
+                country = m.country(dcs.countries.Georgia.name) if x in [dcs.planes.Su_25T, dcs.planes.Su_25] else usa
+                fg = m.flight_group_from_airport(country, x.id + " Client", x, m.terrain.senaki(), dcs.task.CAS, group_size=2)
+                fg.add_runway_waypoint(m.terrain.senaki())
+                fg.set_client()
     else:
         aircraft_type = [x for x in aircrafts if x.id == args.aircrafttype][0]
         player_fg = m.flight_group_from_airport(usa, "Player", aircraft_type, m.terrain.senaki(), dcs.task.CAS)
@@ -129,10 +139,11 @@ def main():
 
     notifier_node = city_graph.node(random.choice(path[2:6]))
     notify_zone = m.triggers.add_triggerzone(notifier_node.position, 300, hidden=False, name='notify_zone')
+    notify_zone.hidden = True
     trig_notify = dcs.triggers.TriggerOnce(comment='NotifyConvoyPosition')
     trig_notify.rules.append(dcs.condition.PartOfGroupInZone(oil_convoy.id, notify_zone.id))
     trig_notify.actions.append(dcs.action.MessageToCoalition(
-        "blue", m.string('An agent just reported that the convoy just arrived at ' + notifier_node.name)))
+        "blue", m.string('An agent just reported that the convoy just arrived at ' + notifier_node.name), 20))
     m.triggerrules.triggers.append(trig_notify)
 
     m.forced_options.civil_traffic = dcs.forcedoptions.ForcedOptions.CivilTraffic.Low
