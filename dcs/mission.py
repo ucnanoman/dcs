@@ -1349,6 +1349,23 @@ class Mission:
         self.start_time = datetime.fromtimestamp(1306886400 + 43200, timezone.utc)  # 01-06-2011 12:00:00 UTC
         self.start_time += timedelta(days=random.randrange(0, 365))
 
+    def random_daytime(self, period):
+        self.start_time = datetime(
+            year=self.start_time.year,
+            month=self.start_time.month,
+            day=self.start_time.day,
+            tzinfo=self.start_time.tzinfo)
+        daytime_map = {
+            "day": timedelta(minutes=random.randrange(420, 1140)),
+            "night": timedelta(minutes=random.randrange(-120, 240)),
+            "dusk": timedelta(minutes=random.randrange(960, 1100)),
+            "dawn": timedelta(minutes=random.randrange(240, 480)),
+            "noon": timedelta(hours=random.randrange(600, 840))
+        }
+        if period == "random":
+            period = random.choice(list(daytime_map.keys()))
+        self.start_time += daytime_map[period]
+
     def stats(self) -> Dict:
         """Gather some mission stats.
 

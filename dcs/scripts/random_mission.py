@@ -201,18 +201,7 @@ class BasicScenario:
 
     def daytime(self, period):
         self.m.random_date()
-        self.m.start_time -= datetime.timedelta(hours=-12)
-        map = {
-            "day": datetime.timedelta(minutes=random.randrange(420, 1140)),
-            "night": datetime.timedelta(minutes=random.randrange(-120, 240)),
-            "dusk": datetime.timedelta(minutes=random.randrange(960, 1100)),
-            "dawn": datetime.timedelta(minutes=random.randrange(240, 480)),
-            "noon": datetime.timedelta(hours=random.randrange(600, 840))
-        }
-        if period == "random":
-            k = list(map.keys())
-            period = k[random.randrange(0, len(k))]
-        self.m.start_time += map[period]
+        self.m.random_daytime(period)
 
     def setup_airports(self):
         caucasus = self.m.terrain  # type: dcs.terrain.Caucasus
