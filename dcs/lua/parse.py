@@ -18,6 +18,8 @@ def loads(tablestr):
                 return self.string()
             elif c.isnumeric() or c == '-':
                 return self.number()
+            elif c == '_':
+                return self.str_function()
             else:  # varname
                 varname = self.eatvarname()
                 if varname == 'false' or varname == 'true':
@@ -38,6 +40,44 @@ def loads(tablestr):
                     raise se
 
             return {}
+
+        def str_function(self):
+            if self.buffer[self.pos] != '_':
+                se = SyntaxError()
+                se.lineno = self.lineno
+                se.offset = self.pos
+                se.text = "Expected character '_', got '{char}'".format(char=self.buffer[self.pos])
+                raise se
+
+            if self.advance():
+                raise self.eob_exception()
+
+            self.eat_ws()
+
+            if self.buffer[self.pos] != '(':
+                se = SyntaxError()
+                se.lineno = self.lineno
+                se.offset = self.pos
+                se.text = "Expected character '(', got '{char}'".format(char=self.buffer[self.pos])
+                raise se
+
+            self.advance()
+            self.eat_ws()
+
+            s = self.string()
+
+            self.eat_ws()
+
+            if self.buffer[self.pos] != ')':
+                se = SyntaxError()
+                se.lineno = self.lineno
+                se.offset = self.pos
+                se.text = "Expected character ')', got '{char}'".format(char=self.buffer[self.pos])
+                raise se
+
+            self.pos += 1
+            return s
+
 
         def string(self):
             if self.buffer[self.pos] != '"':
