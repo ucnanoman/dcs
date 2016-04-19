@@ -2,6 +2,7 @@ from datetime import datetime, timezone
 import random
 import math
 from enum import Enum
+from typing import List
 from . import mapping
 
 
@@ -33,6 +34,9 @@ class Cyclone:
             "centerX": self.centerX
         }
         return d
+
+    def __repr__(self):
+        return self.__class__.__name__ + '(' + str(self.dict()) + ')'
 
 
 class Weather:
@@ -133,35 +137,111 @@ class Weather:
             self.season = Weather.Season.Winter
             self.season_temperature = random.randrange(-6, 6)
 
+    @staticmethod
+    def random_normals() -> List[float]:
+        rands = []
+        for x in range(0, 3):
+            r = max(0.0000001, random.random())
+            fi = max(0.0000001, random.random())
+
+            rands.append(math.cos(math.pi * 2 * fi) * math.sqrt(-2 * math.log(r)))
+            rands.append(math.sin(math.pi * 2 * fi) * math.sqrt(-2 * math.log(r)))
+
+        return rands
+
+    @staticmethod
+    def _init_cyclone(rands, idx, params, wtype, position):
+        mainpeakexcessmod = 1
+
+        if wtype == Weather.BaricSystem.None_ or (wtype != Weather.BaricSystem.None_ and idx != 1):
+            x = math.cos(params['initangle'] + params['anglestep'] * (idx - 1) + params['deltaangle'] * rands[0])
+            x *= params['distance'] + params['distancestddev'] * rands[1]
+            y = math.sin(params['initangle'] + params['anglestep'] * (idx - 1) + params['deltaangle'] * rands[0])
+            y *= params['distance'] + params['distancestddev'] * rands[1]
+        else:
+            mainpeakexcessmod = 0.22
+            x = math.cos(params['initangle'] + params['anglestep'] * (idx - 1) + params['deltaangle'] * rands[0])
+            x *= params['distancestddev'] * mainpeakexcessmod * rands[1]
+            y = math.sin(params['initangle'] + params['anglestep'] * (idx - 1) + params['deltaangle'] * rands[0])
+            y *= params['distancestddev'] * mainpeakexcessmod * rands[1]
+
+        c = Cyclone()
+        c.centerX = position.x + x
+        c.centerZ = position.y + y
+        c.ellipticity = 1 + rands[2] * params['ellipticitystddev']
+        c.pressure_excess = math.floor(params['sign'] * abs(rands[3]) *
+                                       params['pressurestddev'] * mainpeakexcessmod + params['pressureoffset'])
+        c.rotation = params['rotationstddev'] * rands[4]
+        c.pressure_spread = params['spread'] + params['spreadstddev'] * mainpeakexcessmod * rands[5]
+
+        if wtype == Weather.BaricSystem.AntiCyclone:
+            c.pressure_spread *= 1.3
+        return c
+
     def dynamic_weather(self, system: BaricSystem, cyclones: int=1):
         self.cyclones.clear()
 
         center = self.terrain.bounds.center()  # type: mapping.Point
         self.atmosphere_type = 1
         self.type_weather = system.value
-        min_pressure = 0
-        for c in range(0, cyclones):
-            # TODO ask ED, if we are allowed to use generateCyclones code
-            c = Cyclone()
-            pos = center.point_from_heading(random.randrange(0, 360), random.randrange(10*1000, 1000*1000, 1000))
-            c.centerZ = pos.y
-            c.centerX = pos.x
-            c.pressure_spread = random.random() * 100000 + 800000
-            c.rotation = random.random() * math.pi
 
-            c.pressure_excess = random.randrange(1200, 1800) if random.random() > 0.8 else random.randrange(600, 1300)
+        params = {
+            'initangle': 2 * math.pi * random.random(),
+            'distance': 950000,
+            'distancestddev': 150000,
+            'spread': 900000,
+            'spreadstddev': 150000,
+            'pressureoffset': 1200,
+            'pressurestddev': 500,
+            'ellipticitystddev': 0.25,
+            'rotationstddev': 1.0471975511965977461542144610932
+        }
 
-            c.ellipticity = 1 + random.random() * 0.25
+        if system == Weather.BaricSystem.None_:
+            params['anglestep'] = 2 * math.pi * cyclones
+            params['deltaangle'] = params['anglestep'] / 4
 
-            if system in [Weather.BaricSystem.Cyclone, Weather.BaricSystem.None_]:
-                c.pressure_excess *= -1
+            for i in range(1, cyclones + 1):
+                params['sign'] = random.randrange(0, 1) * 2 - 1
+                self.cyclones.append(Weather._init_cyclone(Weather.random_normals(), i, params, system, center))
 
-            min_pressure = min(min_pressure, c.pressure_excess)
+        else:
+            params['anglestep'] = 2 * math.pi / (cyclones - 1) if cyclones > 1 else 0
+            params['deltaangle'] = params['anglestep'] / 4
 
-            self.cyclones.append(c)
-        if min_pressure > -800:
+            params['sign'] = -1 if system == Weather.BaricSystem.Cyclone else 1
+
+            for i in range(1, cyclones + 1):
+                self.cyclones.append(Weather._init_cyclone(Weather.random_normals(), i, params, system, center))
+                params['sign'] = random.randrange(0, 1) * 2 - 1
+
+        min_pressure = min([x.pressure_excess for x in self.cyclones])
+        max_pressure = max([x.pressure_excess for x in self.cyclones])
+        pressure_diff = max_pressure - min_pressure
+        # min_pressure = 0
+        # for c in range(0, cyclones):
+        #     # TODO ask ED, if we are allowed to use generateCyclones code
+        #     c = Cyclone()
+        #     pos = center.point_from_heading(random.randrange(0, 360), random.randrange(10*1000, 1000*1000, 1000))
+        #     c.centerZ = pos.y
+        #     c.centerX = pos.x
+        #     c.pressure_spread = random.random() * 100000 + 800000
+        #     c.rotation = random.random() * math.pi
+        #
+        #     c.pressure_excess = random.randrange(1200, 1800) if random.random() > 0.8 else random.randrange(600, 1300)
+        #
+        #     c.ellipticity = 1 + random.random() * 0.25
+        #
+        #     if system in [Weather.BaricSystem.Cyclone, Weather.BaricSystem.None_]:
+        #         c.pressure_excess *= -1
+        #
+        #     min_pressure = min(min_pressure, c.pressure_excess)
+        #
+        #     self.cyclones.append(c)
+
+        if pressure_diff < 200:
             self.turbulence_at_ground = random.randrange(0, 10)
-        elif -1500 < min_pressure < -800:
+        elif 200 <= min_pressure < 600:
             self.turbulence_at_ground = random.randrange(10, 25)
         else:
             self.turbulence_at_ground = random.randrange(25, 60)
@@ -202,7 +282,7 @@ class Weather:
                 self._random_thunderstorm()
                 return
 
-        self.dynamic_weather(random.choice(list(Weather.BaricSystem)), random.randrange(1, 3))
+        self.dynamic_weather(random.choice(list(Weather.BaricSystem)), random.randrange(1, 4))
 
     def dict(self):
         d = {}
