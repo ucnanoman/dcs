@@ -19,6 +19,18 @@ class Skill(Enum):
     Player = "Player"
     Client = "Client"
 
+    @staticmethod
+    def from_percentage(p):
+        if 0 <= p < 0.25:
+            return Skill.Average
+        elif 0.25 <= p < 0.5:
+            return Skill.Good
+        elif 0.5 <= p < 0.75:
+            return Skill.High
+        elif 0.75 <= p:
+            return Skill.Excellent
+        return Skill.Random
+
 
 class Unit:
     def __init__(self, _id, name=None, type=""):
