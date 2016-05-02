@@ -281,7 +281,10 @@ class Graph:
     def rated_nodes(self, min_rating=0) -> Set[Node]:
         return {x for x in self.nodes if x.rating and x.rating > min_rating}
 
-    def rated_node_within(self, polygon: mapping.Polygon, min_rating=0) -> Node:
+    def nodes_within(self, polygon: mapping.Polygon) -> List[Node]:
+        return [x for x in self.nodes if polygon.point_in_poly(x.position)]
+
+    def rated_nodes_within(self, polygon: mapping.Polygon, min_rating=0) -> List[Node]:
         return [x for x in self.rated_nodes(min_rating) if polygon.point_in_poly(x.position)]
 
     def add_node(self, node: Node):

@@ -64,9 +64,9 @@ def main():
     destination_node = city_graph.node(desination_city)
 
     # find a startnode far away enough
-    start_node = random.choice(city_graph.rated_node_within(zone_enemy))
+    start_node = random.choice(city_graph.rated_nodes_within(zone_enemy))
     while start_node.position.distance_to_point(destination_node.position) < 70000:
-        start_node = random.choice(city_graph.rated_node_within(zone_enemy))
+        start_node = random.choice(city_graph.rated_nodes_within(zone_enemy))
 
     # create the oil convoy
     abkhazia = m.country(dcs.countries.Abkhazia.name)
@@ -93,14 +93,14 @@ def main():
     _, path = city_graph.travel(oil_convoy, start_node, destination_node, 60)
 
     # add light air defence around and in cities on path
-    for city in city_graph.rated_node_within(zone_enemy, 50):
+    aaa_def = [[dcs.countries.Abkhazia.Vehicle.AirDefence.AAA_ZU_23_Emplacement],
+               [dcs.countries.Abkhazia.Vehicle.AirDefence.SAM_SA_18_Igla_MANPADS,
+                dcs.countries.Abkhazia.Vehicle.AirDefence.SAM_SA_18_Igla_comm]]
+    for city in city_graph.rated_nodes_within(zone_enemy, 50):
         use_building_pos = int(min(difficulty, random.random()) * len(city.air_defence_pos_small))
         small_aaa_pos = list(city.air_defence_pos_small)
         for i in range(0, use_building_pos):
             p = small_aaa_pos.pop(random.randrange(0, len(small_aaa_pos)))
-            aaa_def = [[dcs.countries.Abkhazia.Vehicle.AirDefence.AAA_ZU_23_Emplacement],
-                       [dcs.countries.Abkhazia.Vehicle.AirDefence.SAM_SA_18_Igla_MANPADS,
-                        dcs.countries.Abkhazia.Vehicle.AirDefence.SAM_SA_18_Igla_comm]]
             vg = m.vehicle_group_platoon(abkhazia,
                                          city.name + " AAA #" + str(len(small_aaa_pos)),
                                          random.choice(aaa_def),
@@ -110,9 +110,22 @@ def main():
             vg.hidden = not args.unhide
             vg.formation_scattered(random.randrange(0, 360), 10)
 
+    aaa_def += [[dcs.countries.Abkhazia.Vehicle.AirDefence.SPAAA_ZSU_23_4_Shilka,
+                 dcs.countries.Abkhazia.Vehicle.Armor.ARV_BRDM_2,
+                 dcs.countries.Abkhazia.Vehicle.Armor.ARV_BRDM_2]]
+    for node in city_graph.nodes_within(zone_enemy):
+        if random.random() < (difficulty - 0.2):
+            vg = m.vehicle_group_platoon(abkhazia,
+                                         node.name,
+                                         random.choice(aaa_def),
+                                         node.position.random_point_within(100, 30),
+                                         random.randrange(0, 360))
+            vg.set_skill(dcs.unit.Skill.from_percentage(difficulty))
+            vg.hidden = not args.unhide
+
     # add a buk site if difficulty is hard or higher
     if difficulty > 0.5:
-        buk_node = random.choice(city_graph.rated_node_within(zone_enemy, 50))
+        buk_node = random.choice(city_graph.rated_nodes_within(zone_enemy, 50))
         sa11 = dcs.templates.VehicleTemplate.sa11_site(
             m,
             abkhazia,
@@ -137,14 +150,23 @@ def main():
         player_fg.add_runway_waypoint(m.terrain.senaki())
         player_fg.units[0].set_player()
 
-    notifier_node = city_graph.node(random.choice(path[2:6]))
-    notify_zone = m.triggers.add_triggerzone(notifier_node.position, 300, hidden=False, name='notify_zone')
-    notify_zone.hidden = True
-    trig_notify = dcs.triggers.TriggerOnce(comment='NotifyConvoyPosition')
-    trig_notify.rules.append(dcs.condition.PartOfGroupInZone(oil_convoy.id, notify_zone.id))
-    trig_notify.actions.append(dcs.action.MessageToCoalition(
-        "blue", m.string('An agent just reported that the convoy just arrived at ' + notifier_node.name), 20))
-    m.triggerrules.triggers.append(trig_notify)
+    notify_nodes = path[2:6]
+    for i in range(0, int((1.3 - difficulty) * 3)):
+        notifier_node = random.randrange(0, len(notify_nodes))
+        notifier_node = city_graph.node(notify_nodes.pop(notifier_node))
+        notify_zone = m.triggers.add_triggerzone(notifier_node.position, 300, hidden=False, name='notify_zone')
+        notify_zone.hidden = True
+        trig_notify = dcs.triggers.TriggerOnce(comment='NotifyConvoyPosition #' + str(i))
+        trig_notify.rules.append(dcs.condition.PartOfGroupInZone(oil_convoy.id, notify_zone.id))
+        trig_notify.actions.append(dcs.action.MessageToCoalition(
+            "blue", m.string('An agent just reported that the convoy just arrived at ' + notifier_node.name), 20))
+        m.triggerrules.triggers.append(trig_notify)
+
+    trig_convoy_dead = dcs.triggers.TriggerOnce(dcs.triggers.Event.Destroy, comment='Convoy dead')
+    trig_convoy_dead.rules.append(dcs.condition.GroupDead(oil_convoy.id))
+    trig_convoy_dead.actions.append(dcs.action.MessageToCoalition(
+        "blue", m.string('Excellent job!\nIt intelligence reports the convoy was destroyed!\nRTB'), 15))
+    m.triggerrules.triggers.append(trig_convoy_dead)
 
     m.forced_options.civil_traffic = dcs.forcedoptions.ForcedOptions.CivilTraffic.Low
 
