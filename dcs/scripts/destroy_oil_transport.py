@@ -90,7 +90,7 @@ def main():
     oil_convoy.set_skill(dcs.unit.Skill.from_percentage(difficulty))
     oil_convoy.formation_scattered(0, 50)
     oil_convoy.add_waypoint(start_node.position, dcs.point.PointAction.OnRoad)
-    _, path = city_graph.travel(oil_convoy, start_node, destination_node, 60)
+    _, path = city_graph.travel(oil_convoy, start_node, destination_node, 100)
 
     # add light air defence around and in cities on path
     aaa_def = [[dcs.countries.Abkhazia.Vehicle.AirDefence.AAA_ZU_23_Emplacement],
@@ -114,7 +114,7 @@ def main():
                  dcs.countries.Abkhazia.Vehicle.Armor.ARV_BRDM_2,
                  dcs.countries.Abkhazia.Vehicle.Armor.ARV_BRDM_2]]
     for node in city_graph.nodes_within(zone_enemy):
-        if random.random() < (difficulty - 0.2):
+        if random.random() < (difficulty - 0.1):
             vg = m.vehicle_group_platoon(abkhazia,
                                          node.name,
                                          random.choice(aaa_def),
@@ -150,7 +150,7 @@ def main():
         player_fg.add_runway_waypoint(m.terrain.senaki())
         player_fg.units[0].set_player()
 
-    notify_nodes = path[2:6]
+    notify_nodes = path[1:5]
     for i in range(0, int((1.3 - difficulty) * 3)):
         notifier_node = random.randrange(0, len(notify_nodes))
         notifier_node = city_graph.node(notify_nodes.pop(notifier_node))
@@ -159,7 +159,7 @@ def main():
         trig_notify = dcs.triggers.TriggerOnce(comment='NotifyConvoyPosition #' + str(i))
         trig_notify.rules.append(dcs.condition.PartOfGroupInZone(oil_convoy.id, notify_zone.id))
         trig_notify.actions.append(dcs.action.MessageToCoalition(
-            "blue", m.string('An agent just reported that the convoy just arrived at ' + notifier_node.name), 20))
+            "blue", m.string('Intel just reported that the convoy just arrived at ' + notifier_node.name), 20))
         m.triggerrules.triggers.append(trig_notify)
 
     trig_convoy_dead = dcs.triggers.TriggerOnce(dcs.triggers.Event.Destroy, comment='Convoy dead')
