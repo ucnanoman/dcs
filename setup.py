@@ -13,7 +13,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name="pydcs",
-    version='0.8.7',
+    version='0.8.8',
     description="A Digital Combat Simulator mission builder framework",
     long_description=long_description,
     url='https://github.com/pydcs/dcs',
@@ -39,7 +39,8 @@ setup(
     entry_points={
         'console_scripts': [
             'dcs_random=dcs.scripts.random_mission:main',
-            'dcs_dogfight_wwii=dcs.scripts.dogfight_wwii:main'
+            'dcs_dogfight_wwii=dcs.scripts.dogfight_wwii:main',
+            'dcs_oil_convoy=dcs.scripts.destroy_oil_transport'
         ]
     },
     test_suite="tests"
