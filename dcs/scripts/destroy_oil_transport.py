@@ -71,8 +71,9 @@ def main():
     # create the oil convoy
     abkhazia = m.country(dcs.countries.Abkhazia.name)
     convoy_vehicles = []
-    for i in range(0, 3 + int(min(difficulty, random.random()) * 10)):
+    for i in range(0, 1 + int(max(difficulty, random.random()) * 10)):
         convoy_vehicles.append(dcs.vehicles.Unarmed.Fuel_Truck_ATZ_10)
+
     airdef = [
         dcs.countries.Abkhazia.Vehicle.AirDefence.AAA_ZU_23_on_Ural_375,
         dcs.countries.Abkhazia.Vehicle.AirDefence.SPAAA_ZSU_23_4_Shilka
