@@ -766,25 +766,25 @@ class CAP(BasicScenario):
             cap_country = self.m.country(rcap["country"])
             p1, p2 = self.air_zones[zone].outbound_rectangle().resize(0.6).random_distant_points(80*1000)
             pf = self.m.patrol_flight(cap_country, cap_country.name + " CAP " + str(i), rcap["type"], None,
-                                 p1, p2, group_size=rcap["size"])
+                                      p1, p2, group_size=rcap["size"])
             pf.hidden = not unhide
             if rcap["loadout"]:
                 pf.load_loadout(rcap["loadout"])
             i += 1
 
-        attack_type = random.choice(list(self.air_force["red"].keys()))
-
-        for attack_type in self.air_force["red"].keys():
+        for x in range(0, random.randrange(1, 3)):
+        #for attack_type in self.air_force["red"].keys():
+            attack_type = random.choice(list(self.air_force["red"].keys()))
             af = self.air_force["red"][attack_type][random.choice(list(self.air_force["red"][attack_type].keys()))]
             spawn_rect = self.air_zones["russia_east"].outbound_rectangle()
-            spawn_rect = dcs.mapping.Rectangle(spawn_rect.bottom + 20000, spawn_rect.left,
+            spawn_rect = dcs.mapping.Rectangle(spawn_rect.bottom + 40000, spawn_rect.left,
                                                spawn_rect.bottom, spawn_rect.right)
             att_country = self.m.country(af["country"])
             start_airport = caucasus.sochi() if af["type"].helicopter else random.choice(self.red_airports)
             attack_airport = random.choice(self.blue_airports)
 
             pos = attack_airport.position.point_from_heading(
-                random.randrange(290, 410), 40*1000) if af["type"].helicopter else spawn_rect.random_point()
+                random.randrange(290, 410), 60*1000) if af["type"].helicopter else spawn_rect.random_point()
             attack_flight = self.m.flight_group(
                 att_country,
                 att_country.name + " " + attack_type,
@@ -805,9 +805,9 @@ class CAP(BasicScenario):
             attack_flight.add_runway_waypoint(start_airport)
             attack_flight.land_at(start_airport)
 
-            self.m.set_sortie_text("Random CAP")
-            self.m.set_description_text("""Random generated CAP test mission.""")
-            self.m.set_description_bluetask_text(
+        self.m.set_sortie_text("Random CAP")
+        self.m.set_description_text("""Random generated CAP test mission.""")
+        self.m.set_description_bluetask_text(
 """Protect your AWACS and Tanker
 
 AWACS and tanker are reachable on VHF-AM {freq} Mhz.""".format(freq=vhf_am))
