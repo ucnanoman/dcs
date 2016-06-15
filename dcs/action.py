@@ -1,4 +1,5 @@
 from .translation import String
+from enum import Enum
 
 
 class Action:
@@ -667,10 +668,16 @@ class MessageToAll(Action):
         return d
 
 
+class Coalition(Enum):
+    Blue = "blue"
+    Red = "red"
+    Neutral = "neutral"
+
+
 class MessageToCoalition(Action):
     predicate = "a_out_text_delay_s"
 
-    def __init__(self, coalitionlist="", text=String(), seconds=10, clearview=False):
+    def __init__(self, coalitionlist: Coalition=Coalition.Blue, text=String(), seconds=10, clearview=False):
         super(MessageToCoalition, self).__init__(MessageToCoalition.predicate)
         self.coalitionlist = coalitionlist
         self.params.append(self.coalitionlist)
@@ -683,7 +690,7 @@ class MessageToCoalition(Action):
 
     @classmethod
     def create_from_dict(cls, d, mission):
-        return cls(d["coalitionlist"], mission.translation.get_string(d["text"]), d["seconds"], d["clearview"])
+        return cls(Coalition(d["coalitionlist"]), mission.translation.get_string(d["text"]), d["seconds"], d["clearview"])
 
     def dict(self):
         d = super(MessageToCoalition, self).dict()

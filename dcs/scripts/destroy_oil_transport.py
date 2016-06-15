@@ -43,7 +43,7 @@ def main():
         if args.terrain == "caucasus":
             args.output = os.path.join(os.path.expanduser("~"), "Saved Games\\DCS\\Missions\\oil_transport.miz")
             zone_enemy = zone_abkhazia
-            desination_city = 'Adler'
+            destination_city = 'Adler'
         else:
             args.output = os.path.join(os.path.expanduser("~"),
                                        "Saved Games\\DCS.openalpha\\Missions\\oil_transport.miz")
@@ -61,7 +61,7 @@ def main():
 
     city_graph = m.terrain.city_graph
 
-    destination_node = city_graph.node(desination_city)
+    destination_node = city_graph.node(destination_city)
 
     # find a startnode far away enough
     start_node = random.choice(city_graph.rated_nodes_within(zone_enemy))
@@ -160,13 +160,13 @@ def main():
         trig_notify = dcs.triggers.TriggerOnce(comment='NotifyConvoyPosition #' + str(i))
         trig_notify.rules.append(dcs.condition.PartOfGroupInZone(oil_convoy.id, notify_zone.id))
         trig_notify.actions.append(dcs.action.MessageToCoalition(
-            "blue", m.string('Intel just reported that the convoy just arrived at ' + notifier_node.name), 20))
+            dcs.action.Coalition.Blue, m.string('Intel just reported that the convoy just arrived at ' + notifier_node.name), 20))
         m.triggerrules.triggers.append(trig_notify)
 
     trig_convoy_dead = dcs.triggers.TriggerOnce(dcs.triggers.Event.Destroy, comment='Convoy dead')
     trig_convoy_dead.rules.append(dcs.condition.GroupDead(oil_convoy.id))
     trig_convoy_dead.actions.append(dcs.action.MessageToCoalition(
-        "blue", m.string('Excellent job!\nIt intelligence reports the convoy was destroyed!\nRTB'), 15))
+        dcs.action.Coalition.Blue, m.string('Excellent job!\nIntelligence reports the convoy was destroyed!\nRTB'), 15))
     m.triggerrules.triggers.append(trig_convoy_dead)
 
     m.forced_options.civil_traffic = dcs.forcedoptions.ForcedOptions.CivilTraffic.Low
