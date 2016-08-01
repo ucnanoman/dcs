@@ -110,7 +110,7 @@ class Group:
 
         for i in range(1, unit_count):
             while True:
-                pos = start_pos.point_from_heading(random.randrange(0, 360), max_r)
+                pos = start_pos.point_from_heading(random.randrange(0, 360), random.randrange(14, max_r))
 
                 collision = False
                 for j in range(0, i):
