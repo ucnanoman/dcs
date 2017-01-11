@@ -44,6 +44,10 @@ class Infantry:
         id = "Paratrooper AKS-74"
         name = "Paratrooper AKS"
 
+    class Infantry_Soldier_Insurgents(unittype.VehicleType):
+        id = "Infantry AK Ins"
+        name = "Infantry Soldier Insurgents"
+
     class Soldier_AK(unittype.VehicleType):
         id = "Soldier AK"
         name = "Soldier AK"
@@ -192,6 +196,10 @@ class Unarmed:
         id = "ZIL-4331"
         name = "Transport ZIL-4331"
 
+    class Transport_KrAZ_6322(unittype.VehicleType):
+        id = "KrAZ6322"
+        name = "Transport KrAZ-6322"
+
 
 class Armor:
 
@@ -330,6 +338,10 @@ class Armor:
     class MBT_Leopard_1A3(unittype.VehicleType):
         id = "Leopard1A3"
         name = "MBT Leopard 1A3"
+
+    class MBT_Merkava_Mk__4(unittype.VehicleType):
+        id = "Merkava_Mk4"
+        name = "MBT Merkava Mk. 4"
 
 
 class Artillery:
@@ -488,25 +500,17 @@ class AirDefence:
         id = "S-300PS 54K6 cp"
         name = "SAM SA-10 S-300PS CP 54K6"
 
-    class SAM_Stinger_MANPADS_dsr(unittype.VehicleType):
-        id = "Stinger manpad dsr"
-        name = "SAM Stinger MANPADS dsr"
+    class Stinger_MANPADS(unittype.VehicleType):
+        id = "Soldier stinger"
+        name = "Stinger MANPADS"
 
     class SAM_Stinger_comm_dsr(unittype.VehicleType):
         id = "Stinger comm dsr"
         name = "SAM Stinger comm dsr"
 
-    class SAM_Stinger_MANPADS(unittype.VehicleType):
-        id = "Stinger manpad"
-        name = "SAM Stinger MANPADS"
-
     class SAM_Stinger_comm(unittype.VehicleType):
         id = "Stinger comm"
         name = "SAM Stinger comm"
-
-    class SAM_Stinger_MANPADS(unittype.VehicleType):
-        id = "Stinger manpad GRG"
-        name = "SAM Stinger MANPADS"
 
     class SPAAA_ZSU_23_4_Shilka(unittype.VehicleType):
         id = "ZSU-23-4 Shilka"
@@ -551,6 +555,10 @@ class AirDefence:
     class SAM_SA_18_Igla_S_comm(unittype.VehicleType):
         id = "SA-18 Igla-S comm"
         name = "SAM SA-18 Igla-S comm"
+
+    class SAM_SA_18_Igla_MANPADS(unittype.VehicleType):
+        id = "Igla manpad INS"
+        name = "SAM SA-18 Igla MANPADS"
 
     class EWR_1L13(unittype.VehicleType):
         id = "1L13 EWR"
@@ -645,6 +653,7 @@ vehicle_map = {
     "Bunker": Fortification.Bunker_2,
     "Paratrooper RPG-16": Infantry.Paratrooper_RPG_16,
     "Paratrooper AKS-74": Infantry.Paratrooper_AKS,
+    "Infantry AK Ins": Infantry.Infantry_Soldier_Insurgents,
     "Sandbox": Fortification.Bunker_1,
     "Soldier AK": Infantry.Soldier_AK,
     "Infantry AK": Infantry.Infantry_Soldier_Rus,
@@ -682,11 +691,9 @@ vehicle_map = {
     "Patriot cp": AirDefence.SAM_Patriot_ICC,
     "Roland ADS": AirDefence.SAM_Roland_ADS,
     "S-300PS 54K6 cp": AirDefence.SAM_SA_10_S_300PS_CP_54K6,
-    "Stinger manpad dsr": AirDefence.SAM_Stinger_MANPADS_dsr,
+    "Soldier stinger": AirDefence.Stinger_MANPADS,
     "Stinger comm dsr": AirDefence.SAM_Stinger_comm_dsr,
-    "Stinger manpad": AirDefence.SAM_Stinger_MANPADS,
     "Stinger comm": AirDefence.SAM_Stinger_comm,
-    "Stinger manpad GRG": AirDefence.SAM_Stinger_MANPADS,
     "ZSU-23-4 Shilka": AirDefence.SPAAA_ZSU_23_4_Shilka,
     "ZU-23 Emplacement Closed": AirDefence.AAA_ZU_23_Closed,
     "ZU-23 Emplacement": AirDefence.AAA_ZU_23_Emplacement,
@@ -698,6 +705,7 @@ vehicle_map = {
     "SA-18 Igla comm": AirDefence.SAM_SA_18_Igla_comm,
     "SA-18 Igla-S manpad": AirDefence.SAM_SA_18_Igla_S_MANPADS,
     "SA-18 Igla-S comm": AirDefence.SAM_SA_18_Igla_S_comm,
+    "Igla manpad INS": AirDefence.SAM_SA_18_Igla_MANPADS,
     "1L13 EWR": AirDefence.EWR_1L13,
     "Kub 1S91 str": AirDefence.SAM_SA_6_Kub_STR_9S91,
     "S-300PS 40B6M tr": AirDefence.SAM_SA_10_S_300PS_TR_30N6,
@@ -729,6 +737,7 @@ vehicle_map = {
     "T-80UD": Armor.MBT_T_80U,
     "T-90": Armor.MBT_T_90,
     "Leopard1A3": Armor.MBT_Leopard_1A3,
+    "Merkava_Mk4": Armor.MBT_Merkava_Mk__4,
     "Ural-4320 APA-5D": Unarmed.GPU_APA_5D_on_Ural_4320,
     "ATMZ-5": Unarmed.Fuel_Truck_ATMZ_5,
     "ATZ-10": Unarmed.Fuel_Truck_ATZ_10,
@@ -759,4 +768,5 @@ vehicle_map = {
     "SKP-11": Unarmed.CP_SKP_11_ATC_Mobile_Command_Post,
     "ZIL-131 KUNG": Unarmed.Transport_ZIL_131_KUNG,
     "ZIL-4331": Unarmed.Transport_ZIL_4331,
+    "KrAZ6322": Unarmed.Transport_KrAZ_6322,
 }

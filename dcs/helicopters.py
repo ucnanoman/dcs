@@ -541,8 +541,8 @@ class Mi_8MTV2(HelicopterType):
     fuel_max = 1929
     max_speed = 250
     chaff = 0
-    flare = 192
-    charge_total = 192
+    flare = 128
+    charge_total = 128
     chaff_charge_size = 0
     flare_charge_size = 1
 
@@ -592,6 +592,7 @@ class Mi_8MTV2(HelicopterType):
         "LeftEngineResource": 90,
         "RightEngineResource": 90,
         "AdditionalArmor": True,
+        "CargoHalfdoor": True,
     }
 
     class Properties:
@@ -607,6 +608,9 @@ class Mi_8MTV2(HelicopterType):
 
         class AdditionalArmor:
             id = "AdditionalArmor"
+
+        class CargoHalfdoor:
+            id = "CargoHalfdoor"
 
     class Liveries:
 
@@ -660,16 +664,25 @@ class Mi_8MTV2(HelicopterType):
             Abkhazia = "Abkhazia"
 
         class Russia(Enum):
-            Russia_VVS_Grey = "Russia_VVS_Grey"
             Russia_VVS_Standard = "Russia_VVS_Standard"
+            Russia_Aeroflot = "Russia_Aeroflot"
+            Russia_Gazprom = "Russia_Gazprom"
+            Russia_KazanVZ = "Russia_KazanVZ"
+            Russia_LII_Gromov_RA_25546 = "Russia_LII_Gromov RA-25546"
+            Russia_Police = "Russia_Police"
+            Russia_UTair = "Russia_UTair"
+            Russia_Vertolety_Russia = "Russia_Vertolety_Russia"
+            Russia_Naryan_Mar = "Russia_Naryan-Mar"
+            Russia_VVS_Grey = "Russia_VVS_Grey"
+            Russia_VVS_Grey_2 = "Russia_VVS_Grey_2"
+            Russia_VVS_Standard_2 = "Russia_VVS_Standard_2"
             Russia_FSB = "Russia_FSB"
             Russia_MVD_Mozdok = "Russia_MVD_Mozdok"
             Russia_MVD_Standard = "Russia_MVD_Standard"
+            Russia_VVS_MA = "Russia_VVS_MA"
             Russia_UN = "Russia_UN"
+            Russia_PF_Ambulance = "Russia_PF_Ambulance"
             Russia_Army_Weather = "Russia_Army_Weather"
-            Russia_Naryan_Mar = "Russia_Naryan-Mar"
-            Russia_UTair = "Russia_UTair"
-            Russia_Police = "Russia_Police"
 
         class Italy(Enum):
             Italy_ARMY = "Italy ARMY"
@@ -680,7 +693,7 @@ class Mi_8MTV2(HelicopterType):
             South_Ossetia = "South Ossetia"
 
         class China(Enum):
-            PLA_Army_Aviation_LH_91XXX = "PLA Army Aviation LH-91XXX"
+            China_PLAAA_Camo = "China PLAAA Camo"
             China_UN = "China UN"
             China_PLAAA_White = "China PLAAA White"
 
@@ -768,7 +781,13 @@ class Mi_8MTV2(HelicopterType):
         FAB_250 = (6, Weapons.FAB_250)
         GUV_VOG = (6, Weapons.GUV_VOG)
 
-    pylons = {1, 2, 3, 4, 5, 6}
+    class Pylon7:
+        KORD_12_7 = (7, Weapons.KORD_12_7)
+
+    class Pylon8:
+        PKT_7_62 = (8, Weapons.PKT_7_62)
+
+    pylons = {1, 2, 3, 4, 5, 6, 7, 8}
 
     tasks = [task.CAS, task.GroundAttack, task.Transport, task.AFAC, task.AntishipStrike]
     task_default = task.Transport
@@ -1757,7 +1776,6 @@ class OH_58D(HelicopterType):
     flare_charge_size = 1
 
     class Liveries:
-        pass
 
     class Pylon1:
         M260_HYDRA = (1, Weapons.M260_HYDRA)
@@ -1774,6 +1792,262 @@ class OH_58D(HelicopterType):
 
     tasks = [task.AFAC, task.Transport, task.GroundAttack, task.Escort, task.AntishipStrike]
     task_default = task.AFAC
+
+
+class SA342M(HelicopterType):
+    id = "SA342M"
+    flyable = True
+    height = 3.192
+    width = 10.5
+    length = 11.97
+    fuel_max = 416.33
+    max_speed = 240
+    chaff = 0
+    flare = 32
+    charge_total = 32
+    chaff_charge_size = 0
+    flare_charge_size = 1
+    eplrs = True
+    radio_frequency = 124
+
+    panel_radio = {
+        1: {
+            "channels": {
+                6: 40,
+                2: 31,
+                8: 42,
+                3: 32,
+                1: 30,
+                4: 33,
+                5: 34,
+                7: 41
+            },
+        },
+    }
+
+    class Liveries:
+
+        class Syria(Enum):
+            Syria_Fictional = "Syria Fictional"
+
+        class Germany(Enum):
+            Germany_Fictional = "Germany Fictional"
+
+        class Israel(Enum):
+            Israel_Fictional = "Israel Fictional"
+
+        class Greece(Enum):
+            Greece_Cyprus_Fictional_Desert = "Greece Cyprus Fictional Desert"
+
+        class UK(Enum):
+            UK_Fictional = "UK Fictional"
+
+        class France(Enum):
+            Combat = "Combat"
+            Tiger_Meet = "Tiger Meet"
+            Tiger_Meet_2 = "Tiger Meet 2"
+            Training = "Training"
+
+        class Russia(Enum):
+            Russia_Fictional = "Russia Fictional"
+
+        class Serbia(Enum):
+            Serbia_Fictional = "Serbia Fictional"
+            Yugoslav_Fictional = "Yugoslav Fictional"
+
+        class USA(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+    class Pylon1:
+        HOT3_ = (1, Weapons.HOT3_)
+
+    class Pylon2:
+        HOT3 = (2, Weapons.HOT3)
+
+    class Pylon3:
+        HOT3_ = (3, Weapons.HOT3_)
+
+    class Pylon4:
+        HOT3 = (4, Weapons.HOT3)
+
+    class Pylon5:
+        Sand_Filter = (5, Weapons.Sand_Filter)
+
+    class Pylon6:
+        IR_Deflector = (6, Weapons.IR_Deflector)
+
+    pylons = {1, 2, 3, 4, 5, 6}
+
+    tasks = [task.CAS, task.GroundAttack, task.AFAC, task.Escort, task.Reconnaissance]
+    task_default = task.CAS
+
+
+class SA342L(HelicopterType):
+    id = "SA342L"
+    height = 3.192
+    width = 10.5
+    length = 11.97
+    fuel_max = 416.33
+    max_speed = 240
+    chaff = 0
+    flare = 32
+    charge_total = 32
+    chaff_charge_size = 0
+    flare_charge_size = 1
+    eplrs = True
+    radio_frequency = 124
+
+    panel_radio = {
+        1: {
+            "channels": {
+                6: 40,
+                2: 31,
+                8: 42,
+                3: 32,
+                1: 30,
+                4: 33,
+                5: 34,
+                7: 41
+            },
+        },
+    }
+
+    class Liveries:
+
+        class Syria(Enum):
+            Syria_Fictional = "Syria Fictional"
+
+        class Germany(Enum):
+            Germany_Fictional = "Germany Fictional"
+
+        class Israel(Enum):
+            Israel_Fictional = "Israel Fictional"
+
+        class Greece(Enum):
+            Greece_Cyprus_Fictional_Desert = "Greece Cyprus Fictional Desert"
+
+        class UK(Enum):
+            UK_Fictional = "UK Fictional"
+
+        class France(Enum):
+            Combat = "Combat"
+            Tiger_Meet = "Tiger Meet"
+            Tiger_Meet_2 = "Tiger Meet 2"
+            Training = "Training"
+
+        class Russia(Enum):
+            Russia_Fictional = "Russia Fictional"
+
+        class Serbia(Enum):
+            Serbia_Fictional = "Serbia Fictional"
+            Yugoslav_Fictional = "Yugoslav Fictional"
+
+        class USA(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+    class Pylon1:
+#ERRR {GIAT_M621}
+
+    class Pylon2:
+        LAU_SNEB68G___8xSNEB68_EAP = (2, Weapons.LAU_SNEB68G___8xSNEB68_EAP)
+
+    class Pylon5:
+        Sand_Filter = (5, Weapons.Sand_Filter)
+
+    class Pylon6:
+        IR_Deflector = (6, Weapons.IR_Deflector)
+
+    pylons = {1, 2, 5, 6}
+
+    tasks = [task.CAS, task.GroundAttack, task.AFAC, task.Escort, task.Reconnaissance]
+    task_default = task.CAS
+
+
+class SA342Mistral(HelicopterType):
+    id = "SA342Mistral"
+    height = 3.192
+    width = 10.5
+    length = 11.97
+    fuel_max = 416.33
+    max_speed = 240
+    chaff = 0
+    flare = 32
+    charge_total = 32
+    chaff_charge_size = 0
+    flare_charge_size = 1
+    eplrs = True
+    radio_frequency = 124
+
+    panel_radio = {
+        1: {
+            "channels": {
+                6: 40,
+                2: 31,
+                8: 42,
+                3: 32,
+                1: 30,
+                4: 33,
+                5: 34,
+                7: 41
+            },
+        },
+    }
+
+    class Liveries:
+
+        class Syria(Enum):
+            Syria_Fictional = "Syria Fictional"
+
+        class Germany(Enum):
+            Germany_Fictional = "Germany Fictional"
+
+        class Israel(Enum):
+            Israel_Fictional = "Israel Fictional"
+
+        class Greece(Enum):
+            Greece_Cyprus_Fictional_Desert = "Greece Cyprus Fictional Desert"
+
+        class UK(Enum):
+            UK_Fictional = "UK Fictional"
+
+        class France(Enum):
+            Combat = "Combat"
+            Tiger_Meet = "Tiger Meet"
+            Tiger_Meet_2 = "Tiger Meet 2"
+            Training = "Training"
+
+        class Russia(Enum):
+            Russia_Fictional = "Russia Fictional"
+
+        class Serbia(Enum):
+            Serbia_Fictional = "Serbia Fictional"
+            Yugoslav_Fictional = "Yugoslav Fictional"
+
+        class USA(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+    class Pylon1:
+        Mistral_ = (1, Weapons.Mistral_)
+
+    class Pylon2:
+        Mistral = (2, Weapons.Mistral)
+
+    class Pylon3:
+        Mistral_ = (3, Weapons.Mistral_)
+
+    class Pylon4:
+        Mistral = (4, Weapons.Mistral)
+
+    class Pylon5:
+        Sand_Filter = (5, Weapons.Sand_Filter)
+
+    class Pylon6:
+        IR_Deflector = (6, Weapons.IR_Deflector)
+
+    pylons = {1, 2, 3, 4, 5, 6}
+
+    tasks = [task.AFAC, task.Escort, task.Reconnaissance]
+    task_default = task.Escort
 
 
 helicopter_map = {
@@ -1794,4 +2068,7 @@ helicopter_map = {
     "UH-1H": UH_1H,
     "Mi-28N": Mi_28N,
     "OH-58D": OH_58D,
+    "SA342M": SA342M,
+    "SA342L": SA342L,
+    "SA342Mistral": SA342Mistral,
 }

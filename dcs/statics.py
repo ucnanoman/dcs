@@ -669,14 +669,140 @@ warehouse_map = {
 
 class Cargo:
 
-    class Cargo1(unittype.StaticType):
-        id = "Cargo1"
-        name = "Cargo1"
+    class uh1h_cargo(unittype.StaticType):
+        id = "uh1h_cargo"
+        name = "uh1h_cargo"
         shape_name = "ab-212_cargo"
         category = "Cargos"
         rate = 100
         can_cargo = True
 
+    class ammo_cargo(unittype.StaticType):
+        id = "ammo_cargo"
+        name = "ammo_cargo"
+        shape_name = "ammo_box_cargo"
+        category = "Cargos"
+        rate = 1000
+        can_cargo = True
+
+    class f_bar_cargo(unittype.StaticType):
+        id = "f_bar_cargo"
+        name = "f_bar_cargo"
+        shape_name = "f_bar_cargo"
+        category = "Cargos"
+        rate = 823
+        can_cargo = True
+
+    class m117_cargo(unittype.StaticType):
+        id = "m117_cargo"
+        name = "m117_cargo"
+        shape_name = "m117_cargo"
+        category = "Cargos"
+        rate = 840
+        can_cargo = True
+
+    class iso_container(unittype.StaticType):
+        id = "iso_container"
+        name = "iso_container"
+        shape_name = "iso_container_cargo"
+        category = "Cargos"
+        rate = 3800
+        can_cargo = True
+
+    class iso_container_small(unittype.StaticType):
+        id = "iso_container_small"
+        name = "iso_container_small"
+        shape_name = "iso_container_small_cargo"
+        category = "Cargos"
+        rate = 220
+        can_cargo = True
+
+    class barrels_cargo(unittype.StaticType):
+        id = "barrels_cargo"
+        name = "barrels_cargo"
+        shape_name = "barrels_cargo"
+        category = "Cargos"
+        rate = 480
+        can_cargo = True
+
+    class container_cargo(unittype.StaticType):
+        id = "container_cargo"
+        name = "container_cargo"
+        shape_name = "bw_container_cargo"
+        category = "Cargos"
+        rate = 100
+        can_cargo = True
+
+    class tetrapod_cargo(unittype.StaticType):
+        id = "tetrapod_cargo"
+        name = "tetrapod_cargo"
+        shape_name = "tetrapod_cargo"
+        category = "Cargos"
+        rate = 5000
+        can_cargo = True
+
+    class fueltank_cargo(unittype.StaticType):
+        id = "fueltank_cargo"
+        name = "fueltank_cargo"
+        shape_name = "fueltank_cargo"
+        category = "Cargos"
+        rate = 800
+        can_cargo = True
+
+    class oiltank_cargo(unittype.StaticType):
+        id = "oiltank_cargo"
+        name = "oiltank_cargo"
+        shape_name = "oiltank_cargo"
+        category = "Cargos"
+        rate = 700
+        can_cargo = True
+
+    class pipes_big_cargo(unittype.StaticType):
+        id = "pipes_big_cargo"
+        name = "pipes_big_cargo"
+        shape_name = "pipes_big_cargo"
+        category = "Cargos"
+        rate = 4815
+        can_cargo = True
+
+    class pipes_small_cargo(unittype.StaticType):
+        id = "pipes_small_cargo"
+        name = "pipes_small_cargo"
+        shape_name = "pipes_small_cargo"
+        category = "Cargos"
+        rate = 4350
+        can_cargo = True
+
+    class trunks_small_cargo(unittype.StaticType):
+        id = "trunks_small_cargo"
+        name = "trunks_small_cargo"
+        shape_name = "trunks_small_cargo"
+        category = "Cargos"
+        rate = 5000
+        can_cargo = True
+
+    class trunks_long_cargo(unittype.StaticType):
+        id = "trunks_long_cargo"
+        name = "trunks_long_cargo"
+        shape_name = "trunks_long_cargo"
+        category = "Cargos"
+        rate = 4747
+        can_cargo = True
+
 cargo_map = {
-    "Cargo1": Cargo.Cargo1,
+    "uh1h_cargo": Cargo.uh1h_cargo,
+    "ammo_cargo": Cargo.ammo_cargo,
+    "f_bar_cargo": Cargo.f_bar_cargo,
+    "m117_cargo": Cargo.m117_cargo,
+    "iso_container": Cargo.iso_container,
+    "iso_container_small": Cargo.iso_container_small,
+    "barrels_cargo": Cargo.barrels_cargo,
+    "container_cargo": Cargo.container_cargo,
+    "tetrapod_cargo": Cargo.tetrapod_cargo,
+    "fueltank_cargo": Cargo.fueltank_cargo,
+    "oiltank_cargo": Cargo.oiltank_cargo,
+    "pipes_big_cargo": Cargo.pipes_big_cargo,
+    "pipes_small_cargo": Cargo.pipes_small_cargo,
+    "trunks_small_cargo": Cargo.trunks_small_cargo,
+    "trunks_long_cargo": Cargo.trunks_long_cargo,
 }
