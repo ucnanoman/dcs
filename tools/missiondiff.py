@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from datadiff import diff
 import argparse
 import zipfile
