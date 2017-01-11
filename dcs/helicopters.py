@@ -1775,8 +1775,6 @@ class OH_58D(HelicopterType):
     chaff_charge_size = 1
     flare_charge_size = 1
 
-    class Liveries:
-
     class Pylon1:
         M260_HYDRA = (1, Weapons.M260_HYDRA)
         M260_HYDRA_WP = (1, Weapons.M260_HYDRA_WP)
@@ -1946,7 +1944,7 @@ class SA342L(HelicopterType):
             US_Marines_Fictional = "US Marines Fictional"
 
     class Pylon1:
-#ERRR {GIAT_M621}
+        pass
 
     class Pylon2:
         LAU_SNEB68G___8xSNEB68_EAP = (2, Weapons.LAU_SNEB68G___8xSNEB68_EAP)

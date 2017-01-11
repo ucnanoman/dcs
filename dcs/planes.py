@@ -7996,7 +7996,7 @@ class Bf_109_K_4(PlaneType):
     task_default = task.CAP
 
 
-class Spitfire_LF_Mk__IX(PlaneType):
+class SpitfireLFMkIX(PlaneType):
     id = "SpitfireLFMkIX"
     flyable = True
     height = 4.77
@@ -11368,7 +11368,7 @@ plane_map = {
     "P-51D": P_51D,
     "FW-190D9": Fw_190_D_9,
     "Bf-109K-4": Bf_109_K_4,
-    "SpitfireLFMkIX": Spitfire_LF_Mk__IX,
+    "SpitfireLFMkIX": SpitfireLFMkIX,
     "C-101EB": C_101EB,
     "C-101CC": C_101CC,
     "F-5E": F_5E,
