@@ -103,7 +103,7 @@ class Mission:
         self._sortie = self.string("")
         self.pictureFileNameR = []
         self.pictureFileNameB = []
-        self.version = 11
+        self.version = 12
         self.currentKey = 0
         self.start_time = datetime.fromtimestamp(1306886400 + 43200, timezone.utc)  # 01-06-2011 12:00:00 UTC
         self.season_from_start_time = True
@@ -280,7 +280,7 @@ class Mission:
         self.version = imp_mission["version"]
         self.currentKey = imp_mission["currentKey"]
         self.start_time = datetime.fromtimestamp(1306886400 + imp_mission["start_time"], timezone.utc)
-        self.usedModules = imp_mission["usedModules"]
+        self.usedModules = imp_mission.get("usedModules", None)
         self.needModules = imp_mission["needModules"]
 
         # groundControl
@@ -1491,16 +1491,22 @@ class Mission:
         m = {
             "trig": self.triggerrules.trig(),
             "trigrules": self.triggerrules.trigrules(),
-            "start_time": self.start_time.timestamp() - 1306886400
+            "start_time": int(self.start_time.timestamp() - 1306886400)
         }
         if m["start_time"] < 0:
             raise RuntimeError("Mission start time is < 0.")
+        m["date"] = {
+            "Year": self.start_time.year,
+            "Month": self.start_time.month,
+            "Day": self.start_time.day
+        }
         if self.season_from_start_time:
             self.weather.set_season_from_datetime(self.start_time)
         if self.random_weather:
             self.weather.random(self.start_time)
         m["groundControl"] = self.groundControl.dict()
-        m["usedModules"] = self.usedModules
+        if self.usedModules is not None:
+            m["usedModules"] = self.usedModules
         m["resourceCounter"] = self.resourceCounter
         m["triggers"] = self.triggers.dict()
         m["weather"] = self.weather.dict()

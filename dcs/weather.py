@@ -40,12 +40,6 @@ class Cyclone:
 
 
 class Weather:
-    class Season:
-        Summer = 1
-        Winter = 2
-        Spring = 3
-        Fall = 4
-
     class BaricSystem(Enum):
         Cyclone = 0
         AntiCyclone = 1
@@ -67,7 +61,6 @@ class Weather:
         self.turbulence_at_2000 = 0
         self.turbulence_at_8000 = 0
         self.season_temperature = 20
-        self.season = Weather.Season.Summer
         self.type_weather = 0
         self.qnh = 760
         self.cyclones = []
@@ -97,7 +90,6 @@ class Weather:
         self.turbulence_at_8000 = turbulence.get("at8000", 0)
         season = d.get("season", {})
         self.season_temperature = season.get("temperature", 20)
-        self.season = season.get("iseason", 1)
         self.type_weather = d.get("type_weather", 0)
         self.qnh = d.get("qnh", 760)
         cyclones = d.get("cyclones", {})
@@ -125,16 +117,12 @@ class Weather:
 
     def set_season_from_datetime(self, dt: datetime):
         if datetime(dt.year, 3, 1, tzinfo=timezone.utc) <= dt < datetime(dt.year, 6, 1, tzinfo=timezone.utc):
-            self.season = Weather.Season.Spring
             self.season_temperature = random.randrange(11, 22)
         elif datetime(dt.year, 6, 1, tzinfo=timezone.utc) <= dt < datetime(dt.year, 9, 1, tzinfo=timezone.utc):
-            self.season = Weather.Season.Summer
             self.season_temperature = random.randrange(18, 35)
         elif datetime(dt.year, 9, 1, tzinfo=timezone.utc) <= dt < datetime(dt.year, 12, 1, tzinfo=timezone.utc):
-            self.season = Weather.Season.Fall
             self.season_temperature = random.randrange(10, 20)
         else:
-            self.season = Weather.Season.Winter
             self.season_temperature = random.randrange(-6, 6)
 
     @staticmethod
@@ -294,7 +282,7 @@ class Weather:
         d["turbulence"] = {"atGround": self.turbulence_at_ground,
                            "at2000": self.turbulence_at_2000,
                            "at8000": self.turbulence_at_8000}
-        d["season"] = {"iseason": self.season, "temperature": self.season_temperature}
+        d["season"] = {"temperature": self.season_temperature}
         d["type_weather"] = self.type_weather
         d["qnh"] = self.qnh
         d["cyclones"] = {x+1: self.cyclones[x].dict() for x in range(0, len(self.cyclones))}
