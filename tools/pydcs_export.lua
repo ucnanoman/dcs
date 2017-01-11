@@ -179,6 +179,8 @@ flyable["MiG-21Bis"] = true
 flyable["Ka-50"] = true
 flyable["Mi-8MT"] = true
 flyable["UH-1H"] = true
+flyable["SpitfireLFMkIX"] = true
+flyable["SA342M"] = true
 
 
 local function export_aircraft(file, aircrafts, export_type, exportplane)
@@ -372,7 +374,9 @@ from enum import Enum
                         local name = weapons_map[plane.Pylons[j].Launchers[k].CLSID]
                         writeln(file, '        '..name..' = ('..j..', Weapons.'..name..')')
                     else
-                        writeln(file, '#ERRR '..plane.Pylons[j].Launchers[k].CLSID)
+                        if plane.Pylons[j].Launchers[k].CLSID then
+                            writeln(file, '#ERRR '..plane.Pylons[j].Launchers[k].CLSID)
+                        end
                     end
                 end
             end
