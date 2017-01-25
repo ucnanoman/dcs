@@ -1,6 +1,6 @@
-# dcs python mission framework
+# python dcs mission framework
 
-dcs is a python framework for creating and editing mission files
+pydcs is a python framework for creating and editing mission files
 from digital combat simulator.
 
 Possible use cases are:
