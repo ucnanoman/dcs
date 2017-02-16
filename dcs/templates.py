@@ -127,7 +127,7 @@ class VehicleTemplate:
 
     @staticmethod
     def sa11_site(mission, country, position, heading, prefix="", skill=unit.Skill.Average):
-        vg = mission.vehicle_group(country, prefix + "SA10 site",
+        vg = mission.vehicle_group(country, prefix + "SA11 site",
                                    dcs.vehicles.AirDefence.SAM_SA_11_Buk_CC_9S470M1, position, heading)
 
         u = mission.vehicle("Operator 1", Russia.Vehicle.Infantry.Infantry_Soldier_Rus)
@@ -147,6 +147,29 @@ class VehicleTemplate:
         u.position = position.point_from_heading(heading, 80)
         u.heading = heading
         vg.add_unit(u)
+
+        for u in vg.units:
+            u.skill = skill
+
+        return vg
+
+    @staticmethod
+    def sa15_site(mission, country, position, heading, prefix="", skill=unit.Skill.Average):
+        vg = mission.vehicle_group(country, prefix + "SA15 site",
+                                   dcs.vehicles.AirDefence.CP_9S80M1_Sborka, position, heading)
+
+        u = mission.vehicle("Operator 1", Russia.Vehicle.Infantry.Infantry_Soldier_Rus)
+        u.position = position.point_from_heading(heading + 180, 10)
+        u.heading = heading
+        vg.add_unit(u)
+
+        hdg = 90
+        for i in range(0, 4):  # 4 tor vehicles
+            u = mission.vehicle("tor #" + str(i + 1), dcs.vehicles.AirDefence.SAM_SA_15_Tor_9A331)
+            u.position = position.point_from_heading(heading + hdg, 50)
+            u.heading = heading
+            vg.add_unit(u)
+            hdg += 90
 
         for u in vg.units:
             u.skill = skill
