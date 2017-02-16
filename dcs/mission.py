@@ -24,6 +24,8 @@ from . import unitgroup
 from . import unittype
 from . import weather
 from . import triggers
+from . import condition
+from . import action
 from .country import Country
 from .forcedoptions import ForcedOptions
 from .goals import Goals
@@ -31,7 +33,7 @@ from .groundcontrol import GroundControl
 from .point import StaticPoint, MovingPoint, PointAction, PointProperties
 from .terrain import Caucasus, Nevada, ParkingSlot, Airport, NoParkingSlotError
 from .translation import Translation
-from .unit import Plane, Helicopter, Ship, Vehicle, Static
+from .unit import Unit, Plane, Helicopter, Ship, Vehicle, Static
 
 
 class StartType(Enum):
@@ -1193,7 +1195,7 @@ class Mission:
                       airport: Optional[Airport],
                       group_to_escort: unitgroup.FlyingGroup,
                       start_type: StartType=StartType.Cold,
-                      group_size=2):
+                      group_size=2) -> unitgroup.PlaneGroup:
         """Add an escort flight group to the mission.
 
         An escort flight is a flight group that will use the :py:class:`dcs.task.EscortTaskAction`
@@ -1244,7 +1246,7 @@ class Mission:
                       speed=600,
                       altitude=4000,
                       max_engage_distance=60*1000,
-                      group_size=2):
+                      group_size=2) -> unitgroup.PlaneGroup:
         """Add an patrol flight group to the mission.
 
         A patrol flight is a flight group that will fly a orbit between 2 given points and
@@ -1285,6 +1287,177 @@ class Mission:
         wp = eg.add_waypoint(pos1, altitude, speed)
         wp.tasks.append(task.OrbitAction(altitude, speed, task.OrbitAction.OrbitPattern.RaceTrack))
         eg.add_waypoint(pos2, altitude, speed)
+
+        return eg
+
+    def intercept_flight(self,
+                         country,
+                         name: str,
+                         patrol_type: planes.PlaneType,
+                         airport: Airport,
+                         zone: triggers.TriggerZone,
+                         late_activation=True,
+                         start_type: StartType=StartType.Cold,
+                         speed=600,
+                         altitude=4000,
+                         max_engage_distance=60*1000,
+                         group_size=2) -> unitgroup.PlaneGroup:
+        """Add an intercept flight group to the mission.
+
+        An intercept flight group will start from the given airport and will react on air threats if they
+        enter the given zone and will be activated and try to attack air threats near the zone.
+
+        Args:
+            country(Country): the flight belongs too
+            name: name of the patrol flight
+            patrol_type(PlaneType): PlaneType for the patrol flight
+            airport(Airport): starting airport, use None if you want it to spawn inflight
+            zone(dcs.triggers.TriggerZone): zone to react on enemies
+            late_activation(bool): if flight should be late activated
+            start_type(StartType): of the flight if starts from airport
+            speed: orbit speed
+            altitude: initial altitude and orbit altitude
+            max_engage_distance: the distance in KM the patrol flight will respond to enemy threats
+            group_size: how many planes should be in the flight group
+
+        Returns:
+            PlaneGroup: the created patrol group
+        """
+        eg = self.flight_group_from_airport(
+            country, name, patrol_type, airport, maintask=task.CAP, start_type=start_type, group_size=group_size
+        )
+        eg.late_activation = late_activation
+        eg.add_runway_waypoint(airport)
+
+        eg.points[0].tasks[0] = task.EngageTargets(max_engage_distance, [task.Targets.All.Air])
+        wp = eg.add_waypoint(zone.position, altitude, speed)
+        pos2 = zone.position.point_from_heading(random.randint(0, 360), zone.radius)
+        wp.tasks.append(task.OrbitAction(altitude, speed, task.OrbitAction.OrbitPattern.RaceTrack))
+        eg.add_waypoint(pos2, altitude, speed)
+
+        eg.add_runway_waypoint(airport)
+        eg.land_at(airport)
+
+        zone_check = triggers.TriggerContinious(comment="intercept trigger")
+        zone_check.add_condition(condition.PartOfCoalitionInZone("blue", zone.id))
+        zone_check.add_action(action.ActivateGroup(eg.id))
+        self.triggerrules.triggers.append(zone_check)
+
+        return eg
+
+    def sead_flight(self,
+                    country,
+                    name: str,
+                    plane_type: planes.PlaneType,
+                    target_pos: mapping.Point,
+                    airport: Optional[Airport],
+                    start_type: StartType=StartType.Cold,
+                    max_engage_distance=20 * 1000,
+                    group_size=2) -> unitgroup.PlaneGroup:
+        """Plans a strike mission at the given target.
+
+        If no airport is given, the patrol flight will spawn near the first patrol point(pos1).
+
+        Args:
+            country(Country): the flight belongs too
+            name: name of the patrol flight
+            plane_type(PlaneType): PlaneType for the patrol flight
+            airport(Airport): starting airport, use None if you want it to spawn inflight
+            target_pos(mapping.Point): AAA position
+            start_type(StartType): of the flight if starts from airport
+            max_engage_distance: the distance in KM to engage
+            group_size: how many planes should be in the flight group
+
+        Returns:
+            PlaneGroup: the created strike group
+        """
+        if airport:
+            eg = self.flight_group_from_airport(
+                country, name, plane_type, airport,
+                maintask=task.SEAD, start_type=start_type, group_size=group_size
+            )
+            wp = eg.add_runway_waypoint(airport)
+            wp = eg.add_waypoint(airport.position.point_from_heading(airport.position.heading_between_point(target_pos), 20*1000), 5000)
+        else:
+            eg = self.flight_group_inflight(
+                country, name, plane_type,
+                mapping.Point(target_pos.x - 10 * 1000, target_pos.y),
+                5000,
+                maintask=task.SEAD,
+                group_size=group_size
+            )
+
+        speed = plane_type.max_speed * 0.8
+
+        attack_hdg = eg.position.heading_between_point(target_pos) + 180
+        var_hdg = random.randint(-15, 15)
+        wp = eg.add_waypoint(target_pos.point_from_heading(attack_hdg + var_hdg, 30000), 5000, speed)
+        wp.name = self.string("Fence in")
+        wp = eg.add_waypoint(target_pos, 0, speed)
+        wp.tasks.append(task.EngageTargets(max_engage_distance, [task.Targets.All.GroundUnits.AirDefence]))
+        wp.name = self.string("IP")
+        wp = eg.add_waypoint(target_pos.point_from_heading(attack_hdg - var_hdg, 30000), 5000, speed)
+        wp.name = self.string("Fence out")
+
+        if airport:
+            eg.add_runway_waypoint(airport)
+            eg.land_at(airport)
+
+        return eg
+
+    def strike_flight(self,
+                      country,
+                      name: str,
+                      plane_type: planes.PlaneType,
+                      target: Unit,
+                      airport: Optional[Airport],
+                      start_type: StartType=StartType.Cold,
+                      group_size=2) -> unitgroup.PlaneGroup:
+        """Plans a strike mission at the given target.
+
+        If no airport is given, the patrol flight will spawn near the first patrol point(pos1).
+
+        Args:
+            country(Country): the flight belongs too
+            name: name of the patrol flight
+            plane_type(PlaneType): PlaneType for the patrol flight
+            airport(Airport): starting airport, use None if you want it to spawn inflight
+            target(Unit): Unit to strike
+            start_type(StartType): of the flight if starts from airport
+            group_size: how many planes should be in the flight group
+
+        Returns:
+            PlaneGroup: the created strike group
+        """
+        if airport:
+            eg = self.flight_group_from_airport(
+                country, name, plane_type, airport,
+                maintask=task.GroundAttack, start_type=start_type, group_size=group_size
+            )
+            eg.add_runway_waypoint(airport)
+        else:
+            eg = self.flight_group_inflight(
+                country, name, plane_type,
+                mapping.Point(target.position.x - 10 * 1000, target.position.y),
+                2000,
+                maintask=task.GroundAttack,
+                group_size=group_size
+            )
+
+        speed = plane_type.max_speed * 0.8
+
+        attack_hdg = eg.position.heading_between_point(target.position) + 180
+        var_hdg = random.randint(-15, 15)
+        wp = eg.add_waypoint(target.position.point_from_heading(attack_hdg + var_hdg, 30000), 4000, speed)
+        wp.name = self.string("Fence in")
+        wp = eg.add_waypoint(target.position, 0, speed)
+        wp.name = self.string("IP")
+        wp = eg.add_waypoint(target.position.point_from_heading(attack_hdg - var_hdg, 30000), 4000, speed)
+        wp.name = self.string("Fence out")
+
+        if airport:
+            eg.add_runway_waypoint(airport)
+            eg.land_at(airport)
 
         return eg
 
@@ -1420,7 +1593,7 @@ class Mission:
             d: stats dict to print, :py:meth:`dcs.mission.Mission.stats`
         """
         print("Mission Statistics")
-        print(self.start_time.strftime("%d. %b %H:%M:%S"))
+        print(self.start_time.strftime("%d. %b %Y %H:%M:%S"))
         print("-"*60)
         output = {"red": [], "blue": []}
         for x in ["Blue", "Red"]:
