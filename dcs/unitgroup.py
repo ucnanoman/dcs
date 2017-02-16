@@ -183,6 +183,7 @@ class MovingGroup(Group):
         self.frequency = 251
         self.task_selected = True
         self.spawn_probability = 1.0
+        self.late_activation = False
 
     def load_from_dict(self, d):
         super(MovingGroup, self).load_from_dict(d)
@@ -192,6 +193,7 @@ class MovingGroup(Group):
         for t in d.get("tasks", []):
             self.tasks.append(task._create_from_dict(d["task"]["params"]["tasks"][t]))
         self.task_selected = d.get("taskSelected", False)
+        self.late_activation = d.get("lateActivation", False)
 
     def dict(self):
         d = super(MovingGroup, self).dict()
@@ -205,6 +207,8 @@ class MovingGroup(Group):
             d["taskSelected"] = self.task_selected
         if self.spawn_probability != 1.0:
             d["probability"] = self.spawn_probability
+        if self.late_activation:
+            d["lateActivation"] = self.late_activation
         return d
 
 
