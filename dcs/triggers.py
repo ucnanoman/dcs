@@ -60,6 +60,9 @@ class Triggers:
         self._zones.append(tz)
         return tz
 
+    def clear(self):
+        self._zones.clear()
+
     def zones(self) -> List[TriggerZone]:
         return self._zones
 
@@ -106,6 +109,12 @@ class TriggerRule:
             rule = condition.condition_map[rules[r]["predicate"]].create_from_dict(rules[r])
             trig.rules.append(rule)
         return trig
+
+    def add_condition(self, cond: condition.Condition):
+        self.rules.append(cond)
+
+    def add_action(self, act: action.Action):
+        self.actions.append(act)
 
     def condition_str(self):
         if self.rules:
