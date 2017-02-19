@@ -1020,6 +1020,19 @@ class SetImmortalCommand(WrappedAction):
             }
         }
 
+
+class StartCommand(WrappedAction):
+    Key = "Start"
+
+    def __init__(self):
+        super(StartCommand, self).__init__()
+        self.params = {
+            "action": {
+                "id": StartCommand.Key,
+                "params": {}
+            }
+        }
+
 wrappedactions = {
     EPLRS.Key: EPLRS,
     ActivateBeaconCommand.Key: ActivateBeaconCommand,
@@ -1030,7 +1043,8 @@ wrappedactions = {
     RunScriptFile.Key: RunScriptFile,
     TransmitMessage.Key: TransmitMessage,
     StopTransmission.Key: StopTransmission,
-    SwitchWaypoint.Key: SwitchWaypoint
+    SwitchWaypoint.Key: SwitchWaypoint,
+    StartCommand.Key: StartCommand
 }
 
 
