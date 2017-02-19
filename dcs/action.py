@@ -1419,6 +1419,42 @@ class StopWaitUserResponse(Action):
         return d
 
 
+class AITaskPush(Action):
+    predicate = "a_ai_task"
+
+    def __init__(self, groupid, task_index):
+        super(AITaskPush, self).__init__(AITaskPush.predicate)
+        self.groupid = groupid
+        self.task_index = task_index
+
+    @classmethod
+    def create_from_dict(cls, d, mission):
+        return cls(d["ai_task"][0], d["ai_task"][1])
+
+    def dict(self):
+        d = super(AITaskPush, self).dict()
+        d["ai_task"] = [self.groupid, self.task_index]
+        return d
+
+
+class AITaskSet(Action):
+    predicate = "a_set_ai_task"
+
+    def __init__(self, groupid, task_index):
+        super(AITaskSet, self).__init__(AITaskSet.predicate)
+        self.groupid = groupid
+        self.task_index = task_index
+
+    @classmethod
+    def create_from_dict(cls, d, mission):
+        return cls(d["set_ai_task"][0], d["ai_task"][1])
+
+    def dict(self):
+        d = super(AITaskSet, self).dict()
+        d["set_ai_task"] = [self.groupid, self.task_index]
+        return d
+
+
 class UnitAIOff(Action):
     predicate = "a_unit_off"
 
@@ -1559,4 +1595,6 @@ actions_map = {
     "a_unit_on": UnitAIOn,
     "a_unit_emission_off": UnitEmissionOff,
     "a_unit_emission_on": UnitEmissionOn,
+    "a_ai_task": AITaskPush,
+    "a_set_ai_task": AITaskSet
 }
