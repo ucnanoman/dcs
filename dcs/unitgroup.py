@@ -195,6 +195,9 @@ class MovingGroup(Group):
         self.task_selected = d.get("taskSelected", False)
         self.late_activation = d.get("lateActivation", False)
 
+    def add_trigger_action(self, action: task.Task):
+        self.tasks.append(action)
+
     def dict(self):
         d = super(MovingGroup, self).dict()
         if self.task:

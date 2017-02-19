@@ -1313,7 +1313,7 @@ class Mission:
             patrol_type(PlaneType): PlaneType for the patrol flight
             airport(Airport): starting airport, use None if you want it to spawn inflight
             zone(dcs.triggers.TriggerZone): zone to react on enemies
-            late_activation(bool): if flight should be late activated
+            late_activation(bool): if flight should be started, when enemy in zone
             start_type(StartType): of the flight if starts from airport
             speed: orbit speed
             altitude: initial altitude and orbit altitude
@@ -1321,12 +1321,13 @@ class Mission:
             group_size: how many planes should be in the flight group
 
         Returns:
-            PlaneGroup: the created patrol group
+            PlaneGroup: the created intercept group
         """
         eg = self.flight_group_from_airport(
             country, name, patrol_type, airport, maintask=task.CAP, start_type=start_type, group_size=group_size
         )
-        eg.late_activation = late_activation
+        eg.add_trigger_action(task.StartCommand())
+        eg.uncontrolled = late_activation
         eg.add_runway_waypoint(airport)
 
         eg.points[0].tasks[0] = task.EngageTargets(max_engage_distance, [task.Targets.All.Air])
@@ -1340,7 +1341,7 @@ class Mission:
 
         zone_check = triggers.TriggerContinious(comment="intercept trigger")
         zone_check.add_condition(condition.PartOfCoalitionInZone("blue", zone.id))
-        zone_check.add_action(action.ActivateGroup(eg.id))
+        zone_check.add_action(action.AITaskPush(eg.id, 1))
         self.triggerrules.triggers.append(zone_check)
 
         return eg
