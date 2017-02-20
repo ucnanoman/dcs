@@ -5,6 +5,7 @@ from dcs import mapping, lua, point
 from dcs import unittype
 import random
 import pickle
+import sys
 
 
 class ParkingSlot:
@@ -277,6 +278,25 @@ class Graph:
 
     def node_names(self) -> Set[str]:
         return {x.name for x in self.nodes}
+
+    def nearest_node(self, position: mapping.Point):
+        """Find nearest node to the given point.
+
+        Args:
+            position: Point to find the nearest
+
+        Returns:
+            The nearest node to the that point
+        """
+        dist = sys.float_info.max
+        node = None
+        for x in self.nodes:
+            d = position.distance_to_point(x.position)
+            if d < dist:
+                node = x
+                dist = d
+
+        return node
 
     def rated_nodes(self, min_rating=0) -> Set[Node]:
         return {x for x in self.nodes if x.rating and x.rating > min_rating}
