@@ -45,7 +45,6 @@ class Group:
             return self.units[0].position.x
         return None
 
-
     @property
     def y(self):
         if len(self.units) > 0:
@@ -107,8 +106,6 @@ class Group:
         unit_count = len(self.units)
         max_r = max_radius if max_radius else random.randrange(15, unit_count * 20)
 
-        sx = self.units[0].position.x
-        sy = self.units[0].position.y
         start_pos = self.units[0].position
 
         for i in range(1, unit_count):
