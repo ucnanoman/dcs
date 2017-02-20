@@ -7,6 +7,9 @@ from .unit import Unit, Skill, FlyingUnit, Plane, PlaneType, Helicopter, Helicop
 from .point import StaticPoint, MovingPoint, PointAction, PointProperties
 from .translation import String
 from .terrain import Airport, Runway
+from . import triggers
+from . import action
+from . import condition
 from . import task
 from . import mapping
 
@@ -334,6 +337,26 @@ class FlyingGroup(MovingGroup):
 
         self.add_point(mp)
         return mp
+
+    def delay_start(self, mission, seconds):
+        """Delay group to become active.
+
+        Args:
+            mission: The mission object, need to add trigger actions
+            seconds: Seconds how long to delay the activation
+
+        Returns:
+            The Group itself
+        """
+        self.add_trigger_action(task.StartCommand())
+        self.uncontrolled = True
+
+        activate_trigger = triggers.TriggerContinious(comment="{name} delay trigger".format(name=self.name))
+        activate_trigger.add_condition(condition.TimeAfter(seconds))
+        activate_trigger.add_action(action.AITaskPush(self.id, 1))
+        mission.triggerrules.triggers.append(activate_trigger)
+
+        return self
 
     def load_task_default_loadout(self, task):
         task_payload = self.units[0].unit_type.loadout(task)
