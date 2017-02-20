@@ -1409,11 +1409,11 @@ class Mission:
     def strike_flight(self,
                       country,
                       name: str,
-                      plane_type: planes.PlaneType,
+                      _type: planes.FlyingType,
                       target: Unit,
                       airport: Optional[Airport],
                       start_type: StartType=StartType.Cold,
-                      group_size=2) -> unitgroup.PlaneGroup:
+                      group_size=2) -> unitgroup.FlyingGroup:
         """Plans a strike mission at the given target.
 
         If no airport is given, the patrol flight will spawn near the first patrol point(pos1).
@@ -1421,39 +1421,41 @@ class Mission:
         Args:
             country(Country): the flight belongs too
             name: name of the patrol flight
-            plane_type(PlaneType): PlaneType for the patrol flight
+            _type(FlyingType): FlyingType for the strike flight
             airport(Airport): starting airport, use None if you want it to spawn inflight
             target(Unit): Unit to strike
             start_type(StartType): of the flight if starts from airport
             group_size: how many planes should be in the flight group
 
         Returns:
-            PlaneGroup: the created strike group
+            FlyingGroup: the created strike group
         """
+        altitude = 400 if _type.helicopter else 4000
+
         if airport:
             eg = self.flight_group_from_airport(
-                country, name, plane_type, airport,
+                country, name, _type, airport,
                 maintask=task.GroundAttack, start_type=start_type, group_size=group_size
             )
             eg.add_runway_waypoint(airport)
         else:
             eg = self.flight_group_inflight(
-                country, name, plane_type,
+                country, name, _type,
                 mapping.Point(target.position.x - 10 * 1000, target.position.y),
-                2000,
+                altitude / 2,
                 maintask=task.GroundAttack,
                 group_size=group_size
             )
 
-        speed = plane_type.max_speed * 0.8
+        speed = _type.max_speed * 0.8
 
         attack_hdg = eg.position.heading_between_point(target.position) + 180
         var_hdg = random.randint(-15, 15)
-        wp = eg.add_waypoint(target.position.point_from_heading(attack_hdg + var_hdg, 30000), 4000, speed)
+        wp = eg.add_waypoint(target.position.point_from_heading(attack_hdg + var_hdg, 30000), altitude, speed)
         wp.name = self.string("Fence in")
         wp = eg.add_waypoint(target.position, 0, speed)
         wp.name = self.string("IP")
-        wp = eg.add_waypoint(target.position.point_from_heading(attack_hdg - var_hdg, 30000), 4000, speed)
+        wp = eg.add_waypoint(target.position.point_from_heading(attack_hdg - var_hdg, 30000), altitude, speed)
         wp.name = self.string("Fence out")
 
         if airport:
