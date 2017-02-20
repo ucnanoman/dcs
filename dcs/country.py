@@ -92,6 +92,18 @@ class Country:
                 return group
         return None
 
+    def vehicle_group_within(self, point, distance):
+        """Return all vehicle groups within the radius of a given point.
+
+        Args:
+            point(mapping.Point): Center of circle
+            distance: Distance to the point
+
+        Returns:
+            Sequence of vehicle groups within range.
+        """
+        return [x for x in self.vehicle_group if x.position.distance_to_point(point) < distance]
+
     def next_callsign_id(self):
         self.current_callsign_id += 1
         return self.current_callsign_id
