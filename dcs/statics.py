@@ -504,6 +504,18 @@ class Fortification:
         shape_name = "H-Windsock_RW"
         rate = 3
 
+    class TowerArmed(unittype.StaticType):
+        id = "house2arm"
+        name = "Watch Tower Armed"
+        shape_name = None
+        rate = 100
+
+    class Bunker(unittype.StaticType):
+        id = "Bunker"
+        name = "Bunker"
+        shape_name = None
+        rate = 100
+
 fortification_map = {
     ".Command Center": Fortification.Command_Center,
     "Hangar A": Fortification.Hangar_A,
