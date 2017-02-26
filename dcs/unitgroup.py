@@ -276,6 +276,9 @@ class FlyingGroup(MovingGroup):
     def starts_from_airport(self) -> bool:
         return self.points[0].airdrome_id if self.points else False
 
+    def airport_id(self) -> int:
+        return self.points[0].airdrome_id if self.points else None
+
     def load_from_dict(self, d):
         super(FlyingGroup, self).load_from_dict(d)
         self.modulation = d.get("modulation")
