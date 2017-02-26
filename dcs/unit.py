@@ -291,7 +291,7 @@ class Static(Unit):
         super(Static, self).load_from_dict(d)
         self.can_cargo = d["canCargo"]
         self.category = d["category"]
-        self.shape_name = d["shape_name"]
+        self.shape_name = d.get("shape_name", None)
         self.rate = d.get("rate")
         self.mass = d.get("mass")
 
