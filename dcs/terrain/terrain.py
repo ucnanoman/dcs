@@ -420,6 +420,19 @@ class Terrain:
         for x in self.airports:
             yield self.airports[x]
 
+    def nearest_airport(self, position: mapping.Point, coalition: str=None) -> Airport:
+        airports = [x for x in self.airports.values() if x.coalition.lower() == coalition.lower()] if coalition else self.airports
+
+        dist = sys.float_info.max
+        airport = None
+        for x in airports:
+            d = position.distance_to_point(x.position)
+            if d < dist:
+                airport = x
+                dist = d
+
+        return airport
+
 
 class Warehouses:
     def __init__(self, terrain: Terrain):
