@@ -698,6 +698,26 @@ class Mission:
         """
         return unitgroup.PlaneGroup(self.next_group_id(), self.string(name))
 
+    def remove_plane_group(self, pgroup: unitgroup.PlaneGroup):
+        for coln, col in self.coalition.items():
+            for cn in col.countries:
+                c = col.countries[cn]
+                for i in range(0, len(c.plane_group)):
+                    if c.plane_group[i].id == pgroup.id:
+                        self.clear_parking_slots(c.plane_group[i])
+                        del c.plane_group[i]
+                        return True
+        return False
+
+    def clear_parking_slots(self, pgroup: unitgroup.PlaneGroup):
+        if pgroup.airport_id():
+            airport = self.terrain.airport_by_id(pgroup.airport_id())
+            for u in pgroup.units:
+                airport.clear_parking_slot(u.parking)
+            return True
+
+        return False
+
     def plane(self, name, _type: planes.PlaneType, country: Country):
         """Creates a new plane unit.
 
@@ -1475,6 +1495,21 @@ class Mission:
         """
         for k in self.coalition:
             c = self.coalition[k].country(name)
+            if c:
+                return c
+        return None
+
+    def country_by_id(self, _id):
+        """Returns the country object for the mission by the given id
+
+        Args:
+            _id: id of the country
+
+        Returns:
+            Country: the object of the country, None if not found.
+        """
+        for k in self.coalition:
+            c = self.coalition[k].country_by_id(_id)
             if c:
                 return c
         return None
