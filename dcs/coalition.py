@@ -196,6 +196,13 @@ class Coalition:
     def country(self, country_name: str):
         return self.countries.get(country_name, None)
 
+    def country_by_id(self, _id: int):
+        for cn in self.countries:
+            c = self.countries[cn]
+            if c.id == _id:
+                return c
+        return None
+
     def find_group(self, group_name, search="exact"):
         for c in self.countries:
             g = self.countries[c].find_group(group_name, search)
