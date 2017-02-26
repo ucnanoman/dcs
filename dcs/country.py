@@ -52,6 +52,14 @@ class Country:
     def add_static_group(self, sgroup):
         self.static_group.append(sgroup)
 
+    def remove_static_group(self, sgroup):
+        for i in range(0, len(self.static_group)):
+            if sgroup.id == self.static_group[i].id:
+                del self.static_group[i]
+                return True
+
+        return False
+
     def find_group(self, group_name, search="exact"):
         groups = [self.vehicle_group,
                   self.ship_group,
