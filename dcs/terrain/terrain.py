@@ -160,6 +160,14 @@ class Airport:
                 return x
         return None
 
+    def clear_parking_slot(self, index: int) -> bool:
+        slot = self.parking_slot(index)
+        if slot:
+            slot.unit_id = None
+            return True
+
+        return False
+
     def _free_parking_slots_resolve_v1(self, large: bool, helicopter: bool) -> List[ParkingSlot]:
         slots_index = range(0, len(self.parking_slots))
         free_large_slots = {x for x in slots_index
