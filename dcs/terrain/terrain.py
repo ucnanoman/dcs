@@ -441,6 +441,18 @@ class Terrain:
 
         return airport
 
+    def airport_within(self, position: mapping.Point, distance):
+        """Return all airports within the radius of a given point.
+
+        Args:
+            position(mapping.Point): Center of circle
+            distance: Distance to the point
+
+        Returns:
+            Sequence of airports within range.
+        """
+        return [x for x in self.airports if x.position.distance_to_point(position) < distance]
+
 
 class Warehouses:
     def __init__(self, terrain: Terrain):
