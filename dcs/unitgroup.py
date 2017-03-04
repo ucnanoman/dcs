@@ -105,7 +105,7 @@ class Group:
     def formation_scattered(self, heading=0, max_radius=None):
         unit_count = len(self.units)
         max_r = max_radius if max_radius else random.randrange(15, unit_count * 20)
-
+        max_r = 15 if max_r < 15 else max_r
         start_pos = self.units[0].position
 
         for i in range(1, unit_count):

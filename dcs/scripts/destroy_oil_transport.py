@@ -109,7 +109,7 @@ def main():
                                          0)
             vg.set_skill(dcs.unit.Skill.from_percentage(difficulty))
             vg.hidden = not args.unhide
-            vg.formation_scattered(random.randrange(0, 360), 10)
+            vg.formation_scattered(random.randrange(0, 360), 15)
 
     aaa_def += [[dcs.countries.Abkhazia.Vehicle.AirDefence.SPAAA_ZSU_23_4_Shilka,
                  dcs.countries.Abkhazia.Vehicle.Armor.ARV_BRDM_2,
