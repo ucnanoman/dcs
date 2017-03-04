@@ -156,7 +156,7 @@ class BasicScenario:
                 USA.Vehicle.Artillery.SPH_M109_Paladin,
                 USA.Vehicle.Unarmed.HEMTT_TFFT,
                 USA.Vehicle.AirDefence.SAM_Stinger_comm,
-                USA.Vehicle.AirDefence.SAM_Stinger_MANPADS
+                USA.Vehicle.AirDefence.Stinger_MANPADS
             ])
         },
         "AirDefence": {
