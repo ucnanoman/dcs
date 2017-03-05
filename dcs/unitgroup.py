@@ -388,6 +388,12 @@ class FlyingGroup(MovingGroup):
         for u in self.units:
             u.set_client()
 
+    def has_human(self):
+        for u in self.units:
+            if u.is_human():
+                return True
+        return False
+
     def reset_loadout(self):
         for u in self.units:
             u.reset_loadout()

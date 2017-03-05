@@ -168,6 +168,9 @@ class FlyingUnit(Unit):
         self.skill = Skill.Client
         self.set_radio_preset()
 
+    def is_human(self):
+        return self.skill in [Skill.Player, Skill.Client]
+
     def dict(self):
         d = super(FlyingUnit, self).dict()
         d["alt"] = self.alt
