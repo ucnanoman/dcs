@@ -1467,22 +1467,41 @@ class Mission:
                 group_size=group_size
             )
 
-        speed = _type.max_speed * 0.8
+        return self.strike_flight_to_group(eg, target)
 
-        attack_hdg = eg.position.heading_between_point(target.position) + 180
+    def strike_flight_to_group(self,
+                      sf: unitgroup.FlyingGroup,
+                      target: Unit) -> unitgroup.FlyingGroup:
+        """Plans a strike mission at the given target.
+
+        If no airport is given, the patrol flight will spawn near the first patrol point(pos1).
+
+        Args:
+            sf(unitgroup.FlyingGroup): FlyingGroup to add waypoints
+            target(Unit): Unit to strike
+
+        Returns:
+            FlyingGroup: the created strike group
+        """
+        altitude = 400 if sf.flight_type().helicopter else 4000
+
+        speed = sf.flight_type().max_speed * 0.8
+
+        attack_hdg = sf.position.heading_between_point(target.position) + 180
         var_hdg = random.randint(-15, 15)
-        wp = eg.add_waypoint(target.position.point_from_heading(attack_hdg + var_hdg, 30000), altitude, speed)
+        wp = sf.add_waypoint(target.position.point_from_heading(attack_hdg + var_hdg, 30000), altitude, speed)
         wp.name = self.string("Fence in")
-        wp = eg.add_waypoint(target.position, 0, speed)
+        wp = sf.add_waypoint(target.position, 0, speed)
         wp.name = self.string("IP")
-        wp = eg.add_waypoint(target.position.point_from_heading(attack_hdg - var_hdg, 30000), altitude, speed)
+        wp = sf.add_waypoint(target.position.point_from_heading(attack_hdg - var_hdg, 30000), altitude, speed)
         wp.name = self.string("Fence out")
 
-        if airport:
-            eg.add_runway_waypoint(airport)
-            eg.land_at(airport)
+        if sf.starts_from_airport():
+            airport = self.terrain.airport_by_id(sf.airport_id())
+            sf.add_runway_waypoint(airport)
+            sf.land_at(airport)
 
-        return eg
+        return sf
 
     def country(self, name):
         """Returns the country object for the mission by the given string
