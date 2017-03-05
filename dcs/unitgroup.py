@@ -3,10 +3,12 @@ import random
 import copy
 from enum import Enum
 from typing import List, Union
-from .unit import Unit, Skill, FlyingUnit, Plane, PlaneType, Helicopter, HelicopterType
+from .unit import Unit, Skill, FlyingUnit, Plane, PlaneType, Helicopter, HelicopterType, FlyingType
 from .point import StaticPoint, MovingPoint, PointAction, PointProperties
 from .translation import String
 from .terrain import Airport, Runway
+from . import planes
+from . import helicopters
 from . import triggers
 from . import action
 from . import condition
@@ -278,6 +280,12 @@ class FlyingGroup(MovingGroup):
 
     def airport_id(self) -> int:
         return self.points[0].airdrome_id if self.points else None
+
+    def flight_type(self) -> FlyingType:
+        t = planes.plane_map.get(self.units[0].type)
+        if not t:
+            t = helicopters.helicopter_map.get(self.units[0].type)
+        return t
 
     def load_from_dict(self, d):
         super(FlyingGroup, self).load_from_dict(d)
