@@ -74,7 +74,8 @@ class FlyingUnit(Unit):
         self.unit_type = _type  # for loadout validation
         self.unit_type.load_payloads()
         self.livery_id = self.unit_type.default_livery(_country.name)
-        self.parking = None
+        self.parking = None  # crossroad idx
+        self.parking_id = None  # parking slot name (01, 02, ..)
         self.psi = 0
         self.onboard_num = "010"
         self.alt = 0
@@ -111,6 +112,7 @@ class FlyingUnit(Unit):
         else:
             self.callsign_dict = d["callsign"]
         self.parking = d.get("parking", None)
+        self.parking_id = d.get("parking_id", None)
         if self.parking:
             self.parking = int(self.parking)
         self.radio = d.get("Radio")
@@ -121,6 +123,7 @@ class FlyingUnit(Unit):
     def set_parking(self, parking_slot: ParkingSlot):
         parking_slot.unit_id = self.id
         self.parking = parking_slot.crossroad_idx
+        self.parking_id = parking_slot.slot_name
 
     def set_property(self, prop_name, value):
         if self.addpropaircraft is None:
@@ -177,6 +180,8 @@ class FlyingUnit(Unit):
         d["alt_type"] = self.alt_type
         if self.parking is not None:
             d["parking"] = self.parking
+        if self.parking_id is not None:
+            d["parking_id"] = self.parking_id
         if self.livery_id:
             d["livery_id"] = self.livery_id
         d["psi"] = self.psi
