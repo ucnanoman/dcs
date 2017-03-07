@@ -15,7 +15,10 @@ class String:
         return str(self)
 
     def str(self, lang='DEFAULT'):
-        return self.translation.strings[lang][self.id]
+        if self.translation:
+            return self.translation.strings[lang][self.id]
+
+        return ""
 
     def __str__(self):
         return self.str('DEFAULT')
