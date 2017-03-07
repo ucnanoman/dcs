@@ -200,6 +200,12 @@ class MovingGroup(Group):
     def add_trigger_action(self, action: task.Task):
         self.tasks.append(action)
 
+    def waypoint(self, name) -> MovingPoint:
+        for p in self.points:
+            if p.name and str(p.name) == name:
+                return p
+        return None
+
     def dict(self):
         d = super(MovingGroup, self).dict()
         if self.task:
