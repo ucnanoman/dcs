@@ -1303,12 +1303,39 @@ class Mission:
                 maintask=task.CAP,
                 group_size=group_size
             )
-        eg.points[0].tasks[0] = task.EngageTargets(max_engage_distance, [task.Targets.All.Air])
-        wp = eg.add_waypoint(pos1, altitude, speed)
-        wp.tasks.append(task.OrbitAction(altitude, speed, task.OrbitAction.OrbitPattern.RaceTrack))
-        eg.add_waypoint(pos2, altitude, speed)
+        return self.patrol_flight_to_group(eg, pos1, pos2, speed, altitude, max_engage_distance)
 
-        return eg
+    def patrol_flight_to_group(self,
+                               pg: unitgroup.FlyingGroup,
+                               pos1,
+                               pos2,
+                               speed=600,
+                               altitude=4000,
+                               max_engage_distance=60*1000) -> unitgroup.PlaneGroup:
+        """Add patrol waypoints to an existing flying group
+
+        A patrol flight is a flight group that will fly a orbit between 2 given points and
+        will engage any incoming air threats within max_engage_distance.
+
+        If no airport is given, the patrol flight will spawn near the first patrol point(pos1).
+
+        Args:
+            pg(unitgroup.FlyingGroup): Group to add patrol waypoints too
+            pos1(dcs.mapping.Point): first orbit waypoint
+            pos2(dcs.mapping.Point): second orbit waypoint
+            speed: orbit speed
+            altitude: initial altitude and orbit altitude
+            max_engage_distance: the distance in KM the patrol flight will respond to enemy threats
+
+        Returns:
+            PlaneGroup: the created patrol group
+        """
+        pg.points[0].tasks[0] = task.EngageTargets(max_engage_distance, [task.Targets.All.Air])
+        wp = pg.add_waypoint(pos1, altitude, speed, self.string("P1"))
+        wp.tasks.append(task.OrbitAction(altitude, speed, task.OrbitAction.OrbitPattern.RaceTrack))
+        pg.add_waypoint(pos2, altitude, speed, self.string("P2"))
+
+        return pg
 
     def intercept_flight(self,
                          country,
@@ -1375,9 +1402,7 @@ class Mission:
                     start_type: StartType=StartType.Cold,
                     max_engage_distance=20 * 1000,
                     group_size=2) -> unitgroup.PlaneGroup:
-        """Plans a strike mission at the given target.
-
-        If no airport is given, the patrol flight will spawn near the first patrol point(pos1).
+        """Plans a sead mission at the given target position.
 
         Args:
             country(Country): the flight belongs too
@@ -1390,7 +1415,7 @@ class Mission:
             group_size: how many planes should be in the flight group
 
         Returns:
-            PlaneGroup: the created strike group
+            PlaneGroup: the created sead group
         """
         if airport:
             eg = self.flight_group_from_airport(
@@ -1408,23 +1433,41 @@ class Mission:
                 group_size=group_size
             )
 
-        speed = plane_type.max_speed * 0.8
+        return self.sead_flight_to_group(eg, target_pos, max_engage_distance)
 
-        attack_hdg = eg.position.heading_between_point(target_pos) + 180
+    def sead_flight_to_group(self,
+                             sg: unitgroup.FlyingGroup,
+                             target_pos: mapping.Point,
+                             max_engage_distance=20 * 1000) -> unitgroup.PlaneGroup:
+        """Plans a sead mission at the given target position.
+
+        Args:
+            sg(unitgroup.FlyingGroup): PlaneType for the patrol flight
+            target_pos(mapping.Point): AAA position
+            max_engage_distance: the distance in KM to engage
+
+        Returns:
+            PlaneGroup: the created sead group
+        """
+
+        speed = sg.flight_type().max_speed * 0.8
+
+        attack_hdg = sg.position.heading_between_point(target_pos) + 180
         var_hdg = random.randint(-15, 15)
-        wp = eg.add_waypoint(target_pos.point_from_heading(attack_hdg + var_hdg, 30000), 5000, speed)
-        wp.name = self.string("Fence in")
-        wp = eg.add_waypoint(target_pos, 0, speed)
-        wp.tasks.append(task.EngageTargets(max_engage_distance, [task.Targets.All.GroundUnits.AirDefence]))
+        wp = sg.add_waypoint(target_pos.point_from_heading(attack_hdg + var_hdg, 30000), 5000, speed)
         wp.name = self.string("IP")
-        wp = eg.add_waypoint(target_pos.point_from_heading(attack_hdg - var_hdg, 30000), 5000, speed)
+        wp = sg.add_waypoint(target_pos, 0, speed)
+        wp.tasks.append(task.EngageTargets(max_engage_distance, [task.Targets.All.GroundUnits.AirDefence]))
+        wp.name = self.string("SEAD")
+        wp = sg.add_waypoint(target_pos.point_from_heading(attack_hdg - var_hdg, 30000), 5000, speed)
         wp.name = self.string("Fence out")
 
-        if airport:
-            eg.add_runway_waypoint(airport)
-            eg.land_at(airport)
+        if sg.starts_from_airport():
+            airport = self.terrain.airport_by_id(sg.airport_id())
+            sg.add_runway_waypoint(airport)
+            sg.land_at(airport)
 
-        return eg
+        return sg
 
     def strike_flight(self,
                       country,
@@ -1490,9 +1533,9 @@ class Mission:
         attack_hdg = sf.position.heading_between_point(target.position) + 180
         var_hdg = random.randint(-15, 15)
         wp = sf.add_waypoint(target.position.point_from_heading(attack_hdg + var_hdg, 30000), altitude, speed)
-        wp.name = self.string("Fence in")
-        wp = sf.add_waypoint(target.position, 0, speed)
         wp.name = self.string("IP")
+        wp = sf.add_waypoint(target.position, 0, speed)
+        wp.name = self.string("Attack")
         wp = sf.add_waypoint(target.position.point_from_heading(attack_hdg - var_hdg, 30000), altitude, speed)
         wp.name = self.string("Fence out")
 
