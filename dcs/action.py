@@ -679,7 +679,9 @@ class MessageToCoalition(Action):
 
     def __init__(self, coalitionlist: Coalition=Coalition.Blue, text=String(), seconds=10, clearview=False):
         super(MessageToCoalition, self).__init__(MessageToCoalition.predicate)
-        self.coalitionlist = coalitionlist
+        if not isinstance(coalitionlist, Coalition):
+            raise TypeError("Unexpected type for coalitionlist")
+        self.coalitionlist = coalitionlist.value
         self.params.append(self.coalitionlist)
         self.text = text
         self.params.append(self.text)
