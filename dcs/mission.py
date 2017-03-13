@@ -992,7 +992,7 @@ class Mission:
                                country: Country,
                                name,
                                aircraft_type: unittype.FlyingType,
-                               carrier_unit: Union[Ship, Static],
+                               pad_group: Union[unitgroup.ShipGroup, unitgroup.StaticGroup],
                                maintask: task.MainTask = None,
                                start_type: StartType = StartType.Cold,
                                group_size=1) -> Union[unitgroup.PlaneGroup, unitgroup.HelicopterGroup]:
@@ -1003,7 +1003,7 @@ class Mission:
             name: Name of the aircraft group
             maintask(MainTask): Task of the aircraft group
             aircraft_type(FlyingType): FlyingType class that describes the aircraft_type
-            carrier_unit(Unit): Group(Ship, FARP) on which to spawn
+            pad_group(Unit): Group(Ship, FARP) on which to spawn
             start_type(StartType): Start from runway, cold or warm parking position, ignored for now
             group_size: number of units in the group(maximum 4 or 1 for certain types)
 
@@ -1021,8 +1021,8 @@ class Mission:
             p = self.aircraft(name + " Pilot #{nr}".format(nr=i), aircraft_type, country)
             ag.add_unit(p)
 
-        ag.units[0].position = copy.copy(carrier_unit.position)
-        ag.formation_rectangle(carrier_unit.heading, 10)
+        ag.units[0].position = copy.copy(pad_group.position)
+        ag.formation_rectangle(pad_group.heading, 10)
 
         ag.load_task_default_loadout(maintask)
 
@@ -1037,7 +1037,8 @@ class Mission:
         mp.type = point_start_type_map[start_type][0]
         mp.action = point_start_type_map[start_type][1]
         mp.position = copy.copy(ag.units[0].position)
-        mp.helipad_id = carrier_unit.id
+        mp.helipad_id = pad_group.units[0].id
+        mp.link_unit = pad_group.units[0].id
         mp.alt = ag.units[0].alt
         mp.properties = PointProperties()
         Mission._load_tasks(mp, maintask)
