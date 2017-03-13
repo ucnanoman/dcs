@@ -26,6 +26,7 @@ from . import weather
 from . import triggers
 from . import condition
 from . import action
+from . import unit
 from .country import Country
 from .forcedoptions import ForcedOptions
 from .goals import Goals
@@ -529,6 +530,49 @@ class Mission:
         sg = unitgroup.StaticGroup(self.next_group_id(), self.string(name))
 
         s = self.static(name + " object", _type)
+        s.position = copy.copy(position)
+        s.heading = heading
+        sg.add_unit(s)
+
+        sg.hidden = hidden
+        sg.dead = dead
+
+        sp = StaticPoint()
+        sp.position = s.position
+        sg.add_point(sp)
+
+        country.add_static_group(sg)
+        return sg
+
+    def farp(self,
+             country,
+             name,
+             position: mapping.Point,
+             frequency=127.5,
+             modulation=task.Modulation.AM.value,
+             callsign_id=1,
+             heading=0,
+             hidden=False,
+             dead=False):
+        """Add a static group with 1 static object.
+
+        Args:
+            country(Country): the object belongs too
+            name: name of the farp
+            position(dcs.mapping.Point): where to place the object
+            frequency: radio frequency for ATC operation
+            modulation: AM or FM
+            callsign_id: index of the callsign to use
+            heading: of the object
+            hidden: should the object be hidden on the map
+            dead: should the object be rendered as dead
+
+        Returns:
+            StaticGroup: the new farp group
+        """
+        sg = unitgroup.StaticGroup(self.next_group_id(), self.string(name))
+
+        s = unit.FARP(self.next_unit_id(), self.string(name), frequency, modulation, callsign_id)
         s.position = copy.copy(position)
         s.heading = heading
         sg.add_unit(s)

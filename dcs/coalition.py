@@ -4,7 +4,7 @@ from . import unitgroup
 from . import planes
 from . import helicopters
 from . import ships
-from dcs.unit import Vehicle, Plane, Helicopter, Static, Ship
+from dcs.unit import Vehicle, Plane, Helicopter, Static, Ship, FARP
 from dcs.point import MovingPoint, StaticPoint
 from dcs.country import Country
 
@@ -169,10 +169,16 @@ class Coalition:
                     # units
                     for imp_unit_idx in sgroup["units"]:
                         imp_unit = sgroup["units"][imp_unit_idx]
-                        static = Static(
-                            unit_id=imp_unit["unitId"],
-                            name=mission.translation.get_string(imp_unit["name"]),
-                            _type=imp_unit["type"])
+                        if imp_unit["type"] == "FARP":
+                            static = FARP(
+                                unit_id=imp_unit["unitId"],
+                                name=mission.translation.get_string(imp_unit["name"]),
+                                _type=imp_unit["type"])
+                        else:
+                            static = Static(
+                                unit_id=imp_unit["unitId"],
+                                name=mission.translation.get_string(imp_unit["name"]),
+                                _type=imp_unit["type"])
                         static.load_from_dict(imp_unit)
 
                         mission.current_unit_id = max(mission.current_unit_id, static.id)

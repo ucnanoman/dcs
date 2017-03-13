@@ -314,3 +314,28 @@ class Static(Unit):
         if self.mass is not None:
             d["mass"] = self.mass
         return d
+
+
+class FARP(Static):
+    def __init__(self, unit_id=None, name=None, frequency=127.5, modulation=0, callsign_id=1):
+        super(FARP, self).__init__(unit_id, name, "FARP")
+        self.category = "Heliports"
+        self.shape_name = "FARPS"
+        self.heliport_frequency = frequency
+        self.heliport_modulation = modulation
+        self.heliport_callsign_id = callsign_id
+        self.can_cargo = False
+
+    def load_from_dict(self, d):
+        super(FARP, self).load_from_dict(d)
+        self.heliport_frequency = d["heliport_frequency"]
+        self.heliport_modulation = d["heliport_modulation"]
+        self.heliport_callsign_id = int(d["heliport_callsign_id"])
+
+    def dict(self):
+        d = super(FARP, self).dict()
+        d["heliport_frequency"] = self.heliport_frequency
+        d["heliport_modulation"] = self.heliport_modulation
+        d["heliport_callsign_id"] = self.heliport_callsign_id
+
+        return d
