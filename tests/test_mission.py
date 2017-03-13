@@ -141,7 +141,7 @@ class BasicTests(unittest.TestCase):
 
         # carrier with aircraft
         sg = m.ship_group(usa, "CVN", dcs.countries.USA.Ship.CVN_70_Carl_Vinson, seapoint)
-        m.flight_group_from_unit(usa, "F18 Carrier", dcs.planes.F_A_18C, sg.units[0], group_size=4)
+        m.flight_group_from_unit(usa, "F18 Carrier", dcs.planes.F_A_18C, sg, group_size=4)
 
         # some statics
         m.static_group(usa, "Static", dcs.statics.Fortification.Cafe, batumi.unit_zones[0].random_point())

@@ -1066,7 +1066,7 @@ class Mission:
             ag.add_unit(p)
 
         ag.units[0].position = copy.copy(pad_group.position)
-        ag.formation_rectangle(pad_group.heading, 10)
+        ag.formation_rectangle(pad_group.units[0].heading, 10)
 
         ag.load_task_default_loadout(maintask)
 
