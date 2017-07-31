@@ -284,7 +284,7 @@ class Mission:
         self.currentKey = imp_mission["currentKey"]
         self.start_time = datetime.fromtimestamp(1306886400 + imp_mission["start_time"], timezone.utc)
         self.usedModules = imp_mission.get("usedModules", None)
-        self.needModules = imp_mission["needModules"]
+        self.needModules = imp_mission.get("needModules", None)
 
         # groundControl
         self.groundControl = GroundControl()
@@ -1829,7 +1829,8 @@ class Mission:
         m["triggers"] = self.triggers.dict()
         m["weather"] = self.weather.dict()
         m["theatre"] = self.terrain.name
-        m["needModules"] = self.needModules
+        if self.needModules:
+            m["needModules"] = self.needModules
         m["map"] = self.map.dict()
         m["descriptionText"] = self._description_text.id
         m["pictureFileNameR"] = {}
