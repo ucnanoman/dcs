@@ -1,4 +1,4 @@
-from .unitgroup import VehicleGroup, ShipGroup, PlaneGroup, StaticGroup, HelicopterGroup, FlyingGroup
+from .unitgroup import VehicleGroup, ShipGroup, PlaneGroup, StaticGroup, HelicopterGroup, FlyingGroup, Group
 from typing import List, Dict
 
 
@@ -100,7 +100,7 @@ class Country:
                 return group
         return None
 
-    def vehicle_group_within(self, point, distance):
+    def vehicle_group_within(self, point, distance) -> List[Group]:
         """Return all vehicle groups within the radius of a given point.
 
         Args:
@@ -112,7 +112,7 @@ class Country:
         """
         return [x for x in self.vehicle_group if x.position.distance_to_point(point) < distance]
 
-    def static_group_within(self, point, distance):
+    def static_group_within(self, point, distance) -> List[Group]:
         """Return all static groups within the radius of a given point.
 
         Args:
