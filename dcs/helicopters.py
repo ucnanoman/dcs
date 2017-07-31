@@ -593,6 +593,7 @@ class Mi_8MTV2(HelicopterType):
         "RightEngineResource": 90,
         "AdditionalArmor": True,
         "CargoHalfdoor": True,
+        "GunnersAISkill": 90,
     }
 
     class Properties:
@@ -611,6 +612,9 @@ class Mi_8MTV2(HelicopterType):
 
         class CargoHalfdoor:
             id = "CargoHalfdoor"
+
+        class GunnersAISkill:
+            id = "GunnersAISkill"
 
     class Liveries:
 
@@ -1767,7 +1771,7 @@ class OH_58D(HelicopterType):
     height = 2.29
     width = 10.53
     length = 10.48
-    fuel_max = 1100
+    fuel_max = 454
     max_speed = 220
     chaff = 30
     flare = 30
@@ -1912,39 +1916,158 @@ class SA342L(HelicopterType):
 
     class Liveries:
 
+        class Georgia(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
         class Syria(Enum):
             Syria_Fictional = "Syria Fictional"
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Finland(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Australia(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
 
         class Germany(Enum):
             Germany_Fictional = "Germany Fictional"
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class SaudiArabia(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
 
         class Israel(Enum):
             Israel_Fictional = "Israel Fictional"
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Croatia(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class CzechRepublic(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Norway(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Romania(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Spain(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Ukraine(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Belgium(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Slovakia(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
 
         class Greece(Enum):
             Greece_Cyprus_Fictional_Desert = "Greece Cyprus Fictional Desert"
+            US_Marines_Fictional = "US Marines Fictional"
 
         class UK(Enum):
             UK_Fictional = "UK Fictional"
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Insurgents(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Hungary(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
 
         class France(Enum):
             Combat = "Combat"
             Tiger_Meet = "Tiger Meet"
             Tiger_Meet_2 = "Tiger Meet 2"
             Training = "Training"
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Abkhazia(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
 
         class Russia(Enum):
             Russia_Fictional = "Russia Fictional"
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Sweden(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Austria(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Switzerland(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Italy(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class SouthOssetia(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class SouthKorea(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Iran(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class China(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Pakistan(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Belarus(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class NorthKorea(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Iraq(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Kazakhstan(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Bulgaria(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
 
         class Serbia(Enum):
             Serbia_Fictional = "Serbia Fictional"
+            US_Marines_Fictional = "US Marines Fictional"
             Yugoslav_Fictional = "Yugoslav Fictional"
+
+        class India(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class USAFAggressors(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
 
         class USA(Enum):
             US_Marines_Fictional = "US Marines Fictional"
 
-    class Pylon1:
-        pass
+        class Denmark(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Egypt(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Canada(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class TheNetherlands(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Turkey(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Japan(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
+
+        class Poland(Enum):
+            US_Marines_Fictional = "US Marines Fictional"
 
     class Pylon2:
         LAU_SNEB68G___8xSNEB68_EAP = (2, Weapons.LAU_SNEB68G___8xSNEB68_EAP)

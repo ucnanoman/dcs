@@ -72,6 +72,21 @@ class Infantry:
         id = "Soldier RPG"
         name = "Soldier RPG"
 
+    class Infantry_Mauser_98(unittype.VehicleType):
+        id = "soldier_mauser98"
+        name = "Infantry Mauser 98"
+
+    class Infantry_M1_Garand(unittype.VehicleType):
+        id = "soldier_wwii_us"
+        name = "Infantry M1 Garand"
+
+
+class Locomotive:
+
+    class DRG_Class_86(unittype.VehicleType):
+        id = "DRG_Class_86"
+        name = "DRG Class 86"
+
 
 class Unarmed:
 
@@ -156,9 +171,9 @@ class Unarmed:
         id = "UAZ-469"
         name = "Transport UAZ-469"
 
-    class Transport_fire_Engine_Ural_ATsP_6(unittype.VehicleType):
+    class Transport_fire_engine_Ural_ATsP_6(unittype.VehicleType):
         id = "Ural ATsP-6"
-        name = "Transport fire-Engine Ural ATsP-6"
+        name = "Transport fire-engine Ural ATsP-6"
 
     class Transport_Ural_4320_31_Armored(unittype.VehicleType):
         id = "Ural-4320-31"
@@ -199,6 +214,26 @@ class Unarmed:
     class Transport_KrAZ_6322(unittype.VehicleType):
         id = "KrAZ6322"
         name = "Transport KrAZ-6322"
+
+    class Kübelwagen_82(unittype.VehicleType):
+        id = "Kubelwagen_82"
+        name = "Kübelwagen 82"
+
+    class Blitz_3_6_6700A(unittype.VehicleType):
+        id = "Blitz_36-6700A"
+        name = "Blitz 3.6-6700A"
+
+    class Bedford_MWD(unittype.VehicleType):
+        id = "Bedford_MWD"
+        name = "Bedford MWD"
+
+    class CCKW_353(unittype.VehicleType):
+        id = "CCKW_353"
+        name = "CCKW 353"
+
+    class Willys_MB(unittype.VehicleType):
+        id = "Willys_MB"
+        name = "Willys MB"
 
 
 class Armor:
@@ -343,6 +378,57 @@ class Armor:
         id = "Merkava_Mk4"
         name = "MBT Merkava Mk. 4"
 
+    class HT_Pz_Kpfw_VI_Tiger_I(unittype.VehicleType):
+        id = "Tiger_I"
+        name = "HT Pz.Kpfw.VI Tiger I"
+
+    class HT_Pz_Kpfw_VI_Ausf__B__Tiger_II(unittype.VehicleType):
+        id = "Tiger_II_H"
+        name = "HT Pz.Kpfw.VI Ausf. B 'Tiger II'"
+
+    class MT_Pz_Kpfw_V_Panther_Ausf_G(unittype.VehicleType):
+        id = "Pz_V_Panther_G"
+        name = "MT Pz.Kpfw.V Panther Ausf.G"
+
+    class MT_Pz_Kpfw_IV_Ausf_H(unittype.VehicleType):
+        id = "Pz_IV_H"
+        name = "MT Pz.Kpfw.IV Ausf.H"
+
+    class Jagdpanther_G1(unittype.VehicleType):
+        id = "Jagdpanther_G1"
+        name = "Jagdpanther G1"
+
+    class Jagdpanzer_IV(unittype.VehicleType):
+        id = "JagdPz_IV"
+        name = "Jagdpanzer IV"
+
+    class CT_Cromwell_IV(unittype.VehicleType):
+        id = "Cromwell_IV"
+        name = "CT Cromwell IV"
+
+    class MT_M4A4_Sherman_Firefly(unittype.VehicleType):
+        id = "M4A4_Sherman_FF"
+        name = "MT M4A4 Sherman Firefly"
+
+    class MT_M4_Sherman(unittype.VehicleType):
+        id = "M4_Sherman"
+        name = "MT M4 Sherman"
+
+
+class Carriage:
+
+    class DR_50Ton_Flat_Wagon(unittype.VehicleType):
+        id = "DR_50Ton_Flat_Wagon"
+        name = "DR 50Ton Flat Wagon"
+
+    class German_covered_wagon_G10(unittype.VehicleType):
+        id = "German_covered_wagon_G10"
+        name = "German covered wagon G10"
+
+    class German_tank_wagon(unittype.VehicleType):
+        id = "German_tank_wagon"
+        name = "German tank wagon"
+
 
 class Artillery:
 
@@ -371,6 +457,10 @@ class Artillery:
         name = "SPH M109 Paladin"
         eprls = True
 
+    class SpGH_Dana(unittype.VehicleType):
+        id = "SpGH_Dana"
+        name = "SpGH Dana"
+
     class MLRS_BM_21_Grad(unittype.VehicleType):
         id = "Grad-URAL"
         name = "MLRS BM-21 Grad"
@@ -387,6 +477,14 @@ class Artillery:
         id = "MLRS"
         name = "MLRS M270"
         eprls = True
+
+    class Sturmpanzer_IV_Brummbär(unittype.VehicleType):
+        id = "SturmPzIV"
+        name = "Sturmpanzer IV Brummbär"
+
+    class SK_C_28_15cm_naval_gun(unittype.VehicleType):
+        id = "SK_C_28_naval_gun"
+        name = "SK C/28 15cm naval gun"
 
 
 class AirDefence:
@@ -622,6 +720,30 @@ class AirDefence:
         id = "snr s-125 tr"
         name = "SAM SA-3 S-125 TR SNR"
 
+    class AAA_Flak_18(unittype.VehicleType):
+        id = "flak18"
+        name = "AAA Flak 18"
+
+    class AAA_Flak_30(unittype.VehicleType):
+        id = "flak30"
+        name = "AAA Flak 30"
+
+    class AAA_Flak_36(unittype.VehicleType):
+        id = "flak36"
+        name = "AAA Flak 36"
+
+    class AAA_Flak_37(unittype.VehicleType):
+        id = "flak37"
+        name = "AAA Flak 37"
+
+    class AAA_Flak_Vierling_38(unittype.VehicleType):
+        id = "flak38"
+        name = "AAA Flak-Vierling 38"
+
+    class AAA_Bofors_40mm(unittype.VehicleType):
+        id = "bofors40"
+        name = "AAA Bofors 40mm"
+
 vehicle_map = {
     "2B11 mortar": Artillery._2B11_mortar,
     "SAU Gvozdika": Artillery.SPH_2S1_Gvozdika,
@@ -629,6 +751,7 @@ vehicle_map = {
     "SAU Akatsia": Artillery.SPH_2S3_Akatsia,
     "SAU 2-C9": Artillery.SPH_2S9_Nona,
     "M-109": Artillery.SPH_M109_Paladin,
+    "SpGH_Dana": Artillery.SpGH_Dana,
     "AAV7": Armor.APC_AAV_7,
     "BMD-1": Armor.IFV_BMD_1,
     "BMP-1": Armor.IFV_BMP_1,
@@ -758,7 +881,7 @@ vehicle_map = {
     "Tigr_233036": Unarmed.APC_Tigr_233036,
     "Trolley bus": Unarmed.Transport_ZIU_9,
     "UAZ-469": Unarmed.Transport_UAZ_469,
-    "Ural ATsP-6": Unarmed.Transport_fire_Engine_Ural_ATsP_6,
+    "Ural ATsP-6": Unarmed.Transport_fire_engine_Ural_ATsP_6,
     "Ural-4320-31": Unarmed.Transport_Ural_4320_31_Armored,
     "Ural-4320T": Unarmed.Transport_Ural_4320T,
     "Ural-375 PBU": Unarmed.CP_Ural_375_PBU,
@@ -769,4 +892,32 @@ vehicle_map = {
     "ZIL-131 KUNG": Unarmed.Transport_ZIL_131_KUNG,
     "ZIL-4331": Unarmed.Transport_ZIL_4331,
     "KrAZ6322": Unarmed.Transport_KrAZ_6322,
+    "Kubelwagen_82": Unarmed.Kübelwagen_82,
+    "Blitz_36-6700A": Unarmed.Blitz_3_6_6700A,
+    "Tiger_I": Armor.HT_Pz_Kpfw_VI_Tiger_I,
+    "Tiger_II_H": Armor.HT_Pz_Kpfw_VI_Ausf__B__Tiger_II,
+    "Pz_V_Panther_G": Armor.MT_Pz_Kpfw_V_Panther_Ausf_G,
+    "Pz_IV_H": Armor.MT_Pz_Kpfw_IV_Ausf_H,
+    "Jagdpanther_G1": Armor.Jagdpanther_G1,
+    "JagdPz_IV": Armor.Jagdpanzer_IV,
+    "SturmPzIV": Artillery.Sturmpanzer_IV_Brummbär,
+    "flak18": AirDefence.AAA_Flak_18,
+    "flak30": AirDefence.AAA_Flak_30,
+    "flak36": AirDefence.AAA_Flak_36,
+    "flak37": AirDefence.AAA_Flak_37,
+    "flak38": AirDefence.AAA_Flak_Vierling_38,
+    "soldier_mauser98": Infantry.Infantry_Mauser_98,
+    "SK_C_28_naval_gun": Artillery.SK_C_28_15cm_naval_gun,
+    "Bedford_MWD": Unarmed.Bedford_MWD,
+    "Cromwell_IV": Armor.CT_Cromwell_IV,
+    "M4A4_Sherman_FF": Armor.MT_M4A4_Sherman_Firefly,
+    "bofors40": AirDefence.AAA_Bofors_40mm,
+    "CCKW_353": Unarmed.CCKW_353,
+    "Willys_MB": Unarmed.Willys_MB,
+    "M4_Sherman": Armor.MT_M4_Sherman,
+    "soldier_wwii_us": Infantry.Infantry_M1_Garand,
+    "DR_50Ton_Flat_Wagon": Carriage.DR_50Ton_Flat_Wagon,
+    "DRG_Class_86": Locomotive.DRG_Class_86,
+    "German_covered_wagon_G10": Carriage.German_covered_wagon_G10,
+    "German_tank_wagon": Carriage.German_tank_wagon,
 }

@@ -103,6 +103,16 @@ class SSK_641B(unittype.ShipType):
     id = "SOM"
     name = "SSK 641B"
 
+
+class LST_Mk_II(unittype.ShipType):
+    id = "LST_Mk2"
+    name = "LST Mk.II"
+
+
+class LS_Samuel_Chase(unittype.ShipType):
+    id = "USS_Samuel_Chase"
+    name = "LS Samuel Chase"
+
 ship_map = {
     "speedboat": Armed_speedboat,
     "VINSON": CVN_70_Carl_Vinson,
@@ -121,4 +131,6 @@ ship_map = {
     "ZWEZDNY": Civil_boat_Zvezdny,
     "KILO": SSK_877,
     "SOM": SSK_641B,
+    "LST_Mk2": LST_Mk_II,
+    "USS_Samuel_Chase": LS_Samuel_Chase,
 }

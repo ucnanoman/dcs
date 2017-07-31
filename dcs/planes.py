@@ -307,6 +307,58 @@ class F_A_18C(PlaneType):
     flare_charge_size = 2
     eplrs = True
     category = "Interceptor"
+    radio_frequency = 305
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 305,
+                2: 264,
+                4: 256,
+                8: 257,
+                16: 261,
+                17: 267,
+                9: 255,
+                18: 251,
+                5: 254,
+                10: 262,
+                20: 266,
+                11: 259,
+                3: 265,
+                6: 250,
+                12: 268,
+                13: 269,
+                7: 270,
+                14: 260,
+                19: 253,
+                15: 263
+            },
+        },
+        2: {
+            "channels": {
+                1: 305,
+                2: 264,
+                4: 256,
+                8: 257,
+                16: 261,
+                17: 267,
+                9: 255,
+                18: 251,
+                5: 254,
+                10: 262,
+                20: 266,
+                11: 259,
+                3: 265,
+                6: 250,
+                12: 268,
+                13: 269,
+                7: 270,
+                14: 260,
+                19: 253,
+                15: 263
+            },
+        },
+    }
 
     class Liveries:
 
@@ -320,12 +372,11 @@ class F_A_18C(PlaneType):
             VFC_12 = "VFC-12"
 
     class Pylon1:
+        AIM_9M = (1, Weapons.AIM_9M)
+        AIM_9P5 = (1, Weapons.AIM_9P5)
         AIM_120B = (1, Weapons.AIM_120B)
         AIM_120C = (1, Weapons.AIM_120C)
         AN_ASQ_T50_TCTS_Pod = (1, Weapons.AN_ASQ_T50_TCTS_Pod)
-        AIM_9M = (1, Weapons.AIM_9M)
-        AIM_9P = (1, Weapons.AIM_9P)
-        AIM_9P5 = (1, Weapons.AIM_9P5)
 
     class Pylon2:
         AIM_120B = (2, Weapons.AIM_120B)
@@ -360,6 +411,7 @@ class F_A_18C(PlaneType):
         GBU_31 = (2, Weapons.GBU_31)
         GBU_38 = (2, Weapons.GBU_38)
         LAU_117_AGM_65G = (2, Weapons.LAU_117_AGM_65G)
+        LAU_115_2_LAU_127_AIM_9M = (2, Weapons.LAU_115_2_LAU_127_AIM_9M)
 
     class Pylon3:
         AIM_120B = (3, Weapons.AIM_120B)
@@ -470,14 +522,14 @@ class F_A_18C(PlaneType):
         LAU_68___7_2_75__rockets_WTU1B__Practice_ = (8, Weapons.LAU_68___7_2_75__rockets_WTU1B__Practice_)
         LAU_68___7_2_75__rockets_M257__Parachute_illumination_ = (8, Weapons.LAU_68___7_2_75__rockets_M257__Parachute_illumination_)
         LAU_68___7_2_75__rockets_M274__Practice_smoke_ = (8, Weapons.LAU_68___7_2_75__rockets_M274__Practice_smoke_)
+        LAU_115_2_LAU_127_AIM_9M = (8, Weapons.LAU_115_2_LAU_127_AIM_9M)
 
     class Pylon9:
+        AIM_9M = (9, Weapons.AIM_9M)
+        AIM_9P5 = (9, Weapons.AIM_9P5)
         AIM_120B = (9, Weapons.AIM_120B)
         AIM_120C = (9, Weapons.AIM_120C)
         AN_ASQ_T50_TCTS_Pod = (9, Weapons.AN_ASQ_T50_TCTS_Pod)
-        AIM_9M = (9, Weapons.AIM_9M)
-        AIM_9P = (9, Weapons.AIM_9P)
-        AIM_9P5 = (9, Weapons.AIM_9P5)
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9}
 
@@ -504,22 +556,18 @@ class MiG_29S(PlaneType):
     class Liveries:
 
         class Ukraine(Enum):
-            _14th_army__vinnitsa_ab = "14th army, vinnitsa ab"
-            _9th_fw_belbek_ab = "9th fw belbek ab"
-            _ukrainian_falcons__paint_scheme = "`ukrainian falcons` paint scheme"
-
-        class Greece(Enum):
-            HAF_AEGEAN_BLUE = "HAF AEGEAN BLUE"
-            HAF_AEGEAN_GHOST = "HAF AEGEAN GHOST"
+            Air_Force_Ukraine_Standard = "Air Force Ukraine Standard"
 
         class Russia(Enum):
-            _1038th_guards_ctc__mary_ab = "1038th guards ctc, mary ab"
-            _115th_guards_regiment__termez_ab = "115th guards regiment, termez ab"
-            _120th_guards_regiment__domna_ab = "120th guards regiment, domna ab"
-            _2nd_fs__swifts__team__kubinka_ab = "2nd fs `swifts` team, kubinka ab"
-            _4th_ctc_lypetsk_ab = "4th ctc lypetsk ab"
-            _733th_guards_regiment__damgarten_ab__gdr = "733th guards regiment, damgarten ab (gdr)"
-            _73th_guards_regiment__merzeburg_ab__gdr = "73th guards regiment, merzeburg ab (gdr)"
+            Air_Force_Standard = "Air Force Standard"
+            _28_GvIAP_Andreapol = "28 GvIAP_Andreapol"
+            _773_IAP_Damgarten = "773 IAP_Damgarten"
+            _426th_Air_Group_Erebuni = "426th Air Group_Erebuni"
+            Falcons_of_Russia = "Falcons of Russia"
+            _1521th_Air_base_Mary_1 = "1521th Air base_Mary-1"
+            Swifts = "Swifts"
+            _115_GvIAP_Termez = "115 GvIAP_Termez"
+            _31_GvIAP_Zernograd = "31 GvIAP_Zernograd"
 
     class Pylon1:
         R_60M = (1, Weapons.R_60M)
@@ -543,8 +591,10 @@ class MiG_29S(PlaneType):
         FAB_250 = (2, Weapons.FAB_250)
         FAB_500_M62 = (2, Weapons.FAB_500_M62)
         RBK_250_PTAB_2_5M = (2, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (2, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (2, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (2, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (2, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (2, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (2, Weapons.RBK_500_PTAB_1M)
         KMGU_2___96_AO_2_5RT = (2, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (2, Weapons.KMGU_2___96_PTAB_2_5KO)
         Smoke_Generator___red = (2, Weapons.Smoke_Generator___red)
@@ -571,8 +621,10 @@ class MiG_29S(PlaneType):
         FAB_250 = (3, Weapons.FAB_250)
         FAB_500_M62 = (3, Weapons.FAB_500_M62)
         RBK_250_PTAB_2_5M = (3, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (3, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (3, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (3, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (3, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (3, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (3, Weapons.RBK_500_PTAB_1M)
         KMGU_2___96_AO_2_5RT = (3, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (3, Weapons.KMGU_2___96_PTAB_2_5KO)
         Fuel_tank_1150L_MiG_29 = (3, Weapons.Fuel_tank_1150L_MiG_29)
@@ -609,8 +661,10 @@ class MiG_29S(PlaneType):
         FAB_250 = (5, Weapons.FAB_250)
         FAB_500_M62 = (5, Weapons.FAB_500_M62)
         RBK_250_PTAB_2_5M = (5, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (5, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (5, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (5, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (5, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (5, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (5, Weapons.RBK_500_PTAB_1M)
         KMGU_2___96_AO_2_5RT = (5, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (5, Weapons.KMGU_2___96_PTAB_2_5KO)
         Fuel_tank_1150L_MiG_29 = (5, Weapons.Fuel_tank_1150L_MiG_29)
@@ -634,8 +688,10 @@ class MiG_29S(PlaneType):
         FAB_250 = (6, Weapons.FAB_250)
         FAB_500_M62 = (6, Weapons.FAB_500_M62)
         RBK_250_PTAB_2_5M = (6, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (6, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (6, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (6, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (6, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (6, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (6, Weapons.RBK_500_PTAB_1M)
         KMGU_2___96_AO_2_5RT = (6, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (6, Weapons.KMGU_2___96_PTAB_2_5KO)
         Smoke_Generator___red = (6, Weapons.Smoke_Generator___red)
@@ -714,8 +770,9 @@ class MiG_29A(PlaneType):
         FAB_250 = (2, Weapons.FAB_250)
         FAB_500_M62 = (2, Weapons.FAB_500_M62)
         RBK_250_PTAB_2_5M = (2, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (2, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (2, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (2, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500_255_PTAB_10_5 = (2, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (2, Weapons.RBK_500_PTAB_1M)
         KMGU_2___96_AO_2_5RT = (2, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (2, Weapons.KMGU_2___96_PTAB_2_5KO)
         Smoke_Generator___red = (2, Weapons.Smoke_Generator___red)
@@ -742,8 +799,9 @@ class MiG_29A(PlaneType):
         FAB_250 = (3, Weapons.FAB_250)
         FAB_500_M62 = (3, Weapons.FAB_500_M62)
         RBK_250_PTAB_2_5M = (3, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (3, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (3, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (3, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500_255_PTAB_10_5 = (3, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (3, Weapons.RBK_500_PTAB_1M)
         KMGU_2___96_AO_2_5RT = (3, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (3, Weapons.KMGU_2___96_PTAB_2_5KO)
         Smoke_Generator___red = (3, Weapons.Smoke_Generator___red)
@@ -779,8 +837,9 @@ class MiG_29A(PlaneType):
         FAB_250 = (5, Weapons.FAB_250)
         FAB_500_M62 = (5, Weapons.FAB_500_M62)
         RBK_250_PTAB_2_5M = (5, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (5, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (5, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (5, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500_255_PTAB_10_5 = (5, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (5, Weapons.RBK_500_PTAB_1M)
         KMGU_2___96_AO_2_5RT = (5, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (5, Weapons.KMGU_2___96_PTAB_2_5KO)
         Smoke_Generator___red = (5, Weapons.Smoke_Generator___red)
@@ -802,8 +861,9 @@ class MiG_29A(PlaneType):
         FAB_250 = (6, Weapons.FAB_250)
         FAB_500_M62 = (6, Weapons.FAB_500_M62)
         RBK_250_PTAB_2_5M = (6, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (6, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (6, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (6, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500_255_PTAB_10_5 = (6, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (6, Weapons.RBK_500_PTAB_1M)
         KMGU_2___96_AO_2_5RT = (6, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (6, Weapons.KMGU_2___96_PTAB_2_5KO)
         Smoke_Generator___red = (6, Weapons.Smoke_Generator___red)
@@ -1131,8 +1191,10 @@ class MiG_27K(PlaneType):
         Kh_29T_ = (2, Weapons.Kh_29T_)
         UB_32A___32_S_5KO = (2, Weapons.UB_32A___32_S_5KO)
         B_8M1___20_S_8KOM = (2, Weapons.B_8M1___20_S_8KOM)
-        RBK_500_PTAB_10_5 = (2, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (2, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_PTAB_2_5M = (2, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (2, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500_255_PTAB_10_5 = (2, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (2, Weapons.RBK_500_PTAB_1M)
         FAB_500_M62 = (2, Weapons.FAB_500_M62)
         BetAB_500 = (2, Weapons.BetAB_500)
         BetAB_500ShP = (2, Weapons.BetAB_500ShP)
@@ -1151,6 +1213,7 @@ class MiG_27K(PlaneType):
     class Pylon4:
         FAB_250 = (4, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (4, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (4, Weapons.RBK_250_275_AO_1SCh)
 
     class Pylon5:
         Fuel_tank_800L = (5, Weapons.Fuel_tank_800L)
@@ -1158,6 +1221,7 @@ class MiG_27K(PlaneType):
     class Pylon6:
         FAB_250 = (6, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (6, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (6, Weapons.RBK_250_275_AO_1SCh)
 
     class Pylon7:
         R_60M = (7, Weapons.R_60M)
@@ -1172,8 +1236,10 @@ class MiG_27K(PlaneType):
         Kh_29T_ = (8, Weapons.Kh_29T_)
         UB_32A___32_S_5KO = (8, Weapons.UB_32A___32_S_5KO)
         B_8M1___20_S_8KOM = (8, Weapons.B_8M1___20_S_8KOM)
-        RBK_500_PTAB_10_5 = (8, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (8, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_PTAB_2_5M = (8, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (8, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500_255_PTAB_10_5 = (8, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (8, Weapons.RBK_500_PTAB_1M)
         FAB_500_M62 = (8, Weapons.FAB_500_M62)
         BetAB_500 = (8, Weapons.BetAB_500)
         BetAB_500ShP = (8, Weapons.BetAB_500ShP)
@@ -1878,8 +1944,10 @@ class Su_27(PlaneType):
         BetAB_500 = (3, Weapons.BetAB_500)
         BetAB_500ShP = (3, Weapons.BetAB_500ShP)
         RBK_250_PTAB_2_5M = (3, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (3, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (3, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (3, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500_255_PTAB_10_5 = (3, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (3, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (3, Weapons.RBK_500U_OAB_2_5RT)
         KMGU_2___96_AO_2_5RT = (3, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (3, Weapons.KMGU_2___96_PTAB_2_5KO)
         SAB_100 = (3, Weapons.SAB_100)
@@ -1903,8 +1971,10 @@ class Su_27(PlaneType):
         BetAB_500 = (4, Weapons.BetAB_500)
         BetAB_500ShP = (4, Weapons.BetAB_500ShP)
         RBK_250_PTAB_2_5M = (4, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (4, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (4, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (4, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500_255_PTAB_10_5 = (4, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (4, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (4, Weapons.RBK_500U_OAB_2_5RT)
         KMGU_2___96_AO_2_5RT = (4, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (4, Weapons.KMGU_2___96_PTAB_2_5KO)
         SAB_100 = (4, Weapons.SAB_100)
@@ -1924,8 +1994,10 @@ class Su_27(PlaneType):
         BetAB_500 = (5, Weapons.BetAB_500)
         BetAB_500ShP = (5, Weapons.BetAB_500ShP)
         RBK_250_PTAB_2_5M = (5, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (5, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (5, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (5, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500_255_PTAB_10_5 = (5, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (5, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (5, Weapons.RBK_500U_OAB_2_5RT)
         SAB_100 = (5, Weapons.SAB_100)
         MER_6_FAB_100 = (5, Weapons.MER_6_FAB_100)
         Smoke_Generator___red = (5, Weapons.Smoke_Generator___red)
@@ -1943,8 +2015,10 @@ class Su_27(PlaneType):
         BetAB_500 = (6, Weapons.BetAB_500)
         BetAB_500ShP = (6, Weapons.BetAB_500ShP)
         RBK_250_PTAB_2_5M = (6, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (6, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (6, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (6, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500_255_PTAB_10_5 = (6, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (6, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (6, Weapons.RBK_500U_OAB_2_5RT)
         KMGU_2___96_AO_2_5RT = (6, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (6, Weapons.KMGU_2___96_PTAB_2_5KO)
         SAB_100 = (6, Weapons.SAB_100)
@@ -1958,8 +2032,10 @@ class Su_27(PlaneType):
         BetAB_500 = (7, Weapons.BetAB_500)
         BetAB_500ShP = (7, Weapons.BetAB_500ShP)
         RBK_250_PTAB_2_5M = (7, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (7, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (7, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (7, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500_255_PTAB_10_5 = (7, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (7, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (7, Weapons.RBK_500U_OAB_2_5RT)
         KMGU_2___96_AO_2_5RT = (7, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (7, Weapons.KMGU_2___96_PTAB_2_5KO)
         SAB_100 = (7, Weapons.SAB_100)
@@ -1983,8 +2059,10 @@ class Su_27(PlaneType):
         BetAB_500 = (8, Weapons.BetAB_500)
         BetAB_500ShP = (8, Weapons.BetAB_500ShP)
         RBK_250_PTAB_2_5M = (8, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (8, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (8, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (8, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500_255_PTAB_10_5 = (8, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (8, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (8, Weapons.RBK_500U_OAB_2_5RT)
         KMGU_2___96_AO_2_5RT = (8, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (8, Weapons.KMGU_2___96_PTAB_2_5KO)
         SAB_100 = (8, Weapons.SAB_100)
@@ -2138,9 +2216,10 @@ class MiG_23MLD(PlaneType):
         FAB_250 = (2, Weapons.FAB_250)
         MBD_2_67U___4_FAB_100 = (2, Weapons.MBD_2_67U___4_FAB_100)
         RBK_250_PTAB_2_5M = (2, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (2, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (2, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (2, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (2, Weapons.RBK_500_PTAB_1M)
         FAB_500_M62 = (2, Weapons.FAB_500_M62)
+        RBK_250_275_AO_1SCh = (2, Weapons.RBK_250_275_AO_1SCh)
 
     class Pylon3:
         R_60M_2 = (3, Weapons.R_60M_2)
@@ -2152,9 +2231,10 @@ class MiG_23MLD(PlaneType):
         SAB_100 = (3, Weapons.SAB_100)
         FAB_250 = (3, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (3, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (3, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (3, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (3, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (3, Weapons.RBK_500_PTAB_1M)
         FAB_500_M62 = (3, Weapons.FAB_500_M62)
+        RBK_250_275_AO_1SCh = (3, Weapons.RBK_250_275_AO_1SCh)
 
     class Pylon4:
         Fuel_tank_800L = (4, Weapons.Fuel_tank_800L)
@@ -2169,9 +2249,10 @@ class MiG_23MLD(PlaneType):
         SAB_100 = (5, Weapons.SAB_100)
         FAB_250 = (5, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (5, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (5, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (5, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (5, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (5, Weapons.RBK_500_PTAB_1M)
         FAB_500_M62 = (5, Weapons.FAB_500_M62)
+        RBK_250_275_AO_1SCh = (5, Weapons.RBK_250_275_AO_1SCh)
 
     class Pylon6:
         R_24R = (6, Weapons.R_24R)
@@ -2184,9 +2265,10 @@ class MiG_23MLD(PlaneType):
         FAB_250 = (6, Weapons.FAB_250)
         MBD_2_67U___4_FAB_100 = (6, Weapons.MBD_2_67U___4_FAB_100)
         RBK_250_PTAB_2_5M = (6, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (6, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (6, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (6, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (6, Weapons.RBK_500_PTAB_1M)
         FAB_500_M62 = (6, Weapons.FAB_500_M62)
+        RBK_250_275_AO_1SCh = (6, Weapons.RBK_250_275_AO_1SCh)
 
     pylons = {2, 3, 4, 5, 6}
 
@@ -2250,9 +2332,11 @@ class Su_25(PlaneType):
         MBD_2_67U___4_FAB_100_ = (2, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (2, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (2, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (2, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (2, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (2, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (2, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (2, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (2, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (2, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (2, Weapons.BetAB_500)
         BetAB_500ShP = (2, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (2, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2272,9 +2356,11 @@ class Su_25(PlaneType):
         MBD_2_67U___4_FAB_100_ = (3, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (3, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (3, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (3, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (3, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (3, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (3, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (3, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (3, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (3, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (3, Weapons.BetAB_500)
         BetAB_500ShP = (3, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (3, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2296,9 +2382,11 @@ class Su_25(PlaneType):
         MBD_2_67U___4_FAB_100_ = (4, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (4, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (4, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (4, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (4, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (4, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (4, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (4, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (4, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (4, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (4, Weapons.BetAB_500)
         BetAB_500ShP = (4, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (4, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2320,9 +2408,11 @@ class Su_25(PlaneType):
         MBD_2_67U___4_FAB_100_ = (5, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (5, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (5, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (5, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (5, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (5, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (5, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (5, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (5, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (5, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (5, Weapons.BetAB_500)
         BetAB_500ShP = (5, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (5, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2345,9 +2435,11 @@ class Su_25(PlaneType):
         MBD_2_67U___4_FAB_100_ = (6, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (6, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (6, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (6, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (6, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (6, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (6, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (6, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (6, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (6, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (6, Weapons.BetAB_500)
         BetAB_500ShP = (6, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (6, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2370,9 +2462,11 @@ class Su_25(PlaneType):
         MBD_2_67U___4_FAB_100_ = (7, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (7, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (7, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (7, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (7, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (7, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (7, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (7, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (7, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (7, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (7, Weapons.BetAB_500)
         BetAB_500ShP = (7, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (7, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2394,9 +2488,11 @@ class Su_25(PlaneType):
         MBD_2_67U___4_FAB_100_ = (8, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (8, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (8, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (8, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (8, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (8, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (8, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (8, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (8, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (8, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (8, Weapons.BetAB_500)
         BetAB_500ShP = (8, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (8, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2419,9 +2515,11 @@ class Su_25(PlaneType):
         MBD_2_67U___4_FAB_100_ = (9, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (9, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (9, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (9, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (9, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (9, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (9, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (9, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (9, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (9, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (9, Weapons.BetAB_500)
         BetAB_500ShP = (9, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (9, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2484,9 +2582,11 @@ class Su_25TM(PlaneType):
         MBD_2_67U___4_FAB_100_ = (2, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (2, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (2, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (2, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (2, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (2, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (2, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (2, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (2, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (2, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (2, Weapons.BetAB_500)
         BetAB_500ShP = (2, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (2, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2508,9 +2608,11 @@ class Su_25TM(PlaneType):
         MBD_2_67U___4_FAB_100_ = (3, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (3, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (3, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (3, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (3, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (3, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (3, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (3, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (3, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (3, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (3, Weapons.BetAB_500)
         BetAB_500ShP = (3, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (3, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2533,9 +2635,11 @@ class Su_25TM(PlaneType):
         MBD_2_67U___4_FAB_100_ = (4, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (4, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (4, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (4, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (4, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (4, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (4, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (4, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (4, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (4, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (4, Weapons.BetAB_500)
         BetAB_500ShP = (4, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (4, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2559,10 +2663,13 @@ class Su_25TM(PlaneType):
         MBD_2_67U___4_FAB_100_ = (5, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (5, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (5, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (5, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (5, Weapons.FAB_500_M62)
         KAB_500kr = (5, Weapons.KAB_500kr)
-        RBK_500_PTAB_10_5 = (5, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (5, Weapons.RBK_500U_PTAB_1M)
+        KAB_500S = (5, Weapons.KAB_500S)
+        RBK_500_255_PTAB_10_5 = (5, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (5, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (5, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (5, Weapons.BetAB_500)
         BetAB_500ShP = (5, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (5, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2595,10 +2702,13 @@ class Su_25TM(PlaneType):
         MBD_2_67U___4_FAB_100_ = (7, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (7, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (7, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (7, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (7, Weapons.FAB_500_M62)
         KAB_500kr = (7, Weapons.KAB_500kr)
-        RBK_500_PTAB_10_5 = (7, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (7, Weapons.RBK_500U_PTAB_1M)
+        KAB_500S = (7, Weapons.KAB_500S)
+        RBK_500_255_PTAB_10_5 = (7, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (7, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (7, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (7, Weapons.BetAB_500)
         BetAB_500ShP = (7, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (7, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2626,9 +2736,11 @@ class Su_25TM(PlaneType):
         MBD_2_67U___4_FAB_100_ = (8, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (8, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (8, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (8, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (8, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (8, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (8, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (8, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (8, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (8, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (8, Weapons.BetAB_500)
         BetAB_500ShP = (8, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (8, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2652,9 +2764,11 @@ class Su_25TM(PlaneType):
         MBD_2_67U___4_FAB_100_ = (9, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (9, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (9, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (9, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (9, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (9, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (9, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (9, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (9, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (9, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (9, Weapons.BetAB_500)
         BetAB_500ShP = (9, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (9, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2677,9 +2791,11 @@ class Su_25TM(PlaneType):
         MBD_2_67U___4_FAB_100_ = (10, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (10, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (10, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (10, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (10, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (10, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (10, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (10, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (10, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (10, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (10, Weapons.BetAB_500)
         BetAB_500ShP = (10, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (10, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2755,9 +2871,11 @@ class Su_25T(PlaneType):
         MBD_2_67U___4_FAB_100_ = (2, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (2, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (2, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (2, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (2, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (2, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (2, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (2, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (2, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (2, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (2, Weapons.BetAB_500)
         BetAB_500ShP = (2, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (2, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2778,9 +2896,11 @@ class Su_25T(PlaneType):
         MBD_2_67U___4_FAB_100_ = (3, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (3, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (3, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (3, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (3, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (3, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (3, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (3, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (3, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (3, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (3, Weapons.BetAB_500)
         BetAB_500ShP = (3, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (3, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2803,9 +2923,11 @@ class Su_25T(PlaneType):
         MBD_2_67U___4_FAB_100_ = (4, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (4, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (4, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (4, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (4, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (4, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (4, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (4, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (4, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (4, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (4, Weapons.BetAB_500)
         BetAB_500ShP = (4, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (4, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2829,10 +2951,13 @@ class Su_25T(PlaneType):
         MBD_2_67U___4_FAB_100_ = (5, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (5, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (5, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (5, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (5, Weapons.FAB_500_M62)
         KAB_500kr = (5, Weapons.KAB_500kr)
-        RBK_500_PTAB_10_5 = (5, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (5, Weapons.RBK_500U_PTAB_1M)
+        KAB_500S = (5, Weapons.KAB_500S)
+        RBK_500_255_PTAB_10_5 = (5, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (5, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (5, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (5, Weapons.BetAB_500)
         BetAB_500ShP = (5, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (5, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2861,10 +2986,13 @@ class Su_25T(PlaneType):
         MBD_2_67U___4_FAB_100_ = (7, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (7, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (7, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (7, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (7, Weapons.FAB_500_M62)
         KAB_500kr = (7, Weapons.KAB_500kr)
-        RBK_500_PTAB_10_5 = (7, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (7, Weapons.RBK_500U_PTAB_1M)
+        KAB_500S = (7, Weapons.KAB_500S)
+        RBK_500_255_PTAB_10_5 = (7, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (7, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (7, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (7, Weapons.BetAB_500)
         BetAB_500ShP = (7, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (7, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2889,9 +3017,11 @@ class Su_25T(PlaneType):
         MBD_2_67U___4_FAB_100_ = (8, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (8, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (8, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (8, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (8, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (8, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (8, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (8, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (8, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (8, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (8, Weapons.BetAB_500)
         BetAB_500ShP = (8, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (8, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2915,9 +3045,11 @@ class Su_25T(PlaneType):
         MBD_2_67U___4_FAB_100_ = (9, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (9, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (9, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (9, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (9, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (9, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (9, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (9, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (9, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (9, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (9, Weapons.BetAB_500)
         BetAB_500ShP = (9, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (9, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2940,9 +3072,11 @@ class Su_25T(PlaneType):
         MBD_2_67U___4_FAB_100_ = (10, Weapons.MBD_2_67U___4_FAB_100_)
         FAB_250 = (10, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (10, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (10, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (10, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (10, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (10, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (10, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (10, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (10, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (10, Weapons.BetAB_500)
         BetAB_500ShP = (10, Weapons.BetAB_500ShP)
         KMGU_2___96_AO_2_5RT = (10, Weapons.KMGU_2___96_AO_2_5RT)
@@ -2978,7 +3112,7 @@ class Su_33(PlaneType):
     height = 5.72
     width = 14.7
     length = 21.18
-    fuel_max = 9400
+    fuel_max = 9500
     max_speed = 2300
     chaff = 48
     flare = 48
@@ -3034,8 +3168,10 @@ class Su_33(PlaneType):
         KMGU_2___96_AO_2_5RT = (3, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (3, Weapons.KMGU_2___96_PTAB_2_5KO)
         RBK_250_PTAB_2_5M = (3, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (3, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (3, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (3, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (3, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (3, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (3, Weapons.RBK_500_PTAB_1M)
         FAB_500_M62 = (3, Weapons.FAB_500_M62)
         B_8M1___20_S_8KOM = (3, Weapons.B_8M1___20_S_8KOM)
         B_13L___5_S_13_OF = (3, Weapons.B_13L___5_S_13_OF)
@@ -3057,8 +3193,10 @@ class Su_33(PlaneType):
         KMGU_2___96_AO_2_5RT = (4, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (4, Weapons.KMGU_2___96_PTAB_2_5KO)
         RBK_250_PTAB_2_5M = (4, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (4, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (4, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (4, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (4, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (4, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (4, Weapons.RBK_500_PTAB_1M)
         FAB_500_M62 = (4, Weapons.FAB_500_M62)
         B_8M1___20_S_8KOM = (4, Weapons.B_8M1___20_S_8KOM)
         B_13L___5_S_13_OF = (4, Weapons.B_13L___5_S_13_OF)
@@ -3080,8 +3218,10 @@ class Su_33(PlaneType):
         KMGU_2___96_AO_2_5RT = (5, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (5, Weapons.KMGU_2___96_PTAB_2_5KO)
         RBK_250_PTAB_2_5M = (5, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (5, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (5, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (5, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (5, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (5, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (5, Weapons.RBK_500_PTAB_1M)
         FAB_500_M62 = (5, Weapons.FAB_500_M62)
         Smoke_Generator___red = (5, Weapons.Smoke_Generator___red)
         Smoke_Generator___green = (5, Weapons.Smoke_Generator___green)
@@ -3096,8 +3236,10 @@ class Su_33(PlaneType):
         FAB_250 = (6, Weapons.FAB_250)
         BetAB_500 = (6, Weapons.BetAB_500)
         RBK_250_PTAB_2_5M = (6, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (6, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (6, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (6, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (6, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (6, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (6, Weapons.RBK_500_PTAB_1M)
         FAB_500_M62 = (6, Weapons.FAB_500_M62)
         Smoke_Generator___red = (6, Weapons.Smoke_Generator___red)
         Smoke_Generator___green = (6, Weapons.Smoke_Generator___green)
@@ -3114,8 +3256,10 @@ class Su_33(PlaneType):
         KMGU_2___96_AO_2_5RT = (7, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (7, Weapons.KMGU_2___96_PTAB_2_5KO)
         RBK_250_PTAB_2_5M = (7, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (7, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (7, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (7, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (7, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (7, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (7, Weapons.RBK_500_PTAB_1M)
         FAB_500_M62 = (7, Weapons.FAB_500_M62)
 
     class Pylon8:
@@ -3126,8 +3270,10 @@ class Su_33(PlaneType):
         KMGU_2___96_AO_2_5RT = (8, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (8, Weapons.KMGU_2___96_PTAB_2_5KO)
         RBK_250_PTAB_2_5M = (8, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (8, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (8, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (8, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (8, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (8, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (8, Weapons.RBK_500_PTAB_1M)
         FAB_500_M62 = (8, Weapons.FAB_500_M62)
         Smoke_Generator___red = (8, Weapons.Smoke_Generator___red)
         Smoke_Generator___green = (8, Weapons.Smoke_Generator___green)
@@ -3144,8 +3290,10 @@ class Su_33(PlaneType):
         KMGU_2___96_AO_2_5RT = (9, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (9, Weapons.KMGU_2___96_PTAB_2_5KO)
         RBK_250_PTAB_2_5M = (9, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (9, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (9, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (9, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (9, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (9, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (9, Weapons.RBK_500_PTAB_1M)
         FAB_500_M62 = (9, Weapons.FAB_500_M62)
         B_8M1___20_S_8KOM = (9, Weapons.B_8M1___20_S_8KOM)
         B_13L___5_S_13_OF = (9, Weapons.B_13L___5_S_13_OF)
@@ -3170,8 +3318,10 @@ class Su_33(PlaneType):
         KMGU_2___96_AO_2_5RT = (10, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (10, Weapons.KMGU_2___96_PTAB_2_5KO)
         RBK_250_PTAB_2_5M = (10, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (10, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (10, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (10, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (10, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (10, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (10, Weapons.RBK_500_PTAB_1M)
         FAB_500_M62 = (10, Weapons.FAB_500_M62)
         B_8M1___20_S_8KOM = (10, Weapons.B_8M1___20_S_8KOM)
         B_13L___5_S_13_OF = (10, Weapons.B_13L___5_S_13_OF)
@@ -3281,8 +3431,8 @@ class MiG_25RBT(PlaneType):
         FAB_250 = (1, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (1, Weapons.RBK_250_PTAB_2_5M)
         FAB_500_M62 = (1, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (1, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (1, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (1, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (1, Weapons.RBK_500_PTAB_1M)
         BetAB_500 = (1, Weapons.BetAB_500)
         BetAB_500ShP = (1, Weapons.BetAB_500ShP)
 
@@ -3293,8 +3443,8 @@ class MiG_25RBT(PlaneType):
         FAB_250 = (2, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (2, Weapons.RBK_250_PTAB_2_5M)
         FAB_500_M62 = (2, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (2, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (2, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (2, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (2, Weapons.RBK_500_PTAB_1M)
         BetAB_500 = (2, Weapons.BetAB_500)
         BetAB_500ShP = (2, Weapons.BetAB_500ShP)
 
@@ -3305,8 +3455,8 @@ class MiG_25RBT(PlaneType):
         FAB_250 = (3, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (3, Weapons.RBK_250_PTAB_2_5M)
         FAB_500_M62 = (3, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (3, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (3, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (3, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (3, Weapons.RBK_500_PTAB_1M)
         BetAB_500 = (3, Weapons.BetAB_500)
         BetAB_500ShP = (3, Weapons.BetAB_500ShP)
 
@@ -3318,8 +3468,8 @@ class MiG_25RBT(PlaneType):
         FAB_250 = (4, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (4, Weapons.RBK_250_PTAB_2_5M)
         FAB_500_M62 = (4, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (4, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (4, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (4, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (4, Weapons.RBK_500_PTAB_1M)
         BetAB_500 = (4, Weapons.BetAB_500)
         BetAB_500ShP = (4, Weapons.BetAB_500ShP)
 
@@ -3391,13 +3541,18 @@ class Su_30(PlaneType):
         KMGU_2___96_PTAB_2_5KO = (3, Weapons.KMGU_2___96_PTAB_2_5KO)
         FAB_250 = (3, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (3, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (3, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (3, Weapons.RBK_500U_OAB_2_5RT)
         FAB_500_M62 = (3, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (3, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (3, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (3, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (3, Weapons.RBK_500_PTAB_1M)
         KAB_500L = (3, Weapons.KAB_500L)
         KAB_500kr = (3, Weapons.KAB_500kr)
+        KAB_500S = (3, Weapons.KAB_500S)
         FAB_1500_M54 = (3, Weapons.FAB_1500_M54)
         KAB_1500L = (3, Weapons.KAB_1500L)
+        KAB_1500LG_Pr = (3, Weapons.KAB_1500LG_Pr)
+        KAB_1500Kr = (3, Weapons.KAB_1500Kr)
         MER_6_FAB_250 = (3, Weapons.MER_6_FAB_250)
 
     class Pylon4:
@@ -3412,11 +3567,14 @@ class Su_30(PlaneType):
         BetAB_500 = (4, Weapons.BetAB_500)
         FAB_250 = (4, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (4, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (4, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (4, Weapons.RBK_500U_OAB_2_5RT)
         FAB_500_M62 = (4, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (4, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (4, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (4, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (4, Weapons.RBK_500_PTAB_1M)
         KAB_500L = (4, Weapons.KAB_500L)
         KAB_500kr = (4, Weapons.KAB_500kr)
+        KAB_500S = (4, Weapons.KAB_500S)
         MER_6_FAB_250 = (4, Weapons.MER_6_FAB_250)
 
     class Pylon5:
@@ -3427,12 +3585,17 @@ class Su_30(PlaneType):
         BetAB_500 = (5, Weapons.BetAB_500)
         FAB_250 = (5, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (5, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (5, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (5, Weapons.RBK_500U_OAB_2_5RT)
         FAB_500_M62 = (5, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (5, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (5, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (5, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (5, Weapons.RBK_500_PTAB_1M)
         KAB_500L = (5, Weapons.KAB_500L)
         KAB_500kr = (5, Weapons.KAB_500kr)
+        KAB_500S = (5, Weapons.KAB_500S)
         KAB_1500L = (5, Weapons.KAB_1500L)
+        KAB_1500LG_Pr = (5, Weapons.KAB_1500LG_Pr)
+        KAB_1500Kr = (5, Weapons.KAB_1500Kr)
         MER_6_FAB_250 = (5, Weapons.MER_6_FAB_250)
 
     class Pylon6:
@@ -3443,11 +3606,14 @@ class Su_30(PlaneType):
         BetAB_500 = (6, Weapons.BetAB_500)
         FAB_250 = (6, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (6, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (6, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (6, Weapons.RBK_500U_OAB_2_5RT)
         FAB_500_M62 = (6, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (6, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (6, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (6, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (6, Weapons.RBK_500_PTAB_1M)
         KAB_500L = (6, Weapons.KAB_500L)
         KAB_500kr = (6, Weapons.KAB_500kr)
+        KAB_500S = (6, Weapons.KAB_500S)
         MER_6_FAB_250 = (6, Weapons.MER_6_FAB_250)
 
     class Pylon7:
@@ -3462,11 +3628,14 @@ class Su_30(PlaneType):
         BetAB_500 = (7, Weapons.BetAB_500)
         FAB_250 = (7, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (7, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (7, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (7, Weapons.RBK_500U_OAB_2_5RT)
         FAB_500_M62 = (7, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (7, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (7, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (7, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (7, Weapons.RBK_500_PTAB_1M)
         KAB_500L = (7, Weapons.KAB_500L)
         KAB_500kr = (7, Weapons.KAB_500kr)
+        KAB_500S = (7, Weapons.KAB_500S)
         MER_6_FAB_250 = (7, Weapons.MER_6_FAB_250)
 
     class Pylon8:
@@ -3489,13 +3658,18 @@ class Su_30(PlaneType):
         KMGU_2___96_PTAB_2_5KO = (8, Weapons.KMGU_2___96_PTAB_2_5KO)
         FAB_250 = (8, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (8, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (8, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (8, Weapons.RBK_500U_OAB_2_5RT)
         FAB_500_M62 = (8, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (8, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (8, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (8, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (8, Weapons.RBK_500_PTAB_1M)
         KAB_500L = (8, Weapons.KAB_500L)
         KAB_500kr = (8, Weapons.KAB_500kr)
+        KAB_500S = (8, Weapons.KAB_500S)
         FAB_1500_M54 = (8, Weapons.FAB_1500_M54)
         KAB_1500L = (8, Weapons.KAB_1500L)
+        KAB_1500LG_Pr = (8, Weapons.KAB_1500LG_Pr)
+        KAB_1500Kr = (8, Weapons.KAB_1500Kr)
         MER_6_FAB_250 = (8, Weapons.MER_6_FAB_250)
 
     class Pylon9:
@@ -3561,20 +3735,20 @@ class Su_34(PlaneType):
         KMGU_2___96_AO_2_5RT = (3, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (3, Weapons.KMGU_2___96_PTAB_2_5KO)
         RBK_250_PTAB_2_5M = (3, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (3, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (3, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (3, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (3, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (3, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (3, Weapons.RBK_500_PTAB_1M)
         FAB_250 = (3, Weapons.FAB_250)
         FAB_500_M62 = (3, Weapons.FAB_500_M62)
         KAB_500L = (3, Weapons.KAB_500L)
         KAB_500kr = (3, Weapons.KAB_500kr)
+        KAB_500S = (3, Weapons.KAB_500S)
         KAB_1500L = (3, Weapons.KAB_1500L)
-        MER_3_3_RBK_250_PTAB_1M = (3, Weapons.MER_3_3_RBK_250_PTAB_1M)
-        MER_3_3_RBK_500_PTAB_2_5M = (3, Weapons.MER_3_3_RBK_500_PTAB_2_5M)
-        MER_3_3_FAB_100 = (3, Weapons.MER_3_3_FAB_100)
-        MER_3_3_FAB_250 = (3, Weapons.MER_3_3_FAB_250)
-        MER_3_3_FAB_500 = (3, Weapons.MER_3_3_FAB_500)
-        MER_3_3_BetAB_500 = (3, Weapons.MER_3_3_BetAB_500)
+        KAB_1500LG_Pr = (3, Weapons.KAB_1500LG_Pr)
+        KAB_1500Kr = (3, Weapons.KAB_1500Kr)
         SAB_100 = (3, Weapons.SAB_100)
+        FAB_100 = (3, Weapons.FAB_100)
 
     class Pylon4:
         R_77 = (4, Weapons.R_77)
@@ -3592,22 +3766,22 @@ class Su_34(PlaneType):
         KMGU_2___96_AO_2_5RT = (4, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (4, Weapons.KMGU_2___96_PTAB_2_5KO)
         RBK_250_PTAB_2_5M = (4, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (4, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (4, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (4, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (4, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (4, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (4, Weapons.RBK_500_PTAB_1M)
         FAB_250 = (4, Weapons.FAB_250)
         FAB_500_M62 = (4, Weapons.FAB_500_M62)
         KAB_500L = (4, Weapons.KAB_500L)
         KAB_500kr = (4, Weapons.KAB_500kr)
+        KAB_500S = (4, Weapons.KAB_500S)
         FAB_1500_M54 = (4, Weapons.FAB_1500_M54)
         KAB_1500L = (4, Weapons.KAB_1500L)
-        MER_3_3_RBK_250_PTAB_1M = (4, Weapons.MER_3_3_RBK_250_PTAB_1M)
-        MER_3_3_RBK_500_PTAB_2_5M = (4, Weapons.MER_3_3_RBK_500_PTAB_2_5M)
-        MER_3_3_FAB_100 = (4, Weapons.MER_3_3_FAB_100)
-        MER_3_3_FAB_250 = (4, Weapons.MER_3_3_FAB_250)
-        MER_3_3_FAB_500 = (4, Weapons.MER_3_3_FAB_500)
-        MER_3_3_BetAB_500 = (4, Weapons.MER_3_3_BetAB_500)
+        KAB_1500LG_Pr = (4, Weapons.KAB_1500LG_Pr)
+        KAB_1500Kr = (4, Weapons.KAB_1500Kr)
         MER_6_FAB_100 = (4, Weapons.MER_6_FAB_100)
         SAB_100 = (4, Weapons.SAB_100)
+        FAB_100 = (4, Weapons.FAB_100)
 
     class Pylon5:
         R_77 = (5, Weapons.R_77)
@@ -3620,55 +3794,54 @@ class Su_34(PlaneType):
         Kh_31P = (5, Weapons.Kh_31P)
         BetAB_500 = (5, Weapons.BetAB_500)
         RBK_250_PTAB_2_5M = (5, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (5, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (5, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (5, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (5, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (5, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (5, Weapons.RBK_500_PTAB_1M)
         FAB_250 = (5, Weapons.FAB_250)
         FAB_500_M62 = (5, Weapons.FAB_500_M62)
         KAB_500L = (5, Weapons.KAB_500L)
         KAB_500kr = (5, Weapons.KAB_500kr)
-        MER_3_3_RBK_250_PTAB_1M = (5, Weapons.MER_3_3_RBK_250_PTAB_1M)
-        MER_3_3_FAB_100 = (5, Weapons.MER_3_3_FAB_100)
-        MER_3_3_FAB_250 = (5, Weapons.MER_3_3_FAB_250)
+        KAB_500S = (5, Weapons.KAB_500S)
         MER_6_FAB_100 = (5, Weapons.MER_6_FAB_100)
         SAB_100 = (5, Weapons.SAB_100)
+        FAB_100 = (5, Weapons.FAB_100)
 
     class Pylon6:
         R_77 = (6, Weapons.R_77)
         BetAB_500 = (6, Weapons.BetAB_500)
         RBK_250_PTAB_2_5M = (6, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (6, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (6, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (6, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (6, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (6, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (6, Weapons.RBK_500_PTAB_1M)
         FAB_250 = (6, Weapons.FAB_250)
         FAB_500_M62 = (6, Weapons.FAB_500_M62)
         FAB_1500_M54 = (6, Weapons.FAB_1500_M54)
         KAB_500L = (6, Weapons.KAB_500L)
         KAB_500kr = (6, Weapons.KAB_500kr)
+        KAB_500S = (6, Weapons.KAB_500S)
         KAB_1500L = (6, Weapons.KAB_1500L)
-        MER_3_3_RBK_250_PTAB_1M = (6, Weapons.MER_3_3_RBK_250_PTAB_1M)
-        MER_3_3_RBK_500_PTAB_2_5M = (6, Weapons.MER_3_3_RBK_500_PTAB_2_5M)
-        MER_3_3_FAB_100 = (6, Weapons.MER_3_3_FAB_100)
-        MER_3_3_FAB_250 = (6, Weapons.MER_3_3_FAB_250)
-        MER_3_3_FAB_500 = (6, Weapons.MER_3_3_FAB_500)
-        MER_3_3_BetAB_500 = (6, Weapons.MER_3_3_BetAB_500)
+        KAB_1500LG_Pr = (6, Weapons.KAB_1500LG_Pr)
+        KAB_1500Kr = (6, Weapons.KAB_1500Kr)
         SAB_100 = (6, Weapons.SAB_100)
+        FAB_100 = (6, Weapons.FAB_100)
 
     class Pylon7:
         R_77 = (7, Weapons.R_77)
         BetAB_500 = (7, Weapons.BetAB_500)
         RBK_250_PTAB_2_5M = (7, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (7, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (7, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (7, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (7, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (7, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (7, Weapons.RBK_500_PTAB_1M)
         FAB_250 = (7, Weapons.FAB_250)
         FAB_500_M62 = (7, Weapons.FAB_500_M62)
         KAB_500L = (7, Weapons.KAB_500L)
         KAB_500kr = (7, Weapons.KAB_500kr)
-        MER_3_3_RBK_250_PTAB_1M = (7, Weapons.MER_3_3_RBK_250_PTAB_1M)
-        MER_3_3_RBK_500_PTAB_2_5M = (7, Weapons.MER_3_3_RBK_500_PTAB_2_5M)
-        MER_3_3_FAB_100 = (7, Weapons.MER_3_3_FAB_100)
-        MER_3_3_FAB_250 = (7, Weapons.MER_3_3_FAB_250)
-        MER_3_3_FAB_500 = (7, Weapons.MER_3_3_FAB_500)
-        MER_3_3_BetAB_500 = (7, Weapons.MER_3_3_BetAB_500)
+        KAB_500S = (7, Weapons.KAB_500S)
         SAB_100 = (7, Weapons.SAB_100)
+        FAB_100 = (7, Weapons.FAB_100)
 
     class Pylon8:
         R_77 = (8, Weapons.R_77)
@@ -3681,17 +3854,18 @@ class Su_34(PlaneType):
         Kh_31P = (8, Weapons.Kh_31P)
         BetAB_500 = (8, Weapons.BetAB_500)
         RBK_250_PTAB_2_5M = (8, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (8, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (8, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (8, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (8, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (8, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (8, Weapons.RBK_500_PTAB_1M)
         FAB_250 = (8, Weapons.FAB_250)
         FAB_500_M62 = (8, Weapons.FAB_500_M62)
         KAB_500L = (8, Weapons.KAB_500L)
         KAB_500kr = (8, Weapons.KAB_500kr)
-        MER_3_3_RBK_250_PTAB_1M = (8, Weapons.MER_3_3_RBK_250_PTAB_1M)
-        MER_3_3_FAB_100 = (8, Weapons.MER_3_3_FAB_100)
-        MER_3_3_FAB_250 = (8, Weapons.MER_3_3_FAB_250)
+        KAB_500S = (8, Weapons.KAB_500S)
         MER_6_FAB_100 = (8, Weapons.MER_6_FAB_100)
         SAB_100 = (8, Weapons.SAB_100)
+        FAB_100 = (8, Weapons.FAB_100)
 
     class Pylon9:
         R_77 = (9, Weapons.R_77)
@@ -3709,22 +3883,22 @@ class Su_34(PlaneType):
         KMGU_2___96_AO_2_5RT = (9, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (9, Weapons.KMGU_2___96_PTAB_2_5KO)
         RBK_250_PTAB_2_5M = (9, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (9, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (9, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (9, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (9, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (9, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (9, Weapons.RBK_500_PTAB_1M)
         FAB_250 = (9, Weapons.FAB_250)
         FAB_500_M62 = (9, Weapons.FAB_500_M62)
         KAB_500L = (9, Weapons.KAB_500L)
         KAB_500kr = (9, Weapons.KAB_500kr)
+        KAB_500S = (9, Weapons.KAB_500S)
         FAB_1500_M54 = (9, Weapons.FAB_1500_M54)
         KAB_1500L = (9, Weapons.KAB_1500L)
-        MER_3_3_RBK_250_PTAB_1M = (9, Weapons.MER_3_3_RBK_250_PTAB_1M)
-        MER_3_3_RBK_500_PTAB_2_5M = (9, Weapons.MER_3_3_RBK_500_PTAB_2_5M)
-        MER_3_3_FAB_100 = (9, Weapons.MER_3_3_FAB_100)
-        MER_3_3_FAB_250 = (9, Weapons.MER_3_3_FAB_250)
-        MER_3_3_FAB_500 = (9, Weapons.MER_3_3_FAB_500)
-        MER_3_3_BetAB_500 = (9, Weapons.MER_3_3_BetAB_500)
+        KAB_1500LG_Pr = (9, Weapons.KAB_1500LG_Pr)
+        KAB_1500Kr = (9, Weapons.KAB_1500Kr)
         MER_6_FAB_100 = (9, Weapons.MER_6_FAB_100)
         SAB_100 = (9, Weapons.SAB_100)
+        FAB_100 = (9, Weapons.FAB_100)
 
     class Pylon10:
         R_73 = (10, Weapons.R_73)
@@ -3739,22 +3913,22 @@ class Su_34(PlaneType):
         KMGU_2___96_AO_2_5RT = (10, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (10, Weapons.KMGU_2___96_PTAB_2_5KO)
         RBK_250_PTAB_2_5M = (10, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (10, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (10, Weapons.RBK_500U_PTAB_1M)
+        RBK_250_275_AO_1SCh = (10, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500U_OAB_2_5RT = (10, Weapons.RBK_500U_OAB_2_5RT)
+        RBK_500_255_PTAB_10_5 = (10, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (10, Weapons.RBK_500_PTAB_1M)
         FAB_250 = (10, Weapons.FAB_250)
         FAB_500_M62 = (10, Weapons.FAB_500_M62)
         KAB_500L = (10, Weapons.KAB_500L)
         KAB_500kr = (10, Weapons.KAB_500kr)
+        KAB_500S = (10, Weapons.KAB_500S)
         KAB_1500L = (10, Weapons.KAB_1500L)
-        MER_3_3_RBK_250_PTAB_1M = (10, Weapons.MER_3_3_RBK_250_PTAB_1M)
-        MER_3_3_RBK_500_PTAB_2_5M = (10, Weapons.MER_3_3_RBK_500_PTAB_2_5M)
-        MER_3_3_FAB_100 = (10, Weapons.MER_3_3_FAB_100)
-        MER_3_3_FAB_250 = (10, Weapons.MER_3_3_FAB_250)
-        MER_3_3_FAB_500 = (10, Weapons.MER_3_3_FAB_500)
-        MER_3_3_BetAB_500 = (10, Weapons.MER_3_3_BetAB_500)
+        KAB_1500LG_Pr = (10, Weapons.KAB_1500LG_Pr)
+        KAB_1500Kr = (10, Weapons.KAB_1500Kr)
         SAB_100 = (10, Weapons.SAB_100)
         B_8M1___20_S_8KOM = (10, Weapons.B_8M1___20_S_8KOM)
         B_13L___5_S_13_OF = (10, Weapons.B_13L___5_S_13_OF)
+        FAB_100 = (10, Weapons.FAB_100)
 
     class Pylon11:
         R_73 = (11, Weapons.R_73)
@@ -3800,8 +3974,8 @@ class Su_17M4(PlaneType):
         FAB_100 = (1, Weapons.FAB_100)
         SAB_100 = (1, Weapons.SAB_100)
         FAB_500_M62 = (1, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (1, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (1, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (1, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (1, Weapons.RBK_500_PTAB_1M)
         KMGU_2___96_AO_2_5RT = (1, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (1, Weapons.KMGU_2___96_PTAB_2_5KO)
         BetAB_500 = (1, Weapons.BetAB_500)
@@ -3809,7 +3983,6 @@ class Su_17M4(PlaneType):
         MER_4_FAB_250 = (1, Weapons.MER_4_FAB_250)
         MER_6_FAB_100 = (1, Weapons.MER_6_FAB_100)
         MBD_2_67U___4_FAB_100 = (1, Weapons.MBD_2_67U___4_FAB_100)
-        MER_4_RBK_250_PTAB_1M = (1, Weapons.MER_4_RBK_250_PTAB_1M)
         MER_6_FAB_100 = (1, Weapons.MER_6_FAB_100)
         MER_6_2_FAB_250 = (1, Weapons.MER_6_2_FAB_250)
         Kh_25ML = (1, Weapons.Kh_25ML)
@@ -3822,6 +3995,8 @@ class Su_17M4(PlaneType):
         S_24B_ = (1, Weapons.S_24B_)
         S_25_OFM = (1, Weapons.S_25_OFM)
         B_8M1___20_S_8TsM = (1, Weapons.B_8M1___20_S_8TsM)
+        RBK_250_PTAB_2_5M = (1, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (1, Weapons.RBK_250_275_AO_1SCh)
 
     class Pylon2:
         R_60M = (2, Weapons.R_60M)
@@ -3831,8 +4006,8 @@ class Su_17M4(PlaneType):
         FAB_100 = (3, Weapons.FAB_100)
         SAB_100 = (3, Weapons.SAB_100)
         FAB_500_M62 = (3, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (3, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (3, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (3, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (3, Weapons.RBK_500_PTAB_1M)
         KMGU_2___96_AO_2_5RT = (3, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (3, Weapons.KMGU_2___96_PTAB_2_5KO)
         BetAB_500 = (3, Weapons.BetAB_500)
@@ -3840,7 +4015,6 @@ class Su_17M4(PlaneType):
         MER_4_FAB_250 = (3, Weapons.MER_4_FAB_250)
         MER_6_FAB_100 = (3, Weapons.MER_6_FAB_100)
         MBD_2_67U___4_FAB_100 = (3, Weapons.MBD_2_67U___4_FAB_100)
-        MER_4_RBK_250_PTAB_1M = (3, Weapons.MER_4_RBK_250_PTAB_1M)
         MER_6_FAB_100 = (3, Weapons.MER_6_FAB_100)
         MER_6_2_FAB_250 = (3, Weapons.MER_6_2_FAB_250)
         MER_6_4_FAB_250 = (3, Weapons.MER_6_4_FAB_250)
@@ -3858,48 +4032,52 @@ class Su_17M4(PlaneType):
         B_8M1___20_S_8TsM = (3, Weapons.B_8M1___20_S_8TsM)
         SPPU_22_1_Gun_pod = (3, Weapons.SPPU_22_1_Gun_pod)
         SPS_141 = (3, Weapons.SPS_141)
+        RBK_250_PTAB_2_5M = (3, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (3, Weapons.RBK_250_275_AO_1SCh)
 
     class Pylon4:
         FAB_100 = (4, Weapons.FAB_100)
         SAB_100 = (4, Weapons.SAB_100)
         FAB_500_M62 = (4, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (4, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (4, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (4, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (4, Weapons.RBK_500_PTAB_1M)
         KMGU_2___96_AO_2_5RT = (4, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (4, Weapons.KMGU_2___96_PTAB_2_5KO)
         BetAB_500 = (4, Weapons.BetAB_500)
         BetAB_500ShP = (4, Weapons.BetAB_500ShP)
         MER_4_FAB_250 = (4, Weapons.MER_4_FAB_250)
         MBD_2_67U___4_FAB_100 = (4, Weapons.MBD_2_67U___4_FAB_100)
-        MER_4_RBK_250_PTAB_1M = (4, Weapons.MER_4_RBK_250_PTAB_1M)
         MER_6_2_FAB_250 = (4, Weapons.MER_6_2_FAB_250)
         Fuel_tank_1150L = (4, Weapons.Fuel_tank_1150L)
         Fuel_tank_800L = (4, Weapons.Fuel_tank_800L)
+        RBK_250_PTAB_2_5M = (4, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (4, Weapons.RBK_250_275_AO_1SCh)
 
     class Pylon5:
         FAB_100 = (5, Weapons.FAB_100)
         SAB_100 = (5, Weapons.SAB_100)
         FAB_500_M62 = (5, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (5, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (5, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (5, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (5, Weapons.RBK_500_PTAB_1M)
         KMGU_2___96_AO_2_5RT = (5, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (5, Weapons.KMGU_2___96_PTAB_2_5KO)
         BetAB_500 = (5, Weapons.BetAB_500)
         BetAB_500ShP = (5, Weapons.BetAB_500ShP)
         MER_4_FAB_250 = (5, Weapons.MER_4_FAB_250)
         MBD_2_67U___4_FAB_100 = (5, Weapons.MBD_2_67U___4_FAB_100)
-        MER_4_RBK_250_PTAB_1M = (5, Weapons.MER_4_RBK_250_PTAB_1M)
         MER_6_2_FAB_250 = (5, Weapons.MER_6_2_FAB_250)
         Fuel_tank_1150L = (5, Weapons.Fuel_tank_1150L)
         Fuel_tank_800L = (5, Weapons.Fuel_tank_800L)
+        RBK_250_PTAB_2_5M = (5, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (5, Weapons.RBK_250_275_AO_1SCh)
 
     class Pylon6:
         B_8M1___20_S_8OFP2 = (6, Weapons.B_8M1___20_S_8OFP2)
         FAB_100 = (6, Weapons.FAB_100)
         SAB_100 = (6, Weapons.SAB_100)
         FAB_500_M62 = (6, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (6, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (6, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (6, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (6, Weapons.RBK_500_PTAB_1M)
         KMGU_2___96_AO_2_5RT = (6, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (6, Weapons.KMGU_2___96_PTAB_2_5KO)
         BetAB_500 = (6, Weapons.BetAB_500)
@@ -3907,7 +4085,6 @@ class Su_17M4(PlaneType):
         MER_4_FAB_250 = (6, Weapons.MER_4_FAB_250)
         MER_6_FAB_100 = (6, Weapons.MER_6_FAB_100)
         MBD_2_67U___4_FAB_100 = (6, Weapons.MBD_2_67U___4_FAB_100)
-        MER_4_RBK_250_PTAB_1M = (6, Weapons.MER_4_RBK_250_PTAB_1M)
         MER_6_FAB_100 = (6, Weapons.MER_6_FAB_100)
         MER_6_4_FAB_250 = (6, Weapons.MER_6_4_FAB_250)
         Kh_25ML = (6, Weapons.Kh_25ML)
@@ -3923,6 +4100,8 @@ class Su_17M4(PlaneType):
         S_25_OFM = (6, Weapons.S_25_OFM)
         B_8M1___20_S_8TsM = (6, Weapons.B_8M1___20_S_8TsM)
         SPPU_22_1_Gun_pod = (6, Weapons.SPPU_22_1_Gun_pod)
+        RBK_250_PTAB_2_5M = (6, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (6, Weapons.RBK_250_275_AO_1SCh)
 
     class Pylon7:
         R_60M = (7, Weapons.R_60M)
@@ -3932,8 +4111,8 @@ class Su_17M4(PlaneType):
         FAB_100 = (8, Weapons.FAB_100)
         SAB_100 = (8, Weapons.SAB_100)
         FAB_500_M62 = (8, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (8, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (8, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (8, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (8, Weapons.RBK_500_PTAB_1M)
         KMGU_2___96_AO_2_5RT = (8, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (8, Weapons.KMGU_2___96_PTAB_2_5KO)
         BetAB_500 = (8, Weapons.BetAB_500)
@@ -3942,7 +4121,6 @@ class Su_17M4(PlaneType):
         MER_6_2_FAB_250 = (8, Weapons.MER_6_2_FAB_250)
         MBD_2_67U___4_FAB_100 = (8, Weapons.MBD_2_67U___4_FAB_100)
         MER_6_FAB_100 = (8, Weapons.MER_6_FAB_100)
-        MER_4_RBK_250_PTAB_1M = (8, Weapons.MER_4_RBK_250_PTAB_1M)
         MER_6_FAB_100 = (8, Weapons.MER_6_FAB_100)
         Kh_25ML = (8, Weapons.Kh_25ML)
         Kh_25MPU = (8, Weapons.Kh_25MPU)
@@ -3954,6 +4132,8 @@ class Su_17M4(PlaneType):
         S_24B_ = (8, Weapons.S_24B_)
         S_25_OFM = (8, Weapons.S_25_OFM)
         B_8M1___20_S_8TsM = (8, Weapons.B_8M1___20_S_8TsM)
+        RBK_250_PTAB_2_5M = (8, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (8, Weapons.RBK_250_275_AO_1SCh)
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8}
 
@@ -4062,6 +4242,7 @@ class Su_24M(PlaneType):
         R_60M_2 = (1, Weapons.R_60M_2)
         MER_6_FAB_100 = (1, Weapons.MER_6_FAB_100)
         RBK_250_PTAB_2_5M = (1, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (1, Weapons.RBK_250_275_AO_1SCh)
         SAB_100 = (1, Weapons.SAB_100)
         UB_32A___32_S_5KO = (1, Weapons.UB_32A___32_S_5KO)
         B_8M1___20_S_8KOM = (1, Weapons.B_8M1___20_S_8KOM)
@@ -4085,14 +4266,17 @@ class Su_24M(PlaneType):
         Kh_25MPU = (2, Weapons.Kh_25MPU)
         Kh_25MR = (2, Weapons.Kh_25MR)
         RBK_250_PTAB_2_5M = (2, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (2, Weapons.RBK_250_275_AO_1SCh)
         FAB_250 = (2, Weapons.FAB_250)
         FAB_500_M62 = (2, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (2, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (2, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (2, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (2, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (2, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (2, Weapons.BetAB_500)
         BetAB_500ShP = (2, Weapons.BetAB_500ShP)
         KAB_500L = (2, Weapons.KAB_500L)
         KAB_500kr = (2, Weapons.KAB_500kr)
+        KAB_500S = (2, Weapons.KAB_500S)
         KMGU_2___96_AO_2_5RT = (2, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (2, Weapons.KMGU_2___96_PTAB_2_5KO)
         SAB_100 = (2, Weapons.SAB_100)
@@ -4102,20 +4286,25 @@ class Su_24M(PlaneType):
         S_24B_ = (2, Weapons.S_24B_)
         S_25_OFM = (2, Weapons.S_25_OFM)
         KAB_1500L = (2, Weapons.KAB_1500L)
+        KAB_1500LG_Pr = (2, Weapons.KAB_1500LG_Pr)
+        KAB_1500Kr = (2, Weapons.KAB_1500Kr)
         FAB_1500_M54 = (2, Weapons.FAB_1500_M54)
         Fuel_tank_3000L = (2, Weapons.Fuel_tank_3000L)
 
     class Pylon3:
         MER_6_FAB_100 = (3, Weapons.MER_6_FAB_100)
         RBK_250_PTAB_2_5M = (3, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (3, Weapons.RBK_250_275_AO_1SCh)
         FAB_250 = (3, Weapons.FAB_250)
         FAB_500_M62 = (3, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (3, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (3, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (3, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (3, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (3, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (3, Weapons.BetAB_500)
         BetAB_500ShP = (3, Weapons.BetAB_500ShP)
         KAB_500L = (3, Weapons.KAB_500L)
         KAB_500kr = (3, Weapons.KAB_500kr)
+        KAB_500S = (3, Weapons.KAB_500S)
         SAB_100 = (3, Weapons.SAB_100)
         UB_32A___32_S_5KO = (3, Weapons.UB_32A___32_S_5KO)
         B_8M1___20_S_8KOM = (3, Weapons.B_8M1___20_S_8KOM)
@@ -4124,9 +4313,12 @@ class Su_24M(PlaneType):
     class Pylon4:
         MER_6_FAB_100 = (4, Weapons.MER_6_FAB_100)
         RBK_250_PTAB_2_5M = (4, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (4, Weapons.RBK_250_275_AO_1SCh)
         FAB_250 = (4, Weapons.FAB_250)
         SAB_100 = (4, Weapons.SAB_100)
         KAB_1500L = (4, Weapons.KAB_1500L)
+        KAB_1500LG_Pr = (4, Weapons.KAB_1500LG_Pr)
+        KAB_1500Kr = (4, Weapons.KAB_1500Kr)
         FAB_1500_M54 = (4, Weapons.FAB_1500_M54)
 
     class Pylon5:
@@ -4134,18 +4326,22 @@ class Su_24M(PlaneType):
         L_081_Fantasmagoria_ELINT_pod = (5, Weapons.L_081_Fantasmagoria_ELINT_pod)
         FAB_250 = (5, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (5, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (5, Weapons.RBK_250_275_AO_1SCh)
 
     class Pylon6:
         MER_6_FAB_100 = (6, Weapons.MER_6_FAB_100)
         RBK_250_PTAB_2_5M = (6, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (6, Weapons.RBK_250_275_AO_1SCh)
         FAB_250 = (6, Weapons.FAB_250)
         FAB_500_M62 = (6, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (6, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (6, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (6, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (6, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (6, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (6, Weapons.BetAB_500)
         BetAB_500ShP = (6, Weapons.BetAB_500ShP)
         KAB_500L = (6, Weapons.KAB_500L)
         KAB_500kr = (6, Weapons.KAB_500kr)
+        KAB_500S = (6, Weapons.KAB_500S)
         SAB_100 = (6, Weapons.SAB_100)
         UB_32A___32_S_5KO = (6, Weapons.UB_32A___32_S_5KO)
         B_8M1___20_S_8KOM = (6, Weapons.B_8M1___20_S_8KOM)
@@ -4163,14 +4359,17 @@ class Su_24M(PlaneType):
         Kh_25MPU = (7, Weapons.Kh_25MPU)
         Kh_25MR = (7, Weapons.Kh_25MR)
         RBK_250_PTAB_2_5M = (7, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (7, Weapons.RBK_250_275_AO_1SCh)
         FAB_250 = (7, Weapons.FAB_250)
         FAB_500_M62 = (7, Weapons.FAB_500_M62)
-        RBK_500_PTAB_10_5 = (7, Weapons.RBK_500_PTAB_10_5)
-        RBK_500U_PTAB_1M = (7, Weapons.RBK_500U_PTAB_1M)
+        RBK_500_255_PTAB_10_5 = (7, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (7, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (7, Weapons.RBK_500U_OAB_2_5RT)
         BetAB_500 = (7, Weapons.BetAB_500)
         BetAB_500ShP = (7, Weapons.BetAB_500ShP)
         KAB_500L = (7, Weapons.KAB_500L)
         KAB_500kr = (7, Weapons.KAB_500kr)
+        KAB_500S = (7, Weapons.KAB_500S)
         KMGU_2___96_AO_2_5RT = (7, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (7, Weapons.KMGU_2___96_PTAB_2_5KO)
         SAB_100 = (7, Weapons.SAB_100)
@@ -4180,6 +4379,8 @@ class Su_24M(PlaneType):
         S_24B_ = (7, Weapons.S_24B_)
         S_25_OFM = (7, Weapons.S_25_OFM)
         KAB_1500L = (7, Weapons.KAB_1500L)
+        KAB_1500LG_Pr = (7, Weapons.KAB_1500LG_Pr)
+        KAB_1500Kr = (7, Weapons.KAB_1500Kr)
         FAB_1500_M54 = (7, Weapons.FAB_1500_M54)
         Fuel_tank_3000L = (7, Weapons.Fuel_tank_3000L)
 
@@ -4187,6 +4388,7 @@ class Su_24M(PlaneType):
         R_60M_2_ = (8, Weapons.R_60M_2_)
         MER_6_FAB_100 = (8, Weapons.MER_6_FAB_100)
         RBK_250_PTAB_2_5M = (8, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (8, Weapons.RBK_250_275_AO_1SCh)
         SAB_100 = (8, Weapons.SAB_100)
         UB_32A___32_S_5KO = (8, Weapons.UB_32A___32_S_5KO)
         B_8M1___20_S_8KOM = (8, Weapons.B_8M1___20_S_8KOM)
@@ -7443,6 +7645,16 @@ class P_51D(PlaneType):
             Dogfight_Blue = "Dogfight Blue"
             Dogfight_Red = "Dogfight Red"
 
+        class Syria(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Finland(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
         class Australia(Enum):
             Bare_Metal = "Bare Metal"
             Dogfight_Blue = "Dogfight Blue"
@@ -7454,13 +7666,33 @@ class P_51D(PlaneType):
             Dogfight_Red = "Dogfight Red"
             Germany_Training_Staffel = "Germany Training Staffel"
 
+        class SaudiArabia(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
         class Israel(Enum):
             Bare_Metal = "Bare Metal"
             Dogfight_Blue = "Dogfight Blue"
             Dogfight_Red = "Dogfight Red"
             Israeli_Air_Force = "Israeli Air Force"
 
+        class Croatia(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class CzechRepublic(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
         class Norway(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Romania(Enum):
             Bare_Metal = "Bare Metal"
             Dogfight_Blue = "Dogfight Blue"
             Dogfight_Red = "Dogfight Red"
@@ -7483,16 +7715,35 @@ class P_51D(PlaneType):
             Dogfight_Blue = "Dogfight Blue"
             Dogfight_Red = "Dogfight Red"
 
+        class Slovakia(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
         class Greece(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
             Hellenic_Airforce_Green = "Hellenic Airforce Green"
 
         class UK(Enum):
             RAF_112_Sqdn = "RAF 112 Sqdn"
+            RAF_122_Sqdn_Jun_44 = "RAF 122 Sqdn Jun 44"
+            RAF_129_Sqdn_Jun_44 = "RAF 129 Sqdn Jun 44"
+            RAF_19_Sqdn_Jun_44 = "RAF 19 Sqdn Jun 44"
+            RAF_306_Sqdn_Jun_44 = "RAF 306 Sqdn Jun 44"
+            RAF_315_Sqdn_Jun_44 = "RAF 315 Sqdn Jun 44"
+            RAF_65_Sqdn_Jun_44 = "RAF 65 Sqdn Jun 44"
             Bare_Metal = "Bare Metal"
             Dogfight_Blue = "Dogfight Blue"
             Dogfight_Red = "Dogfight Red"
 
         class Insurgents(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Hungary(Enum):
             Bare_Metal = "Bare Metal"
             Dogfight_Blue = "Dogfight Blue"
             Dogfight_Red = "Dogfight Red"
@@ -7519,6 +7770,21 @@ class P_51D(PlaneType):
             USSR_Old = "USSR Old"
             Russia_Green_Black = "Russia Green Black"
 
+        class Sweden(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Austria(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Switzerland(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
         class Italy(Enum):
             Bare_Metal = "Bare Metal"
             Dogfight_Blue = "Dogfight Blue"
@@ -7526,6 +7792,66 @@ class P_51D(PlaneType):
             Italia_Air_Force = "Italia Air Force"
 
         class SouthOssetia(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class SouthKorea(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Iran(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class China(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Pakistan(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Belarus(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class NorthKorea(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Iraq(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Kazakhstan(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Bulgaria(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Serbia(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class India(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class USAFAggressors(Enum):
             Bare_Metal = "Bare Metal"
             Dogfight_Blue = "Dogfight Blue"
             Dogfight_Red = "Dogfight Red"
@@ -7556,6 +7882,11 @@ class P_51D(PlaneType):
             Dogfight_Blue = "Dogfight Blue"
             Dogfight_Red = "Dogfight Red"
 
+        class Egypt(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
         class Canada(Enum):
             Canada_RAF_442_Sqdn = "Canada RAF 442 Sqdn"
             Bare_Metal = "Bare Metal"
@@ -7568,6 +7899,16 @@ class P_51D(PlaneType):
             Dogfight_Red = "Dogfight Red"
 
         class Turkey(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Japan(Enum):
+            Bare_Metal = "Bare Metal"
+            Dogfight_Blue = "Dogfight Blue"
+            Dogfight_Red = "Dogfight Red"
+
+        class Poland(Enum):
             Bare_Metal = "Bare Metal"
             Dogfight_Blue = "Dogfight Blue"
             Dogfight_Red = "Dogfight Red"
@@ -7743,9 +8084,15 @@ class Bf_109_K_4(PlaneType):
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Syria(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Finland(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Australia(Enum):
@@ -7780,6 +8127,9 @@ class Bf_109_K_4(PlaneType):
             Bf_109_K4_White_6__JG_4 = "Bf-109 K4 White 6, JG 4"
 
         class SaudiArabia(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Israel(Enum):
@@ -7791,10 +8141,16 @@ class Bf_109_K_4(PlaneType):
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Croatia(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
             Bf_109_K4_Croatia = "Bf-109 K4 Croatia"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class CzechRepublic(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Norway(Enum):
@@ -7805,6 +8161,9 @@ class Bf_109_K_4(PlaneType):
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Romania(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Spain(Enum):
@@ -7830,9 +8189,15 @@ class Bf_109_K_4(PlaneType):
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Slovakia(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Greece(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class UK(Enum):
@@ -7852,6 +8217,9 @@ class Bf_109_K_4(PlaneType):
 
         class Hungary(Enum):
             Bf_109_K4_G10_of_Tibor_Tobak_RHAF = "Bf-109 K4 G10 of Tibor Tobak RHAF"
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class France(Enum):
@@ -7878,13 +8246,22 @@ class Bf_109_K_4(PlaneType):
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Sweden(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Austria(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Switzerland(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
             Bf_109_K4_Irmgard = "Bf-109 K4 Irmgard"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Italy(Enum):
@@ -7902,39 +8279,75 @@ class Bf_109_K_4(PlaneType):
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class SouthKorea(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Iran(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class China(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Pakistan(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Belarus(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class NorthKorea(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Iraq(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Kazakhstan(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Bulgaria(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Serbia(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class India(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class USAFAggressors(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class USA(Enum):
@@ -7956,6 +8369,9 @@ class Bf_109_K_4(PlaneType):
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Egypt(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Canada(Enum):
@@ -7980,9 +8396,15 @@ class Bf_109_K_4(PlaneType):
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Japan(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Poland(Enum):
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
+            Green = "Green"
+            Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
     class Pylon1:
@@ -7996,13 +8418,13 @@ class Bf_109_K_4(PlaneType):
     task_default = task.CAP
 
 
-class SpitfireLFMkIX(PlaneType):
+class Spitfire_LF_Mk__IX(PlaneType):
     id = "SpitfireLFMkIX"
     flyable = True
     height = 4.77
     width = 11.25
     length = 12.13
-    fuel_max = 296
+    fuel_max = 247
     max_speed = 828
     category = "Air"
     radio_frequency = 124
@@ -8022,6 +8444,9 @@ class SpitfireLFMkIX(PlaneType):
 
         class UK(Enum):
             RAF_Standard = "RAF Standard"
+            RAF_2_TAF__July_1944 = "RAF 2 TAF, July 1944"
+            RAF_2_TAF__June_1944 = "RAF 2 TAF, June 1944"
+            RAF_2_TAF__Sept_1944 = "RAF 2 TAF, Sept 1944"
             RAF__No__126_Squadron__Harrowbeer = "RAF, No. 126 Squadron, Harrowbeer"
             RAF__No__145_Squadron = "RAF, No. 145 Squadron"
             RAF__No__16_Squadron = "RAF, No. 16 Squadron"
@@ -8036,6 +8461,360 @@ class SpitfireLFMkIX(PlaneType):
 
     tasks = [task.CAP, task.Escort, task.Intercept, task.FighterSweep, task.GroundAttack, task.CAS, task.AFAC, task.RunwayAttack, task.AntishipStrike]
     task_default = task.CAP
+
+
+class AJS37(PlaneType):
+    id = "AJS37"
+    height = 5.81
+    width = 10.6
+    length = 16.3
+    fuel_max = 4476
+    max_speed = 1980
+    chaff = 105
+    flare = 36
+    charge_total = 280
+    chaff_charge_size = 4
+    flare_charge_size = 1
+    category = "Air"
+    radio_frequency = 127.5
+
+    panel_radio = {
+        1: {
+            "channels": {
+                6: 270,
+                2: 264,
+                3: 265,
+                1: 124,
+                4: 254,
+                5: 250,
+                7: 121.5
+            },
+        },
+    }
+
+    property_defaults = {
+        "Rb04GroupTarget": 3,
+        "Rb04VinkelHopp": 0,
+        "WeapSafeHeight": 1,
+    }
+
+    class Properties:
+
+        class Rb04GroupTarget:
+            id = "Rb04GroupTarget"
+
+            class Values:
+                First_and_third = 0
+                First_and_second = 1
+                Second_and_third = 2
+                Random = 3
+
+        class Rb04VinkelHopp:
+            id = "Rb04VinkelHopp"
+
+            class Values:
+                None_ = 0
+                Left = 1
+                Right = 2
+                Both = 3
+
+        class WeapSafeHeight:
+            id = "WeapSafeHeight"
+
+            class Values:
+                Low = 0
+                Medium = 1
+                High = 2
+
+    class Liveries:
+
+        class Georgia(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Syria(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Finland(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Australia(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Germany(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class SaudiArabia(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Israel(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Croatia(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class CzechRepublic(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Norway(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Romania(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Spain(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Ukraine(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Belgium(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Slovakia(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Greece(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class UK(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Insurgents(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Hungary(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class France(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Abkhazia(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Russia(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Sweden(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Austria(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Switzerland(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Italy(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class SouthOssetia(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class SouthKorea(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Iran(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class China(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Pakistan(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Belarus(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class NorthKorea(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Iraq(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Kazakhstan(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Bulgaria(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Serbia(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class India(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class USAFAggressors(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class USA(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Denmark(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Egypt(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Canada(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class TheNetherlands(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Turkey(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Japan(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+        class Poland(Enum):
+            _37 = "37"
+            BareMetal = "BareMetal"
+
+    class Pylon1:
+        RB_24J_with_launcher = (1, Weapons.RB_24J_with_launcher)
+        RB_24_with_launcher = (1, Weapons.RB_24_with_launcher)
+
+    class Pylon2:
+        RB_74_with_launcher = (2, Weapons.RB_74_with_launcher)
+        RB_24J_with_launcher = (2, Weapons.RB_24J_with_launcher)
+        RB_24_with_launcher = (2, Weapons.RB_24_with_launcher)
+        BK90_mix_with_launcher = (2, Weapons.BK90_mix_with_launcher)
+        BK90_MJ1_with_launcher = (2, Weapons.BK90_MJ1_with_launcher)
+        BK90_MJ2_with_launcher = (2, Weapons.BK90_MJ2_with_launcher)
+        AKAN_Gunpod = (2, Weapons.AKAN_Gunpod)
+        ARAK_M70B_HE = (2, Weapons.ARAK_M70B_HE)
+        ARAK_M70B_AP = (2, Weapons.ARAK_M70B_AP)
+        RB_04E_with_launcher = (2, Weapons.RB_04E_with_launcher)
+        RB_15F_with_launcher = (2, Weapons.RB_15F_with_launcher)
+        RB_04E__for_A_I___with_launcher = (2, Weapons.RB_04E__for_A_I___with_launcher)
+        RB_15F__for_A_I___with_launcher = (2, Weapons.RB_15F__for_A_I___with_launcher)
+        KB_F_C_dispenser = (2, Weapons.KB_F_C_dispenser)
+        LYSBOMB_Illumination_bomb = (2, Weapons.LYSBOMB_Illumination_bomb)
+        _4_M_71_HE_Bomb = (2, Weapons._4_M_71_HE_Bomb)
+        _4_M_71_HE_Bomb_w_chute = (2, Weapons._4_M_71_HE_Bomb_w_chute)
+#ERRR {MERPYLON}
+        RB_75_with_launcher = (2, Weapons.RB_75_with_launcher)
+        RB_75B_with_launcher = (2, Weapons.RB_75B_with_launcher)
+        RB_75T_with_launcher = (2, Weapons.RB_75T_with_launcher)
+
+    class Pylon3:
+        RB_74_with_launcher = (3, Weapons.RB_74_with_launcher)
+        RB_24J_with_launcher = (3, Weapons.RB_24J_with_launcher)
+        RB_24_with_launcher = (3, Weapons.RB_24_with_launcher)
+        BK90_mix_with_launcher = (3, Weapons.BK90_mix_with_launcher)
+        BK90_MJ1_with_launcher = (3, Weapons.BK90_MJ1_with_launcher)
+        BK90_MJ2_with_launcher = (3, Weapons.BK90_MJ2_with_launcher)
+        ARAK_M70B_HE = (3, Weapons.ARAK_M70B_HE)
+        ARAK_M70B_AP = (3, Weapons.ARAK_M70B_AP)
+        RB_05A_with_launcher = (3, Weapons.RB_05A_with_launcher)
+        LYSBOMB_Illumination_bomb = (3, Weapons.LYSBOMB_Illumination_bomb)
+        _4_M_71_HE_Bomb = (3, Weapons._4_M_71_HE_Bomb)
+        _4_M_71_HE_Bomb_w_chute = (3, Weapons._4_M_71_HE_Bomb_w_chute)
+#ERRR {MERPYLON}
+        RB_75_with_launcher = (3, Weapons.RB_75_with_launcher)
+        RB_75B_with_launcher = (3, Weapons.RB_75B_with_launcher)
+        RB_75T_with_launcher = (3, Weapons.RB_75T_with_launcher)
+
+    class Pylon4:
+        AJS_X_Tank = (4, Weapons.AJS_X_Tank)
+
+    class Pylon5:
+        RB_74_with_launcher = (5, Weapons.RB_74_with_launcher)
+        RB_24J_with_launcher = (5, Weapons.RB_24J_with_launcher)
+        RB_24_with_launcher = (5, Weapons.RB_24_with_launcher)
+        BK90_mix_with_launcher = (5, Weapons.BK90_mix_with_launcher)
+        BK90_MJ1_with_launcher = (5, Weapons.BK90_MJ1_with_launcher)
+        BK90_MJ2_with_launcher = (5, Weapons.BK90_MJ2_with_launcher)
+        ARAK_M70B_HE = (5, Weapons.ARAK_M70B_HE)
+        ARAK_M70B_AP = (5, Weapons.ARAK_M70B_AP)
+        RB_05A_with_launcher = (5, Weapons.RB_05A_with_launcher)
+        LYSBOMB_Illumination_bomb = (5, Weapons.LYSBOMB_Illumination_bomb)
+        _4_M_71_HE_Bomb = (5, Weapons._4_M_71_HE_Bomb)
+        _4_M_71_HE_Bomb_w_chute = (5, Weapons._4_M_71_HE_Bomb_w_chute)
+        RB_75_with_launcher = (5, Weapons.RB_75_with_launcher)
+        RB_75B_with_launcher = (5, Weapons.RB_75B_with_launcher)
+        RB_75T_with_launcher = (5, Weapons.RB_75T_with_launcher)
+#ERRR {MERPYLON}
+
+    class Pylon6:
+        RB_74_with_launcher = (6, Weapons.RB_74_with_launcher)
+        RB_24J_with_launcher = (6, Weapons.RB_24J_with_launcher)
+        RB_24_with_launcher = (6, Weapons.RB_24_with_launcher)
+        BK90_mix_with_launcher = (6, Weapons.BK90_mix_with_launcher)
+        BK90_MJ1_with_launcher = (6, Weapons.BK90_MJ1_with_launcher)
+        BK90_MJ2_with_launcher = (6, Weapons.BK90_MJ2_with_launcher)
+        AKAN_Gunpod = (6, Weapons.AKAN_Gunpod)
+        ARAK_M70B_HE = (6, Weapons.ARAK_M70B_HE)
+        ARAK_M70B_AP = (6, Weapons.ARAK_M70B_AP)
+        RB_04E_with_launcher = (6, Weapons.RB_04E_with_launcher)
+        RB_15F_with_launcher = (6, Weapons.RB_15F_with_launcher)
+        RB_04E__for_A_I___with_launcher = (6, Weapons.RB_04E__for_A_I___with_launcher)
+        RB_15F__for_A_I___with_launcher = (6, Weapons.RB_15F__for_A_I___with_launcher)
+        KB_F_C_dispenser = (6, Weapons.KB_F_C_dispenser)
+        U22_Jammer = (6, Weapons.U22_Jammer)
+        U22_A_Jammer = (6, Weapons.U22_A_Jammer)
+        LYSBOMB_Illumination_bomb = (6, Weapons.LYSBOMB_Illumination_bomb)
+        _4_M_71_HE_Bomb = (6, Weapons._4_M_71_HE_Bomb)
+        _4_M_71_HE_Bomb_w_chute = (6, Weapons._4_M_71_HE_Bomb_w_chute)
+#ERRR {MERPYLON}
+        RB_75_with_launcher = (6, Weapons.RB_75_with_launcher)
+        RB_75B_with_launcher = (6, Weapons.RB_75B_with_launcher)
+        RB_75T_with_launcher = (6, Weapons.RB_75T_with_launcher)
+
+    class Pylon7:
+        RB_24J_with_launcher = (7, Weapons.RB_24J_with_launcher)
+        RB_24_with_launcher = (7, Weapons.RB_24_with_launcher)
+
+    pylons = {1, 2, 3, 4, 5, 6, 7}
+
+    tasks = [task.GroundAttack, task.RunwayAttack, task.PinpointStrike, task.CAS, task.AFAC, task.CAP, task.Escort, task.SEAD, task.FighterSweep, task.Intercept, task.AntishipStrike, task.Reconnaissance]
+    task_default = task.GroundAttack
 
 
 class C_101EB(PlaneType):
@@ -8104,16 +8883,34 @@ class C_101EB(PlaneType):
         class Georgia(Enum):
             default = "default"
 
+        class Syria(Enum):
+            default = "default"
+
+        class Finland(Enum):
+            default = "default"
+
         class Australia(Enum):
             default = "default"
 
         class Germany(Enum):
             default = "default"
 
+        class SaudiArabia(Enum):
+            default = "default"
+
         class Israel(Enum):
             default = "default"
 
+        class Croatia(Enum):
+            default = "default"
+
+        class CzechRepublic(Enum):
+            default = "default"
+
         class Norway(Enum):
+            default = "default"
+
+        class Romania(Enum):
             default = "default"
 
         class Spain(Enum):
@@ -8121,8 +8918,6 @@ class C_101EB(PlaneType):
             AGA__Spanish_Air_School__1980 = "AGA (Spanish Air School) 1980"
             AGA__Spanish_Air_School__1985 = "AGA (Spanish Air School) 1985"
             default = "default"
-            Honduras02 = "Honduras02"
-            Chile_02 = "Chile 02"
             Patrulla_Aguila_Spanish_AGA = "Patrulla Aguila Spanish AGA"
 
         class Ukraine(Enum):
@@ -8131,10 +8926,19 @@ class C_101EB(PlaneType):
         class Belgium(Enum):
             default = "default"
 
+        class Slovakia(Enum):
+            default = "default"
+
+        class Greece(Enum):
+            default = "default"
+
         class UK(Enum):
             default = "default"
 
         class Insurgents(Enum):
+            default = "default"
+
+        class Hungary(Enum):
             default = "default"
 
         class France(Enum):
@@ -8146,16 +8950,64 @@ class C_101EB(PlaneType):
         class Russia(Enum):
             default = "default"
 
+        class Sweden(Enum):
+            default = "default"
+
+        class Austria(Enum):
+            default = "default"
+
+        class Switzerland(Enum):
+            default = "default"
+
         class Italy(Enum):
             default = "default"
 
         class SouthOssetia(Enum):
             default = "default"
 
+        class SouthKorea(Enum):
+            default = "default"
+
+        class Iran(Enum):
+            default = "default"
+
+        class China(Enum):
+            default = "default"
+
+        class Pakistan(Enum):
+            default = "default"
+
+        class Belarus(Enum):
+            default = "default"
+
+        class NorthKorea(Enum):
+            default = "default"
+
+        class Iraq(Enum):
+            default = "default"
+
+        class Kazakhstan(Enum):
+            default = "default"
+
+        class Bulgaria(Enum):
+            default = "default"
+
+        class Serbia(Enum):
+            default = "default"
+
+        class India(Enum):
+            default = "default"
+
+        class USAFAggressors(Enum):
+            default = "default"
+
         class USA(Enum):
             default = "default"
 
         class Denmark(Enum):
+            default = "default"
+
+        class Egypt(Enum):
             default = "default"
 
         class Canada(Enum):
@@ -8165,6 +9017,12 @@ class C_101EB(PlaneType):
             default = "default"
 
         class Turkey(Enum):
+            default = "default"
+
+        class Japan(Enum):
+            default = "default"
+
+        class Poland(Enum):
             default = "default"
 
     class Pylon1:
@@ -8246,24 +9104,40 @@ class C_101CC(PlaneType):
         class Georgia(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
 
+        class Syria(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Finland(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
         class Australia(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
 
         class Germany(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
 
+        class SaudiArabia(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
         class Israel(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Croatia(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class CzechRepublic(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
 
         class Norway(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
 
+        class Romania(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
         class Spain(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
-            CLAEX = "CLAEX"
-            Honduras02 = "Honduras02"
-            Chile_02 = "Chile 02"
-            SPAIN = "SPAIN"
+            CLAEX_Desert_Camu_Skin___Centro_Logistico_de_Armamento_y_Experimentacion = "CLAEX Desert Camu Skin - Centro Logistico de Armamento y Experimentacion"
+            CLAEX_Green_Camu_Skin___Centro_Logistico_de_Armamento_y_Experimentacion = "CLAEX Green Camu Skin - Centro Logistico de Armamento y Experimentacion"
 
         class Ukraine(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
@@ -8271,10 +9145,19 @@ class C_101CC(PlaneType):
         class Belgium(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
 
+        class Slovakia(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Greece(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
         class UK(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
 
         class Insurgents(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Hungary(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
 
         class France(Enum):
@@ -8286,16 +9169,64 @@ class C_101CC(PlaneType):
         class Russia(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
 
+        class Sweden(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Austria(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Switzerland(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
         class Italy(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
 
         class SouthOssetia(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
 
+        class SouthKorea(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Iran(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class China(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Pakistan(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Belarus(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class NorthKorea(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Iraq(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Kazakhstan(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Bulgaria(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Serbia(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class India(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class USAFAggressors(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
         class USA(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
 
         class Denmark(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Egypt(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
 
         class Canada(Enum):
@@ -8307,12 +9238,16 @@ class C_101CC(PlaneType):
         class Turkey(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
 
+        class Japan(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
+        class Poland(Enum):
+            AVIODEV_Skin = "AVIODEV Skin"
+
     class Pylon1:
         AIM_9M = (1, Weapons.AIM_9M)
         AIM_9P = (1, Weapons.AIM_9P)
         R_550_Magic_2 = (1, Weapons.R_550_Magic_2)
-        LAU_61___19_2_75__rockets_MK151_HE = (1, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
-        BR_500 = (1, Weapons.BR_500)
 
     class Pylon2:
         Sea_Eagle = (2, Weapons.Sea_Eagle)
@@ -8326,6 +9261,7 @@ class C_101CC(PlaneType):
         BL755 = (2, Weapons.BL755)
         FAB_250 = (2, Weapons.FAB_250)
         FAB_100 = (2, Weapons.FAB_100)
+        BLG_66_Belouga = (2, Weapons.BLG_66_Belouga)
         BR_250 = (2, Weapons.BR_250)
         BR_500 = (2, Weapons.BR_500)
         BIN_200 = (2, Weapons.BIN_200)
@@ -8340,10 +9276,11 @@ class C_101CC(PlaneType):
         BL755 = (3, Weapons.BL755)
         FAB_250 = (3, Weapons.FAB_250)
         FAB_100 = (3, Weapons.FAB_100)
+        BLG_66_Belouga = (3, Weapons.BLG_66_Belouga)
         BR_250 = (3, Weapons.BR_250)
         BR_500 = (3, Weapons.BR_500)
         BIN_200 = (3, Weapons.BIN_200)
-        BRU_42_3_BDU_33 = (3, Weapons.BRU_42_3_BDU_33)
+        CBLS_200 = (3, Weapons.CBLS_200)
 
     class Pylon4:
         DEFA_553 = (4, Weapons.DEFA_553)
@@ -8359,10 +9296,11 @@ class C_101CC(PlaneType):
         BL755 = (5, Weapons.BL755)
         FAB_250 = (5, Weapons.FAB_250)
         FAB_100 = (5, Weapons.FAB_100)
+        BLG_66_Belouga = (5, Weapons.BLG_66_Belouga)
         BR_250 = (5, Weapons.BR_250)
         BR_500 = (5, Weapons.BR_500)
         BIN_200 = (5, Weapons.BIN_200)
-        BRU_42_3_BDU_33 = (5, Weapons.BRU_42_3_BDU_33)
+        CBLS_200 = (5, Weapons.CBLS_200)
 
     class Pylon6:
         Sea_Eagle = (6, Weapons.Sea_Eagle)
@@ -8376,6 +9314,7 @@ class C_101CC(PlaneType):
         BL755 = (6, Weapons.BL755)
         FAB_250 = (6, Weapons.FAB_250)
         FAB_100 = (6, Weapons.FAB_100)
+        BLG_66_Belouga = (6, Weapons.BLG_66_Belouga)
         BR_250 = (6, Weapons.BR_250)
         BR_500 = (6, Weapons.BR_500)
         BIN_200 = (6, Weapons.BIN_200)
@@ -8384,8 +9323,6 @@ class C_101CC(PlaneType):
         AIM_9M = (7, Weapons.AIM_9M)
         AIM_9P = (7, Weapons.AIM_9P)
         R_550_Magic_2 = (7, Weapons.R_550_Magic_2)
-        LAU_61___19_2_75__rockets_MK151_HE = (7, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
-        BR_500 = (7, Weapons.BR_500)
 
     pylons = {1, 2, 3, 4, 5, 6, 7}
 
@@ -8410,7 +9347,122 @@ class F_5E(PlaneType):
 
     class Liveries:
 
+        class Georgia(Enum):
+            USA_standard = "USA standard"
+
+        class Syria(Enum):
+            USA_standard = "USA standard"
+
+        class Finland(Enum):
+            USA_standard = "USA standard"
+
+        class Australia(Enum):
+            USA_standard = "USA standard"
+
+        class Germany(Enum):
+            USA_standard = "USA standard"
+
+        class SaudiArabia(Enum):
+            USA_standard = "USA standard"
+
+        class Israel(Enum):
+            USA_standard = "USA standard"
+
+        class Croatia(Enum):
+            USA_standard = "USA standard"
+
+        class CzechRepublic(Enum):
+            USA_standard = "USA standard"
+
+        class Norway(Enum):
+            USA_standard = "USA standard"
+
+        class Romania(Enum):
+            USA_standard = "USA standard"
+
+        class Spain(Enum):
+            USA_standard = "USA standard"
+
+        class Ukraine(Enum):
+            USA_standard = "USA standard"
+
+        class Belgium(Enum):
+            USA_standard = "USA standard"
+
+        class Slovakia(Enum):
+            USA_standard = "USA standard"
+
+        class Greece(Enum):
+            USA_standard = "USA standard"
+
+        class UK(Enum):
+            USA_standard = "USA standard"
+
+        class Insurgents(Enum):
+            USA_standard = "USA standard"
+
+        class Hungary(Enum):
+            USA_standard = "USA standard"
+
+        class France(Enum):
+            USA_standard = "USA standard"
+
+        class Abkhazia(Enum):
+            USA_standard = "USA standard"
+
+        class Russia(Enum):
+            USA_standard = "USA standard"
+
+        class Sweden(Enum):
+            USA_standard = "USA standard"
+
+        class Austria(Enum):
+            USA_standard = "USA standard"
+
+        class Switzerland(Enum):
+            USA_standard = "USA standard"
+
+        class Italy(Enum):
+            USA_standard = "USA standard"
+
+        class SouthOssetia(Enum):
+            USA_standard = "USA standard"
+
+        class SouthKorea(Enum):
+            USA_standard = "USA standard"
+
+        class Iran(Enum):
+            USA_standard = "USA standard"
+
+        class China(Enum):
+            USA_standard = "USA standard"
+
+        class Pakistan(Enum):
+            USA_standard = "USA standard"
+
+        class Belarus(Enum):
+            USA_standard = "USA standard"
+
+        class NorthKorea(Enum):
+            USA_standard = "USA standard"
+
+        class Iraq(Enum):
+            USA_standard = "USA standard"
+
+        class Kazakhstan(Enum):
+            USA_standard = "USA standard"
+
+        class Bulgaria(Enum):
+            USA_standard = "USA standard"
+
+        class Serbia(Enum):
+            USA_standard = "USA standard"
+
+        class India(Enum):
+            USA_standard = "USA standard"
+
         class USAFAggressors(Enum):
+            USA_standard = "USA standard"
             aggressor__desert__scheme = "aggressor `desert` scheme"
             aggressor__marine__scheme = "aggressor `marine` scheme"
             aggressor__snake__scheme = "aggressor `snake` scheme"
@@ -8420,6 +9472,27 @@ class F_5E(PlaneType):
             aggressor__desert__scheme = "aggressor `desert` scheme"
             aggressor__marine__scheme = "aggressor `marine` scheme"
             aggressor__snake__scheme = "aggressor `snake` scheme"
+
+        class Denmark(Enum):
+            USA_standard = "USA standard"
+
+        class Egypt(Enum):
+            USA_standard = "USA standard"
+
+        class Canada(Enum):
+            USA_standard = "USA standard"
+
+        class TheNetherlands(Enum):
+            USA_standard = "USA standard"
+
+        class Turkey(Enum):
+            USA_standard = "USA standard"
+
+        class Japan(Enum):
+            USA_standard = "USA standard"
+
+        class Poland(Enum):
+            USA_standard = "USA standard"
 
     class Pylon1:
         GAR_8 = (1, Weapons.GAR_8)
@@ -8513,7 +9586,6 @@ class F_5E(PlaneType):
         MXU_648_TP = (4, Weapons.MXU_648_TP)
         BDU_33 = (4, Weapons.BDU_33)
         BDU_50LD = (4, Weapons.BDU_50LD)
-        BDU_50LGB = (4, Weapons.BDU_50LGB)
         BDU_50HD = (4, Weapons.BDU_50HD)
 
     class Pylon5:
@@ -8746,10 +9818,166 @@ class F_5E_3(PlaneType):
 
     class Liveries:
 
+        class Georgia(Enum):
+            USA_standard = "USA standard"
+
+        class Syria(Enum):
+            USA_standard = "USA standard"
+
+        class Finland(Enum):
+            FI_HДvllv11 = "FI HДvllv11"
+            USA_standard = "USA standard"
+
+        class Australia(Enum):
+            USA_standard = "USA standard"
+
+        class Germany(Enum):
+            USA_standard = "USA standard"
+
+        class SaudiArabia(Enum):
+            SA_Royal_Saudi_Air_Force = "SA Royal Saudi Air Force"
+            USA_standard = "USA standard"
+
+        class Israel(Enum):
+            USA_standard = "USA standard"
+
+        class Croatia(Enum):
+            USA_standard = "USA standard"
+
+        class CzechRepublic(Enum):
+            USA_standard = "USA standard"
+
+        class Norway(Enum):
+            NO_336_sq = "NO 336 sq"
+            NO_332_sqn_AH_P = "NO 332 sqn AH-P"
+            NO_334_sqn_373 = "NO 334 sqn 373"
+            NO_334_sqn_RI_H = "NO 334 sqn RI-H"
+            NO_338_sqn_215 = "NO 338 sqn 215"
+            USA_standard = "USA standard"
+
+        class Romania(Enum):
+            USA_standard = "USA standard"
+
+        class Spain(Enum):
+            SP_Spanish_Air_Force_464_48 = "SP Spanish Air Force 464-48"
+            SP_Spanish_Air_Force_21_51 = "SP Spanish Air Force 21-51"
+            USA_standard = "USA standard"
+
+        class Ukraine(Enum):
+            USA_standard = "USA standard"
+
+        class Belgium(Enum):
+            USA_standard = "USA standard"
+
+        class Slovakia(Enum):
+            USA_standard = "USA standard"
+
+        class Greece(Enum):
+            GR_HAF_F_5E_Grey = "GR HAF F-5E Grey"
+            USA_standard = "USA standard"
+
+        class UK(Enum):
+            GB_No_29_Squadron_RAF = "GB No.29 Squadron RAF"
+            USA_standard = "USA standard"
+
+        class Insurgents(Enum):
+            USA_standard = "USA standard"
+
+        class Hungary(Enum):
+            USA_standard = "USA standard"
+
+        class France(Enum):
+            USA_standard = "USA standard"
+
+        class Abkhazia(Enum):
+            USA_standard = "USA standard"
+
+        class Russia(Enum):
+            USA_standard = "USA standard"
+
+        class Sweden(Enum):
+            USA_standard = "USA standard"
+
+        class Austria(Enum):
+            USA_standard = "USA standard"
+
+        class Switzerland(Enum):
+            CH_J_3001_Variante_2000 = "CH J-3001 Variante 2000"
+            CH_J_3001_Variante_1986 = "CH J-3001 Variante 1986"
+            CH_J_3001_Variante_1996 = "CH J-3001 Variante 1996"
+            CH_J_3008 = "CH J-3008"
+            CH_J_3025 = "CH J-3025"
+            CH_J_3026 = "CH J-3026"
+            CH_J_3033_2017 = "CH J-3033_2017"
+            CH_J_3036 = "CH J-3036"
+            CH_J_3036_2017 = "CH J-3036 2017"
+            CH_J_3038 = "CH J-3038"
+            CH_J_3073_2017 = "CH J-3073 2017"
+            CH_J_3074 = "CH J-3074"
+            CH_J_3079 = "CH J-3079"
+            CH_J_3098 = "CH J-3098"
+            CH_Patrouille_Suisse_J_3088 = "CH Patrouille Suisse J-3088"
+            CH_Swiss_Generic = "CH Swiss Generic"
+            USA_standard = "USA standard"
+
+        class Italy(Enum):
+            IT_Aereonautica_Militare_Italiana = "IT Aereonautica Militare Italiana"
+            USA_standard = "USA standard"
+
+        class SouthOssetia(Enum):
+            USA_standard = "USA standard"
+
+        class SouthKorea(Enum):
+            KR_ROKAF_10th_Fighter_Wing = "KR ROKAF 10th Fighter Wing"
+            USA_standard = "USA standard"
+
+        class Iran(Enum):
+            IR_IRIAF_Azarakhsh = "IR IRIAF Azarakhsh"
+            USA_standard = "USA standard"
+
+        class China(Enum):
+            USA_standard = "USA standard"
+
+        class Pakistan(Enum):
+            USA_standard = "USA standard"
+
+        class Belarus(Enum):
+            USA_standard = "USA standard"
+
+        class NorthKorea(Enum):
+            USA_standard = "USA standard"
+
+        class Iraq(Enum):
+            USA_standard = "USA standard"
+
+        class Kazakhstan(Enum):
+            USA_standard = "USA standard"
+
+        class Bulgaria(Enum):
+            USA_standard = "USA standard"
+
+        class Serbia(Enum):
+            USA_standard = "USA standard"
+
+        class India(Enum):
+            USA_standard = "USA standard"
+
         class USAFAggressors(Enum):
+            US_Aggressor_VFC_13_01 = "US Aggressor VFC-13 01"
+            US_Aggressor_VFC_13_25 = "US Aggressor VFC-13 25"
+            US_Aggressor_VFC_13_28_Fict_Splinter = "US Aggressor VFC-13 28 Fict Splinter"
+            US_Aggressor_VFC_13_40 = "US Aggressor VFC-13 40"
+            US_Aggressor_VMFT_401_02_2011 = "US Aggressor VMFT-401 02 2011"
+            TW_NGRC_5315 = "TW NGRC 5315"
             ROCAF_7th_Fighter_Group = "ROCAF 7th Fighter Group"
+            TW_ROCAF_7thFG_M = "TW ROCAF 7thFG(M)"
+            US_Aggressor_VFC_111_01 = "US Aggressor VFC-111 01"
+            US_Aggressor_VFC_111_105_WWII_B = "US Aggressor VFC-111 105 WWII B"
+            US_Aggressor_VFC_111_115 = "US Aggressor VFC-111 115"
+            US_Aggressor_VFC_111_116 = "US Aggressor VFC-111 116"
             USA_standard = "USA standard"
             USAF__Southeast_Asia = "USAF 'Southeast Asia'"
+            US_USAF_Grape_31 = "US USAF Grape 31"
             aggressor_VFC_13__11 = "aggressor VFC-13 '11'"
             aggressor_VFC_13__21 = "aggressor VFC-13 '21'"
             aggressor__desert__scheme = "aggressor `desert` scheme"
@@ -8758,8 +9986,20 @@ class F_5E_3(PlaneType):
             black__Mig_28 = "black 'Mig-28'"
 
         class USA(Enum):
+            US_Aggressor_VFC_13_01 = "US Aggressor VFC-13 01"
+            US_Aggressor_VFC_13_25 = "US Aggressor VFC-13 25"
+            US_Aggressor_VFC_13_28_Fict_Splinter = "US Aggressor VFC-13 28 Fict Splinter"
+            US_Aggressor_VFC_13_40 = "US Aggressor VFC-13 40"
+            US_Aggressor_VMFT_401_02_2011 = "US Aggressor VMFT-401 02 2011"
+            TW_NGRC_5315 = "TW NGRC 5315"
+            TW_ROCAF_7thFG_M = "TW ROCAF 7thFG(M)"
+            US_Aggressor_VFC_111_01 = "US Aggressor VFC-111 01"
+            US_Aggressor_VFC_111_105_WWII_B = "US Aggressor VFC-111 105 WWII B"
+            US_Aggressor_VFC_111_115 = "US Aggressor VFC-111 115"
+            US_Aggressor_VFC_111_116 = "US Aggressor VFC-111 116"
             USA_standard = "USA standard"
             USAF__Southeast_Asia = "USAF 'Southeast Asia'"
+            US_USAF_Grape_31 = "US USAF Grape 31"
             aggressor_VFC_13__11 = "aggressor VFC-13 '11'"
             aggressor_VFC_13__21 = "aggressor VFC-13 '21'"
             aggressor__desert__scheme = "aggressor `desert` scheme"
@@ -8767,9 +10007,29 @@ class F_5E_3(PlaneType):
             aggressor__snake__scheme = "aggressor `snake` scheme"
             black__Mig_28 = "black 'Mig-28'"
 
+        class Denmark(Enum):
+            USA_standard = "USA standard"
+
+        class Egypt(Enum):
+            USA_standard = "USA standard"
+
+        class Canada(Enum):
+            USA_standard = "USA standard"
+
+        class TheNetherlands(Enum):
+            USA_standard = "USA standard"
+
         class Turkey(Enum):
             _3rd_Main_Jet_Base_Group_Command__Turkey = "3rd Main Jet Base Group Command, Turkey"
             _5th_fs_Merzifon_air_base__Turkey = "5th fs Merzifon air base, Turkey"
+            TR_Turkish_Stars = "TR Turkish Stars"
+            USA_standard = "USA standard"
+
+        class Japan(Enum):
+            USA_standard = "USA standard"
+
+        class Poland(Enum):
+            USA_standard = "USA standard"
 
     class Pylon1:
         GAR_8 = (1, Weapons.GAR_8)
@@ -8863,7 +10123,6 @@ class F_5E_3(PlaneType):
         MXU_648_TP = (4, Weapons.MXU_648_TP)
         BDU_33 = (4, Weapons.BDU_33)
         BDU_50LD = (4, Weapons.BDU_50LD)
-        BDU_50LGB = (4, Weapons.BDU_50LGB)
         BDU_50HD = (4, Weapons.BDU_50HD)
 
     class Pylon5:
@@ -9537,15 +10796,197 @@ class L_39ZA(PlaneType):
 
     class Liveries:
 
+        class Georgia(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Syria(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Finland(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Australia(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Germany(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class SaudiArabia(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Israel(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Croatia(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
         class CzechRepublic(Enum):
             Czech_Air_Force = "Czech Air Force"
             Czechoslovakia_Air_Force = "Czechoslovakia Air Force"
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Norway(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Romania(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Spain(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Ukraine(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Belgium(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
 
         class Slovakia(Enum):
             Slovak_Air_Force = "Slovak Air Force"
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Greece(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class UK(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Insurgents(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Hungary(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class France(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Abkhazia(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
 
         class Russia(Enum):
             Russian_Air_Force = "Russian Air Force"
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Sweden(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Austria(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Switzerland(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Italy(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class SouthOssetia(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class SouthKorea(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Iran(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class China(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Pakistan(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Belarus(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class NorthKorea(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Iraq(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Kazakhstan(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Bulgaria(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Serbia(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class India(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class USAFAggressors(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class USA(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Denmark(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Egypt(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Canada(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class TheNetherlands(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Turkey(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Japan(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
+
+        class Poland(Enum):
+            Splinter_camo_desert = "Splinter camo desert"
+            Splinter_camo_woodland = "Splinter camo woodland"
 
     class Pylon1:
         FAB_100 = (1, Weapons.FAB_100)
@@ -9628,7 +11069,7 @@ class M_2000C(PlaneType):
     width = 9.13
     length = 14.36
     fuel_max = 3165
-    max_speed = 2520
+    max_speed = 2376
     chaff = 112
     flare = 16
     charge_total = 162
@@ -9690,6 +11131,7 @@ class M_2000C(PlaneType):
     property_defaults = {
         "NoDDMSensor": False,
         "RocketBurst": 6,
+        "GunBurst": 1,
         "LaserCode100": 6,
         "LaserCode10": 8,
         "LaserCode1": 8,
@@ -9710,6 +11152,13 @@ class M_2000C(PlaneType):
                 _3_Rockets = 3
                 _6_Rockets = 6
                 _18_Rockets = 18
+
+        class GunBurst:
+            id = "GunBurst"
+
+            class Values:
+                _0_5_Second = 1
+                _1_0_Second = 2
 
         class LaserCode100:
             id = "LaserCode100"
@@ -9741,8 +11190,15 @@ class M_2000C(PlaneType):
             Brasilian_Air_Force = "Brasilian Air Force"
             Peru052 = "Peru052"
             Peru064 = "Peru064"
+            GC1_2_cigognes = "GC1_2_cigognes"
             Greek_Air_Force = "Greek Air Force"
             UAE_Air_Force = "UAE Air Force"
+
+        class USAFAggressors(Enum):
+            GC1_2_cigognes = "GC1_2_cigognes"
+
+        class USA(Enum):
+            GC1_2_cigognes = "GC1_2_cigognes"
 
     class Pylon1:
         Matra_Magic_II = (1, Weapons.Matra_Magic_II)
@@ -9831,6 +11287,59 @@ class M_2000C(PlaneType):
 
     tasks = [task.GroundAttack, task.RunwayAttack, task.PinpointStrike, task.CAS, task.AFAC, task.CAP, task.Escort, task.FighterSweep, task.Intercept]
     task_default = task.CAP
+
+
+class MQ_9_Reaper(PlaneType):
+    id = "MQ-9 Reaper"
+    group_size_max = 1
+    height = 4.77
+    width = 20
+    length = 11
+    fuel_max = 1300
+    max_speed = 400
+    eplrs = True
+
+    class Liveries:
+
+        class UK(Enum):
+            standard_UK = "standard UK"
+
+        class France(Enum):
+            standard_France = "standard France"
+
+        class Italy(Enum):
+            standard_Italy = "standard Italy"
+
+        class USA(Enum):
+            _camo__scheme = "'camo' scheme"
+            standard = "standard"
+
+    class Pylon1:
+        GBU_12 = (1, Weapons.GBU_12)
+        GBU_38 = (1, Weapons.GBU_38)
+        AGM114x2_OH_58 = (1, Weapons.AGM114x2_OH_58)
+        AGM_114K___4 = (1, Weapons.AGM_114K___4)
+
+    class Pylon2:
+        GBU_12 = (2, Weapons.GBU_12)
+        GBU_38 = (2, Weapons.GBU_38)
+        AGM114x2_OH_58 = (2, Weapons.AGM114x2_OH_58)
+
+    class Pylon3:
+        GBU_12 = (3, Weapons.GBU_12)
+        GBU_38 = (3, Weapons.GBU_38)
+        AGM114x2_OH_58 = (3, Weapons.AGM114x2_OH_58)
+
+    class Pylon4:
+        GBU_12 = (4, Weapons.GBU_12)
+        GBU_38 = (4, Weapons.GBU_38)
+        AGM114x2_OH_58 = (4, Weapons.AGM114x2_OH_58)
+        AGM_114K___4 = (4, Weapons.AGM_114K___4)
+
+    pylons = {1, 2, 3, 4}
+
+    tasks = [task.GroundAttack, task.CAS, task.AFAC, task.Reconnaissance]
+    task_default = task.Reconnaissance
 
 
 class MiG_15bis(PlaneType):
@@ -10019,9 +11528,9 @@ class MiG_21Bis(PlaneType):
     length = 14.5
     fuel_max = 2280
     max_speed = 2509.2
-    chaff = 32
-    flare = 32
-    charge_total = 64
+    chaff = 18
+    flare = 40
+    charge_total = 58
     chaff_charge_size = 1
     flare_charge_size = 1
     radio_frequency = 124
@@ -10056,12 +11565,12 @@ class MiG_21Bis(PlaneType):
     class Liveries:
 
         class Georgia(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10077,12 +11586,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Syria(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10098,12 +11607,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Finland(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10119,12 +11628,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Australia(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10140,12 +11649,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Germany(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10161,12 +11670,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class SaudiArabia(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10182,12 +11691,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Israel(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10203,12 +11712,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Croatia(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10224,12 +11733,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class CzechRepublic(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10245,12 +11754,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Norway(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10266,12 +11775,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Romania(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10287,12 +11796,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Spain(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10308,12 +11817,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Ukraine(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10329,12 +11838,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Belgium(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10350,12 +11859,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Slovakia(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10371,12 +11880,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Greece(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10392,12 +11901,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class UK(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10413,12 +11922,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Insurgents(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10434,12 +11943,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Hungary(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10455,12 +11964,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class France(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10476,12 +11985,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Abkhazia(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10497,12 +12006,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Russia(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10518,12 +12027,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Sweden(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10539,12 +12048,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Austria(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10560,12 +12069,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Switzerland(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10581,12 +12090,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Italy(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10602,12 +12111,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class SouthOssetia(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10623,12 +12132,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class SouthKorea(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10644,12 +12153,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Iran(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10665,12 +12174,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class China(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10686,12 +12195,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Pakistan(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10707,12 +12216,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Belarus(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10728,12 +12237,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class NorthKorea(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10749,12 +12258,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Iraq(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10770,12 +12279,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Kazakhstan(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10791,12 +12300,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Bulgaria(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10812,12 +12321,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Serbia(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10833,12 +12342,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class India(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10854,12 +12363,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class USAFAggressors(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10875,12 +12384,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class USA(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10896,12 +12405,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Denmark(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10917,12 +12426,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Egypt(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10938,12 +12447,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Canada(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10959,12 +12468,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class TheNetherlands(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -10980,12 +12489,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Turkey(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -11001,12 +12510,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Japan(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -11022,12 +12531,12 @@ class MiG_21Bis(PlaneType):
             VVS_Metal = "VVS Metal"
 
         class Poland(Enum):
-            Bare_Metal = "Bare Metal"
             Serbia___101_FS = "Serbia - 101 FS"
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             Northeria___32_FS = "Northeria - 32 FS"
             VVS_Camo = "VVS Camo"
             VVS_Grey = "VVS Grey"
+            Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
             Cuba = "Cuba"
@@ -11044,8 +12553,8 @@ class MiG_21Bis(PlaneType):
 
     class Pylon1:
         UB_16UM___16_S_5M = (1, Weapons.UB_16UM___16_S_5M)
-        S_24B__ = (1, Weapons.S_24B__)
-        S_24A = (1, Weapons.S_24A)
+        S_24B__21_ = (1, Weapons.S_24B__21_)
+        S_24A__21_ = (1, Weapons.S_24A__21_)
         FAB_100 = (1, Weapons.FAB_100)
         FAB_250 = (1, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (1, Weapons.RBK_250_PTAB_2_5M)
@@ -11065,8 +12574,8 @@ class MiG_21Bis(PlaneType):
     class Pylon2:
         UB_16UM___16_S_5M = (2, Weapons.UB_16UM___16_S_5M)
         UB_32M___32_S_5M = (2, Weapons.UB_32M___32_S_5M)
-        S_24B__ = (2, Weapons.S_24B__)
-        S_24A = (2, Weapons.S_24A)
+        S_24B__21_ = (2, Weapons.S_24B__21_)
+        S_24A__21_ = (2, Weapons.S_24A__21_)
         FAB_100_x_4 = (2, Weapons.FAB_100_x_4)
         FAB_100 = (2, Weapons.FAB_100)
         FAB_250 = (2, Weapons.FAB_250)
@@ -11074,7 +12583,7 @@ class MiG_21Bis(PlaneType):
         BetAB_500 = (2, Weapons.BetAB_500)
         BetAB_500ShP = (2, Weapons.BetAB_500ShP)
         RBK_250_PTAB_2_5M = (2, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (2, Weapons.RBK_500_PTAB_10_5)
+        RBK_500_255_PTAB_10_5 = (2, Weapons.RBK_500_255_PTAB_10_5)
         BL755 = (2, Weapons.BL755)
         SAB_100 = (2, Weapons.SAB_100)
         Kh_66_Grom__21__APU_68 = (2, Weapons.Kh_66_Grom__21__APU_68)
@@ -11100,8 +12609,8 @@ class MiG_21Bis(PlaneType):
     class Pylon4:
         UB_16UM___16_S_5M = (4, Weapons.UB_16UM___16_S_5M)
         UB_32M___32_S_5M = (4, Weapons.UB_32M___32_S_5M)
-        S_24B__ = (4, Weapons.S_24B__)
-        S_24A = (4, Weapons.S_24A)
+        S_24B__21_ = (4, Weapons.S_24B__21_)
+        S_24A__21_ = (4, Weapons.S_24A__21_)
         FAB_100_x_4 = (4, Weapons.FAB_100_x_4)
         FAB_100 = (4, Weapons.FAB_100)
         FAB_250 = (4, Weapons.FAB_250)
@@ -11109,7 +12618,7 @@ class MiG_21Bis(PlaneType):
         BetAB_500 = (4, Weapons.BetAB_500)
         BetAB_500ShP = (4, Weapons.BetAB_500ShP)
         RBK_250_PTAB_2_5M = (4, Weapons.RBK_250_PTAB_2_5M)
-        RBK_500_PTAB_10_5 = (4, Weapons.RBK_500_PTAB_10_5)
+        RBK_500_255_PTAB_10_5 = (4, Weapons.RBK_500_255_PTAB_10_5)
         BL755 = (4, Weapons.BL755)
         SAB_100 = (4, Weapons.SAB_100)
         Kh_66_Grom__21__APU_68 = (4, Weapons.Kh_66_Grom__21__APU_68)
@@ -11127,8 +12636,8 @@ class MiG_21Bis(PlaneType):
 
     class Pylon5:
         UB_16UM___16_S_5M = (5, Weapons.UB_16UM___16_S_5M)
-        S_24B__ = (5, Weapons.S_24B__)
-        S_24A = (5, Weapons.S_24A)
+        S_24B__21_ = (5, Weapons.S_24B__21_)
+        S_24A__21_ = (5, Weapons.S_24A__21_)
         FAB_100 = (5, Weapons.FAB_100)
         FAB_250 = (5, Weapons.FAB_250)
         RBK_250_PTAB_2_5M = (5, Weapons.RBK_250_PTAB_2_5M)
@@ -11151,7 +12660,7 @@ class MiG_21Bis(PlaneType):
         SPRD_99 = (6, Weapons.SPRD_99)
 
     class Pylon7:
-        Smoke___white___21 = (7, Weapons.Smoke___white___21)
+        Smoke___white___21_ = (7, Weapons.Smoke___white___21_)
 
     pylons = {1, 2, 3, 4, 5, 6, 7}
 
@@ -11159,57 +12668,24 @@ class MiG_21Bis(PlaneType):
     task_default = task.CAP
 
 
-class MQ_9_Reaper(PlaneType):
-    id = "MQ-9 Reaper"
-    group_size_max = 1
-    height = 4.77
-    width = 20
-    length = 11
-    fuel_max = 1300
-    max_speed = 400
-    eplrs = True
+class B_17G(PlaneType):
+    id = "B-17G"
+    height = 5.82
+    width = 31.62
+    length = 22.66
+    fuel_max = 7600
+    max_speed = 828
 
-    class Liveries:
-
-        class UK(Enum):
-            standard_UK = "standard UK"
-
-        class France(Enum):
-            standard_France = "standard France"
-
-        class Italy(Enum):
-            standard_Italy = "standard Italy"
-
-        class USA(Enum):
-            _camo__scheme = "'camo' scheme"
-            standard = "standard"
+    property_defaults = {
+    }
 
     class Pylon1:
-        GBU_12 = (1, Weapons.GBU_12)
-        GBU_38 = (1, Weapons.GBU_38)
-        AGM114x2_OH_58 = (1, Weapons.AGM114x2_OH_58)
-        AGM_114K___4 = (1, Weapons.AGM_114K___4)
+        _12_AN_M64 = (1, Weapons._12_AN_M64)
 
-    class Pylon2:
-        GBU_12 = (2, Weapons.GBU_12)
-        GBU_38 = (2, Weapons.GBU_38)
-        AGM114x2_OH_58 = (2, Weapons.AGM114x2_OH_58)
+    pylons = {1}
 
-    class Pylon3:
-        GBU_12 = (3, Weapons.GBU_12)
-        GBU_38 = (3, Weapons.GBU_38)
-        AGM114x2_OH_58 = (3, Weapons.AGM114x2_OH_58)
-
-    class Pylon4:
-        GBU_12 = (4, Weapons.GBU_12)
-        GBU_38 = (4, Weapons.GBU_38)
-        AGM114x2_OH_58 = (4, Weapons.AGM114x2_OH_58)
-        AGM_114K___4 = (4, Weapons.AGM_114K___4)
-
-    pylons = {1, 2, 3, 4}
-
-    tasks = [task.GroundAttack, task.CAS, task.AFAC, task.Reconnaissance]
-    task_default = task.Reconnaissance
+    tasks = [task.GroundAttack, task.RunwayAttack]
+    task_default = task.GroundAttack
 
 
 class TF_51D(PlaneType):
@@ -11238,16 +12714,34 @@ class TF_51D(PlaneType):
         class Georgia(Enum):
             Bare_Metal = "Bare Metal"
 
+        class Syria(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Finland(Enum):
+            Bare_Metal = "Bare Metal"
+
         class Australia(Enum):
             Bare_Metal = "Bare Metal"
 
         class Germany(Enum):
             Bare_Metal = "Bare Metal"
 
+        class SaudiArabia(Enum):
+            Bare_Metal = "Bare Metal"
+
         class Israel(Enum):
             Bare_Metal = "Bare Metal"
 
+        class Croatia(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class CzechRepublic(Enum):
+            Bare_Metal = "Bare Metal"
+
         class Norway(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Romania(Enum):
             Bare_Metal = "Bare Metal"
 
         class Spain(Enum):
@@ -11259,13 +12753,20 @@ class TF_51D(PlaneType):
         class Belgium(Enum):
             Bare_Metal = "Bare Metal"
 
+        class Slovakia(Enum):
+            Bare_Metal = "Bare Metal"
+
         class Greece(Enum):
+            Bare_Metal = "Bare Metal"
             Hellenic_Airforce_Trainer = "Hellenic Airforce Trainer"
 
         class UK(Enum):
             Bare_Metal = "Bare Metal"
 
         class Insurgents(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Hungary(Enum):
             Bare_Metal = "Bare Metal"
 
         class France(Enum):
@@ -11277,20 +12778,69 @@ class TF_51D(PlaneType):
         class Russia(Enum):
             Bare_Metal = "Bare Metal"
 
+        class Sweden(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Austria(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Switzerland(Enum):
+            Bare_Metal = "Bare Metal"
+
         class Italy(Enum):
             Bare_Metal = "Bare Metal"
 
         class SouthOssetia(Enum):
             Bare_Metal = "Bare Metal"
 
+        class SouthKorea(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Iran(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class China(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Pakistan(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Belarus(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class NorthKorea(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Iraq(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Kazakhstan(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Bulgaria(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Serbia(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class India(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class USAFAggressors(Enum):
+            Bare_Metal = "Bare Metal"
+
         class USA(Enum):
+            USAF_364th_FS = "USAF 364th FS"
             Bare_Metal = "Bare Metal"
             TF_51_Gentleman_Jim = "TF-51 Gentleman Jim"
-            TF__51_Glamorous_Glen_III = "TF -51 Glamorous Glen III"
+            TF_51_Glamorous_Glen_III = "TF-51 Glamorous Glen III"
             TF_51_Gunfighter = "TF-51 Gunfighter"
             TF_51_Miss_Velma = "TF-51 Miss Velma"
 
         class Denmark(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Egypt(Enum):
             Bare_Metal = "Bare Metal"
 
         class Canada(Enum):
@@ -11300,6 +12850,12 @@ class TF_51D(PlaneType):
             Bare_Metal = "Bare Metal"
 
         class Turkey(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Japan(Enum):
+            Bare_Metal = "Bare Metal"
+
+        class Poland(Enum):
             Bare_Metal = "Bare Metal"
 
     pylons = {}
@@ -11368,7 +12924,8 @@ plane_map = {
     "P-51D": P_51D,
     "FW-190D9": Fw_190_D_9,
     "Bf-109K-4": Bf_109_K_4,
-    "SpitfireLFMkIX": SpitfireLFMkIX,
+    "SpitfireLFMkIX": Spitfire_LF_Mk__IX,
+    "AJS37": AJS37,
     "C-101EB": C_101EB,
     "C-101CC": C_101CC,
     "F-5E": F_5E,
@@ -11378,8 +12935,9 @@ plane_map = {
     "L-39C": L_39C,
     "L-39ZA": L_39ZA,
     "M-2000C": M_2000C,
+    "MQ-9 Reaper": MQ_9_Reaper,
     "MiG-15bis": MiG_15bis,
     "MiG-21Bis": MiG_21Bis,
-    "MQ-9 Reaper": MQ_9_Reaper,
+    "B-17G": B_17G,
     "TF-51D": TF_51D,
 }

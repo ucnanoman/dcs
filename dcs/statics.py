@@ -504,17 +504,143 @@ class Fortification:
         shape_name = "H-Windsock_RW"
         rate = 3
 
-    class TowerArmed(unittype.StaticType):
-        id = "house2arm"
-        name = "Watch Tower Armed"
-        shape_name = None
+    class Belgian_gate(unittype.StaticType):
+        id = "Belgian gate"
+        name = "Belgian gate"
+        shape_name = "Belgian_gate"
+        rate = 20
+
+    class Concertina_wire(unittype.StaticType):
+        id = "Concertina wire"
+        name = "Concertina wire"
+        shape_name = "Concertina_wire"
+        rate = 0
+
+    class Tetrahydra(unittype.StaticType):
+        id = "Tetrahydra"
+        name = "Tetrahydra"
+        shape_name = "Concrete_tetra"
+        rate = 0
+
+    class Hemmkurvenhindernis(unittype.StaticType):
+        id = "Hemmkurvenhindernis"
+        name = "Hemmkurvenhindernis"
+        shape_name = "Curved_rail"
+        rate = 0
+
+    class Czech_hedgehogs_1(unittype.StaticType):
+        id = "Czech hedgehogs 1"
+        name = "Czech hedgehogs 1"
+        shape_name = "Czech_hedgehogs_01"
+        rate = 20
+
+    class Czech_hedgehogs_2(unittype.StaticType):
+        id = "Czech hedgehogs 2"
+        name = "Czech hedgehogs 2"
+        shape_name = "Czech_hedgehogs_02"
+        rate = 20
+
+    class Dragonteeth_1(unittype.StaticType):
+        id = "Dragonteeth 1"
+        name = "Dragonteeth 1"
+        shape_name = "Dragonsteeth"
+        rate = 20
+
+    class Dragonteeth_2(unittype.StaticType):
+        id = "Dragonteeth 2"
+        name = "Dragonteeth 2"
+        shape_name = "Dragonsteeth_01"
+        rate = 20
+
+    class Dragonteeth_3(unittype.StaticType):
+        id = "Dragonteeth 3"
+        name = "Dragonteeth 3"
+        shape_name = "Dragonsteeth_02"
+        rate = 20
+
+    class Dragonteeth_4(unittype.StaticType):
+        id = "Dragonteeth 4"
+        name = "Dragonteeth 4"
+        shape_name = "Dragonsteeth_03"
+        rate = 20
+
+    class Dragonteeth_5(unittype.StaticType):
+        id = "Dragonteeth 5"
+        name = "Dragonteeth 5"
+        shape_name = "Dragonsteeth_04"
+        rate = 20
+
+    class Fire_control_bunker(unittype.StaticType):
+        id = "Fire Control Bunker"
+        name = "Fire control bunker"
+        shape_name = "fire_control"
         rate = 100
 
-    class Bunker(unittype.StaticType):
-        id = "Bunker"
-        name = "Bunker"
-        shape_name = None
-        rate = 100
+    class Haystack_1(unittype.StaticType):
+        id = "Haystack 1"
+        name = "Haystack 1"
+        shape_name = "Haystack_1"
+        rate = 0
+
+    class Haystack_2(unittype.StaticType):
+        id = "Haystack 2"
+        name = "Haystack 2"
+        shape_name = "Haystack_2"
+        rate = 0
+
+    class Haystack_3(unittype.StaticType):
+        id = "Haystack 3"
+        name = "Haystack 3"
+        shape_name = "Haystack_3"
+        rate = 0
+
+    class Haystack_4(unittype.StaticType):
+        id = "Haystack 4"
+        name = "Haystack 4"
+        shape_name = "Haystack_4"
+        rate = 0
+
+    class Log_posts_1(unittype.StaticType):
+        id = "Log posts 1"
+        name = "Log posts 1"
+        shape_name = "Log_posts"
+        rate = 10
+
+    class Log_posts_2(unittype.StaticType):
+        id = "Log posts 2"
+        name = "Log posts 2"
+        shape_name = "Log_posts_01"
+        rate = 10
+
+    class Log_posts_3(unittype.StaticType):
+        id = "Log posts 3"
+        name = "Log posts 3"
+        shape_name = "Log_posts_02"
+        rate = 10
+
+    class Log_ramps_1(unittype.StaticType):
+        id = "Log ramps 1"
+        name = "Log ramps 1"
+        shape_name = "Log_ramps"
+        rate = 12
+
+    class Log_ramps_2(unittype.StaticType):
+        id = "Log ramps 2"
+        name = "Log ramps 2"
+        shape_name = "Log_ramps_01"
+        rate = 12
+
+    class Log_ramps_3(unittype.StaticType):
+        id = "Log ramps 3"
+        name = "Log ramps 3"
+        shape_name = "Log_ramps_02"
+        rate = 12
+
+    class Siegfried_Line(unittype.StaticType):
+        id = "Siegfried Line"
+        name = "Siegfried Line"
+        shape_name = "Siegfried_Line"
+        rate = 20
 
 fortification_map = {
     ".Command Center": Fortification.Command_Center,
@@ -600,6 +726,29 @@ fortification_map = {
     "Black_Tyre_RF": Fortification.Mark_Tyre_with_Red_Flag,
     "Black_Tyre_WF": Fortification.Mark_Tyre_with_White_Flag,
     "Windsock": Fortification.Windsock,
+    "Belgian gate": Fortification.Belgian_gate,
+    "Concertina wire": Fortification.Concertina_wire,
+    "Tetrahydra": Fortification.Tetrahydra,
+    "Hemmkurvenhindernis": Fortification.Hemmkurvenhindernis,
+    "Czech hedgehogs 1": Fortification.Czech_hedgehogs_1,
+    "Czech hedgehogs 2": Fortification.Czech_hedgehogs_2,
+    "Dragonteeth 1": Fortification.Dragonteeth_1,
+    "Dragonteeth 2": Fortification.Dragonteeth_2,
+    "Dragonteeth 3": Fortification.Dragonteeth_3,
+    "Dragonteeth 4": Fortification.Dragonteeth_4,
+    "Dragonteeth 5": Fortification.Dragonteeth_5,
+    "Fire Control Bunker": Fortification.Fire_control_bunker,
+    "Haystack 1": Fortification.Haystack_1,
+    "Haystack 2": Fortification.Haystack_2,
+    "Haystack 3": Fortification.Haystack_3,
+    "Haystack 4": Fortification.Haystack_4,
+    "Log posts 1": Fortification.Log_posts_1,
+    "Log posts 2": Fortification.Log_posts_2,
+    "Log posts 3": Fortification.Log_posts_3,
+    "Log ramps 1": Fortification.Log_ramps_1,
+    "Log ramps 2": Fortification.Log_ramps_2,
+    "Log ramps 3": Fortification.Log_ramps_3,
+    "Siegfried Line": Fortification.Siegfried_Line,
 }
 
 
@@ -681,140 +830,140 @@ warehouse_map = {
 
 class Cargo:
 
-    class uh1h_cargo(unittype.StaticType):
+    class UH_1H_cargo(unittype.StaticType):
         id = "uh1h_cargo"
-        name = "uh1h_cargo"
+        name = "UH-1H cargo"
         shape_name = "ab-212_cargo"
         category = "Cargos"
         rate = 100
         can_cargo = True
 
-    class ammo_cargo(unittype.StaticType):
+    class Ammo(unittype.StaticType):
         id = "ammo_cargo"
-        name = "ammo_cargo"
+        name = "Ammo"
         shape_name = "ammo_box_cargo"
         category = "Cargos"
-        rate = 1000
+        rate = 100
         can_cargo = True
 
-    class f_bar_cargo(unittype.StaticType):
+    class F_shape_barrier(unittype.StaticType):
         id = "f_bar_cargo"
-        name = "f_bar_cargo"
+        name = "F-shape barrier"
         shape_name = "f_bar_cargo"
         category = "Cargos"
-        rate = 823
+        rate = 100
         can_cargo = True
 
-    class m117_cargo(unittype.StaticType):
+    class M117_bombs(unittype.StaticType):
         id = "m117_cargo"
-        name = "m117_cargo"
+        name = "M117 bombs"
         shape_name = "m117_cargo"
         category = "Cargos"
-        rate = 840
+        rate = 100
         can_cargo = True
 
-    class iso_container(unittype.StaticType):
+    class ISO_container(unittype.StaticType):
         id = "iso_container"
-        name = "iso_container"
+        name = "ISO container"
         shape_name = "iso_container_cargo"
         category = "Cargos"
-        rate = 3800
+        rate = 100
         can_cargo = True
 
-    class iso_container_small(unittype.StaticType):
+    class ISO_container_small(unittype.StaticType):
         id = "iso_container_small"
-        name = "iso_container_small"
+        name = "ISO container small"
         shape_name = "iso_container_small_cargo"
         category = "Cargos"
-        rate = 220
+        rate = 100
         can_cargo = True
 
-    class barrels_cargo(unittype.StaticType):
+    class Barrels(unittype.StaticType):
         id = "barrels_cargo"
-        name = "barrels_cargo"
+        name = "Barrels"
         shape_name = "barrels_cargo"
         category = "Cargos"
-        rate = 480
+        rate = 100
         can_cargo = True
 
-    class container_cargo(unittype.StaticType):
+    class Container(unittype.StaticType):
         id = "container_cargo"
-        name = "container_cargo"
+        name = "Container"
         shape_name = "bw_container_cargo"
         category = "Cargos"
         rate = 100
         can_cargo = True
 
-    class tetrapod_cargo(unittype.StaticType):
+    class Tetrapod(unittype.StaticType):
         id = "tetrapod_cargo"
-        name = "tetrapod_cargo"
+        name = "Tetrapod"
         shape_name = "tetrapod_cargo"
         category = "Cargos"
-        rate = 5000
+        rate = 100
         can_cargo = True
 
-    class fueltank_cargo(unittype.StaticType):
+    class Fueltank(unittype.StaticType):
         id = "fueltank_cargo"
-        name = "fueltank_cargo"
+        name = "Fueltank"
         shape_name = "fueltank_cargo"
         category = "Cargos"
-        rate = 800
+        rate = 100
         can_cargo = True
 
-    class oiltank_cargo(unittype.StaticType):
+    class Oiltank(unittype.StaticType):
         id = "oiltank_cargo"
-        name = "oiltank_cargo"
+        name = "Oiltank"
         shape_name = "oiltank_cargo"
         category = "Cargos"
-        rate = 700
+        rate = 100
         can_cargo = True
 
-    class pipes_big_cargo(unittype.StaticType):
+    class Pipes_big(unittype.StaticType):
         id = "pipes_big_cargo"
-        name = "pipes_big_cargo"
+        name = "Pipes big"
         shape_name = "pipes_big_cargo"
         category = "Cargos"
-        rate = 4815
+        rate = 100
         can_cargo = True
 
-    class pipes_small_cargo(unittype.StaticType):
+    class Pipes_small(unittype.StaticType):
         id = "pipes_small_cargo"
-        name = "pipes_small_cargo"
+        name = "Pipes small"
         shape_name = "pipes_small_cargo"
         category = "Cargos"
-        rate = 4350
+        rate = 100
         can_cargo = True
 
-    class trunks_small_cargo(unittype.StaticType):
+    class Trunks_short(unittype.StaticType):
         id = "trunks_small_cargo"
-        name = "trunks_small_cargo"
+        name = "Trunks short"
         shape_name = "trunks_small_cargo"
         category = "Cargos"
-        rate = 5000
+        rate = 100
         can_cargo = True
 
-    class trunks_long_cargo(unittype.StaticType):
+    class Trunks_long(unittype.StaticType):
         id = "trunks_long_cargo"
-        name = "trunks_long_cargo"
+        name = "Trunks long"
         shape_name = "trunks_long_cargo"
         category = "Cargos"
-        rate = 4747
+        rate = 100
         can_cargo = True
 
 cargo_map = {
-    "uh1h_cargo": Cargo.uh1h_cargo,
-    "ammo_cargo": Cargo.ammo_cargo,
-    "f_bar_cargo": Cargo.f_bar_cargo,
-    "m117_cargo": Cargo.m117_cargo,
-    "iso_container": Cargo.iso_container,
-    "iso_container_small": Cargo.iso_container_small,
-    "barrels_cargo": Cargo.barrels_cargo,
-    "container_cargo": Cargo.container_cargo,
-    "tetrapod_cargo": Cargo.tetrapod_cargo,
-    "fueltank_cargo": Cargo.fueltank_cargo,
-    "oiltank_cargo": Cargo.oiltank_cargo,
-    "pipes_big_cargo": Cargo.pipes_big_cargo,
-    "pipes_small_cargo": Cargo.pipes_small_cargo,
-    "trunks_small_cargo": Cargo.trunks_small_cargo,
-    "trunks_long_cargo": Cargo.trunks_long_cargo,
+    "uh1h_cargo": Cargo.UH_1H_cargo,
+    "ammo_cargo": Cargo.Ammo,
+    "f_bar_cargo": Cargo.F_shape_barrier,
+    "m117_cargo": Cargo.M117_bombs,
+    "iso_container": Cargo.ISO_container,
+    "iso_container_small": Cargo.ISO_container_small,
+    "barrels_cargo": Cargo.Barrels,
+    "container_cargo": Cargo.Container,
+    "tetrapod_cargo": Cargo.Tetrapod,
+    "fueltank_cargo": Cargo.Fueltank,
+    "oiltank_cargo": Cargo.Oiltank,
+    "pipes_big_cargo": Cargo.Pipes_big,
+    "pipes_small_cargo": Cargo.Pipes_small,
+    "trunks_small_cargo": Cargo.Trunks_short,
+    "trunks_long_cargo": Cargo.Trunks_long,
 }

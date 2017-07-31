@@ -27,6 +27,9 @@ class Russia(Country):
             Paratrooper_AKS = vehicles.Infantry.Paratrooper_AKS
             Infantry_Soldier_Rus = vehicles.Infantry.Infantry_Soldier_Rus
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
             Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
@@ -46,7 +49,7 @@ class Russia(Country):
             CP_SKP_11_ATC_Mobile_Command_Post = vehicles.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
             Transport_Ural_4320T = vehicles.Unarmed.Transport_Ural_4320T
             Transport_Ural_4320_31_Armored = vehicles.Unarmed.Transport_Ural_4320_31_Armored
-            Transport_fire_Engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_Engine_Ural_ATsP_6
+            Transport_fire_engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_engine_Ural_ATsP_6
             GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
             Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
             GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
@@ -66,6 +69,11 @@ class Russia(Country):
             MBT_T_55 = vehicles.Armor.MBT_T_55
             ARV_MTLB_U_BOMAN = vehicles.Armor.ARV_MTLB_U_BOMAN
             MBT_T_90 = vehicles.Armor.MBT_T_90
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             SPH_2S19_Msta = vehicles.Artillery.SPH_2S19_Msta
@@ -140,7 +148,8 @@ class Russia(Country):
         P_51D = planes.P_51D
         FW_190D9 = planes.Fw_190_D_9
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -186,7 +195,8 @@ class Russia(Country):
         Plane.P_51D,
         Plane.FW_190D9,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -291,6 +301,9 @@ class Ukraine(Country):
             Paratrooper_RPG_16 = vehicles.Infantry.Paratrooper_RPG_16
             Paratrooper_AKS = vehicles.Infantry.Paratrooper_AKS
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
             Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
@@ -309,7 +322,7 @@ class Ukraine(Country):
             Transport_MAZ_6303 = vehicles.Unarmed.Transport_MAZ_6303
             CP_SKP_11_ATC_Mobile_Command_Post = vehicles.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
             Transport_Ural_4320T = vehicles.Unarmed.Transport_Ural_4320T
-            Transport_fire_Engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_Engine_Ural_ATsP_6
+            Transport_fire_engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_engine_Ural_ATsP_6
             GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
             Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
             GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
@@ -327,6 +340,11 @@ class Ukraine(Country):
             APC_MTLB = vehicles.Armor.APC_MTLB
             MBT_T_72B = vehicles.Armor.MBT_T_72B
             MBT_T_55 = vehicles.Armor.MBT_T_55
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             SPH_2S19_Msta = vehicles.Artillery.SPH_2S19_Msta
@@ -387,7 +405,8 @@ class Ukraine(Country):
         L_39ZA = planes.L_39ZA
         P_51D = planes.P_51D
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -423,7 +442,8 @@ class Ukraine(Country):
         Plane.L_39ZA,
         Plane.P_51D,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -493,6 +513,10 @@ class USA(Country):
         class Infantry:
             Infantry_M4 = vehicles.Infantry.Infantry_M4
             Soldier_M249 = vehicles.Infantry.Soldier_M249
+            Infantry_M1_Garand = vehicles.Infantry.Infantry_M1_Garand
+
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
 
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
@@ -501,6 +525,9 @@ class USA(Country):
             CP_Predator_TrojanSpirit = vehicles.Unarmed.CP_Predator_TrojanSpirit
             Tanker_M978_HEMTT = vehicles.Unarmed.Tanker_M978_HEMTT
             HEMTT_TFFT = vehicles.Unarmed.HEMTT_TFFT
+            Bedford_MWD = vehicles.Unarmed.Bedford_MWD
+            CCKW_353 = vehicles.Unarmed.CCKW_353
+            Willys_MB = vehicles.Unarmed.Willys_MB
 
         class Armor:
             IFV_M2A2_Bradley = vehicles.Armor.IFV_M2A2_Bradley
@@ -513,6 +540,14 @@ class USA(Country):
             ATGM_M1134_Stryker = vehicles.Armor.ATGM_M1134_Stryker
             APC_M1043_HMMWV_Armament = vehicles.Armor.APC_M1043_HMMWV_Armament
             ATGM_M1045_HMMWV_TOW = vehicles.Armor.ATGM_M1045_HMMWV_TOW
+            CT_Cromwell_IV = vehicles.Armor.CT_Cromwell_IV
+            MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
+            MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
@@ -537,6 +572,7 @@ class USA(Country):
             SAM_Linebacker_M6 = vehicles.AirDefence.SAM_Linebacker_M6
             Stinger_MANPADS = vehicles.AirDefence.Stinger_MANPADS
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
+            AAA_Bofors_40mm = vehicles.AirDefence.AAA_Bofors_40mm
 
     class Plane:
         A_10C = planes.A_10C
@@ -562,7 +598,8 @@ class USA(Country):
         L_39ZA = planes.L_39ZA
         FW_190D9 = planes.Fw_190_D_9
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -571,9 +608,10 @@ class USA(Country):
         Hawk = planes.Hawk
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
+        MQ_9_Reaper = planes.MQ_9_Reaper
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
-        MQ_9_Reaper = planes.MQ_9_Reaper
+        B_17G = planes.B_17G
         TF_51D = planes.TF_51D
 
     planes = [
@@ -600,7 +638,8 @@ class USA(Country):
         Plane.L_39ZA,
         Plane.FW_190D9,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -609,9 +648,10 @@ class USA(Country):
         Plane.Hawk,
         Plane.L_39C,
         Plane.M_2000C,
+        Plane.MQ_9_Reaper,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
-        Plane.MQ_9_Reaper,
+        Plane.B_17G,
         Plane.TF_51D,
     ]
 
@@ -653,6 +693,8 @@ class USA(Country):
         CVN_70_Carl_Vinson = ships.CVN_70_Carl_Vinson
         FFG_7CL_Oliver_Hazzard_Perry = ships.FFG_7CL_Oliver_Hazzard_Perry
         CG_60_Normandy = ships.CG_60_Normandy
+        LST_Mk_II = ships.LST_Mk_II
+        LS_Samuel_Chase = ships.LS_Samuel_Chase
 
     class CallsignAWACS:
         Overlord = "Overlord"
@@ -776,6 +818,9 @@ class Turkey(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
@@ -790,6 +835,11 @@ class Turkey(Country):
             APC_BTR_80 = vehicles.Armor.APC_BTR_80
             MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
             MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             MLRS_M270 = vehicles.Artillery.MLRS_M270
@@ -812,7 +862,8 @@ class Turkey(Country):
         C_130 = planes.C_130
         P_51D = planes.P_51D
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -821,9 +872,9 @@ class Turkey(Country):
         Hawk = planes.Hawk
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
+        MQ_9_Reaper = planes.MQ_9_Reaper
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
-        MQ_9_Reaper = planes.MQ_9_Reaper
         TF_51D = planes.TF_51D
 
     planes = [
@@ -833,7 +884,8 @@ class Turkey(Country):
         Plane.C_130,
         Plane.P_51D,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -842,9 +894,9 @@ class Turkey(Country):
         Plane.Hawk,
         Plane.L_39C,
         Plane.M_2000C,
+        Plane.MQ_9_Reaper,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
-        Plane.MQ_9_Reaper,
         Plane.TF_51D,
     ]
 
@@ -892,17 +944,34 @@ class UK(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
+            Bedford_MWD = vehicles.Unarmed.Bedford_MWD
+            CCKW_353 = vehicles.Unarmed.CCKW_353
+            Willys_MB = vehicles.Unarmed.Willys_MB
 
         class Armor:
             IFV_MCV_80 = vehicles.Armor.IFV_MCV_80
             MBT_Challenger_II = vehicles.Armor.MBT_Challenger_II
             TPz_Fuchs = vehicles.Armor.TPz_Fuchs
+            CT_Cromwell_IV = vehicles.Armor.CT_Cromwell_IV
+            MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
+            MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             MLRS_M270 = vehicles.Artillery.MLRS_M270
+
+        class AirDefence:
+            AAA_Bofors_40mm = vehicles.AirDefence.AAA_Bofors_40mm
 
     class Plane:
         A_10C = planes.A_10C
@@ -911,7 +980,8 @@ class UK(Country):
         P_51D = planes.P_51D
         FW_190D9 = planes.Fw_190_D_9
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -920,9 +990,10 @@ class UK(Country):
         Hawk = planes.Hawk
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
+        MQ_9_Reaper = planes.MQ_9_Reaper
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
-        MQ_9_Reaper = planes.MQ_9_Reaper
+        B_17G = planes.B_17G
         TF_51D = planes.TF_51D
 
     planes = [
@@ -932,7 +1003,8 @@ class UK(Country):
         Plane.P_51D,
         Plane.FW_190D9,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -941,9 +1013,10 @@ class UK(Country):
         Plane.Hawk,
         Plane.L_39C,
         Plane.M_2000C,
+        Plane.MQ_9_Reaper,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
-        Plane.MQ_9_Reaper,
+        Plane.B_17G,
         Plane.TF_51D,
     ]
 
@@ -972,6 +1045,8 @@ class UK(Country):
 
     class Ship:
         Armed_speedboat = ships.Armed_speedboat
+        LST_Mk_II = ships.LST_Mk_II
+        LS_Samuel_Chase = ships.LS_Samuel_Chase
 
     class CallsignAWACS:
         Solex = "Solex"
@@ -1003,11 +1078,25 @@ class France(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             Transport_M818 = vehicles.Unarmed.Transport_M818
+            Bedford_MWD = vehicles.Unarmed.Bedford_MWD
+            CCKW_353 = vehicles.Unarmed.CCKW_353
+            Willys_MB = vehicles.Unarmed.Willys_MB
 
         class Armor:
             MBT_Leclerc = vehicles.Armor.MBT_Leclerc
+            CT_Cromwell_IV = vehicles.Armor.CT_Cromwell_IV
+            MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
+            MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             MLRS_M270 = vehicles.Artillery.MLRS_M270
@@ -1018,6 +1107,7 @@ class France(Country):
             SAM_Hawk_PCP = vehicles.AirDefence.SAM_Hawk_PCP
             SAM_Hawk_TR_AN_MPQ_46 = vehicles.AirDefence.SAM_Hawk_TR_AN_MPQ_46
             SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
+            AAA_Bofors_40mm = vehicles.AirDefence.AAA_Bofors_40mm
 
     class Plane:
         A_10C = planes.A_10C
@@ -1025,7 +1115,8 @@ class France(Country):
         C_130 = planes.C_130
         P_51D = planes.P_51D
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -1034,9 +1125,9 @@ class France(Country):
         Hawk = planes.Hawk
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
+        MQ_9_Reaper = planes.MQ_9_Reaper
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
-        MQ_9_Reaper = planes.MQ_9_Reaper
         TF_51D = planes.TF_51D
 
     planes = [
@@ -1045,7 +1136,8 @@ class France(Country):
         Plane.C_130,
         Plane.P_51D,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -1054,9 +1146,9 @@ class France(Country):
         Plane.Hawk,
         Plane.L_39C,
         Plane.M_2000C,
+        Plane.MQ_9_Reaper,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
-        Plane.MQ_9_Reaper,
         Plane.TF_51D,
     ]
 
@@ -1079,6 +1171,8 @@ class France(Country):
 
     class Ship:
         Armed_speedboat = ships.Armed_speedboat
+        LST_Mk_II = ships.LST_Mk_II
+        LS_Samuel_Chase = ships.LS_Samuel_Chase
 
     class CallsignAWACS:
         Cyrano = "Cyrano"
@@ -1110,11 +1204,19 @@ class Germany(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Infantry:
+            Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
+
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
             Tanker_M978_HEMTT = vehicles.Unarmed.Tanker_M978_HEMTT
             HEMTT_TFFT = vehicles.Unarmed.HEMTT_TFFT
+            Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
+            Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
 
         class Armor:
             APC_M113 = vehicles.Armor.APC_M113
@@ -1122,10 +1224,23 @@ class Germany(Country):
             MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
             IFV_Marder = vehicles.Armor.IFV_Marder
             TPz_Fuchs = vehicles.Armor.TPz_Fuchs
+            HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
+            HT_Pz_Kpfw_VI_Ausf__B__Tiger_II = vehicles.Armor.HT_Pz_Kpfw_VI_Ausf__B__Tiger_II
+            MT_Pz_Kpfw_V_Panther_Ausf_G = vehicles.Armor.MT_Pz_Kpfw_V_Panther_Ausf_G
+            MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
+            Jagdpanther_G1 = vehicles.Armor.Jagdpanther_G1
+            Jagdpanzer_IV = vehicles.Armor.Jagdpanzer_IV
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
             MLRS_M270 = vehicles.Artillery.MLRS_M270
+            Sturmpanzer_IV_Brummbär = vehicles.Artillery.Sturmpanzer_IV_Brummbär
+            SK_C_28_15cm_naval_gun = vehicles.Artillery.SK_C_28_15cm_naval_gun
 
         class AirDefence:
             SAM_Patriot_STR_AN_MPQ_53 = vehicles.AirDefence.SAM_Patriot_STR_AN_MPQ_53
@@ -1144,6 +1259,11 @@ class Germany(Country):
             SPAAA_Gepard = vehicles.AirDefence.SPAAA_Gepard
             Stinger_MANPADS = vehicles.AirDefence.Stinger_MANPADS
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
+            AAA_Flak_18 = vehicles.AirDefence.AAA_Flak_18
+            AAA_Flak_30 = vehicles.AirDefence.AAA_Flak_30
+            AAA_Flak_36 = vehicles.AirDefence.AAA_Flak_36
+            AAA_Flak_37 = vehicles.AirDefence.AAA_Flak_37
+            AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
 
     class Plane:
         A_10C = planes.A_10C
@@ -1153,7 +1273,8 @@ class Germany(Country):
         P_51D = planes.P_51D
         FW_190D9 = planes.Fw_190_D_9
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -1174,7 +1295,8 @@ class Germany(Country):
         Plane.P_51D,
         Plane.FW_190D9,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -1228,6 +1350,7 @@ class USAFAggressors(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
         class Infantry:
+            Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
             Paratrooper_RPG_16 = vehicles.Infantry.Paratrooper_RPG_16
             Paratrooper_AKS = vehicles.Infantry.Paratrooper_AKS
             Infantry_Soldier_Rus = vehicles.Infantry.Infantry_Soldier_Rus
@@ -1237,8 +1360,17 @@ class USAFAggressors(Country):
             Infantry_Soldier_Insurgents = vehicles.Infantry.Infantry_Soldier_Insurgents
             Infantry_M4 = vehicles.Infantry.Infantry_M4
             Soldier_M249 = vehicles.Infantry.Soldier_M249
+            Infantry_M1_Garand = vehicles.Infantry.Infantry_M1_Garand
+
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
 
         class Unarmed:
+            Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
+            Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+            Bedford_MWD = vehicles.Unarmed.Bedford_MWD
+            CCKW_353 = vehicles.Unarmed.CCKW_353
+            Willys_MB = vehicles.Unarmed.Willys_MB
             Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
             Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
             Transport_UAZ_469 = vehicles.Unarmed.Transport_UAZ_469
@@ -1255,7 +1387,7 @@ class USAFAggressors(Country):
             Transport_MAZ_6303 = vehicles.Unarmed.Transport_MAZ_6303
             CP_SKP_11_ATC_Mobile_Command_Post = vehicles.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
             Transport_Ural_4320T = vehicles.Unarmed.Transport_Ural_4320T
-            Transport_fire_Engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_Engine_Ural_ATsP_6
+            Transport_fire_engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_engine_Ural_ATsP_6
             GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
             Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
             GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
@@ -1271,6 +1403,15 @@ class USAFAggressors(Country):
             CP_Predator_TrojanSpirit = vehicles.Unarmed.CP_Predator_TrojanSpirit
 
         class Armor:
+            HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
+            HT_Pz_Kpfw_VI_Ausf__B__Tiger_II = vehicles.Armor.HT_Pz_Kpfw_VI_Ausf__B__Tiger_II
+            MT_Pz_Kpfw_V_Panther_Ausf_G = vehicles.Armor.MT_Pz_Kpfw_V_Panther_Ausf_G
+            MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
+            Jagdpanther_G1 = vehicles.Armor.Jagdpanther_G1
+            Jagdpanzer_IV = vehicles.Armor.Jagdpanzer_IV
+            CT_Cromwell_IV = vehicles.Armor.CT_Cromwell_IV
+            MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
+            MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
             APC_BTR_80 = vehicles.Armor.APC_BTR_80
             IFV_BMD_1 = vehicles.Armor.IFV_BMD_1
             IFV_BMP_1 = vehicles.Armor.IFV_BMP_1
@@ -1305,7 +1446,14 @@ class USAFAggressors(Country):
             IFV_MCV_80 = vehicles.Armor.IFV_MCV_80
             MBT_Challenger_II = vehicles.Armor.MBT_Challenger_II
 
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
         class Artillery:
+            Sturmpanzer_IV_Brummbär = vehicles.Artillery.Sturmpanzer_IV_Brummbär
+            SK_C_28_15cm_naval_gun = vehicles.Artillery.SK_C_28_15cm_naval_gun
             SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
             SPH_2S9_Nona = vehicles.Artillery.SPH_2S9_Nona
             MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
@@ -1316,8 +1464,15 @@ class USAFAggressors(Country):
             SPH_2S19_Msta = vehicles.Artillery.SPH_2S19_Msta
             MLRS_9K57_Uragan_BM_27 = vehicles.Artillery.MLRS_9K57_Uragan_BM_27
             MLRS_9A52_Smerch = vehicles.Artillery.MLRS_9A52_Smerch
+            SpGH_Dana = vehicles.Artillery.SpGH_Dana
 
         class AirDefence:
+            AAA_Flak_18 = vehicles.AirDefence.AAA_Flak_18
+            AAA_Flak_30 = vehicles.AirDefence.AAA_Flak_30
+            AAA_Flak_36 = vehicles.AirDefence.AAA_Flak_36
+            AAA_Flak_37 = vehicles.AirDefence.AAA_Flak_37
+            AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
+            AAA_Bofors_40mm = vehicles.AirDefence.AAA_Bofors_40mm
             SAM_SA_8_Osa_9A33 = vehicles.AirDefence.SAM_SA_8_Osa_9A33
             SAM_SA_13_Strela_10M3_9A35M3 = vehicles.AirDefence.SAM_SA_13_Strela_10M3_9A35M3
             SPAAA_ZSU_23_4_Shilka = vehicles.AirDefence.SPAAA_ZSU_23_4_Shilka
@@ -1376,10 +1531,25 @@ class USAFAggressors(Country):
 
     class Plane:
         A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_21Bis = planes.MiG_21Bis
         C_130 = planes.C_130
         F_16A_MLU = planes.F_16A_MLU
         P_51D = planes.P_51D
         Tornado_IDS = planes.Tornado_IDS
+        MQ_9_Reaper = planes.MQ_9_Reaper
+        TF_51D = planes.TF_51D
         F_A_18C = planes.F_A_18C
         Su_33 = planes.Su_33
         Su_25 = planes.Su_25
@@ -1409,6 +1579,7 @@ class USAFAggressors(Country):
         IL_78M = planes.IL_78M
         IL_76MD = planes.IL_76MD
         L_39ZA = planes.L_39ZA
+        FW_190D9 = planes.Fw_190_D_9
         F_15C = planes.F_15C
         F_15E = planes.F_15E
         F_16C_bl_52d = planes.F_16C_bl_52d
@@ -1428,29 +1599,31 @@ class USAFAggressors(Country):
         E_2C = planes.E_2D
         F_16A = planes.F_16A
         RQ_1A_Predator = planes.MQ_1A_Predator
+        B_17G = planes.B_17G
         Tornado_GR4 = planes.Tornado_GR4
         F_16C_bl_50 = planes.F_16C_bl_50
-        TF_51D = planes.TF_51D
-        L_39C = planes.L_39C
-        Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
-        C_101EB = planes.C_101EB
-        C_101CC = planes.C_101CC
-        F_5E = planes.F_5E
-        F_5E_3 = planes.F_5E_3
-        F_86F_Sabre = planes.F_86F
-        Hawk = planes.Hawk
-        L_39C = planes.L_39C
-        M_2000C = planes.M_2000C
-        MiG_15bis = planes.MiG_15bis
-        MiG_21Bis = planes.MiG_21Bis
 
     planes = [
         Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_21Bis,
         Plane.C_130,
         Plane.F_16A_MLU,
         Plane.P_51D,
         Plane.Tornado_IDS,
+        Plane.MQ_9_Reaper,
+        Plane.TF_51D,
         Plane.F_A_18C,
         Plane.Su_33,
         Plane.Su_25,
@@ -1480,6 +1653,7 @@ class USAFAggressors(Country):
         Plane.IL_78M,
         Plane.IL_76MD,
         Plane.L_39ZA,
+        Plane.FW_190D9,
         Plane.F_15C,
         Plane.F_15E,
         Plane.F_16C_bl_52d,
@@ -1499,26 +1673,16 @@ class USAFAggressors(Country):
         Plane.E_2C,
         Plane.F_16A,
         Plane.RQ_1A_Predator,
+        Plane.B_17G,
         Plane.Tornado_GR4,
         Plane.F_16C_bl_50,
-        Plane.TF_51D,
-        Plane.L_39C,
-        Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
-        Plane.C_101EB,
-        Plane.C_101CC,
-        Plane.F_5E,
-        Plane.F_5E_3,
-        Plane.F_86F_Sabre,
-        Plane.Hawk,
-        Plane.L_39C,
-        Plane.M_2000C,
-        Plane.MiG_15bis,
-        Plane.MiG_21Bis,
     ]
 
     class Helicopter:
         Ka_50 = helicopters.Ka_50
+        SA342M = helicopters.SA342M
+        SA342L = helicopters.SA342L
+        SA342Mistral = helicopters.SA342Mistral
         Mi_24V = helicopters.Mi_24V
         Mi_8MT = helicopters.Mi_8MTV2
         UH_1H = helicopters.UH_1H
@@ -1533,12 +1697,12 @@ class USAFAggressors(Country):
         SH_60B = helicopters.SH_60B
         CH_53E = helicopters.CH_53E
         OH_58D = helicopters.OH_58D
-        SA342M = helicopters.SA342M
-        SA342L = helicopters.SA342L
-        SA342Mistral = helicopters.SA342Mistral
 
     helicopters = [
         Helicopter.Ka_50,
+        Helicopter.SA342M,
+        Helicopter.SA342L,
+        Helicopter.SA342Mistral,
         Helicopter.Mi_24V,
         Helicopter.Mi_8MT,
         Helicopter.UH_1H,
@@ -1553,13 +1717,12 @@ class USAFAggressors(Country):
         Helicopter.SH_60B,
         Helicopter.CH_53E,
         Helicopter.OH_58D,
-        Helicopter.SA342M,
-        Helicopter.SA342L,
-        Helicopter.SA342Mistral,
     ]
 
     class Ship:
         Armed_speedboat = ships.Armed_speedboat
+        LST_Mk_II = ships.LST_Mk_II
+        LS_Samuel_Chase = ships.LS_Samuel_Chase
         CV_1143_5_Admiral_Kuznetsov = ships.CV_1143_5_Admiral_Kuznetsov
         CG_1164_Moskva = ships.CG_1164_Moskva
         CGN_1144_2_Pyotr_Velikiy = ships.CGN_1144_2_Pyotr_Velikiy
@@ -1596,17 +1759,31 @@ class Canada(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
             Tanker_M978_HEMTT = vehicles.Unarmed.Tanker_M978_HEMTT
             HEMTT_TFFT = vehicles.Unarmed.HEMTT_TFFT
+            Bedford_MWD = vehicles.Unarmed.Bedford_MWD
+            CCKW_353 = vehicles.Unarmed.CCKW_353
+            Willys_MB = vehicles.Unarmed.Willys_MB
 
         class Armor:
             APC_M113 = vehicles.Armor.APC_M113
             IFV_LAV_25 = vehicles.Armor.IFV_LAV_25
             MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
             MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
+            CT_Cromwell_IV = vehicles.Armor.CT_Cromwell_IV
+            MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
+            MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
@@ -1614,6 +1791,7 @@ class Canada(Country):
         class AirDefence:
             Stinger_MANPADS = vehicles.AirDefence.Stinger_MANPADS
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
+            AAA_Bofors_40mm = vehicles.AirDefence.AAA_Bofors_40mm
 
     class Plane:
         A_10C = planes.A_10C
@@ -1621,7 +1799,8 @@ class Canada(Country):
         P_51D = planes.P_51D
         F_A_18C = planes.F_A_18C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -1640,7 +1819,8 @@ class Canada(Country):
         Plane.P_51D,
         Plane.F_A_18C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -1673,6 +1853,8 @@ class Canada(Country):
 
     class Ship:
         Armed_speedboat = ships.Armed_speedboat
+        LST_Mk_II = ships.LST_Mk_II
+        LS_Samuel_Chase = ships.LS_Samuel_Chase
 
     def __init__(self):
         super(Canada, self).__init__(Canada.id, Canada.name)
@@ -1693,6 +1875,9 @@ class Spain(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
@@ -1701,6 +1886,11 @@ class Spain(Country):
             APC_M113 = vehicles.Armor.APC_M113
             MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
             MBT_M60A3_Patton = vehicles.Armor.MBT_M60A3_Patton
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
@@ -1723,7 +1913,8 @@ class Spain(Country):
         P_51D = planes.P_51D
         F_A_18C = planes.F_A_18C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -1742,7 +1933,8 @@ class Spain(Country):
         Plane.P_51D,
         Plane.F_A_18C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -1797,14 +1989,28 @@ class TheNetherlands(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
+            Bedford_MWD = vehicles.Unarmed.Bedford_MWD
+            CCKW_353 = vehicles.Unarmed.CCKW_353
+            Willys_MB = vehicles.Unarmed.Willys_MB
 
         class Armor:
             MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
             MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
             TPz_Fuchs = vehicles.Armor.TPz_Fuchs
+            CT_Cromwell_IV = vehicles.Armor.CT_Cromwell_IV
+            MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
+            MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
@@ -1823,6 +2029,7 @@ class TheNetherlands(Country):
             SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
             Stinger_MANPADS = vehicles.AirDefence.Stinger_MANPADS
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
+            AAA_Bofors_40mm = vehicles.AirDefence.AAA_Bofors_40mm
 
     class Plane:
         A_10C = planes.A_10C
@@ -1830,7 +2037,8 @@ class TheNetherlands(Country):
         F_16A_MLU = planes.F_16A_MLU
         P_51D = planes.P_51D
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -1849,7 +2057,8 @@ class TheNetherlands(Country):
         Plane.F_16A_MLU,
         Plane.P_51D,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -1888,6 +2097,8 @@ class TheNetherlands(Country):
 
     class Ship:
         Armed_speedboat = ships.Armed_speedboat
+        LST_Mk_II = ships.LST_Mk_II
+        LS_Samuel_Chase = ships.LS_Samuel_Chase
 
     def __init__(self):
         super(TheNetherlands, self).__init__(TheNetherlands.id, TheNetherlands.name)
@@ -1908,13 +2119,27 @@ class Belgium(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
+            Bedford_MWD = vehicles.Unarmed.Bedford_MWD
+            CCKW_353 = vehicles.Unarmed.CCKW_353
+            Willys_MB = vehicles.Unarmed.Willys_MB
 
         class Armor:
             APC_M113 = vehicles.Armor.APC_M113
             MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
+            CT_Cromwell_IV = vehicles.Armor.CT_Cromwell_IV
+            MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
+            MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
@@ -1927,6 +2152,7 @@ class Belgium(Country):
             SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
             Stinger_MANPADS = vehicles.AirDefence.Stinger_MANPADS
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
+            AAA_Bofors_40mm = vehicles.AirDefence.AAA_Bofors_40mm
 
     class Plane:
         A_10C = planes.A_10C
@@ -1934,7 +2160,8 @@ class Belgium(Country):
         F_16A_MLU = planes.F_16A_MLU
         P_51D = planes.P_51D
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -1953,7 +2180,8 @@ class Belgium(Country):
         Plane.F_16A_MLU,
         Plane.P_51D,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -1986,6 +2214,8 @@ class Belgium(Country):
 
     class Ship:
         Armed_speedboat = ships.Armed_speedboat
+        LST_Mk_II = ships.LST_Mk_II
+        LS_Samuel_Chase = ships.LS_Samuel_Chase
 
     def __init__(self):
         super(Belgium, self).__init__(Belgium.id, Belgium.name)
@@ -2006,6 +2236,9 @@ class Norway(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
@@ -2015,6 +2248,11 @@ class Norway(Country):
             MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
             MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
             TPz_Fuchs = vehicles.Armor.TPz_Fuchs
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
@@ -2035,7 +2273,8 @@ class Norway(Country):
         F_16A_MLU = planes.F_16A_MLU
         P_51D = planes.P_51D
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -2054,7 +2293,8 @@ class Norway(Country):
         Plane.F_16A_MLU,
         Plane.P_51D,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -2107,6 +2347,9 @@ class Denmark(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
@@ -2115,6 +2358,11 @@ class Denmark(Country):
             APC_M113 = vehicles.Armor.APC_M113
             MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
             MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
@@ -2135,7 +2383,8 @@ class Denmark(Country):
         F_16A_MLU = planes.F_16A_MLU
         P_51D = planes.P_51D
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -2154,7 +2403,8 @@ class Denmark(Country):
         Plane.F_16A_MLU,
         Plane.P_51D,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -2207,6 +2457,9 @@ class Israel(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
@@ -2217,6 +2470,11 @@ class Israel(Country):
             MBT_M60A3_Patton = vehicles.Armor.MBT_M60A3_Patton
             MBT_T_55 = vehicles.Armor.MBT_T_55
             MBT_Merkava_Mk__4 = vehicles.Armor.MBT_Merkava_Mk__4
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
@@ -2252,7 +2510,8 @@ class Israel(Country):
         F_4E = planes.F_4E
         P_51D = planes.P_51D
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -2274,7 +2533,8 @@ class Israel(Country):
         Plane.F_4E,
         Plane.P_51D,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -2339,6 +2599,9 @@ class Georgia(Country):
             Georgian_soldier_with_M4 = vehicles.Infantry.Georgian_soldier_with_M4
             Soldier_RPG = vehicles.Infantry.Soldier_RPG
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
             Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
@@ -2357,7 +2620,7 @@ class Georgia(Country):
             Transport_MAZ_6303 = vehicles.Unarmed.Transport_MAZ_6303
             Transport_ZIL_4331 = vehicles.Unarmed.Transport_ZIL_4331
             CP_SKP_11_ATC_Mobile_Command_Post = vehicles.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
-            Transport_fire_Engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_Engine_Ural_ATsP_6
+            Transport_fire_engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_engine_Ural_ATsP_6
             GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
             Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
             Transport_M818 = vehicles.Unarmed.Transport_M818
@@ -2374,9 +2637,15 @@ class Georgia(Country):
             MBT_T_55 = vehicles.Armor.MBT_T_55
             APC_Cobra = vehicles.Armor.APC_Cobra
 
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
         class Artillery:
             SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
             SPH_2S19_Msta = vehicles.Artillery.SPH_2S19_Msta
+            SpGH_Dana = vehicles.Artillery.SpGH_Dana
             MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
             _2B11_mortar = vehicles.Artillery._2B11_mortar
 
@@ -2410,7 +2679,8 @@ class Georgia(Country):
         Yak_40 = planes.Yak_40
         P_51D = planes.P_51D
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -2432,7 +2702,8 @@ class Georgia(Country):
         Plane.Yak_40,
         Plane.P_51D,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -2498,6 +2769,9 @@ class Insurgents(Country):
             Infantry_Soldier_Insurgents = vehicles.Infantry.Infantry_Soldier_Insurgents
             Soldier_RPG = vehicles.Infantry.Soldier_RPG
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
             Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
@@ -2526,6 +2800,11 @@ class Insurgents(Country):
             APC_MTLB = vehicles.Armor.APC_MTLB
             MBT_T_55 = vehicles.Armor.MBT_T_55
 
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
         class Artillery:
             SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
             SPH_2S9_Nona = vehicles.Artillery.SPH_2S9_Nona
@@ -2547,7 +2826,8 @@ class Insurgents(Country):
     class Plane:
         P_51D = planes.P_51D
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -2561,7 +2841,8 @@ class Insurgents(Country):
     planes = [
         Plane.P_51D,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -2615,6 +2896,9 @@ class Abkhazia(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
             Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
@@ -2633,7 +2917,7 @@ class Abkhazia(Country):
             Transport_MAZ_6303 = vehicles.Unarmed.Transport_MAZ_6303
             CP_SKP_11_ATC_Mobile_Command_Post = vehicles.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
             Transport_Ural_4320T = vehicles.Unarmed.Transport_Ural_4320T
-            Transport_fire_Engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_Engine_Ural_ATsP_6
+            Transport_fire_engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_engine_Ural_ATsP_6
             GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
             Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
             GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
@@ -2648,6 +2932,11 @@ class Abkhazia(Country):
             APC_MTLB = vehicles.Armor.APC_MTLB
             MBT_T_72B = vehicles.Armor.MBT_T_72B
             MBT_T_55 = vehicles.Armor.MBT_T_55
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
@@ -2680,7 +2969,8 @@ class Abkhazia(Country):
         L_39ZA = planes.L_39ZA
         P_51D = planes.P_51D
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -2699,7 +2989,8 @@ class Abkhazia(Country):
         Plane.L_39ZA,
         Plane.P_51D,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -2759,6 +3050,9 @@ class SouthOssetia(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
             Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
@@ -2776,7 +3070,7 @@ class SouthOssetia(Country):
             Transport_MAZ_6303 = vehicles.Unarmed.Transport_MAZ_6303
             CP_SKP_11_ATC_Mobile_Command_Post = vehicles.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
             Transport_Ural_4320T = vehicles.Unarmed.Transport_Ural_4320T
-            Transport_fire_Engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_Engine_Ural_ATsP_6
+            Transport_fire_engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_engine_Ural_ATsP_6
             GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
             Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
             GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
@@ -2791,6 +3085,11 @@ class SouthOssetia(Country):
             APC_MTLB = vehicles.Armor.APC_MTLB
             MBT_T_72B = vehicles.Armor.MBT_T_72B
             MBT_T_55 = vehicles.Armor.MBT_T_55
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
@@ -2813,7 +3112,8 @@ class SouthOssetia(Country):
 
     class Plane:
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -2826,7 +3126,8 @@ class SouthOssetia(Country):
 
     planes = [
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -2876,6 +3177,9 @@ class Italy(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
@@ -2886,6 +3190,11 @@ class Italy(Country):
             APC_M113 = vehicles.Armor.APC_M113
             APC_AAV_7 = vehicles.Armor.APC_AAV_7
             MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
@@ -2908,7 +3217,8 @@ class Italy(Country):
         P_51D = planes.P_51D
         Tornado_IDS = planes.Tornado_IDS
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -2917,9 +3227,9 @@ class Italy(Country):
         Hawk = planes.Hawk
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
+        MQ_9_Reaper = planes.MQ_9_Reaper
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
-        MQ_9_Reaper = planes.MQ_9_Reaper
         TF_51D = planes.TF_51D
 
     planes = [
@@ -2929,7 +3239,8 @@ class Italy(Country):
         Plane.P_51D,
         Plane.Tornado_IDS,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -2938,9 +3249,9 @@ class Italy(Country):
         Plane.Hawk,
         Plane.L_39C,
         Plane.M_2000C,
+        Plane.MQ_9_Reaper,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
-        Plane.MQ_9_Reaper,
         Plane.TF_51D,
     ]
 
@@ -2983,14 +3294,31 @@ class Australia(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+            Bedford_MWD = vehicles.Unarmed.Bedford_MWD
+            CCKW_353 = vehicles.Unarmed.CCKW_353
+            Willys_MB = vehicles.Unarmed.Willys_MB
 
         class Armor:
             MBT_M1A2_Abrams = vehicles.Armor.MBT_M1A2_Abrams
             MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
             IFV_LAV_25 = vehicles.Armor.IFV_LAV_25
             APC_M113 = vehicles.Armor.APC_M113
+            CT_Cromwell_IV = vehicles.Armor.CT_Cromwell_IV
+            MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
+            MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+        class AirDefence:
+            AAA_Bofors_40mm = vehicles.AirDefence.AAA_Bofors_40mm
 
     class Plane:
         A_10C = planes.A_10C
@@ -2998,7 +3326,8 @@ class Australia(Country):
         P_51D = planes.P_51D
         F_A_18C = planes.F_A_18C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -3017,7 +3346,8 @@ class Australia(Country):
         Plane.P_51D,
         Plane.F_A_18C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -3052,6 +3382,8 @@ class Australia(Country):
 
     class Ship:
         Armed_speedboat = ships.Armed_speedboat
+        LST_Mk_II = ships.LST_Mk_II
+        LS_Samuel_Chase = ships.LS_Samuel_Chase
 
     def __init__(self):
         super(Australia, self).__init__(Australia.id, Australia.name)
@@ -3072,9 +3404,17 @@ class Switzerland(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Armor:
             MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
             APC_M113 = vehicles.Armor.APC_M113
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
@@ -3088,7 +3428,8 @@ class Switzerland(Country):
         F_A_18C = planes.F_A_18C
         P_51D = planes.P_51D
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -3105,7 +3446,8 @@ class Switzerland(Country):
         Plane.F_A_18C,
         Plane.P_51D,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -3153,10 +3495,19 @@ class Austria(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -3171,7 +3522,8 @@ class Austria(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -3224,6 +3576,9 @@ class Belarus(Country):
             Paratrooper_AKS = vehicles.Infantry.Paratrooper_AKS
             Infantry_Soldier_Rus = vehicles.Infantry.Infantry_Soldier_Rus
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
             Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
@@ -3243,7 +3598,7 @@ class Belarus(Country):
             CP_SKP_11_ATC_Mobile_Command_Post = vehicles.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
             Transport_Ural_4320T = vehicles.Unarmed.Transport_Ural_4320T
             Transport_Ural_4320_31_Armored = vehicles.Unarmed.Transport_Ural_4320_31_Armored
-            Transport_fire_Engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_Engine_Ural_ATsP_6
+            Transport_fire_engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_engine_Ural_ATsP_6
             GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
             Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
             GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
@@ -3260,6 +3615,11 @@ class Belarus(Country):
             MBT_T_72B = vehicles.Armor.MBT_T_72B
             MBT_T_55 = vehicles.Armor.MBT_T_55
             ARV_MTLB_U_BOMAN = vehicles.Armor.ARV_MTLB_U_BOMAN
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             SPH_2S19_Msta = vehicles.Artillery.SPH_2S19_Msta
@@ -3315,7 +3675,8 @@ class Belarus(Country):
         IL_76MD = planes.IL_76MD
         L_39C = planes.L_39C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -3341,7 +3702,8 @@ class Belarus(Country):
         Plane.IL_76MD,
         Plane.L_39C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -3395,11 +3757,46 @@ class Bulgaria(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Infantry:
+            Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
+
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Unarmed:
+            Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
+            Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+
+        class Armor:
+            HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
+            HT_Pz_Kpfw_VI_Ausf__B__Tiger_II = vehicles.Armor.HT_Pz_Kpfw_VI_Ausf__B__Tiger_II
+            MT_Pz_Kpfw_V_Panther_Ausf_G = vehicles.Armor.MT_Pz_Kpfw_V_Panther_Ausf_G
+            MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
+            Jagdpanther_G1 = vehicles.Armor.Jagdpanther_G1
+            Jagdpanzer_IV = vehicles.Armor.Jagdpanzer_IV
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+        class Artillery:
+            Sturmpanzer_IV_Brummbär = vehicles.Artillery.Sturmpanzer_IV_Brummbär
+            SK_C_28_15cm_naval_gun = vehicles.Artillery.SK_C_28_15cm_naval_gun
+
+        class AirDefence:
+            AAA_Flak_18 = vehicles.AirDefence.AAA_Flak_18
+            AAA_Flak_30 = vehicles.AirDefence.AAA_Flak_30
+            AAA_Flak_36 = vehicles.AirDefence.AAA_Flak_36
+            AAA_Flak_37 = vehicles.AirDefence.AAA_Flak_37
+            AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
+
     class Plane:
         A_10C = planes.A_10C
         L_39ZA = planes.L_39ZA
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -3415,7 +3812,8 @@ class Bulgaria(Country):
         Plane.A_10C,
         Plane.L_39ZA,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -3463,11 +3861,36 @@ class CzechRepublic(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Unarmed:
+            Bedford_MWD = vehicles.Unarmed.Bedford_MWD
+            CCKW_353 = vehicles.Unarmed.CCKW_353
+            Willys_MB = vehicles.Unarmed.Willys_MB
+
+        class Armor:
+            CT_Cromwell_IV = vehicles.Armor.CT_Cromwell_IV
+            MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
+            MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+        class Artillery:
+            SpGH_Dana = vehicles.Artillery.SpGH_Dana
+
+        class AirDefence:
+            AAA_Bofors_40mm = vehicles.AirDefence.AAA_Bofors_40mm
+
     class Plane:
         A_10C = planes.A_10C
         L_39ZA = planes.L_39ZA
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -3483,7 +3906,8 @@ class CzechRepublic(Country):
         Plane.A_10C,
         Plane.L_39ZA,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -3511,6 +3935,8 @@ class CzechRepublic(Country):
 
     class Ship:
         Armed_speedboat = ships.Armed_speedboat
+        LST_Mk_II = ships.LST_Mk_II
+        LS_Samuel_Chase = ships.LS_Samuel_Chase
 
     def __init__(self):
         super(CzechRepublic, self).__init__(CzechRepublic.id, CzechRepublic.name)
@@ -3531,6 +3957,14 @@ class China(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
         class AirDefence:
             SAM_SA_15_Tor_9A331 = vehicles.AirDefence.SAM_SA_15_Tor_9A331
             SAM_SA_10_S_300PS_TR_30N6 = vehicles.AirDefence.SAM_SA_10_S_300PS_TR_30N6
@@ -3548,7 +3982,8 @@ class China(Country):
         An_26B = planes.An_26B
         An_30M = planes.An_30M
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -3568,7 +4003,8 @@ class China(Country):
         Plane.An_26B,
         Plane.An_30M,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -3622,10 +4058,19 @@ class Croatia(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -3640,7 +4085,8 @@ class Croatia(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -3688,10 +4134,19 @@ class Egypt(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -3706,7 +4161,8 @@ class Egypt(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -3754,10 +4210,45 @@ class Finland(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Infantry:
+            Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
+
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Unarmed:
+            Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
+            Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+
+        class Armor:
+            HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
+            HT_Pz_Kpfw_VI_Ausf__B__Tiger_II = vehicles.Armor.HT_Pz_Kpfw_VI_Ausf__B__Tiger_II
+            MT_Pz_Kpfw_V_Panther_Ausf_G = vehicles.Armor.MT_Pz_Kpfw_V_Panther_Ausf_G
+            MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
+            Jagdpanther_G1 = vehicles.Armor.Jagdpanther_G1
+            Jagdpanzer_IV = vehicles.Armor.Jagdpanzer_IV
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+        class Artillery:
+            Sturmpanzer_IV_Brummbär = vehicles.Artillery.Sturmpanzer_IV_Brummbär
+            SK_C_28_15cm_naval_gun = vehicles.Artillery.SK_C_28_15cm_naval_gun
+
+        class AirDefence:
+            AAA_Flak_18 = vehicles.AirDefence.AAA_Flak_18
+            AAA_Flak_30 = vehicles.AirDefence.AAA_Flak_30
+            AAA_Flak_36 = vehicles.AirDefence.AAA_Flak_36
+            AAA_Flak_37 = vehicles.AirDefence.AAA_Flak_37
+            AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -3772,7 +4263,8 @@ class Finland(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -3824,6 +4316,9 @@ class Greece(Country):
             Infantry_M4 = vehicles.Infantry.Infantry_M4
             Soldier_M249 = vehicles.Infantry.Soldier_M249
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
             Transport_M818 = vehicles.Unarmed.Transport_M818
@@ -3835,6 +4330,11 @@ class Greece(Country):
             ATGM_M1045_HMMWV_TOW = vehicles.Armor.ATGM_M1045_HMMWV_TOW
             MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
             MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
@@ -3884,7 +4384,8 @@ class Greece(Country):
         TF_51D = planes.TF_51D
         A_10A = planes.A_10A
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -3915,7 +4416,8 @@ class Greece(Country):
         Plane.TF_51D,
         Plane.A_10A,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -3975,11 +4477,46 @@ class Hungary(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Infantry:
+            Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
+
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Unarmed:
+            Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
+            Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+
+        class Armor:
+            HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
+            HT_Pz_Kpfw_VI_Ausf__B__Tiger_II = vehicles.Armor.HT_Pz_Kpfw_VI_Ausf__B__Tiger_II
+            MT_Pz_Kpfw_V_Panther_Ausf_G = vehicles.Armor.MT_Pz_Kpfw_V_Panther_Ausf_G
+            MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
+            Jagdpanther_G1 = vehicles.Armor.Jagdpanther_G1
+            Jagdpanzer_IV = vehicles.Armor.Jagdpanzer_IV
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+        class Artillery:
+            Sturmpanzer_IV_Brummbär = vehicles.Artillery.Sturmpanzer_IV_Brummbär
+            SK_C_28_15cm_naval_gun = vehicles.Artillery.SK_C_28_15cm_naval_gun
+
+        class AirDefence:
+            AAA_Flak_18 = vehicles.AirDefence.AAA_Flak_18
+            AAA_Flak_30 = vehicles.AirDefence.AAA_Flak_30
+            AAA_Flak_36 = vehicles.AirDefence.AAA_Flak_36
+            AAA_Flak_37 = vehicles.AirDefence.AAA_Flak_37
+            AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
+
     class Plane:
         A_10C = planes.A_10C
         L_39ZA = planes.L_39ZA
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -3995,7 +4532,8 @@ class Hungary(Country):
         Plane.A_10C,
         Plane.L_39ZA,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -4043,10 +4581,19 @@ class India(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -4061,7 +4608,8 @@ class India(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -4109,10 +4657,19 @@ class Iran(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -4127,7 +4684,8 @@ class Iran(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -4175,10 +4733,19 @@ class Iraq(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -4193,7 +4760,8 @@ class Iraq(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -4241,10 +4809,45 @@ class Japan(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Infantry:
+            Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
+
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Unarmed:
+            Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
+            Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+
+        class Armor:
+            HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
+            HT_Pz_Kpfw_VI_Ausf__B__Tiger_II = vehicles.Armor.HT_Pz_Kpfw_VI_Ausf__B__Tiger_II
+            MT_Pz_Kpfw_V_Panther_Ausf_G = vehicles.Armor.MT_Pz_Kpfw_V_Panther_Ausf_G
+            MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
+            Jagdpanther_G1 = vehicles.Armor.Jagdpanther_G1
+            Jagdpanzer_IV = vehicles.Armor.Jagdpanzer_IV
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+        class Artillery:
+            Sturmpanzer_IV_Brummbär = vehicles.Artillery.Sturmpanzer_IV_Brummbär
+            SK_C_28_15cm_naval_gun = vehicles.Artillery.SK_C_28_15cm_naval_gun
+
+        class AirDefence:
+            AAA_Flak_18 = vehicles.AirDefence.AAA_Flak_18
+            AAA_Flak_30 = vehicles.AirDefence.AAA_Flak_30
+            AAA_Flak_36 = vehicles.AirDefence.AAA_Flak_36
+            AAA_Flak_37 = vehicles.AirDefence.AAA_Flak_37
+            AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -4259,7 +4862,8 @@ class Japan(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -4312,6 +4916,9 @@ class Kazakhstan(Country):
             Paratrooper_AKS = vehicles.Infantry.Paratrooper_AKS
             Infantry_Soldier_Rus = vehicles.Infantry.Infantry_Soldier_Rus
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
         class Unarmed:
             Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
             Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
@@ -4331,7 +4938,7 @@ class Kazakhstan(Country):
             CP_SKP_11_ATC_Mobile_Command_Post = vehicles.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
             Transport_Ural_4320T = vehicles.Unarmed.Transport_Ural_4320T
             Transport_Ural_4320_31_Armored = vehicles.Unarmed.Transport_Ural_4320_31_Armored
-            Transport_fire_Engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_Engine_Ural_ATsP_6
+            Transport_fire_engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_engine_Ural_ATsP_6
             GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
             Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
             GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
@@ -4349,6 +4956,11 @@ class Kazakhstan(Country):
             MBT_T_72B = vehicles.Armor.MBT_T_72B
             MBT_T_55 = vehicles.Armor.MBT_T_55
             ARV_MTLB_U_BOMAN = vehicles.Armor.ARV_MTLB_U_BOMAN
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
 
         class Artillery:
             SPH_2S19_Msta = vehicles.Artillery.SPH_2S19_Msta
@@ -4406,7 +5018,8 @@ class Kazakhstan(Country):
         IL_76MD = planes.IL_76MD
         L_39C = planes.L_39C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -4434,7 +5047,8 @@ class Kazakhstan(Country):
         Plane.IL_76MD,
         Plane.L_39C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -4490,10 +5104,19 @@ class NorthKorea(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -4508,7 +5131,8 @@ class NorthKorea(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -4556,10 +5180,19 @@ class Pakistan(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -4574,7 +5207,8 @@ class Pakistan(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -4622,10 +5256,35 @@ class Poland(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Unarmed:
+            Bedford_MWD = vehicles.Unarmed.Bedford_MWD
+            CCKW_353 = vehicles.Unarmed.CCKW_353
+            Willys_MB = vehicles.Unarmed.Willys_MB
+
+        class Armor:
+            CT_Cromwell_IV = vehicles.Armor.CT_Cromwell_IV
+            MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
+            MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+        class Artillery:
+            SpGH_Dana = vehicles.Artillery.SpGH_Dana
+
+        class AirDefence:
+            AAA_Bofors_40mm = vehicles.AirDefence.AAA_Bofors_40mm
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -4640,7 +5299,8 @@ class Poland(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -4668,6 +5328,8 @@ class Poland(Country):
 
     class Ship:
         Armed_speedboat = ships.Armed_speedboat
+        LST_Mk_II = ships.LST_Mk_II
+        LS_Samuel_Chase = ships.LS_Samuel_Chase
 
     def __init__(self):
         super(Poland, self).__init__(Poland.id, Poland.name)
@@ -4688,10 +5350,45 @@ class Romania(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Infantry:
+            Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
+
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Unarmed:
+            Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
+            Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+
+        class Armor:
+            HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
+            HT_Pz_Kpfw_VI_Ausf__B__Tiger_II = vehicles.Armor.HT_Pz_Kpfw_VI_Ausf__B__Tiger_II
+            MT_Pz_Kpfw_V_Panther_Ausf_G = vehicles.Armor.MT_Pz_Kpfw_V_Panther_Ausf_G
+            MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
+            Jagdpanther_G1 = vehicles.Armor.Jagdpanther_G1
+            Jagdpanzer_IV = vehicles.Armor.Jagdpanzer_IV
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+        class Artillery:
+            Sturmpanzer_IV_Brummbär = vehicles.Artillery.Sturmpanzer_IV_Brummbär
+            SK_C_28_15cm_naval_gun = vehicles.Artillery.SK_C_28_15cm_naval_gun
+
+        class AirDefence:
+            AAA_Flak_18 = vehicles.AirDefence.AAA_Flak_18
+            AAA_Flak_30 = vehicles.AirDefence.AAA_Flak_30
+            AAA_Flak_36 = vehicles.AirDefence.AAA_Flak_36
+            AAA_Flak_37 = vehicles.AirDefence.AAA_Flak_37
+            AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -4706,7 +5403,8 @@ class Romania(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -4754,10 +5452,19 @@ class SaudiArabia(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -4772,7 +5479,8 @@ class SaudiArabia(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -4820,10 +5528,19 @@ class Serbia(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -4838,7 +5555,8 @@ class Serbia(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -4886,11 +5604,23 @@ class Slovakia(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+        class Artillery:
+            SpGH_Dana = vehicles.Artillery.SpGH_Dana
+
     class Plane:
         A_10C = planes.A_10C
         L_39ZA = planes.L_39ZA
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -4906,7 +5636,8 @@ class Slovakia(Country):
         Plane.A_10C,
         Plane.L_39ZA,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -4954,10 +5685,19 @@ class SouthKorea(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -4972,7 +5712,8 @@ class SouthKorea(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -5020,10 +5761,19 @@ class Sweden(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -5038,7 +5788,8 @@ class Sweden(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -5086,11 +5837,20 @@ class Syria(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         L_39ZA = planes.L_39ZA
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -5106,7 +5866,8 @@ class Syria(Country):
         Plane.A_10C,
         Plane.L_39ZA,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -5154,10 +5915,19 @@ class Yemen(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -5171,7 +5941,8 @@ class Yemen(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -5218,10 +5989,19 @@ class Vietnam(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -5235,7 +6015,8 @@ class Vietnam(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -5282,10 +6063,19 @@ class Venezuela(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -5299,7 +6089,8 @@ class Venezuela(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -5346,10 +6137,19 @@ class Tunisia(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -5363,7 +6163,8 @@ class Tunisia(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -5410,10 +6211,19 @@ class Thailand(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -5427,7 +6237,8 @@ class Thailand(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -5474,10 +6285,19 @@ class Sudan(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -5491,7 +6311,8 @@ class Sudan(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -5538,10 +6359,19 @@ class Philippines(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -5555,7 +6385,8 @@ class Philippines(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -5602,10 +6433,19 @@ class Morocco(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -5619,7 +6459,8 @@ class Morocco(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -5666,10 +6507,19 @@ class Mexico(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -5683,7 +6533,8 @@ class Mexico(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -5730,10 +6581,19 @@ class Malaysia(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -5747,7 +6607,8 @@ class Malaysia(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -5794,10 +6655,22 @@ class Libya(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+        class Artillery:
+            SpGH_Dana = vehicles.Artillery.SpGH_Dana
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -5811,7 +6684,8 @@ class Libya(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -5858,10 +6732,19 @@ class Jordan(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -5875,7 +6758,8 @@ class Jordan(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -5922,10 +6806,19 @@ class Indonesia(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -5939,7 +6832,8 @@ class Indonesia(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -5986,10 +6880,19 @@ class Honduras(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -6003,7 +6906,8 @@ class Honduras(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -6050,10 +6954,19 @@ class Ethiopia(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -6067,7 +6980,8 @@ class Ethiopia(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -6114,10 +7028,19 @@ class Chile(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -6131,7 +7054,8 @@ class Chile(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -6178,10 +7102,19 @@ class Brazil(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -6195,7 +7128,8 @@ class Brazil(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -6242,10 +7176,19 @@ class Bahrain(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
     class Plane:
         A_10C = planes.A_10C
         Bf_109K_4 = planes.Bf_109_K_4
-        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         F_5E = planes.F_5E
@@ -6259,7 +7202,8 @@ class Bahrain(Country):
     planes = [
         Plane.A_10C,
         Plane.Bf_109K_4,
-        Plane.SpitfireLFMkIX,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.F_5E,
@@ -6289,6 +7233,386 @@ class Bahrain(Country):
 
     def __init__(self):
         super(Bahrain, self).__init__(Bahrain.id, Bahrain.name)
+
+
+class ThirdReich(Country):
+    id = 66
+    name = "Third Reich"
+
+    class Vehicle:
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+        class Infantry:
+            Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
+
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Unarmed:
+            Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
+            Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+
+        class Armor:
+            HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
+            HT_Pz_Kpfw_VI_Ausf__B__Tiger_II = vehicles.Armor.HT_Pz_Kpfw_VI_Ausf__B__Tiger_II
+            MT_Pz_Kpfw_V_Panther_Ausf_G = vehicles.Armor.MT_Pz_Kpfw_V_Panther_Ausf_G
+            MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
+            Jagdpanther_G1 = vehicles.Armor.Jagdpanther_G1
+            Jagdpanzer_IV = vehicles.Armor.Jagdpanzer_IV
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+        class Artillery:
+            Sturmpanzer_IV_Brummbär = vehicles.Artillery.Sturmpanzer_IV_Brummbär
+            SK_C_28_15cm_naval_gun = vehicles.Artillery.SK_C_28_15cm_naval_gun
+
+        class AirDefence:
+            AAA_Flak_18 = vehicles.AirDefence.AAA_Flak_18
+            AAA_Flak_30 = vehicles.AirDefence.AAA_Flak_30
+            AAA_Flak_36 = vehicles.AirDefence.AAA_Flak_36
+            AAA_Flak_37 = vehicles.AirDefence.AAA_Flak_37
+            AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
+
+    class Plane:
+        A_10C = planes.A_10C
+        FW_190D9 = planes.Fw_190_D_9
+        Bf_109K_4 = planes.Bf_109_K_4
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+
+    planes = [
+        Plane.A_10C,
+        Plane.FW_190D9,
+        Plane.Bf_109K_4,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+    ]
+
+    class Helicopter:
+        Ka_50 = helicopters.Ka_50
+        SA342M = helicopters.SA342M
+        SA342L = helicopters.SA342L
+        SA342Mistral = helicopters.SA342Mistral
+
+    helicopters = [
+        Helicopter.Ka_50,
+        Helicopter.SA342M,
+        Helicopter.SA342L,
+        Helicopter.SA342Mistral,
+    ]
+
+    class Ship:
+        Armed_speedboat = ships.Armed_speedboat
+
+    def __init__(self):
+        super(ThirdReich, self).__init__(ThirdReich.id, ThirdReich.name)
+
+
+class Yugoslavia(Country):
+    id = 67
+    name = "Yugoslavia"
+
+    class Vehicle:
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Unarmed:
+            Bedford_MWD = vehicles.Unarmed.Bedford_MWD
+            CCKW_353 = vehicles.Unarmed.CCKW_353
+            Willys_MB = vehicles.Unarmed.Willys_MB
+
+        class Armor:
+            CT_Cromwell_IV = vehicles.Armor.CT_Cromwell_IV
+            MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
+            MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+        class AirDefence:
+            AAA_Bofors_40mm = vehicles.AirDefence.AAA_Bofors_40mm
+
+    class Plane:
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+
+    planes = [
+        Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+    ]
+
+    class Helicopter:
+        Ka_50 = helicopters.Ka_50
+        SA342M = helicopters.SA342M
+        SA342L = helicopters.SA342L
+        SA342Mistral = helicopters.SA342Mistral
+
+    helicopters = [
+        Helicopter.Ka_50,
+        Helicopter.SA342M,
+        Helicopter.SA342L,
+        Helicopter.SA342Mistral,
+    ]
+
+    class Ship:
+        Armed_speedboat = ships.Armed_speedboat
+        LST_Mk_II = ships.LST_Mk_II
+        LS_Samuel_Chase = ships.LS_Samuel_Chase
+
+    def __init__(self):
+        super(Yugoslavia, self).__init__(Yugoslavia.id, Yugoslavia.name)
+
+
+class USSR(Country):
+    id = 68
+    name = "USSR"
+
+    class Vehicle:
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Unarmed:
+            Bedford_MWD = vehicles.Unarmed.Bedford_MWD
+            CCKW_353 = vehicles.Unarmed.CCKW_353
+            Willys_MB = vehicles.Unarmed.Willys_MB
+
+        class Armor:
+            CT_Cromwell_IV = vehicles.Armor.CT_Cromwell_IV
+            MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
+            MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+        class AirDefence:
+            AAA_Bofors_40mm = vehicles.AirDefence.AAA_Bofors_40mm
+
+    class Plane:
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+
+    planes = [
+        Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+    ]
+
+    class Helicopter:
+        Ka_50 = helicopters.Ka_50
+        SA342M = helicopters.SA342M
+        SA342L = helicopters.SA342L
+        SA342Mistral = helicopters.SA342Mistral
+
+    helicopters = [
+        Helicopter.Ka_50,
+        Helicopter.SA342M,
+        Helicopter.SA342L,
+        Helicopter.SA342Mistral,
+    ]
+
+    class Ship:
+        Armed_speedboat = ships.Armed_speedboat
+        LST_Mk_II = ships.LST_Mk_II
+        LS_Samuel_Chase = ships.LS_Samuel_Chase
+
+    def __init__(self):
+        super(USSR, self).__init__(USSR.id, USSR.name)
+
+
+class ItalianSocialRepublic(Country):
+    id = 69
+    name = "Italian Social Republic"
+
+    class Vehicle:
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+        class Infantry:
+            Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
+
+        class Locomotive:
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Unarmed:
+            Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
+            Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+
+        class Armor:
+            HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
+            HT_Pz_Kpfw_VI_Ausf__B__Tiger_II = vehicles.Armor.HT_Pz_Kpfw_VI_Ausf__B__Tiger_II
+            MT_Pz_Kpfw_V_Panther_Ausf_G = vehicles.Armor.MT_Pz_Kpfw_V_Panther_Ausf_G
+            MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
+            Jagdpanther_G1 = vehicles.Armor.Jagdpanther_G1
+            Jagdpanzer_IV = vehicles.Armor.Jagdpanzer_IV
+
+        class Carriage:
+            DR_50Ton_Flat_Wagon = vehicles.Carriage.DR_50Ton_Flat_Wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+        class Artillery:
+            Sturmpanzer_IV_Brummbär = vehicles.Artillery.Sturmpanzer_IV_Brummbär
+            SK_C_28_15cm_naval_gun = vehicles.Artillery.SK_C_28_15cm_naval_gun
+
+        class AirDefence:
+            AAA_Flak_18 = vehicles.AirDefence.AAA_Flak_18
+            AAA_Flak_30 = vehicles.AirDefence.AAA_Flak_30
+            AAA_Flak_36 = vehicles.AirDefence.AAA_Flak_36
+            AAA_Flak_37 = vehicles.AirDefence.AAA_Flak_37
+            AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
+
+    class Plane:
+        A_10C = planes.A_10C
+        Bf_109K_4 = planes.Bf_109_K_4
+        Spitfire_LF_Mk__IX = planes.Spitfire_LF_Mk__IX
+        AJS37 = planes.AJS37
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+
+    planes = [
+        Plane.A_10C,
+        Plane.Bf_109K_4,
+        Plane.Spitfire_LF_Mk__IX,
+        Plane.AJS37,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+    ]
+
+    class Helicopter:
+        Ka_50 = helicopters.Ka_50
+        SA342M = helicopters.SA342M
+        SA342L = helicopters.SA342L
+        SA342Mistral = helicopters.SA342Mistral
+
+    helicopters = [
+        Helicopter.Ka_50,
+        Helicopter.SA342M,
+        Helicopter.SA342L,
+        Helicopter.SA342Mistral,
+    ]
+
+    class Ship:
+        Armed_speedboat = ships.Armed_speedboat
+
+    def __init__(self):
+        super(ItalianSocialRepublic, self).__init__(ItalianSocialRepublic.id, ItalianSocialRepublic.name)
 
 country_dict = {
     Russia.id: Russia,
@@ -6356,6 +7680,10 @@ country_dict = {
     Chile.id: Chile,
     Brazil.id: Brazil,
     Bahrain.id: Bahrain,
+    ThirdReich.id: ThirdReich,
+    Yugoslavia.id: Yugoslavia,
+    USSR.id: USSR,
+    ItalianSocialRepublic.id: ItalianSocialRepublic,
 }
 
 

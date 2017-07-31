@@ -453,6 +453,8 @@ unit_categories["Armor"] = {}
 unit_categories["Fortification"] = {}
 unit_categories["Artillery"] = {}
 unit_categories["Infantry"] = {}
+unit_categories["Carriage"] = {}
+unit_categories["Locomotive"] = {}
 
 for i in pairs(db.Units.Cars.Car) do
     local unit = db.Units.Cars.Car[i]
@@ -695,6 +697,8 @@ while i <= country.maxIndex do
         unit_categories["Fortification"] = {}
         unit_categories["Artillery"] = {}
         unit_categories["Infantry"] = {}
+        unit_categories["Carriage"] = {}
+        unit_categories["Locomotive"] = {}
 
         local cars = c.Units.Cars.Car
         for u in pairs(cars) do
