@@ -83,3 +83,10 @@ class NevadaTest(unittest.TestCase):
         self.assertEqual(len(hslots), 14)
 
         slots = m.terrain.nellis_afb().free_parking_slots(dcs.planes.KC_135)
+
+
+class NormandyTest(unittest.TestCase):
+
+    def test_creation(self):
+        m = dcs.mission.Mission(terrain=dcs.terrain.Normandy())
+        self.assertIsInstance(m.terrain, dcs.terrain.Normandy)

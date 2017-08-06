@@ -24,6 +24,7 @@ from . import unitgroup
 from . import unittype
 from . import weather
 from . import triggers
+from . import terrain as terrain_
 from . import condition
 from . import action
 from . import unit
@@ -32,7 +33,6 @@ from .forcedoptions import ForcedOptions
 from .goals import Goals
 from .groundcontrol import GroundControl
 from .point import StaticPoint, MovingPoint, PointAction, PointProperties
-from .terrain import Caucasus, Nevada, ParkingSlot, Airport, NoParkingSlotError
 from .translation import Translation
 from .unit import Unit, Plane, Helicopter, Ship, Vehicle, Static
 
@@ -88,9 +88,9 @@ class Mission:
     """
     _COUNTRY_IDS = {x for x in range(0, 13)} | {x for x in range(15, 47)}
 
-    def __init__(self, terrain: Union[Caucasus, Nevada]=None):
+    def __init__(self, terrain: Union[terrain_.Caucasus, terrain_.Nevada, terrain_.Normandy]=None):
         if terrain is None:
-            terrain = Caucasus()
+            terrain = terrain_.Caucasus()
 
         self.current_unit_id = 0
         self.current_group_id = 0
@@ -160,7 +160,7 @@ class Mission:
 
         self.coalition = {"blue": blue, "red": red}  # type: Dict[str, Coalition]
 
-        self.map = self.terrain.map_view_default  # type: terrain.MapView
+        self.map = self.terrain.map_view_default  # type: terrain_.MapView
 
         self.failures = {}
         self.groundControl = GroundControl()
@@ -255,11 +255,11 @@ class Mission:
 
         # print(self.translation)
 
-        # setup terrain
+        # setup terrain_
         if imp_mission["theatre"] == 'Caucasus':
-            self.terrain = Caucasus()
+            self.terrain = terrain_.Caucasus()
         elif imp_mission["theatre"] == 'Nevada':
-            self.terrain = Nevada()
+            self.terrain = terrain_.Nevada()
         else:
             raise RuntimeError("Unknown theatre: '{theatre}'".format(theatre=imp_mission["theatre"]))
 
@@ -868,9 +868,9 @@ class Mission:
 
     def _flying_group_from_airport(self, _country, group: unitgroup.FlyingGroup,
                                    maintask: task.MainTask,
-                                   airport: Airport,
+                                   airport: terrain_.Airport,
                                    start_type: StartType=StartType.Cold,
-                                   parking_slots: List[ParkingSlot] = None) -> unitgroup.FlyingGroup:
+                                   parking_slots: List[terrain_.ParkingSlot] = None) -> unitgroup.FlyingGroup:
 
         for unit in group.units:
             spos = airport.position
@@ -878,7 +878,7 @@ class Mission:
                 parking_slot = parking_slots.pop(0) if parking_slots else airport.free_parking_slot(
                     unit.unit_type)
                 if parking_slot is None:
-                    raise NoParkingSlotError("No free parking slot at " + airport.name)
+                    raise terrain_.NoParkingSlotError("No free parking slot at " + airport.name)
                 spos = parking_slot.position
                 unit.set_parking(parking_slot)
             unit.position = copy.copy(spos)
@@ -994,11 +994,11 @@ class Mission:
                                   country: Country,
                                   name,
                                   aircraft_type: unittype.FlyingType,
-                                  airport: Airport,
+                                  airport: terrain_.Airport,
                                   maintask: task.MainTask = None,
                                   start_type: StartType=StartType.Cold,
                                   group_size=1,
-                                  parking_slots: List[ParkingSlot] = None) -> \
+                                  parking_slots: List[terrain_.ParkingSlot] = None) -> \
             Union[unitgroup.PlaneGroup, unitgroup.HelicopterGroup]:
         """Add a new Plane/Helicopter group at the given airport.
 
@@ -1009,7 +1009,7 @@ class Mission:
             name: Name of the aircraft group
             maintask(MainTask): Task of the aircraft group
             aircraft_type(FlyingType): FlyingType class that describes the aircraft_type
-            airport(Airport): Airport object on which to spawn the helicopter
+            airport(terrain_.Airport): Airport object on which to spawn the helicopter
             start_type(StartType): Start from runway, cold or warm parking position
             parking_slots: List of parking slots to use for aircrafts
             group_size: number of units in the group(maximum 4 or 1 for certain types)
@@ -1099,7 +1099,7 @@ class Mission:
                      country: Country,
                      name: str,
                      aircraft_type: unittype.FlyingType,
-                     airport: Optional[Airport],
+                     airport: Optional[terrain_.Airport],
                      position: Optional[mapping.Point],
                      altitude=3000,
                      speed=500,
@@ -1115,7 +1115,7 @@ class Mission:
             country(Country): Country object the plane group belongs to
             name: Name of the aircraft group
             aircraft_type(FlyingType): FlyingType class that describes the aircraft_type
-            airport(Airport): Airport object on which to spawn the helicopter
+            airport(terrain_.Airport): Airport object on which to spawn the helicopter
             position(dcs.mapping.Point): where the new group will be placed, if inflight
             altitude: initial altitude of the group if inflight
             speed: initial speed of the group if inflight
@@ -1139,7 +1139,7 @@ class Mission:
                      country: Country,
                      name: str,
                      plane_type: planes.PlaneType,
-                     airport: Optional[Airport],
+                     airport: Optional[terrain_.Airport],
                      position: mapping.Point,
                      race_distance=30 * 1000,
                      heading=90,
@@ -1159,7 +1159,7 @@ class Mission:
             country(Country): Country object the awacs group belongs to
             name: of the AWACS flight
             plane_type(PlaneType): AWACS plane type. e.g E_3A
-            airport(Airport): starting airport, use None if you want it to spawn inflight
+            airport(terrain_.Airport): starting airport, use None if you want it to spawn inflight
             position(dcs.mapping.Point): reference point for the race-track
             race_distance: distance for the race-track pattern
             heading: direction from the referene position
@@ -1194,7 +1194,7 @@ class Mission:
                       country,
                       name: str,
                       plane_type: planes.PlaneType,
-                      airport: Optional[Airport],
+                      airport: Optional[terrain_.Airport],
                       position: mapping.Point,
                       race_distance=30 * 1000,
                       heading=90,
@@ -1215,7 +1215,7 @@ class Mission:
             country(Country): Country object the awacs group belongs to
             name: of the refuel flight
             plane_type(PlaneType): refuel plane type. e.g KC_135
-            airport(Airport): starting airport, use None if you want it to spawn inflight
+            airport(terrain_.Airport): starting airport, use None if you want it to spawn inflight
             position(dcs.mapping.Point): reference point for the race-track
             race_distance: distance for the race-track pattern
             heading: direction from the referene position
@@ -1257,7 +1257,7 @@ class Mission:
                       country,
                       name: str,
                       escort_type: planes.PlaneType,
-                      airport: Optional[Airport],
+                      airport: Optional[terrain_.Airport],
                       group_to_escort: unitgroup.FlyingGroup,
                       start_type: StartType=StartType.Cold,
                       group_size=2) -> unitgroup.PlaneGroup:
@@ -1272,7 +1272,7 @@ class Mission:
             country(Country): the escort flight belongs too
             name: of the flight group
             escort_type(PlaneType): PlaneType for the escort task
-            airport(Airport): starting airport, use None if you want it to spawn inflight
+            airport(terrain_.Airport): starting airport, use None if you want it to spawn inflight
             group_to_escort: id of the group to escort
             start_type(StartType): of the flight if starts from airport
             group_size: how many planes should be in the escort flight
@@ -1304,7 +1304,7 @@ class Mission:
                       country,
                       name: str,
                       patrol_type: planes.PlaneType,
-                      airport: Optional[Airport],
+                      airport: Optional[terrain_.Airport],
                       pos1,
                       pos2,
                       start_type: StartType=StartType.Cold,
@@ -1323,7 +1323,7 @@ class Mission:
             country(Country): the flight belongs too
             name: name of the patrol flight
             patrol_type(PlaneType): PlaneType for the patrol flight
-            airport(Airport): starting airport, use None if you want it to spawn inflight
+            airport(terrain_.Airport): starting airport, use None if you want it to spawn inflight
             pos1(dcs.mapping.Point): first orbit waypoint
             pos2(dcs.mapping.Point): second orbit waypoint
             start_type(StartType): of the flight if starts from airport
@@ -1386,7 +1386,7 @@ class Mission:
                          country,
                          name: str,
                          patrol_type: planes.PlaneType,
-                         airport: Airport,
+                         airport: terrain_.Airport,
                          zone: triggers.TriggerZone,
                          late_activation=True,
                          start_type: StartType=StartType.Cold,
@@ -1403,7 +1403,7 @@ class Mission:
             country(Country): the flight belongs too
             name: name of the patrol flight
             patrol_type(PlaneType): PlaneType for the patrol flight
-            airport(Airport): starting airport, use None if you want it to spawn inflight
+            airport(terrain_.Airport): starting airport, use None if you want it to spawn inflight
             zone(dcs.triggers.TriggerZone): zone to react on enemies
             late_activation(bool): if flight should be started, when enemy in zone
             start_type(StartType): of the flight if starts from airport
@@ -1443,7 +1443,7 @@ class Mission:
                     name: str,
                     plane_type: planes.PlaneType,
                     target_pos: mapping.Point,
-                    airport: Optional[Airport],
+                    airport: Optional[terrain_.Airport],
                     start_type: StartType=StartType.Cold,
                     max_engage_distance=20 * 1000,
                     group_size=2) -> unitgroup.PlaneGroup:
@@ -1453,7 +1453,7 @@ class Mission:
             country(Country): the flight belongs too
             name: name of the patrol flight
             plane_type(PlaneType): PlaneType for the patrol flight
-            airport(Airport): starting airport, use None if you want it to spawn inflight
+            airport(terrain_.Airport): starting airport, use None if you want it to spawn inflight
             target_pos(mapping.Point): AAA position
             start_type(StartType): of the flight if starts from airport
             max_engage_distance: the distance in KM to engage
@@ -1519,7 +1519,7 @@ class Mission:
                       name: str,
                       _type: planes.FlyingType,
                       target: Unit,
-                      airport: Optional[Airport],
+                      airport: Optional[terrain_.Airport],
                       start_type: StartType=StartType.Cold,
                       group_size=2) -> unitgroup.FlyingGroup:
         """Plans a strike mission at the given target.
@@ -1530,7 +1530,7 @@ class Mission:
             country(Country): the flight belongs too
             name: name of the patrol flight
             _type(FlyingType): FlyingType for the strike flight
-            airport(Airport): starting airport, use None if you want it to spawn inflight
+            airport(terrain_.Airport): starting airport, use None if you want it to spawn inflight
             target(Unit): Unit to strike
             start_type(StartType): of the flight if starts from airport
             group_size: how many planes should be in the flight group
