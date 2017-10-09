@@ -22,6 +22,7 @@ class Group:
         Star = 2
         Rectangle = 3
         Scattered = 4
+        Vee = 5
 
     def __init__(self, _id: int, name=None):
         if not isinstance(_id, int):
@@ -129,12 +130,31 @@ class Group:
                     break
             i += 1
 
+    def formation_vee(self, heading=0, distance=20):
+        unit_count = len(self.units)
+        size = math.ceil((unit_count - 1) / 2)
+
+        start_pos = self.units[0].position
+
+        u_idx = 1
+        for i in range(0, size):
+            self.units[u_idx].position = start_pos.point_from_heading(heading + 225, distance * (i + 1))
+            self.units[u_idx].heading = self.units[0].heading
+
+            u_idx += 1
+
+            if u_idx <= unit_count:
+                self.units[u_idx].position = start_pos.point_from_heading(heading - 225, distance * (i + 1))
+                self.units[u_idx].heading = self.units[0].heading
+                u_idx += 1
+
     def formation(self, _type=Formation.Line, heading=0):
         form_map = {
             VehicleGroup.Formation.Line: self.formation_line,
             VehicleGroup.Formation.Star: self.formation_star,
             VehicleGroup.Formation.Rectangle: self.formation_rectangle,
-            VehicleGroup.Formation.Scattered: self.formation_scattered
+            VehicleGroup.Formation.Scattered: self.formation_scattered,
+            VehicleGroup.Formation.Vee: self.formation_vee
         }
 
         form_map[_type](heading)
