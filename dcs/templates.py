@@ -175,3 +175,23 @@ class VehicleTemplate:
             u.skill = skill
 
         return vg
+
+
+class ShipTemplate:
+    @staticmethod
+    def kuznetsov_taskgroup(mission: dcs.mission.Mission, position, heading, prefix="", skill=unit.Skill.Average):
+        kuznetsov = mission.ship_group(mission.country("Russia"), prefix + " Kuznetsov Taskgroup",
+                                       dcs.ships.CV_1143_5_Admiral_Kuznetsov, position, heading)
+        kuznetsov.add_unit(mission.ship("Pyotr", dcs.ships.CGN_1144_2_Pyotr_Velikiy))
+        kuznetsov.add_unit(mission.ship("Neystrahsimy 1", dcs.ships.FFG_11540_Neustrashimy))
+        kuznetsov.add_unit(mission.ship("Neystrahsimy 2", dcs.ships.FFG_11540_Neustrashimy))
+        kuznetsov.add_unit(mission.ship("Tanker 1", dcs.ships.Tanker_Elnya_160))
+        kuznetsov.add_unit(mission.ship("Tanker 2", dcs.ships.Tanker_Elnya_160))
+        kuznetsov.add_unit(mission.ship("Tanker 3", dcs.ships.Tanker_Elnya_160))
+
+        for u in kuznetsov.units:
+            u.skill = skill
+
+        kuznetsov.formation_vee(heading, 800)
+
+        return kuznetsov
