@@ -166,6 +166,24 @@ class Weather:
             c.pressure_spread *= 1.3
         return c
 
+    def heavy_rain(self):
+        self.atmosphere_type = 0
+        self.clouds_base = 500
+        self.clouds_thickness = 600
+        self.clouds_density = 9
+        self.clouds_iprecptns = Weather.Preceptions.Rain
+        self.qnh = 745  # mm Hg
+
+        self.wind_at_ground = Wind(286, 9)
+        self.wind_at_2000 = Wind(52, 13)
+        self.wind_at_8000 = Wind(286, 7)
+
+        self.turbulence_at_ground = 14
+
+        self.enable_fog = True
+        self.fog_visibility = 1000
+        self.fog_thickness = 300
+
     def dynamic_weather(self, system: BaricSystem, cyclones: int=1):
         self.cyclones.clear()
 
@@ -234,7 +252,7 @@ class Weather:
         else:
             self.turbulence_at_ground = random.randrange(25, 60)
 
-    def _random_thunderstorm(self):
+    def random_thunderstorm(self):
         self.atmosphere_type = 0
         wind_dir = random.randrange(0, 359) + 180
         wind_speed = random.randrange(10, 30)
@@ -267,7 +285,7 @@ class Weather:
         # check if there might be the season for thunderstorms
         if 4 < dt.month < 11:
             if random.random() > 0.9:
-                self._random_thunderstorm()
+                self.random_thunderstorm()
                 return
 
         self.dynamic_weather(random.choice(list(Weather.BaricSystem)), random.randrange(1, 4))
