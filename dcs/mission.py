@@ -1684,6 +1684,10 @@ class Mission:
             period = random.choice(list(daytime_map.keys()))
         self.start_time += daytime_map[period]
 
+    def now(self):
+        """Sets mission time to current time."""
+        self.start_time = datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(tz=None)
+
     def stats(self) -> Dict:
         """Gather some mission stats.
 
@@ -1809,7 +1813,7 @@ class Mission:
         m = {
             "trig": self.triggerrules.trig(),
             "trigrules": self.triggerrules.trigrules(),
-            "start_time": int(self.start_time.timestamp() - 1306886400)
+            "start_time": int(self.start_time.replace(tzinfo=timezone.utc).astimezone(tz=None).timestamp() - 1306886400)
         }
         if m["start_time"] < 0:
             raise RuntimeError("Mission start time is < 0.")
