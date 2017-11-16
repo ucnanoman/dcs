@@ -13,6 +13,7 @@ Possible use cases are:
 
 ## Sample
 
+    import dcs
     m = dcs.Mission()
 
     batumi = m.terrain.batumi()
@@ -21,7 +22,7 @@ Possible use cases are:
     usa = m.country("USA")
     m.awacs_flight(
        usa, "AWACS", dcs.planes.E_3A,
-       batumi, dcs.Point(batumi.x + 20000, batumi.y + 80000),
+       batumi, dcs.Point(batumi.position.x + 20000, batumi.position.y + 80000),
        race_distance=120 * 1000, heading=90)
 
     m.save("sample.miz")
