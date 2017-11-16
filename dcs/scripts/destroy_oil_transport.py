@@ -12,10 +12,10 @@ zone_abkhazia = dcs.Polygon([dcs.Point(-187092.85714285, 460857.14285714), dcs.P
 
 def main():
     aircrafts = [x for x in dcs.planes.plane_map.values() if x.flyable]
-    aircrafts += [x for x in dcs.helicopters.helicopter_map.values() if x.flyable]
-    aircraft_types = [x.id for x in aircrafts]
+    helicopters = [x for x in dcs.helicopters.helicopter_map.values() if x.flyable]
+    aircraft_types = [x.id for x in aircrafts + helicopters]
 
-    parser = argparse.ArgumentParser(description="DCS WWII dogfight generator")
+    parser = argparse.ArgumentParser(description="DCS random search and destroy oil convoy")
     parser.add_argument("-a", "--aircrafttype", default=dcs.planes.A_10C.id,
                         choices=aircraft_types,
                         help="Player aircraft type")
@@ -135,8 +135,19 @@ def main():
             skill=dcs.unit.Skill.from_percentage(difficulty))
         sa11.hidden = not args.unhide
 
-    # place player
     usa = m.country('USA')
+
+    # place farp for helis
+    zugdidi_ne = city_graph.node('Zugidi NE')
+    farp = m.farp(usa, "FARP Zugdidi", zugdidi_ne.position + dcs.mapping.Point(0, 500))
+    fg = m.flight_group_from_unit(usa, dcs.helicopters.Ka_50.id + " Client", dcs.helicopters.Ka_50, farp, dcs.task.CAS, group_size=2)
+    fg.set_client()
+
+    farp = m.farp(usa, "FARP Kvemo", zugdidi_ne.position + dcs.mapping.Point(0, -22 * 1000))
+    fg = m.flight_group_from_unit(usa, dcs.helicopters.UH_1H.id + " Client", dcs.helicopters.UH_1H, farp, dcs.task.CAS, group_size=2)
+    fg.set_client()
+
+    # place player
     player_fg = None
     if args.multiplayer:
         for x in aircrafts:
@@ -150,6 +161,11 @@ def main():
         player_fg = m.flight_group_from_airport(usa, "Player", aircraft_type, m.terrain.senaki(), dcs.task.CAS)
         player_fg.add_runway_waypoint(m.terrain.senaki())
         player_fg.units[0].set_player()
+
+    # CAP flight
+    cap_type = random.choice([dcs.planes.F_16C_bl_52d, dcs.planes.F_A_18C, dcs.planes.F_15E])
+    m.patrol_flight(usa, "CAP", cap_type, m.terrain.kutaisi(), zugdidi_ne.position,
+                    zugdidi_ne.position.point_from_heading(random.randint(270, 350), 35 * 1000))
 
     notify_nodes = path[1:5]
     for i in range(0, int((1.3 - difficulty) * 3)):
