@@ -69,5 +69,4 @@ The current documentation can be found [here](http://dcs.readthedocs.org/en/late
 ## TODO
 
  * Failures
- * Placing FARPs
  * More/better documentation
