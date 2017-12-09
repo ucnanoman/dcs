@@ -104,6 +104,28 @@ class SSK_641B(unittype.ShipType):
     name = "SSK 641B"
 
 
+class LHA_1_Tarawa(unittype.ShipType):
+    id = "LHA_Tarawa"
+    name = "LHA-1 Tarawa"
+    plane_num = 40
+    helicopter_num = 6
+    parking = 5
+
+
+class DDG_168_Guangzhou(unittype.ShipType):
+    id = "052B"
+    name = "DDG-168 Guangzhou"
+    helicopter_num = 1
+
+
+class FFG_538_Yantai(unittype.ShipType):
+    id = "054A"
+    name = "FFG-538 Yantai"
+    plane_num = 0
+    helicopter_num = 1
+    parking = 1
+
+
 class LST_Mk_II(unittype.ShipType):
     id = "LST_Mk2"
     name = "LST Mk.II"
@@ -131,6 +153,9 @@ ship_map = {
     "ZWEZDNY": Civil_boat_Zvezdny,
     "KILO": SSK_877,
     "SOM": SSK_641B,
+    "LHA_Tarawa": LHA_1_Tarawa,
+    "052B": DDG_168_Guangzhou,
+    "054A": FFG_538_Yantai,
     "LST_Mk2": LST_Mk_II,
     "USS_Samuel_Chase": LS_Samuel_Chase,
 }

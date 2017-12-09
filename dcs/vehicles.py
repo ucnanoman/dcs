@@ -328,6 +328,11 @@ class Armor:
         id = "Boman"
         name = "ARV MTLB-U BOMAN"
 
+    class MLRS_FDDM(unittype.VehicleType):
+        id = "MLRS FDDM"
+        name = "MLRS FDDM"
+        eprls = True
+
     class MBT_Challenger_II(unittype.VehicleType):
         id = "Challenger2"
         name = "MBT Challenger II"
@@ -414,12 +419,16 @@ class Armor:
         id = "M4_Sherman"
         name = "MT M4 Sherman"
 
+    class M30_Cargo_Carrier(unittype.VehicleType):
+        id = "M30_CC"
+        name = "M30 Cargo Carrier"
+
 
 class Carriage:
 
-    class DR_50Ton_Flat_Wagon(unittype.VehicleType):
+    class DR_50_ton_flat_wagon(unittype.VehicleType):
         id = "DR_50Ton_Flat_Wagon"
-        name = "DR 50Ton Flat Wagon"
+        name = "DR 50-ton flat wagon"
 
     class German_covered_wagon_G10(unittype.VehicleType):
         id = "German_covered_wagon_G10"
@@ -485,6 +494,10 @@ class Artillery:
     class SK_C_28_15cm_naval_gun(unittype.VehicleType):
         id = "SK_C_28_naval_gun"
         name = "SK C/28 15cm naval gun"
+
+    class M12_GMC(unittype.VehicleType):
+        id = "M12_GMC"
+        name = "M12 GMC"
 
 
 class AirDefence:
@@ -740,6 +753,10 @@ class AirDefence:
         id = "flak38"
         name = "AAA Flak-Vierling 38"
 
+    class AAA_Kdo_G_40(unittype.VehicleType):
+        id = "KDO_Mod40"
+        name = "AAA Kdo.G.40"
+
     class AAA_Bofors_40mm(unittype.VehicleType):
         id = "bofors40"
         name = "AAA Bofors 40mm"
@@ -784,6 +801,7 @@ vehicle_map = {
     "Soldier M4": Infantry.Infantry_M4,
     "Soldier M4 GRG": Infantry.Georgian_soldier_with_M4,
     "Soldier RPG": Infantry.Soldier_RPG,
+    "MLRS FDDM": Armor.MLRS_FDDM,
     "Grad-URAL": Artillery.MLRS_BM_21_Grad,
     "Uragan_BM-27": Artillery.MLRS_9K57_Uragan_BM_27,
     "Smerch": Artillery.MLRS_9A52_Smerch,
@@ -906,6 +924,7 @@ vehicle_map = {
     "flak36": AirDefence.AAA_Flak_36,
     "flak37": AirDefence.AAA_Flak_37,
     "flak38": AirDefence.AAA_Flak_Vierling_38,
+    "KDO_Mod40": AirDefence.AAA_Kdo_G_40,
     "soldier_mauser98": Infantry.Infantry_Mauser_98,
     "SK_C_28_naval_gun": Artillery.SK_C_28_15cm_naval_gun,
     "Bedford_MWD": Unarmed.Bedford_MWD,
@@ -915,8 +934,10 @@ vehicle_map = {
     "CCKW_353": Unarmed.CCKW_353,
     "Willys_MB": Unarmed.Willys_MB,
     "M4_Sherman": Armor.MT_M4_Sherman,
+    "M12_GMC": Artillery.M12_GMC,
+    "M30_CC": Armor.M30_Cargo_Carrier,
     "soldier_wwii_us": Infantry.Infantry_M1_Garand,
-    "DR_50Ton_Flat_Wagon": Carriage.DR_50Ton_Flat_Wagon,
+    "DR_50Ton_Flat_Wagon": Carriage.DR_50_ton_flat_wagon,
     "DRG_Class_86": Locomotive.DRG_Class_86,
     "German_covered_wagon_G10": Carriage.German_covered_wagon_G10,
     "German_tank_wagon": Carriage.German_tank_wagon,

@@ -636,9 +636,9 @@ class Fortification:
         shape_name = "Log_ramps_02"
         rate = 12
 
-    class Siegfried_Line(unittype.StaticType):
+    class Siegfried_line(unittype.StaticType):
         id = "Siegfried Line"
-        name = "Siegfried Line"
+        name = "Siegfried line"
         shape_name = "Siegfried_Line"
         rate = 20
 
@@ -748,7 +748,7 @@ fortification_map = {
     "Log ramps 1": Fortification.Log_ramps_1,
     "Log ramps 2": Fortification.Log_ramps_2,
     "Log ramps 3": Fortification.Log_ramps_3,
-    "Siegfried Line": Fortification.Siegfried_Line,
+    "Siegfried Line": Fortification.Siegfried_line,
 }
 
 

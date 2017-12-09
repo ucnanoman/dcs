@@ -750,6 +750,10 @@ class MiG_29A(PlaneType):
         class Kazakhstan(Enum):
             Kazakhstan_Air_Defense_Forces = "Kazakhstan Air Defense Forces"
 
+        class Poland(Enum):
+            Polish_41st_Sqn_Standard1 = "Polish 41st Sqn Standard1"
+            Polish_41st_Sqn_Standard2 = "Polish 41st Sqn Standard2"
+
     class Pylon1:
         R_60M = (1, Weapons.R_60M)
         R_73 = (1, Weapons.R_73)
@@ -2105,6 +2109,7 @@ class Su_27(PlaneType):
 
 class MiG_29G(PlaneType):
     id = "MiG-29G"
+    flyable = True
     height = 4.73
     width = 11.36
     length = 20.32
@@ -2294,8 +2299,8 @@ class Su_25(PlaneType):
     class Liveries:
 
         class Georgia(Enum):
-            _scorpion__demo_scheme__native = "`scorpion` demo scheme (native)"
             field_camo_scheme__1__native_01 = "field camo scheme #1 (native)01"
+            _scorpion__demo_scheme__native = "`scorpion` demo scheme (native)"
 
         class Ukraine(Enum):
             broken_camo_scheme__1__native___299th_oshap = "broken camo scheme #1 (native). 299th oshap"
@@ -2666,7 +2671,6 @@ class Su_25TM(PlaneType):
         RBK_250_275_AO_1SCh = (5, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (5, Weapons.FAB_500_M62)
         KAB_500kr = (5, Weapons.KAB_500kr)
-        KAB_500S = (5, Weapons.KAB_500S)
         RBK_500_255_PTAB_10_5 = (5, Weapons.RBK_500_255_PTAB_10_5)
         RBK_500_PTAB_1M = (5, Weapons.RBK_500_PTAB_1M)
         RBK_500U_OAB_2_5RT = (5, Weapons.RBK_500U_OAB_2_5RT)
@@ -2705,7 +2709,6 @@ class Su_25TM(PlaneType):
         RBK_250_275_AO_1SCh = (7, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (7, Weapons.FAB_500_M62)
         KAB_500kr = (7, Weapons.KAB_500kr)
-        KAB_500S = (7, Weapons.KAB_500S)
         RBK_500_255_PTAB_10_5 = (7, Weapons.RBK_500_255_PTAB_10_5)
         RBK_500_PTAB_1M = (7, Weapons.RBK_500_PTAB_1M)
         RBK_500U_OAB_2_5RT = (7, Weapons.RBK_500U_OAB_2_5RT)
@@ -2954,7 +2957,6 @@ class Su_25T(PlaneType):
         RBK_250_275_AO_1SCh = (5, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (5, Weapons.FAB_500_M62)
         KAB_500kr = (5, Weapons.KAB_500kr)
-        KAB_500S = (5, Weapons.KAB_500S)
         RBK_500_255_PTAB_10_5 = (5, Weapons.RBK_500_255_PTAB_10_5)
         RBK_500_PTAB_1M = (5, Weapons.RBK_500_PTAB_1M)
         RBK_500U_OAB_2_5RT = (5, Weapons.RBK_500U_OAB_2_5RT)
@@ -2989,7 +2991,6 @@ class Su_25T(PlaneType):
         RBK_250_275_AO_1SCh = (7, Weapons.RBK_250_275_AO_1SCh)
         FAB_500_M62 = (7, Weapons.FAB_500_M62)
         KAB_500kr = (7, Weapons.KAB_500kr)
-        KAB_500S = (7, Weapons.KAB_500S)
         RBK_500_255_PTAB_10_5 = (7, Weapons.RBK_500_255_PTAB_10_5)
         RBK_500_PTAB_1M = (7, Weapons.RBK_500_PTAB_1M)
         RBK_500U_OAB_2_5RT = (7, Weapons.RBK_500U_OAB_2_5RT)
@@ -3130,10 +3131,9 @@ class Su_33(PlaneType):
         class Russia(Enum):
             _279th_kiap_1st_squad_navy = "279th kiap 1st squad navy"
             _279th_kiap_2nd_squad_navy = "279th kiap 2nd squad navy"
-            standard_1_navy = "standard-1 navy"
-            standard_2_navy = "standard-2 navy"
+            _279th_kiap_1st_squad_Syria_2017 = "279th kiap 1st squad Syria 2017"
+            _279th_kiap_2nd_squad_Syria_2017 = "279th kiap 2nd squad Syria 2017"
             t_10k_1_test_paint_scheme = "t-10k-1 test paint scheme"
-            t_10k_2_test_paint_scheme = "t-10k-2 test paint scheme"
             t_10k_5_test_paint_scheme = "t-10k-5 test paint scheme"
             t_10k_9_test_paint_scheme = "t-10k-9 test paint scheme"
 
@@ -3184,6 +3184,7 @@ class Su_33(PlaneType):
         Smoke_Generator___orange = (3, Weapons.Smoke_Generator___orange)
         B_8M1___20_S_8OFP2 = (3, Weapons.B_8M1___20_S_8OFP2)
         B_8M1___20_S_8TsM = (3, Weapons.B_8M1___20_S_8TsM)
+        MER_6_FAB_100 = (3, Weapons.MER_6_FAB_100)
 
     class Pylon4:
         R_27R = (4, Weapons.R_27R)
@@ -3209,6 +3210,7 @@ class Su_33(PlaneType):
         Smoke_Generator___orange = (4, Weapons.Smoke_Generator___orange)
         B_8M1___20_S_8OFP2 = (4, Weapons.B_8M1___20_S_8OFP2)
         B_8M1___20_S_8TsM = (4, Weapons.B_8M1___20_S_8TsM)
+        MER_6_FAB_100 = (4, Weapons.MER_6_FAB_100)
 
     class Pylon5:
         R_27R = (5, Weapons.R_27R)
@@ -3229,6 +3231,7 @@ class Su_33(PlaneType):
         Smoke_Generator___white = (5, Weapons.Smoke_Generator___white)
         Smoke_Generator___yellow = (5, Weapons.Smoke_Generator___yellow)
         Smoke_Generator___orange = (5, Weapons.Smoke_Generator___orange)
+        MER_6_FAB_100 = (5, Weapons.MER_6_FAB_100)
 
     class Pylon6:
         R_27R = (6, Weapons.R_27R)
@@ -3247,6 +3250,7 @@ class Su_33(PlaneType):
         Smoke_Generator___white = (6, Weapons.Smoke_Generator___white)
         Smoke_Generator___yellow = (6, Weapons.Smoke_Generator___yellow)
         Smoke_Generator___orange = (6, Weapons.Smoke_Generator___orange)
+        MER_6_FAB_100 = (6, Weapons.MER_6_FAB_100)
 
     class Pylon7:
         R_27R = (7, Weapons.R_27R)
@@ -3261,6 +3265,7 @@ class Su_33(PlaneType):
         RBK_500_255_PTAB_10_5 = (7, Weapons.RBK_500_255_PTAB_10_5)
         RBK_500_PTAB_1M = (7, Weapons.RBK_500_PTAB_1M)
         FAB_500_M62 = (7, Weapons.FAB_500_M62)
+        MER_6_FAB_100 = (7, Weapons.MER_6_FAB_100)
 
     class Pylon8:
         R_27R = (8, Weapons.R_27R)
@@ -3281,6 +3286,7 @@ class Su_33(PlaneType):
         Smoke_Generator___white = (8, Weapons.Smoke_Generator___white)
         Smoke_Generator___yellow = (8, Weapons.Smoke_Generator___yellow)
         Smoke_Generator___orange = (8, Weapons.Smoke_Generator___orange)
+        MER_6_FAB_100 = (8, Weapons.MER_6_FAB_100)
 
     class Pylon9:
         R_27R = (9, Weapons.R_27R)
@@ -3306,6 +3312,7 @@ class Su_33(PlaneType):
         Smoke_Generator___orange = (9, Weapons.Smoke_Generator___orange)
         B_8M1___20_S_8OFP2 = (9, Weapons.B_8M1___20_S_8OFP2)
         B_8M1___20_S_8TsM = (9, Weapons.B_8M1___20_S_8TsM)
+        MER_6_FAB_100 = (9, Weapons.MER_6_FAB_100)
 
     class Pylon10:
         R_73 = (10, Weapons.R_73)
@@ -3334,6 +3341,7 @@ class Su_33(PlaneType):
         Smoke_Generator___orange = (10, Weapons.Smoke_Generator___orange)
         B_8M1___20_S_8OFP2 = (10, Weapons.B_8M1___20_S_8OFP2)
         B_8M1___20_S_8TsM = (10, Weapons.B_8M1___20_S_8TsM)
+        MER_6_FAB_100 = (10, Weapons.MER_6_FAB_100)
 
     class Pylon11:
         R_73 = (11, Weapons.R_73)
@@ -3496,16 +3504,16 @@ class Su_30(PlaneType):
     class Liveries:
 
         class Russia(Enum):
-            _desert__test_paint_scheme = "`desert` test paint scheme"
-            _russian_knights__team__25 = "`russian knights` team #25"
-            _snow__test_paint_scheme = "`snow` test paint scheme"
-            _test_pilots__team__597 = "`test-pilots` team #597"
             adf_148th_ctc_savasleyka_ab = "adf 148th ctc savasleyka ab"
             af_standard = "af standard"
             af_standard_early = "af standard early"
             af_standard_early__worn_out = "af standard early (worn-out)"
             af_standard_last = "af standard last"
             af_standard_last__worn_out = "af standard last (worn-out)"
+            _desert__test_paint_scheme = "`desert` test paint scheme"
+            _russian_knights__team__25 = "`russian knights` team #25"
+            _snow__test_paint_scheme = "`snow` test paint scheme"
+            _test_pilots__team__597 = "`test-pilots` team #597"
 
     class Pylon1:
         R_73 = (1, Weapons.R_73)
@@ -4154,8 +4162,8 @@ class MiG_31(PlaneType):
 
         class Russia(Enum):
             _174_GvIAP_Boris_Safonov = "174 GvIAP_Boris Safonov"
-            _903_White = "903_White"
             af_standard = "af standard"
+            _903_White = "903_White"
 
     class Pylon1:
         R_40R = (1, Weapons.R_40R)
@@ -4276,7 +4284,6 @@ class Su_24M(PlaneType):
         BetAB_500ShP = (2, Weapons.BetAB_500ShP)
         KAB_500L = (2, Weapons.KAB_500L)
         KAB_500kr = (2, Weapons.KAB_500kr)
-        KAB_500S = (2, Weapons.KAB_500S)
         KMGU_2___96_AO_2_5RT = (2, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (2, Weapons.KMGU_2___96_PTAB_2_5KO)
         SAB_100 = (2, Weapons.SAB_100)
@@ -4304,7 +4311,6 @@ class Su_24M(PlaneType):
         BetAB_500ShP = (3, Weapons.BetAB_500ShP)
         KAB_500L = (3, Weapons.KAB_500L)
         KAB_500kr = (3, Weapons.KAB_500kr)
-        KAB_500S = (3, Weapons.KAB_500S)
         SAB_100 = (3, Weapons.SAB_100)
         UB_32A___32_S_5KO = (3, Weapons.UB_32A___32_S_5KO)
         B_8M1___20_S_8KOM = (3, Weapons.B_8M1___20_S_8KOM)
@@ -4341,7 +4347,6 @@ class Su_24M(PlaneType):
         BetAB_500ShP = (6, Weapons.BetAB_500ShP)
         KAB_500L = (6, Weapons.KAB_500L)
         KAB_500kr = (6, Weapons.KAB_500kr)
-        KAB_500S = (6, Weapons.KAB_500S)
         SAB_100 = (6, Weapons.SAB_100)
         UB_32A___32_S_5KO = (6, Weapons.UB_32A___32_S_5KO)
         B_8M1___20_S_8KOM = (6, Weapons.B_8M1___20_S_8KOM)
@@ -4369,7 +4374,6 @@ class Su_24M(PlaneType):
         BetAB_500ShP = (7, Weapons.BetAB_500ShP)
         KAB_500L = (7, Weapons.KAB_500L)
         KAB_500kr = (7, Weapons.KAB_500kr)
-        KAB_500S = (7, Weapons.KAB_500S)
         KMGU_2___96_AO_2_5RT = (7, Weapons.KMGU_2___96_AO_2_5RT)
         KMGU_2___96_PTAB_2_5KO = (7, Weapons.KMGU_2___96_PTAB_2_5KO)
         SAB_100 = (7, Weapons.SAB_100)
@@ -4693,9 +4697,9 @@ class Mirage_2000_5(PlaneType):
             ec1_2__spa103__cigogne_de_fonck = "ec1_2  spa103 `cigogne de fonck`"
             ec1_2__spa12__cigogne_a_ailes_ouvertes = "ec1_2  spa12 `cigogne a ailes ouvertes`"
             ec1_2_spa3__cigogne_de_guynemer = "ec1_2 spa3 `cigogne de guynemer`"
+            ec2_2_spa94__lamort_qui_fauche = "ec2_2 spa94 `lamort qui fauche`"
             ec2_2__cote_d_or__spa57__mouette = "ec2_2 `cote d'or` spa57 `mouette`"
             ec2_2__cote_d_or__spa65__chimere = "ec2_2 `cote d'or` spa65 `chimere`"
-            ec2_2_spa94__lamort_qui_fauche = "ec2_2 spa94 `lamort qui fauche`"
 
     class Pylon1:
         R_550_Magic_2 = (1, Weapons.R_550_Magic_2)
@@ -6088,6 +6092,13 @@ class F_16C_bl_50(PlaneType):
         class Turkey(Enum):
             af_f16_standard = "af f16 standard"
 
+        class Poland(Enum):
+            Polish_6th_sqn_4063 = "Polish 6th sqn 4063"
+            Polish_6th_sqn_4064 = "Polish 6th sqn 4064"
+            Polish_6th_sqn_4066 = "Polish 6th sqn 4066"
+            Polish_6th_sqn_4085 = "Polish 6th sqn 4085"
+            Polish_Air_Force_Standard = "Polish Air Force Standard"
+
     class Pylon1:
         AIM_120B = (1, Weapons.AIM_120B)
         AIM_120C = (1, Weapons.AIM_120C)
@@ -6604,9 +6615,9 @@ class F_16A_MLU(PlaneType):
             CMD_extended_skins = "CMD extended skins"
 
         class Norway(Enum):
-            CMD_extended_skins = "CMD extended skins"
             norway_338_skvadron = "norway 338 skvadron"
             norway_skv338 = "norway skv338"
+            CMD_extended_skins = "CMD extended skins"
 
         class Romania(Enum):
             CMD_extended_skins = "CMD extended skins"
@@ -6711,9 +6722,9 @@ class F_16A_MLU(PlaneType):
             CMD_extended_skins = "CMD extended skins"
 
         class TheNetherlands(Enum):
-            CMD_extended_skins = "CMD extended skins"
             the_netherlands__313th_squadron____twenthe_ab = "the netherlands (313th squadron `` twenthe ab)"
             the_netherlands_313th__tigers__squadron = "the netherlands 313th `tigers` squadron"
+            CMD_extended_skins = "CMD extended skins"
 
         class Turkey(Enum):
             CMD_extended_skins = "CMD extended skins"
@@ -8112,8 +8123,8 @@ class Bf_109_K_4(PlaneType):
             Bf_109_K4_Legion_Condor_Spain_1939 = "Bf-109 K4 Legion Condor Spain 1939"
             Bf_109_K4_G10_of_Tibor_Tobak_RHAF = "Bf-109 K4 G10 of Tibor Tobak RHAF"
             Bf_109_K4_red7_EADS = "Bf-109 K4 red7 EADS"
-            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
             Bf_109_K4_Irmgard = "Bf-109 K4 Irmgard"
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
             Bf_109_K4_Croatia = "Bf-109 K4 Croatia"
             Green = "Green"
             Bf_109_K4_IIJG52 = "Bf-109 K4 IIJG52"
@@ -8258,8 +8269,8 @@ class Bf_109_K_4(PlaneType):
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
 
         class Switzerland(Enum):
-            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
             Bf_109_K4_Irmgard = "Bf-109 K4 Irmgard"
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
             Green = "Green"
             Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_Swiss_E_3a_J_374_1940 = "Bf-109 K4 Swiss E-3a J-374 1940"
@@ -8353,8 +8364,8 @@ class Bf_109_K_4(PlaneType):
         class USA(Enum):
             Bf_109_K4_Legion_Condor_Spain_1939 = "Bf-109 K4 Legion Condor Spain 1939"
             Bf_109_K4_red7_EADS = "Bf-109 K4 red7 EADS"
-            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
             Bf_109_K4_Irmgard = "Bf-109 K4 Irmgard"
+            Bf_109_K4_Dogfight_BLUE = "Bf-109 K4 Dogfight BLUE"
             Green = "Green"
             Bf_109_K4_Dogfight_RED = "Bf-109 K4 Dogfight RED"
             Bf_109_K4_IAF_S_199 = "Bf-109 K4 IAF S-199"
@@ -8817,6 +8828,1298 @@ class AJS37(PlaneType):
     task_default = task.GroundAttack
 
 
+class AV_8B_N_A(PlaneType):
+    id = "AV8BNA"
+    height = 3.55
+    width = 9.24
+    length = 14.12
+    fuel_max = 3519.423
+    max_speed = 990
+    chaff = 60
+    flare = 120
+    charge_total = 180
+    chaff_charge_size = 1
+    flare_charge_size = 1
+    category = "Air"
+    radio_frequency = 243
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 177,
+                2: 264,
+                4: 256,
+                8: 257,
+                16: 261,
+                17: 267,
+                9: 255,
+                18: 251,
+                5: 254,
+                10: 262,
+                20: 266,
+                21: 133,
+                11: 259,
+                22: 257.8,
+                3: 265,
+                6: 250,
+                12: 268,
+                24: 123.3,
+                25: 344,
+                13: 269,
+                26: 385,
+                7: 270,
+                14: 260,
+                23: 122.1,
+                19: 253,
+                15: 263
+            },
+        },
+        2: {
+            "channels": {
+                1: 133,
+                2: 257.8,
+                4: 123.3,
+                8: 385.4,
+                16: 121,
+                17: 126,
+                9: 139,
+                18: 125,
+                5: 344,
+                10: 140,
+                20: 122,
+                21: 123,
+                11: 134,
+                22: 124,
+                3: 122.1,
+                6: 385,
+                12: 132,
+                24: 136,
+                25: 141,
+                13: 131,
+                26: 127,
+                7: 130,
+                14: 129,
+                23: 135,
+                19: 128,
+                15: 138
+            },
+        },
+    }
+
+    property_defaults = {
+        "MountNVG": False,
+        "ClockTime": 1,
+        "RocketBurst": 1,
+        "EWDispenserTFL": 1,
+        "EWDispenserTFR": 1,
+        "EWDispenserTBL": 2,
+        "EWDispenserTBR": 2,
+        "EWDispenserBL": 2,
+        "EWDispenserBR": 2,
+        "WpBullseye": 0,
+        "ForceINSRules": False,
+    }
+
+    class Properties:
+
+        class MountNVG:
+            id = "MountNVG"
+
+        class ClockTime:
+            id = "ClockTime"
+
+            class Values:
+                ZULU_Time = 1
+                Local_Time = 2
+
+        class RocketBurst:
+            id = "RocketBurst"
+
+            class Values:
+                Single_Fire = 1
+                Ripple_Fire = 2
+
+        class EWDispenserTFL:
+            id = "EWDispenserTFL"
+
+            class Values:
+                _30_Chaff = 1
+                _30_Flares = 2
+
+        class EWDispenserTFR:
+            id = "EWDispenserTFR"
+
+            class Values:
+                _30_Chaff = 1
+                _30_Flares = 2
+
+        class EWDispenserTBL:
+            id = "EWDispenserTBL"
+
+            class Values:
+                _30_Chaff = 1
+                _30_Flares = 2
+
+        class EWDispenserTBR:
+            id = "EWDispenserTBR"
+
+            class Values:
+                _30_Chaff = 1
+                _30_Flares = 2
+
+        class EWDispenserBL:
+            id = "EWDispenserBL"
+
+            class Values:
+                _30_Chaff = 1
+                _30_Flares = 2
+
+        class EWDispenserBR:
+            id = "EWDispenserBR"
+
+            class Values:
+                _30_Chaff = 1
+                _30_Flares = 2
+
+        class WpBullseye:
+            id = "WpBullseye"
+
+        class ForceINSRules:
+            id = "ForceINSRules"
+
+    class Liveries:
+
+        class Georgia(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Syria(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Finland(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Australia(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Germany(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class SaudiArabia(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Israel(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Croatia(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class CzechRepublic(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Norway(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Romania(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Spain(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Ukraine(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Belgium(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Slovakia(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Greece(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class UK(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Insurgents(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Hungary(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class France(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Abkhazia(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Russia(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Sweden(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Austria(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Switzerland(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Italy(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class SouthOssetia(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class SouthKorea(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Iran(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class China(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Pakistan(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Belarus(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class NorthKorea(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Iraq(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Kazakhstan(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Bulgaria(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Serbia(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class India(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class USAFAggressors(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class USA(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Denmark(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Egypt(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Canada(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class TheNetherlands(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Turkey(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Japan(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+        class Poland(Enum):
+            default = "default"
+            VMA_211 = "VMA-211"
+            VMA_211D = "VMA-211D"
+            VMA_214 = "VMA-214"
+            VMA_214D = "VMA-214D"
+            VMA_223D = "VMA-223D"
+            VMA_231_1 = "VMA-231-1"
+            VMA_231_2 = "VMA-231-2"
+            VMA_231D = "VMA-231D"
+            VMA_311 = "VMA-311"
+            VMA_311D = "VMA-311D"
+            VMA_513 = "VMA-513"
+            VMA_513D = "VMA-513D"
+            VMAT_203 = "VMAT-203"
+            VMAT_203S = "VMAT-203S"
+            VMA_542 = "VMA-542"
+
+    class Pylon1:
+        AIM_9M = (1, Weapons.AIM_9M)
+        AGM_122_Sidearm = (1, Weapons.AGM_122_Sidearm)
+        Mk_81 = (1, Weapons.Mk_81)
+        Mk_82 = (1, Weapons.Mk_82)
+        Mk_82_SnakeEye = (1, Weapons.Mk_82_SnakeEye)
+        Mk_82AIR = (1, Weapons.Mk_82AIR)
+        Mk_20 = (1, Weapons.Mk_20)
+        GBU_12 = (1, Weapons.GBU_12)
+        AN_ASQ_T50_TCTS_Pod = (1, Weapons.AN_ASQ_T50_TCTS_Pod)
+        CATM_9M = (1, Weapons.CATM_9M)
+        BDU_33 = (1, Weapons.BDU_33)
+        Smokewinder___red = (1, Weapons.Smokewinder___red)
+        Smokewinder___green = (1, Weapons.Smokewinder___green)
+        Smokewinder___blue = (1, Weapons.Smokewinder___blue)
+        Smokewinder___white = (1, Weapons.Smokewinder___white)
+        Smokewinder___yellow = (1, Weapons.Smokewinder___yellow)
+        Smokewinder___orange = (1, Weapons.Smokewinder___orange)
+
+    class Pylon2:
+        LAU_7_AIM_9M = (2, Weapons.LAU_7_AIM_9M)
+        AGM_122_Sidearm_ = (2, Weapons.AGM_122_Sidearm_)
+        Mk_81 = (2, Weapons.Mk_81)
+        Mk_82 = (2, Weapons.Mk_82)
+        Mk_82_SnakeEye = (2, Weapons.Mk_82_SnakeEye)
+        Mk_82AIR = (2, Weapons.Mk_82AIR)
+        Mk_83 = (2, Weapons.Mk_83)
+        Mk_20 = (2, Weapons.Mk_20)
+        GBU_12 = (2, Weapons.GBU_12)
+        GBU_16 = (2, Weapons.GBU_16)
+        MER_3_3_Mk_81 = (2, Weapons.MER_3_3_Mk_81)
+        _3_Mk_82 = (2, Weapons._3_Mk_82)
+        _2_Mk_20_Rockeye_ = (2, Weapons._2_Mk_20_Rockeye_)
+        _2_GBU_12 = (2, Weapons._2_GBU_12)
+        BRU_42_3_GBU_12 = (2, Weapons.BRU_42_3_GBU_12)
+        _2_MK_82 = (2, Weapons._2_MK_82)
+        _3_Mk_82AIR = (2, Weapons._3_Mk_82AIR)
+        _2_MK_82AIR = (2, Weapons._2_MK_82AIR)
+        _3_MK_82_SNAKEYE = (2, Weapons._3_MK_82_SNAKEYE)
+        _2_MK_82_SNAKEYE = (2, Weapons._2_MK_82_SNAKEYE)
+        BDU_33 = (2, Weapons.BDU_33)
+        BRU_42_3_BDU_33 = (2, Weapons.BRU_42_3_BDU_33)
+        LAU_117_AGM_65D = (2, Weapons.LAU_117_AGM_65D)
+        LAU_117_AGM_65G = (2, Weapons.LAU_117_AGM_65G)
+        LAU_117_AGM_65K = (2, Weapons.LAU_117_AGM_65K)
+        LAU_117_AGM_65H = (2, Weapons.LAU_117_AGM_65H)
+        LAU_117_TGM_65D = (2, Weapons.LAU_117_TGM_65D)
+        LAU_117_TGM_65G = (2, Weapons.LAU_117_TGM_65G)
+        LAU_117_TGM_65H = (2, Weapons.LAU_117_TGM_65H)
+        LAU_117_CATM_65K = (2, Weapons.LAU_117_CATM_65K)
+        LAU_10___4_ZUNI_MK_71 = (2, Weapons.LAU_10___4_ZUNI_MK_71)
+        LAU_3___19_FFAR_M156_WP = (2, Weapons.LAU_3___19_FFAR_M156_WP)
+        LAU_3___19_FFAR_Mk1_HE = (2, Weapons.LAU_3___19_FFAR_Mk1_HE)
+        LAU_3___19_FFAR_Mk5_HEAT = (2, Weapons.LAU_3___19_FFAR_Mk5_HEAT)
+        LAU_68___7_FFAR_M156_WP = (2, Weapons.LAU_68___7_FFAR_M156_WP)
+        LAU_68___7_FFAR_Mk1_HE = (2, Weapons.LAU_68___7_FFAR_Mk1_HE)
+        LAU_68___7_FFAR_Mk5_HEAT = (2, Weapons.LAU_68___7_FFAR_Mk5_HEAT)
+        LAU_68___7_2_75__rockets_WTU1B__Practice_ = (2, Weapons.LAU_68___7_2_75__rockets_WTU1B__Practice_)
+        LAU_68___7_2_75__rockets_M257__Parachute_illumination_ = (2, Weapons.LAU_68___7_2_75__rockets_M257__Parachute_illumination_)
+        LAU_68___7_2_75__rockets_M274__Practice_smoke_ = (2, Weapons.LAU_68___7_2_75__rockets_M274__Practice_smoke_)
+        SUU_25___8_LUU_2 = (2, Weapons.SUU_25___8_LUU_2)
+        _3_SUU_25___8_LUU_2 = (2, Weapons._3_SUU_25___8_LUU_2)
+        Smokewinder___red = (2, Weapons.Smokewinder___red)
+        Smokewinder___green = (2, Weapons.Smokewinder___green)
+        Smokewinder___blue = (2, Weapons.Smokewinder___blue)
+        Smokewinder___white = (2, Weapons.Smokewinder___white)
+        Smokewinder___yellow = (2, Weapons.Smokewinder___yellow)
+        Smokewinder___orange = (2, Weapons.Smokewinder___orange)
+        AERO_1D_300_Gallons_Fuel_Tank_ = (2, Weapons.AERO_1D_300_Gallons_Fuel_Tank_)
+
+    class Pylon3:
+        Mk_81 = (3, Weapons.Mk_81)
+        Mk_82 = (3, Weapons.Mk_82)
+        Mk_82_SnakeEye = (3, Weapons.Mk_82_SnakeEye)
+        Mk_82AIR = (3, Weapons.Mk_82AIR)
+        Mk_83 = (3, Weapons.Mk_83)
+        Mk_20 = (3, Weapons.Mk_20)
+        GBU_12 = (3, Weapons.GBU_12)
+        GBU_16 = (3, Weapons.GBU_16)
+        MER_3_3_Mk_81 = (3, Weapons.MER_3_3_Mk_81)
+        _2_MK_82 = (3, Weapons._2_MK_82)
+        _3_Mk_82 = (3, Weapons._3_Mk_82)
+        _2_MK_83 = (3, Weapons._2_MK_83)
+        _2_MK_83__ = (3, Weapons._2_MK_83__)
+        _2_Mk_20_Rockeye_ = (3, Weapons._2_Mk_20_Rockeye_)
+        _3_Mk_20_Rockeye = (3, Weapons._3_Mk_20_Rockeye)
+        _2_GBU_12 = (3, Weapons._2_GBU_12)
+        BRU_42_3_GBU_12 = (3, Weapons.BRU_42_3_GBU_12)
+        _2_GBU_16 = (3, Weapons._2_GBU_16)
+        _3_GBU_16 = (3, Weapons._3_GBU_16)
+        _3_Mk_82AIR = (3, Weapons._3_Mk_82AIR)
+        _2_MK_82AIR = (3, Weapons._2_MK_82AIR)
+        _3_MK_82_SNAKEYE = (3, Weapons._3_MK_82_SNAKEYE)
+        _2_MK_82_SNAKEYE = (3, Weapons._2_MK_82_SNAKEYE)
+        BDU_33 = (3, Weapons.BDU_33)
+        BRU_42_3_BDU_33 = (3, Weapons.BRU_42_3_BDU_33)
+        LAU_117_AGM_65D = (3, Weapons.LAU_117_AGM_65D)
+        LAU_117_AGM_65G = (3, Weapons.LAU_117_AGM_65G)
+        LAU_117_AGM_65K = (3, Weapons.LAU_117_AGM_65K)
+        LAU_117_AGM_65H = (3, Weapons.LAU_117_AGM_65H)
+        LAU_117_TGM_65D = (3, Weapons.LAU_117_TGM_65D)
+        LAU_117_TGM_65G = (3, Weapons.LAU_117_TGM_65G)
+        LAU_117_TGM_65H = (3, Weapons.LAU_117_TGM_65H)
+        LAU_117_CATM_65K = (3, Weapons.LAU_117_CATM_65K)
+        LAU_10___4_ZUNI_MK_71 = (3, Weapons.LAU_10___4_ZUNI_MK_71)
+        LAU_3___19_FFAR_M156_WP = (3, Weapons.LAU_3___19_FFAR_M156_WP)
+        LAU_3___19_FFAR_Mk1_HE = (3, Weapons.LAU_3___19_FFAR_Mk1_HE)
+        LAU_3___19_FFAR_Mk5_HEAT = (3, Weapons.LAU_3___19_FFAR_Mk5_HEAT)
+        LAU_68___7_FFAR_M156_WP = (3, Weapons.LAU_68___7_FFAR_M156_WP)
+        LAU_68___7_FFAR_Mk1_HE = (3, Weapons.LAU_68___7_FFAR_Mk1_HE)
+        LAU_68___7_FFAR_Mk5_HEAT = (3, Weapons.LAU_68___7_FFAR_Mk5_HEAT)
+        LAU_68___7_2_75__rockets_WTU1B__Practice_ = (3, Weapons.LAU_68___7_2_75__rockets_WTU1B__Practice_)
+        LAU_68___7_2_75__rockets_M257__Parachute_illumination_ = (3, Weapons.LAU_68___7_2_75__rockets_M257__Parachute_illumination_)
+        LAU_68___7_2_75__rockets_M274__Practice_smoke_ = (3, Weapons.LAU_68___7_2_75__rockets_M274__Practice_smoke_)
+        LAU_68_3___7_2_75__rockets_MK5__HE_ = (3, Weapons.LAU_68_3___7_2_75__rockets_MK5__HE_)
+        LAU_68_3___7_2_75__rockets_M151__HE_ = (3, Weapons.LAU_68_3___7_2_75__rockets_M151__HE_)
+        LAU_68_3___7_2_75__rockets_M156__WP_ = (3, Weapons.LAU_68_3___7_2_75__rockets_M156__WP_)
+        LAU_68_3___7_2_75__rockets_WTU1B__Practice_ = (3, Weapons.LAU_68_3___7_2_75__rockets_WTU1B__Practice_)
+        LAU_68_3___7_2_75__rockets_M257__Parachute_illumination_ = (3, Weapons.LAU_68_3___7_2_75__rockets_M257__Parachute_illumination_)
+        LAU_68_3___7_2_75__rockets_M274__Practice_smoke_ = (3, Weapons.LAU_68_3___7_2_75__rockets_M274__Practice_smoke_)
+        AN_AAQ_28_LITENING = (3, Weapons.AN_AAQ_28_LITENING)
+        AERO_1D_300_Gallons_Fuel_Tank_ = (3, Weapons.AERO_1D_300_Gallons_Fuel_Tank_)
+
+    class Pylon4:
+        GAU_12_Gunpod = (4, Weapons.GAU_12_Gunpod)
+
+    class Pylon5:
+        AN_ALQ_164_DECM_Pod = (5, Weapons.AN_ALQ_164_DECM_Pod)
+        AN_AAQ_28_LITENING = (5, Weapons.AN_AAQ_28_LITENING)
+
+    class Pylon6:
+        Mk_81 = (6, Weapons.Mk_81)
+        Mk_82 = (6, Weapons.Mk_82)
+        Mk_82_SnakeEye = (6, Weapons.Mk_82_SnakeEye)
+        Mk_82AIR = (6, Weapons.Mk_82AIR)
+        Mk_83 = (6, Weapons.Mk_83)
+        Mk_20 = (6, Weapons.Mk_20)
+        GBU_12 = (6, Weapons.GBU_12)
+        GBU_16 = (6, Weapons.GBU_16)
+        MER_3_3_Mk_81 = (6, Weapons.MER_3_3_Mk_81)
+        _2_MK_82_ = (6, Weapons._2_MK_82_)
+        _3_Mk_82 = (6, Weapons._3_Mk_82)
+        _2_MK_83_ = (6, Weapons._2_MK_83_)
+        _2_MK_83__ = (6, Weapons._2_MK_83__)
+        _2_Mk_20_Rockeye__ = (6, Weapons._2_Mk_20_Rockeye__)
+        _3_Mk_20_Rockeye = (6, Weapons._3_Mk_20_Rockeye)
+        _2_GBU_12_ = (6, Weapons._2_GBU_12_)
+        BRU_42_3_GBU_12 = (6, Weapons.BRU_42_3_GBU_12)
+        _2_GBU_16_ = (6, Weapons._2_GBU_16_)
+        _3_GBU_16 = (6, Weapons._3_GBU_16)
+        _3_Mk_82AIR = (6, Weapons._3_Mk_82AIR)
+        _2_MK_82AIR_ = (6, Weapons._2_MK_82AIR_)
+        _3_MK_82_SNAKEYE = (6, Weapons._3_MK_82_SNAKEYE)
+        _2_MK_82_SNAKEYE_ = (6, Weapons._2_MK_82_SNAKEYE_)
+        BDU_33 = (6, Weapons.BDU_33)
+        BRU_42_3_BDU_33 = (6, Weapons.BRU_42_3_BDU_33)
+        LAU_117_AGM_65D = (6, Weapons.LAU_117_AGM_65D)
+        LAU_117_AGM_65G = (6, Weapons.LAU_117_AGM_65G)
+        LAU_117_AGM_65K = (6, Weapons.LAU_117_AGM_65K)
+        LAU_117_AGM_65H = (6, Weapons.LAU_117_AGM_65H)
+        LAU_117_TGM_65D = (6, Weapons.LAU_117_TGM_65D)
+        LAU_117_TGM_65G = (6, Weapons.LAU_117_TGM_65G)
+        LAU_117_TGM_65H = (6, Weapons.LAU_117_TGM_65H)
+        LAU_117_CATM_65K = (6, Weapons.LAU_117_CATM_65K)
+        LAU_10___4_ZUNI_MK_71 = (6, Weapons.LAU_10___4_ZUNI_MK_71)
+        LAU_3___19_FFAR_M156_WP = (6, Weapons.LAU_3___19_FFAR_M156_WP)
+        LAU_3___19_FFAR_Mk1_HE = (6, Weapons.LAU_3___19_FFAR_Mk1_HE)
+        LAU_3___19_FFAR_Mk5_HEAT = (6, Weapons.LAU_3___19_FFAR_Mk5_HEAT)
+        LAU_68___7_FFAR_M156_WP = (6, Weapons.LAU_68___7_FFAR_M156_WP)
+        LAU_68___7_FFAR_Mk1_HE = (6, Weapons.LAU_68___7_FFAR_Mk1_HE)
+        LAU_68___7_FFAR_Mk5_HEAT = (6, Weapons.LAU_68___7_FFAR_Mk5_HEAT)
+        LAU_68___7_2_75__rockets_WTU1B__Practice_ = (6, Weapons.LAU_68___7_2_75__rockets_WTU1B__Practice_)
+        LAU_68___7_2_75__rockets_M257__Parachute_illumination_ = (6, Weapons.LAU_68___7_2_75__rockets_M257__Parachute_illumination_)
+        LAU_68___7_2_75__rockets_M274__Practice_smoke_ = (6, Weapons.LAU_68___7_2_75__rockets_M274__Practice_smoke_)
+        LAU_68_3___7_2_75__rockets_MK5__HE_ = (6, Weapons.LAU_68_3___7_2_75__rockets_MK5__HE_)
+        LAU_68_3___7_2_75__rockets_M151__HE_ = (6, Weapons.LAU_68_3___7_2_75__rockets_M151__HE_)
+        LAU_68_3___7_2_75__rockets_M156__WP_ = (6, Weapons.LAU_68_3___7_2_75__rockets_M156__WP_)
+        LAU_68_3___7_2_75__rockets_WTU1B__Practice_ = (6, Weapons.LAU_68_3___7_2_75__rockets_WTU1B__Practice_)
+        LAU_68_3___7_2_75__rockets_M257__Parachute_illumination_ = (6, Weapons.LAU_68_3___7_2_75__rockets_M257__Parachute_illumination_)
+        LAU_68_3___7_2_75__rockets_M274__Practice_smoke_ = (6, Weapons.LAU_68_3___7_2_75__rockets_M274__Practice_smoke_)
+        AN_AAQ_28_LITENING = (6, Weapons.AN_AAQ_28_LITENING)
+        AERO_1D_300_Gallons_Fuel_Tank_ = (6, Weapons.AERO_1D_300_Gallons_Fuel_Tank_)
+
+    class Pylon7:
+        LAU_7_AIM_9M = (7, Weapons.LAU_7_AIM_9M)
+        AGM_122_Sidearm_ = (7, Weapons.AGM_122_Sidearm_)
+        Mk_81 = (7, Weapons.Mk_81)
+        Mk_82 = (7, Weapons.Mk_82)
+        Mk_82_SnakeEye = (7, Weapons.Mk_82_SnakeEye)
+        Mk_82AIR = (7, Weapons.Mk_82AIR)
+        Mk_83 = (7, Weapons.Mk_83)
+        Mk_20 = (7, Weapons.Mk_20)
+        GBU_12 = (7, Weapons.GBU_12)
+        GBU_16 = (7, Weapons.GBU_16)
+        MER_3_3_Mk_81 = (7, Weapons.MER_3_3_Mk_81)
+        _2_MK_82_ = (7, Weapons._2_MK_82_)
+        _3_Mk_82 = (7, Weapons._3_Mk_82)
+        _2_Mk_20_Rockeye__ = (7, Weapons._2_Mk_20_Rockeye__)
+        _2_GBU_12_ = (7, Weapons._2_GBU_12_)
+        BRU_42_3_GBU_12 = (7, Weapons.BRU_42_3_GBU_12)
+        _3_Mk_82AIR = (7, Weapons._3_Mk_82AIR)
+        _2_MK_82AIR_ = (7, Weapons._2_MK_82AIR_)
+        _3_MK_82_SNAKEYE = (7, Weapons._3_MK_82_SNAKEYE)
+        _2_MK_82_SNAKEYE_ = (7, Weapons._2_MK_82_SNAKEYE_)
+        BDU_33 = (7, Weapons.BDU_33)
+        BRU_42_3_BDU_33 = (7, Weapons.BRU_42_3_BDU_33)
+        LAU_117_AGM_65D = (7, Weapons.LAU_117_AGM_65D)
+        LAU_117_AGM_65G = (7, Weapons.LAU_117_AGM_65G)
+        LAU_117_AGM_65K = (7, Weapons.LAU_117_AGM_65K)
+        LAU_117_AGM_65H = (7, Weapons.LAU_117_AGM_65H)
+        LAU_117_TGM_65D = (7, Weapons.LAU_117_TGM_65D)
+        LAU_117_TGM_65G = (7, Weapons.LAU_117_TGM_65G)
+        LAU_117_TGM_65H = (7, Weapons.LAU_117_TGM_65H)
+        LAU_117_CATM_65K = (7, Weapons.LAU_117_CATM_65K)
+        LAU_10___4_ZUNI_MK_71 = (7, Weapons.LAU_10___4_ZUNI_MK_71)
+        LAU_3___19_FFAR_M156_WP = (7, Weapons.LAU_3___19_FFAR_M156_WP)
+        LAU_3___19_FFAR_Mk1_HE = (7, Weapons.LAU_3___19_FFAR_Mk1_HE)
+        LAU_3___19_FFAR_Mk5_HEAT = (7, Weapons.LAU_3___19_FFAR_Mk5_HEAT)
+        LAU_68___7_FFAR_M156_WP = (7, Weapons.LAU_68___7_FFAR_M156_WP)
+        LAU_68___7_FFAR_Mk1_HE = (7, Weapons.LAU_68___7_FFAR_Mk1_HE)
+        LAU_68___7_FFAR_Mk5_HEAT = (7, Weapons.LAU_68___7_FFAR_Mk5_HEAT)
+        LAU_68___7_2_75__rockets_WTU1B__Practice_ = (7, Weapons.LAU_68___7_2_75__rockets_WTU1B__Practice_)
+        LAU_68___7_2_75__rockets_M257__Parachute_illumination_ = (7, Weapons.LAU_68___7_2_75__rockets_M257__Parachute_illumination_)
+        LAU_68___7_2_75__rockets_M274__Practice_smoke_ = (7, Weapons.LAU_68___7_2_75__rockets_M274__Practice_smoke_)
+        SUU_25___8_LUU_2 = (7, Weapons.SUU_25___8_LUU_2)
+        _3_SUU_25___8_LUU_2 = (7, Weapons._3_SUU_25___8_LUU_2)
+        Smokewinder___red = (7, Weapons.Smokewinder___red)
+        Smokewinder___green = (7, Weapons.Smokewinder___green)
+        Smokewinder___blue = (7, Weapons.Smokewinder___blue)
+        Smokewinder___white = (7, Weapons.Smokewinder___white)
+        Smokewinder___yellow = (7, Weapons.Smokewinder___yellow)
+        Smokewinder___orange = (7, Weapons.Smokewinder___orange)
+        AERO_1D_300_Gallons_Fuel_Tank_ = (7, Weapons.AERO_1D_300_Gallons_Fuel_Tank_)
+
+    class Pylon8:
+        AIM_9M = (8, Weapons.AIM_9M)
+        AGM_122_Sidearm = (8, Weapons.AGM_122_Sidearm)
+        Mk_81 = (8, Weapons.Mk_81)
+        Mk_82 = (8, Weapons.Mk_82)
+        Mk_82_SnakeEye = (8, Weapons.Mk_82_SnakeEye)
+        Mk_82AIR = (8, Weapons.Mk_82AIR)
+        Mk_20 = (8, Weapons.Mk_20)
+        GBU_12 = (8, Weapons.GBU_12)
+        AN_ASQ_T50_TCTS_Pod = (8, Weapons.AN_ASQ_T50_TCTS_Pod)
+        CATM_9M = (8, Weapons.CATM_9M)
+        BDU_33 = (8, Weapons.BDU_33)
+        Smokewinder___red = (8, Weapons.Smokewinder___red)
+        Smokewinder___green = (8, Weapons.Smokewinder___green)
+        Smokewinder___blue = (8, Weapons.Smokewinder___blue)
+        Smokewinder___white = (8, Weapons.Smokewinder___white)
+        Smokewinder___yellow = (8, Weapons.Smokewinder___yellow)
+        Smokewinder___orange = (8, Weapons.Smokewinder___orange)
+
+    pylons = {1, 2, 3, 4, 5, 6, 7, 8}
+
+    tasks = [task.GroundAttack, task.PinpointStrike, task.CAS, task.AFAC, task.RunwayAttack, task.AntishipStrike, task.SEAD, task.Escort]
+    task_default = task.CAS
+
+
+class KC_130(PlaneType):
+    id = "KC130"
+    group_size_max = 1
+    height = 11.66
+    width = 40.4
+    length = 29.79
+    fuel_max = 20830
+    max_speed = 621
+    chaff = 120
+    flare = 60
+    charge_total = 240
+    chaff_charge_size = 1
+    flare_charge_size = 2
+    category = "Air"
+
+    class Liveries:
+
+        class USA(Enum):
+            default = "default"
+
+    pylons = {}
+
+    tasks = [task.Refueling]
+    task_default = task.Refueling
+
+
 class C_101EB(PlaneType):
     id = "C-101EB"
     flyable = True
@@ -9080,6 +10383,8 @@ class C_101CC(PlaneType):
         "SoloFlight": False,
         "NetCrewControlPriority": 1,
         "MountIFRHood": False,
+        "C_101Camera": False,
+        "C_101CCSunglass": False,
     }
 
     class Properties:
@@ -9098,6 +10403,12 @@ class C_101CC(PlaneType):
 
         class MountIFRHood:
             id = "MountIFRHood"
+
+        class C_101Camera:
+            id = "C-101Camera"
+
+        class C_101CCSunglass:
+            id = "C-101CCSunglass"
 
     class Liveries:
 
@@ -9330,6 +10641,223 @@ class C_101CC(PlaneType):
     task_default = task.CAS
 
 
+class J_11A(PlaneType):
+    id = "J-11A"
+    height = 5.932
+    width = 14.7
+    length = 21.935
+    fuel_max = 9400
+    max_speed = 2499.984
+    chaff = 96
+    flare = 96
+    charge_total = 192
+    chaff_charge_size = 1
+    flare_charge_size = 1
+    category = "Interceptor"
+    radio_frequency = 127.5
+
+    class Liveries:
+
+        class China(Enum):
+            PLAAF_14th_AD = "PLAAF 14th AD"
+            PLAAF_14th_AD__Reworked = "PLAAF 14th AD (Reworked)"
+            PLAAF_17th_AB = "PLAAF 17th AB"
+            PLAAF_19th_AD = "PLAAF 19th AD"
+            PLAAF_19th_AD__Reworked = "PLAAF 19th AD (Reworked)"
+            PLAAF_2nd_AD = "PLAAF 2nd AD"
+            PLAAF_2nd_AD__Parade = "PLAAF 2nd AD (Parade)"
+            PLAAF_2nd_AD__Reworked = "PLAAF 2nd AD (Reworked)"
+            PLAAF_33th_AD = "PLAAF 33th AD"
+            PLAAF_33th_AD__Reworked = "PLAAF 33th AD (Reworked)"
+            PLAAF_6th_AD = "PLAAF 6th AD"
+            PLAAF_7th_AD = "PLAAF 7th AD"
+            PLAAF_7th_AD__Reworked = "PLAAF 7th AD (Reworked)"
+            Sky_Hunter = "Sky Hunter"
+
+    class Pylon1:
+        R_73 = (1, Weapons.R_73)
+        RKL609_ECM_Pod__Left_ = (1, Weapons.RKL609_ECM_Pod__Left_)
+        Smoke_Generator___red = (1, Weapons.Smoke_Generator___red)
+        Smoke_Generator___green = (1, Weapons.Smoke_Generator___green)
+        Smoke_Generator___blue = (1, Weapons.Smoke_Generator___blue)
+        Smoke_Generator___white = (1, Weapons.Smoke_Generator___white)
+        Smoke_Generator___yellow = (1, Weapons.Smoke_Generator___yellow)
+        Smoke_Generator___orange = (1, Weapons.Smoke_Generator___orange)
+
+    class Pylon2:
+        R_73 = (2, Weapons.R_73)
+        Smoke_Generator___red = (2, Weapons.Smoke_Generator___red)
+        Smoke_Generator___green = (2, Weapons.Smoke_Generator___green)
+        Smoke_Generator___blue = (2, Weapons.Smoke_Generator___blue)
+        Smoke_Generator___white = (2, Weapons.Smoke_Generator___white)
+        Smoke_Generator___yellow = (2, Weapons.Smoke_Generator___yellow)
+        Smoke_Generator___orange = (2, Weapons.Smoke_Generator___orange)
+
+    class Pylon3:
+        R_73 = (3, Weapons.R_73)
+        R_27R = (3, Weapons.R_27R)
+        R_27ER = (3, Weapons.R_27ER)
+        R_27T = (3, Weapons.R_27T)
+        R_27ET = (3, Weapons.R_27ET)
+        R_77 = (3, Weapons.R_77)
+        BetAB_500 = (3, Weapons.BetAB_500)
+        BetAB_500ShP = (3, Weapons.BetAB_500ShP)
+        FAB_500_M62 = (3, Weapons.FAB_500_M62)
+        FAB_250 = (3, Weapons.FAB_250)
+        KMGU_2___96_AO_2_5RT = (3, Weapons.KMGU_2___96_AO_2_5RT)
+        KMGU_2___96_PTAB_2_5KO = (3, Weapons.KMGU_2___96_PTAB_2_5KO)
+        RBK_250_PTAB_2_5M = (3, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (3, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500_255_PTAB_10_5 = (3, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (3, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (3, Weapons.RBK_500U_OAB_2_5RT)
+        MER_6_FAB_100 = (3, Weapons.MER_6_FAB_100)
+        SAB_100 = (3, Weapons.SAB_100)
+        B_8M1___20_S_8KOM = (3, Weapons.B_8M1___20_S_8KOM)
+        B_13L___5_S_13_OF = (3, Weapons.B_13L___5_S_13_OF)
+        S_25_OFM = (3, Weapons.S_25_OFM)
+        B_8M1___20_S_8TsM = (3, Weapons.B_8M1___20_S_8TsM)
+        _2_x_FAB_250 = (3, Weapons._2_x_FAB_250)
+        _2_x_FAB_500 = (3, Weapons._2_x_FAB_500)
+        _2_x_RBK_250_PTAB_2_5M = (3, Weapons._2_x_RBK_250_PTAB_2_5M)
+        _2_x_RBK_500_255_PTAB_10_5 = (3, Weapons._2_x_RBK_500_255_PTAB_10_5)
+        _2_x_B_13L___5_S_13_OF = (3, Weapons._2_x_B_13L___5_S_13_OF)
+        _2_x_B_8M1___20_S_8KOM = (3, Weapons._2_x_B_8M1___20_S_8KOM)
+        _2_x_S_25 = (3, Weapons._2_x_S_25)
+
+    class Pylon4:
+        R_27R = (4, Weapons.R_27R)
+        R_27ER = (4, Weapons.R_27ER)
+        R_77 = (4, Weapons.R_77)
+        FAB_500_M62 = (4, Weapons.FAB_500_M62)
+        FAB_250 = (4, Weapons.FAB_250)
+        BetAB_500 = (4, Weapons.BetAB_500)
+        BetAB_500ShP = (4, Weapons.BetAB_500ShP)
+        KMGU_2___96_AO_2_5RT = (4, Weapons.KMGU_2___96_AO_2_5RT)
+        KMGU_2___96_PTAB_2_5KO = (4, Weapons.KMGU_2___96_PTAB_2_5KO)
+        MER_6_FAB_100 = (4, Weapons.MER_6_FAB_100)
+        RBK_250_275_AO_1SCh = (4, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500_255_PTAB_10_5 = (4, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (4, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (4, Weapons.RBK_500U_OAB_2_5RT)
+        SAB_100 = (4, Weapons.SAB_100)
+
+    class Pylon5:
+        R_27R = (5, Weapons.R_27R)
+        R_27ER = (5, Weapons.R_27ER)
+        R_77 = (5, Weapons.R_77)
+        FAB_500_M62 = (5, Weapons.FAB_500_M62)
+        FAB_250 = (5, Weapons.FAB_250)
+        BetAB_500 = (5, Weapons.BetAB_500)
+        BetAB_500ShP = (5, Weapons.BetAB_500ShP)
+        MER_6_FAB_100 = (5, Weapons.MER_6_FAB_100)
+        RBK_250_275_AO_1SCh = (5, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500_255_PTAB_10_5 = (5, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (5, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (5, Weapons.RBK_500U_OAB_2_5RT)
+        SAB_100 = (5, Weapons.SAB_100)
+        Smoke_Generator___red = (5, Weapons.Smoke_Generator___red)
+        Smoke_Generator___green = (5, Weapons.Smoke_Generator___green)
+        Smoke_Generator___blue = (5, Weapons.Smoke_Generator___blue)
+        Smoke_Generator___white = (5, Weapons.Smoke_Generator___white)
+        Smoke_Generator___yellow = (5, Weapons.Smoke_Generator___yellow)
+        Smoke_Generator___orange = (5, Weapons.Smoke_Generator___orange)
+
+    class Pylon6:
+        R_27R = (6, Weapons.R_27R)
+        R_27ER = (6, Weapons.R_27ER)
+        R_77 = (6, Weapons.R_77)
+        FAB_500_M62 = (6, Weapons.FAB_500_M62)
+        FAB_250 = (6, Weapons.FAB_250)
+        BetAB_500 = (6, Weapons.BetAB_500)
+        BetAB_500ShP = (6, Weapons.BetAB_500ShP)
+        MER_6_FAB_100 = (6, Weapons.MER_6_FAB_100)
+        RBK_250_275_AO_1SCh = (6, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500_255_PTAB_10_5 = (6, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (6, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (6, Weapons.RBK_500U_OAB_2_5RT)
+        SAB_100 = (6, Weapons.SAB_100)
+        Smoke_Generator___red = (6, Weapons.Smoke_Generator___red)
+        Smoke_Generator___green = (6, Weapons.Smoke_Generator___green)
+        Smoke_Generator___blue = (6, Weapons.Smoke_Generator___blue)
+        Smoke_Generator___white = (6, Weapons.Smoke_Generator___white)
+        Smoke_Generator___yellow = (6, Weapons.Smoke_Generator___yellow)
+        Smoke_Generator___orange = (6, Weapons.Smoke_Generator___orange)
+
+    class Pylon7:
+        R_27R = (7, Weapons.R_27R)
+        R_27ER = (7, Weapons.R_27ER)
+        R_77 = (7, Weapons.R_77)
+        FAB_500_M62 = (7, Weapons.FAB_500_M62)
+        FAB_250 = (7, Weapons.FAB_250)
+        BetAB_500 = (7, Weapons.BetAB_500)
+        BetAB_500ShP = (7, Weapons.BetAB_500ShP)
+        KMGU_2___96_AO_2_5RT = (7, Weapons.KMGU_2___96_AO_2_5RT)
+        KMGU_2___96_PTAB_2_5KO = (7, Weapons.KMGU_2___96_PTAB_2_5KO)
+        MER_6_FAB_100 = (7, Weapons.MER_6_FAB_100)
+        RBK_250_275_AO_1SCh = (7, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500_255_PTAB_10_5 = (7, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (7, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (7, Weapons.RBK_500U_OAB_2_5RT)
+        SAB_100 = (7, Weapons.SAB_100)
+
+    class Pylon8:
+        R_73 = (8, Weapons.R_73)
+        R_27R = (8, Weapons.R_27R)
+        R_27ER = (8, Weapons.R_27ER)
+        R_27T = (8, Weapons.R_27T)
+        R_27ET = (8, Weapons.R_27ET)
+        R_77 = (8, Weapons.R_77)
+        BetAB_500 = (8, Weapons.BetAB_500)
+        BetAB_500ShP = (8, Weapons.BetAB_500ShP)
+        FAB_500_M62 = (8, Weapons.FAB_500_M62)
+        FAB_250 = (8, Weapons.FAB_250)
+        KMGU_2___96_AO_2_5RT = (8, Weapons.KMGU_2___96_AO_2_5RT)
+        KMGU_2___96_PTAB_2_5KO = (8, Weapons.KMGU_2___96_PTAB_2_5KO)
+        RBK_250_PTAB_2_5M = (8, Weapons.RBK_250_PTAB_2_5M)
+        RBK_250_275_AO_1SCh = (8, Weapons.RBK_250_275_AO_1SCh)
+        RBK_500_255_PTAB_10_5 = (8, Weapons.RBK_500_255_PTAB_10_5)
+        RBK_500_PTAB_1M = (8, Weapons.RBK_500_PTAB_1M)
+        RBK_500U_OAB_2_5RT = (8, Weapons.RBK_500U_OAB_2_5RT)
+        MER_6_FAB_100 = (8, Weapons.MER_6_FAB_100)
+        SAB_100 = (8, Weapons.SAB_100)
+        B_8M1___20_S_8KOM = (8, Weapons.B_8M1___20_S_8KOM)
+        B_13L___5_S_13_OF = (8, Weapons.B_13L___5_S_13_OF)
+        S_25_OFM = (8, Weapons.S_25_OFM)
+        B_8M1___20_S_8TsM = (8, Weapons.B_8M1___20_S_8TsM)
+        _2_x_FAB_250_ = (8, Weapons._2_x_FAB_250_)
+        _2_x_FAB_500_ = (8, Weapons._2_x_FAB_500_)
+        _2_x_RBK_250_PTAB_2_5M_ = (8, Weapons._2_x_RBK_250_PTAB_2_5M_)
+        _2_x_RBK_500_255_PTAB_10_5_ = (8, Weapons._2_x_RBK_500_255_PTAB_10_5_)
+        _2_x_B_13L___5_S_13_OF_ = (8, Weapons._2_x_B_13L___5_S_13_OF_)
+        _2_x_B_8M1___20_S_8KOM_ = (8, Weapons._2_x_B_8M1___20_S_8KOM_)
+        _2_x_S_25_ = (8, Weapons._2_x_S_25_)
+
+    class Pylon9:
+        R_73 = (9, Weapons.R_73)
+        Smoke_Generator___red = (9, Weapons.Smoke_Generator___red)
+        Smoke_Generator___green = (9, Weapons.Smoke_Generator___green)
+        Smoke_Generator___blue = (9, Weapons.Smoke_Generator___blue)
+        Smoke_Generator___white = (9, Weapons.Smoke_Generator___white)
+        Smoke_Generator___yellow = (9, Weapons.Smoke_Generator___yellow)
+        Smoke_Generator___orange = (9, Weapons.Smoke_Generator___orange)
+
+    class Pylon10:
+        R_73 = (10, Weapons.R_73)
+        RKL609_ECM_Pod__Right_ = (10, Weapons.RKL609_ECM_Pod__Right_)
+        Smoke_Generator___red = (10, Weapons.Smoke_Generator___red)
+        Smoke_Generator___green = (10, Weapons.Smoke_Generator___green)
+        Smoke_Generator___blue = (10, Weapons.Smoke_Generator___blue)
+        Smoke_Generator___white = (10, Weapons.Smoke_Generator___white)
+        Smoke_Generator___yellow = (10, Weapons.Smoke_Generator___yellow)
+        Smoke_Generator___orange = (10, Weapons.Smoke_Generator___orange)
+
+    pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+    tasks = [task.CAP, task.Intercept, task.Escort, task.FighterSweep, task.AFAC, task.GroundAttack, task.RunwayAttack, task.AntishipStrike]
+    task_default = task.CAP
+
+
 class F_5E(PlaneType):
     id = "F-5E"
     height = 4.06
@@ -9462,16 +10990,16 @@ class F_5E(PlaneType):
             USA_standard = "USA standard"
 
         class USAFAggressors(Enum):
-            USA_standard = "USA standard"
             aggressor__desert__scheme = "aggressor `desert` scheme"
             aggressor__marine__scheme = "aggressor `marine` scheme"
             aggressor__snake__scheme = "aggressor `snake` scheme"
+            USA_standard = "USA standard"
 
         class USA(Enum):
-            USA_standard = "USA standard"
             aggressor__desert__scheme = "aggressor `desert` scheme"
             aggressor__marine__scheme = "aggressor `marine` scheme"
             aggressor__snake__scheme = "aggressor `snake` scheme"
+            USA_standard = "USA standard"
 
         class Denmark(Enum):
             USA_standard = "USA standard"
@@ -9968,6 +11496,12 @@ class F_5E_3(PlaneType):
             US_Aggressor_VFC_13_28_Fict_Splinter = "US Aggressor VFC-13 28 Fict Splinter"
             US_Aggressor_VFC_13_40 = "US Aggressor VFC-13 40"
             US_Aggressor_VMFT_401_02_2011 = "US Aggressor VMFT-401 02 2011"
+            aggressor_VFC_13__11 = "aggressor VFC-13 '11'"
+            aggressor_VFC_13__21 = "aggressor VFC-13 '21'"
+            aggressor__desert__scheme = "aggressor `desert` scheme"
+            aggressor__marine__scheme = "aggressor `marine` scheme"
+            aggressor__snake__scheme = "aggressor `snake` scheme"
+            black__Mig_28 = "black 'Mig-28'"
             TW_NGRC_5315 = "TW NGRC 5315"
             ROCAF_7th_Fighter_Group = "ROCAF 7th Fighter Group"
             TW_ROCAF_7thFG_M = "TW ROCAF 7thFG(M)"
@@ -9978,12 +11512,6 @@ class F_5E_3(PlaneType):
             USA_standard = "USA standard"
             USAF__Southeast_Asia = "USAF 'Southeast Asia'"
             US_USAF_Grape_31 = "US USAF Grape 31"
-            aggressor_VFC_13__11 = "aggressor VFC-13 '11'"
-            aggressor_VFC_13__21 = "aggressor VFC-13 '21'"
-            aggressor__desert__scheme = "aggressor `desert` scheme"
-            aggressor__marine__scheme = "aggressor `marine` scheme"
-            aggressor__snake__scheme = "aggressor `snake` scheme"
-            black__Mig_28 = "black 'Mig-28'"
 
         class USA(Enum):
             US_Aggressor_VFC_13_01 = "US Aggressor VFC-13 01"
@@ -9991,6 +11519,12 @@ class F_5E_3(PlaneType):
             US_Aggressor_VFC_13_28_Fict_Splinter = "US Aggressor VFC-13 28 Fict Splinter"
             US_Aggressor_VFC_13_40 = "US Aggressor VFC-13 40"
             US_Aggressor_VMFT_401_02_2011 = "US Aggressor VMFT-401 02 2011"
+            aggressor_VFC_13__11 = "aggressor VFC-13 '11'"
+            aggressor_VFC_13__21 = "aggressor VFC-13 '21'"
+            aggressor__desert__scheme = "aggressor `desert` scheme"
+            aggressor__marine__scheme = "aggressor `marine` scheme"
+            aggressor__snake__scheme = "aggressor `snake` scheme"
+            black__Mig_28 = "black 'Mig-28'"
             TW_NGRC_5315 = "TW NGRC 5315"
             TW_ROCAF_7thFG_M = "TW ROCAF 7thFG(M)"
             US_Aggressor_VFC_111_01 = "US Aggressor VFC-111 01"
@@ -10000,12 +11534,6 @@ class F_5E_3(PlaneType):
             USA_standard = "USA standard"
             USAF__Southeast_Asia = "USAF 'Southeast Asia'"
             US_USAF_Grape_31 = "US USAF Grape 31"
-            aggressor_VFC_13__11 = "aggressor VFC-13 '11'"
-            aggressor_VFC_13__21 = "aggressor VFC-13 '21'"
-            aggressor__desert__scheme = "aggressor `desert` scheme"
-            aggressor__marine__scheme = "aggressor `marine` scheme"
-            aggressor__snake__scheme = "aggressor `snake` scheme"
-            black__Mig_28 = "black 'Mig-28'"
 
         class Denmark(Enum):
             USA_standard = "USA standard"
@@ -10256,9 +11784,9 @@ class F_86F(PlaneType):
             US_Air_Force = "US Air Force"
             US_Air_Force__Green = "US Air Force (Green)"
             US_Air_Force__Squadron_39 = "US Air Force (Squadron 39)"
+            US_Air_Force__ex_USAF_F_86A_Sabre = "US Air Force (ex-USAF F-86A Sabre)"
             US_Air_Force__code_FU_178 = "US Air Force (code FU-178)"
             US_Air_Force__Skyblazers = "US Air Force (Skyblazers)"
-            US_Air_Force__ex_USAF_F_86A_Sabre = "US Air Force (ex-USAF F-86A Sabre)"
 
         class Canada(Enum):
             Canada_Air_Force = "Canada Air Force"
@@ -10445,8 +11973,8 @@ class Hawk(PlaneType):
             XX175___FRADU_Royal_Navy = "XX175 - FRADU Royal Navy"
             XX316___FRADU_Royal_Navy = "XX316 - FRADU Royal Navy"
             XX100___TFC = "XX100 - TFC"
-            USAF_Aggressor_269 = "USAF Aggressor 269"
             _1018___United_Arab_Emirates = "1018 - United Arab Emirates"
+            USAF_Aggressor_269 = "USAF Aggressor 269"
             XX228___VEAO = "XX228 - VEAO"
             XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
             XX178___1994_RAF_Hawk_Display = "XX178 - 1994 RAF Hawk Display"
@@ -10565,25 +12093,25 @@ class Hawk(PlaneType):
             XX337___92_Sqn_Blue_Tail = "XX337 - 92 Sqn Blue Tail"
 
     class Pylon1:
-        LAU_61___19_2_75__rockets_MK151_HE = (1, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
-        CBU_87 = (1, Weapons.CBU_87)
-        BRU_42_3_BDU_33 = (1, Weapons.BRU_42_3_BDU_33)
-        _3_Mk_82 = (1, Weapons._3_Mk_82)
+        LAU_7_AIM_9M = (1, Weapons.LAU_7_AIM_9M)
 
     class Pylon2:
-        LAU_7_AIM_9M = (2, Weapons.LAU_7_AIM_9M)
+        Matra_Type_155_Rocket_Pod = (2, Weapons.Matra_Type_155_Rocket_Pod)
+        CBU_87 = (2, Weapons.CBU_87)
+        BRU_42_3_BDU_33 = (2, Weapons.BRU_42_3_BDU_33)
+        Mk_82 = (2, Weapons.Mk_82)
 
     class Pylon3:
         ADEN_GUNPOD = (3, Weapons.ADEN_GUNPOD)
 
     class Pylon4:
-        LAU_7_AIM_9M = (4, Weapons.LAU_7_AIM_9M)
+        Matra_Type_155_Rocket_Pod = (4, Weapons.Matra_Type_155_Rocket_Pod)
+        CBU_87 = (4, Weapons.CBU_87)
+        BRU_42_3_BDU_33 = (4, Weapons.BRU_42_3_BDU_33)
+        Mk_82 = (4, Weapons.Mk_82)
 
     class Pylon5:
-        LAU_61___19_2_75__rockets_MK151_HE = (5, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
-        CBU_87 = (5, Weapons.CBU_87)
-        BRU_42_3_BDU_33 = (5, Weapons.BRU_42_3_BDU_33)
-        _3_Mk_82 = (5, Weapons._3_Mk_82)
+        LAU_7_AIM_9M = (5, Weapons.LAU_7_AIM_9M)
 
     class Pylon6:
         Smoke_Generator___red = (6, Weapons.Smoke_Generator___red)
@@ -11401,8 +12929,8 @@ class MiG_15bis(PlaneType):
             default_livery = "default_livery"
 
         class Greece(Enum):
-            HAF_Fictional = "HAF Fictional"
             default_livery = "default_livery"
+            HAF_Fictional = "HAF Fictional"
 
         class UK(Enum):
             default_livery = "default_livery"
@@ -12926,8 +14454,11 @@ plane_map = {
     "Bf-109K-4": Bf_109_K_4,
     "SpitfireLFMkIX": Spitfire_LF_Mk__IX,
     "AJS37": AJS37,
+    "AV8BNA": AV_8B_N_A,
+    "KC130": KC_130,
     "C-101EB": C_101EB,
     "C-101CC": C_101CC,
+    "J-11A": J_11A,
     "F-5E": F_5E,
     "F-5E-3": F_5E_3,
     "F-86F Sabre": F_86F,

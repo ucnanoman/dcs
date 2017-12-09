@@ -93,9 +93,9 @@ class Ka_50(HelicopterType):
             ukraine_camo_1_dirt = "ukraine camo 1 dirt"
 
         class Belgium(Enum):
-            belgium_sar = "belgium sar"
             belgium_camo = "belgium camo"
             belgium_olive = "belgium olive"
+            belgium_sar = "belgium sar"
 
         class Greece(Enum):
             Greek_Army_Aviation = "Greek Army Aviation"
@@ -115,13 +115,13 @@ class Ka_50(HelicopterType):
 
         class Russia(Enum):
             Russia_Standard_Army = "Russia Standard Army"
-            Russia_DOSAAF = "Russia DOSAAF"
             Russia_Demo__024 = "Russia Demo #024"
             Russia_Demo__22__Black_Shark = "Russia Demo #22 `Black Shark`"
             Russia_Demo__Werewolf = "Russia Demo `Werewolf`"
-            Russia_Fictional_Swedish = "Russia Fictional Swedish"
+            Russia_DOSAAF = "Russia DOSAAF"
             Russia_fictional_desert_scheme = "Russia fictional desert scheme"
             Russia_Fictional_Olive_Grey = "Russia Fictional Olive Grey"
+            Russia_Fictional_Swedish = "Russia Fictional Swedish"
             Russia_Fictional_Snow_Splatter = "Russia Fictional Snow Splatter"
             Russia_Fictional_Tropic_Green = "Russia Fictional Tropic Green"
             Russia_New_Year = "Russia New Year"
@@ -152,10 +152,10 @@ class Ka_50(HelicopterType):
             Netherlands_RNAF_wooded = "Netherlands RNAF wooded"
 
         class Turkey(Enum):
+            Turkey_fictional_desert_scheme = "Turkey fictional desert scheme"
             Turkey_Fictional_Light_Gray = "Turkey Fictional Light Gray"
             Turkey_Fictional_1 = "Turkey Fictional 1"
             Turkey_Fictional = "Turkey Fictional"
-            Turkey_fictional_desert_scheme = "Turkey fictional desert scheme"
 
     class Pylon1:
         B_8V20A_CM = (1, Weapons.B_8V20A_CM)
@@ -594,6 +594,8 @@ class Mi_8MTV2(HelicopterType):
         "AdditionalArmor": True,
         "CargoHalfdoor": True,
         "GunnersAISkill": 90,
+        "NetCrewControlPriority": 1,
+        "NS430allow": True,
     }
 
     class Properties:
@@ -615,6 +617,18 @@ class Mi_8MTV2(HelicopterType):
 
         class GunnersAISkill:
             id = "GunnersAISkill"
+
+        class NetCrewControlPriority:
+            id = "NetCrewControlPriority"
+
+            class Values:
+                Pilot = 0
+                Instructor = 1
+                Ask_Always = -1
+                Equally_Responsible = -2
+
+        class NS430allow:
+            id = "NS430allow"
 
     class Liveries:
 
@@ -1545,6 +1559,7 @@ class UH_1H(HelicopterType):
         "ExhaustScreen": True,
         "GunnersAISkill": 90,
         "EngineResource": 90,
+        "NetCrewControlPriority": 1,
     }
 
     class Properties:
@@ -1557,6 +1572,15 @@ class UH_1H(HelicopterType):
 
         class EngineResource:
             id = "EngineResource"
+
+        class NetCrewControlPriority:
+            id = "NetCrewControlPriority"
+
+            class Values:
+                Pilot = 0
+                Instructor = 1
+                Ask_Always = -1
+                Equally_Responsible = -2
 
     class Liveries:
 
@@ -1576,6 +1600,8 @@ class UH_1H(HelicopterType):
             Israel_Army = "Israel Army"
 
         class Norway(Enum):
+            Norwegian_Coast_Guard__235 = "Norwegian Coast Guard (235)"
+            Norwegian_UN = "Norwegian UN"
             _Civilian__Standard = "[Civilian] Standard"
 
         class Spain(Enum):
@@ -1815,14 +1841,14 @@ class SA342M(HelicopterType):
     panel_radio = {
         1: {
             "channels": {
-                6: 40,
+                6: 41,
                 2: 31,
-                8: 42,
+                8: 50,
                 3: 32,
                 1: 30,
                 4: 33,
-                5: 34,
-                7: 41
+                5: 40,
+                7: 42
             },
         },
     }
@@ -1902,14 +1928,14 @@ class SA342L(HelicopterType):
     panel_radio = {
         1: {
             "channels": {
-                6: 40,
+                6: 41,
                 2: 31,
-                8: 42,
+                8: 50,
                 3: 32,
                 1: 30,
                 4: 33,
-                5: 34,
-                7: 41
+                5: 40,
+                7: 42
             },
         },
     }
@@ -2069,6 +2095,10 @@ class SA342L(HelicopterType):
         class Poland(Enum):
             US_Marines_Fictional = "US Marines Fictional"
 
+    class Pylon1:
+        pass
+#ERRR {GIAT_M621}
+
     class Pylon2:
         LAU_SNEB68G___8xSNEB68_EAP = (2, Weapons.LAU_SNEB68G___8xSNEB68_EAP)
 
@@ -2102,14 +2132,14 @@ class SA342Mistral(HelicopterType):
     panel_radio = {
         1: {
             "channels": {
-                6: 40,
+                6: 41,
                 2: 31,
-                8: 42,
+                8: 50,
                 3: 32,
                 1: 30,
                 4: 33,
-                5: 34,
-                7: 41
+                5: 40,
+                7: 42
             },
         },
     }
