@@ -469,8 +469,8 @@ class Refueling(BasicScenario):
         pos, heading, race_dist = Refueling.random_orbit(orbit_rect)
         refuel_net = self.m.refuel_flight(
             ukraine,
-            "Tanker IL",
-            dcs.planes.IL_78M,
+            "Tanker KC_130",
+            dcs.planes.KC_130,
             airport=None,
             position=pos,
             race_distance=race_dist, heading=heading,
@@ -479,7 +479,7 @@ class Refueling(BasicScenario):
         pos, heading, race_dist = Refueling.random_orbit(orbit_rect)
         refuel_rod = self.m.refuel_flight(
             usa,
-            "Tanker KC",
+            "Tanker KC_135",
             dcs.planes.KC_135,
             airport=None,
             position=pos,
