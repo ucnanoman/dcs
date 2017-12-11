@@ -424,6 +424,57 @@ class BasicScenario:
 
 
 class Refueling(BasicScenario):
+    air_force = {
+        "red": {
+            "CAS": {
+                "Hindis": {
+                    "country": Russia.name,
+                    "size": 2,
+                    "rating": 10,
+                    "type": dcs.helicopters.Mi_24V,
+                    "loadout": "4x9M114, 80xS-8"
+                },
+                "Blackies": {
+                    "country": Russia.name,
+                    "size": 2,
+                    "rating": 10,
+                    "type": Russia.Helicopter.Ka_50,
+                    "loadout": None
+                }
+            },
+            "CAP": {
+                "Mig 21": {
+                    "country": Russia.name,
+                    "size": 2,
+                    "rating": 40,
+                    "type": dcs.planes.MiG_21Bis,
+                    "loadout": None
+                },
+                "Mig 15": {
+                    "country": Russia.name,
+                    "size": 2,
+                    "rating": 20,
+                    "type": dcs.planes.MiG_15bis,
+                    "loadout": None
+                },
+                "Mig 29": {
+                    "country": Russia.name,
+                    "size": 2,
+                    "rating": 70,
+                    "type": dcs.planes.MiG_29A,
+                    "loadout": None
+                },
+                "Su 33": {
+                    "country": Russia.name,
+                    "size": 2,
+                    "rating": 80,
+                    "type": dcs.planes.Su_33,
+                    "loadout": "R-73*2,R-27ET*2,R-27ER*6,ECM"
+                }
+            }
+        }
+    }
+
     def __init__(self, aircraft_types: List[Tuple[str, str]], playercount: int, start: str, unhide):
         super(Refueling, self).__init__()
 
@@ -485,6 +536,19 @@ class Refueling(BasicScenario):
             position=pos,
             race_distance=race_dist, heading=heading,
             altitude=random.randrange(4000, 5500, 100), frequency=frequency)
+
+        i = 0
+        for zone in ["russia_east", "russia_west"]:
+            rcaps = list(self.air_force["red"]["CAP"].keys())
+            rcap = self.air_force["red"]["CAP"][random.choice(rcaps)]
+            cap_country = self.m.country(rcap["country"])
+            p1, p2 = self.air_zones[zone].outbound_rectangle().resize(0.6).random_distant_points(80*1000)
+            pf = self.m.patrol_flight(cap_country, cap_country.name + " CAP " + str(i), rcap["type"], None,
+                                      p1, p2, group_size=rcap["size"])
+            pf.hidden = not unhide
+            if rcap["loadout"]:
+                pf.load_loadout(rcap["loadout"])
+            i += 1
 
         player_groups = self.place_players(start, aircraft_types, blue_military,
                                            placement_rect=orbit_rect,
