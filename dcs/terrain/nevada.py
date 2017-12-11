@@ -1,6 +1,7 @@
 from .terrain import Terrain, Airport, Runway, ParkingSlot, MapView, Graph
 from .. import mapping
 import os
+from typing import List
 
 
 class Creech_AFB(Airport):
@@ -2244,3 +2245,9 @@ class Nevada(Terrain):
 
     def tonopah_test_range_airfield(self) -> Airport:
         return self.airports["Tonopah Test Range Airfield"]
+
+    def default_red_airports(self) -> List[Airport]:
+        return []
+
+    def default_blue_airports(self) -> List[Airport]:
+        return list(self.airport_list())
