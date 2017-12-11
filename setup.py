@@ -38,7 +38,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'dcs_random=dcs.scripts.random_mission:main',
+            'dcs_random=dcs.scripts.caucasus_random_mission:main',
             'dcs_dogfight_wwii=dcs.scripts.dogfight_wwii:main',
             'dcs_oil_convoy=dcs.scripts.destroy_oil_transport:main'
         ]

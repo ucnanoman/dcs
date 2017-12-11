@@ -14,7 +14,7 @@ Contents:
    :maxdepth: 2
 
    quickstart
-   random_mission
+   caucasus_random_mission
    mission
    task
    modules

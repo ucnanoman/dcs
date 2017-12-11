@@ -6,7 +6,7 @@ This script was indented to show features of the framework and is also a little 
 
 It is invoked by the commandline with the following arguments::
 
- usage: random_mission.py [-h] [-a {A-10C,Su-25T,M-2000C,Ka-50,MiG-21Bis}]
+ usage: caucasus_random_mission.py [-h] [-a {A-10C,Su-25T,M-2000C,Ka-50,MiG-21Bis}]
                          [-p PLAYERCOUNT] [-s {inflight,runway,warm,cold}]
                          [-t {main,CAS,CAP,refuel}]
                          [-d {random,day,night,dusk,dawn,noon}]
