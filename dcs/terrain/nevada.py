@@ -2166,7 +2166,7 @@ class Tonopah_Test_Range_Airfield(Airport):
 
 class Nevada(Terrain):
     center = {"lat": 39.81806, "long": -114.73333}
-    bounds = mapping.Rectangle(-497177.656250, -329334.875000, -166934.953125, 209836.890625)
+    bounds = mapping.Rectangle(-166934.953125, -329334.875000, -497177.656250, 209836.890625)
     map_view_default = MapView(mapping.Point(-340928.57142857, -55928.571428568), 1000000)
     city_graph = Graph.from_pickle(os.path.join(os.path.dirname(__file__), 'nevada.p'))
 
