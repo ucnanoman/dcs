@@ -878,7 +878,10 @@ class Mission:
                 parking_slot = parking_slots.pop(0) if parking_slots else airport.free_parking_slot(
                     unit.unit_type)
                 if parking_slot is None:
-                    raise terrain_.NoParkingSlotError("No free parking slot at " + airport.name)
+                    raise terrain_.NoParkingSlotError(
+                        "No free parking slot at {airport} for {craft}".format(
+                            airport=airport.name,
+                            craft=unit.unit_type.id))
                 spos = parking_slot.position
                 unit.set_parking(parking_slot)
             unit.position = copy.copy(spos)
