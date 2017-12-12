@@ -39,9 +39,16 @@ class BasicScenario:
         airport.set_coalition(side)
         return airport
 
-    def add_civil_airtraffic(self, planes=(10, 20), helicopters=(0, 10), hidden=True):
+    def add_civil_airtraffic(
+            self,
+            planes=(10, 20),
+            helicopters=(0, 4),
+            hidden=True,
+            airports_to_use: List[dcs.terrain.Airport]=None):
         p_count = random.randrange(planes[0], planes[1])
         h_count = random.randrange(helicopters[0], helicopters[1])
+        if airports_to_use is None:
+            airports_to_use = self.blue_airports + self.red_airports
 
         c_count = 1
 
@@ -56,8 +63,10 @@ class BasicScenario:
 
             slots = airport.free_parking_slot(ptype)
 
-            x = random.randrange(dcs.terrain.Caucasus.bounds.bottom+100*1000, dcs.terrain.Caucasus.bounds.top-100*1000)
-            y = random.randrange(dcs.terrain.Caucasus.bounds.left+600*1000, dcs.terrain.Caucasus.bounds.right-130*1000)
+            x = random.randrange(int(dcs.terrain.Nevada.bounds.bottom)+100*1000,
+                                 int(dcs.terrain.Nevada.bounds.top)-100*1000)
+            y = random.randrange(int(dcs.terrain.Nevada.bounds.left)+100*1000,
+                                 int(dcs.terrain.Nevada.bounds.right)-130*1000)
 
             pos = dcs.mapping.Point(x, y)
             name = "Civil " + str(c_count)
@@ -72,10 +81,10 @@ class BasicScenario:
                 pg = self.m.flight_group_from_airport(country, name, ptype, airport)
                 pg.uncontrolled = True
             else:
-                bound = dcs.mapping.Rectangle(dcs.terrain.Caucasus.bounds.top-100*1000,
-                                              dcs.terrain.Caucasus.bounds.left+200*1000,
-                                              dcs.terrain.Caucasus.bounds.bottom+100*1000,
-                                              dcs.terrain.Caucasus.bounds.right-130*1000)
+                bound = dcs.mapping.Rectangle(dcs.terrain.Nevada.bounds.top-100*1000,
+                                              dcs.terrain.Nevada.bounds.left+200*1000,
+                                              dcs.terrain.Nevada.bounds.bottom+100*1000,
+                                              dcs.terrain.Nevada.bounds.right-130*1000)
                 point = bound.random_point()
 
                 pg = self.m.flight_group_inflight(
@@ -138,16 +147,17 @@ class BasicScenario:
         #     hf.points[0].tasks.append(dcs.task.SetInvisibleCommand())
         #     c_count += 1
 
+        blue_airports = [x for x in airports_to_use if x.is_blue()]
         # blue
-        blue_countries = [dcs.countries.USA.name, dcs.countries.Ukraine.name, dcs.countries.Georgia.name]
+        blue_countries = [dcs.countries.USA.name]
         for i in range(0, int(p_count / 2)):
-            cf = civil_flight(blue_countries, self.blue_airports)
+            cf = civil_flight(blue_countries, blue_airports)
             cf.hidden = hidden
             cf.points[0].tasks.append(dcs.task.SetInvisibleCommand())
             c_count += 1
 
         for i in range(0, int(h_count / 2)):
-            hf = heli_transport_flight(blue_countries, self.blue_airports)
+            hf = heli_transport_flight(blue_countries, blue_airports)
             hf.hidden = hidden
             hf.points[0].tasks.append(dcs.task.SetInvisibleCommand())
             c_count += 1
@@ -222,9 +232,10 @@ class Refueling(BasicScenario):
     def __init__(self, aircraft_types: List[Tuple[str, str]], playercount: int, start: str, unhide):
         super(Refueling, self).__init__()
 
-        self.add_civil_airtraffic(hidden=not unhide)
-
         nevada = self.m.terrain  # type: dcs.terrain.Nevada
+
+        self.add_civil_airtraffic(hidden=not unhide,
+                                  airports_to_use=[nevada.mccarran_international_airport(), nevada.creech_afb()])
 
         usa = self.m.country(dcs.countries.USA.name)
 
