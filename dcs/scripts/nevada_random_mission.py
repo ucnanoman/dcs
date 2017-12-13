@@ -42,7 +42,7 @@ class BasicScenario:
     def add_civil_airtraffic(
             self,
             planes=(10, 20),
-            helicopters=(0, 4),
+            helicopters=(0, 8),
             hidden=True,
             airports_to_use: List[dcs.terrain.Airport]=None):
         p_count = random.randrange(planes[0], planes[1])
@@ -242,8 +242,9 @@ class Refueling(BasicScenario):
         nellis = nevada.nellis_afb()
         tonopah = nevada.tonopah_airport()
         creech = nevada.creech_afb()
+        groom = nevada.groom_lake_afb()
 
-        blue_military = [nellis, tonopah]
+        blue_military = [nellis, tonopah, groom]
 
         planes = [
             (dcs.countries.USA.name, dcs.countries.USA.Plane.F_16C_bl_52d, 4),
