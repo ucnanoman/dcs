@@ -181,6 +181,7 @@ flyable["Mi-8MT"] = true
 flyable["UH-1H"] = true
 flyable["SpitfireLFMkIX"] = true
 flyable["SA342M"] = true
+flyable["AV8BNA"] = true
 
 
 local function export_aircraft(file, aircrafts, export_type, exportplane)
@@ -248,17 +249,21 @@ from enum import Enum
         end
 
         if plane.Categories and plane.Categories[1] then
+            local clsid = plane.Categories[1]
+            if plane.Categories[1].CLSID then
+                clsid = plane.Categories[1].CLSID
+            end
             local s = '    category = "'
-            if plane.Categories[1].CLSID == "{D2BC159C-5B7D-40cf-92CD-44DF3E99FAA9}" then
+            if clsid == "{D2BC159C-5B7D-40cf-92CD-44DF3E99FAA9}" then
                 s = s..'AWACS'
-            elseif plane.Categories[1].CLSID == "{8A302789-A55D-4897-B647-66493FA6826F}" then
-                s = s..'Tanker'
-            elseif plane.Categories[1].CLSID == "{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}" then
+            elseif clsid == "{8A302789-A55D-4897-B647-66493FA6826F}" then
+                s = s..'Tankers'
+            elseif clsid == "{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}" then
                 s = s..'Interceptor'
             else
                 s = s..'Air'
             end
-            writeln(file, s..'"')  -- category
+            writeln(file, s..'"  #'..clsid)  -- category
         end
 
         -- panel radio
@@ -643,10 +648,11 @@ file = io.open(export_path.."countries.py", "w")
 
 local categories = {
     'AWACS',
-    'Tanker',
+    'Tankers',
     'Air',
     'Helipad',
-    'Ground Units'
+    'Ground Units',
+    'GrassAirfield'
 }
 
 local function getUnit(arr, _type)
@@ -666,6 +672,9 @@ name_mapping["F_86F_Sabre"] = "F_86F"
 name_mapping["Mi_8MT"] = "Mi_8MTV2"
 name_mapping["E_2C"] = "E_2D"
 name_mapping["RQ_1A_Predator"] = "MQ_1A_Predator"
+name_mapping["KC130"] = "KC_130"
+name_mapping["AV8BNA"] = "AV_8B_N_A"
+name_mapping["SpitfireLFMkIX"] = "Spitfire_LF_Mk__IX"
 
 writeln(file, '# This file is generated from pydcs_export.lua')
 writeln(file, '')
@@ -793,7 +802,8 @@ while i <= country.maxIndex do
                     writeln(file, '')
                     writeln(file, '    class Callsign'..safeName..':')
                     for j in pairs(call) do
-                        writeln(file, '        '..call[j].Name..' = "'..call[j].Name..'"')
+                        callsignSafe = safe_name(call[j].Name)
+                        writeln(file, '        '..callsignSafe..' = "'..call[j].Name..'"')
                     end
                 end
             end
@@ -807,7 +817,8 @@ while i <= country.maxIndex do
                     writeln(file, '        "'..safeName..'": [')
                     local s = ''
                     for j in pairs(call) do
-                        s = '            Callsign'..safeName..'.'..call[j].Name
+                        callsignSafe = safe_name(call[j].Name)
+                        s = '            Callsign'..safeName..'.'..callsignSafe
                         if j < #call then
                             s = s..','
                         end
