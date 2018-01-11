@@ -190,7 +190,7 @@ class F_A_18A(PlaneType):
     charge_total = 60
     chaff_charge_size = 1
     flare_charge_size = 2
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
 
     class Liveries:
 
@@ -306,7 +306,7 @@ class F_A_18C(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 2
     eplrs = True
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 305
 
     panel_radio = {
@@ -550,7 +550,7 @@ class MiG_29S(PlaneType):
     charge_total = 60
     chaff_charge_size = 1
     flare_charge_size = 1
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 124
 
     class Liveries:
@@ -733,7 +733,7 @@ class MiG_29A(PlaneType):
     charge_total = 60
     chaff_charge_size = 1
     flare_charge_size = 1
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 124
 
     class Liveries:
@@ -908,7 +908,7 @@ class F_14A(PlaneType):
     charge_total = 60
     chaff_charge_size = 1
     flare_charge_size = 2
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
 
     class Liveries:
 
@@ -1034,7 +1034,7 @@ class F_4E(PlaneType):
     charge_total = 120
     chaff_charge_size = 1
     flare_charge_size = 2
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
 
     class Liveries:
 
@@ -1874,7 +1874,7 @@ class Su_27(PlaneType):
     charge_total = 192
     chaff_charge_size = 1
     flare_charge_size = 1
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 127.5
 
     class Liveries:
@@ -2120,7 +2120,7 @@ class MiG_29G(PlaneType):
     charge_total = 60
     chaff_charge_size = 1
     flare_charge_size = 1
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 124
 
     class Liveries:
@@ -2197,7 +2197,7 @@ class MiG_23MLD(PlaneType):
     charge_total = 120
     chaff_charge_size = 1
     flare_charge_size = 1
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
 
     class Liveries:
 
@@ -3120,7 +3120,7 @@ class Su_33(PlaneType):
     charge_total = 96
     chaff_charge_size = 1
     flare_charge_size = 1
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 124
 
     class Liveries:
@@ -3381,7 +3381,7 @@ class MiG_25PD(PlaneType):
     charge_total = 128
     chaff_charge_size = 1
     flare_charge_size = 1
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
 
     class Liveries:
 
@@ -3499,7 +3499,7 @@ class Su_30(PlaneType):
     charge_total = 192
     chaff_charge_size = 1
     flare_charge_size = 1
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
 
     class Liveries:
 
@@ -4156,7 +4156,7 @@ class MiG_31(PlaneType):
     length = 22.7
     fuel_max = 15500
     max_speed = 3000
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
 
     class Liveries:
 
@@ -4586,7 +4586,7 @@ class S_3B(PlaneType):
     charge_total = 60
     chaff_charge_size = 1
     flare_charge_size = 1
-    category = "Tanker"
+    category = "Tankers"  #{8A302789-A55D-4897-B647-66493FA6826F}
 
     class Liveries:
 
@@ -4661,7 +4661,7 @@ class S_3B_Tanker(PlaneType):
     charge_total = 60
     chaff_charge_size = 1
     flare_charge_size = 1
-    category = "Tanker"
+    category = "Tankers"  #{8A302789-A55D-4897-B647-66493FA6826F}
 
     class Liveries:
 
@@ -4686,7 +4686,7 @@ class Mirage_2000_5(PlaneType):
     charge_total = 128
     chaff_charge_size = 1
     flare_charge_size = 1
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
 
     class Liveries:
 
@@ -4757,7 +4757,7 @@ class F_15C(PlaneType):
     charge_total = 240
     chaff_charge_size = 1
     flare_charge_size = 2
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 124
 
     class Liveries:
@@ -4873,7 +4873,7 @@ class F_15E(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 2
     eplrs = True
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
 
     class Liveries:
 
@@ -5923,7 +5923,7 @@ class A_50(PlaneType):
     charge_total = 384
     chaff_charge_size = 1
     flare_charge_size = 1
-    category = "AWACS"
+    category = "AWACS"  #{D2BC159C-5B7D-40cf-92CD-44DF3E99FAA9}
 
     class Liveries:
 
@@ -5951,7 +5951,7 @@ class E_3A(PlaneType):
     charge_total = 240
     chaff_charge_size = 1
     flare_charge_size = 2
-    category = "AWACS"
+    category = "AWACS"  #{D2BC159C-5B7D-40cf-92CD-44DF3E99FAA9}
 
     class Liveries:
 
@@ -5985,7 +5985,7 @@ class IL_78M(PlaneType):
     charge_total = 192
     chaff_charge_size = 1
     flare_charge_size = 1
-    category = "Tanker"
+    category = "Tankers"  #{8A302789-A55D-4897-B647-66493FA6826F}
 
     class Liveries:
 
@@ -6017,7 +6017,7 @@ class E_2D(PlaneType):
     charge_total = 240
     chaff_charge_size = 1
     flare_charge_size = 2
-    category = "AWACS"
+    category = "AWACS"  #{D2BC159C-5B7D-40cf-92CD-44DF3E99FAA9}
 
     class Liveries:
 
@@ -6079,7 +6079,7 @@ class F_16C_bl_50(PlaneType):
     charge_total = 180
     chaff_charge_size = 1
     flare_charge_size = 2
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
 
     class Liveries:
 
@@ -6271,7 +6271,7 @@ class F_16C_bl_52d(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 2
     eplrs = True
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
 
     class Liveries:
 
@@ -6465,7 +6465,7 @@ class F_16A(PlaneType):
     charge_total = 120
     chaff_charge_size = 1
     flare_charge_size = 2
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
 
     class Liveries:
 
@@ -6583,7 +6583,7 @@ class F_16A_MLU(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 2
     eplrs = True
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
 
     class Liveries:
 
@@ -7477,7 +7477,7 @@ class KC_135(PlaneType):
     fuel_max = 90700
     max_speed = 980
     tacan = True
-    category = "Tanker"
+    category = "Tankers"  #{8A302789-A55D-4897-B647-66493FA6826F}
 
     class Liveries:
 
@@ -7974,7 +7974,7 @@ class Fw_190_D_9(PlaneType):
     length = 12.13
     fuel_max = 388
     max_speed = 828
-    category = "Air"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 38.4
 
     panel_radio = {
@@ -8048,7 +8048,7 @@ class Bf_109_K_4(PlaneType):
     length = 12.13
     fuel_max = 296
     max_speed = 828
-    category = "Air"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 40
 
     panel_radio = {
@@ -8437,7 +8437,7 @@ class Spitfire_LF_Mk__IX(PlaneType):
     length = 12.13
     fuel_max = 247
     max_speed = 828
-    category = "Air"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 124
 
     panel_radio = {
@@ -8486,7 +8486,7 @@ class AJS37(PlaneType):
     charge_total = 280
     chaff_charge_size = 4
     flare_charge_size = 1
-    category = "Air"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 127.5
 
     panel_radio = {
@@ -8830,6 +8830,7 @@ class AJS37(PlaneType):
 
 class AV_8B_N_A(PlaneType):
     id = "AV8BNA"
+    flyable = True
     height = 3.55
     width = 9.24
     length = 14.12
@@ -8840,7 +8841,7 @@ class AV_8B_N_A(PlaneType):
     charge_total = 180
     chaff_charge_size = 1
     flare_charge_size = 1
-    category = "Air"
+    category = "Air"  #{C168A850-3C0B-436a-95B5-C4A015552560}
     radio_frequency = 243
 
     panel_radio = {
@@ -9869,7 +9870,7 @@ class AV_8B_N_A(PlaneType):
         _3_Mk_82 = (2, Weapons._3_Mk_82)
         _2_Mk_20_Rockeye_ = (2, Weapons._2_Mk_20_Rockeye_)
         _2_GBU_12 = (2, Weapons._2_GBU_12)
-        BRU_42_3_GBU_12 = (2, Weapons.BRU_42_3_GBU_12)
+        _3_GBU_12 = (2, Weapons._3_GBU_12)
         _2_MK_82 = (2, Weapons._2_MK_82)
         _3_Mk_82AIR = (2, Weapons._3_Mk_82AIR)
         _2_MK_82AIR = (2, Weapons._2_MK_82AIR)
@@ -9918,13 +9919,13 @@ class AV_8B_N_A(PlaneType):
         _2_MK_82 = (3, Weapons._2_MK_82)
         _3_Mk_82 = (3, Weapons._3_Mk_82)
         _2_MK_83 = (3, Weapons._2_MK_83)
-        _2_MK_83__ = (3, Weapons._2_MK_83__)
+        _3_MK_83 = (3, Weapons._3_MK_83)
         _2_Mk_20_Rockeye_ = (3, Weapons._2_Mk_20_Rockeye_)
         _3_Mk_20_Rockeye = (3, Weapons._3_Mk_20_Rockeye)
         _2_GBU_12 = (3, Weapons._2_GBU_12)
-        BRU_42_3_GBU_12 = (3, Weapons.BRU_42_3_GBU_12)
+        _3_GBU_12 = (3, Weapons._3_GBU_12)
         _2_GBU_16 = (3, Weapons._2_GBU_16)
-        _3_GBU_16 = (3, Weapons._3_GBU_16)
+        _3_GBU_16_ = (3, Weapons._3_GBU_16_)
         _3_Mk_82AIR = (3, Weapons._3_Mk_82AIR)
         _2_MK_82AIR = (3, Weapons._2_MK_82AIR)
         _3_MK_82_SNAKEYE = (3, Weapons._3_MK_82_SNAKEYE)
@@ -9978,13 +9979,13 @@ class AV_8B_N_A(PlaneType):
         _2_MK_82_ = (6, Weapons._2_MK_82_)
         _3_Mk_82 = (6, Weapons._3_Mk_82)
         _2_MK_83_ = (6, Weapons._2_MK_83_)
-        _2_MK_83__ = (6, Weapons._2_MK_83__)
+        _3_MK_83 = (6, Weapons._3_MK_83)
         _2_Mk_20_Rockeye__ = (6, Weapons._2_Mk_20_Rockeye__)
         _3_Mk_20_Rockeye = (6, Weapons._3_Mk_20_Rockeye)
         _2_GBU_12_ = (6, Weapons._2_GBU_12_)
-        BRU_42_3_GBU_12 = (6, Weapons.BRU_42_3_GBU_12)
+        _3_GBU_12 = (6, Weapons._3_GBU_12)
         _2_GBU_16_ = (6, Weapons._2_GBU_16_)
-        _3_GBU_16 = (6, Weapons._3_GBU_16)
+        _3_GBU_16_ = (6, Weapons._3_GBU_16_)
         _3_Mk_82AIR = (6, Weapons._3_Mk_82AIR)
         _2_MK_82AIR_ = (6, Weapons._2_MK_82AIR_)
         _3_MK_82_SNAKEYE = (6, Weapons._3_MK_82_SNAKEYE)
@@ -10034,7 +10035,7 @@ class AV_8B_N_A(PlaneType):
         _3_Mk_82 = (7, Weapons._3_Mk_82)
         _2_Mk_20_Rockeye__ = (7, Weapons._2_Mk_20_Rockeye__)
         _2_GBU_12_ = (7, Weapons._2_GBU_12_)
-        BRU_42_3_GBU_12 = (7, Weapons.BRU_42_3_GBU_12)
+        _3_GBU_12 = (7, Weapons._3_GBU_12)
         _3_Mk_82AIR = (7, Weapons._3_Mk_82AIR)
         _2_MK_82AIR_ = (7, Weapons._2_MK_82AIR_)
         _3_MK_82_SNAKEYE = (7, Weapons._3_MK_82_SNAKEYE)
@@ -10107,7 +10108,7 @@ class KC_130(PlaneType):
     charge_total = 240
     chaff_charge_size = 1
     flare_charge_size = 2
-    category = "Air"
+    category = "Tankers"  #{8A302789-A55D-4897-B647-66493FA6826F}
 
     class Liveries:
 
@@ -10128,7 +10129,7 @@ class C_101EB(PlaneType):
     length = 12.25
     fuel_max = 1885
     max_speed = 925.2
-    category = "Air"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 225
 
     panel_radio = {
@@ -10348,7 +10349,7 @@ class C_101CC(PlaneType):
     length = 12.25
     fuel_max = 2337
     max_speed = 925.2
-    category = "Air"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 225
 
     panel_radio = {
@@ -10653,7 +10654,7 @@ class J_11A(PlaneType):
     charge_total = 192
     chaff_charge_size = 1
     flare_charge_size = 1
-    category = "Interceptor"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 127.5
 
     class Liveries:
@@ -10870,7 +10871,7 @@ class F_5E(PlaneType):
     charge_total = 0
     chaff_charge_size = 0
     flare_charge_size = 0
-    category = "Air"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 305
 
     class Liveries:
@@ -11212,7 +11213,7 @@ class F_5E_3(PlaneType):
     charge_total = 60
     chaff_charge_size = 1
     flare_charge_size = 2
-    category = "Air"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 305
 
     panel_radio = {
@@ -11745,7 +11746,7 @@ class F_86F(PlaneType):
     length = 11.43
     fuel_max = 1282
     max_speed = 964.8
-    category = "Air"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 225
 
     panel_radio = {
@@ -11856,7 +11857,7 @@ class Hawk(PlaneType):
     length = 11.98
     fuel_max = 1272
     max_speed = 2880
-    category = "Air"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 127.5
 
     panel_radio = {
@@ -12603,7 +12604,7 @@ class M_2000C(PlaneType):
     charge_total = 162
     chaff_charge_size = 1
     flare_charge_size = 1
-    category = "Air"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
 
     panel_radio = {
         1: {
@@ -12878,7 +12879,7 @@ class MiG_15bis(PlaneType):
     length = 10.11
     fuel_max = 1172
     max_speed = 992
-    category = "Air"
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 3.75
 
     class Liveries:
