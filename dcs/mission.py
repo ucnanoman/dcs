@@ -843,7 +843,7 @@ class Mission:
         return unitgroup.HelicopterGroup(self.next_group_id(), self.string(name))
 
     @classmethod
-    def _assign_callsign(cls, _country, group):
+    def _assign_callsign(cls, _country, group: unitgroup.FlyingGroup):
         callsign_name = None
         category = "Air" if group.units[0].unit_type.category == "Interceptor" else group.units[0].unit_type.category
         if category in _country.callsign:
