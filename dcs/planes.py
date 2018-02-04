@@ -2103,7 +2103,7 @@ class Su_27(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
-    tasks = [task.CAP, task.Intercept, task.Escort, task.FighterSweep, task.AFAC, task.GroundAttack, task.RunwayAttack, task.AntishipStrike]
+    tasks = [task.CAP, task.Intercept, task.Escort, task.FighterSweep, task.AFAC, task.GroundAttack, task.RunwayAttack, task.AntishipStrike, task.CAS]
     task_default = task.CAP
 
 
@@ -3150,6 +3150,7 @@ class Su_33(PlaneType):
     class Pylon2:
         R_73 = (2, Weapons.R_73)
         FAB_250 = (2, Weapons.FAB_250)
+        SAB_100 = (2, Weapons.SAB_100)
         Smoke_Generator___red = (2, Weapons.Smoke_Generator___red)
         Smoke_Generator___green = (2, Weapons.Smoke_Generator___green)
         Smoke_Generator___blue = (2, Weapons.Smoke_Generator___blue)
@@ -3185,6 +3186,7 @@ class Su_33(PlaneType):
         B_8M1___20_S_8OFP2 = (3, Weapons.B_8M1___20_S_8OFP2)
         B_8M1___20_S_8TsM = (3, Weapons.B_8M1___20_S_8TsM)
         MER_6_FAB_100 = (3, Weapons.MER_6_FAB_100)
+        SAB_100 = (3, Weapons.SAB_100)
 
     class Pylon4:
         R_27R = (4, Weapons.R_27R)
@@ -3211,6 +3213,7 @@ class Su_33(PlaneType):
         B_8M1___20_S_8OFP2 = (4, Weapons.B_8M1___20_S_8OFP2)
         B_8M1___20_S_8TsM = (4, Weapons.B_8M1___20_S_8TsM)
         MER_6_FAB_100 = (4, Weapons.MER_6_FAB_100)
+        SAB_100 = (4, Weapons.SAB_100)
 
     class Pylon5:
         R_27R = (5, Weapons.R_27R)
@@ -3232,6 +3235,7 @@ class Su_33(PlaneType):
         Smoke_Generator___yellow = (5, Weapons.Smoke_Generator___yellow)
         Smoke_Generator___orange = (5, Weapons.Smoke_Generator___orange)
         MER_6_FAB_100 = (5, Weapons.MER_6_FAB_100)
+        SAB_100 = (5, Weapons.SAB_100)
 
     class Pylon6:
         R_27R = (6, Weapons.R_27R)
@@ -3251,6 +3255,7 @@ class Su_33(PlaneType):
         Smoke_Generator___yellow = (6, Weapons.Smoke_Generator___yellow)
         Smoke_Generator___orange = (6, Weapons.Smoke_Generator___orange)
         MER_6_FAB_100 = (6, Weapons.MER_6_FAB_100)
+        SAB_100 = (6, Weapons.SAB_100)
 
     class Pylon7:
         R_27R = (7, Weapons.R_27R)
@@ -3266,6 +3271,7 @@ class Su_33(PlaneType):
         RBK_500_PTAB_1M = (7, Weapons.RBK_500_PTAB_1M)
         FAB_500_M62 = (7, Weapons.FAB_500_M62)
         MER_6_FAB_100 = (7, Weapons.MER_6_FAB_100)
+        SAB_100 = (7, Weapons.SAB_100)
 
     class Pylon8:
         R_27R = (8, Weapons.R_27R)
@@ -3287,6 +3293,7 @@ class Su_33(PlaneType):
         Smoke_Generator___yellow = (8, Weapons.Smoke_Generator___yellow)
         Smoke_Generator___orange = (8, Weapons.Smoke_Generator___orange)
         MER_6_FAB_100 = (8, Weapons.MER_6_FAB_100)
+        SAB_100 = (8, Weapons.SAB_100)
 
     class Pylon9:
         R_27R = (9, Weapons.R_27R)
@@ -3313,6 +3320,7 @@ class Su_33(PlaneType):
         B_8M1___20_S_8OFP2 = (9, Weapons.B_8M1___20_S_8OFP2)
         B_8M1___20_S_8TsM = (9, Weapons.B_8M1___20_S_8TsM)
         MER_6_FAB_100 = (9, Weapons.MER_6_FAB_100)
+        SAB_100 = (9, Weapons.SAB_100)
 
     class Pylon10:
         R_73 = (10, Weapons.R_73)
@@ -3342,10 +3350,12 @@ class Su_33(PlaneType):
         B_8M1___20_S_8OFP2 = (10, Weapons.B_8M1___20_S_8OFP2)
         B_8M1___20_S_8TsM = (10, Weapons.B_8M1___20_S_8TsM)
         MER_6_FAB_100 = (10, Weapons.MER_6_FAB_100)
+        SAB_100 = (10, Weapons.SAB_100)
 
     class Pylon11:
         R_73 = (11, Weapons.R_73)
         FAB_250 = (11, Weapons.FAB_250)
+        SAB_100 = (11, Weapons.SAB_100)
         Smoke_Generator___red = (11, Weapons.Smoke_Generator___red)
         Smoke_Generator___green = (11, Weapons.Smoke_Generator___green)
         Smoke_Generator___blue = (11, Weapons.Smoke_Generator___blue)
@@ -4654,13 +4664,14 @@ class S_3B_Tanker(PlaneType):
     height = 6.93
     width = 20.93
     length = 16.26
-    fuel_max = 5500
+    fuel_max = 7813
     max_speed = 840
     chaff = 30
     flare = 30
     charge_total = 60
     chaff_charge_size = 1
     flare_charge_size = 1
+    tacan = True
     category = "Tankers"  #{8A302789-A55D-4897-B647-66493FA6826F}
 
     class Liveries:
@@ -6340,6 +6351,8 @@ class F_16C_bl_52d(PlaneType):
         GBU_27 = (3, Weapons.GBU_27)
         AGM_154C = (3, Weapons.AGM_154C)
         AGM_88C_ = (3, Weapons.AGM_88C_)
+        AGM_154A = (3, Weapons.AGM_154A)
+        AGM_154B = (3, Weapons.AGM_154B)
         AIM_9M = (3, Weapons.AIM_9M)
         AIM_9P = (3, Weapons.AIM_9P)
         AIM_9P5 = (3, Weapons.AIM_9P5)
@@ -6366,6 +6379,8 @@ class F_16C_bl_52d(PlaneType):
         CBU_103 = (4, Weapons.CBU_103)
         CBU_105 = (4, Weapons.CBU_105)
         GBU_27 = (4, Weapons.GBU_27)
+        AGM_154A = (4, Weapons.AGM_154A)
+        AGM_154B = (4, Weapons.AGM_154B)
 
     class Pylon5:
         Lantirn_F_16 = (5, Weapons.Lantirn_F_16)
@@ -6398,6 +6413,8 @@ class F_16C_bl_52d(PlaneType):
         CBU_103 = (7, Weapons.CBU_103)
         CBU_105 = (7, Weapons.CBU_105)
         GBU_27 = (7, Weapons.GBU_27)
+        AGM_154A = (7, Weapons.AGM_154A)
+        AGM_154B = (7, Weapons.AGM_154B)
 
     class Pylon8:
         AIM_120B = (8, Weapons.AIM_120B)
@@ -6428,6 +6445,8 @@ class F_16C_bl_52d(PlaneType):
         GBU_27 = (8, Weapons.GBU_27)
         AGM_154C = (8, Weapons.AGM_154C)
         AGM_88C_ = (8, Weapons.AGM_88C_)
+        AGM_154A = (8, Weapons.AGM_154A)
+        AGM_154B = (8, Weapons.AGM_154B)
         AIM_9M = (8, Weapons.AIM_9M)
         AIM_9P = (8, Weapons.AIM_9P)
         AIM_9P5 = (8, Weapons.AIM_9P5)
@@ -7099,6 +7118,7 @@ class A_10C(PlaneType):
         CBU_87 = (3, Weapons.CBU_87)
         GBU_10 = (3, Weapons.GBU_10)
         GBU_31 = (3, Weapons.GBU_31)
+        GBU_31_V_3_B = (3, Weapons.GBU_31_V_3_B)
         GBU_38 = (3, Weapons.GBU_38)
         LAU_68___7_2_75__rockets_MK1__Practice_ = (3, Weapons.LAU_68___7_2_75__rockets_MK1__Practice_)
         LAU_68___7_2_75__rockets_MK5__HE_ = (3, Weapons.LAU_68___7_2_75__rockets_MK5__HE_)
@@ -7167,6 +7187,7 @@ class A_10C(PlaneType):
         Mk_82AIR = (4, Weapons.Mk_82AIR)
         GBU_10 = (4, Weapons.GBU_10)
         GBU_31 = (4, Weapons.GBU_31)
+        GBU_31_V_3_B = (4, Weapons.GBU_31_V_3_B)
         GBU_38 = (4, Weapons.GBU_38)
         CBU_87 = (4, Weapons.CBU_87)
         LAU_68___7_2_75__rockets_MK1__Practice_ = (4, Weapons.LAU_68___7_2_75__rockets_MK1__Practice_)
@@ -7225,6 +7246,7 @@ class A_10C(PlaneType):
         Mk_82AIR = (5, Weapons.Mk_82AIR)
         GBU_10 = (5, Weapons.GBU_10)
         GBU_31 = (5, Weapons.GBU_31)
+        GBU_31_V_3_B = (5, Weapons.GBU_31_V_3_B)
         GBU_38 = (5, Weapons.GBU_38)
         CBU_87 = (5, Weapons.CBU_87)
         MXU_648_TP = (5, Weapons.MXU_648_TP)
@@ -7262,6 +7284,7 @@ class A_10C(PlaneType):
         Mk_82AIR = (7, Weapons.Mk_82AIR)
         GBU_10 = (7, Weapons.GBU_10)
         GBU_31 = (7, Weapons.GBU_31)
+        GBU_31_V_3_B = (7, Weapons.GBU_31_V_3_B)
         GBU_38 = (7, Weapons.GBU_38)
         CBU_87 = (7, Weapons.CBU_87)
         MXU_648_TP = (7, Weapons.MXU_648_TP)
@@ -7284,6 +7307,7 @@ class A_10C(PlaneType):
         Mk_82AIR = (8, Weapons.Mk_82AIR)
         GBU_10 = (8, Weapons.GBU_10)
         GBU_31 = (8, Weapons.GBU_31)
+        GBU_31_V_3_B = (8, Weapons.GBU_31_V_3_B)
         GBU_38 = (8, Weapons.GBU_38)
         CBU_87 = (8, Weapons.CBU_87)
         LAU_68___7_2_75__rockets_MK1__Practice_ = (8, Weapons.LAU_68___7_2_75__rockets_MK1__Practice_)
@@ -7348,6 +7372,7 @@ class A_10C(PlaneType):
         Mk_82AIR = (9, Weapons.Mk_82AIR)
         GBU_10 = (9, Weapons.GBU_10)
         GBU_31 = (9, Weapons.GBU_31)
+        GBU_31_V_3_B = (9, Weapons.GBU_31_V_3_B)
         GBU_38 = (9, Weapons.GBU_38)
         CBU_87 = (9, Weapons.CBU_87)
         LAU_68___7_2_75__rockets_MK1__Practice_ = (9, Weapons.LAU_68___7_2_75__rockets_MK1__Practice_)
@@ -8487,17 +8512,17 @@ class AJS37(PlaneType):
     chaff_charge_size = 4
     flare_charge_size = 1
     category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
-    radio_frequency = 127.5
+    radio_frequency = 305
 
     panel_radio = {
         1: {
             "channels": {
-                6: 270,
+                6: 141,
                 2: 264,
                 3: 265,
-                1: 124,
-                4: 254,
-                5: 250,
+                1: 305,
+                4: 125,
+                5: 121,
                 7: 121.5
             },
         },
@@ -8542,190 +8567,284 @@ class AJS37(PlaneType):
         class Georgia(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Syria(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Finland(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Australia(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Germany(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class SaudiArabia(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Israel(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Croatia(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class CzechRepublic(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Norway(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Romania(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Spain(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Ukraine(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Belgium(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Slovakia(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Greece(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class UK(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Insurgents(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Hungary(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class France(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Abkhazia(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Russia(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Sweden(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Austria(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Switzerland(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Italy(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class SouthOssetia(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class SouthKorea(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Iran(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class China(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Pakistan(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Belarus(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class NorthKorea(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Iraq(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Kazakhstan(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Bulgaria(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Serbia(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class India(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class USAFAggressors(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class USA(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Denmark(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Egypt(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Canada(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class TheNetherlands(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Turkey(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Japan(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
         class Poland(Enum):
             _37 = "37"
             BareMetal = "BareMetal"
+            _37402 = "37402"
+            F7_Skaraborg = "F7 Skaraborg"
 
     class Pylon1:
         RB_24J_with_launcher = (1, Weapons.RB_24J_with_launcher)
@@ -9905,6 +10024,7 @@ class AV_8B_N_A(PlaneType):
         Smokewinder___yellow = (2, Weapons.Smokewinder___yellow)
         Smokewinder___orange = (2, Weapons.Smokewinder___orange)
         AERO_1D_300_Gallons_Fuel_Tank_ = (2, Weapons.AERO_1D_300_Gallons_Fuel_Tank_)
+        AERO_1D_300_Gallons_Fuel_Tank__Empty_ = (2, Weapons.AERO_1D_300_Gallons_Fuel_Tank__Empty_)
 
     class Pylon3:
         Mk_81 = (3, Weapons.Mk_81)
@@ -9958,6 +10078,7 @@ class AV_8B_N_A(PlaneType):
         LAU_68_3___7_2_75__rockets_M274__Practice_smoke_ = (3, Weapons.LAU_68_3___7_2_75__rockets_M274__Practice_smoke_)
         AN_AAQ_28_LITENING = (3, Weapons.AN_AAQ_28_LITENING)
         AERO_1D_300_Gallons_Fuel_Tank_ = (3, Weapons.AERO_1D_300_Gallons_Fuel_Tank_)
+        AERO_1D_300_Gallons_Fuel_Tank__Empty_ = (3, Weapons.AERO_1D_300_Gallons_Fuel_Tank__Empty_)
 
     class Pylon4:
         GAU_12_Gunpod = (4, Weapons.GAU_12_Gunpod)
@@ -10018,6 +10139,7 @@ class AV_8B_N_A(PlaneType):
         LAU_68_3___7_2_75__rockets_M274__Practice_smoke_ = (6, Weapons.LAU_68_3___7_2_75__rockets_M274__Practice_smoke_)
         AN_AAQ_28_LITENING = (6, Weapons.AN_AAQ_28_LITENING)
         AERO_1D_300_Gallons_Fuel_Tank_ = (6, Weapons.AERO_1D_300_Gallons_Fuel_Tank_)
+        AERO_1D_300_Gallons_Fuel_Tank__Empty_ = (6, Weapons.AERO_1D_300_Gallons_Fuel_Tank__Empty_)
 
     class Pylon7:
         LAU_7_AIM_9M = (7, Weapons.LAU_7_AIM_9M)
@@ -10069,6 +10191,7 @@ class AV_8B_N_A(PlaneType):
         Smokewinder___yellow = (7, Weapons.Smokewinder___yellow)
         Smokewinder___orange = (7, Weapons.Smokewinder___orange)
         AERO_1D_300_Gallons_Fuel_Tank_ = (7, Weapons.AERO_1D_300_Gallons_Fuel_Tank_)
+        AERO_1D_300_Gallons_Fuel_Tank__Empty_ = (7, Weapons.AERO_1D_300_Gallons_Fuel_Tank__Empty_)
 
     class Pylon8:
         AIM_9M = (8, Weapons.AIM_9M)
@@ -10108,6 +10231,7 @@ class KC_130(PlaneType):
     charge_total = 240
     chaff_charge_size = 1
     flare_charge_size = 2
+    tacan = True
     category = "Tankers"  #{8A302789-A55D-4897-B647-66493FA6826F}
 
     class Liveries:
@@ -10857,6 +10981,27 @@ class J_11A(PlaneType):
 
     tasks = [task.CAP, task.Intercept, task.Escort, task.FighterSweep, task.AFAC, task.GroundAttack, task.RunwayAttack, task.AntishipStrike]
     task_default = task.CAP
+
+
+class KJ_2000(PlaneType):
+    id = "KJ-2000"
+    group_size_max = 1
+    height = 14.76
+    width = 50.5
+    length = 46.59
+    fuel_max = 70000
+    max_speed = 849.996
+    category = "AWACS"  #{D2BC159C-5B7D-40cf-92CD-44DF3E99FAA9}
+
+    class Liveries:
+
+        class China(Enum):
+            China_Air_Force_KJ_2000 = "China Air Force KJ-2000"
+
+    pylons = {}
+
+    tasks = [task.AWACS]
+    task_default = task.AWACS
 
 
 class F_5E(PlaneType):
@@ -12719,15 +12864,8 @@ class M_2000C(PlaneType):
             Brasilian_Air_Force = "Brasilian Air Force"
             Peru052 = "Peru052"
             Peru064 = "Peru064"
-            GC1_2_cigognes = "GC1_2_cigognes"
             Greek_Air_Force = "Greek Air Force"
             UAE_Air_Force = "UAE Air Force"
-
-        class USAFAggressors(Enum):
-            GC1_2_cigognes = "GC1_2_cigognes"
-
-        class USA(Enum):
-            GC1_2_cigognes = "GC1_2_cigognes"
 
     class Pylon1:
         Matra_Magic_II = (1, Weapons.Matra_Magic_II)
@@ -13095,988 +13233,1082 @@ class MiG_21Bis(PlaneType):
 
         class Georgia(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Syria(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Finland(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Australia(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Germany(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class SaudiArabia(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Israel(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Croatia(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class CzechRepublic(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Norway(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Romania(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Spain(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Ukraine(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Belgium(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Slovakia(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Greece(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class UK(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Insurgents(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Hungary(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class France(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Abkhazia(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Russia(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Sweden(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Austria(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Switzerland(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Italy(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class SouthOssetia(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class SouthKorea(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Iran(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class China(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Pakistan(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Belarus(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class NorthKorea(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Iraq(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Kazakhstan(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Bulgaria(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Serbia(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class India(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class USAFAggressors(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class USA(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Denmark(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Egypt(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Canada(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class TheNetherlands(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Turkey(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Japan(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
         class Poland(Enum):
             Serbia___101_FS = "Serbia - 101 FS"
-            Finland___HavLLv_31 = "Finland - HavLLv 31"
-            Northeria___32_FS = "Northeria - 32 FS"
-            VVS_Camo = "VVS Camo"
-            VVS_Grey = "VVS Grey"
             Bare_Metal = "Bare Metal"
             Bulgaria = "Bulgaria"
             Croatia___1992 = "Croatia - 1992"
+            Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
             Egypt_Tan = "Egypt Tan"
+            Finland___HavLLv_31 = "Finland - HavLLv 31"
+            HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            Northeria___32_FS = "Northeria - 32 FS"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
             Southeria = "Southeria"
+            VVS_Grey = "VVS Grey"
+            VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
             VVS_Metal = "VVS Metal"
 
@@ -14460,6 +14692,7 @@ plane_map = {
     "C-101EB": C_101EB,
     "C-101CC": C_101CC,
     "J-11A": J_11A,
+    "KJ-2000": KJ_2000,
     "F-5E": F_5E,
     "F-5E-3": F_5E_3,
     "F-86F Sabre": F_86F,

@@ -1658,6 +1658,7 @@ class USAFAggressors(Country):
         F_4E = planes.F_4E
         MiG_29G = planes.MiG_29G
         Mirage_2000_5 = planes.Mirage_2000_5
+        KJ_2000 = planes.KJ_2000
         F_16C_bl_50 = planes.F_16C_bl_50
         A_10A = planes.A_10A
         KC_135 = planes.KC_135
@@ -1735,6 +1736,7 @@ class USAFAggressors(Country):
         Plane.F_4E,
         Plane.MiG_29G,
         Plane.Mirage_2000_5,
+        Plane.KJ_2000,
         Plane.F_16C_bl_50,
         Plane.A_10A,
         Plane.KC_135,
@@ -4158,6 +4160,7 @@ class China(Country):
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         J_11A = planes.J_11A
+        KJ_2000 = planes.KJ_2000
         F_5E = planes.F_5E
         F_5E_3 = planes.F_5E_3
         F_86F_Sabre = planes.F_86F
@@ -4182,6 +4185,7 @@ class China(Country):
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.J_11A,
+        Plane.KJ_2000,
         Plane.F_5E,
         Plane.F_5E_3,
         Plane.F_86F_Sabre,
