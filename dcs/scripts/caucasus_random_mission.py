@@ -535,7 +535,7 @@ class Refueling(BasicScenario):
             airport=None,
             position=pos,
             race_distance=race_dist, heading=heading,
-            altitude=random.randrange(4000, 5500, 100), frequency=frequency)
+            altitude=random.randrange(4000, 5500, 100), frequency=frequency, tacanchannel="12X")
 
         i = 0
         for zone in ["russia_east", "russia_west"]:
@@ -638,7 +638,7 @@ class CAS(BasicScenario):
         kobuleti = caucasus.kobuleti()
         blue_military_airport = [kutaisi, kobuleti]
 
-        red_military_airport = [caucasus.sochi()]
+        red_military_airport = [caucasus.sochi_adler()]
 
         battle_point = BasicScenario.battle_zones["zugidi"].random_point()
 

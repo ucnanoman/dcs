@@ -101,7 +101,7 @@ class BasicTests(unittest.TestCase):
         apache.add_runway_waypoint(kobuleti)
         apache.add_waypoint(ustanks.position, 300, 200)
 
-        senaki = m.terrain.airports["Senaki"]
+        senaki = m.terrain.senaki_kolkhi()
         senaki.set_red()
         russia = m.coalition["red"].country("Russia")
         bg = m.vehicle_group(russia, "Tanks", dcs.countries.Russia.Vehicle.Armor.MBT_T_90,
@@ -116,7 +116,7 @@ class BasicTests(unittest.TestCase):
         rfighter.add_waypoint(dcs.mapping.Point(last_wp.position.x - 1000 * 80, last_wp.position.y - 1000 * 150), 6000,
                               800)
 
-        sukhumi = m.terrain.airports["Sukhumi"]
+        sukhumi = m.terrain.sukhumi_babushara()
         sukhumi.set_red()
         su25 = m.flight_group_from_airport(russia, "Su25 attack", dcs.planes.Su_25T, sukhumi,
                                            start_type=dcs.mission.StartType.Runway, group_size=2)
