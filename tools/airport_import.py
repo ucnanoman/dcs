@@ -69,7 +69,7 @@ class {sname}(Airport):
            y=airport["airport"]["reference_point"]["y"], tacan=tacan,
 #           freq=", ".join(map(str, airport["airport"]["frequency"].values())),
            civ=airport["airport"].get("civilian", True),
-           slot_version=2 if args.terrain in ["nevada", "normandy"] else 1)
+           slot_version=2)
             )
 
             i = 0
