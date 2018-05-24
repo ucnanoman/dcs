@@ -88,7 +88,12 @@ class Mission:
     """
     _COUNTRY_IDS = {x for x in range(0, 13)} | {x for x in range(15, 47)}
 
-    def __init__(self, terrain: Union[terrain_.Caucasus, terrain_.Nevada, terrain_.Normandy]=None):
+    def __init__(self, terrain: Union[
+            terrain_.Caucasus,
+            terrain_.Nevada,
+            terrain_.Normandy,
+            terrain_.PersianGulf]=None
+    ):
         if terrain is None:
             terrain = terrain_.Caucasus()
 
