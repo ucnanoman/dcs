@@ -114,8 +114,6 @@ class Mission:
         self.version = 12
         self.currentKey = 0
         self.start_time = datetime.fromtimestamp(1306886400 + 43200, timezone.utc)  # 01-06-2011 12:00:00 UTC
-        self.season_from_start_time = True
-        """If set to True the mission season will be set by the value of :py:attr:`Mission.start_time`"""
         self.random_weather = False
         """If set to True a random weather will be generated"""
         self.terrain = terrain
@@ -319,7 +317,6 @@ class Mission:
         self.map.load_from_dict(imp_mission["map"])
 
         # weather
-        self.season_from_start_time = False
         self.random_weather = False
         imp_weather = imp_mission["weather"]
         self.weather = weather.Weather(self.terrain)
@@ -1830,10 +1827,8 @@ class Mission:
             "Month": self.start_time.month,
             "Day": self.start_time.day
         }
-        if self.season_from_start_time:
-            self.weather.set_season_from_datetime(self.start_time)
         if self.random_weather:
-            self.weather.random(self.start_time)
+            self.weather.random(self.start_time, self.terrain)
         m["groundControl"] = self.groundControl.dict()
         if self.usedModules is not None:
             m["usedModules"] = self.usedModules

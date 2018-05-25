@@ -6,6 +6,7 @@ from dcs import unittype
 import random
 import pickle
 import sys
+from datetime import datetime, timezone
 
 
 class ParkingSlot:
@@ -453,6 +454,16 @@ class Terrain:
             Sequence of airports within range.
         """
         return [x for x in self.airports if x.position.distance_to_point(position) < distance]
+
+    def random_season_temperature(self, dt: datetime):
+        if datetime(dt.year, 3, 1, tzinfo=timezone.utc) <= dt < datetime(dt.year, 6, 1, tzinfo=timezone.utc):
+            return random.randrange(11, 22)
+        elif datetime(dt.year, 6, 1, tzinfo=timezone.utc) <= dt < datetime(dt.year, 9, 1, tzinfo=timezone.utc):
+            return random.randrange(18, 35)
+        elif datetime(dt.year, 9, 1, tzinfo=timezone.utc) <= dt < datetime(dt.year, 12, 1, tzinfo=timezone.utc):
+            return random.randrange(10, 20)
+        else:
+            return random.randrange(-6, 6)
 
 
 class Warehouses:

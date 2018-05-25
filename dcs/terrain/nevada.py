@@ -1,6 +1,8 @@
 from .terrain import Terrain, Airport, Runway, ParkingSlot, MapView, Graph
 from .. import mapping
 import os
+import random
+from datetime import datetime
 from typing import List
 
 
@@ -2169,6 +2171,24 @@ class Nevada(Terrain):
     bounds = mapping.Rectangle(-166934.953125, -329334.875000, -497177.656250, 209836.890625)
     map_view_default = MapView(mapping.Point(-340928.57142857, -55928.571428568), 1000000)
     city_graph = Graph.from_pickle(os.path.join(os.path.dirname(__file__), 'nevada.p'))
+    temperature = [
+        (0, 10),
+        (2, 16),
+        (6, 22),
+        (10, 24),
+        (14, 28),
+        (19, 35),
+        (23, 40),
+        (22, 38),
+        (18, 33),
+        (11, 26),
+        (5, 19),
+        (1, 13)
+    ]
+    assert(len(temperature) == 12)
+
+    def random_season_temperature(self, dt: datetime):
+        return random.randint(self.temperature[dt.month][0], self.temperature[dt.month][1])
 
     def __init__(self):
         super(Nevada, self).__init__("Nevada")

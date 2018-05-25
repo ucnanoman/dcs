@@ -1,5 +1,7 @@
 from .terrain import Terrain, Airport, Runway, ParkingSlot, MapView, Graph
 from .. import mapping
+import random
+from datetime import datetime
 
 
 class Saint_Pierre_du_Mont(Airport):
@@ -5435,6 +5437,24 @@ class Normandy(Terrain):
     bounds = mapping.Rectangle(-132707.843750, -389942.906250, 185756.156250, 165065.078125)
     map_view_default = MapView(bounds.center(), 1000000)
     city_graph = None
+    temperature = [
+        (-10, 10),
+        (-9, 10),
+        (-3, 12),
+        (-1, 14),
+        (0, 18),
+        (2, 22),
+        (7, 30),
+        (8, 32),
+        (3, 28),
+        (0, 22),
+        (-2, 16),
+        (-8, 10)
+    ]
+    assert(len(temperature) == 12)
+
+    def random_season_temperature(self, dt: datetime):
+        return random.randint(self.temperature[dt.month][0], self.temperature[dt.month][1])
 
     def __init__(self):
         super(Normandy, self).__init__("Normandy")
