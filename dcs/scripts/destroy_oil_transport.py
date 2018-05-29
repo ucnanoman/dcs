@@ -40,13 +40,10 @@ def main():
     difficulty = difficulty_map[args.difficulty]
 
     if args.output is None:
+        args.output = os.path.join(os.path.expanduser("~"), "Saved Games\\DCS\\Missions\\oil_transport.miz")
         if args.terrain == "caucasus":
-            args.output = os.path.join(os.path.expanduser("~"), "Saved Games\\DCS\\Missions\\oil_transport.miz")
             zone_enemy = zone_abkhazia
             destination_city = 'Adler'
-        else:
-            args.output = os.path.join(os.path.expanduser("~"),
-                                       "Saved Games\\DCS.openalpha\\Missions\\oil_transport.miz")
 
     m = dcs.Mission(terrain_map[args.terrain]())
     m.random_weather = True
@@ -153,13 +150,13 @@ def main():
         for x in aircrafts:
             if dcs.task.CAS in x.tasks and x not in [dcs.planes.Su_33, dcs.planes.MiG_29A, dcs.planes.MiG_29S]:
                 country = m.country(dcs.countries.Georgia.name) if x in [dcs.planes.Su_25T, dcs.planes.Su_25] else usa
-                fg = m.flight_group_from_airport(country, x.id + " Client", x, m.terrain.senaki(), dcs.task.CAS, group_size=2)
-                fg.add_runway_waypoint(m.terrain.senaki())
+                fg = m.flight_group_from_airport(country, x.id + " Client", x, m.terrain.senaki_kolkhi(), dcs.task.CAS, group_size=2)
+                fg.add_runway_waypoint(m.terrain.senaki_kolkhi())
                 fg.set_client()
     else:
         aircraft_type = [x for x in aircrafts if x.id == args.aircrafttype][0]
-        player_fg = m.flight_group_from_airport(usa, "Player", aircraft_type, m.terrain.senaki(), dcs.task.CAS)
-        player_fg.add_runway_waypoint(m.terrain.senaki())
+        player_fg = m.flight_group_from_airport(usa, "Player", aircraft_type, m.terrain.senaki_kolkhi(), dcs.task.CAS)
+        player_fg.add_runway_waypoint(m.terrain.senaki_kolkhi())
         player_fg.units[0].set_player()
 
     # CAP flight
