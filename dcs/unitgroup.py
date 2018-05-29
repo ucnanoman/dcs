@@ -399,7 +399,17 @@ class FlyingGroup(MovingGroup):
                 for x in task_payload:
                     p.load_pylon(x)
 
-    def load_loadout(self, name):
+    def load_loadout(self, name: str):
+        """Load a defined loadout from the mission editor.
+
+        This method will try to load the given loadout name and set pylons of all units in the
+        group accordingly.
+        Args:
+            name: Name of the loadout in the mission editor
+
+        Returns:
+            None
+        """
         payload = self.units[0].unit_type.loadout_by_name(name)
         if payload:
             for p in self.units:
