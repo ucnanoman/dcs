@@ -89,11 +89,43 @@ local keys = {}
 for j in pairs({CAT_BOMBS,CAT_MISSILES,CAT_ROCKETS,CAT_AIR_TO_AIR,CAT_FUEL_TANKS,CAT_PODS}) do
 	for i, v in ipairs(db.Weapons.Categories[j].Launchers) do
 		local pyName = v.displayName
+        local myclsid = v.CLSID
 		if string.sub(v.CLSID, 0, 1) ~= "{" then
 			pyName = v.CLSID
 		end
-		pyName = string.gsub(pyName, "[-()/., *']", "_")
-		pyName = string.gsub(pyName,"^([0-9])", "_%1")
+
+        -- this is all special code because, ED has for no reason some non utf8/ascii chars in their ids
+        if v.displayName == "AT-4 SPIGOT" then
+            pyName = "_9M111"
+            myclsid = pyName
+        elseif v.displayName == "AT-10 SABBER" then
+            pyName = "_9M117"
+            myclsid = pyName
+        elseif v.displayName == "AT-11 SNIPER (Reflex)" then
+            pyName = "REFLEX_9M119"
+            myclsid = pyName
+        elseif v.displayName == "AT-11 SNIPER (Svir')" then
+            pyName = "SVIR_9M119"
+            myclsid = pyName
+        elseif v.displayName == "SA-13 GOPHER" then
+            pyName = "_9M37"
+            myclsid = pyName
+        elseif v.displayName == "SA-15 GAUNTLET" then
+            pyName = "_9M331"
+            myclsid = pyName
+        elseif v.displayName == "SA-11 GADFLY" then
+            pyName = "_9M38"
+            myclsid = pyName
+        elseif v.displayName == "SA-18 GROUSE" then
+            pyName = "_9M39"
+            myclsid = pyName
+        elseif v.displayName == "SS-N-12 SANDBOX" then
+            pyName = "_4M80"
+            myclsid = pyName
+        else
+		    pyName = string.gsub(pyName, "[-()/., *']", "_")
+		    pyName = string.gsub(pyName,"^([0-9])", "_%1")
+        end
 		key = pyName
 		if weapons[key] ~= nil then
 			key = pyName .. "_"
@@ -105,7 +137,7 @@ for j in pairs({CAT_BOMBS,CAT_MISSILES,CAT_ROCKETS,CAT_AIR_TO_AIR,CAT_FUEL_TANKS
 		while weapons[key] ~= nil do
 			key = key..'_'
 		end
-		weapons[key] = {clsid = v.CLSID, displayName = v.displayName, weight = w}
+		weapons[key] = {clsid = myclsid, displayName = v.displayName, weight = w}
 		table.insert(keys, key)
 		-- print("    " .. key .. " = {\"clsid\": \"" .. v.CLSID .. "\", \"name\": \"" .. v.displayName .. "\"}")
 	end
@@ -207,9 +239,7 @@ from enum import Enum
 
     for i in pairs(aircrafts) do
         local plane = aircrafts[i];
-        local safename = plane.Name
-        safename = string.gsub(safename, "[-()/., *']", "_")
-        safename = string.gsub(safename,"^([0-9])", "_%1")
+        local safename = safe_name(plane.type)
         writeln(file, "class "..safename.."("..export_type.."Type):")
         writeln(file, '    id = "'..plane.type..'"')
         if plane.HumanCockpit or flyable[plane.type] ~= nil then
@@ -336,28 +366,35 @@ from enum import Enum
             end
             writeln(file, '    }')
 
-            writeln(file, '')
-            writeln(file, '    class Properties:')
-            for j in pairs(plane.AddPropAircraft) do
-                local prop = plane.AddPropAircraft[j]
+            if plane.AddPropAircraft ~= nil and #plane.AddPropAircraft > 0 then
                 writeln(file, '')
-                writeln(file, '        class '..safe_name(prop.id)..':')
-                writeln(file, '            id = "'..prop.id..'"')
-                if prop.values then
+                writeln(file, '    class Properties:')
+                for j in pairs(plane.AddPropAircraft) do
+                    local prop = plane.AddPropAircraft[j]
                     writeln(file, '')
-                    writeln(file, '            class Values:')
-                    for k, val in pairs(prop.values) do
-                        writeln(file, '                '..safe_name(val.dispName)..' = '..tostring(val.id))
+                    writeln(file, '        class '..safe_name(prop.id)..':')
+                    writeln(file, '            id = "'..prop.id..'"')
+                    if prop.values then
+                        writeln(file, '')
+                        writeln(file, '            class Values:')
+                        for k, val in pairs(prop.values) do
+                            writeln(file, '                '..safe_name(val.dispName)..' = '..tostring(val.id))
+                        end
                     end
                 end
             end
         end
 
-        writeln(file, '')
-        writeln(file, '    class Liveries:')
+        local livery_written = false
         for j in pairs(countries) do
             local schemes = loadLiveries.loadSchemes(plane.type, countries[j])
             if schemes ~= nil and #schemes > 0 then
+                if not livery_written then
+                    writeln(file, '')
+                    writeln(file, '    class Liveries:')
+                    livery_written = true
+                end
+
                 writeln(file, '')
                 writeln(file, '        class '..j..'(Enum):')
                 for k in pairs(schemes) do
@@ -371,11 +408,16 @@ from enum import Enum
 
         for j in pairs(plane.Pylons) do
             if #plane.Pylons[j].Launchers > 0 then
-                writeln(file, "")
                 table.insert(pylons, j)
-                writeln(file, '    class Pylon'..j..':')
+                local pylons_written = false
                 for k in pairs(plane.Pylons[j].Launchers) do
                     if weapons_map[plane.Pylons[j].Launchers[k].CLSID] then
+                        if not pylons_written then
+                            writeln(file, "")
+                            writeln(file, '    class Pylon'..j..':')
+                            pylons_written = true
+                        end
+
                         local name = weapons_map[plane.Pylons[j].Launchers[k].CLSID]
                         writeln(file, '        '..name..' = ('..j..', Weapons.'..name..')')
                     else
@@ -421,9 +463,7 @@ from enum import Enum
     writeln(file, string.lower(export_type).."_map = {")
     for i in pairs(aircrafts) do
         local plane = aircrafts[i];
-        local safename = plane.Name
-        safename = string.gsub(safename, "[-()/., *']", "_")
-        safename = string.gsub(safename,"^([0-9])", "_%1")
+        local safename = safe_name(plane.type)
         writeln(file, '    "'..plane.type..'": '..safename..',')
     end
     writeln(file, "}")
@@ -477,10 +517,17 @@ for i in pairs(unit_categories) do
     for j in pairs(unit_categories[i]) do
         local unit = unit_categories[i][j]
         local safename = safe_name(unit.DisplayName)
+        local air_weapon_dist = unit.ThreatRange
+        if unit.airWeaponDist then
+            air_weapon_dist = unit.airWeaponDist
+        end
         writeln(file, '')
         writeln(file, '    class '..safename..'(unittype.VehicleType):')
         writeln(file, '        id = "'..unit.type..'"')
         writeln(file, '        name = "'..unit.DisplayName..'"')
+        writeln(file, '        detection_range = '..unit.DetectionRange)
+        writeln(file, '        threat_range = '..unit.ThreatRange)
+        writeln(file, '        air_weapon_dist = '..air_weapon_dist)
         if unit.EPLRS then
             writeln(file, '        eprls = True')
         end
@@ -635,6 +682,13 @@ for i in pairs(db.Units.Ships.Ship) do
     if unit.numParking ~= nil then
         writeln(file, '    parking = '..unit.numParking)
     end
+    local air_weapon_dist = unit.ThreatRange
+    if unit.airWeaponDist then
+        air_weapon_dist = unit.airWeaponDist
+    end
+    writeln(file, '    detection_range = '..unit.DetectionRange)
+    writeln(file, '    threat_range = '..unit.ThreatRange)
+    writeln(file, '    air_weapon_dist = '..air_weapon_dist)
 --    writeln(file, '    shape_name = "'..unit.ShapeName..'"')
 --    writeln(file, '    rate = '..unit.Rate)
 end
@@ -664,17 +718,6 @@ local function getUnit(arr, _type)
     end
     return nil
 end
-
-local name_mapping = {}
-name_mapping["FW_190D9"] = "Fw_190_D_9"
-name_mapping["Bf_109K_4"] = "Bf_109_K_4"
-name_mapping["F_86F_Sabre"] = "F_86F"
-name_mapping["Mi_8MT"] = "Mi_8MTV2"
-name_mapping["E_2C"] = "E_2D"
-name_mapping["RQ_1A_Predator"] = "MQ_1A_Predator"
-name_mapping["KC130"] = "KC_130"
-name_mapping["AV8BNA"] = "AV_8B_N_A"
-name_mapping["SpitfireLFMkIX"] = "Spitfire_LF_Mk__IX"
 
 writeln(file, '# This file is generated from pydcs_export.lua')
 writeln(file, '')
@@ -744,18 +787,18 @@ while i <= country.maxIndex do
             writeln(file, '    class Plane:')
             for u in pairs(planes) do
                 local safeName = safe_name(planes[u].Name)
-                local idname = safeName
-                if name_mapping[safeName] ~= nil then
-                    idname = name_mapping[safeName]
+                if safeName ~= "Su_30MK" and safeName ~= "F_86F" then
+                    writeln(file, '        '..safeName..' = planes.'..safeName)
                 end
-                writeln(file, '        '..safeName..' = planes.'..idname)
             end
 
             writeln(file, '')
             writeln(file, '    planes = [')
             for u in pairs(planes) do
                 local safeName = safe_name(planes[u].Name)
-                writeln(file, '        Plane.'..safeName..',')
+                if safeName ~= "Su_30MK" and safeName ~= "F_86F" then
+                    writeln(file, '        Plane.'..safeName..',')
+                end
             end
             writeln(file, '    ]')
         end
@@ -766,11 +809,7 @@ while i <= country.maxIndex do
             writeln(file, '    class Helicopter:')
             for u in pairs(helis) do
                 local safeName = safe_name(helis[u].Name)
-                local idname = safeName
-                if name_mapping[safeName] ~= nil then
-                    idname = name_mapping[safeName]
-                end
-                writeln(file, '        '..safeName..' = helicopters.'..idname)
+                writeln(file, '        '..safeName..' = helicopters.'..safeName)
             end
 
             writeln(file, '')
