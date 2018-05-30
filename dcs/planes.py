@@ -747,6 +747,10 @@ class MiG_29A(PlaneType):
             Domna_120th_AR = "Domna 120th AR"
             Mary_1_Agressors = "Mary-1 Agressors"
 
+        class Iran(Enum):
+            IRIAF_Blue_Grey = "IRIAF Blue-Grey"
+            IRIAF_Sand_Blue = "IRIAF Sand-Blue"
+
         class Kazakhstan(Enum):
             Kazakhstan_Air_Defense_Forces = "Kazakhstan Air Defense Forces"
 
@@ -1056,6 +1060,7 @@ class F_4E(PlaneType):
         LAU_61___19_2_75__rockets_MK156_WP = (1, Weapons.LAU_61___19_2_75__rockets_MK156_WP)
         F_4_Fuel_tank_W = (1, Weapons.F_4_Fuel_tank_W)
         AGM_45B_ = (1, Weapons.AGM_45B_)
+        AGM_45A = (1, Weapons.AGM_45A)
 
     class Pylon2:
         LAU_7___2_AIM_9M = (2, Weapons.LAU_7___2_AIM_9M)
@@ -1071,6 +1076,7 @@ class F_4E(PlaneType):
         LAU_10___4_ZUNI_MK_71 = (2, Weapons.LAU_10___4_ZUNI_MK_71)
         LAU_61_3___57_2_75__rockets_MK151__HE_ = (2, Weapons.LAU_61_3___57_2_75__rockets_MK151__HE_)
         LAU_7_AN_ASQ_T50_TCTS_Pod = (2, Weapons.LAU_7_AN_ASQ_T50_TCTS_Pod)
+        AGM_45A = (2, Weapons.AGM_45A)
 
     class Pylon3:
         AIM_7M = (3, Weapons.AIM_7M)
@@ -1101,6 +1107,7 @@ class F_4E(PlaneType):
         AGM_45B_ = (8, Weapons.AGM_45B_)
         LAU_10___4_ZUNI_MK_71 = (8, Weapons.LAU_10___4_ZUNI_MK_71)
         LAU_61_3___57_2_75__rockets_MK151__HE_ = (8, Weapons.LAU_61_3___57_2_75__rockets_MK151__HE_)
+        AGM_45A = (8, Weapons.AGM_45A)
 
     class Pylon9:
         GBU_10 = (9, Weapons.GBU_10)
@@ -1114,6 +1121,7 @@ class F_4E(PlaneType):
         LAU_61___19_2_75__rockets_MK156_WP = (9, Weapons.LAU_61___19_2_75__rockets_MK156_WP)
         F_4_Fuel_tank_W = (9, Weapons.F_4_Fuel_tank_W)
         AGM_45B_ = (9, Weapons.AGM_45B_)
+        AGM_45A = (9, Weapons.AGM_45A)
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9}
 
@@ -1208,6 +1216,7 @@ class MiG_27K(PlaneType):
         KMGU_2___96_PTAB_2_5KO = (2, Weapons.KMGU_2___96_PTAB_2_5KO)
         MER_6_2_FAB_250 = (2, Weapons.MER_6_2_FAB_250)
         R_60M = (2, Weapons.R_60M)
+        Kh_25MP = (2, Weapons.Kh_25MP)
 
     class Pylon3:
         R_60M = (3, Weapons.R_60M)
@@ -1253,6 +1262,7 @@ class MiG_27K(PlaneType):
         KMGU_2___96_PTAB_2_5KO = (8, Weapons.KMGU_2___96_PTAB_2_5KO)
         MER_6_2_FAB_250 = (8, Weapons.MER_6_2_FAB_250)
         R_60M = (8, Weapons.R_60M)
+        Kh_25MP = (8, Weapons.Kh_25MP)
 
     pylons = {2, 3, 4, 5, 6, 7, 8}
 
@@ -2321,6 +2331,9 @@ class Su_25(PlaneType):
             field_camo_scheme__3__worn_out___960th_shap = "field camo scheme #3 (worn-out). 960th shap"
             forest_camo_scheme__1__native = "forest camo scheme #1 (native)"
 
+        class Iran(Enum):
+            IRGC_54 = "IRGC 54"
+
     class Pylon1:
         R_60M = (1, Weapons.R_60M)
         Smoke_Generator___red = (1, Weapons.Smoke_Generator___red)
@@ -2632,6 +2645,7 @@ class Su_25TM(PlaneType):
         S_25_OFM = (3, Weapons.S_25_OFM)
         B_8M1___20_S_8TsM = (3, Weapons.B_8M1___20_S_8TsM)
         Fuel_tank_800L_Wing = (3, Weapons.Fuel_tank_800L_Wing)
+        Kh_25MP = (3, Weapons.Kh_25MP)
 
     class Pylon4:
         B_8M1___20_S_8OFP2 = (4, Weapons.B_8M1___20_S_8OFP2)
@@ -2660,6 +2674,7 @@ class Su_25TM(PlaneType):
         S_25_OFM = (4, Weapons.S_25_OFM)
         B_8M1___20_S_8TsM = (4, Weapons.B_8M1___20_S_8TsM)
         SPPU_22_1_Gun_pod = (4, Weapons.SPPU_22_1_Gun_pod)
+        Kh_25MP = (4, Weapons.Kh_25MP)
 
     class Pylon5:
         B_8M1___20_S_8OFP2 = (5, Weapons.B_8M1___20_S_8OFP2)
@@ -2759,6 +2774,7 @@ class Su_25TM(PlaneType):
         S_25_OFM = (8, Weapons.S_25_OFM)
         B_8M1___20_S_8TsM = (8, Weapons.B_8M1___20_S_8TsM)
         SPPU_22_1_Gun_pod = (8, Weapons.SPPU_22_1_Gun_pod)
+        Kh_25MP = (8, Weapons.Kh_25MP)
 
     class Pylon9:
         B_8M1___20_S_8OFP2 = (9, Weapons.B_8M1___20_S_8OFP2)
@@ -2786,6 +2802,7 @@ class Su_25TM(PlaneType):
         S_25_OFM = (9, Weapons.S_25_OFM)
         B_8M1___20_S_8TsM = (9, Weapons.B_8M1___20_S_8TsM)
         Fuel_tank_800L_Wing = (9, Weapons.Fuel_tank_800L_Wing)
+        Kh_25MP = (9, Weapons.Kh_25MP)
 
     class Pylon10:
         B_8M1___20_S_8OFP2 = (10, Weapons.B_8M1___20_S_8OFP2)
@@ -2918,6 +2935,7 @@ class Su_25T(PlaneType):
         S_25_OFM = (3, Weapons.S_25_OFM)
         B_8M1___20_S_8TsM = (3, Weapons.B_8M1___20_S_8TsM)
         Fuel_tank_800L_Wing = (3, Weapons.Fuel_tank_800L_Wing)
+        Kh_25MP = (3, Weapons.Kh_25MP)
 
     class Pylon4:
         B_8M1___20_S_8OFP2 = (4, Weapons.B_8M1___20_S_8OFP2)
@@ -2946,6 +2964,7 @@ class Su_25T(PlaneType):
         S_25_OFM = (4, Weapons.S_25_OFM)
         B_8M1___20_S_8TsM = (4, Weapons.B_8M1___20_S_8TsM)
         SPPU_22_1_Gun_pod = (4, Weapons.SPPU_22_1_Gun_pod)
+        Kh_25MP = (4, Weapons.Kh_25MP)
 
     class Pylon5:
         B_8M1___20_S_8OFP2 = (5, Weapons.B_8M1___20_S_8OFP2)
@@ -3038,6 +3057,7 @@ class Su_25T(PlaneType):
         S_25_OFM = (8, Weapons.S_25_OFM)
         B_8M1___20_S_8TsM = (8, Weapons.B_8M1___20_S_8TsM)
         SPPU_22_1_Gun_pod = (8, Weapons.SPPU_22_1_Gun_pod)
+        Kh_25MP = (8, Weapons.Kh_25MP)
 
     class Pylon9:
         B_8M1___20_S_8OFP2 = (9, Weapons.B_8M1___20_S_8OFP2)
@@ -3065,6 +3085,7 @@ class Su_25T(PlaneType):
         S_25_OFM = (9, Weapons.S_25_OFM)
         B_8M1___20_S_8TsM = (9, Weapons.B_8M1___20_S_8TsM)
         Fuel_tank_800L_Wing = (9, Weapons.Fuel_tank_800L_Wing)
+        Kh_25MP = (9, Weapons.Kh_25MP)
 
     class Pylon10:
         B_8M1___20_S_8OFP2 = (10, Weapons.B_8M1___20_S_8OFP2)
@@ -4015,6 +4036,7 @@ class Su_17M4(PlaneType):
         B_8M1___20_S_8TsM = (1, Weapons.B_8M1___20_S_8TsM)
         RBK_250_PTAB_2_5M = (1, Weapons.RBK_250_PTAB_2_5M)
         RBK_250_275_AO_1SCh = (1, Weapons.RBK_250_275_AO_1SCh)
+        Kh_25MP = (1, Weapons.Kh_25MP)
 
     class Pylon2:
         R_60M = (2, Weapons.R_60M)
@@ -4052,6 +4074,7 @@ class Su_17M4(PlaneType):
         SPS_141 = (3, Weapons.SPS_141)
         RBK_250_PTAB_2_5M = (3, Weapons.RBK_250_PTAB_2_5M)
         RBK_250_275_AO_1SCh = (3, Weapons.RBK_250_275_AO_1SCh)
+        Kh_25MP = (3, Weapons.Kh_25MP)
 
     class Pylon4:
         FAB_100 = (4, Weapons.FAB_100)
@@ -4070,6 +4093,7 @@ class Su_17M4(PlaneType):
         Fuel_tank_800L = (4, Weapons.Fuel_tank_800L)
         RBK_250_PTAB_2_5M = (4, Weapons.RBK_250_PTAB_2_5M)
         RBK_250_275_AO_1SCh = (4, Weapons.RBK_250_275_AO_1SCh)
+        Kh_28__AS_9_Kyle_ = (4, Weapons.Kh_28__AS_9_Kyle_)
 
     class Pylon5:
         FAB_100 = (5, Weapons.FAB_100)
@@ -4120,6 +4144,7 @@ class Su_17M4(PlaneType):
         SPPU_22_1_Gun_pod = (6, Weapons.SPPU_22_1_Gun_pod)
         RBK_250_PTAB_2_5M = (6, Weapons.RBK_250_PTAB_2_5M)
         RBK_250_275_AO_1SCh = (6, Weapons.RBK_250_275_AO_1SCh)
+        Kh_25MP = (6, Weapons.Kh_25MP)
 
     class Pylon7:
         R_60M = (7, Weapons.R_60M)
@@ -4152,6 +4177,7 @@ class Su_17M4(PlaneType):
         B_8M1___20_S_8TsM = (8, Weapons.B_8M1___20_S_8TsM)
         RBK_250_PTAB_2_5M = (8, Weapons.RBK_250_PTAB_2_5M)
         RBK_250_275_AO_1SCh = (8, Weapons.RBK_250_275_AO_1SCh)
+        Kh_25MP = (8, Weapons.Kh_25MP)
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8}
 
@@ -4251,10 +4277,13 @@ class Su_24M(PlaneType):
     class Liveries:
 
         class Ukraine(Enum):
-            af_standard = "af standard"
+            Ukrainian_Air_Force_Standard = "Ukrainian Air Force Standard"
 
         class Russia(Enum):
             af_standard = "af standard"
+
+        class Kazakhstan(Enum):
+            Kazakhstan_Air_Force = "Kazakhstan Air Force"
 
     class Pylon1:
         R_60M_2 = (1, Weapons.R_60M_2)
@@ -4271,6 +4300,7 @@ class Su_24M(PlaneType):
         Kh_25ML = (1, Weapons.Kh_25ML)
         Kh_25MPU = (1, Weapons.Kh_25MPU)
         Kh_25MR = (1, Weapons.Kh_25MR)
+        Kh_25MP = (1, Weapons.Kh_25MP)
 
     class Pylon2:
         MER_6_FAB_100 = (2, Weapons.MER_6_FAB_100)
@@ -4307,6 +4337,7 @@ class Su_24M(PlaneType):
         KAB_1500Kr = (2, Weapons.KAB_1500Kr)
         FAB_1500_M54 = (2, Weapons.FAB_1500_M54)
         Fuel_tank_3000L = (2, Weapons.Fuel_tank_3000L)
+        Kh_25MP = (2, Weapons.Kh_25MP)
 
     class Pylon3:
         MER_6_FAB_100 = (3, Weapons.MER_6_FAB_100)
@@ -4397,6 +4428,7 @@ class Su_24M(PlaneType):
         KAB_1500Kr = (7, Weapons.KAB_1500Kr)
         FAB_1500_M54 = (7, Weapons.FAB_1500_M54)
         Fuel_tank_3000L = (7, Weapons.Fuel_tank_3000L)
+        Kh_25MP = (7, Weapons.Kh_25MP)
 
     class Pylon8:
         R_60M_2_ = (8, Weapons.R_60M_2_)
@@ -4413,6 +4445,7 @@ class Su_24M(PlaneType):
         Kh_25ML = (8, Weapons.Kh_25ML)
         Kh_25MPU = (8, Weapons.Kh_25MPU)
         Kh_25MR = (8, Weapons.Kh_25MR)
+        Kh_25MP = (8, Weapons.Kh_25MP)
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8}
 
@@ -4787,6 +4820,7 @@ class F_15C(PlaneType):
         class USA(Enum):
             _12th_Fighter_SQN__AK = "12th Fighter SQN (AK)"
             _390th_Fighter_SQN = "390th Fighter SQN"
+            _433rd_Weapons_SQN__WA = "433rd Weapons SQN (WA)"
             _493rd_Fighter_SQN__LN = "493rd Fighter SQN (LN)"
             _58th_Fighter_SQN__EG = "58th Fighter SQN (EG)"
             _65th_Aggressor_SQN__WA__Flanker = "65th Aggressor SQN (WA) Flanker"
@@ -6014,7 +6048,7 @@ class IL_78M(PlaneType):
     task_default = task.Refueling
 
 
-class E_2D(PlaneType):
+class E_2C(PlaneType):
     id = "E-2C"
     group_size_max = 1
     large_parking_slot = True
@@ -6886,7 +6920,7 @@ class F_16A_MLU(PlaneType):
     task_default = task.CAP
 
 
-class MQ_1A_Predator(PlaneType):
+class RQ_1A_Predator(PlaneType):
     id = "RQ-1A Predator"
     group_size_max = 1
     height = 2.21
@@ -7506,146 +7540,11 @@ class KC_135(PlaneType):
 
     class Liveries:
 
-        class Georgia(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Syria(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Finland(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Australia(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Germany(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class SaudiArabia(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Israel(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Croatia(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class CzechRepublic(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Norway(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Romania(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Spain(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Ukraine(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Belgium(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Slovakia(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Greece(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class UK(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Insurgents(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Hungary(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class France(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Abkhazia(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Russia(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Sweden(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Austria(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Switzerland(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Italy(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class SouthOssetia(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class SouthKorea(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Iran(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class China(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Pakistan(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Belarus(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class NorthKorea(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Iraq(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Kazakhstan(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Bulgaria(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Serbia(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class India(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class USAFAggressors(Enum):
-            Standard_USAF = "Standard USAF"
-
         class USA(Enum):
             Standard_USAF = "Standard USAF"
 
-        class Denmark(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Egypt(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Canada(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class TheNetherlands(Enum):
-            Standard_USAF = "Standard USAF"
-
         class Turkey(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Japan(Enum):
-            Standard_USAF = "Standard USAF"
-
-        class Poland(Enum):
-            Standard_USAF = "Standard USAF"
+            TurAF_Standard = "TurAF Standard"
 
     pylons = {}
 
@@ -7991,7 +7890,7 @@ class P_51D(PlaneType):
     task_default = task.CAS
 
 
-class Fw_190_D_9(PlaneType):
+class FW_190D9(PlaneType):
     id = "FW-190D9"
     flyable = True
     height = 4.77
@@ -8065,7 +7964,7 @@ class Fw_190_D_9(PlaneType):
     task_default = task.CAP
 
 
-class Bf_109_K_4(PlaneType):
+class Bf_109K_4(PlaneType):
     id = "Bf-109K-4"
     flyable = True
     height = 4.77
@@ -8454,7 +8353,7 @@ class Bf_109_K_4(PlaneType):
     task_default = task.CAP
 
 
-class Spitfire_LF_Mk__IX(PlaneType):
+class SpitfireLFMkIX(PlaneType):
     id = "SpitfireLFMkIX"
     flyable = True
     height = 4.77
@@ -8468,10 +8367,10 @@ class Spitfire_LF_Mk__IX(PlaneType):
     panel_radio = {
         1: {
             "channels": {
-                1: 105,
-                2: 124,
-                4: 139,
-                3: 131
+                1: 39,
+                2: 40,
+                4: 42,
+                3: 41
             },
         },
     }
@@ -8947,7 +8846,7 @@ class AJS37(PlaneType):
     task_default = task.GroundAttack
 
 
-class AV_8B_N_A(PlaneType):
+class AV8BNA(PlaneType):
     id = "AV8BNA"
     flyable = True
     height = 3.55
@@ -9022,6 +8921,40 @@ class AV_8B_N_A(PlaneType):
                 23: 135,
                 19: 128,
                 15: 138
+            },
+        },
+        3: {
+            "channels": {
+                1: 177,
+                2: 264,
+                4: 256,
+                8: 257,
+                16: 261,
+                17: 267,
+                9: 255,
+                18: 251,
+                5: 254,
+                10: 262,
+                20: 266,
+                30: 123.3,
+                21: 133,
+                11: 259,
+                22: 257.8,
+                3: 265,
+                6: 250,
+                12: 268,
+                24: 123.3,
+                19: 253,
+                25: 344,
+                13: 269,
+                26: 385,
+                27: 133,
+                7: 270,
+                14: 260,
+                28: 257.8,
+                23: 122.1,
+                29: 122.1,
+                15: 263
             },
         },
     }
@@ -9997,14 +9930,9 @@ class AV_8B_N_A(PlaneType):
         _2_MK_82_SNAKEYE = (2, Weapons._2_MK_82_SNAKEYE)
         BDU_33 = (2, Weapons.BDU_33)
         BRU_42_3_BDU_33 = (2, Weapons.BRU_42_3_BDU_33)
-        LAU_117_AGM_65D = (2, Weapons.LAU_117_AGM_65D)
+        LAU_117_AGM_65E = (2, Weapons.LAU_117_AGM_65E)
         LAU_117_AGM_65G = (2, Weapons.LAU_117_AGM_65G)
-        LAU_117_AGM_65K = (2, Weapons.LAU_117_AGM_65K)
-        LAU_117_AGM_65H = (2, Weapons.LAU_117_AGM_65H)
-        LAU_117_TGM_65D = (2, Weapons.LAU_117_TGM_65D)
         LAU_117_TGM_65G = (2, Weapons.LAU_117_TGM_65G)
-        LAU_117_TGM_65H = (2, Weapons.LAU_117_TGM_65H)
-        LAU_117_CATM_65K = (2, Weapons.LAU_117_CATM_65K)
         LAU_10___4_ZUNI_MK_71 = (2, Weapons.LAU_10___4_ZUNI_MK_71)
         LAU_3___19_FFAR_M156_WP = (2, Weapons.LAU_3___19_FFAR_M156_WP)
         LAU_3___19_FFAR_Mk1_HE = (2, Weapons.LAU_3___19_FFAR_Mk1_HE)
@@ -10052,14 +9980,9 @@ class AV_8B_N_A(PlaneType):
         _2_MK_82_SNAKEYE = (3, Weapons._2_MK_82_SNAKEYE)
         BDU_33 = (3, Weapons.BDU_33)
         BRU_42_3_BDU_33 = (3, Weapons.BRU_42_3_BDU_33)
-        LAU_117_AGM_65D = (3, Weapons.LAU_117_AGM_65D)
+        LAU_117_AGM_65E = (3, Weapons.LAU_117_AGM_65E)
         LAU_117_AGM_65G = (3, Weapons.LAU_117_AGM_65G)
-        LAU_117_AGM_65K = (3, Weapons.LAU_117_AGM_65K)
-        LAU_117_AGM_65H = (3, Weapons.LAU_117_AGM_65H)
-        LAU_117_TGM_65D = (3, Weapons.LAU_117_TGM_65D)
         LAU_117_TGM_65G = (3, Weapons.LAU_117_TGM_65G)
-        LAU_117_TGM_65H = (3, Weapons.LAU_117_TGM_65H)
-        LAU_117_CATM_65K = (3, Weapons.LAU_117_CATM_65K)
         LAU_10___4_ZUNI_MK_71 = (3, Weapons.LAU_10___4_ZUNI_MK_71)
         LAU_3___19_FFAR_M156_WP = (3, Weapons.LAU_3___19_FFAR_M156_WP)
         LAU_3___19_FFAR_Mk1_HE = (3, Weapons.LAU_3___19_FFAR_Mk1_HE)
@@ -10113,14 +10036,9 @@ class AV_8B_N_A(PlaneType):
         _2_MK_82_SNAKEYE_ = (6, Weapons._2_MK_82_SNAKEYE_)
         BDU_33 = (6, Weapons.BDU_33)
         BRU_42_3_BDU_33 = (6, Weapons.BRU_42_3_BDU_33)
-        LAU_117_AGM_65D = (6, Weapons.LAU_117_AGM_65D)
+        LAU_117_AGM_65E = (6, Weapons.LAU_117_AGM_65E)
         LAU_117_AGM_65G = (6, Weapons.LAU_117_AGM_65G)
-        LAU_117_AGM_65K = (6, Weapons.LAU_117_AGM_65K)
-        LAU_117_AGM_65H = (6, Weapons.LAU_117_AGM_65H)
-        LAU_117_TGM_65D = (6, Weapons.LAU_117_TGM_65D)
         LAU_117_TGM_65G = (6, Weapons.LAU_117_TGM_65G)
-        LAU_117_TGM_65H = (6, Weapons.LAU_117_TGM_65H)
-        LAU_117_CATM_65K = (6, Weapons.LAU_117_CATM_65K)
         LAU_10___4_ZUNI_MK_71 = (6, Weapons.LAU_10___4_ZUNI_MK_71)
         LAU_3___19_FFAR_M156_WP = (6, Weapons.LAU_3___19_FFAR_M156_WP)
         LAU_3___19_FFAR_Mk1_HE = (6, Weapons.LAU_3___19_FFAR_Mk1_HE)
@@ -10164,14 +10082,9 @@ class AV_8B_N_A(PlaneType):
         _2_MK_82_SNAKEYE_ = (7, Weapons._2_MK_82_SNAKEYE_)
         BDU_33 = (7, Weapons.BDU_33)
         BRU_42_3_BDU_33 = (7, Weapons.BRU_42_3_BDU_33)
-        LAU_117_AGM_65D = (7, Weapons.LAU_117_AGM_65D)
+        LAU_117_AGM_65E = (7, Weapons.LAU_117_AGM_65E)
         LAU_117_AGM_65G = (7, Weapons.LAU_117_AGM_65G)
-        LAU_117_AGM_65K = (7, Weapons.LAU_117_AGM_65K)
-        LAU_117_AGM_65H = (7, Weapons.LAU_117_AGM_65H)
-        LAU_117_TGM_65D = (7, Weapons.LAU_117_TGM_65D)
         LAU_117_TGM_65G = (7, Weapons.LAU_117_TGM_65G)
-        LAU_117_TGM_65H = (7, Weapons.LAU_117_TGM_65H)
-        LAU_117_CATM_65K = (7, Weapons.LAU_117_CATM_65K)
         LAU_10___4_ZUNI_MK_71 = (7, Weapons.LAU_10___4_ZUNI_MK_71)
         LAU_3___19_FFAR_M156_WP = (7, Weapons.LAU_3___19_FFAR_M156_WP)
         LAU_3___19_FFAR_Mk1_HE = (7, Weapons.LAU_3___19_FFAR_Mk1_HE)
@@ -10218,7 +10131,7 @@ class AV_8B_N_A(PlaneType):
     task_default = task.CAS
 
 
-class KC_130(PlaneType):
+class KC130(PlaneType):
     id = "KC130"
     group_size_max = 1
     height = 11.66
@@ -10245,13 +10158,35 @@ class KC_130(PlaneType):
     task_default = task.Refueling
 
 
+class KC135BDA(PlaneType):
+    id = "KC135BDA"
+    group_size_max = 1
+    height = 12.93
+    width = 40
+    length = 46.61
+    fuel_max = 90700
+    max_speed = 1009.008
+    chaff = 120
+    flare = 60
+    charge_total = 240
+    chaff_charge_size = 1
+    flare_charge_size = 2
+    tacan = True
+    category = "Tankers"  #{8A302789-A55D-4897-B647-66493FA6826F}
+
+    pylons = {}
+
+    tasks = [task.Refueling]
+    task_default = task.Refueling
+
+
 class C_101EB(PlaneType):
     id = "C-101EB"
     flyable = True
     height = 4.25
     width = 14
     length = 12.25
-    fuel_max = 1885
+    fuel_max = 1881.5
     max_speed = 925.2
     category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 225
@@ -10768,6 +10703,7 @@ class C_101CC(PlaneType):
 
 class J_11A(PlaneType):
     id = "J-11A"
+    flyable = True
     height = 5.932
     width = 14.7
     length = 21.935
@@ -10797,7 +10733,15 @@ class J_11A(PlaneType):
             PLAAF_6th_AD = "PLAAF 6th AD"
             PLAAF_7th_AD = "PLAAF 7th AD"
             PLAAF_7th_AD__Reworked = "PLAAF 7th AD (Reworked)"
+            PLAAF_Ghost_Gray__Fictional = "PLAAF Ghost Gray (Fictional)"
+            PLAAF_OPFOR__Desert___Fictional = "PLAAF OPFOR 'Desert' (Fictional)"
+            PLAAF_OPFOR__Jungle___Fictional = "PLAAF OPFOR 'Jungle' (Fictional)"
             Sky_Hunter = "Sky Hunter"
+
+        class USAFAggressors(Enum):
+            USAF_65th_Aggressor_SQN__Desert___Fictional = "USAF 65th Aggressor SQN 'Desert' (Fictional)"
+            USAF_65th_Aggressor_SQN__Gray___Fictional = "USAF 65th Aggressor SQN 'Gray' (Fictional)"
+            USN_Aggressor_VFC_13__Ferris___Fictional = "USN Aggressor VFC-13 'Ferris' (Fictional)"
 
     class Pylon1:
         R_73 = (1, Weapons.R_73)
@@ -10829,8 +10773,6 @@ class J_11A(PlaneType):
         BetAB_500ShP = (3, Weapons.BetAB_500ShP)
         FAB_500_M62 = (3, Weapons.FAB_500_M62)
         FAB_250 = (3, Weapons.FAB_250)
-        KMGU_2___96_AO_2_5RT = (3, Weapons.KMGU_2___96_AO_2_5RT)
-        KMGU_2___96_PTAB_2_5KO = (3, Weapons.KMGU_2___96_PTAB_2_5KO)
         RBK_250_PTAB_2_5M = (3, Weapons.RBK_250_PTAB_2_5M)
         RBK_250_275_AO_1SCh = (3, Weapons.RBK_250_275_AO_1SCh)
         RBK_500_255_PTAB_10_5 = (3, Weapons.RBK_500_255_PTAB_10_5)
@@ -10838,16 +10780,19 @@ class J_11A(PlaneType):
         RBK_500U_OAB_2_5RT = (3, Weapons.RBK_500U_OAB_2_5RT)
         MER_6_FAB_100 = (3, Weapons.MER_6_FAB_100)
         SAB_100 = (3, Weapons.SAB_100)
-        B_8M1___20_S_8KOM = (3, Weapons.B_8M1___20_S_8KOM)
         B_13L___5_S_13_OF = (3, Weapons.B_13L___5_S_13_OF)
         S_25_OFM = (3, Weapons.S_25_OFM)
+        B_8M1___20_S_8KOM = (3, Weapons.B_8M1___20_S_8KOM)
         B_8M1___20_S_8TsM = (3, Weapons.B_8M1___20_S_8TsM)
+        B_8M1___20_S_8OFP2 = (3, Weapons.B_8M1___20_S_8OFP2)
         _2_x_FAB_250 = (3, Weapons._2_x_FAB_250)
         _2_x_FAB_500 = (3, Weapons._2_x_FAB_500)
         _2_x_RBK_250_PTAB_2_5M = (3, Weapons._2_x_RBK_250_PTAB_2_5M)
         _2_x_RBK_500_255_PTAB_10_5 = (3, Weapons._2_x_RBK_500_255_PTAB_10_5)
         _2_x_B_13L___5_S_13_OF = (3, Weapons._2_x_B_13L___5_S_13_OF)
         _2_x_B_8M1___20_S_8KOM = (3, Weapons._2_x_B_8M1___20_S_8KOM)
+        _2_x_B_8M1___20_S_8TsM = (3, Weapons._2_x_B_8M1___20_S_8TsM)
+        _2_x_B_8M1___20_S_8OFP2 = (3, Weapons._2_x_B_8M1___20_S_8OFP2)
         _2_x_S_25 = (3, Weapons._2_x_S_25)
 
     class Pylon4:
@@ -10858,8 +10803,6 @@ class J_11A(PlaneType):
         FAB_250 = (4, Weapons.FAB_250)
         BetAB_500 = (4, Weapons.BetAB_500)
         BetAB_500ShP = (4, Weapons.BetAB_500ShP)
-        KMGU_2___96_AO_2_5RT = (4, Weapons.KMGU_2___96_AO_2_5RT)
-        KMGU_2___96_PTAB_2_5KO = (4, Weapons.KMGU_2___96_PTAB_2_5KO)
         MER_6_FAB_100 = (4, Weapons.MER_6_FAB_100)
         RBK_250_275_AO_1SCh = (4, Weapons.RBK_250_275_AO_1SCh)
         RBK_500_255_PTAB_10_5 = (4, Weapons.RBK_500_255_PTAB_10_5)
@@ -10917,8 +10860,6 @@ class J_11A(PlaneType):
         FAB_250 = (7, Weapons.FAB_250)
         BetAB_500 = (7, Weapons.BetAB_500)
         BetAB_500ShP = (7, Weapons.BetAB_500ShP)
-        KMGU_2___96_AO_2_5RT = (7, Weapons.KMGU_2___96_AO_2_5RT)
-        KMGU_2___96_PTAB_2_5KO = (7, Weapons.KMGU_2___96_PTAB_2_5KO)
         MER_6_FAB_100 = (7, Weapons.MER_6_FAB_100)
         RBK_250_275_AO_1SCh = (7, Weapons.RBK_250_275_AO_1SCh)
         RBK_500_255_PTAB_10_5 = (7, Weapons.RBK_500_255_PTAB_10_5)
@@ -10937,8 +10878,6 @@ class J_11A(PlaneType):
         BetAB_500ShP = (8, Weapons.BetAB_500ShP)
         FAB_500_M62 = (8, Weapons.FAB_500_M62)
         FAB_250 = (8, Weapons.FAB_250)
-        KMGU_2___96_AO_2_5RT = (8, Weapons.KMGU_2___96_AO_2_5RT)
-        KMGU_2___96_PTAB_2_5KO = (8, Weapons.KMGU_2___96_PTAB_2_5KO)
         RBK_250_PTAB_2_5M = (8, Weapons.RBK_250_PTAB_2_5M)
         RBK_250_275_AO_1SCh = (8, Weapons.RBK_250_275_AO_1SCh)
         RBK_500_255_PTAB_10_5 = (8, Weapons.RBK_500_255_PTAB_10_5)
@@ -10946,16 +10885,19 @@ class J_11A(PlaneType):
         RBK_500U_OAB_2_5RT = (8, Weapons.RBK_500U_OAB_2_5RT)
         MER_6_FAB_100 = (8, Weapons.MER_6_FAB_100)
         SAB_100 = (8, Weapons.SAB_100)
-        B_8M1___20_S_8KOM = (8, Weapons.B_8M1___20_S_8KOM)
         B_13L___5_S_13_OF = (8, Weapons.B_13L___5_S_13_OF)
         S_25_OFM = (8, Weapons.S_25_OFM)
+        B_8M1___20_S_8KOM = (8, Weapons.B_8M1___20_S_8KOM)
         B_8M1___20_S_8TsM = (8, Weapons.B_8M1___20_S_8TsM)
+        B_8M1___20_S_8OFP2 = (8, Weapons.B_8M1___20_S_8OFP2)
         _2_x_FAB_250_ = (8, Weapons._2_x_FAB_250_)
         _2_x_FAB_500_ = (8, Weapons._2_x_FAB_500_)
         _2_x_RBK_250_PTAB_2_5M_ = (8, Weapons._2_x_RBK_250_PTAB_2_5M_)
         _2_x_RBK_500_255_PTAB_10_5_ = (8, Weapons._2_x_RBK_500_255_PTAB_10_5_)
         _2_x_B_13L___5_S_13_OF_ = (8, Weapons._2_x_B_13L___5_S_13_OF_)
         _2_x_B_8M1___20_S_8KOM_ = (8, Weapons._2_x_B_8M1___20_S_8KOM_)
+        _2_x_B_8M1___20_S_8TsM_ = (8, Weapons._2_x_B_8M1___20_S_8TsM_)
+        _2_x_B_8M1___20_S_8OFP2_ = (8, Weapons._2_x_B_8M1___20_S_8OFP2_)
         _2_x_S_25_ = (8, Weapons._2_x_S_25_)
 
     class Pylon9:
@@ -10979,7 +10921,7 @@ class J_11A(PlaneType):
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
-    tasks = [task.CAP, task.Intercept, task.Escort, task.FighterSweep, task.AFAC, task.GroundAttack, task.RunwayAttack, task.AntishipStrike]
+    tasks = [task.CAP, task.Intercept, task.Escort, task.FighterSweep, task.AFAC, task.CAS, task.GroundAttack, task.RunwayAttack, task.AntishipStrike]
     task_default = task.CAP
 
 
@@ -10996,6 +10938,7 @@ class KJ_2000(PlaneType):
     class Liveries:
 
         class China(Enum):
+            China_Air_Force_KJ_2000__Parade_93 = "China Air Force KJ-2000 (Parade 93)"
             China_Air_Force_KJ_2000 = "China Air Force KJ-2000"
 
     pylons = {}
@@ -11410,7 +11353,8 @@ class F_5E_3(PlaneType):
             class Values:
                 Single = 0
                 Ripple__17ms = 1
-                Ripple__60ms = 2
+                Ripple__20ms = 2
+                Ripple__60ms = 3
 
         class LAU68ROF:
             id = "LAU68ROF"
@@ -11607,6 +11551,8 @@ class F_5E_3(PlaneType):
 
         class Iran(Enum):
             IR_IRIAF_Azarakhsh = "IR IRIAF Azarakhsh"
+            IR_IRIAF_43rd_TFS = "IR IRIAF 43rd TFS"
+            IR_IRIAF_Camo = "IR IRIAF Camo"
             USA_standard = "USA standard"
 
         class China(Enum):
@@ -11883,7 +11829,7 @@ class F_5E_3(PlaneType):
     task_default = task.CAP
 
 
-class F_86F(PlaneType):
+class F_86F_Sabre(PlaneType):
     id = "F-86F Sabre"
     flyable = True
     height = 4.496
@@ -11925,6 +11871,9 @@ class F_86F(PlaneType):
             HAF_341sqn = "HAF 341sqn"
             HAF_342sqn = "HAF 342sqn"
             HAF_Hellenic_Flame = "HAF Hellenic Flame"
+
+        class Iran(Enum):
+            IIAF_Bare_Metall = "IIAF Bare Metall"
 
         class USA(Enum):
             US_Air_Force = "US Air Force"
@@ -11991,6 +11940,281 @@ class F_86F(PlaneType):
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
     tasks = [task.CAP, task.CAS, task.Escort, task.FighterSweep, task.GroundAttack, task.Intercept, task.AntishipStrike]
+    task_default = task.CAP
+
+
+class FA_18C_hornet(PlaneType):
+    id = "FA-18C_hornet"
+    flyable = True
+    height = 4.66
+    width = 11.43
+    length = 17.07
+    fuel_max = 4900
+    max_speed = 1950.12
+    chaff = 60
+    flare = 30
+    charge_total = 120
+    chaff_charge_size = 1
+    flare_charge_size = 2
+    eplrs = True
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
+    radio_frequency = 305
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 305,
+                2: 264,
+                4: 256,
+                8: 257,
+                16: 261,
+                17: 267,
+                9: 255,
+                18: 251,
+                5: 254,
+                10: 262,
+                20: 266,
+                11: 259,
+                3: 265,
+                6: 250,
+                12: 268,
+                13: 269,
+                7: 270,
+                14: 260,
+                19: 253,
+                15: 263
+            },
+        },
+        2: {
+            "channels": {
+                1: 305,
+                2: 264,
+                4: 256,
+                8: 257,
+                16: 261,
+                17: 267,
+                9: 255,
+                18: 251,
+                5: 254,
+                10: 262,
+                20: 266,
+                11: 259,
+                3: 265,
+                6: 250,
+                12: 268,
+                13: 269,
+                7: 270,
+                14: 260,
+                19: 253,
+                15: 263
+            },
+        },
+    }
+
+    class Liveries:
+
+        class Finland(Enum):
+            Finland_21 = "Finland 21"
+            Finland_31 = "Finland 31"
+
+        class Australia(Enum):
+            Australian_75th_Squadron = "Australian 75th Squadron"
+            Australian_77th_Squadron = "Australian 77th Squadron"
+
+        class Israel(Enum):
+            Fictional_Israel_Air_Force = "Fictional Israel Air Force"
+
+        class Spain(Enum):
+            Spain_111th_Escuadron_C_15_73 = "Spain 111th Escuadron C.15-73"
+            Spain_111th_Escuadron_C_15_88 = "Spain 111th Escuadron C.15-88"
+            Spain_121th_Escuadron_C_15_45 = "Spain 121th Escuadron C.15-45"
+            Spain_121th_Escuadron_C_15_60 = "Spain 121th Escuadron C.15-60"
+            Spain_121th_Escuadron_C_15_50 = "Spain 121th Escuadron C.15-50"
+            Spain_121th_Escuadron_C_15_34_50th_Anniversary = "Spain 121th Escuadron C.15-34 50th Anniversary"
+            Spain_151th_Escuadron_C_15_14_Tiger_Meet = "Spain 151th Escuadron C.15-14 Tiger Meet"
+            Spain_151th_Escuadron_C_15_14 = "Spain 151th Escuadron C.15-14"
+            Spain_151th_Escuadron_C_15_18 = "Spain 151th Escuadron C.15-18"
+            Spain_151th_Escuadron_C_15_23 = "Spain 151th Escuadron C.15-23"
+            Spain_151th_Escuadron_C_15_24 = "Spain 151th Escuadron C.15-24"
+            Spain_211th_Escuadron_C_15_76 = "Spain 211th Escuadron C.15-76"
+            Spain_211th_Escuadron_C_15_77 = "Spain 211th Escuadron C.15-77"
+            Spain_462th_Escuadron_C_15_90 = "Spain 462th Escuadron C.15-90"
+            Spain_462th_Escuadron_C_15_79 = "Spain 462th Escuadron C.15-79"
+
+        class Ukraine(Enum):
+            Fictional_Ukraine_Air_Force = "Fictional Ukraine Air Force"
+
+        class UK(Enum):
+            Fictional_UK_Air_Force = "Fictional UK Air Force"
+
+        class Russia(Enum):
+            Fictional_Russia_Air_Force = "Fictional Russia Air Force"
+
+        class Switzerland(Enum):
+            Switzerland = "Switzerland"
+
+        class USAFAggressors(Enum):
+            Fictional_Russia_Air_Force = "Fictional Russia Air Force"
+            VFC_12 = "VFC-12"
+
+        class USA(Enum):
+            Blue_Angels_Jet_Team = "Blue Angels Jet Team"
+            VFA_113 = "VFA-113"
+            VFA_131 = "VFA-131"
+            VFA_34 = "VFA-34"
+            VFA_37 = "VFA-37"
+            VFA_83 = "VFA-83"
+            VFA_87 = "VFA-87"
+            VFC_12 = "VFC-12"
+            VMFA_122 = "VMFA-122"
+            VMFA_122_high_visibility = "VMFA-122 high visibility"
+            VMFA_232 = "VMFA-232"
+            VMFA_232_high_visibility = "VMFA-232 high visibility"
+            VMFA_251 = "VMFA-251"
+            VMFA_312_high_visibility = "VMFA-312 high visibility"
+            VMFA_323 = "VMFA-323"
+            VMFA_323_high_visibility = "VMFA-323 high visibility"
+            VMFA_531 = "VMFA-531"
+            VX_23 = "VX-23"
+            VX_9 = "VX-9"
+
+        class Canada(Enum):
+            Canada_150_Demo_Jet = "Canada 150 Demo Jet"
+            Canada_409th_Squadron = "Canada 409th Squadron"
+            Canada_425th_Squadron = "Canada 425th Squadron"
+            Canada_NORAD_60_Demo_Jet = "Canada NORAD 60 Demo Jet"
+
+    class Pylon1:
+        AIM_9M = (1, Weapons.AIM_9M)
+        CATM_9M = (1, Weapons.CATM_9M)
+        AIM_9L = (1, Weapons.AIM_9L)
+
+    class Pylon2:
+        LAU_115_2_LAU_127_AIM_9M = (2, Weapons.LAU_115_2_LAU_127_AIM_9M)
+        LAU_115_2_LAU_127_CATM_9M = (2, Weapons.LAU_115_2_LAU_127_CATM_9M)
+        LAU_115_2_LAU_127_AIM_9L = (2, Weapons.LAU_115_2_LAU_127_AIM_9L)
+        LAU_115___AIM_7M = (2, Weapons.LAU_115___AIM_7M)
+        LAU_115C_AIM_7F = (2, Weapons.LAU_115C_AIM_7F)
+        BRU_33_LAU_68___7_2_75__rockets_M151__HE_ = (2, Weapons.BRU_33_LAU_68___7_2_75__rockets_M151__HE_)
+        BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_ = (2, Weapons.BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_)
+        BRU_33_LAU_68___7_2_75__rockets_MK5__HE_ = (2, Weapons.BRU_33_LAU_68___7_2_75__rockets_MK5__HE_)
+        BRU_33___2_LAU_68___7_2_75__rockets_MK5__HE_ = (2, Weapons.BRU_33___2_LAU_68___7_2_75__rockets_MK5__HE_)
+        BRU_33_LAU_10___4_ZUNI_MK_71 = (2, Weapons.BRU_33_LAU_10___4_ZUNI_MK_71)
+        BRU_33___2_LAU_10___4_ZUNI_MK_71 = (2, Weapons.BRU_33___2_LAU_10___4_ZUNI_MK_71)
+        BRU_33_LAU_61___19_2_75__rockets_MK151_HE = (2, Weapons.BRU_33_LAU_61___19_2_75__rockets_MK151_HE)
+        BRU_33___2_LAU_61___19_2_75__rockets_MK151_HE = (2, Weapons.BRU_33___2_LAU_61___19_2_75__rockets_MK151_HE)
+        Mk_82 = (2, Weapons.Mk_82)
+        Mk_82_SnakeEye = (2, Weapons.Mk_82_SnakeEye)
+        Mk_83 = (2, Weapons.Mk_83)
+        Mk_84 = (2, Weapons.Mk_84)
+        BRU_33___2_x_Mk_82 = (2, Weapons.BRU_33___2_x_Mk_82)
+        BRU_33___2_x_Mk_82_SnakeEye = (2, Weapons.BRU_33___2_x_Mk_82_SnakeEye)
+        BRU_33___2_x_Mk_20_Rockeye = (2, Weapons.BRU_33___2_x_Mk_20_Rockeye)
+        BRU_33___2_x_Mk_83 = (2, Weapons.BRU_33___2_x_Mk_83)
+        BRU_41A___6_x_BDU_33 = (2, Weapons.BRU_41A___6_x_BDU_33)
+        CBU_99 = (2, Weapons.CBU_99)
+        Mk_20 = (2, Weapons.Mk_20)
+        BRU_33___2_x_CBU_99 = (2, Weapons.BRU_33___2_x_CBU_99)
+
+    class Pylon3:
+        BRU_33_LAU_68___7_2_75__rockets_M151__HE_ = (3, Weapons.BRU_33_LAU_68___7_2_75__rockets_M151__HE_)
+        BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_ = (3, Weapons.BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_)
+        BRU_33_LAU_10___4_ZUNI_MK_71 = (3, Weapons.BRU_33_LAU_10___4_ZUNI_MK_71)
+        BRU_33___2_LAU_10___4_ZUNI_MK_71 = (3, Weapons.BRU_33___2_LAU_10___4_ZUNI_MK_71)
+        BRU_33_LAU_61___19_2_75__rockets_MK151_HE = (3, Weapons.BRU_33_LAU_61___19_2_75__rockets_MK151_HE)
+        BRU_33___2_LAU_61___19_2_75__rockets_MK151_HE = (3, Weapons.BRU_33___2_LAU_61___19_2_75__rockets_MK151_HE)
+        Mk_82 = (3, Weapons.Mk_82)
+        Mk_82_SnakeEye = (3, Weapons.Mk_82_SnakeEye)
+        Mk_83 = (3, Weapons.Mk_83)
+        Mk_84 = (3, Weapons.Mk_84)
+        BRU_33___2_x_Mk_82 = (3, Weapons.BRU_33___2_x_Mk_82)
+        BRU_33___2_x_Mk_82_SnakeEye = (3, Weapons.BRU_33___2_x_Mk_82_SnakeEye)
+        BRU_33___2_x_Mk_20_Rockeye = (3, Weapons.BRU_33___2_x_Mk_20_Rockeye)
+        BRU_33___2_x_Mk_83 = (3, Weapons.BRU_33___2_x_Mk_83)
+        BRU_41A___6_x_BDU_33 = (3, Weapons.BRU_41A___6_x_BDU_33)
+        FPU_8A_Fuel_Tank_330_gallons = (3, Weapons.FPU_8A_Fuel_Tank_330_gallons)
+        CBU_99 = (3, Weapons.CBU_99)
+        BRU_33___2_x_CBU_99 = (3, Weapons.BRU_33___2_x_CBU_99)
+        Mk_20 = (3, Weapons.Mk_20)
+
+    class Pylon4:
+        AIM_7M = (4, Weapons.AIM_7M)
+        AIM_7F = (4, Weapons.AIM_7F)
+
+    class Pylon5:
+        FPU_8A_Fuel_Tank_330_gallons = (5, Weapons.FPU_8A_Fuel_Tank_330_gallons)
+        Mk_82 = (5, Weapons.Mk_82)
+        Mk_82_SnakeEye = (5, Weapons.Mk_82_SnakeEye)
+        Mk_83 = (5, Weapons.Mk_83)
+        Mk_84 = (5, Weapons.Mk_84)
+        BRU_33___2_x_Mk_82 = (5, Weapons.BRU_33___2_x_Mk_82)
+        BRU_33___2_x_Mk_82_SnakeEye = (5, Weapons.BRU_33___2_x_Mk_82_SnakeEye)
+        BRU_33___2_x_Mk_20_Rockeye = (5, Weapons.BRU_33___2_x_Mk_20_Rockeye)
+        BRU_33___2_x_Mk_83 = (5, Weapons.BRU_33___2_x_Mk_83)
+        CBU_99 = (5, Weapons.CBU_99)
+        BRU_33___2_x_CBU_99 = (5, Weapons.BRU_33___2_x_CBU_99)
+        Mk_20 = (5, Weapons.Mk_20)
+
+    class Pylon6:
+        AIM_7M = (6, Weapons.AIM_7M)
+        AIM_7F = (6, Weapons.AIM_7F)
+
+    class Pylon7:
+        BRU_33_LAU_68___7_2_75__rockets_M151__HE_ = (7, Weapons.BRU_33_LAU_68___7_2_75__rockets_M151__HE_)
+        BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_ = (7, Weapons.BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_)
+        BRU_33_LAU_10___4_ZUNI_MK_71 = (7, Weapons.BRU_33_LAU_10___4_ZUNI_MK_71)
+        BRU_33___2_LAU_10___4_ZUNI_MK_71 = (7, Weapons.BRU_33___2_LAU_10___4_ZUNI_MK_71)
+        BRU_33_LAU_61___19_2_75__rockets_MK151_HE = (7, Weapons.BRU_33_LAU_61___19_2_75__rockets_MK151_HE)
+        BRU_33___2_LAU_61___19_2_75__rockets_MK151_HE = (7, Weapons.BRU_33___2_LAU_61___19_2_75__rockets_MK151_HE)
+        Mk_82 = (7, Weapons.Mk_82)
+        Mk_82_SnakeEye = (7, Weapons.Mk_82_SnakeEye)
+        Mk_83 = (7, Weapons.Mk_83)
+        Mk_84 = (7, Weapons.Mk_84)
+        BRU_33___2_x_Mk_82 = (7, Weapons.BRU_33___2_x_Mk_82)
+        BRU_33___2_x_Mk_82_SnakeEye = (7, Weapons.BRU_33___2_x_Mk_82_SnakeEye)
+        BRU_33___2_x_Mk_20_Rockeye = (7, Weapons.BRU_33___2_x_Mk_20_Rockeye)
+        BRU_33___2_x_Mk_83 = (7, Weapons.BRU_33___2_x_Mk_83)
+        BRU_41A___6_x_BDU_33 = (7, Weapons.BRU_41A___6_x_BDU_33)
+        FPU_8A_Fuel_Tank_330_gallons = (7, Weapons.FPU_8A_Fuel_Tank_330_gallons)
+        CBU_99 = (7, Weapons.CBU_99)
+        BRU_33___2_x_CBU_99 = (7, Weapons.BRU_33___2_x_CBU_99)
+        Mk_20 = (7, Weapons.Mk_20)
+
+    class Pylon8:
+        LAU_115_2_LAU_127_AIM_9M = (8, Weapons.LAU_115_2_LAU_127_AIM_9M)
+        LAU_115_2_LAU_127_CATM_9M = (8, Weapons.LAU_115_2_LAU_127_CATM_9M)
+        LAU_115_2_LAU_127_AIM_9L = (8, Weapons.LAU_115_2_LAU_127_AIM_9L)
+        LAU_115___AIM_7M = (8, Weapons.LAU_115___AIM_7M)
+        LAU_115C_AIM_7F = (8, Weapons.LAU_115C_AIM_7F)
+        BRU_33_LAU_68___7_2_75__rockets_M151__HE_ = (8, Weapons.BRU_33_LAU_68___7_2_75__rockets_M151__HE_)
+        BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_ = (8, Weapons.BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_)
+        BRU_33_LAU_68___7_2_75__rockets_MK5__HE_ = (8, Weapons.BRU_33_LAU_68___7_2_75__rockets_MK5__HE_)
+        BRU_33___2_LAU_68___7_2_75__rockets_MK5__HE_ = (8, Weapons.BRU_33___2_LAU_68___7_2_75__rockets_MK5__HE_)
+        BRU_33_LAU_10___4_ZUNI_MK_71 = (8, Weapons.BRU_33_LAU_10___4_ZUNI_MK_71)
+        BRU_33___2_LAU_10___4_ZUNI_MK_71 = (8, Weapons.BRU_33___2_LAU_10___4_ZUNI_MK_71)
+        BRU_33_LAU_61___19_2_75__rockets_MK151_HE = (8, Weapons.BRU_33_LAU_61___19_2_75__rockets_MK151_HE)
+        BRU_33___2_LAU_61___19_2_75__rockets_MK151_HE = (8, Weapons.BRU_33___2_LAU_61___19_2_75__rockets_MK151_HE)
+        Mk_82 = (8, Weapons.Mk_82)
+        Mk_82_SnakeEye = (8, Weapons.Mk_82_SnakeEye)
+        Mk_83 = (8, Weapons.Mk_83)
+        Mk_84 = (8, Weapons.Mk_84)
+        BRU_33___2_x_Mk_82 = (8, Weapons.BRU_33___2_x_Mk_82)
+        BRU_33___2_x_Mk_82_SnakeEye = (8, Weapons.BRU_33___2_x_Mk_82_SnakeEye)
+        BRU_33___2_x_Mk_20_Rockeye = (8, Weapons.BRU_33___2_x_Mk_20_Rockeye)
+        BRU_33___2_x_Mk_83 = (8, Weapons.BRU_33___2_x_Mk_83)
+        BRU_41A___6_x_BDU_33 = (8, Weapons.BRU_41A___6_x_BDU_33)
+        CBU_99 = (8, Weapons.CBU_99)
+        Mk_20 = (8, Weapons.Mk_20)
+        BRU_33___2_x_CBU_99 = (8, Weapons.BRU_33___2_x_CBU_99)
+
+    class Pylon9:
+        AIM_9M = (9, Weapons.AIM_9M)
+        CATM_9M = (9, Weapons.CATM_9M)
+        AIM_9L = (9, Weapons.AIM_9L)
+
+    pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9}
+
+    tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.PinpointStrike, task.CAS, task.GroundAttack, task.RunwayAttack, task.SEAD, task.AFAC, task.AntishipStrike, task.Reconnaissance]
     task_default = task.CAP
 
 
@@ -12119,7 +12343,6 @@ class Hawk(PlaneType):
             XX175___FRADU_Royal_Navy = "XX175 - FRADU Royal Navy"
             XX316___FRADU_Royal_Navy = "XX316 - FRADU Royal Navy"
             XX100___TFC = "XX100 - TFC"
-            _1018___United_Arab_Emirates = "1018 - United Arab Emirates"
             USAF_Aggressor_269 = "USAF Aggressor 269"
             XX228___VEAO = "XX228 - VEAO"
             XX159___2004_RAF_Hawk_Display = "XX159 - 2004 RAF Hawk Display"
@@ -12316,6 +12539,7 @@ class L_39C(PlaneType):
         "SoloFlight": False,
         "NetCrewControlPriority": 1,
         "DismountIFRHood": False,
+        "NS430allow": True,
     }
 
     class Properties:
@@ -12334,6 +12558,9 @@ class L_39C(PlaneType):
 
         class DismountIFRHood:
             id = "DismountIFRHood"
+
+        class NS430allow:
+            id = "NS430allow"
 
     class Liveries:
 
@@ -12449,6 +12676,7 @@ class L_39ZA(PlaneType):
         "SoloFlight": False,
         "NetCrewControlPriority": 1,
         "DismountIFRHood": False,
+        "NS430allow": True,
     }
 
     class Properties:
@@ -12467,6 +12695,9 @@ class L_39ZA(PlaneType):
 
         class DismountIFRHood:
             id = "DismountIFRHood"
+
+        class NS430allow:
+            id = "NS430allow"
 
     class Liveries:
 
@@ -13238,6 +13469,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13245,10 +13477,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13261,6 +13500,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13268,10 +13508,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13284,6 +13531,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13291,10 +13539,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13307,6 +13562,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13314,10 +13570,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13330,6 +13593,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13337,10 +13601,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13353,6 +13624,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13360,10 +13632,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13376,6 +13655,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13383,10 +13663,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13399,6 +13686,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13406,10 +13694,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13422,6 +13717,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13429,10 +13725,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13445,6 +13748,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13452,10 +13756,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13468,6 +13779,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13475,10 +13787,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13491,6 +13810,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13498,10 +13818,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13514,6 +13841,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13521,10 +13849,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13537,6 +13872,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13544,10 +13880,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13560,6 +13903,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13567,10 +13911,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13583,6 +13934,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13590,10 +13942,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13606,6 +13965,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13613,10 +13973,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13629,6 +13996,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13636,10 +14004,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13652,6 +14027,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13659,10 +14035,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13675,6 +14058,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13682,10 +14066,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13698,6 +14089,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13705,10 +14097,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13721,6 +14120,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13728,10 +14128,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13744,6 +14151,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13751,10 +14159,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13767,6 +14182,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13774,10 +14190,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13790,6 +14213,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13797,10 +14221,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13813,6 +14244,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13820,10 +14252,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13836,6 +14275,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13843,10 +14283,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13859,6 +14306,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13866,10 +14314,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13882,6 +14337,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13889,10 +14345,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13905,6 +14368,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13912,10 +14376,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13928,6 +14399,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13935,10 +14407,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13951,6 +14430,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13958,10 +14438,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13974,6 +14461,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -13981,10 +14469,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -13997,6 +14492,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -14004,10 +14500,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -14020,6 +14523,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -14027,10 +14531,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -14043,6 +14554,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -14050,10 +14562,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -14066,6 +14585,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -14073,10 +14593,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -14089,6 +14616,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -14096,10 +14624,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -14112,6 +14647,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -14119,10 +14655,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -14135,6 +14678,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -14142,10 +14686,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -14158,6 +14709,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -14165,10 +14717,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -14181,6 +14740,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -14188,10 +14748,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -14204,6 +14771,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -14211,10 +14779,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -14227,6 +14802,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -14234,10 +14810,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -14250,6 +14833,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -14257,10 +14841,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -14273,6 +14864,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -14280,10 +14872,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -14296,6 +14895,7 @@ class MiG_21Bis(PlaneType):
             Croatia___1992 = "Croatia - 1992"
             Croatia___2014 = "Croatia - 2014"
             Cuba = "Cuba"
+            DPRK___2016___42 = "DPRK - 2016 - 42"
             Draken_International = "Draken International"
             Germany_East = "Germany East"
             Egypt_Grey = "Egypt Grey"
@@ -14303,10 +14903,17 @@ class MiG_21Bis(PlaneType):
             Finland___HavLLv_31 = "Finland - HavLLv 31"
             HunAF_Griff_Sqn___47th_AB = "HunAF Griff Sqn. (47th AB)"
             India___15_Sqn = "India - 15 Sqn"
+            IRIAF___51st_SQN = "IRIAF - 51st SQN"
+            IRIAF___Standard = "IRIAF - Standard"
+            Iraq_AF___17th_SQN__1 = "Iraq AF - 17th SQN (1)"
+            Iraq_AF___17th_SQN__2 = "Iraq AF - 17th SQN (2)"
             Northeria___32_FS = "Northeria - 32 FS"
+            China_PLAAF_White = "China PLAAF White"
             Poland___1_DLMW = "Poland - 1 DLMW"
             Poland___Metal = "Poland - Metal"
+            Slovak_AF = "Slovak AF"
             Southeria = "Southeria"
+            Syria_AF__1 = "Syria AF (1)"
             VVS_Grey = "VVS Grey"
             VVS_Camo = "VVS Camo"
             VVS_Demonstrator = "VVS Demonstrator"
@@ -14672,30 +15279,32 @@ plane_map = {
     "A-50": A_50,
     "E-3A": E_3A,
     "IL-78M": IL_78M,
-    "E-2C": E_2D,
+    "E-2C": E_2C,
     "IL-76MD": IL_76MD,
     "F-16C bl.50": F_16C_bl_50,
     "F-16C bl.52d": F_16C_bl_52d,
     "F-16A": F_16A,
     "F-16A MLU": F_16A_MLU,
-    "RQ-1A Predator": MQ_1A_Predator,
+    "RQ-1A Predator": RQ_1A_Predator,
     "Yak-40": Yak_40,
     "A-10C": A_10C,
     "KC-135": KC_135,
     "P-51D": P_51D,
-    "FW-190D9": Fw_190_D_9,
-    "Bf-109K-4": Bf_109_K_4,
-    "SpitfireLFMkIX": Spitfire_LF_Mk__IX,
+    "FW-190D9": FW_190D9,
+    "Bf-109K-4": Bf_109K_4,
+    "SpitfireLFMkIX": SpitfireLFMkIX,
     "AJS37": AJS37,
-    "AV8BNA": AV_8B_N_A,
-    "KC130": KC_130,
+    "AV8BNA": AV8BNA,
+    "KC130": KC130,
+    "KC135BDA": KC135BDA,
     "C-101EB": C_101EB,
     "C-101CC": C_101CC,
     "J-11A": J_11A,
     "KJ-2000": KJ_2000,
     "F-5E": F_5E,
     "F-5E-3": F_5E_3,
-    "F-86F Sabre": F_86F,
+    "F-86F Sabre": F_86F_Sabre,
+    "FA-18C_hornet": FA_18C_hornet,
     "Hawk": Hawk,
     "L-39C": L_39C,
     "L-39ZA": L_39ZA,
