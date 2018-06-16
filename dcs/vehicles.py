@@ -54,6 +54,13 @@ class Fortification:
         threat_range = 800
         air_weapon_dist = 800
 
+    class Fire_control_bunker(unittype.VehicleType):
+        id = "fire_control"
+        name = "Fire control bunker"
+        detection_range = 0
+        threat_range = 1100
+        air_weapon_dist = 1100
+
 
 class Infantry:
 
@@ -130,6 +137,13 @@ class Infantry:
     class Infantry_Mauser_98(unittype.VehicleType):
         id = "soldier_mauser98"
         name = "Infantry Mauser 98"
+        detection_range = 0
+        threat_range = 1100
+        air_weapon_dist = 1100
+
+    class Infantry_SMLE_No_4_Mk_1(unittype.VehicleType):
+        id = "soldier_wwii_br_01"
+        name = "Infantry SMLE No.4 Mk-1"
         detection_range = 0
         threat_range = 1100
         air_weapon_dist = 1100
@@ -382,6 +396,27 @@ class Unarmed:
     class Blitz_3_6_6700A(unittype.VehicleType):
         id = "Blitz_36-6700A"
         name = "Blitz 3.6-6700A"
+        detection_range = 0
+        threat_range = 0
+        air_weapon_dist = 0
+
+    class Sd_Kfz_2(unittype.VehicleType):
+        id = "Sd_Kfz_2"
+        name = "Sd.Kfz.2"
+        detection_range = 0
+        threat_range = None
+        air_weapon_dist = 0
+
+    class Sd_Kfz_7(unittype.VehicleType):
+        id = "Sd_Kfz_7"
+        name = "Sd.Kfz.7"
+        detection_range = 0
+        threat_range = None
+        air_weapon_dist = 0
+
+    class Horch_901_typ_40(unittype.VehicleType):
+        id = "Horch_901_typ_40_kfz_21"
+        name = "Horch 901 typ 40"
         detection_range = 0
         threat_range = 0
         air_weapon_dist = 0
@@ -691,6 +726,27 @@ class Armor:
         threat_range = 3000
         air_weapon_dist = 0
 
+    class StuG_IV(unittype.VehicleType):
+        id = "Stug_IV"
+        name = "StuG IV"
+        detection_range = 0
+        threat_range = 3000
+        air_weapon_dist = 0
+
+    class IFV_Sd_Kfz_234_2_Puma(unittype.VehicleType):
+        id = "Sd_Kfz_234_2_Puma"
+        name = "IFV Sd.Kfz.234/2 Puma"
+        detection_range = 0
+        threat_range = 2000
+        air_weapon_dist = 0
+
+    class APC_Sd_Kfz_251(unittype.VehicleType):
+        id = "Sd_Kfz_251"
+        name = "APC Sd.Kfz.251"
+        detection_range = 0
+        threat_range = 1100
+        air_weapon_dist = 0
+
     class CT_Cromwell_IV(unittype.VehicleType):
         id = "Cromwell_IV"
         name = "CT Cromwell IV"
@@ -715,6 +771,13 @@ class Armor:
     class M30_Cargo_Carrier(unittype.VehicleType):
         id = "M30_CC"
         name = "M30 Cargo Carrier"
+        detection_range = 0
+        threat_range = 1200
+        air_weapon_dist = 0
+
+    class APC_M2A1(unittype.VehicleType):
+        id = "M2A1_halftrack"
+        name = "APC M2A1"
         detection_range = 0
         threat_range = 1200
         air_weapon_dist = 0
@@ -1457,13 +1520,19 @@ vehicle_map = {
     "KrAZ6322": Unarmed.Transport_KrAZ_6322,
     "Kubelwagen_82": Unarmed.Kübelwagen_82,
     "Blitz_36-6700A": Unarmed.Blitz_3_6_6700A,
+    "Sd_Kfz_2": Unarmed.Sd_Kfz_2,
+    "Sd_Kfz_7": Unarmed.Sd_Kfz_7,
+    "Horch_901_typ_40_kfz_21": Unarmed.Horch_901_typ_40,
     "Tiger_I": Armor.HT_Pz_Kpfw_VI_Tiger_I,
     "Tiger_II_H": Armor.HT_Pz_Kpfw_VI_Ausf__B__Tiger_II,
     "Pz_V_Panther_G": Armor.MT_Pz_Kpfw_V_Panther_Ausf_G,
     "Pz_IV_H": Armor.MT_Pz_Kpfw_IV_Ausf_H,
     "Jagdpanther_G1": Armor.Jagdpanther_G1,
     "JagdPz_IV": Armor.Jagdpanzer_IV,
+    "Stug_IV": Armor.StuG_IV,
     "SturmPzIV": Artillery.Sturmpanzer_IV_Brummbär,
+    "Sd_Kfz_234_2_Puma": Armor.IFV_Sd_Kfz_234_2_Puma,
+    "Sd_Kfz_251": Armor.APC_Sd_Kfz_251,
     "flak18": AirDefence.AAA_Flak_18,
     "flak30": AirDefence.AAA_Flak_30,
     "flak36": AirDefence.AAA_Flak_36,
@@ -1472,15 +1541,18 @@ vehicle_map = {
     "KDO_Mod40": AirDefence.AAA_Kdo_G_40,
     "soldier_mauser98": Infantry.Infantry_Mauser_98,
     "SK_C_28_naval_gun": Artillery.SK_C_28_15cm_naval_gun,
+    "fire_control": Fortification.Fire_control_bunker,
     "Bedford_MWD": Unarmed.Bedford_MWD,
     "Cromwell_IV": Armor.CT_Cromwell_IV,
     "M4A4_Sherman_FF": Armor.MT_M4A4_Sherman_Firefly,
     "bofors40": AirDefence.AAA_Bofors_40mm,
+    "soldier_wwii_br_01": Infantry.Infantry_SMLE_No_4_Mk_1,
     "CCKW_353": Unarmed.CCKW_353,
     "Willys_MB": Unarmed.Willys_MB,
     "M4_Sherman": Armor.MT_M4_Sherman,
     "M12_GMC": Artillery.M12_GMC,
     "M30_CC": Armor.M30_Cargo_Carrier,
+    "M2A1_halftrack": Armor.APC_M2A1,
     "soldier_wwii_us": Infantry.Infantry_M1_Garand,
     "DR_50Ton_Flat_Wagon": Carriage.DR_50_ton_flat_wagon,
     "DRG_Class_86": Locomotive.DRG_Class_86,

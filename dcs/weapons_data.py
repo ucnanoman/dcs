@@ -276,10 +276,13 @@ class Weapons:
     LAU3_WP1B = {"clsid": "LAU3_WP1B", "name": "LAU-3 - 19 2.75' rockets WTU-1/B WP", "weight": 234}
     LAU3_WP61 = {"clsid": "LAU3_WP61", "name": "LAU-3 - 19 2.75' rockets MK61 WP", "weight": 234}
     LAU_105 = {"clsid": "LAU-105", "name": "LAU-105", "weight": 18}
+    LAU_105_1_AIM_9L_L = {"clsid": "LAU-105_1*AIM-9L_L", "name": "LAU-105 AIM-9L", "weight": 115.5}
+    LAU_105_1_AIM_9L_R = {"clsid": "LAU-105_1*AIM-9L_R", "name": "LAU-105 AIM-9L", "weight": 115.5}
     LAU_105_1_AIM_9M_L = {"clsid": "LAU-105_1*AIM-9M_L", "name": "LAU-105 AIM-9M", "weight": 116.64}
     LAU_105_1_AIM_9M_R = {"clsid": "LAU-105_1*AIM-9M_R", "name": "LAU-105 AIM-9M", "weight": 116.64}
     LAU_105_1_CATM_9M_L = {"clsid": "LAU-105_1*CATM-9M_L", "name": "LAU-105 CAP-9M", "weight": 115.5}
     LAU_105_1_CATM_9M_R = {"clsid": "LAU-105_1*CATM-9M_R", "name": "LAU-105 CAP-9M", "weight": 115.5}
+    LAU_105_2_AIM_9L = {"clsid": "LAU-105_2*AIM-9L", "name": "LAU-105 - 2 AIM-9L", "weight": 115.5}
     LAU_105_2_AIM_9P5 = {"clsid": "LAU-105_2*AIM-9P5", "name": "LAU-105 - 2 AIM-9P5", "weight": 115.5}
     LAU_105_2_CATM_9M = {"clsid": "LAU-105_2*CATM-9M", "name": "LAU-105 - 2 CAP-9M", "weight": 115.5}
     LAU_105_AIS_ASQ_T50_L = {"clsid": "LAU-105_AIS_ASQ_T50_L", "name": "LAU-105 AN/ASQ-T50 TCTS Pod", "weight": 92.6}
@@ -351,6 +354,7 @@ class Weapons:
     LAU_7_AIM_9X = {"clsid": "{AIM-9X-ON-ADAPTER}", "name": "LAU-7 AIM-9X", "weight": 99.46}
     LAU_7_AN_ASQ_T50_TCTS_Pod = {"clsid": "{LAU-7_AIS_ASQ_T50}", "name": "LAU-7 AN/ASQ-T50 TCTS Pod", "weight": 92.6}
     LAU_7_GAR_8 = {"clsid": "{GAR-8}", "name": "LAU-7 GAR-8", "weight": 100.5}
+    LAU_7___2_AIM_9L = {"clsid": "{F4-2-AIM9L}", "name": "LAU-7 - 2 AIM-9L", "weight": 115.5}
     LAU_7___2_AIM_9M = {"clsid": "{9DDF5297-94B9-42FC-A45E-6E316121CD85}", "name": "LAU-7 - 2 AIM-9M", "weight": 116.64}
     LAU_7___2_AIM_9P = {"clsid": "{773675AB-7C29-422f-AFD8-32844A7B7F17}", "name": "LAU-7 - 2 AIM-9P", "weight": 116.18}
     LAU_7___2_AIM_9P5 = {"clsid": "{F4-2-AIM9P5}", "name": "LAU-7 - 2 AIM-9P5", "weight": 115.5}
@@ -956,10 +960,13 @@ weapon_ids = {
     "LAU3_WP1B": Weapons.LAU3_WP1B,
     "LAU3_WP61": Weapons.LAU3_WP61,
     "LAU-105": Weapons.LAU_105,
+    "LAU-105_1*AIM-9L_L": Weapons.LAU_105_1_AIM_9L_L,
+    "LAU-105_1*AIM-9L_R": Weapons.LAU_105_1_AIM_9L_R,
     "LAU-105_1*AIM-9M_L": Weapons.LAU_105_1_AIM_9M_L,
     "LAU-105_1*AIM-9M_R": Weapons.LAU_105_1_AIM_9M_R,
     "LAU-105_1*CATM-9M_L": Weapons.LAU_105_1_CATM_9M_L,
     "LAU-105_1*CATM-9M_R": Weapons.LAU_105_1_CATM_9M_R,
+    "LAU-105_2*AIM-9L": Weapons.LAU_105_2_AIM_9L,
     "LAU-105_2*AIM-9P5": Weapons.LAU_105_2_AIM_9P5,
     "LAU-105_2*CATM-9M": Weapons.LAU_105_2_CATM_9M,
     "LAU-105_AIS_ASQ_T50_L": Weapons.LAU_105_AIS_ASQ_T50_L,
@@ -1031,6 +1038,7 @@ weapon_ids = {
     "{AIM-9X-ON-ADAPTER}": Weapons.LAU_7_AIM_9X,
     "{LAU-7_AIS_ASQ_T50}": Weapons.LAU_7_AN_ASQ_T50_TCTS_Pod,
     "{GAR-8}": Weapons.LAU_7_GAR_8,
+    "{F4-2-AIM9L}": Weapons.LAU_7___2_AIM_9L,
     "{9DDF5297-94B9-42FC-A45E-6E316121CD85}": Weapons.LAU_7___2_AIM_9M,
     "{773675AB-7C29-422f-AFD8-32844A7B7F17}": Weapons.LAU_7___2_AIM_9P,
     "{F4-2-AIM9P5}": Weapons.LAU_7___2_AIM_9P5,

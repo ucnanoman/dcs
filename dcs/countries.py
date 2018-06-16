@@ -572,6 +572,7 @@ class USA(Country):
             MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
             MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
             M30_Cargo_Carrier = vehicles.Armor.M30_Cargo_Carrier
+            APC_M2A1 = vehicles.Armor.APC_M2A1
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
@@ -738,6 +739,7 @@ class USA(Country):
         LHA_1_Tarawa = ships.LHA_1_Tarawa
         LST_Mk_II = ships.LST_Mk_II
         LS_Samuel_Chase = ships.LS_Samuel_Chase
+        LCVP__Higgins_boat = ships.LCVP__Higgins_boat
 
     class CallsignAWACS:
         Overlord = "Overlord"
@@ -1016,6 +1018,9 @@ class UK(Country):
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
 
+        class Infantry:
+            Infantry_SMLE_No_4_Mk_1 = vehicles.Infantry.Infantry_SMLE_No_4_Mk_1
+
         class Locomotive:
             DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
 
@@ -1034,6 +1039,7 @@ class UK(Country):
             MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
             MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
             M30_Cargo_Carrier = vehicles.Armor.M30_Cargo_Carrier
+            APC_M2A1 = vehicles.Armor.APC_M2A1
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
@@ -1132,6 +1138,7 @@ class UK(Country):
         Armed_speedboat = ships.Armed_speedboat
         LST_Mk_II = ships.LST_Mk_II
         LS_Samuel_Chase = ships.LS_Samuel_Chase
+        LCVP__Higgins_boat = ships.LCVP__Higgins_boat
 
     class CallsignAWACS:
         Solex = "Solex"
@@ -1178,6 +1185,7 @@ class France(Country):
             MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
             MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
             M30_Cargo_Carrier = vehicles.Armor.M30_Cargo_Carrier
+            APC_M2A1 = vehicles.Armor.APC_M2A1
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
@@ -1271,6 +1279,7 @@ class France(Country):
         Armed_speedboat = ships.Armed_speedboat
         LST_Mk_II = ships.LST_Mk_II
         LS_Samuel_Chase = ships.LS_Samuel_Chase
+        LCVP__Higgins_boat = ships.LCVP__Higgins_boat
 
     class CallsignAWACS:
         Cyrano = "Cyrano"
@@ -1301,6 +1310,7 @@ class Germany(Country):
             Road_outpost = vehicles.Fortification.Road_outpost
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
+            Fire_control_bunker = vehicles.Fortification.Fire_control_bunker
 
         class Infantry:
             Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
@@ -1315,6 +1325,9 @@ class Germany(Country):
             HEMTT_TFFT = vehicles.Unarmed.HEMTT_TFFT
             Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
             Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+            Sd_Kfz_2 = vehicles.Unarmed.Sd_Kfz_2
+            Sd_Kfz_7 = vehicles.Unarmed.Sd_Kfz_7
+            Horch_901_typ_40 = vehicles.Unarmed.Horch_901_typ_40
 
         class Armor:
             APC_M113 = vehicles.Armor.APC_M113
@@ -1328,6 +1341,9 @@ class Germany(Country):
             MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
             Jagdpanther_G1 = vehicles.Armor.Jagdpanther_G1
             Jagdpanzer_IV = vehicles.Armor.Jagdpanzer_IV
+            StuG_IV = vehicles.Armor.StuG_IV
+            IFV_Sd_Kfz_234_2_Puma = vehicles.Armor.IFV_Sd_Kfz_234_2_Puma
+            APC_Sd_Kfz_251 = vehicles.Armor.APC_Sd_Kfz_251
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
@@ -1458,6 +1474,7 @@ class USAFAggressors(Country):
             Road_outpost = vehicles.Fortification.Road_outpost
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
+            Fire_control_bunker = vehicles.Fortification.Fire_control_bunker
 
         class Infantry:
             Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
@@ -1471,6 +1488,7 @@ class USAFAggressors(Country):
             Infantry_M4 = vehicles.Infantry.Infantry_M4
             Soldier_M249 = vehicles.Infantry.Soldier_M249
             Infantry_M1_Garand = vehicles.Infantry.Infantry_M1_Garand
+            Infantry_SMLE_No_4_Mk_1 = vehicles.Infantry.Infantry_SMLE_No_4_Mk_1
 
         class Locomotive:
             DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
@@ -1478,6 +1496,9 @@ class USAFAggressors(Country):
         class Unarmed:
             Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
             Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+            Sd_Kfz_2 = vehicles.Unarmed.Sd_Kfz_2
+            Sd_Kfz_7 = vehicles.Unarmed.Sd_Kfz_7
+            Horch_901_typ_40 = vehicles.Unarmed.Horch_901_typ_40
             Bedford_MWD = vehicles.Unarmed.Bedford_MWD
             CCKW_353 = vehicles.Unarmed.CCKW_353
             Willys_MB = vehicles.Unarmed.Willys_MB
@@ -1519,10 +1540,14 @@ class USAFAggressors(Country):
             MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
             Jagdpanther_G1 = vehicles.Armor.Jagdpanther_G1
             Jagdpanzer_IV = vehicles.Armor.Jagdpanzer_IV
+            StuG_IV = vehicles.Armor.StuG_IV
+            IFV_Sd_Kfz_234_2_Puma = vehicles.Armor.IFV_Sd_Kfz_234_2_Puma
+            APC_Sd_Kfz_251 = vehicles.Armor.APC_Sd_Kfz_251
             CT_Cromwell_IV = vehicles.Armor.CT_Cromwell_IV
             MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
             MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
             M30_Cargo_Carrier = vehicles.Armor.M30_Cargo_Carrier
+            APC_M2A1 = vehicles.Armor.APC_M2A1
             APC_BTR_80 = vehicles.Armor.APC_BTR_80
             IFV_BMD_1 = vehicles.Armor.IFV_BMD_1
             IFV_BMP_1 = vehicles.Armor.IFV_BMP_1
@@ -1851,6 +1876,7 @@ class USAFAggressors(Country):
         Armed_speedboat = ships.Armed_speedboat
         LST_Mk_II = ships.LST_Mk_II
         LS_Samuel_Chase = ships.LS_Samuel_Chase
+        LCVP__Higgins_boat = ships.LCVP__Higgins_boat
         CV_1143_5_Admiral_Kuznetsov = ships.CV_1143_5_Admiral_Kuznetsov
         CG_1164_Moskva = ships.CG_1164_Moskva
         CGN_1144_2_Pyotr_Velikiy = ships.CGN_1144_2_Pyotr_Velikiy
@@ -1913,6 +1939,7 @@ class Canada(Country):
             MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
             MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
             M30_Cargo_Carrier = vehicles.Armor.M30_Cargo_Carrier
+            APC_M2A1 = vehicles.Armor.APC_M2A1
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
@@ -2000,6 +2027,7 @@ class Canada(Country):
         Armed_speedboat = ships.Armed_speedboat
         LST_Mk_II = ships.LST_Mk_II
         LS_Samuel_Chase = ships.LS_Samuel_Chase
+        LCVP__Higgins_boat = ships.LCVP__Higgins_boat
 
     def __init__(self):
         super(Canada, self).__init__(Canada.id, Canada.name)
@@ -2162,6 +2190,7 @@ class TheNetherlands(Country):
             MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
             MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
             M30_Cargo_Carrier = vehicles.Armor.M30_Cargo_Carrier
+            APC_M2A1 = vehicles.Armor.APC_M2A1
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
@@ -2266,6 +2295,7 @@ class TheNetherlands(Country):
         Armed_speedboat = ships.Armed_speedboat
         LST_Mk_II = ships.LST_Mk_II
         LS_Samuel_Chase = ships.LS_Samuel_Chase
+        LCVP__Higgins_boat = ships.LCVP__Higgins_boat
 
     def __init__(self):
         super(TheNetherlands, self).__init__(TheNetherlands.id, TheNetherlands.name)
@@ -2303,6 +2333,7 @@ class Belgium(Country):
             MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
             MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
             M30_Cargo_Carrier = vehicles.Armor.M30_Cargo_Carrier
+            APC_M2A1 = vehicles.Armor.APC_M2A1
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
@@ -2395,6 +2426,7 @@ class Belgium(Country):
         Armed_speedboat = ships.Armed_speedboat
         LST_Mk_II = ships.LST_Mk_II
         LS_Samuel_Chase = ships.LS_Samuel_Chase
+        LCVP__Higgins_boat = ships.LCVP__Higgins_boat
 
     def __init__(self):
         super(Belgium, self).__init__(Belgium.id, Belgium.name)
@@ -3579,6 +3611,7 @@ class Australia(Country):
             MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
             MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
             M30_Cargo_Carrier = vehicles.Armor.M30_Cargo_Carrier
+            APC_M2A1 = vehicles.Armor.APC_M2A1
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
@@ -3665,6 +3698,7 @@ class Australia(Country):
         Armed_speedboat = ships.Armed_speedboat
         LST_Mk_II = ships.LST_Mk_II
         LS_Samuel_Chase = ships.LS_Samuel_Chase
+        LCVP__Higgins_boat = ships.LCVP__Higgins_boat
 
     def __init__(self):
         super(Australia, self).__init__(Australia.id, Australia.name)
@@ -4065,6 +4099,7 @@ class Bulgaria(Country):
             Road_outpost = vehicles.Fortification.Road_outpost
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
+            Fire_control_bunker = vehicles.Fortification.Fire_control_bunker
 
         class Infantry:
             Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
@@ -4075,6 +4110,9 @@ class Bulgaria(Country):
         class Unarmed:
             Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
             Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+            Sd_Kfz_2 = vehicles.Unarmed.Sd_Kfz_2
+            Sd_Kfz_7 = vehicles.Unarmed.Sd_Kfz_7
+            Horch_901_typ_40 = vehicles.Unarmed.Horch_901_typ_40
 
         class Armor:
             HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
@@ -4083,6 +4121,9 @@ class Bulgaria(Country):
             MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
             Jagdpanther_G1 = vehicles.Armor.Jagdpanther_G1
             Jagdpanzer_IV = vehicles.Armor.Jagdpanzer_IV
+            StuG_IV = vehicles.Armor.StuG_IV
+            IFV_Sd_Kfz_234_2_Puma = vehicles.Armor.IFV_Sd_Kfz_234_2_Puma
+            APC_Sd_Kfz_251 = vehicles.Armor.APC_Sd_Kfz_251
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
@@ -4194,6 +4235,7 @@ class CzechRepublic(Country):
             MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
             MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
             M30_Cargo_Carrier = vehicles.Armor.M30_Cargo_Carrier
+            APC_M2A1 = vehicles.Armor.APC_M2A1
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
@@ -4269,6 +4311,7 @@ class CzechRepublic(Country):
         Armed_speedboat = ships.Armed_speedboat
         LST_Mk_II = ships.LST_Mk_II
         LS_Samuel_Chase = ships.LS_Samuel_Chase
+        LCVP__Higgins_boat = ships.LCVP__Higgins_boat
 
     def __init__(self):
         super(CzechRepublic, self).__init__(CzechRepublic.id, CzechRepublic.name)
@@ -4578,6 +4621,7 @@ class Finland(Country):
             Road_outpost = vehicles.Fortification.Road_outpost
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
+            Fire_control_bunker = vehicles.Fortification.Fire_control_bunker
 
         class Infantry:
             Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
@@ -4588,6 +4632,9 @@ class Finland(Country):
         class Unarmed:
             Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
             Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+            Sd_Kfz_2 = vehicles.Unarmed.Sd_Kfz_2
+            Sd_Kfz_7 = vehicles.Unarmed.Sd_Kfz_7
+            Horch_901_typ_40 = vehicles.Unarmed.Horch_901_typ_40
 
         class Armor:
             HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
@@ -4596,6 +4643,9 @@ class Finland(Country):
             MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
             Jagdpanther_G1 = vehicles.Armor.Jagdpanther_G1
             Jagdpanzer_IV = vehicles.Armor.Jagdpanzer_IV
+            StuG_IV = vehicles.Armor.StuG_IV
+            IFV_Sd_Kfz_234_2_Puma = vehicles.Armor.IFV_Sd_Kfz_234_2_Puma
+            APC_Sd_Kfz_251 = vehicles.Armor.APC_Sd_Kfz_251
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
@@ -4867,6 +4917,7 @@ class Hungary(Country):
             Road_outpost = vehicles.Fortification.Road_outpost
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
+            Fire_control_bunker = vehicles.Fortification.Fire_control_bunker
 
         class Infantry:
             Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
@@ -4877,6 +4928,9 @@ class Hungary(Country):
         class Unarmed:
             Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
             Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+            Sd_Kfz_2 = vehicles.Unarmed.Sd_Kfz_2
+            Sd_Kfz_7 = vehicles.Unarmed.Sd_Kfz_7
+            Horch_901_typ_40 = vehicles.Unarmed.Horch_901_typ_40
 
         class Armor:
             HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
@@ -4885,6 +4939,9 @@ class Hungary(Country):
             MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
             Jagdpanther_G1 = vehicles.Armor.Jagdpanther_G1
             Jagdpanzer_IV = vehicles.Armor.Jagdpanzer_IV
+            StuG_IV = vehicles.Armor.StuG_IV
+            IFV_Sd_Kfz_234_2_Puma = vehicles.Armor.IFV_Sd_Kfz_234_2_Puma
+            APC_Sd_Kfz_251 = vehicles.Armor.APC_Sd_Kfz_251
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
@@ -5302,6 +5359,7 @@ class Japan(Country):
             Road_outpost = vehicles.Fortification.Road_outpost
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
+            Fire_control_bunker = vehicles.Fortification.Fire_control_bunker
 
         class Infantry:
             Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
@@ -5312,6 +5370,9 @@ class Japan(Country):
         class Unarmed:
             Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
             Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+            Sd_Kfz_2 = vehicles.Unarmed.Sd_Kfz_2
+            Sd_Kfz_7 = vehicles.Unarmed.Sd_Kfz_7
+            Horch_901_typ_40 = vehicles.Unarmed.Horch_901_typ_40
 
         class Armor:
             HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
@@ -5320,6 +5381,9 @@ class Japan(Country):
             MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
             Jagdpanther_G1 = vehicles.Armor.Jagdpanther_G1
             Jagdpanzer_IV = vehicles.Armor.Jagdpanzer_IV
+            StuG_IV = vehicles.Armor.StuG_IV
+            IFV_Sd_Kfz_234_2_Puma = vehicles.Armor.IFV_Sd_Kfz_234_2_Puma
+            APC_Sd_Kfz_251 = vehicles.Armor.APC_Sd_Kfz_251
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
@@ -5802,6 +5866,7 @@ class Poland(Country):
             MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
             MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
             M30_Cargo_Carrier = vehicles.Armor.M30_Cargo_Carrier
+            APC_M2A1 = vehicles.Armor.APC_M2A1
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
@@ -5881,6 +5946,7 @@ class Poland(Country):
         Armed_speedboat = ships.Armed_speedboat
         LST_Mk_II = ships.LST_Mk_II
         LS_Samuel_Chase = ships.LS_Samuel_Chase
+        LCVP__Higgins_boat = ships.LCVP__Higgins_boat
 
     def __init__(self):
         super(Poland, self).__init__(Poland.id, Poland.name)
@@ -5900,6 +5966,7 @@ class Romania(Country):
             Road_outpost = vehicles.Fortification.Road_outpost
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
+            Fire_control_bunker = vehicles.Fortification.Fire_control_bunker
 
         class Infantry:
             Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
@@ -5910,6 +5977,9 @@ class Romania(Country):
         class Unarmed:
             Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
             Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+            Sd_Kfz_2 = vehicles.Unarmed.Sd_Kfz_2
+            Sd_Kfz_7 = vehicles.Unarmed.Sd_Kfz_7
+            Horch_901_typ_40 = vehicles.Unarmed.Horch_901_typ_40
 
         class Armor:
             HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
@@ -5918,6 +5988,9 @@ class Romania(Country):
             MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
             Jagdpanther_G1 = vehicles.Armor.Jagdpanther_G1
             Jagdpanzer_IV = vehicles.Armor.Jagdpanzer_IV
+            StuG_IV = vehicles.Armor.StuG_IV
+            IFV_Sd_Kfz_234_2_Puma = vehicles.Armor.IFV_Sd_Kfz_234_2_Puma
+            APC_Sd_Kfz_251 = vehicles.Armor.APC_Sd_Kfz_251
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
@@ -8173,6 +8246,7 @@ class ThirdReich(Country):
             Road_outpost = vehicles.Fortification.Road_outpost
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
+            Fire_control_bunker = vehicles.Fortification.Fire_control_bunker
 
         class Infantry:
             Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
@@ -8183,6 +8257,9 @@ class ThirdReich(Country):
         class Unarmed:
             Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
             Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+            Sd_Kfz_2 = vehicles.Unarmed.Sd_Kfz_2
+            Sd_Kfz_7 = vehicles.Unarmed.Sd_Kfz_7
+            Horch_901_typ_40 = vehicles.Unarmed.Horch_901_typ_40
 
         class Armor:
             HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
@@ -8191,6 +8268,9 @@ class ThirdReich(Country):
             MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
             Jagdpanther_G1 = vehicles.Armor.Jagdpanther_G1
             Jagdpanzer_IV = vehicles.Armor.Jagdpanzer_IV
+            StuG_IV = vehicles.Armor.StuG_IV
+            IFV_Sd_Kfz_234_2_Puma = vehicles.Armor.IFV_Sd_Kfz_234_2_Puma
+            APC_Sd_Kfz_251 = vehicles.Armor.APC_Sd_Kfz_251
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
@@ -8302,6 +8382,7 @@ class Yugoslavia(Country):
             MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
             MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
             M30_Cargo_Carrier = vehicles.Armor.M30_Cargo_Carrier
+            APC_M2A1 = vehicles.Armor.APC_M2A1
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
@@ -8374,6 +8455,7 @@ class Yugoslavia(Country):
         Armed_speedboat = ships.Armed_speedboat
         LST_Mk_II = ships.LST_Mk_II
         LS_Samuel_Chase = ships.LS_Samuel_Chase
+        LCVP__Higgins_boat = ships.LCVP__Higgins_boat
 
     def __init__(self):
         super(Yugoslavia, self).__init__(Yugoslavia.id, Yugoslavia.name)
@@ -8407,6 +8489,7 @@ class USSR(Country):
             MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
             MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
             M30_Cargo_Carrier = vehicles.Armor.M30_Cargo_Carrier
+            APC_M2A1 = vehicles.Armor.APC_M2A1
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
@@ -8479,6 +8562,7 @@ class USSR(Country):
         Armed_speedboat = ships.Armed_speedboat
         LST_Mk_II = ships.LST_Mk_II
         LS_Samuel_Chase = ships.LS_Samuel_Chase
+        LCVP__Higgins_boat = ships.LCVP__Higgins_boat
 
     def __init__(self):
         super(USSR, self).__init__(USSR.id, USSR.name)
@@ -8498,6 +8582,7 @@ class ItalianSocialRepublic(Country):
             Road_outpost = vehicles.Fortification.Road_outpost
             Outpost = vehicles.Fortification.Outpost
             Armed_house = vehicles.Fortification.Armed_house
+            Fire_control_bunker = vehicles.Fortification.Fire_control_bunker
 
         class Infantry:
             Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
@@ -8508,6 +8593,9 @@ class ItalianSocialRepublic(Country):
         class Unarmed:
             Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
             Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+            Sd_Kfz_2 = vehicles.Unarmed.Sd_Kfz_2
+            Sd_Kfz_7 = vehicles.Unarmed.Sd_Kfz_7
+            Horch_901_typ_40 = vehicles.Unarmed.Horch_901_typ_40
 
         class Armor:
             HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
@@ -8516,6 +8604,9 @@ class ItalianSocialRepublic(Country):
             MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
             Jagdpanther_G1 = vehicles.Armor.Jagdpanther_G1
             Jagdpanzer_IV = vehicles.Armor.Jagdpanzer_IV
+            StuG_IV = vehicles.Armor.StuG_IV
+            IFV_Sd_Kfz_234_2_Puma = vehicles.Armor.IFV_Sd_Kfz_234_2_Puma
+            APC_Sd_Kfz_251 = vehicles.Armor.APC_Sd_Kfz_251
 
         class Carriage:
             DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon

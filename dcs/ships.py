@@ -225,6 +225,14 @@ class LS_Samuel_Chase(unittype.ShipType):
     threat_range = 7000
     air_weapon_dist = 7000
 
+
+class LCVP__Higgins_boat(unittype.ShipType):
+    id = "Higgins_boat"
+    name = "LCVP (Higgins boat)"
+    detection_range = 3000
+    threat_range = 1000
+    air_weapon_dist = 1000
+
 ship_map = {
     "speedboat": Armed_speedboat,
     "VINSON": CVN_70_Carl_Vinson,
@@ -250,4 +258,5 @@ ship_map = {
     "052C": DDG_171_Haikou,
     "LST_Mk2": LST_Mk_II,
     "USS_Samuel_Chase": LS_Samuel_Chase,
+    "Higgins_boat": LCVP__Higgins_boat,
 }

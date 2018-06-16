@@ -46,6 +46,7 @@ class Tornado_GR4(PlaneType):
         AIM_9M = (3, Weapons.AIM_9M)
         AIM_9P = (3, Weapons.AIM_9P)
         AIM_9P5 = (3, Weapons.AIM_9P5)
+        AIM_9L = (3, Weapons.AIM_9L)
 
     class Pylon4:
         GBU_16 = (4, Weapons.GBU_16)
@@ -78,6 +79,7 @@ class Tornado_GR4(PlaneType):
         AIM_9M = (10, Weapons.AIM_9M)
         AIM_9P = (10, Weapons.AIM_9P)
         AIM_9P5 = (10, Weapons.AIM_9P5)
+        AIM_9L = (10, Weapons.AIM_9L)
 
     class Pylon11:
         TORNADO_Fuel_tank = (11, Weapons.TORNADO_Fuel_tank)
@@ -134,6 +136,7 @@ class Tornado_IDS(PlaneType):
         AIM_9M = (3, Weapons.AIM_9M)
         AIM_9P = (3, Weapons.AIM_9P)
         AIM_9P5 = (3, Weapons.AIM_9P5)
+        AIM_9L = (3, Weapons.AIM_9L)
 
     class Pylon4:
         GBU_16 = (4, Weapons.GBU_16)
@@ -162,6 +165,7 @@ class Tornado_IDS(PlaneType):
         AIM_9M = (10, Weapons.AIM_9M)
         AIM_9P = (10, Weapons.AIM_9P)
         AIM_9P5 = (10, Weapons.AIM_9P5)
+        AIM_9L = (10, Weapons.AIM_9L)
 
     class Pylon11:
         AGM_88C_ = (11, Weapons.AGM_88C_)
@@ -219,6 +223,7 @@ class F_A_18A(PlaneType):
         AIM_9M = (1, Weapons.AIM_9M)
         AIM_9P = (1, Weapons.AIM_9P)
         AIM_9P5 = (1, Weapons.AIM_9P5)
+        AIM_9L = (1, Weapons.AIM_9L)
 
     class Pylon2:
         AIM_7M = (2, Weapons.AIM_7M)
@@ -237,6 +242,7 @@ class F_A_18A(PlaneType):
         AIM_9M = (2, Weapons.AIM_9M)
         AIM_9P = (2, Weapons.AIM_9P)
         AIM_9P5 = (2, Weapons.AIM_9P5)
+        AIM_9L = (2, Weapons.AIM_9L)
 
     class Pylon3:
         AIM_7M = (3, Weapons.AIM_7M)
@@ -280,12 +286,14 @@ class F_A_18A(PlaneType):
         AIM_9M = (8, Weapons.AIM_9M)
         AIM_9P = (8, Weapons.AIM_9P)
         AIM_9P5 = (8, Weapons.AIM_9P5)
+        AIM_9L = (8, Weapons.AIM_9L)
 
     class Pylon9:
         AN_ASQ_T50_TCTS_Pod = (9, Weapons.AN_ASQ_T50_TCTS_Pod)
         AIM_9M = (9, Weapons.AIM_9M)
         AIM_9P = (9, Weapons.AIM_9P)
         AIM_9P5 = (9, Weapons.AIM_9P5)
+        AIM_9L = (9, Weapons.AIM_9L)
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9}
 
@@ -372,6 +380,7 @@ class F_A_18C(PlaneType):
             VFC_12 = "VFC-12"
 
     class Pylon1:
+        AIM_9L = (1, Weapons.AIM_9L)
         AIM_9M = (1, Weapons.AIM_9M)
         AIM_9P5 = (1, Weapons.AIM_9P5)
         AIM_120B = (1, Weapons.AIM_120B)
@@ -525,6 +534,7 @@ class F_A_18C(PlaneType):
         LAU_115_2_LAU_127_AIM_9M = (8, Weapons.LAU_115_2_LAU_127_AIM_9M)
 
     class Pylon9:
+        AIM_9L = (9, Weapons.AIM_9L)
         AIM_9M = (9, Weapons.AIM_9M)
         AIM_9P5 = (9, Weapons.AIM_9P5)
         AIM_120B = (9, Weapons.AIM_120B)
@@ -933,6 +943,7 @@ class F_14A(PlaneType):
         AIM_9M = (1, Weapons.AIM_9M)
         AIM_9P = (1, Weapons.AIM_9P)
         AIM_9P5 = (1, Weapons.AIM_9P5)
+        AIM_9L = (1, Weapons.AIM_9L)
 
     class Pylon2:
         AIM_54C = (2, Weapons.AIM_54C)
@@ -971,6 +982,7 @@ class F_14A(PlaneType):
         AIM_9M = (12, Weapons.AIM_9M)
         AIM_9P = (12, Weapons.AIM_9P)
         AIM_9P5 = (12, Weapons.AIM_9P5)
+        AIM_9L = (12, Weapons.AIM_9L)
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
 
@@ -1063,6 +1075,7 @@ class F_4E(PlaneType):
         AGM_45A = (1, Weapons.AGM_45A)
 
     class Pylon2:
+        LAU_7___2_AIM_9L = (2, Weapons.LAU_7___2_AIM_9L)
         LAU_7___2_AIM_9M = (2, Weapons.LAU_7___2_AIM_9M)
         LAU_7___2_AIM_9P = (2, Weapons.LAU_7___2_AIM_9P)
         GBU_10 = (2, Weapons.GBU_10)
@@ -1095,6 +1108,7 @@ class F_4E(PlaneType):
         AIM_7M = (7, Weapons.AIM_7M)
 
     class Pylon8:
+        LAU_7___2_AIM_9L = (8, Weapons.LAU_7___2_AIM_9L)
         LAU_7___2_AIM_9M = (8, Weapons.LAU_7___2_AIM_9M)
         LAU_7___2_AIM_9P = (8, Weapons.LAU_7___2_AIM_9P)
         GBU_10 = (8, Weapons.GBU_10)
@@ -1440,6 +1454,7 @@ class F_111F(PlaneType):
         AIM_9M = (1, Weapons.AIM_9M)
         AIM_9P = (1, Weapons.AIM_9P)
         AIM_9P5 = (1, Weapons.AIM_9P5)
+        AIM_9L = (1, Weapons.AIM_9L)
 
     class Pylon2:
         MER_6_Mk_82 = (2, Weapons.MER_6_Mk_82)
@@ -1452,6 +1467,7 @@ class F_111F(PlaneType):
         AIM_9M = (2, Weapons.AIM_9M)
         AIM_9P = (2, Weapons.AIM_9P)
         AIM_9P5 = (2, Weapons.AIM_9P5)
+        AIM_9L = (2, Weapons.AIM_9L)
 
     class Pylon3:
         Pavetack_F_111 = (3, Weapons.Pavetack_F_111)
@@ -1477,6 +1493,7 @@ class F_111F(PlaneType):
         AIM_9M = (5, Weapons.AIM_9M)
         AIM_9P = (5, Weapons.AIM_9P)
         AIM_9P5 = (5, Weapons.AIM_9P5)
+        AIM_9L = (5, Weapons.AIM_9L)
 
     class Pylon6:
         MER_6_Mk_82 = (6, Weapons.MER_6_Mk_82)
@@ -1491,6 +1508,7 @@ class F_111F(PlaneType):
         AIM_9M = (6, Weapons.AIM_9M)
         AIM_9P = (6, Weapons.AIM_9P)
         AIM_9P5 = (6, Weapons.AIM_9P5)
+        AIM_9L = (6, Weapons.AIM_9L)
 
     pylons = {1, 2, 3, 4, 5, 6}
 
@@ -1603,6 +1621,8 @@ class A_10A(PlaneType):
             A_10_Grey = "A-10 Grey"
 
     class Pylon1:
+        LAU_105_2_AIM_9L = (1, Weapons.LAU_105_2_AIM_9L)
+        LAU_105_1_AIM_9L_L = (1, Weapons.LAU_105_1_AIM_9L_L)
         LAU_105_2_AIM_9P5 = (1, Weapons.LAU_105_2_AIM_9P5)
         LAU_105___2_AIM_9M = (1, Weapons.LAU_105___2_AIM_9M)
         LAU_105_1_AIM_9M_L = (1, Weapons.LAU_105_1_AIM_9M_L)
@@ -1844,6 +1864,8 @@ class A_10A(PlaneType):
         CBU_97 = (10, Weapons.CBU_97)
 
     class Pylon11:
+        LAU_105_2_AIM_9L = (11, Weapons.LAU_105_2_AIM_9L)
+        LAU_105_1_AIM_9L_R = (11, Weapons.LAU_105_1_AIM_9L_R)
         LAU_105_2_AIM_9P5 = (11, Weapons.LAU_105_2_AIM_9P5)
         LAU_105___2_AIM_9M = (11, Weapons.LAU_105___2_AIM_9M)
         LAU_105_1_AIM_9M_R = (11, Weapons.LAU_105_1_AIM_9M_R)
@@ -4841,6 +4863,7 @@ class F_15C(PlaneType):
         AIM_9M = (1, Weapons.AIM_9M)
         AIM_9P = (1, Weapons.AIM_9P)
         AIM_9P5 = (1, Weapons.AIM_9P5)
+        AIM_9L = (1, Weapons.AIM_9L)
 
     class Pylon2:
         Fuel_tank_610_gal = (2, Weapons.Fuel_tank_610_gal)
@@ -4851,6 +4874,7 @@ class F_15C(PlaneType):
         AIM_9M = (3, Weapons.AIM_9M)
         AIM_9P = (3, Weapons.AIM_9P)
         AIM_9P5 = (3, Weapons.AIM_9P5)
+        AIM_9L = (3, Weapons.AIM_9L)
 
     class Pylon4:
         AIM_120B = (4, Weapons.AIM_120B)
@@ -4881,6 +4905,7 @@ class F_15C(PlaneType):
         AIM_9M = (9, Weapons.AIM_9M)
         AIM_9P = (9, Weapons.AIM_9P)
         AIM_9P5 = (9, Weapons.AIM_9P5)
+        AIM_9L = (9, Weapons.AIM_9L)
 
     class Pylon10:
         Fuel_tank_610_gal = (10, Weapons.Fuel_tank_610_gal)
@@ -4898,6 +4923,7 @@ class F_15C(PlaneType):
         AIM_9M = (11, Weapons.AIM_9M)
         AIM_9P = (11, Weapons.AIM_9P)
         AIM_9P5 = (11, Weapons.AIM_9P5)
+        AIM_9L = (11, Weapons.AIM_9L)
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
 
@@ -4936,6 +4962,7 @@ class F_15E(PlaneType):
         AIM_9M = (1, Weapons.AIM_9M)
         AIM_9P = (1, Weapons.AIM_9P)
         AIM_9P5 = (1, Weapons.AIM_9P5)
+        AIM_9L = (1, Weapons.AIM_9L)
 
     class Pylon2:
         Fuel_tank_610_gal = (2, Weapons.Fuel_tank_610_gal)
@@ -4966,6 +4993,7 @@ class F_15E(PlaneType):
         AIM_9M = (3, Weapons.AIM_9M)
         AIM_9P = (3, Weapons.AIM_9P)
         AIM_9P5 = (3, Weapons.AIM_9P5)
+        AIM_9L = (3, Weapons.AIM_9L)
 
     class Pylon4:
         Mk_82 = (4, Weapons.Mk_82)
@@ -5141,6 +5169,7 @@ class F_15E(PlaneType):
         AIM_9M = (17, Weapons.AIM_9M)
         AIM_9P = (17, Weapons.AIM_9P)
         AIM_9P5 = (17, Weapons.AIM_9P5)
+        AIM_9L = (17, Weapons.AIM_9L)
 
     class Pylon18:
         Fuel_tank_610_gal = (18, Weapons.Fuel_tank_610_gal)
@@ -5172,6 +5201,7 @@ class F_15E(PlaneType):
         AIM_9M = (19, Weapons.AIM_9M)
         AIM_9P = (19, Weapons.AIM_9P)
         AIM_9P5 = (19, Weapons.AIM_9P5)
+        AIM_9L = (19, Weapons.AIM_9L)
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19}
 
@@ -6151,6 +6181,7 @@ class F_16C_bl_50(PlaneType):
         AIM_9M = (1, Weapons.AIM_9M)
         AIM_9P = (1, Weapons.AIM_9P)
         AIM_9P5 = (1, Weapons.AIM_9P5)
+        AIM_9L = (1, Weapons.AIM_9L)
 
     class Pylon2:
         AIM_120B = (2, Weapons.AIM_120B)
@@ -6158,6 +6189,7 @@ class F_16C_bl_50(PlaneType):
         AIM_9M = (2, Weapons.AIM_9M)
         AIM_9P = (2, Weapons.AIM_9P)
         AIM_9P5 = (2, Weapons.AIM_9P5)
+        AIM_9L = (2, Weapons.AIM_9L)
 
     class Pylon3:
         AIM_120B = (3, Weapons.AIM_120B)
@@ -6194,6 +6226,7 @@ class F_16C_bl_50(PlaneType):
         AIM_9M = (3, Weapons.AIM_9M)
         AIM_9P = (3, Weapons.AIM_9P)
         AIM_9P5 = (3, Weapons.AIM_9P5)
+        AIM_9L = (3, Weapons.AIM_9L)
 
     class Pylon4:
         GBU_10 = (4, Weapons.GBU_10)
@@ -6281,6 +6314,7 @@ class F_16C_bl_50(PlaneType):
         AIM_9M = (8, Weapons.AIM_9M)
         AIM_9P = (8, Weapons.AIM_9P)
         AIM_9P5 = (8, Weapons.AIM_9P5)
+        AIM_9L = (8, Weapons.AIM_9L)
 
     class Pylon9:
         AIM_120B = (9, Weapons.AIM_120B)
@@ -6288,6 +6322,7 @@ class F_16C_bl_50(PlaneType):
         AIM_9M = (9, Weapons.AIM_9M)
         AIM_9P = (9, Weapons.AIM_9P)
         AIM_9P5 = (9, Weapons.AIM_9P5)
+        AIM_9L = (9, Weapons.AIM_9L)
 
     class Pylon10:
         AIM_120B = (10, Weapons.AIM_120B)
@@ -6296,6 +6331,7 @@ class F_16C_bl_50(PlaneType):
         AIM_9M = (10, Weapons.AIM_9M)
         AIM_9P = (10, Weapons.AIM_9P)
         AIM_9P5 = (10, Weapons.AIM_9P5)
+        AIM_9L = (10, Weapons.AIM_9L)
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
@@ -6348,6 +6384,7 @@ class F_16C_bl_52d(PlaneType):
         AIM_9M = (1, Weapons.AIM_9M)
         AIM_9P = (1, Weapons.AIM_9P)
         AIM_9P5 = (1, Weapons.AIM_9P5)
+        AIM_9L = (1, Weapons.AIM_9L)
 
     class Pylon2:
         AIM_120B = (2, Weapons.AIM_120B)
@@ -6355,6 +6392,7 @@ class F_16C_bl_52d(PlaneType):
         AIM_9M = (2, Weapons.AIM_9M)
         AIM_9P = (2, Weapons.AIM_9P)
         AIM_9P5 = (2, Weapons.AIM_9P5)
+        AIM_9L = (2, Weapons.AIM_9L)
 
     class Pylon3:
         AIM_120B = (3, Weapons.AIM_120B)
@@ -6390,6 +6428,7 @@ class F_16C_bl_52d(PlaneType):
         AIM_9M = (3, Weapons.AIM_9M)
         AIM_9P = (3, Weapons.AIM_9P)
         AIM_9P5 = (3, Weapons.AIM_9P5)
+        AIM_9L = (3, Weapons.AIM_9L)
 
     class Pylon4:
         Fuel_tank_370_gal = (4, Weapons.Fuel_tank_370_gal)
@@ -6484,6 +6523,7 @@ class F_16C_bl_52d(PlaneType):
         AIM_9M = (8, Weapons.AIM_9M)
         AIM_9P = (8, Weapons.AIM_9P)
         AIM_9P5 = (8, Weapons.AIM_9P5)
+        AIM_9L = (8, Weapons.AIM_9L)
 
     class Pylon9:
         AIM_120B = (9, Weapons.AIM_120B)
@@ -6491,6 +6531,7 @@ class F_16C_bl_52d(PlaneType):
         AIM_9M = (9, Weapons.AIM_9M)
         AIM_9P = (9, Weapons.AIM_9P)
         AIM_9P5 = (9, Weapons.AIM_9P5)
+        AIM_9L = (9, Weapons.AIM_9L)
 
     class Pylon10:
         AIM_120B = (10, Weapons.AIM_120B)
@@ -6499,6 +6540,7 @@ class F_16C_bl_52d(PlaneType):
         AIM_9M = (10, Weapons.AIM_9M)
         AIM_9P = (10, Weapons.AIM_9P)
         AIM_9P5 = (10, Weapons.AIM_9P5)
+        AIM_9L = (10, Weapons.AIM_9L)
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
@@ -6534,12 +6576,14 @@ class F_16A(PlaneType):
         AIM_9M = (1, Weapons.AIM_9M)
         AIM_9P = (1, Weapons.AIM_9P)
         AIM_9P5 = (1, Weapons.AIM_9P5)
+        AIM_9L = (1, Weapons.AIM_9L)
 
     class Pylon2:
         AIM_120B = (2, Weapons.AIM_120B)
         AIM_9M = (2, Weapons.AIM_9M)
         AIM_9P = (2, Weapons.AIM_9P)
         AIM_9P5 = (2, Weapons.AIM_9P5)
+        AIM_9L = (2, Weapons.AIM_9L)
 
     class Pylon3:
         AIM_120B = (3, Weapons.AIM_120B)
@@ -6559,6 +6603,7 @@ class F_16A(PlaneType):
         AIM_9M = (3, Weapons.AIM_9M)
         AIM_9P = (3, Weapons.AIM_9P)
         AIM_9P5 = (3, Weapons.AIM_9P5)
+        AIM_9L = (3, Weapons.AIM_9L)
 
     class Pylon4:
         Fuel_tank_370_gal = (4, Weapons.Fuel_tank_370_gal)
@@ -6603,12 +6648,14 @@ class F_16A(PlaneType):
         AIM_9M = (8, Weapons.AIM_9M)
         AIM_9P = (8, Weapons.AIM_9P)
         AIM_9P5 = (8, Weapons.AIM_9P5)
+        AIM_9L = (8, Weapons.AIM_9L)
 
     class Pylon9:
         AIM_120B = (9, Weapons.AIM_120B)
         AIM_9M = (9, Weapons.AIM_9M)
         AIM_9P = (9, Weapons.AIM_9P)
         AIM_9P5 = (9, Weapons.AIM_9P5)
+        AIM_9L = (9, Weapons.AIM_9L)
 
     class Pylon10:
         AIM_120B = (10, Weapons.AIM_120B)
@@ -6616,6 +6663,7 @@ class F_16A(PlaneType):
         AIM_9M = (10, Weapons.AIM_9M)
         AIM_9P = (10, Weapons.AIM_9P)
         AIM_9P5 = (10, Weapons.AIM_9P5)
+        AIM_9L = (10, Weapons.AIM_9L)
 
     pylons = {1, 2, 3, 4, 6, 7, 8, 9, 10}
 
@@ -6795,6 +6843,7 @@ class F_16A_MLU(PlaneType):
         AIM_9M = (1, Weapons.AIM_9M)
         AIM_9P = (1, Weapons.AIM_9P)
         AIM_9P5 = (1, Weapons.AIM_9P5)
+        AIM_9L = (1, Weapons.AIM_9L)
 
     class Pylon2:
         AIM_120B = (2, Weapons.AIM_120B)
@@ -6802,6 +6851,7 @@ class F_16A_MLU(PlaneType):
         AIM_9M = (2, Weapons.AIM_9M)
         AIM_9P = (2, Weapons.AIM_9P)
         AIM_9P5 = (2, Weapons.AIM_9P5)
+        AIM_9L = (2, Weapons.AIM_9L)
 
     class Pylon3:
         AIM_120B = (3, Weapons.AIM_120B)
@@ -6829,6 +6879,7 @@ class F_16A_MLU(PlaneType):
         AIM_9M = (3, Weapons.AIM_9M)
         AIM_9P = (3, Weapons.AIM_9P)
         AIM_9P5 = (3, Weapons.AIM_9P5)
+        AIM_9L = (3, Weapons.AIM_9L)
 
     class Pylon4:
         GBU_10 = (4, Weapons.GBU_10)
@@ -6898,6 +6949,7 @@ class F_16A_MLU(PlaneType):
         AIM_9M = (8, Weapons.AIM_9M)
         AIM_9P = (8, Weapons.AIM_9P)
         AIM_9P5 = (8, Weapons.AIM_9P5)
+        AIM_9L = (8, Weapons.AIM_9L)
 
     class Pylon9:
         AIM_120B = (9, Weapons.AIM_120B)
@@ -6905,6 +6957,7 @@ class F_16A_MLU(PlaneType):
         AIM_9M = (9, Weapons.AIM_9M)
         AIM_9P = (9, Weapons.AIM_9P)
         AIM_9P5 = (9, Weapons.AIM_9P5)
+        AIM_9L = (9, Weapons.AIM_9L)
 
     class Pylon10:
         AIM_120B = (10, Weapons.AIM_120B)
@@ -6913,6 +6966,7 @@ class F_16A_MLU(PlaneType):
         AIM_9M = (10, Weapons.AIM_9M)
         AIM_9P = (10, Weapons.AIM_9P)
         AIM_9P5 = (10, Weapons.AIM_9P5)
+        AIM_9L = (10, Weapons.AIM_9L)
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
@@ -7105,6 +7159,8 @@ class A_10C(PlaneType):
         ALQ_184 = (1, Weapons.ALQ_184)
         CBU_97 = (1, Weapons.CBU_97)
         LAU_105_AIS_ASQ_T50_L = (1, Weapons.LAU_105_AIS_ASQ_T50_L)
+        LAU_105_2_AIM_9L = (1, Weapons.LAU_105_2_AIM_9L)
+        LAU_105_1_AIM_9L_L = (1, Weapons.LAU_105_1_AIM_9L_L)
 
     class Pylon2:
         Mk_82 = (2, Weapons.Mk_82)
@@ -7519,6 +7575,8 @@ class A_10C(PlaneType):
         LAU_105_2_CATM_9M = (11, Weapons.LAU_105_2_CATM_9M)
         LAU_105_1_CATM_9M_R = (11, Weapons.LAU_105_1_CATM_9M_R)
         LAU_105_AIS_ASQ_T50_R = (11, Weapons.LAU_105_AIS_ASQ_T50_R)
+        LAU_105_2_AIM_9L = (11, Weapons.LAU_105_2_AIM_9L)
+        LAU_105_1_AIM_9L_R = (11, Weapons.LAU_105_1_AIM_9L_R)
 
     pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
 
@@ -12115,8 +12173,11 @@ class FA_18C_hornet(PlaneType):
         CBU_99 = (2, Weapons.CBU_99)
         Mk_20 = (2, Weapons.Mk_20)
         BRU_33___2_x_CBU_99 = (2, Weapons.BRU_33___2_x_CBU_99)
+#ERRR <CLEAN>
 
     class Pylon3:
+        LAU_115___AIM_7M = (3, Weapons.LAU_115___AIM_7M)
+        LAU_115C_AIM_7F = (3, Weapons.LAU_115C_AIM_7F)
         BRU_33_LAU_68___7_2_75__rockets_M151__HE_ = (3, Weapons.BRU_33_LAU_68___7_2_75__rockets_M151__HE_)
         BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_ = (3, Weapons.BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_)
         BRU_33_LAU_10___4_ZUNI_MK_71 = (3, Weapons.BRU_33_LAU_10___4_ZUNI_MK_71)
@@ -12136,6 +12197,7 @@ class FA_18C_hornet(PlaneType):
         CBU_99 = (3, Weapons.CBU_99)
         BRU_33___2_x_CBU_99 = (3, Weapons.BRU_33___2_x_CBU_99)
         Mk_20 = (3, Weapons.Mk_20)
+#ERRR <CLEAN>
 
     class Pylon4:
         AIM_7M = (4, Weapons.AIM_7M)
@@ -12154,12 +12216,15 @@ class FA_18C_hornet(PlaneType):
         CBU_99 = (5, Weapons.CBU_99)
         BRU_33___2_x_CBU_99 = (5, Weapons.BRU_33___2_x_CBU_99)
         Mk_20 = (5, Weapons.Mk_20)
+#ERRR <CLEAN>
 
     class Pylon6:
         AIM_7M = (6, Weapons.AIM_7M)
         AIM_7F = (6, Weapons.AIM_7F)
 
     class Pylon7:
+        LAU_115___AIM_7M = (7, Weapons.LAU_115___AIM_7M)
+        LAU_115C_AIM_7F = (7, Weapons.LAU_115C_AIM_7F)
         BRU_33_LAU_68___7_2_75__rockets_M151__HE_ = (7, Weapons.BRU_33_LAU_68___7_2_75__rockets_M151__HE_)
         BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_ = (7, Weapons.BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_)
         BRU_33_LAU_10___4_ZUNI_MK_71 = (7, Weapons.BRU_33_LAU_10___4_ZUNI_MK_71)
@@ -12179,6 +12244,7 @@ class FA_18C_hornet(PlaneType):
         CBU_99 = (7, Weapons.CBU_99)
         BRU_33___2_x_CBU_99 = (7, Weapons.BRU_33___2_x_CBU_99)
         Mk_20 = (7, Weapons.Mk_20)
+#ERRR <CLEAN>
 
     class Pylon8:
         LAU_115_2_LAU_127_AIM_9M = (8, Weapons.LAU_115_2_LAU_127_AIM_9M)
@@ -12206,6 +12272,7 @@ class FA_18C_hornet(PlaneType):
         CBU_99 = (8, Weapons.CBU_99)
         Mk_20 = (8, Weapons.Mk_20)
         BRU_33___2_x_CBU_99 = (8, Weapons.BRU_33___2_x_CBU_99)
+#ERRR <CLEAN>
 
     class Pylon9:
         AIM_9M = (9, Weapons.AIM_9M)
