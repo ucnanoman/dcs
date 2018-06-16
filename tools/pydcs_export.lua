@@ -517,7 +517,11 @@ for i in pairs(unit_categories) do
     for j in pairs(unit_categories[i]) do
         local unit = unit_categories[i][j]
         local safename = safe_name(unit.DisplayName)
-        local air_weapon_dist = unit.ThreatRange
+        local threat_range = 'None'
+        if unit.ThreatRange ~= nil then
+            threat_range = unit.ThreatRange
+        end
+        local air_weapon_dist = threat_range
         if unit.airWeaponDist then
             air_weapon_dist = unit.airWeaponDist
         end
@@ -526,7 +530,7 @@ for i in pairs(unit_categories) do
         writeln(file, '        id = "'..unit.type..'"')
         writeln(file, '        name = "'..unit.DisplayName..'"')
         writeln(file, '        detection_range = '..unit.DetectionRange)
-        writeln(file, '        threat_range = '..unit.ThreatRange)
+        writeln(file, '        threat_range = '..threat_range)
         writeln(file, '        air_weapon_dist = '..air_weapon_dist)
         if unit.EPLRS then
             writeln(file, '        eprls = True')
