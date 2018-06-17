@@ -18,6 +18,13 @@ class TestNumber(unittest.TestCase):
         r = loads("dec = 666.6")
         self.assertEqual(r, {"dec": 666.6})
 
+    def test_exponent(self):
+        r = loads("dec = 666.6e10")
+        self.assertEqual(r, {"dec": 666.6e10})
+
+        r = loads("dec = 666.6e-10")
+        self.assertEqual(r, {"dec": 666.6e-10})
+
     def test_string(self):
         s = """
 mission =
