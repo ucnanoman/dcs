@@ -263,6 +263,8 @@ class Mission:
             self.terrain = terrain_.Caucasus()
         elif imp_mission["theatre"] == 'Nevada':
             self.terrain = terrain_.Nevada()
+        elif imp_mission["theatre"] == 'PersianGulf':
+            self.terrain = terrain_.PersianGulf()
         else:
             raise RuntimeError("Unknown theatre: '{theatre}'".format(theatre=imp_mission["theatre"]))
 

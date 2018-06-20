@@ -115,9 +115,28 @@ def loads(tablestr):
                 if self.advance():
                     raise self.eob_exception()
 
-            while (not self.eob() and
-                    (self.buffer[self.pos].isnumeric() or self.buffer[self.pos] == '.' or
-                        self.buffer[self.pos].lower() == 'e')):
+            found_exponent, found_exponent_sign, found_separator = False, False, False
+            while not self.eob():
+                if self.buffer[self.pos].isnumeric():
+                    pass
+                elif self.buffer[self.pos] == '.':
+                    if not found_separator:
+                        found_separator = True
+                    else:
+                        raise SyntaxError()
+                elif self.buffer[self.pos].lower() == 'e':
+                    if not found_exponent:
+                        found_exponent = True
+                    else:
+                        raise SyntaxError()
+                elif self.buffer[self.pos] == '-':
+                    if not found_exponent_sign:
+                        found_exponent_sign = True
+                    else:
+                        raise SyntaxError()
+                else:
+                    break
+
                 n += self.buffer[self.pos]
                 self.pos += 1
 
