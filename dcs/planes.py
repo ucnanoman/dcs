@@ -8450,7 +8450,73 @@ class SpitfireLFMkIX(PlaneType):
             USSR_Spitfire_57th_GvIAP = "USSR Spitfire 57th GvIAP"
             USSR_pilot_Lt__Col__V__A__Matsiyevitch__26th_GvIAP = "USSR pilot Lt. Col. V. A. Matsiyevitch, 26th GvIAP"
 
-    pylons = {}
+    class Pylon1:
+        British_GP_250LBS_Bomb_MK4_on_LH_Spitfire_Wing_Carrier = (1, Weapons.British_GP_250LBS_Bomb_MK4_on_LH_Spitfire_Wing_Carrier)
+
+    class Pylon2:
+        SPITFIRE_45GAL_SLIPPER_TANK = (2, Weapons.SPITFIRE_45GAL_SLIPPER_TANK)
+        SPITFIRE_45GAL_TORPEDO_TANK = (2, Weapons.SPITFIRE_45GAL_TORPEDO_TANK)
+        British_GP_500LBS_Bomb_MK4_on_British_UniversalBC_MK3 = (2, Weapons.British_GP_500LBS_Bomb_MK4_on_British_UniversalBC_MK3)
+
+    class Pylon3:
+        British_GP_250LBS_Bomb_MK4_on_RH_Spitfire_Wing_Carrier = (3, Weapons.British_GP_250LBS_Bomb_MK4_on_RH_Spitfire_Wing_Carrier)
+
+    pylons = {1, 2, 3}
+
+    tasks = [task.CAP, task.Escort, task.Intercept, task.FighterSweep, task.GroundAttack, task.CAS, task.AFAC, task.RunwayAttack, task.AntishipStrike]
+    task_default = task.CAP
+
+
+class SpitfireLFMkIXCW(PlaneType):
+    id = "SpitfireLFMkIXCW"
+    height = 4.77
+    width = 11.25
+    length = 12.13
+    fuel_max = 247
+    max_speed = 828
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
+    radio_frequency = 124
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 39,
+                2: 40,
+                4: 42,
+                3: 41
+            },
+        },
+    }
+
+    class Liveries:
+
+        class UK(Enum):
+            RAF_Standard = "RAF Standard"
+            RAF_2_TAF__July_1944 = "RAF 2 TAF, July 1944"
+            RAF_2_TAF__June_1944 = "RAF 2 TAF, June 1944"
+            RAF_2_TAF__Sept_1944 = "RAF 2 TAF, Sept 1944"
+            RAF__No__126_Squadron__Harrowbeer = "RAF, No. 126 Squadron, Harrowbeer"
+            RAF__No__145_Squadron = "RAF, No. 145 Squadron"
+            RAF__No__16_Squadron = "RAF, No. 16 Squadron"
+
+        class Russia(Enum):
+            USSR_26th_GvIAP__PVO = "USSR 26th GvIAP, PVO"
+            USSR_3rd_AE_57th_GvIAP = "USSR_3rd_AE_57th_GvIAP"
+            USSR_Spitfire_57th_GvIAP = "USSR Spitfire 57th GvIAP"
+            USSR_pilot_Lt__Col__V__A__Matsiyevitch__26th_GvIAP = "USSR pilot Lt. Col. V. A. Matsiyevitch, 26th GvIAP"
+
+    class Pylon1:
+        British_GP_250LBS_Bomb_MK4_on_LH_Spitfire_Wing_Carrier = (1, Weapons.British_GP_250LBS_Bomb_MK4_on_LH_Spitfire_Wing_Carrier)
+
+    class Pylon2:
+        SPITFIRE_45GAL_SLIPPER_TANK = (2, Weapons.SPITFIRE_45GAL_SLIPPER_TANK)
+        SPITFIRE_45GAL_TORPEDO_TANK = (2, Weapons.SPITFIRE_45GAL_TORPEDO_TANK)
+        British_GP_500LBS_Bomb_MK4_on_British_UniversalBC_MK3 = (2, Weapons.British_GP_500LBS_Bomb_MK4_on_British_UniversalBC_MK3)
+
+    class Pylon3:
+        British_GP_250LBS_Bomb_MK4_on_RH_Spitfire_Wing_Carrier = (3, Weapons.British_GP_250LBS_Bomb_MK4_on_RH_Spitfire_Wing_Carrier)
+
+    pylons = {1, 2, 3}
 
     tasks = [task.CAP, task.Escort, task.Intercept, task.FighterSweep, task.GroundAttack, task.CAS, task.AFAC, task.RunwayAttack, task.AntishipStrike]
     task_default = task.CAP
@@ -11925,6 +11991,9 @@ class F_86F_Sabre(PlaneType):
 
     class Liveries:
 
+        class SaudiArabia(Enum):
+            Royal_Saudi_Air_Force = "Royal Saudi Air Force"
+
         class Greece(Enum):
             HAF_341sqn = "HAF 341sqn"
             HAF_342sqn = "HAF 342sqn"
@@ -12069,6 +12138,27 @@ class FA_18C_hornet(PlaneType):
         },
     }
 
+    property_defaults = {
+        "OuterBoard": 0,
+        "InnerBoard": 0,
+    }
+
+    class Properties:
+
+        class OuterBoard:
+            id = "OuterBoard"
+
+            class Values:
+                Single = 0
+                Ripple = 1
+
+        class InnerBoard:
+            id = "InnerBoard"
+
+            class Values:
+                Single = 0
+                Ripple = 1
+
     class Liveries:
 
         class Finland(Enum):
@@ -12212,7 +12302,6 @@ class FA_18C_hornet(PlaneType):
         BRU_33___2_x_Mk_82 = (5, Weapons.BRU_33___2_x_Mk_82)
         BRU_33___2_x_Mk_82_SnakeEye = (5, Weapons.BRU_33___2_x_Mk_82_SnakeEye)
         BRU_33___2_x_Mk_20_Rockeye = (5, Weapons.BRU_33___2_x_Mk_20_Rockeye)
-        BRU_33___2_x_Mk_83 = (5, Weapons.BRU_33___2_x_Mk_83)
         CBU_99 = (5, Weapons.CBU_99)
         BRU_33___2_x_CBU_99 = (5, Weapons.BRU_33___2_x_CBU_99)
         Mk_20 = (5, Weapons.Mk_20)
@@ -13186,6 +13275,7 @@ class M_2000C(PlaneType):
         AUF2_MK_82_Snakeyes_x_2 = (2, Weapons.AUF2_MK_82_Snakeyes_x_2)
         AUF2_BLG_66_AC_x_2 = (2, Weapons.AUF2_BLG_66_AC_x_2)
         RPL_541_2000_liters_Fuel_Tank_ = (2, Weapons.RPL_541_2000_liters_Fuel_Tank_)
+        RPL_541_2000_liters_Fuel_Tank__Empty_ = (2, Weapons.RPL_541_2000_liters_Fuel_Tank__Empty_)
 
     class Pylon3:
         Mk_82 = (3, Weapons.Mk_82)
@@ -13205,6 +13295,7 @@ class M_2000C(PlaneType):
         GBU_24 = (5, Weapons.GBU_24)
         AUF2_GBU_12_x_2 = (5, Weapons.AUF2_GBU_12_x_2)
         RPL_522_1300_liters_Fuel_Tank = (5, Weapons.RPL_522_1300_liters_Fuel_Tank)
+        RPL_522_1300_liters_Fuel_Tank__Empty_ = (5, Weapons.RPL_522_1300_liters_Fuel_Tank__Empty_)
         Smokewinder___red = (5, Weapons.Smokewinder___red)
         Smokewinder___green = (5, Weapons.Smokewinder___green)
         Smokewinder___blue = (5, Weapons.Smokewinder___blue)
@@ -13234,6 +13325,7 @@ class M_2000C(PlaneType):
         AUF2_MK_82_Snakeyes_x_2 = (8, Weapons.AUF2_MK_82_Snakeyes_x_2)
         AUF2_BLG_66_AC_x_2 = (8, Weapons.AUF2_BLG_66_AC_x_2)
         RPL_541_2000_liters_Fuel_Tank__ = (8, Weapons.RPL_541_2000_liters_Fuel_Tank__)
+        RPL_541_2000_liters_Fuel_Tank__Empty__ = (8, Weapons.RPL_541_2000_liters_Fuel_Tank__Empty__)
 
     class Pylon9:
         Matra_Magic_II = (9, Weapons.Matra_Magic_II)
@@ -15360,6 +15452,7 @@ plane_map = {
     "FW-190D9": FW_190D9,
     "Bf-109K-4": Bf_109K_4,
     "SpitfireLFMkIX": SpitfireLFMkIX,
+    "SpitfireLFMkIXCW": SpitfireLFMkIXCW,
     "AJS37": AJS37,
     "AV8BNA": AV8BNA,
     "KC130": KC130,

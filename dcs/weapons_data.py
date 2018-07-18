@@ -49,6 +49,7 @@ class Weapons:
     AIM_9X = {"clsid": "{5CE2FF2A-645A-4197-B48D-8720AC69394F}", "name": "AIM-9X", "weight": 84.46}
     AJS_X_Tank = {"clsid": "{VIGGEN_X-TANK}", "name": "AJS X-Tank", "weight": 1208}
     AKAN_Gunpod = {"clsid": "{AKAN}", "name": "AKAN Gunpod", "weight": 276}
+    AKG_Datalink_Pod = {"clsid": "{akg_dlpod}", "name": "AKG Datalink Pod", "weight": 445}
     ALARM = {"clsid": "{E6747967-B1F0-4C77-977B-AB2E6EB0C102}", "name": "ALARM", "weight": 268}
     ALARM_2 = {"clsid": "{07BE2D19-0E48-4B0B-91DA-5F6C8F9E3C75}", "name": "ALARM*2", "weight": 200}
     ALQ_131 = {"clsid": "{6D21ECEA-F85B-4E8D-9D51-31DC9B8AA4EF}", "name": "ALQ-131", "weight": 305}
@@ -116,6 +117,9 @@ class Weapons:
     BRU_42_LS = {"clsid": "BRU-42_LS", "name": "BRU-42LS", "weight": 65}
     BR_250 = {"clsid": "BR_250", "name": "BR-250", "weight": 250}
     BR_500 = {"clsid": "BR_500", "name": "BR-500", "weight": 500}
+    British_GP_250LBS_Bomb_MK4_on_LH_Spitfire_Wing_Carrier = {"clsid": "British_GP_250LBS_Bomb_MK4_on_LH_Spitfire_Wing_Carrier", "name": "GB-GP-250LBS-MK4-BOMB", "weight": 108.326}
+    British_GP_250LBS_Bomb_MK4_on_RH_Spitfire_Wing_Carrier = {"clsid": "British_GP_250LBS_Bomb_MK4_on_RH_Spitfire_Wing_Carrier", "name": "GB-GP-250LBS-MK4-BOMB", "weight": 108.326}
+    British_GP_500LBS_Bomb_MK4_on_British_UniversalBC_MK3 = {"clsid": "British_GP_500LBS_Bomb_MK4_on_British_UniversalBC_MK3", "name": "GB-GP-500LBS-MK4-BOMB", "weight": 225.188}
     B_13L___5_S_13_OF = {"clsid": "{FC56DF80-9B09-44C5-8976-DCFAFF219062}", "name": "B-13L - 5 S-13 OF", "weight": 510}
     B_1B_Mk_84_8 = {"clsid": "B-1B_Mk-84*8", "name": "Mk-84*8", "weight": 7152}
     B_8M1___20_S_8KOM = {"clsid": "{F72F47E5-C83A-4B85-96ED-D3E46671EE9A}", "name": "B-8M1 - 20 S-8KOM", "weight": 363.5}
@@ -135,8 +139,9 @@ class Weapons:
     CBU_87 = {"clsid": "{CBU-87}", "name": "CBU-87", "weight": 430}
     CBU_97 = {"clsid": "{5335D97A-35A5-4643-9D9B-026C75961E52}", "name": "CBU-97", "weight": 417}
     CBU_99 = {"clsid": "{CBU_99}", "name": "CBU-99", "weight": 222}
+    CM_802AKG = {"clsid": "{CM-802AKG}", "name": "CM-802AKG", "weight": 850}
     C_802A = {"clsid": "{C-802A}", "name": "C-802A", "weight": None}
-    C_802AK = {"clsid": "{C-802AK}", "name": "C-802AK", "weight": 180}
+    C_802AK = {"clsid": "{C-802AK}", "name": "C-802AK", "weight": 850}
     DEFA_553 = {"clsid": "{C-101-DEFA553}", "name": "DEFA-553", "weight": 218}
     Drop_Tank_75Gal = {"clsid": "{DT75GAL}", "name": "Drop Tank 75Gal", "weight": 227.048087675}
     DWS39_MJ1 = {"clsid": "{DWS39_MJ1}", "name": "DWS39 MJ1", "weight": 605}
@@ -505,8 +510,11 @@ class Weapons:
     RN_28 = {"clsid": "{RN-28}", "name": "RN-28", "weight": 260}
     ROLAND = {"clsid": "ROLAND", "name": "ROLAND", "weight": None}
     RPL_522_1300_liters_Fuel_Tank = {"clsid": "{M2KC_RPL_522}", "name": "RPL 522 1300 liters Fuel Tank", "weight": 1170}
+    RPL_522_1300_liters_Fuel_Tank__Empty_ = {"clsid": "{M2KC_RPL_522_EMPTY}", "name": "RPL 522 1300 liters Fuel Tank (Empty)", "weight": 180}
     RPL_541_2000_liters_Fuel_Tank_ = {"clsid": "{M2KC_02_RPL541}", "name": "RPL 541 2000 liters Fuel Tank ", "weight": 1837}
     RPL_541_2000_liters_Fuel_Tank__ = {"clsid": "{M2KC_08_RPL541}", "name": "RPL 541 2000 liters Fuel Tank ", "weight": 1837}
+    RPL_541_2000_liters_Fuel_Tank__Empty_ = {"clsid": "{M2KC_02_RPL541_EMPTY}", "name": "RPL 541 2000 liters Fuel Tank (Empty)", "weight": 257}
+    RPL_541_2000_liters_Fuel_Tank__Empty__ = {"clsid": "{M2KC_08_RPL541_EMPTY}", "name": "RPL 541 2000 liters Fuel Tank (Empty)", "weight": 257}
     RS_2US = {"clsid": "{RS-2US}", "name": "RS-2US", "weight": 105.2}
     R_13M = {"clsid": "{R-13M}", "name": "R-13M", "weight": 119.7}
     R_13M1 = {"clsid": "{R-13M1}", "name": "R-13M1", "weight": 122.4}
@@ -569,6 +577,8 @@ class Weapons:
     Smoke___red___21__t = {"clsid": "{MIG21_SMOKE_RED}", "name": "Smoke - red - 21 /t", "weight": 30}
     Smoke___white___21 = {"clsid": "{SMOKE_WHITE}", "name": "Smoke - white - 21", "weight": 30}
     Smoke___white___21_ = {"clsid": "{MIG21_SMOKE_WHITE}", "name": "Smoke - white - 21", "weight": 30}
+    SPITFIRE_45GAL_SLIPPER_TANK = {"clsid": "SPITFIRE_45GAL_SLIPPER_TANK", "name": "45 gal. Slipper Tank", "weight": 138.647}
+    SPITFIRE_45GAL_TORPEDO_TANK = {"clsid": "SPITFIRE_45GAL_TORPEDO_TANK", "name": "45 gal. Torpedo Tank", "weight": 144.647}
     SPPU_22_1_Gun_pod = {"clsid": "{E92CBFE5-C153-11d8-9897-000476191836}", "name": "SPPU-22-1 Gun pod", "weight": 290}
     SPRD_99 = {"clsid": "{SPRD}", "name": "SPRD-99", "weight": 500}
     SPS_141 = {"clsid": "{F75187EF-1D9E-4DA9-84B4-1A1A14A3973A}", "name": "SPS-141", "weight": 150}
@@ -605,7 +615,7 @@ class Weapons:
     XM158_MK5 = {"clsid": "XM158_MK5", "name": "XM158 - 7 2.75' rockets MK5 HE", "weight": 112}
     YJ_62 = {"clsid": "{YJ-62}", "name": "YJ-62", "weight": None}
     YJ_83 = {"clsid": "{YJ-83}", "name": "YJ-83", "weight": None}
-    YJ_83K = {"clsid": "{YJ-83K}", "name": "YJ-83K", "weight": 180}
+    YJ_83K = {"clsid": "{YJ-83K}", "name": "YJ-83K", "weight": 850}
     _1100L_Tank = {"clsid": "{tank1100}", "name": "1100L Tank", "weight": 690}
     _12_AN_M64 = {"clsid": "{12xM64}", "name": "12 AN-M64", "weight": 2744}
     _13_R4M = {"clsid": "{FW_190_R4M_LEFT_WING}", "name": "13 R4M", "weight": 70.05}
@@ -733,6 +743,7 @@ weapon_ids = {
     "{5CE2FF2A-645A-4197-B48D-8720AC69394F}": Weapons.AIM_9X,
     "{VIGGEN_X-TANK}": Weapons.AJS_X_Tank,
     "{AKAN}": Weapons.AKAN_Gunpod,
+    "{akg_dlpod}": Weapons.AKG_Datalink_Pod,
     "{E6747967-B1F0-4C77-977B-AB2E6EB0C102}": Weapons.ALARM,
     "{07BE2D19-0E48-4B0B-91DA-5F6C8F9E3C75}": Weapons.ALARM_2,
     "{6D21ECEA-F85B-4E8D-9D51-31DC9B8AA4EF}": Weapons.ALQ_131,
@@ -800,6 +811,9 @@ weapon_ids = {
     "BRU-42_LS": Weapons.BRU_42_LS,
     "BR_250": Weapons.BR_250,
     "BR_500": Weapons.BR_500,
+    "British_GP_250LBS_Bomb_MK4_on_LH_Spitfire_Wing_Carrier": Weapons.British_GP_250LBS_Bomb_MK4_on_LH_Spitfire_Wing_Carrier,
+    "British_GP_250LBS_Bomb_MK4_on_RH_Spitfire_Wing_Carrier": Weapons.British_GP_250LBS_Bomb_MK4_on_RH_Spitfire_Wing_Carrier,
+    "British_GP_500LBS_Bomb_MK4_on_British_UniversalBC_MK3": Weapons.British_GP_500LBS_Bomb_MK4_on_British_UniversalBC_MK3,
     "{FC56DF80-9B09-44C5-8976-DCFAFF219062}": Weapons.B_13L___5_S_13_OF,
     "B-1B_Mk-84*8": Weapons.B_1B_Mk_84_8,
     "{F72F47E5-C83A-4B85-96ED-D3E46671EE9A}": Weapons.B_8M1___20_S_8KOM,
@@ -819,6 +833,7 @@ weapon_ids = {
     "{CBU-87}": Weapons.CBU_87,
     "{5335D97A-35A5-4643-9D9B-026C75961E52}": Weapons.CBU_97,
     "{CBU_99}": Weapons.CBU_99,
+    "{CM-802AKG}": Weapons.CM_802AKG,
     "{C-802A}": Weapons.C_802A,
     "{C-802AK}": Weapons.C_802AK,
     "{C-101-DEFA553}": Weapons.DEFA_553,
@@ -1189,8 +1204,11 @@ weapon_ids = {
     "{RN-28}": Weapons.RN_28,
     "ROLAND": Weapons.ROLAND,
     "{M2KC_RPL_522}": Weapons.RPL_522_1300_liters_Fuel_Tank,
+    "{M2KC_RPL_522_EMPTY}": Weapons.RPL_522_1300_liters_Fuel_Tank__Empty_,
     "{M2KC_02_RPL541}": Weapons.RPL_541_2000_liters_Fuel_Tank_,
     "{M2KC_08_RPL541}": Weapons.RPL_541_2000_liters_Fuel_Tank__,
+    "{M2KC_02_RPL541_EMPTY}": Weapons.RPL_541_2000_liters_Fuel_Tank__Empty_,
+    "{M2KC_08_RPL541_EMPTY}": Weapons.RPL_541_2000_liters_Fuel_Tank__Empty__,
     "{RS-2US}": Weapons.RS_2US,
     "{R-13M}": Weapons.R_13M,
     "{R-13M1}": Weapons.R_13M1,
@@ -1253,6 +1271,8 @@ weapon_ids = {
     "{MIG21_SMOKE_RED}": Weapons.Smoke___red___21__t,
     "{SMOKE_WHITE}": Weapons.Smoke___white___21,
     "{MIG21_SMOKE_WHITE}": Weapons.Smoke___white___21_,
+    "SPITFIRE_45GAL_SLIPPER_TANK": Weapons.SPITFIRE_45GAL_SLIPPER_TANK,
+    "SPITFIRE_45GAL_TORPEDO_TANK": Weapons.SPITFIRE_45GAL_TORPEDO_TANK,
     "{E92CBFE5-C153-11d8-9897-000476191836}": Weapons.SPPU_22_1_Gun_pod,
     "{SPRD}": Weapons.SPRD_99,
     "{F75187EF-1D9E-4DA9-84B4-1A1A14A3973A}": Weapons.SPS_141,
