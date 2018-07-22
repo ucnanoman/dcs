@@ -164,10 +164,14 @@ class FlyingUnit(Unit):
             self.radio = self.unit_type.panel_radio
 
     def set_player(self):
+        if not self.unit_type.flyable:
+            raise RuntimeError("Unittype '{t}' is not human flyable".format(t=self.unit_type.id))
         self.skill = Skill.Player
         self.set_radio_preset()
 
     def set_client(self):
+        if not self.unit_type.flyable:
+            raise RuntimeError("Unittype '{t}' is not human flyable".format(t=self.unit_type.id))
         self.skill = Skill.Client
         self.set_radio_preset()
 
