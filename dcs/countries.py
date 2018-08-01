@@ -165,6 +165,7 @@ class Russia(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
 
     planes = [
@@ -217,6 +218,7 @@ class Russia(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.TF_51D,
     ]
 
@@ -442,6 +444,7 @@ class Ukraine(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
 
     planes = [
@@ -484,6 +487,7 @@ class Ukraine(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.TF_51D,
     ]
 
@@ -652,6 +656,7 @@ class USA(Country):
         MQ_9_Reaper = planes.MQ_9_Reaper
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         B_17G = planes.B_17G
         TF_51D = planes.TF_51D
 
@@ -697,6 +702,7 @@ class USA(Country):
         Plane.MQ_9_Reaper,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.B_17G,
         Plane.TF_51D,
     ]
@@ -949,6 +955,7 @@ class Turkey(Country):
         MQ_9_Reaper = planes.MQ_9_Reaper
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
 
     planes = [
@@ -977,6 +984,7 @@ class Turkey(Country):
         Plane.MQ_9_Reaper,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.TF_51D,
     ]
 
@@ -1087,6 +1095,7 @@ class UK(Country):
         MQ_9_Reaper = planes.MQ_9_Reaper
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         B_17G = planes.B_17G
         TF_51D = planes.TF_51D
 
@@ -1115,6 +1124,7 @@ class UK(Country):
         Plane.MQ_9_Reaper,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.B_17G,
         Plane.TF_51D,
     ]
@@ -1239,6 +1249,7 @@ class France(Country):
         MQ_9_Reaper = planes.MQ_9_Reaper
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
 
     planes = [
@@ -1265,6 +1276,7 @@ class France(Country):
         Plane.MQ_9_Reaper,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.TF_51D,
     ]
 
@@ -1418,6 +1430,7 @@ class Germany(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
 
     planes = [
@@ -1445,6 +1458,7 @@ class Germany(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.TF_51D,
     ]
 
@@ -1703,6 +1717,7 @@ class USAFAggressors(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         C_130 = planes.C_130
         F_16A_MLU = planes.F_16A_MLU
         P_51D = planes.P_51D
@@ -1784,6 +1799,7 @@ class USAFAggressors(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.C_130,
         Plane.F_16A_MLU,
         Plane.P_51D,
@@ -1994,6 +2010,7 @@ class Canada(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
 
     planes = [
@@ -2019,6 +2036,7 @@ class Canada(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.TF_51D,
     ]
 
@@ -2121,6 +2139,7 @@ class Spain(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
 
     planes = [
@@ -2146,6 +2165,7 @@ class Spain(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.TF_51D,
     ]
 
@@ -2260,6 +2280,7 @@ class TheNetherlands(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
 
     planes = [
@@ -2285,6 +2306,7 @@ class TheNetherlands(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.TF_51D,
     ]
 
@@ -2399,6 +2421,7 @@ class Belgium(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
 
     planes = [
@@ -2424,6 +2447,7 @@ class Belgium(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.TF_51D,
     ]
 
@@ -2526,6 +2550,7 @@ class Norway(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
 
     planes = [
@@ -2551,6 +2576,7 @@ class Norway(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.TF_51D,
     ]
 
@@ -2649,6 +2675,7 @@ class Denmark(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
 
     planes = [
@@ -2674,6 +2701,7 @@ class Denmark(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.TF_51D,
     ]
 
@@ -2789,6 +2817,7 @@ class Israel(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
 
     planes = [
@@ -2817,6 +2846,7 @@ class Israel(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.TF_51D,
     ]
 
@@ -2970,6 +3000,7 @@ class Georgia(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
 
     planes = [
@@ -2998,6 +3029,7 @@ class Georgia(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.TF_51D,
     ]
 
@@ -3129,6 +3161,7 @@ class Insurgents(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.P_51D,
@@ -3150,6 +3183,7 @@ class Insurgents(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -3286,6 +3320,7 @@ class Abkhazia(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
 
     planes = [
@@ -3311,6 +3346,7 @@ class Abkhazia(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.TF_51D,
     ]
 
@@ -3441,6 +3477,7 @@ class SouthOssetia(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.Bf_109K_4,
@@ -3461,6 +3498,7 @@ class SouthOssetia(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -3562,6 +3600,7 @@ class Italy(Country):
         MQ_9_Reaper = planes.MQ_9_Reaper
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
 
     planes = [
@@ -3589,6 +3628,7 @@ class Italy(Country):
         Plane.MQ_9_Reaper,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.TF_51D,
     ]
 
@@ -3687,6 +3727,7 @@ class Australia(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
 
     planes = [
@@ -3712,6 +3753,7 @@ class Australia(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
         Plane.TF_51D,
     ]
 
@@ -3802,6 +3844,7 @@ class Switzerland(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -3825,6 +3868,7 @@ class Switzerland(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -3892,6 +3936,7 @@ class Austria(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -3913,6 +3958,7 @@ class Austria(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -4072,6 +4118,7 @@ class Belarus(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -4103,6 +4150,7 @@ class Belarus(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -4211,6 +4259,7 @@ class Bulgaria(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -4233,6 +4282,7 @@ class Bulgaria(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -4320,6 +4370,7 @@ class CzechRepublic(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -4342,6 +4393,7 @@ class CzechRepublic(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -4428,6 +4480,7 @@ class China(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -4456,6 +4509,7 @@ class China(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -4532,6 +4586,7 @@ class Croatia(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -4553,6 +4608,7 @@ class Croatia(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -4620,6 +4676,7 @@ class Egypt(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -4641,6 +4698,7 @@ class Egypt(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -4742,6 +4800,7 @@ class Finland(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -4763,6 +4822,7 @@ class Finland(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -4892,6 +4952,7 @@ class Greece(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -4929,6 +4990,7 @@ class Greece(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -5043,6 +5105,7 @@ class Hungary(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -5065,6 +5128,7 @@ class Hungary(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -5132,6 +5196,7 @@ class India(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -5153,6 +5218,7 @@ class India(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -5264,6 +5330,7 @@ class Iran(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -5290,6 +5357,7 @@ class Iran(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -5370,6 +5438,7 @@ class Iraq(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -5391,6 +5460,7 @@ class Iraq(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -5492,6 +5562,7 @@ class Japan(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -5513,6 +5584,7 @@ class Japan(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -5675,6 +5747,7 @@ class Kazakhstan(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -5708,6 +5781,7 @@ class Kazakhstan(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -5783,6 +5857,7 @@ class NorthKorea(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -5804,6 +5879,7 @@ class NorthKorea(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -5871,6 +5947,7 @@ class Pakistan(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -5892,6 +5969,7 @@ class Pakistan(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -5981,6 +6059,7 @@ class Poland(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -6005,6 +6084,7 @@ class Poland(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -6109,6 +6189,7 @@ class Romania(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -6130,6 +6211,7 @@ class Romania(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -6234,6 +6316,7 @@ class SaudiArabia(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -6261,6 +6344,7 @@ class SaudiArabia(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -6338,6 +6422,7 @@ class Serbia(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -6359,6 +6444,7 @@ class Serbia(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -6430,6 +6516,7 @@ class Slovakia(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -6452,6 +6539,7 @@ class Slovakia(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -6519,6 +6607,7 @@ class SouthKorea(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -6540,6 +6629,7 @@ class SouthKorea(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -6607,6 +6697,7 @@ class Sweden(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -6628,6 +6719,7 @@ class Sweden(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -6696,6 +6788,7 @@ class Syria(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -6718,6 +6811,7 @@ class Syria(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -6785,6 +6879,7 @@ class Yemen(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -6806,6 +6901,7 @@ class Yemen(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -6873,6 +6969,7 @@ class Vietnam(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -6894,6 +6991,7 @@ class Vietnam(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -6961,6 +7059,7 @@ class Venezuela(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -6982,6 +7081,7 @@ class Venezuela(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -7049,6 +7149,7 @@ class Tunisia(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -7070,6 +7171,7 @@ class Tunisia(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -7137,6 +7239,7 @@ class Thailand(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -7158,6 +7261,7 @@ class Thailand(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -7225,6 +7329,7 @@ class Sudan(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -7246,6 +7351,7 @@ class Sudan(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -7313,6 +7419,7 @@ class Philippines(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -7334,6 +7441,7 @@ class Philippines(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -7401,6 +7509,7 @@ class Morocco(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -7422,6 +7531,7 @@ class Morocco(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -7489,6 +7599,7 @@ class Mexico(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -7510,6 +7621,7 @@ class Mexico(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -7577,6 +7689,7 @@ class Malaysia(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -7598,6 +7711,7 @@ class Malaysia(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -7668,6 +7782,7 @@ class Libya(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -7689,6 +7804,7 @@ class Libya(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -7756,6 +7872,7 @@ class Jordan(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -7777,6 +7894,7 @@ class Jordan(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -7844,6 +7962,7 @@ class Indonesia(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -7865,6 +7984,7 @@ class Indonesia(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -7932,6 +8052,7 @@ class Honduras(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -7953,6 +8074,7 @@ class Honduras(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -8020,6 +8142,7 @@ class Ethiopia(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -8041,6 +8164,7 @@ class Ethiopia(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -8131,6 +8255,7 @@ class Chile(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -8156,6 +8281,7 @@ class Chile(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -8229,6 +8355,7 @@ class Brazil(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -8250,6 +8377,7 @@ class Brazil(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -8317,6 +8445,7 @@ class Bahrain(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -8338,6 +8467,7 @@ class Bahrain(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -8440,6 +8570,7 @@ class ThirdReich(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -8462,6 +8593,7 @@ class ThirdReich(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -8547,6 +8679,7 @@ class Yugoslavia(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -8568,6 +8701,7 @@ class Yugoslavia(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -8656,6 +8790,7 @@ class USSR(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -8677,6 +8812,7 @@ class USSR(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -8781,6 +8917,7 @@ class ItalianSocialRepublic(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -8802,6 +8939,7 @@ class ItalianSocialRepublic(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -8963,6 +9101,7 @@ class Algeria(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -9000,6 +9139,7 @@ class Algeria(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -9089,6 +9229,7 @@ class Kuwait(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -9110,6 +9251,7 @@ class Kuwait(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -9177,6 +9319,7 @@ class Qatar(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -9198,6 +9341,7 @@ class Qatar(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -9265,6 +9409,7 @@ class Oman(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -9286,6 +9431,7 @@ class Oman(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:
@@ -9353,6 +9499,7 @@ class UnitedArabEmirates(Country):
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
         MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
 
     planes = [
         Plane.A_10C,
@@ -9374,6 +9521,7 @@ class UnitedArabEmirates(Country):
         Plane.M_2000C,
         Plane.MiG_15bis,
         Plane.MiG_21Bis,
+        Plane.Yak_52,
     ]
 
     class Helicopter:

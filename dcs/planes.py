@@ -303,6 +303,7 @@ class F_A_18A(PlaneType):
 
 class F_A_18C(PlaneType):
     id = "F/A-18C"
+    flyable = True
     height = 4.66
     width = 11.43
     length = 17.07
@@ -8524,6 +8525,7 @@ class SpitfireLFMkIXCW(PlaneType):
 
 class AJS37(PlaneType):
     id = "AJS37"
+    flyable = True
     height = 5.81
     width = 10.6
     length = 16.3
@@ -11415,6 +11417,7 @@ class F_5E(PlaneType):
 
 class F_5E_3(PlaneType):
     id = "F-5E-3"
+    flyable = True
     height = 4.06
     width = 8.53
     length = 14.68
@@ -12243,6 +12246,7 @@ class FA_18C_hornet(PlaneType):
         LAU_115_2_LAU_127_AIM_9L = (2, Weapons.LAU_115_2_LAU_127_AIM_9L)
         LAU_115___AIM_7M = (2, Weapons.LAU_115___AIM_7M)
         LAU_115C_AIM_7F = (2, Weapons.LAU_115C_AIM_7F)
+        AIM_120B = (2, Weapons.AIM_120B)
         BRU_33_LAU_68___7_2_75__rockets_M151__HE_ = (2, Weapons.BRU_33_LAU_68___7_2_75__rockets_M151__HE_)
         BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_ = (2, Weapons.BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_)
         BRU_33_LAU_68___7_2_75__rockets_MK5__HE_ = (2, Weapons.BRU_33_LAU_68___7_2_75__rockets_MK5__HE_)
@@ -12292,6 +12296,7 @@ class FA_18C_hornet(PlaneType):
     class Pylon4:
         AIM_7M = (4, Weapons.AIM_7M)
         AIM_7F = (4, Weapons.AIM_7F)
+        AIM_120B = (4, Weapons.AIM_120B)
 
     class Pylon5:
         FPU_8A_Fuel_Tank_330_gallons = (5, Weapons.FPU_8A_Fuel_Tank_330_gallons)
@@ -12310,6 +12315,7 @@ class FA_18C_hornet(PlaneType):
     class Pylon6:
         AIM_7M = (6, Weapons.AIM_7M)
         AIM_7F = (6, Weapons.AIM_7F)
+        AIM_120B = (6, Weapons.AIM_120B)
 
     class Pylon7:
         LAU_115___AIM_7M = (7, Weapons.LAU_115___AIM_7M)
@@ -12341,6 +12347,7 @@ class FA_18C_hornet(PlaneType):
         LAU_115_2_LAU_127_AIM_9L = (8, Weapons.LAU_115_2_LAU_127_AIM_9L)
         LAU_115___AIM_7M = (8, Weapons.LAU_115___AIM_7M)
         LAU_115C_AIM_7F = (8, Weapons.LAU_115C_AIM_7F)
+        AIM_120B = (8, Weapons.AIM_120B)
         BRU_33_LAU_68___7_2_75__rockets_M151__HE_ = (8, Weapons.BRU_33_LAU_68___7_2_75__rockets_M151__HE_)
         BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_ = (8, Weapons.BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_)
         BRU_33_LAU_68___7_2_75__rockets_MK5__HE_ = (8, Weapons.BRU_33_LAU_68___7_2_75__rockets_MK5__HE_)
@@ -15195,6 +15202,80 @@ class MiG_21Bis(PlaneType):
     task_default = task.CAP
 
 
+class Yak_52(PlaneType):
+    id = "Yak-52"
+    height = 2.7
+    width = 9.3
+    length = 7.745
+    fuel_max = 87.84
+    max_speed = 270
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
+    radio_frequency = 132
+
+    panel_radio = {
+        1: {
+            "channels": {
+                6: 0.803,
+                2: 0.303,
+                8: 0.215,
+                3: 0.289,
+                1: 0.625,
+                4: 0.591,
+                5: 0.408,
+                7: 0.443
+            },
+        },
+    }
+
+    property_defaults = {
+        "PropellorType": 0,
+        "NetCrewControlPriority": 0,
+    }
+
+    class Properties:
+
+        class PropellorType:
+            id = "PropellorType"
+
+            class Values:
+                _2_Blade_V530TA_D35 = 0
+                _3_Blade_MTV_9 = 1
+
+        class NetCrewControlPriority:
+            id = "NetCrewControlPriority"
+
+            class Values:
+                Pilot = 0
+                Instructor = 1
+                Ask_Always = -1
+                Equally_Responsible = -2
+
+    class Liveries:
+
+        class Spain(Enum):
+            Pobeda = "Pobeda"
+
+        class Russia(Enum):
+            Default = "Default"
+            DOSAAF = "DOSAAF"
+            Pobeda = "Pobeda"
+            The_First_Flight = "The First Flight"
+            The_Yakovlevs = "The Yakovlevs"
+
+    class Pylon1:
+        Smoke_Generator___red_ = (1, Weapons.Smoke_Generator___red_)
+        Smoke_Generator___green_ = (1, Weapons.Smoke_Generator___green_)
+        Smoke_Generator___blue_ = (1, Weapons.Smoke_Generator___blue_)
+        Smoke_Generator___white_ = (1, Weapons.Smoke_Generator___white_)
+        Smoke_Generator___yellow_ = (1, Weapons.Smoke_Generator___yellow_)
+        Smoke_Generator___orange_ = (1, Weapons.Smoke_Generator___orange_)
+
+    pylons = {1}
+
+    tasks = [task.CAP, task.Escort, task.AFAC]
+    task_default = task.AFAC
+
+
 class B_17G(PlaneType):
     id = "B-17G"
     height = 5.82
@@ -15472,6 +15553,7 @@ plane_map = {
     "MQ-9 Reaper": MQ_9_Reaper,
     "MiG-15bis": MiG_15bis,
     "MiG-21Bis": MiG_21Bis,
+    "Yak-52": Yak_52,
     "B-17G": B_17G,
     "TF-51D": TF_51D,
 }

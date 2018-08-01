@@ -140,7 +140,6 @@ class Weapons:
     CBU_97 = {"clsid": "{5335D97A-35A5-4643-9D9B-026C75961E52}", "name": "CBU-97", "weight": 417}
     CBU_99 = {"clsid": "{CBU_99}", "name": "CBU-99", "weight": 222}
     CM_802AKG = {"clsid": "{CM-802AKG}", "name": "CM-802AKG", "weight": 850}
-    C_802A = {"clsid": "{C-802A}", "name": "C-802A", "weight": None}
     C_802AK = {"clsid": "{C-802AK}", "name": "C-802AK", "weight": 850}
     DEFA_553 = {"clsid": "{C-101-DEFA553}", "name": "DEFA-553", "weight": 218}
     Drop_Tank_75Gal = {"clsid": "{DT75GAL}", "name": "Drop Tank 75Gal", "weight": 227.048087675}
@@ -221,10 +220,8 @@ class Weapons:
     GBU_38_16 = {"clsid": "GBU-38*16", "name": "GBU-38*16", "weight": 3856}
     GUV_VOG = {"clsid": "GUV_VOG", "name": "GUV AP-30", "weight": 274}
     GUV_YakB_GSHP = {"clsid": "GUV_YakB_GSHP", "name": "GUV YakB GSHP", "weight": 452}
-    HHQ_9 = {"clsid": "{HHQ9}", "name": "HHQ-9", "weight": None}
     HOT3 = {"clsid": "{HOT3G}", "name": "HOT3", "weight": 32}
     HOT3_ = {"clsid": "{HOT3D}", "name": "HOT3", "weight": 32}
-    HQ_16 = {"clsid": "{HQ16}", "name": "HQ-16", "weight": None}
     HSAB_9_Mk_20_Rockeye = {"clsid": "{4CD2BB0F-5493-44EF-A927-9760350F7BA1}", "name": "HSAB*9 Mk-20 Rockeye", "weight": 2050}
     HSAB_9_Mk_84 = {"clsid": "{696CFFC4-0BDE-42A8-BE4B-0BE3D9DD723C}", "name": "HSAB*9 Mk-84", "weight": 8100}
     HVAR = {"clsid": "{HVAR}", "name": "HVAR", "weight": 64}
@@ -613,8 +610,6 @@ class Weapons:
     XM158_M274 = {"clsid": "XM158_M274", "name": "XM158 - 7 2.75' rockets M274 Practice smoke", "weight": 112}
     XM158_MK1 = {"clsid": "XM158_MK1", "name": "XM158 - 7 2.75' rockets MK1 Practice", "weight": 112}
     XM158_MK5 = {"clsid": "XM158_MK5", "name": "XM158 - 7 2.75' rockets MK5 HE", "weight": 112}
-    YJ_62 = {"clsid": "{YJ-62}", "name": "YJ-62", "weight": None}
-    YJ_83 = {"clsid": "{YJ-83}", "name": "YJ-83", "weight": None}
     YJ_83K = {"clsid": "{YJ-83K}", "name": "YJ-83K", "weight": 850}
     _1100L_Tank = {"clsid": "{tank1100}", "name": "1100L Tank", "weight": 690}
     _12_AN_M64 = {"clsid": "{12xM64}", "name": "12 AN-M64", "weight": 2744}
@@ -688,7 +683,6 @@ class Weapons:
     _9M14 = {"clsid": "9M14", "name": "AT-3 SAGGER", "weight": None}
     _9M31 = {"clsid": "9M31", "name": "SA-9 GASKIN", "weight": None}
     _9M311 = {"clsid": "9M311", "name": "SA-19 GRISON", "weight": None}
-    _9M317 = {"clsid": "{9M317}", "name": "9M317", "weight": None}
     _9M33 = {"clsid": "9M33", "name": "SA-8 GECKO", "weight": None}
     _9M331 = {"clsid": "_9M331", "name": "SA-15 GAUNTLET", "weight": None}
     _9M37 = {"clsid": "_9M37", "name": "SA-13 GOPHER", "weight": None}
@@ -834,7 +828,6 @@ weapon_ids = {
     "{5335D97A-35A5-4643-9D9B-026C75961E52}": Weapons.CBU_97,
     "{CBU_99}": Weapons.CBU_99,
     "{CM-802AKG}": Weapons.CM_802AKG,
-    "{C-802A}": Weapons.C_802A,
     "{C-802AK}": Weapons.C_802AK,
     "{C-101-DEFA553}": Weapons.DEFA_553,
     "{DT75GAL}": Weapons.Drop_Tank_75Gal,
@@ -915,10 +908,8 @@ weapon_ids = {
     "GBU-38*16": Weapons.GBU_38_16,
     "GUV_VOG": Weapons.GUV_VOG,
     "GUV_YakB_GSHP": Weapons.GUV_YakB_GSHP,
-    "{HHQ9}": Weapons.HHQ_9,
     "{HOT3G}": Weapons.HOT3,
     "{HOT3D}": Weapons.HOT3_,
-    "{HQ16}": Weapons.HQ_16,
     "{4CD2BB0F-5493-44EF-A927-9760350F7BA1}": Weapons.HSAB_9_Mk_20_Rockeye,
     "{696CFFC4-0BDE-42A8-BE4B-0BE3D9DD723C}": Weapons.HSAB_9_Mk_84,
     "{HVAR}": Weapons.HVAR,
@@ -1307,8 +1298,6 @@ weapon_ids = {
     "XM158_M274": Weapons.XM158_M274,
     "XM158_MK1": Weapons.XM158_MK1,
     "XM158_MK5": Weapons.XM158_MK5,
-    "{YJ-62}": Weapons.YJ_62,
-    "{YJ-83}": Weapons.YJ_83,
     "{YJ-83K}": Weapons.YJ_83K,
     "{tank1100}": Weapons._1100L_Tank,
     "{12xM64}": Weapons._12_AN_M64,
@@ -1382,7 +1371,6 @@ weapon_ids = {
     "9M14": Weapons._9M14,
     "9M31": Weapons._9M31,
     "9M311": Weapons._9M311,
-    "{9M317}": Weapons._9M317,
     "9M33": Weapons._9M33,
     "_9M331": Weapons._9M331,
     "_9M37": Weapons._9M37,
