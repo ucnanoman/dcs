@@ -12246,7 +12246,10 @@ class FA_18C_hornet(PlaneType):
         LAU_115_2_LAU_127_AIM_9L = (2, Weapons.LAU_115_2_LAU_127_AIM_9L)
         LAU_115___AIM_7M = (2, Weapons.LAU_115___AIM_7M)
         LAU_115C_AIM_7F = (2, Weapons.LAU_115C_AIM_7F)
-        AIM_120B = (2, Weapons.AIM_120B)
+        LAU_115___AIM_120B = (2, Weapons.LAU_115___AIM_120B)
+        LAU_115___AIM_120C = (2, Weapons.LAU_115___AIM_120C)
+        LAU_115_2_LAU_127_AIM_120B = (2, Weapons.LAU_115_2_LAU_127_AIM_120B)
+        LAU_115_2_LAU_127_AIM_120C = (2, Weapons.LAU_115_2_LAU_127_AIM_120C)
         BRU_33_LAU_68___7_2_75__rockets_M151__HE_ = (2, Weapons.BRU_33_LAU_68___7_2_75__rockets_M151__HE_)
         BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_ = (2, Weapons.BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_)
         BRU_33_LAU_68___7_2_75__rockets_MK5__HE_ = (2, Weapons.BRU_33_LAU_68___7_2_75__rockets_MK5__HE_)
@@ -12272,6 +12275,10 @@ class FA_18C_hornet(PlaneType):
     class Pylon3:
         LAU_115___AIM_7M = (3, Weapons.LAU_115___AIM_7M)
         LAU_115C_AIM_7F = (3, Weapons.LAU_115C_AIM_7F)
+        LAU_115___AIM_120B = (3, Weapons.LAU_115___AIM_120B)
+        LAU_115___AIM_120C = (3, Weapons.LAU_115___AIM_120C)
+        LAU_115_2_LAU_127_AIM_120B = (3, Weapons.LAU_115_2_LAU_127_AIM_120B)
+        LAU_115_2_LAU_127_AIM_120C = (3, Weapons.LAU_115_2_LAU_127_AIM_120C)
         BRU_33_LAU_68___7_2_75__rockets_M151__HE_ = (3, Weapons.BRU_33_LAU_68___7_2_75__rockets_M151__HE_)
         BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_ = (3, Weapons.BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_)
         BRU_33_LAU_10___4_ZUNI_MK_71 = (3, Weapons.BRU_33_LAU_10___4_ZUNI_MK_71)
@@ -12297,6 +12304,7 @@ class FA_18C_hornet(PlaneType):
         AIM_7M = (4, Weapons.AIM_7M)
         AIM_7F = (4, Weapons.AIM_7F)
         AIM_120B = (4, Weapons.AIM_120B)
+        AIM_120C = (4, Weapons.AIM_120C)
 
     class Pylon5:
         FPU_8A_Fuel_Tank_330_gallons = (5, Weapons.FPU_8A_Fuel_Tank_330_gallons)
@@ -12316,10 +12324,15 @@ class FA_18C_hornet(PlaneType):
         AIM_7M = (6, Weapons.AIM_7M)
         AIM_7F = (6, Weapons.AIM_7F)
         AIM_120B = (6, Weapons.AIM_120B)
+        AIM_120C = (6, Weapons.AIM_120C)
 
     class Pylon7:
         LAU_115___AIM_7M = (7, Weapons.LAU_115___AIM_7M)
         LAU_115C_AIM_7F = (7, Weapons.LAU_115C_AIM_7F)
+        LAU_115___AIM_120B = (7, Weapons.LAU_115___AIM_120B)
+        LAU_115___AIM_120C = (7, Weapons.LAU_115___AIM_120C)
+        LAU_115_2_LAU_127_AIM_120B = (7, Weapons.LAU_115_2_LAU_127_AIM_120B)
+        LAU_115_2_LAU_127_AIM_120C = (7, Weapons.LAU_115_2_LAU_127_AIM_120C)
         BRU_33_LAU_68___7_2_75__rockets_M151__HE_ = (7, Weapons.BRU_33_LAU_68___7_2_75__rockets_M151__HE_)
         BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_ = (7, Weapons.BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_)
         BRU_33_LAU_10___4_ZUNI_MK_71 = (7, Weapons.BRU_33_LAU_10___4_ZUNI_MK_71)
@@ -12347,7 +12360,10 @@ class FA_18C_hornet(PlaneType):
         LAU_115_2_LAU_127_AIM_9L = (8, Weapons.LAU_115_2_LAU_127_AIM_9L)
         LAU_115___AIM_7M = (8, Weapons.LAU_115___AIM_7M)
         LAU_115C_AIM_7F = (8, Weapons.LAU_115C_AIM_7F)
-        AIM_120B = (8, Weapons.AIM_120B)
+        LAU_115___AIM_120B = (8, Weapons.LAU_115___AIM_120B)
+        LAU_115___AIM_120C = (8, Weapons.LAU_115___AIM_120C)
+        LAU_115_2_LAU_127_AIM_120B = (8, Weapons.LAU_115_2_LAU_127_AIM_120B)
+        LAU_115_2_LAU_127_AIM_120C = (8, Weapons.LAU_115_2_LAU_127_AIM_120C)
         BRU_33_LAU_68___7_2_75__rockets_M151__HE_ = (8, Weapons.BRU_33_LAU_68___7_2_75__rockets_M151__HE_)
         BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_ = (8, Weapons.BRU_33___2_LAU_68___7_2_75__rockets_M151__HE_)
         BRU_33_LAU_68___7_2_75__rockets_MK5__HE_ = (8, Weapons.BRU_33_LAU_68___7_2_75__rockets_MK5__HE_)
@@ -15204,6 +15220,7 @@ class MiG_21Bis(PlaneType):
 
 class Yak_52(PlaneType):
     id = "Yak-52"
+    flyable = True
     height = 2.7
     width = 9.3
     length = 7.745

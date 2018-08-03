@@ -36,8 +36,8 @@ class Weapons:
     AGM_86C_8 = {"clsid": "{8DCAF3A3-7FCF-41B8-BB88-58DEDA878EDE}", "name": "AGM-86C*8", "weight": 15600}
     AGM_88C = {"clsid": "{B06DD79A-F21E-4EB9-BD9D-AB3844618C9C}", "name": "AGM-88C", "weight": 361}
     AGM_88C_ = {"clsid": "{B06DD79A-F21E-4EB9-BD9D-AB3844618C93}", "name": "AGM-88C", "weight": 361}
-    AIM_120B = {"clsid": "{C8E06185-7CD6-4C90-959F-044679E90751}", "name": "AIM-120B", "weight": 157}
-    AIM_120C = {"clsid": "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}", "name": "AIM-120C", "weight": 157}
+    AIM_120B = {"clsid": "{C8E06185-7CD6-4C90-959F-044679E90751}", "name": "AIM-120B", "weight": 157.8}
+    AIM_120C = {"clsid": "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}", "name": "AIM-120C", "weight": 161.5}
     AIM_54C = {"clsid": "{7575BA0B-7294-4844-857B-031A144B2595}", "name": "AIM-54C", "weight": 463}
     AIM_7F = {"clsid": "{AIM-7F}", "name": "AIM-7F", "weight": 230}
     AIM_7H = {"clsid": "{AIM-7H}", "name": "AIM-7H", "weight": 230}
@@ -293,12 +293,16 @@ class Weapons:
     LAU_105___2_AIM_9P = {"clsid": "{3C0745ED-8B0B-42eb-B907-5BD5C1717447}", "name": "LAU-105 - 2 AIM-9P", "weight": 116.18}
     LAU_10R___4_ZUNI_MK_71 = {"clsid": "{LAU_10R}", "name": "LAU-10R - 4 ZUNI MK 71", "weight": 440}
     LAU_10___4_ZUNI_MK_71 = {"clsid": "{F3EFE0AB-E91A-42D8-9CA2-B63C91ED570A}", "name": "LAU-10 - 4 ZUNI MK 71", "weight": 440}
-    LAU_115C_AIM_7F = {"clsid": "{LAU-115 - AIM-7F}", "name": "LAU-115C AIM-7F", "weight": 245}
-    LAU_115C_AIM_7H = {"clsid": "{LAU-115 - AIM-7H}", "name": "LAU-115C AIM-7H", "weight": 245}
-    LAU_115_2_LAU_127_AIM_9L = {"clsid": "LAU-115_2*LAU-127_AIM-9L", "name": "LAU-115 - 2 AIM-9L", "weight": 201}
-    LAU_115_2_LAU_127_AIM_9M = {"clsid": "LAU-115_2*LAU-127_AIM-9M", "name": "LAU-115 - 2 AIM-9M", "weight": 203.28}
-    LAU_115_2_LAU_127_CATM_9M = {"clsid": "LAU-115_2*LAU-127_CATM-9M", "name": "LAU-115 - 2 CAP-9M", "weight": 201}
-    LAU_115___AIM_7M = {"clsid": "{LAU-115 - AIM-7M}", "name": "LAU-115 - AIM-7M", "weight": 245}
+    LAU_115C_AIM_7F = {"clsid": "{LAU-115 - AIM-7F}", "name": "LAU-115C AIM-7F", "weight": 284.4}
+    LAU_115C_AIM_7H = {"clsid": "{LAU-115 - AIM-7H}", "name": "LAU-115C AIM-7H", "weight": 284.4}
+    LAU_115_2_LAU_127_AIM_120B = {"clsid": "LAU-115_2*LAU-127_AIM-120B", "name": "LAU-115 - 2 AIM-120B", "weight": 460.6}
+    LAU_115_2_LAU_127_AIM_120C = {"clsid": "LAU-115_2*LAU-127_AIM-120C", "name": "LAU-115 - 2 AIM-120C", "weight": 468}
+    LAU_115_2_LAU_127_AIM_9L = {"clsid": "LAU-115_2*LAU-127_AIM-9L", "name": "LAU-115 - 2 AIM-9L", "weight": 316}
+    LAU_115_2_LAU_127_AIM_9M = {"clsid": "LAU-115_2*LAU-127_AIM-9M", "name": "LAU-115 - 2 AIM-9M", "weight": 318.28}
+    LAU_115_2_LAU_127_CATM_9M = {"clsid": "LAU-115_2*LAU-127_CATM-9M", "name": "LAU-115 - 2 CAP-9M", "weight": 316}
+    LAU_115___AIM_120B = {"clsid": "{LAU-115 - AIM-120B}", "name": "LAU-115 - AIM-120B", "weight": 212.2}
+    LAU_115___AIM_120C = {"clsid": "{LAU-115 - AIM-120C}", "name": "LAU-115 - AIM-120C", "weight": 215.9}
+    LAU_115___AIM_7M = {"clsid": "{LAU-115 - AIM-7M}", "name": "LAU-115 - AIM-7M", "weight": 284.4}
     LAU_117_AGM_65D = {"clsid": "{444BA8AE-82A7-4345-842E-76154EFCCA46}", "name": "LAU-117,AGM-65D", "weight": 277}
     LAU_117_AGM_65E = {"clsid": "{F16A4DE0-116C-4A71-97F0-2CF85B0313EC}", "name": "LAU-117,AGM-65E", "weight": 345}
     LAU_117_AGM_65G = {"clsid": "LAU_117_AGM_65G", "name": "LAU-117,AGM-65G", "weight": 360}
@@ -983,9 +987,13 @@ weapon_ids = {
     "{F3EFE0AB-E91A-42D8-9CA2-B63C91ED570A}": Weapons.LAU_10___4_ZUNI_MK_71,
     "{LAU-115 - AIM-7F}": Weapons.LAU_115C_AIM_7F,
     "{LAU-115 - AIM-7H}": Weapons.LAU_115C_AIM_7H,
+    "LAU-115_2*LAU-127_AIM-120B": Weapons.LAU_115_2_LAU_127_AIM_120B,
+    "LAU-115_2*LAU-127_AIM-120C": Weapons.LAU_115_2_LAU_127_AIM_120C,
     "LAU-115_2*LAU-127_AIM-9L": Weapons.LAU_115_2_LAU_127_AIM_9L,
     "LAU-115_2*LAU-127_AIM-9M": Weapons.LAU_115_2_LAU_127_AIM_9M,
     "LAU-115_2*LAU-127_CATM-9M": Weapons.LAU_115_2_LAU_127_CATM_9M,
+    "{LAU-115 - AIM-120B}": Weapons.LAU_115___AIM_120B,
+    "{LAU-115 - AIM-120C}": Weapons.LAU_115___AIM_120C,
     "{LAU-115 - AIM-7M}": Weapons.LAU_115___AIM_7M,
     "{444BA8AE-82A7-4345-842E-76154EFCCA46}": Weapons.LAU_117_AGM_65D,
     "{F16A4DE0-116C-4A71-97F0-2CF85B0313EC}": Weapons.LAU_117_AGM_65E,
