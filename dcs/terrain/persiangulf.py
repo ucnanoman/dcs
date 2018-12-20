@@ -2684,9 +2684,6 @@ class PersianGulf(Terrain):
     ]
     assert(len(temperature) == 12)
 
-    def random_season_temperature(self, dt: datetime):
-        return random.randint(self.temperature[dt.month][0], self.temperature[dt.month][1])
-
     def __init__(self):
         super(PersianGulf, self).__init__("PersianGulf")
         self.bullseye_blue = {"x": PersianGulf.bounds.center().x, "y": PersianGulf.bounds.center().y}

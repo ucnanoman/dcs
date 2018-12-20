@@ -2187,9 +2187,6 @@ class Nevada(Terrain):
     ]
     assert(len(temperature) == 12)
 
-    def random_season_temperature(self, dt: datetime):
-        return random.randint(self.temperature[dt.month][0], self.temperature[dt.month][1])
-
     def __init__(self):
         super(Nevada, self).__init__("Nevada")
         # nttr center MGRS

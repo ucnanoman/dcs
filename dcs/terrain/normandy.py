@@ -5453,9 +5453,6 @@ class Normandy(Terrain):
     ]
     assert(len(temperature) == 12)
 
-    def random_season_temperature(self, dt: datetime):
-        return random.randint(self.temperature[dt.month][0], self.temperature[dt.month][1])
-
     def __init__(self):
         super(Normandy, self).__init__("Normandy")
         self.bullseye_blue = {"x": Normandy.bounds.center().x, "y": Normandy.bounds.center().y}

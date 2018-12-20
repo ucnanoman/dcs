@@ -412,6 +412,21 @@ class Terrain:
     bounds = None  # type: mapping.Rectangle
     map_view_default = None  # type: MapView
     city_graph = Graph()  # type: Graph
+    temperature = [
+        (-4, 14),
+        (-8, 14),
+        (-6, 16),
+        (0, 19),
+        (1, 24),
+        (8, 30),
+        (12, 33),
+        (12, 32),
+        (10, 28),
+        (2, 22),
+        (-2, 14),
+        (-4, 12)
+    ]
+    assert(len(temperature) == 12)
 
     def __init__(self, name: str):
         self.name = name
@@ -456,14 +471,7 @@ class Terrain:
         return [x for x in self.airports if x.position.distance_to_point(position) < distance]
 
     def random_season_temperature(self, dt: datetime):
-        if datetime(dt.year, 3, 1, tzinfo=timezone.utc) <= dt < datetime(dt.year, 6, 1, tzinfo=timezone.utc):
-            return random.randrange(11, 22)
-        elif datetime(dt.year, 6, 1, tzinfo=timezone.utc) <= dt < datetime(dt.year, 9, 1, tzinfo=timezone.utc):
-            return random.randrange(18, 35)
-        elif datetime(dt.year, 9, 1, tzinfo=timezone.utc) <= dt < datetime(dt.year, 12, 1, tzinfo=timezone.utc):
-            return random.randrange(10, 20)
-        else:
-            return random.randrange(-6, 6)
+        return random.randint(self.temperature[dt.month - 1][0], self.temperature[dt.month - 1][1])
 
 
 class Warehouses:
