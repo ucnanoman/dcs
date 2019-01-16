@@ -1,6 +1,6 @@
 -- execute(dofile) this script at the end of
 -- of 'DCS World\MissionEditor\modules\me_mission.lua'
--- base.dofile("path\\pydcs_export.lua")
+-- base.dofile("C:\\Users\\peint\\Documents\\dcs\\tools\\pydcs_export.lua")
 
 -------------------------------------------------------------------------------
 -- settings
@@ -401,9 +401,13 @@ from enum import Enum
 
                 writeln(file, '')
                 writeln(file, '        class '..j..'(Enum):')
+                local dupcheck = {}
                 for k in pairs(schemes) do
                     local liv_safe = safe_name(schemes[k].itemId)
-                    writeln(file, '            '..liv_safe..' = "'..schemes[k].itemId..'"')
+                    if dupcheck[liv_safe] == nil then
+                        writeln(file, '            '..liv_safe..' = "'..schemes[k].itemId..'"')
+                        dupcheck[liv_safe] = true
+                    end
                 end
             end
         end
@@ -504,6 +508,7 @@ unit_categories["Artillery"] = {}
 unit_categories["Infantry"] = {}
 unit_categories["Carriage"] = {}
 unit_categories["Locomotive"] = {}
+unit_categories["MissilesSS"] = {}
 
 for i in pairs(db.Units.Cars.Car) do
     local unit = db.Units.Cars.Car[i]
@@ -759,6 +764,7 @@ while i <= country.maxIndex do
         unit_categories["Infantry"] = {}
         unit_categories["Carriage"] = {}
         unit_categories["Locomotive"] = {}
+        unit_categories["MissilesSS"] = {}
 
         local cars = c.Units.Cars.Car
         for u in pairs(cars) do
