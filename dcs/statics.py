@@ -414,6 +414,42 @@ class Fortification:
         shape_name = "Crowd1"
         rate = 100
 
+    class US_Carrier_Technician_Static_Red(unittype.StaticType):
+        id = "US Carrier Technician Static Red"
+        name = "US Carrier Technician Static Red"
+        shape_name = "carrier_technician_red"
+        rate = 100
+
+    class US_Carrier_Technician_Static_Green(unittype.StaticType):
+        id = "US Carrier Technician Static Green"
+        name = "US Carrier Technician Static Green"
+        shape_name = "carrier_technician_green"
+        rate = 100
+
+    class US_Carrier_Technician_Static_Yellow(unittype.StaticType):
+        id = "US Carrier Technician Static Yellow"
+        name = "US Carrier Technician Static Yellow"
+        shape_name = "carrier_technician_yellow"
+        rate = 100
+
+    class US_Carrier_Technician_Static_Brown(unittype.StaticType):
+        id = "US Carrier Technician Static Brown"
+        name = "US Carrier Technician Static Brown"
+        shape_name = "carrier_technician_brown"
+        rate = 100
+
+    class US_Carrier_Technician_Static_Purple(unittype.StaticType):
+        id = "US Carrier Technician Static Purple"
+        name = "US Carrier Technician Static Purple"
+        shape_name = "carrier_technician_purple"
+        rate = 100
+
+    class US_Carrier_Technician_Static_White(unittype.StaticType):
+        id = "US Carrier Technician Static White"
+        name = "US Carrier Technician Static White"
+        shape_name = "carrier_technician_white"
+        rate = 100
+
     class Coach_a_tank_yellow(unittype.StaticType):
         id = "Coach a tank yellow"
         name = "Coach a tank yellow"
@@ -711,6 +747,12 @@ fortification_map = {
     "GeneratorF": Fortification.GeneratorF,
     "Airshow_Cone": Fortification.Airshow_cone,
     "Airshow_Crowd": Fortification.Airshow_Crowd,
+    "US Carrier Technician Static Red": Fortification.US_Carrier_Technician_Static_Red,
+    "US Carrier Technician Static Green": Fortification.US_Carrier_Technician_Static_Green,
+    "US Carrier Technician Static Yellow": Fortification.US_Carrier_Technician_Static_Yellow,
+    "US Carrier Technician Static Brown": Fortification.US_Carrier_Technician_Static_Brown,
+    "US Carrier Technician Static Purple": Fortification.US_Carrier_Technician_Static_Purple,
+    "US Carrier Technician Static White": Fortification.US_Carrier_Technician_Static_White,
     "Coach a tank yellow": Fortification.Coach_a_tank_yellow,
     "Coach a tank blue": Fortification.Coach_a_tank_blue,
     "Coach cargo": Fortification.Coach_for_cargo,

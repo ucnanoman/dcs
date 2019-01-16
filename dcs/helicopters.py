@@ -1582,8 +1582,8 @@ class UH_1H(HelicopterType):
             id = "NetCrewControlPriority"
 
             class Values:
-                Pilot = 0
-                Instructor = 1
+                Instructor = 0
+                Pilot = 1
                 Ask_Always = -1
                 Equally_Responsible = -2
 

@@ -177,9 +177,9 @@ class LHA_1_Tarawa(unittype.ShipType):
     air_weapon_dist = 150000
 
 
-class DDG_168_Guangzhou(unittype.ShipType):
+class Type_052B_Destroyer(unittype.ShipType):
     id = "052B"
-    name = "DDG-168 Guangzhou"
+    name = "Type 052B Destroyer"
     plane_num = 0
     helicopter_num = 1
     parking = 1
@@ -188,9 +188,9 @@ class DDG_168_Guangzhou(unittype.ShipType):
     air_weapon_dist = 30000
 
 
-class FFG_538_Yantai(unittype.ShipType):
+class Type_054A_Frigate(unittype.ShipType):
     id = "054A"
-    name = "FFG-538 Yantai"
+    name = "Type 054A Frigate"
     plane_num = 0
     helicopter_num = 1
     parking = 1
@@ -199,9 +199,9 @@ class FFG_538_Yantai(unittype.ShipType):
     air_weapon_dist = 45000
 
 
-class DDG_171_Haikou(unittype.ShipType):
+class Type_052C_Destroyer(unittype.ShipType):
     id = "052C"
-    name = "DDG-171 Haikou"
+    name = "Type 052C Destroyer"
     plane_num = 0
     helicopter_num = 1
     parking = 1
@@ -253,9 +253,9 @@ ship_map = {
     "SOM": SSK_641B,
     "Stennis": CVN_74_John_C__Stennis,
     "LHA_Tarawa": LHA_1_Tarawa,
-    "052B": DDG_168_Guangzhou,
-    "054A": FFG_538_Yantai,
-    "052C": DDG_171_Haikou,
+    "052B": Type_052B_Destroyer,
+    "054A": Type_054A_Frigate,
+    "052C": Type_052C_Destroyer,
     "LST_Mk2": LST_Mk_II,
     "USS_Samuel_Chase": LS_Samuel_Chase,
     "Higgins_boat": LCVP__Higgins_boat,
