@@ -6,14 +6,126 @@ import sys
 from typing import List, Tuple
 
 
-class BasicScenario:
-    def __init__(self, hide=True):
-        self.hide = hide
+class TrainingScenario:
+    def __init__(self, aircraft_types: List[Tuple[str, str]], playercount: int, start: str, unhide):
         self.m = dcs.Mission(terrain=dcs.terrain.Nevada())
 
         self.red_airports = []  # type: List[dcs.terrain.Airport]
         self.blue_airports = []  # type: List[dcs.terrain.Airport]
         self.setup_airports()
+
+        nevada = self.m.terrain  # type: dcs.terrain.Nevada
+
+        self.add_civil_airtraffic(hidden=not unhide,
+                                  airports_to_use=[
+                                      nevada.mccarran_international_airport(),
+                                      nevada.henderson_executive_airport(),
+                                      nevada.boulder_city_airport()])
+
+        usa = self.m.country(dcs.countries.USA.name)
+
+        nellis = nevada.nellis_afb()
+        creech = nevada.creech_afb()
+        groom = nevada.groom_lake_afb()
+
+        blue_military = [nellis, creech, groom]
+
+        planes = [
+            (dcs.countries.USA.name, dcs.countries.USA.Plane.F_16C_bl_52d, 4),
+            (dcs.countries.USA.name, dcs.countries.USA.Plane.F_15E, 2),
+            (dcs.countries.USA.name, dcs.countries.USA.Plane.F_A_18C, 4),
+            (dcs.countries.USA.name, dcs.countries.USA.Plane.A_10A, 4)
+        ]
+
+        self.add_uncontrolled_military_planes(blue_military, planes, False)
+
+        self.add_ground_targets()
+
+        awacs_frequency = 130
+        tanker_frequency = 140
+        orbit_rect = dcs.mapping.Rectangle(
+            int(creech.position.x), int(creech.position.y - 100 * 1000), int(creech.position.x - 100 * 1000),
+            int(creech.position.y))
+
+        pos, heading, race_dist = TrainingScenario.random_orbit(orbit_rect)
+        awacs = self.m.awacs_flight(
+            usa,
+            "AWACS",
+            plane_type=dcs.planes.E_3A,
+            airport=None,
+            position=pos,
+            race_distance=race_dist, heading=heading,
+            altitude=random.randrange(4000, 5500, 100), frequency=awacs_frequency)
+
+        self.m.escort_flight(usa, "AWACS Escort", dcs.countries.USA.Plane.F_15E, None, awacs, group_size=2)
+
+        pos, heading, race_dist = TrainingScenario.random_orbit(orbit_rect)
+        refuel_net = self.m.refuel_flight(
+            usa,
+            "Tanker KC_130",
+            dcs.planes.KC130,
+            airport=None,
+            position=pos,
+            race_distance=race_dist, heading=heading,
+            altitude=random.randrange(4000, 5500, 100), speed=750, frequency=tanker_frequency)
+
+        pos, heading, race_dist = TrainingScenario.random_orbit(orbit_rect)
+        refuel_rod = self.m.refuel_flight(
+            usa,
+            "Tanker KC_135",
+            dcs.planes.KC_135,
+            airport=None,
+            position=pos,
+            race_distance=race_dist, heading=heading,
+            altitude=random.randrange(4000, 5500, 100), frequency=tanker_frequency, tacanchannel="12X")
+
+        player_groups = self.place_players(start, aircraft_types, blue_military,
+                                           placement_rect=dcs.Rectangle.from_point(groom.position, 20 * 1000),
+                                           group_size=playercount, maintask=None)
+
+        if start == "inflight":
+            fuel_percent = 0.2
+        else:
+            fuel_percent = 0.3
+
+        airport = None  # type: dcs.terrain.Airport
+        pg = None  # type: dcs.unitgroup.FlyingGroup
+
+        for pg in player_groups:
+            airport = self.m.terrain.airport_by_id(pg.points[0].airdrome_id)
+            if not airport:
+                airport = random.choice(blue_military)
+
+            for u in pg.units:
+                u.fuel *= fuel_percent
+
+            if not pg.units[0].unit_type.helicopter:
+                if pg.units[0].unit_type in [dcs.planes.A_10C]:
+                    pg.add_waypoint(refuel_rod.points[1].position, 4000)
+                else:
+                    pg.add_waypoint(refuel_net.points[1].position, 4000)
+
+            pg.add_runway_waypoint(airport)
+            pg.land_at(airport)
+            pg.load_loadout("Combat Air Patrol")
+
+        goal = dcs.goals.Goal("home and alive")
+        goal.rules.append(dcs.condition.UnitAlive(pg.units[0].id))
+        tz = self.m.triggers.add_triggerzone(airport.position, 1000, name="home")
+        goal.rules.append((dcs.condition.UnitInZone(pg.units[0].id, tz.id)))
+        self.m.goals.add_offline(goal)
+
+        self.m.set_sortie_text("Training mission nevada.")
+        self.m.set_description_text("""Random generated training mission.
+{count} {type} are/is prepared for a refueling training mission.""".format(
+            count=playercount, type=", ".join([x[1] for x in aircraft_types])))
+        self.m.set_description_bluetask_text("""Find your tanker and do a full refuel.
+Afterwards land at your designated homebase.
+
+AWACS is reachable on {awacs_freq} Mhz VHF-AM and Tankers are reachable on {tanker_freq} Mhz VHF-AM.
+KC-135 Tanker has TACAN 12X and KC-130 has TACAN 10X.""".format(
+            awacs_freq=awacs_frequency,
+            tanker_freq=tanker_frequency))
 
     def dynamic_weather(self, baricsystem: str):
         if baricsystem == "dyncyclone":
@@ -32,8 +144,11 @@ class BasicScenario:
     def setup_airports(self):
         nevada = self.m.terrain  # type: dcs.terrain.Nevada
         self.blue_airports = nevada.default_blue_airports()
+        self.red_airports = [nevada.tonopah_airport(), nevada.mina_airport_3q0(), nevada.tonopah_test_range_airfield()]
         for a in self.blue_airports:
             self.setup_airport(a, "blue", [])
+        for a in self.red_airports:
+            self.setup_airport(a, "red", [])
 
     def setup_airport(self, airport: dcs.terrain.Airport, side: str, air_def_units: List[dcs.unittype.VehicleType]):
         airport.set_coalition(side)
@@ -63,9 +178,11 @@ class BasicScenario:
 
             slots = airport.free_parking_slot(ptype)
 
+            beatty = self.m.terrain.beatty_airport()
+            groom = self.m.terrain.groom_lake_afb()
             x = random.randrange(int(dcs.terrain.Nevada.bounds.bottom)+100*1000,
-                                 int(dcs.terrain.Nevada.bounds.top)-100*1000)
-            y = random.randrange(int(dcs.terrain.Nevada.bounds.left)+100*1000,
+                                 int(groom.position.x))
+            y = random.randrange(int(beatty.position.y),
                                  int(dcs.terrain.Nevada.bounds.right)-130*1000)
 
             pos = dcs.mapping.Point(x, y)
@@ -197,7 +314,7 @@ class BasicScenario:
             aircraft_type = _type[1]
             aircraft_type = dict(dcs.planes.plane_map, **dcs.helicopters.helicopter_map)[aircraft_type]
 
-            airport = airports[random.randrange(0, len(airports))]
+            airport = random.choice(airports)
             if start == "inflight":
                 rp = placement_rect.random_point() if placement_rect else dcs.mapping.Rectangle.from_point(
                         airport.position, 20*1000).random_point()
@@ -222,120 +339,66 @@ class BasicScenario:
 
         return aircraft_groups
 
+    def add_ground_targets(self):
+        russia = self.m.country(dcs.countries.Russia.name)
+        pos = self.m.terrain.groom_lake_afb().position.point_from_heading(5, 60 * 1000)
+        rus_vehicles = dcs.countries.Russia.Vehicle
+        vtypes = [
+            rus_vehicles.Armor.MBT_T_72B,
+            rus_vehicles.Armor.IFV_BMP_3,
+            rus_vehicles.Artillery.SPH_2S3_Akatsia,
+            rus_vehicles.Unarmed.Transport_GAZ_3308,
+            rus_vehicles.Armor.MBT_T_80U]
+        self.m.vehicle_group(russia, "ref", dcs.countries.Russia.Vehicle.Infantry.Infantry_Soldier_Rus, pos)
+        for i in range(1, 9):
+            self.m.vehicle_group(
+                russia,
+                "ground target " + str(i),
+                random.choice(vtypes),
+                pos.random_point_within(5000, 500),
+                random.randint(0, 359),
+                random.randint(2, 6),
+                dcs.unitgroup.VehicleGroup.Formation.Scattered
+            )
+            # self.m.vehicle_group_platoon(russia, "ground targets 1",
+            #                              [
+            #                                  dcs.countries.Russia.Vehicle.Armor.MBT_T_72B,
+            #                                  dcs.countries.Russia.Vehicle.Armor.MBT_T_72B,
+            #                                  dcs.countries.Russia.Vehicle.Armor.MBT_T_72B,
+            #                                  dcs.countries.Russia.Vehicle.Armor.MBT_T_72B
+            #                              ],
+            #                              pos.random_point_within(5000, 500),
+            #                              90, dcs.unitgroup.VehicleGroup.Formation.Rectangle)
+
+        # these are targets with light air defense in sector 74C
+        pos = self.m.terrain.groom_lake_afb().position.point_from_heading(320, 53 * 1000)
+        self.m.vehicle_group(russia, "ref 2", rus_vehicles.Infantry.Infantry_Soldier_Rus, pos)
+        vtypes_light = [
+            rus_vehicles.AirDefence.AAA_ZU_23_on_Ural_375,
+            rus_vehicles.AirDefence.SPAAA_ZSU_23_4_Shilka,
+            rus_vehicles.AirDefence.AAA_ZU_23_on_Ural_375
+        ]
+
+        for i in range(1, 6):
+            group = []
+            for x in range(0, random.randint(1, 3)):
+                group.append(random.choice(vtypes_light))
+            fill_up_type = random.choice(vtypes)
+            for x in range(3, random.randint(4, 6)):
+                group.append(fill_up_type)
+            self.m.vehicle_group_platoon(
+                russia,
+                "target light air def " + str(i),
+                group,
+                pos.random_point_within(5000, 500),
+                random.randint(0, 359),
+                dcs.unitgroup.VehicleGroup.Formation.Scattered
+            )
+
     def save(self, filename, stats):
         self.m.save(filename)
         if stats:
             self.m.print_stats(self.m.stats())
-
-
-class Refueling(BasicScenario):
-    def __init__(self, aircraft_types: List[Tuple[str, str]], playercount: int, start: str, unhide):
-        super(Refueling, self).__init__()
-
-        nevada = self.m.terrain  # type: dcs.terrain.Nevada
-
-        self.add_civil_airtraffic(hidden=not unhide,
-                                  airports_to_use=[nevada.mccarran_international_airport(), nevada.creech_afb()])
-
-        usa = self.m.country(dcs.countries.USA.name)
-
-        nellis = nevada.nellis_afb()
-        tonopah = nevada.tonopah_airport()
-        creech = nevada.creech_afb()
-        groom = nevada.groom_lake_afb()
-
-        blue_military = [nellis, tonopah, groom]
-
-        planes = [
-            (dcs.countries.USA.name, dcs.countries.USA.Plane.F_16C_bl_52d, 4),
-            (dcs.countries.USA.name, dcs.countries.USA.Plane.F_15E, 2),
-            (dcs.countries.USA.name, dcs.countries.USA.Plane.F_A_18C, 4),
-            (dcs.countries.Georgia.name, dcs.countries.Georgia.Plane.Su_25T, 4)
-        ]
-
-        self.add_uncontrolled_military_planes(blue_military, planes, False)
-
-        awacs_frequency = 130
-        tanker_frequency = 140
-        orbit_rect = dcs.mapping.Rectangle(
-            int(creech.position.x + 120*1000), int(creech.position.y - 100 * 1000), int(creech.position.x), int(creech.position.y))
-
-        pos, heading, race_dist = Refueling.random_orbit(orbit_rect)
-        awacs = self.m.awacs_flight(
-            usa,
-            "AWACS",
-            plane_type=dcs.planes.E_3A,
-            airport=None,
-            position=pos,
-            race_distance=race_dist, heading=heading,
-            altitude=random.randrange(4000, 5500, 100), frequency=awacs_frequency)
-
-        self.m.escort_flight(usa, "AWACS Escort", dcs.countries.USA.Plane.F_15E, None, awacs, group_size=2)
-
-        pos, heading, race_dist = Refueling.random_orbit(orbit_rect)
-        refuel_net = self.m.refuel_flight(
-            usa,
-            "Tanker KC_130",
-            dcs.planes.KC_130,
-            airport=None,
-            position=pos,
-            race_distance=race_dist, heading=heading,
-            altitude=random.randrange(4000, 5500, 100), speed=750, frequency=tanker_frequency)
-
-        pos, heading, race_dist = Refueling.random_orbit(orbit_rect)
-        refuel_rod = self.m.refuel_flight(
-            usa,
-            "Tanker KC_135",
-            dcs.planes.KC_135,
-            airport=None,
-            position=pos,
-            race_distance=race_dist, heading=heading,
-            altitude=random.randrange(4000, 5500, 100), frequency=tanker_frequency)
-
-        player_groups = self.place_players(start, aircraft_types, blue_military,
-                                           placement_rect=orbit_rect,
-                                           group_size=playercount, maintask=None)
-
-        if start == "inflight":
-            fuel_percent = 0.2
-        else:
-            fuel_percent = 0.3
-
-        airport = None  # type: dcs.terrain.Airport
-        pg = None  # type: dcs.unitgroup.FlyingGroup
-
-        for pg in player_groups:
-            airport = self.m.terrain.airport_by_id(pg.points[0].airdrome_id)
-            if not airport:
-                airport = random.choice(blue_military)
-
-            for u in pg.units:
-                u.fuel *= fuel_percent
-
-            if pg.units[0].unit_type in [dcs.planes.A_10C]:
-                pg.add_waypoint(refuel_rod.points[1].position, 4000)
-            else:
-                pg.add_waypoint(refuel_net.points[1].position, 4000)
-
-            pg.add_runway_waypoint(airport)
-            pg.land_at(airport)
-            pg.load_loadout("Combat Air Patrol")
-
-        goal = dcs.goals.Goal("home and alive")
-        goal.rules.append(dcs.condition.UnitAlive(pg.units[0].id))
-        tz = self.m.triggers.add_triggerzone(airport.position, 1000, name="home")
-        goal.rules.append((dcs.condition.UnitInZone(pg.units[0].id, tz.id)))
-        self.m.goals.add_offline(goal)
-
-        self.m.set_sortie_text("Refuel your plane")
-        self.m.set_description_text("""Random generated refueling test mission.
-{count} {type} are/is prepared for a refueling training mission.""".format(
-            count=playercount, type=", ".join([x[1] for x in aircraft_types])))
-        self.m.set_description_bluetask_text("""Find your tanker and do a full refuel.
-Afterwards land at your designated homebase.
-
-AWACS is reachable on {awacs_freq} Mhz VHF-AM and Tankers are reachable on {tanker_freq} Mhz VHF-AM.
-KC-135 Tanker has TACAN 10X activated.""".format(awacs_freq=awacs_frequency, tanker_freq=tanker_frequency))
 
     @staticmethod
     def random_orbit(rect: dcs.mapping.Rectangle):
@@ -352,52 +415,29 @@ def main():
 
     types = [
         (dcs.countries.USA.name, dcs.planes.A_10C.id),
-        (dcs.countries.USA.name, dcs.planes.M_2000C.id),
+        (dcs.countries.France.name, dcs.planes.M_2000C.id),
         (dcs.countries.USA.name, dcs.helicopters.Ka_50.id),
-        (dcs.countries.USA.name, dcs.planes.AV_8B_N_A.id)
+        (dcs.countries.USA.name, dcs.planes.AV8BNA.id)
     ]
     aircraft_types = [x[1] for x in types]
-    parser = argparse.ArgumentParser(description="Nevada random DCS mission generator")
+    parser = argparse.ArgumentParser(description="Nevada random training mission generator")
 
     parser.add_argument("-a", "--aircrafttype", default=types[0][1],
                         choices=aircraft_types,
                         help="Player aircraft type")
     parser.add_argument("-p", "--playercount", default=1, type=int)
     parser.add_argument("-s", "--start", default="inflight", choices=["inflight", "runway", "warm", "cold"])
-    parser.add_argument("-t", "--missiontype", default="main", choices=["main", "CAS", "CAP", "refuel"])
     parser.add_argument("-d", "--daytime", choices=["random", "day", "night", "dusk", "dawn", "noon"], default="random")
     parser.add_argument("-w", "--weather", choices=["dynamic", "dyncyclone", "dynanti", "dynone", "clear"], default="dynamic")
     parser.add_argument("-u", "--unhide", action="store_true", default=False, help="Show enemy pre mission")
     parser.add_argument("--show-stats", action="store_true", default=False, help="Show generated missions stats")
     parser.add_argument("-o", "--output", help="Name and path of the generated mission",
-                        default=os.path.join(os.path.expanduser("~"), "Saved Games\\DCS.openalpha\\Missions\\random.miz"))
+                        default=os.path.join(os.path.expanduser("~"), "Saved Games\\DCS\\Missions\\random.miz"))
 
     args = parser.parse_args()
-    missiontype = args.missiontype
-    if args.aircrafttype in [
-        dcs.helicopters.Ka_50.id,
-        dcs.planes.A_10C.id,
-        dcs.planes.AV_8B_N_A] and args.missiontype == "main":
-        missiontype = "CAS"
-    if args.aircrafttype in [dcs.planes.M_2000C.id] and args.missiontype == "main":
-        missiontype = "CAP"
-    if args.aircrafttype == dcs.planes.A_10C.id:
-        if args.missiontype not in ["CAS", "refuel"]:
-            missiontype = "CAS"
 
-    if missiontype == "refuel":
-        supported = [dcs.planes.A_10C.id, dcs.planes.M_2000C.id]
-        types = [x for x in types if x[1] in supported] if args.playercount > 1 else [x for x in types if x[1] == args.aircrafttype]
-        s = Refueling(types, args.playercount, args.start, args.unhide)
-    elif missiontype == "CAS":
-        types = types if args.playercount > 1 else [x for x in types if x[1] == args.aircrafttype]
-        s = CAS(types, args.playercount, args.start, args.unhide)
-    elif missiontype == "CAP":
-        supported = [dcs.planes.M_2000C.id, dcs.planes.MiG_21Bis]
-        types = [x for x in types if x[1] in supported] if args.playercount > 1 else [x for x in types if x[1] == args.aircrafttype]
-        s = CAP(types, args.playercount, args.start, args.unhide)
-    else:
-        raise NotImplementedError(missiontype + " not implemented")
+    types = types if args.playercount > 1 else [x for x in types if x[1] == args.aircrafttype]
+    s = TrainingScenario(types, args.playercount, args.start, args.unhide)
 
     s.daytime(args.daytime)
     if args.weather == "dynamic":

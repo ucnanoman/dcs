@@ -521,7 +521,7 @@ class Refueling(BasicScenario):
         refuel_net = self.m.refuel_flight(
             ukraine,
             "Tanker KC_130",
-            dcs.planes.KC_130,
+            dcs.planes.KC130,
             airport=None,
             position=pos,
             race_distance=race_dist, heading=heading,
