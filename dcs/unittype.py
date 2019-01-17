@@ -70,12 +70,14 @@ class FlyingType(UnitType):
         winreg.CloseKey(dcs_path_key)
     except ImportError:
         pass
-    payload_dirs = [dcs_dir + "MissionEditor\\data\\scripts\\UnitPayloads"]
+    payload_dirs = []
     dcs_aircraft_dir = os.path.join(dcs_dir, "CoreMods", "aircraft")
-    for entry in os.scandir(dcs_aircraft_dir):
-        add_dir = os.path.join(dcs_aircraft_dir, entry.name, "UnitPayloads")
-        if entry.is_dir() and os.path.exists(add_dir):
-            payload_dirs.append(add_dir)
+    if os.path.exists(dcs_aircraft_dir):
+        payload_dirs = [dcs_dir + "MissionEditor\\data\\scripts\\UnitPayloads"]
+        for entry in os.scandir(dcs_aircraft_dir):
+            add_dir = os.path.join(dcs_aircraft_dir, entry.name, "UnitPayloads")
+            if entry.is_dir() and os.path.exists(add_dir):
+                payload_dirs.append(add_dir)
     payload_dirs += [
         os.path.join(os.path.expanduser("~"), "Saved Games\\DCS\\MissionEditor\\UnitPayloads"),
         os.path.join(os.path.dirname(os.path.realpath(__file__)), "payloads")
