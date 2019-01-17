@@ -56,12 +56,21 @@ class FlyingType(UnitType):
     pylons = {}
     payloads = None
     dcs_dir = "C:\\Program Files\\Eagle Dynamics\\DCS World\\"
-    payload_dirs = [
-        dcs_dir + "MissionEditor\\data\\scripts\\UnitPayloads",
-        dcs_dir + "CoreMods\\aircraft\\M-2000C\\UnitPayloads",
-        dcs_dir + "CoreMods\\aircraft\\MiG-21BIS\\UnitPayloads",
-        dcs_dir + "CoreMods\\aircraft\\F-5E\\UnitPayloads",
-        dcs_dir + "CoreMods\\aircraft\\C-101\\UnitPayloads",
+    try:
+        import winreg
+        dcs_path_key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, "Software\\Eagle Dynamics\\DCS World")
+        path = winreg.QueryValueEx(dcs_path_key, "Path")
+        dcs_dir = path[0] + '\\'
+        winreg.CloseKey(dcs_path_key)
+    except ImportError:
+        pass
+    payload_dirs = [dcs_dir + "MissionEditor\\data\\scripts\\UnitPayloads"]
+    dcs_aircraft_dir = os.path.join(dcs_dir, "CoreMods", "aircraft")
+    for entry in os.scandir(dcs_aircraft_dir):
+        add_dir = os.path.join(dcs_aircraft_dir, entry.name, "UnitPayloads")
+        if entry.is_dir() and os.path.exists(add_dir):
+            payload_dirs.append(add_dir)
+    payload_dirs += [
         os.path.join(os.path.expanduser("~"), "Saved Games\\DCS\\MissionEditor\\UnitPayloads"),
         os.path.join(os.path.dirname(os.path.realpath(__file__)), "payloads")
     ]
