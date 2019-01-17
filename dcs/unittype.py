@@ -27,6 +27,12 @@ class StaticType(UnitType):
     mass = None
 
 
+class LiveryOverwrites:
+    map = {
+        "M-2000C.France": "AdA Chasse 2-5"
+    }
+
+
 class FlyingType(UnitType):
     flyable = False
     group_size_max = 4
@@ -156,9 +162,12 @@ class FlyingType(UnitType):
 
     @classmethod
     def default_livery(cls, country_name) -> str:
-        liveries = cls.Liveries
-        for x in liveries.__dict__:
-            clas = liveries.__dict__[x]
-            if clas and getattr(clas, "__name__", "") == country_name:
-                return list(clas)[0].value
-        return None
+        if cls.id + "." + country_name in LiveryOverwrites.map:
+            return LiveryOverwrites.map[cls.id + "." + country_name]
+        else:
+            liveries = cls.Liveries
+            for x in liveries.__dict__:
+                clas = liveries.__dict__[x]
+                if clas and getattr(clas, "__name__", "") == country_name:
+                    return list(clas)[0].value
+        return ""
