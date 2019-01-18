@@ -59,8 +59,6 @@ class Weather:
         self.wind_at_8000 = Wind()
         self.enable_fog = False
         self.turbulence_at_ground = 0
-        self.turbulence_at_2000 = 0
-        self.turbulence_at_8000 = 0
         self.season_temperature = 20
         self.type_weather = 0
         self.qnh = 760
@@ -75,6 +73,9 @@ class Weather:
         self.clouds_base = 300
         self.clouds_iprecptns = Weather.Preceptions.None_
 
+        self.enable_dust = False
+        self.dust_density = 0
+
     def load_from_dict(self, d):
         self.atmosphere_type = d["atmosphere_type"]
         wind = d.get("wind", {})
@@ -85,10 +86,7 @@ class Weather:
         self.wind_at_2000 = Wind(wind_at_2000.get("dir", 0), wind_at_2000.get("speed", 0))
         self.wind_at_8000 = Wind(wind_at_8000.get("dir", 0), wind_at_8000.get("speed", 0))
         self.enable_fog = d["enable_fog"]
-        turbulence = d.get("turbulence", {})
-        self.turbulence_at_ground = turbulence.get("atGround", 0)
-        self.turbulence_at_2000 = turbulence.get("at2000", 0)
-        self.turbulence_at_8000 = turbulence.get("at8000", 0)
+        self.turbulence_at_ground = d.get("groundTurbulence", 0)
         season = d.get("season", {})
         self.season_temperature = season.get("temperature", 20)
         self.type_weather = d.get("type_weather", 0)
@@ -115,6 +113,9 @@ class Weather:
         self.clouds_density = clouds.get("density", 0)
         self.clouds_base = clouds.get("base", 300)
         self.clouds_iprecptns = Weather.Preceptions(clouds.get("iprecptns", 0))
+
+        self.enable_dust = d.get("enable_dust", False)
+        self.dust_density = d.get("dust_density", 0)
 
     @staticmethod
     def random_normals() -> List[float]:
@@ -260,8 +261,6 @@ class Weather:
         self.clouds_thickness = random.randrange(300, 900)
 
         self.turbulence_at_ground = random.randrange(30, 70)
-        self.turbulence_at_2000 = random.randrange(2, 10)
-        self.turbulence_at_8000 = random.randrange(2, 10)
 
         self.qnh = random.randrange(715, 750)
         self.visibility_distance = 80000
@@ -292,9 +291,7 @@ class Weather:
                      "at2000": self.wind_at_2000.dict(),
                      "at8000": self.wind_at_8000.dict()}
         d["enable_fog"] = self.enable_fog
-        d["turbulence"] = {"atGround": self.turbulence_at_ground,
-                           "at2000": self.turbulence_at_2000,
-                           "at8000": self.turbulence_at_8000}
+        d["groundTurbulence"] = self.turbulence_at_ground
         d["season"] = {"temperature": self.season_temperature}
         d["type_weather"] = self.type_weather
         d["qnh"] = self.qnh
@@ -306,4 +303,6 @@ class Weather:
                        "density": self.clouds_density,
                        "base": self.clouds_base,
                        "iprecptns": self.clouds_iprecptns.value}
+        d["enable_dust"] = self.enable_dust
+        d["dust_density"] = self.dust_density
         return d
