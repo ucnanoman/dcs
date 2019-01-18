@@ -111,7 +111,7 @@ class Mission:
         self._sortie = self.string("")
         self.pictureFileNameR = []
         self.pictureFileNameB = []
-        self.version = 12
+        self.version = 16
         self.currentKey = 0
         self.start_time = datetime.fromtimestamp(1306886400 + 43200, timezone.utc)  # 01-06-2011 12:00:00 UTC
         self.random_weather = False
@@ -237,7 +237,7 @@ class Mission:
 
         with zipfile.ZipFile(filename, 'r') as miz:
             mission_dict = loaddict('mission', miz)
-            if mission_dict["mission"]["version"] < 9:
+            if mission_dict["mission"]["version"] < 16:
                 print("Mission file is using an old format, be aware!", file=sys.stderr)
             options_dict = loaddict('options', miz)
             warehouse_dict = loaddict('warehouses', miz)
@@ -287,7 +287,18 @@ class Mission:
             self.pictureFileNameB.append(imp_mission["pictureFileNameB"][pic])
         self.version = imp_mission["version"]
         self.currentKey = imp_mission["currentKey"]
-        self.start_time = datetime.fromtimestamp(1306886400 + imp_mission["start_time"], timezone.utc)
+        imp_date = imp_mission.get("date", {"Year": 2011, "Month": 6, "Day": 1})
+        hour = int(imp_mission["start_time"] / 3600)
+        minutes = int(imp_mission["start_time"] / 60) - hour * 60
+        self.start_time = datetime(
+            year=imp_date["Year"],
+            month=imp_date["Month"],
+            day=imp_date["Day"],
+            hour=hour,
+            minute=minutes,
+            second=imp_mission["start_time"] % 60
+        )
+        # self.start_time = datetime.fromtimestamp(1306886400 + imp_mission["start_time"], timezone.utc)
         self.usedModules = imp_mission.get("usedModules", None)
         self.needModules = imp_mission.get("needModules", None)
 
@@ -1820,7 +1831,7 @@ class Mission:
         m = {
             "trig": self.triggerrules.trig(),
             "trigrules": self.triggerrules.trigrules(),
-            "start_time": int(self.start_time.replace(tzinfo=timezone.utc).astimezone(tz=None).timestamp() - 1306886400)
+            "start_time": int((self.start_time.hour * 60 * 60) + (self.start_time.minute * 60) + self.start_time.second)
         }
         if m["start_time"] < 0:
             raise RuntimeError("Mission start time is < 0.")
@@ -1941,18 +1952,134 @@ class MapResource:
         return d
 
 
+class OptionsDifficulty:
+    def __init__(self):
+        self.geffect = "realistic"
+        self.padlock = False
+        self.compassTape = True
+        self.aircraftMode = True
+        self.easyCommunication = False
+        self.easyRadar = False
+        self.map = True
+        self.miniHUD = False
+        self.controlsIndicator = True
+        self.birds = 150
+        self.optionsView = "optview_all"
+        self.permitCrash = False
+        self.immortal = False
+        self.cockpitStatusBarAllowed = False
+        self.cockpitVisualRM = False
+        self.easyFlight = False
+        self.reports = True
+        self.hideStick = False
+        self.radio = False
+        self.userMarks = True
+        self.units = "metric"
+        self.avionicsLanguage = "english"
+        self.spectatorExternalViews = True
+        self.tips = True
+        self.userSnapView = True
+        self.RBDAI = True
+        self.externalViews = True
+        self.iconsTheme = "nato"
+        self.fuel = False
+        self.weapons = False
+        self.setGlobal = True
+        self.labels = False
+
+    def load_from_dict(self, d):
+        self.geffect = d.get("geffect", "realistic")
+        self.padlock = d.get("padlock", False)
+        self.compassTape = d.get("compassTape", True)
+        self.aircraftMode = d.get("aircraftMode", True)
+        self.easyCommunication = d.get("easyCommunication", False)
+        self.easyRadar = d.get("easyRadar", False)
+        self.map = d.get("map", True)
+        self.miniHUD = d.get("miniHUD", False)
+        self.controlsIndicator = d.get("controlsIndicator", True)
+        self.birds = d.get("birds", 150)
+        self.optionsView = d.get("optionsView", "optview_all")
+        self.permitCrash = d.get("permitCrash", False)
+        self.immortal = d.get("immortal", False)
+        self.cockpitStatusBarAllowed = d.get("cockpitStatusBarAllowed", False)
+        self.cockpitVisualRM = d.get("cockpitVisualRM", False)
+        self.easyFlight = d.get("easyFlight", False)
+        self.reports = d.get("reports", True)
+        self.hideStick = d.get("hideStick", False)
+        self.radio = d.get("radio", False)
+        self.userMarks = d.get("userMarks", True)
+        self.units = d.get("units", "metric")
+        self.avionicsLanguage = d.get("avionicsLanguage", "english")
+        self.spectatorExternalViews = d.get("spectatorExternalViews", True)
+        self.tips = d.get("tips", True)
+        self.userSnapView = d.get("userSnapView", True)
+        self.RBDAI = d.get("RBDAI", True)
+        self.externalViews = d.get("externalViews", True)
+        self.iconsTheme = d.get("iconsTheme", "nato")
+        self.fuel = d.get("fuel", False)
+        self.weapons = d.get("weapons", False)
+        self.setGlobal = d.get("setGlobal", True)
+        self.labels = d.get("labels", False)
+
+    def dict(self):
+        return {
+            "geffect": self.geffect,
+            "padlock": self.padlock,
+            "compassTape": self.compassTape,
+            "aircraftMode": self.aircraftMode,
+            "easyCommunication": self.easyCommunication,
+            "easyRadar": self.easyRadar,
+            "map": self.map,
+            "miniHUD": self.miniHUD,
+            "controlsIndicator": self.controlsIndicator,
+            "birds": self.birds,
+            "optionsView": self.optionsView,
+            "permitCrash": self.permitCrash,
+            "immortal": self.immortal,
+            "cockpitStatusBarAllowed": self.cockpitStatusBarAllowed,
+            "cockpitVisualRM": self.cockpitVisualRM,
+            "easyFlight": self.easyFlight,
+            "reports": self.reports,
+            "hideStick": self.hideStick,
+            "radio": self.radio,
+            "userMarks": self.userMarks,
+            "units": self.units,
+            "avionicsLanguage": self.avionicsLanguage,
+            "spectatorExternalViews": self.spectatorExternalViews,
+            "tips": self.tips,
+            "userSnapView": self.userSnapView,
+            "RBDAI": self.RBDAI,
+            "externalViews": self.externalViews,
+            "iconsTheme": self.iconsTheme,
+            "fuel": self.fuel,
+            "weapons": self.weapons,
+            "setGlobal": self.setGlobal,
+            "labels": self.labels
+        }
+
+
 class Options:
     """Should be a representation for the mission options file
     might be removed in the future.
     """
     def __init__(self):
+        self.playerName = "PyDCS"
+        self.difficulty = OptionsDifficulty()
         self.options = {}
 
     def load_from_dict(self, d):
+        self.difficulty.load_from_dict(d["difficulty"])
         self.options = d
 
     def __str__(self):
-        return lua.dumps(self.options, "options", 1)
+        d = {
+            "playerName": self.playerName,
+            "difficulty": self.difficulty.dict()
+        }
+        for k in self.options:
+            if k not in d:
+                d[k] = self.options[k]
+        return lua.dumps(d, "options", 1)
 
     def __repr__(self):
         return repr(self.options)
