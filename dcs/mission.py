@@ -418,6 +418,7 @@ class Mission:
         """
         reskey = self.map_resource.add_resource_file(filepath)
         self.pictureFileNameR.append(reskey)
+        return reskey
 
     def add_picture_blue(self, filepath: str) -> str:
         """Adds a new briefing picture to the blue coalition.
