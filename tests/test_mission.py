@@ -148,7 +148,7 @@ class BasicTests(unittest.TestCase):
         m.static_group(usa, "SPlane", dcs.planes.B_1B, batumi.unit_zones[0].random_point())
         m.static_group(usa, "SHeli", dcs.countries.USA.Helicopter.Mi_8MT, batumi.unit_zones[0].random_point())
         m.static_group(usa, "SVehicle", dcs.countries.USA.Vehicle.Armor.IFV_LAV_25, batumi.unit_zones[0].random_point())
-        m.static_group(usa, "SShip", dcs.countries.USA.Ship.FFG_7CL_Oliver_Hazzard_Perry,
+        m.static_group(usa, "SShip", dcs.countries.USA.Ship.Oliver_Hazzard_Perry_class,
                        dcs.Rectangle.from_point(seapoint, 10000).random_point())
 
         batumi_zone = m.triggers.add_triggerzone(batumi.position, 200, False, "batumi zone")
