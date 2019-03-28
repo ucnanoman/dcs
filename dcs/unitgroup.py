@@ -30,7 +30,7 @@ class Group:
         self.id = _id
         self.hidden = False
         self.units = []  # type: List[Unit]
-        self.points = []  # type: List[Union[StaticPoint, MovingPoint]
+        self.points = []  # type: List[Union[StaticPoint, MovingPoint]]
         self.name = name if name else String()
 
     def load_from_dict(self, d):
