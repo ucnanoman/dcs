@@ -161,7 +161,7 @@ class Russia(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -173,6 +173,7 @@ class Russia(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
@@ -216,7 +217,7 @@ class Russia(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -228,6 +229,7 @@ class Russia(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.TF_51D,
@@ -451,7 +453,7 @@ class Ukraine(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -463,6 +465,7 @@ class Ukraine(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
@@ -496,7 +499,7 @@ class Ukraine(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -508,6 +511,7 @@ class Ukraine(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.TF_51D,
@@ -672,19 +676,21 @@ class USA(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
         F_5E = planes.F_5E
         F_5E_3 = planes.F_5E_3
         F_86F_Sabre = planes.F_86F_Sabre
+        F_14B = planes.F_14B
         FA_18C_hornet = planes.FA_18C_hornet
         Hawk = planes.Hawk
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MQ_9_Reaper = planes.MQ_9_Reaper
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         B_17G = planes.B_17G
@@ -720,19 +726,21 @@ class USA(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
         Plane.F_5E,
         Plane.F_5E_3,
         Plane.F_86F_Sabre,
+        Plane.F_14B,
         Plane.FA_18C_hornet,
         Plane.Hawk,
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MQ_9_Reaper,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.B_17G,
@@ -777,8 +785,8 @@ class USA(Country):
     class Ship:
         Armed_speedboat = ships.Armed_speedboat
         CVN_70_Carl_Vinson = ships.CVN_70_Carl_Vinson
-        FFG_7CL_Oliver_Hazzard_Perry = ships.FFG_7CL_Oliver_Hazzard_Perry
-        CG_60_Normandy = ships.CG_60_Normandy
+        Oliver_Hazzard_Perry_class = ships.Oliver_Hazzard_Perry_class
+        Ticonderoga_class = ships.Ticonderoga_class
         CVN_74_John_C__Stennis = ships.CVN_74_John_C__Stennis
         LHA_1_Tarawa = ships.LHA_1_Tarawa
         LST_Mk_II = ships.LST_Mk_II
@@ -984,7 +992,7 @@ class Turkey(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -997,6 +1005,7 @@ class Turkey(Country):
         M_2000C = planes.M_2000C
         MQ_9_Reaper = planes.MQ_9_Reaper
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
@@ -1015,7 +1024,7 @@ class Turkey(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -1028,6 +1037,7 @@ class Turkey(Country):
         Plane.M_2000C,
         Plane.MQ_9_Reaper,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.TF_51D,
@@ -1058,7 +1068,7 @@ class Turkey(Country):
 
     class Ship:
         Armed_speedboat = ships.Armed_speedboat
-        FFG_7CL_Oliver_Hazzard_Perry = ships.FFG_7CL_Oliver_Hazzard_Perry
+        Oliver_Hazzard_Perry_class = ships.Oliver_Hazzard_Perry_class
 
     def __init__(self):
         super(Turkey, self).__init__(Turkey.id, Turkey.name)
@@ -1137,7 +1147,7 @@ class UK(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -1150,6 +1160,7 @@ class UK(Country):
         M_2000C = planes.M_2000C
         MQ_9_Reaper = planes.MQ_9_Reaper
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         B_17G = planes.B_17G
@@ -1168,7 +1179,7 @@ class UK(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -1181,6 +1192,7 @@ class UK(Country):
         Plane.M_2000C,
         Plane.MQ_9_Reaper,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.B_17G,
@@ -1299,7 +1311,7 @@ class France(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -1312,6 +1324,7 @@ class France(Country):
         M_2000C = planes.M_2000C
         MQ_9_Reaper = planes.MQ_9_Reaper
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
@@ -1328,7 +1341,7 @@ class France(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -1341,6 +1354,7 @@ class France(Country):
         Plane.M_2000C,
         Plane.MQ_9_Reaper,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.TF_51D,
@@ -1492,7 +1506,7 @@ class Germany(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -1504,6 +1518,7 @@ class Germany(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
@@ -1522,7 +1537,7 @@ class Germany(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -1534,6 +1549,7 @@ class Germany(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.TF_51D,
@@ -1589,13 +1605,13 @@ class USAFAggressors(Country):
 
         class Infantry:
             Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
+            Soldier_AK = vehicles.Infantry.Soldier_AK
+            Infantry_Soldier_Insurgents = vehicles.Infantry.Infantry_Soldier_Insurgents
+            Soldier_RPG = vehicles.Infantry.Soldier_RPG
             Paratrooper_RPG_16 = vehicles.Infantry.Paratrooper_RPG_16
             Paratrooper_AKS = vehicles.Infantry.Paratrooper_AKS
             Infantry_Soldier_Rus = vehicles.Infantry.Infantry_Soldier_Rus
             Georgian_soldier_with_M4 = vehicles.Infantry.Georgian_soldier_with_M4
-            Soldier_RPG = vehicles.Infantry.Soldier_RPG
-            Soldier_AK = vehicles.Infantry.Soldier_AK
-            Infantry_Soldier_Insurgents = vehicles.Infantry.Infantry_Soldier_Insurgents
             Infantry_M4 = vehicles.Infantry.Infantry_M4
             Soldier_M249 = vehicles.Infantry.Soldier_M249
             Infantry_M1_Garand = vehicles.Infantry.Infantry_M1_Garand
@@ -1800,7 +1816,7 @@ class USAFAggressors(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         J_11A = planes.J_11A
@@ -1813,6 +1829,7 @@ class USAFAggressors(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         C_130 = planes.C_130
@@ -1873,6 +1890,7 @@ class USAFAggressors(Country):
         E_2C = planes.E_2C
         F_16A = planes.F_16A
         RQ_1A_Predator = planes.RQ_1A_Predator
+        F_14B = planes.F_14B
         B_17G = planes.B_17G
         Tornado_GR4 = planes.Tornado_GR4
 
@@ -1884,7 +1902,7 @@ class USAFAggressors(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.J_11A,
@@ -1897,6 +1915,7 @@ class USAFAggressors(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.C_130,
@@ -1957,6 +1976,7 @@ class USAFAggressors(Country):
         Plane.E_2C,
         Plane.F_16A,
         Plane.RQ_1A_Predator,
+        Plane.F_14B,
         Plane.B_17G,
         Plane.Tornado_GR4,
     ]
@@ -2025,9 +2045,9 @@ class USAFAggressors(Country):
         Type_052B_Destroyer = ships.Type_052B_Destroyer
         Type_054A_Frigate = ships.Type_054A_Frigate
         Type_052C_Destroyer = ships.Type_052C_Destroyer
-        FFG_7CL_Oliver_Hazzard_Perry = ships.FFG_7CL_Oliver_Hazzard_Perry
+        Oliver_Hazzard_Perry_class = ships.Oliver_Hazzard_Perry_class
         CVN_70_Carl_Vinson = ships.CVN_70_Carl_Vinson
-        CG_60_Normandy = ships.CG_60_Normandy
+        Ticonderoga_class = ships.Ticonderoga_class
         CVN_74_John_C__Stennis = ships.CVN_74_John_C__Stennis
         LHA_1_Tarawa = ships.LHA_1_Tarawa
 
@@ -2103,7 +2123,7 @@ class Canada(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -2115,6 +2135,7 @@ class Canada(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
@@ -2131,7 +2152,7 @@ class Canada(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -2143,6 +2164,7 @@ class Canada(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.TF_51D,
@@ -2240,7 +2262,7 @@ class Spain(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -2252,6 +2274,7 @@ class Spain(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
@@ -2268,7 +2291,7 @@ class Spain(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -2280,6 +2303,7 @@ class Spain(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.TF_51D,
@@ -2389,7 +2413,7 @@ class TheNetherlands(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -2401,6 +2425,7 @@ class TheNetherlands(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
@@ -2417,7 +2442,7 @@ class TheNetherlands(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -2429,6 +2454,7 @@ class TheNetherlands(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.TF_51D,
@@ -2538,7 +2564,7 @@ class Belgium(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -2550,6 +2576,7 @@ class Belgium(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
@@ -2566,7 +2593,7 @@ class Belgium(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -2578,6 +2605,7 @@ class Belgium(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.TF_51D,
@@ -2675,7 +2703,7 @@ class Norway(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -2687,6 +2715,7 @@ class Norway(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
@@ -2703,7 +2732,7 @@ class Norway(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -2715,6 +2744,7 @@ class Norway(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.TF_51D,
@@ -2808,7 +2838,7 @@ class Denmark(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -2820,6 +2850,7 @@ class Denmark(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
@@ -2836,7 +2867,7 @@ class Denmark(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -2848,6 +2879,7 @@ class Denmark(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.TF_51D,
@@ -2958,7 +2990,7 @@ class Israel(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -2970,6 +3002,7 @@ class Israel(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
@@ -2989,7 +3022,7 @@ class Israel(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -3001,6 +3034,7 @@ class Israel(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.TF_51D,
@@ -3123,6 +3157,7 @@ class Georgia(Country):
             MBT_T_72B = vehicles.Armor.MBT_T_72B
             MBT_T_55 = vehicles.Armor.MBT_T_55
             APC_Cobra = vehicles.Armor.APC_Cobra
+            APC_M1043_HMMWV_Armament = vehicles.Armor.APC_M1043_HMMWV_Armament
 
         class Locomotive:
             ES44AH = vehicles.Locomotive.ES44AH
@@ -3151,7 +3186,7 @@ class Georgia(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -3163,6 +3198,7 @@ class Georgia(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
@@ -3182,7 +3218,7 @@ class Georgia(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -3194,6 +3230,7 @@ class Georgia(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.TF_51D,
@@ -3319,7 +3356,7 @@ class Insurgents(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -3331,6 +3368,7 @@ class Insurgents(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -3342,7 +3380,7 @@ class Insurgents(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -3354,6 +3392,7 @@ class Insurgents(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -3399,6 +3438,11 @@ class Abkhazia(Country):
             MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
             SPH_2S1_Gvozdika = vehicles.Artillery.SPH_2S1_Gvozdika
             _2B11_mortar = vehicles.Artillery._2B11_mortar
+
+        class Infantry:
+            Soldier_AK = vehicles.Infantry.Soldier_AK
+            Infantry_Soldier_Insurgents = vehicles.Infantry.Infantry_Soldier_Insurgents
+            Soldier_RPG = vehicles.Infantry.Soldier_RPG
 
         class AirDefence:
             SAM_SA_11_Buk_SR_9S18M1 = vehicles.AirDefence.SAM_SA_11_Buk_SR_9S18M1
@@ -3485,7 +3529,7 @@ class Abkhazia(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -3497,6 +3541,7 @@ class Abkhazia(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
@@ -3513,7 +3558,7 @@ class Abkhazia(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -3525,6 +3570,7 @@ class Abkhazia(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.TF_51D,
@@ -3575,6 +3621,11 @@ class SouthOssetia(Country):
             MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
             SPH_2S1_Gvozdika = vehicles.Artillery.SPH_2S1_Gvozdika
             _2B11_mortar = vehicles.Artillery._2B11_mortar
+
+        class Infantry:
+            Soldier_AK = vehicles.Infantry.Soldier_AK
+            Infantry_Soldier_Insurgents = vehicles.Infantry.Infantry_Soldier_Insurgents
+            Soldier_RPG = vehicles.Infantry.Soldier_RPG
 
         class AirDefence:
             SAM_SA_8_Osa_9A33 = vehicles.AirDefence.SAM_SA_8_Osa_9A33
@@ -3649,7 +3700,7 @@ class SouthOssetia(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -3661,6 +3712,7 @@ class SouthOssetia(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -3671,7 +3723,7 @@ class SouthOssetia(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -3683,6 +3735,7 @@ class SouthOssetia(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -3778,7 +3831,7 @@ class Italy(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -3791,6 +3844,7 @@ class Italy(Country):
         M_2000C = planes.M_2000C
         MQ_9_Reaper = planes.MQ_9_Reaper
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
@@ -3808,7 +3862,7 @@ class Italy(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -3821,6 +3875,7 @@ class Italy(Country):
         Plane.M_2000C,
         Plane.MQ_9_Reaper,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.TF_51D,
@@ -3920,7 +3975,7 @@ class Australia(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -3932,6 +3987,7 @@ class Australia(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
         TF_51D = planes.TF_51D
@@ -3948,7 +4004,7 @@ class Australia(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -3960,6 +4016,7 @@ class Australia(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
         Plane.TF_51D,
@@ -4052,7 +4109,7 @@ class Switzerland(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -4064,6 +4121,7 @@ class Switzerland(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -4077,7 +4135,7 @@ class Switzerland(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -4089,6 +4147,7 @@ class Switzerland(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -4153,7 +4212,7 @@ class Austria(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -4165,6 +4224,7 @@ class Austria(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -4176,7 +4236,7 @@ class Austria(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -4188,6 +4248,7 @@ class Austria(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -4342,7 +4403,7 @@ class Belarus(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -4353,6 +4414,7 @@ class Belarus(Country):
         Hawk = planes.Hawk
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -4375,7 +4437,7 @@ class Belarus(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -4386,6 +4448,7 @@ class Belarus(Country):
         Plane.Hawk,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -4492,7 +4555,7 @@ class Bulgaria(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -4504,6 +4567,7 @@ class Bulgaria(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -4516,7 +4580,7 @@ class Bulgaria(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -4528,6 +4592,7 @@ class Bulgaria(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -4613,7 +4678,7 @@ class CzechRepublic(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -4625,6 +4690,7 @@ class CzechRepublic(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -4637,7 +4703,7 @@ class CzechRepublic(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -4649,6 +4715,7 @@ class CzechRepublic(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -4738,7 +4805,7 @@ class China(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         J_11A = planes.J_11A
@@ -4752,6 +4819,7 @@ class China(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -4769,7 +4837,7 @@ class China(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.J_11A,
@@ -4783,6 +4851,7 @@ class China(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -4856,7 +4925,7 @@ class Croatia(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -4868,6 +4937,7 @@ class Croatia(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -4879,7 +4949,7 @@ class Croatia(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -4891,6 +4961,7 @@ class Croatia(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -4960,7 +5031,7 @@ class Egypt(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -4972,6 +5043,7 @@ class Egypt(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -4983,7 +5055,7 @@ class Egypt(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -4995,6 +5067,7 @@ class Egypt(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -5091,7 +5164,7 @@ class Finland(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -5103,6 +5176,7 @@ class Finland(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -5114,7 +5188,7 @@ class Finland(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -5126,6 +5200,7 @@ class Finland(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -5240,7 +5315,7 @@ class Greece(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -5252,6 +5327,7 @@ class Greece(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -5270,7 +5346,7 @@ class Greece(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -5282,6 +5358,7 @@ class Greece(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -5394,7 +5471,7 @@ class Hungary(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -5406,6 +5483,7 @@ class Hungary(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -5418,7 +5496,7 @@ class Hungary(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -5430,6 +5508,7 @@ class Hungary(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -5494,7 +5573,7 @@ class India(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -5506,6 +5585,7 @@ class India(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -5517,7 +5597,7 @@ class India(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -5529,6 +5609,7 @@ class India(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -5655,18 +5736,20 @@ class Iran(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
         F_5E = planes.F_5E
         F_5E_3 = planes.F_5E_3
         F_86F_Sabre = planes.F_86F_Sabre
+        F_14B = planes.F_14B
         FA_18C_hornet = planes.FA_18C_hornet
         Hawk = planes.Hawk
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         Yak_52 = planes.Yak_52
 
     planes = [
@@ -5686,18 +5769,20 @@ class Iran(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
         Plane.F_5E,
         Plane.F_5E_3,
         Plane.F_86F_Sabre,
+        Plane.F_14B,
         Plane.FA_18C_hornet,
         Plane.Hawk,
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.Yak_52,
     ]
 
@@ -5785,7 +5870,7 @@ class Iraq(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -5797,6 +5882,7 @@ class Iraq(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -5808,7 +5894,7 @@ class Iraq(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -5820,6 +5906,7 @@ class Iraq(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -5916,7 +6003,7 @@ class Japan(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -5928,6 +6015,7 @@ class Japan(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -5939,7 +6027,7 @@ class Japan(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -5951,6 +6039,7 @@ class Japan(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -6110,7 +6199,7 @@ class Kazakhstan(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -6121,6 +6210,7 @@ class Kazakhstan(Country):
         Hawk = planes.Hawk
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -6145,7 +6235,7 @@ class Kazakhstan(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -6156,6 +6246,7 @@ class Kazakhstan(Country):
         Plane.Hawk,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -6233,7 +6324,7 @@ class NorthKorea(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -6245,6 +6336,7 @@ class NorthKorea(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -6256,7 +6348,7 @@ class NorthKorea(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -6268,6 +6360,7 @@ class NorthKorea(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -6337,7 +6430,7 @@ class Pakistan(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -6349,6 +6442,7 @@ class Pakistan(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -6360,7 +6454,7 @@ class Pakistan(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -6372,6 +6466,7 @@ class Pakistan(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -6459,7 +6554,7 @@ class Poland(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -6471,6 +6566,7 @@ class Poland(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -6485,7 +6581,7 @@ class Poland(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -6497,6 +6593,7 @@ class Poland(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -6599,7 +6696,7 @@ class Romania(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -6611,6 +6708,7 @@ class Romania(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -6622,7 +6720,7 @@ class Romania(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -6634,6 +6732,7 @@ class Romania(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -6732,7 +6831,7 @@ class SaudiArabia(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -6744,6 +6843,7 @@ class SaudiArabia(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -6761,7 +6861,7 @@ class SaudiArabia(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -6773,6 +6873,7 @@ class SaudiArabia(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -6900,7 +7001,7 @@ class Serbia(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -6912,6 +7013,7 @@ class Serbia(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         Yak_52 = planes.Yak_52
 
     planes = [
@@ -6925,7 +7027,7 @@ class Serbia(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -6937,6 +7039,7 @@ class Serbia(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.Yak_52,
     ]
 
@@ -7006,7 +7109,7 @@ class Slovakia(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -7018,6 +7121,7 @@ class Slovakia(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -7030,7 +7134,7 @@ class Slovakia(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -7042,6 +7146,7 @@ class Slovakia(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -7106,7 +7211,7 @@ class SouthKorea(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -7118,6 +7223,7 @@ class SouthKorea(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -7129,7 +7235,7 @@ class SouthKorea(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -7141,6 +7247,7 @@ class SouthKorea(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -7205,7 +7312,7 @@ class Sweden(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -7217,6 +7324,7 @@ class Sweden(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -7228,7 +7336,7 @@ class Sweden(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -7240,6 +7348,7 @@ class Sweden(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -7310,7 +7419,7 @@ class Syria(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -7322,6 +7431,7 @@ class Syria(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -7334,7 +7444,7 @@ class Syria(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -7346,6 +7456,7 @@ class Syria(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -7380,6 +7491,7 @@ class Yemen(Country):
 
         class AirDefence:
             SAM_SR_P_19 = vehicles.AirDefence.SAM_SR_P_19
+            SAM_SR_P_19 = vehicles.AirDefence.SAM_SR_P_19
             SAM_SA_2_LN_SM_90 = vehicles.AirDefence.SAM_SA_2_LN_SM_90
             SAM_SA_2_TR_SNR_75_Fan_Song = vehicles.AirDefence.SAM_SA_2_TR_SNR_75_Fan_Song
 
@@ -7393,6 +7505,7 @@ class Yemen(Country):
             Armed_house = vehicles.Fortification.Armed_house
 
         class Unarmed:
+            Transport_Ural_375 = vehicles.Unarmed.Transport_Ural_375
             Transport_Ural_375 = vehicles.Unarmed.Transport_Ural_375
 
         class Locomotive:
@@ -7415,7 +7528,7 @@ class Yemen(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -7427,6 +7540,7 @@ class Yemen(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -7438,7 +7552,7 @@ class Yemen(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -7450,6 +7564,7 @@ class Yemen(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -7519,7 +7634,7 @@ class Vietnam(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -7531,6 +7646,7 @@ class Vietnam(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -7542,7 +7658,7 @@ class Vietnam(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -7554,6 +7670,7 @@ class Vietnam(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -7631,7 +7748,7 @@ class Venezuela(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -7643,6 +7760,7 @@ class Venezuela(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -7654,7 +7772,7 @@ class Venezuela(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -7666,6 +7784,7 @@ class Venezuela(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -7736,7 +7855,7 @@ class Tunisia(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -7748,6 +7867,7 @@ class Tunisia(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -7759,7 +7879,7 @@ class Tunisia(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -7771,6 +7891,7 @@ class Tunisia(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -7841,7 +7962,7 @@ class Thailand(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -7853,6 +7974,7 @@ class Thailand(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -7864,7 +7986,7 @@ class Thailand(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -7876,6 +7998,7 @@ class Thailand(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -7945,7 +8068,7 @@ class Sudan(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -7957,6 +8080,7 @@ class Sudan(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -7968,7 +8092,7 @@ class Sudan(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -7980,6 +8104,7 @@ class Sudan(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -8044,7 +8169,7 @@ class Philippines(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -8056,6 +8181,7 @@ class Philippines(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -8067,7 +8193,7 @@ class Philippines(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -8079,6 +8205,7 @@ class Philippines(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -8166,7 +8293,7 @@ class Morocco(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -8178,6 +8305,7 @@ class Morocco(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -8189,7 +8317,7 @@ class Morocco(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -8201,6 +8329,7 @@ class Morocco(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -8265,7 +8394,7 @@ class Mexico(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -8277,6 +8406,7 @@ class Mexico(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -8288,7 +8418,7 @@ class Mexico(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -8300,6 +8430,7 @@ class Mexico(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -8371,7 +8502,7 @@ class Malaysia(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -8383,6 +8514,7 @@ class Malaysia(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -8394,7 +8526,7 @@ class Malaysia(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -8406,6 +8538,7 @@ class Malaysia(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -8483,7 +8616,7 @@ class Libya(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -8495,6 +8628,7 @@ class Libya(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -8506,7 +8640,7 @@ class Libya(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -8518,6 +8652,7 @@ class Libya(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -8590,7 +8725,7 @@ class Jordan(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -8602,6 +8737,7 @@ class Jordan(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -8613,7 +8749,7 @@ class Jordan(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -8625,6 +8761,7 @@ class Jordan(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -8694,7 +8831,7 @@ class Indonesia(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -8706,6 +8843,7 @@ class Indonesia(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -8717,7 +8855,7 @@ class Indonesia(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -8729,6 +8867,7 @@ class Indonesia(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -8793,7 +8932,7 @@ class Honduras(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -8805,6 +8944,7 @@ class Honduras(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -8816,7 +8956,7 @@ class Honduras(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -8828,6 +8968,7 @@ class Honduras(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -8897,7 +9038,7 @@ class Ethiopia(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -8909,6 +9050,7 @@ class Ethiopia(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -8920,7 +9062,7 @@ class Ethiopia(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -8932,6 +9074,7 @@ class Ethiopia(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -9016,7 +9159,7 @@ class Chile(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -9028,6 +9171,7 @@ class Chile(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -9043,7 +9187,7 @@ class Chile(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -9055,6 +9199,7 @@ class Chile(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -9142,7 +9287,7 @@ class Brazil(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -9154,6 +9299,7 @@ class Brazil(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -9165,7 +9311,7 @@ class Brazil(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -9177,6 +9323,7 @@ class Brazil(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -9266,7 +9413,7 @@ class Bahrain(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -9278,6 +9425,7 @@ class Bahrain(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -9289,7 +9437,7 @@ class Bahrain(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -9301,6 +9449,7 @@ class Bahrain(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -9397,7 +9546,7 @@ class ThirdReich(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -9409,6 +9558,7 @@ class ThirdReich(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -9421,7 +9571,7 @@ class ThirdReich(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -9433,6 +9583,7 @@ class ThirdReich(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -9516,7 +9667,7 @@ class Yugoslavia(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -9528,6 +9679,7 @@ class Yugoslavia(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -9539,7 +9691,7 @@ class Yugoslavia(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -9551,6 +9703,7 @@ class Yugoslavia(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -9637,7 +9790,7 @@ class USSR(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -9649,6 +9802,7 @@ class USSR(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -9660,7 +9814,7 @@ class USSR(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -9672,6 +9826,7 @@ class USSR(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -9770,7 +9925,7 @@ class ItalianSocialRepublic(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -9782,6 +9937,7 @@ class ItalianSocialRepublic(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -9793,7 +9949,7 @@ class ItalianSocialRepublic(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -9805,6 +9961,7 @@ class ItalianSocialRepublic(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -9963,7 +10120,7 @@ class Algeria(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -9975,6 +10132,7 @@ class Algeria(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         Yak_52 = planes.Yak_52
 
     planes = [
@@ -10002,7 +10160,7 @@ class Algeria(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -10014,6 +10172,7 @@ class Algeria(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.Yak_52,
     ]
 
@@ -10099,7 +10258,7 @@ class Kuwait(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -10111,6 +10270,7 @@ class Kuwait(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -10122,7 +10282,7 @@ class Kuwait(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -10134,6 +10294,7 @@ class Kuwait(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -10198,7 +10359,7 @@ class Qatar(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -10210,6 +10371,7 @@ class Qatar(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -10221,7 +10383,7 @@ class Qatar(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -10233,6 +10395,7 @@ class Qatar(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -10326,7 +10489,7 @@ class Oman(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -10338,6 +10501,7 @@ class Oman(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -10351,7 +10515,7 @@ class Oman(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -10363,6 +10527,7 @@ class Oman(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -10458,7 +10623,7 @@ class UnitedArabEmirates(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -10470,6 +10635,7 @@ class UnitedArabEmirates(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -10485,7 +10651,7 @@ class UnitedArabEmirates(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -10497,6 +10663,7 @@ class UnitedArabEmirates(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -10575,7 +10742,7 @@ class SouthAfrica(Country):
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
-        KC135BDA = planes.KC135BDA
+        KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
         Christen_Eagle_II = planes.Christen_Eagle_II
@@ -10587,6 +10754,7 @@ class SouthAfrica(Country):
         L_39C = planes.L_39C
         M_2000C = planes.M_2000C
         MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
         MiG_21Bis = planes.MiG_21Bis
         Yak_52 = planes.Yak_52
 
@@ -10600,7 +10768,7 @@ class SouthAfrica(Country):
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
-        Plane.KC135BDA,
+        Plane.KC135MPRS,
         Plane.C_101EB,
         Plane.C_101CC,
         Plane.Christen_Eagle_II,
@@ -10612,6 +10780,7 @@ class SouthAfrica(Country):
         Plane.L_39C,
         Plane.M_2000C,
         Plane.MiG_15bis,
+        Plane.MiG_19P,
         Plane.MiG_21Bis,
         Plane.Yak_52,
     ]
@@ -10638,6 +10807,171 @@ class SouthAfrica(Country):
 
     def __init__(self):
         super(SouthAfrica, self).__init__(SouthAfrica.id, SouthAfrica.name)
+
+
+class Cuba(Country):
+    id = 76
+    name = "Cuba"
+
+    class Vehicle:
+
+        class Artillery:
+            SPH_2S1_Gvozdika = vehicles.Artillery.SPH_2S1_Gvozdika
+            MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
+            _2B11_mortar = vehicles.Artillery._2B11_mortar
+
+        class Infantry:
+            Paratrooper_RPG_16 = vehicles.Infantry.Paratrooper_RPG_16
+            Paratrooper_AKS = vehicles.Infantry.Paratrooper_AKS
+            Infantry_Soldier_Rus = vehicles.Infantry.Infantry_Soldier_Rus
+
+        class AirDefence:
+            SAM_SA_13_Strela_10M3_9A35M3 = vehicles.AirDefence.SAM_SA_13_Strela_10M3_9A35M3
+            AAA_ZU_23_Emplacement = vehicles.AirDefence.AAA_ZU_23_Emplacement
+            AAA_ZU_23_Closed = vehicles.AirDefence.AAA_ZU_23_Closed
+            AAA_ZU_23_on_Ural_375 = vehicles.AirDefence.AAA_ZU_23_on_Ural_375
+            SAM_SA_18_Igla_S_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_S_MANPADS
+            SAM_SA_18_Igla_S_comm = vehicles.AirDefence.SAM_SA_18_Igla_S_comm
+            SAM_SA_3_S_125_LN_5P73 = vehicles.AirDefence.SAM_SA_3_S_125_LN_5P73
+            SAM_SA_3_S_125_TR_SNR = vehicles.AirDefence.SAM_SA_3_S_125_TR_SNR
+            SAM_SR_P_19 = vehicles.AirDefence.SAM_SR_P_19
+            SPAAA_ZSU_23_4_Shilka = vehicles.AirDefence.SPAAA_ZSU_23_4_Shilka
+            SAM_SA_2_LN_SM_90 = vehicles.AirDefence.SAM_SA_2_LN_SM_90
+            SAM_SA_2_TR_SNR_75_Fan_Song = vehicles.AirDefence.SAM_SA_2_TR_SNR_75_Fan_Song
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+
+        class Unarmed:
+            Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
+            Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
+            Transport_UAZ_469 = vehicles.Unarmed.Transport_UAZ_469
+            Transport_Ural_375 = vehicles.Unarmed.Transport_Ural_375
+            CP_Ural_375_PBU = vehicles.Unarmed.CP_Ural_375_PBU
+            Transport_IKARUS_280 = vehicles.Unarmed.Transport_IKARUS_280
+            Transport_VAZ_2109 = vehicles.Unarmed.Transport_VAZ_2109
+            CP_SKP_11_ATC_Mobile_Command_Post = vehicles.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
+            Transport_fire_engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_engine_Ural_ATsP_6
+            GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
+            Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
+            GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
+
+        class Armor:
+            APC_BTR_80 = vehicles.Armor.APC_BTR_80
+            IFV_BMP_1 = vehicles.Armor.IFV_BMP_1
+            ARV_BRDM_2 = vehicles.Armor.ARV_BRDM_2
+            APC_MTLB = vehicles.Armor.APC_MTLB
+            MBT_T_55 = vehicles.Armor.MBT_T_55
+
+        class Locomotive:
+            ES44AH = vehicles.Locomotive.ES44AH
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            Boxcartrinity = vehicles.Carriage.Boxcartrinity
+            Tankcartrinity = vehicles.Carriage.Tankcartrinity
+            Wellcarnsc = vehicles.Carriage.Wellcarnsc
+            DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+    class Plane:
+        A_10C = planes.A_10C
+        MiG_23MLD = planes.MiG_23MLD
+        MiG_29A = planes.MiG_29A
+        MiG_21Bis = planes.MiG_21Bis
+        An_26B = planes.An_26B
+        Yak_40 = planes.Yak_40
+        L_39ZA = planes.L_39ZA
+        IL_76MD = planes.IL_76MD
+        Bf_109K_4 = planes.Bf_109K_4
+        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
+        AJS37 = planes.AJS37
+        AV8BNA = planes.AV8BNA
+        KC130 = planes.KC130
+        KC135MPRS = planes.KC135MPRS
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        Christen_Eagle_II = planes.Christen_Eagle_II
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F_Sabre
+        FA_18C_hornet = planes.FA_18C_hornet
+        Hawk = planes.Hawk
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
+        Yak_52 = planes.Yak_52
+
+    planes = [
+        Plane.A_10C,
+        Plane.MiG_23MLD,
+        Plane.MiG_29A,
+        Plane.MiG_21Bis,
+        Plane.An_26B,
+        Plane.Yak_40,
+        Plane.L_39ZA,
+        Plane.IL_76MD,
+        Plane.Bf_109K_4,
+        Plane.SpitfireLFMkIX,
+        Plane.SpitfireLFMkIXCW,
+        Plane.AJS37,
+        Plane.AV8BNA,
+        Plane.KC130,
+        Plane.KC135MPRS,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.Christen_Eagle_II,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.FA_18C_hornet,
+        Plane.Hawk,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_19P,
+        Plane.Yak_52,
+    ]
+
+    class Helicopter:
+        Ka_50 = helicopters.Ka_50
+        Mi_8MT = helicopters.Mi_8MT
+        Mi_24V = helicopters.Mi_24V
+        SA342M = helicopters.SA342M
+        SA342L = helicopters.SA342L
+        SA342Mistral = helicopters.SA342Mistral
+        SA342Minigun = helicopters.SA342Minigun
+
+    helicopters = [
+        Helicopter.Ka_50,
+        Helicopter.Mi_8MT,
+        Helicopter.Mi_24V,
+        Helicopter.SA342M,
+        Helicopter.SA342L,
+        Helicopter.SA342Mistral,
+        Helicopter.SA342Minigun,
+    ]
+
+    class Ship:
+        Armed_speedboat = ships.Armed_speedboat
+        Tanker_Elnya_160 = ships.Tanker_Elnya_160
+        FFL_1124_4_Grisha = ships.FFL_1124_4_Grisha
+        FSG_1241_1MP_Molniya = ships.FSG_1241_1MP_Molniya
+        Civil_boat_Zvezdny = ships.Civil_boat_Zvezdny
+        Bulk_cargo_ship_Yakushev = ships.Bulk_cargo_ship_Yakushev
+        Dry_cargo_ship_Ivanov = ships.Dry_cargo_ship_Ivanov
+
+    def __init__(self):
+        super(Cuba, self).__init__(Cuba.id, Cuba.name)
 
 country_dict = {
     Russia.id: Russia,
@@ -10715,6 +11049,7 @@ country_dict = {
     Oman.id: Oman,
     UnitedArabEmirates.id: UnitedArabEmirates,
     SouthAfrica.id: SouthAfrica,
+    Cuba.id: Cuba,
 }
 
 

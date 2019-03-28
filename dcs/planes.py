@@ -22,6 +22,7 @@ class Tornado_GR4(PlaneType):
     charge_total = 180
     chaff_charge_size = 1
     flare_charge_size = 2
+    eplrs = True
 
     class Liveries:
 
@@ -106,6 +107,7 @@ class Tornado_IDS(PlaneType):
     charge_total = 180
     chaff_charge_size = 1
     flare_charge_size = 2
+    eplrs = True
 
     class Liveries:
 
@@ -4110,6 +4112,7 @@ class Mirage_2000_5(PlaneType):
     charge_total = 128
     chaff_charge_size = 1
     flare_charge_size = 1
+    eplrs = True
     category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
 
     class Liveries:
@@ -4181,6 +4184,7 @@ class F_15C(PlaneType):
     charge_total = 240
     chaff_charge_size = 1
     flare_charge_size = 2
+    eplrs = True
     category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 124
 
@@ -4613,6 +4617,7 @@ class MiG_29A(PlaneType):
             IRIAF_Sand_Blue = "IRIAF Sand-Blue"
 
         class Kazakhstan(Enum):
+            Kazakhstan_KazAADF_2008 = "Kazakhstan KazAADF 2008"
             Kazakhstan_Air_Defense_Forces = "Kazakhstan Air Defense Forces"
 
         class Poland(Enum):
@@ -5941,6 +5946,7 @@ class E_3A(PlaneType):
     charge_total = 240
     chaff_charge_size = 1
     flare_charge_size = 2
+    eplrs = True
     category = "AWACS"  #{D2BC159C-5B7D-40cf-92CD-44DF3E99FAA9}
 
     class Liveries:
@@ -6007,6 +6013,7 @@ class E_2C(PlaneType):
     charge_total = 240
     chaff_charge_size = 1
     flare_charge_size = 2
+    eplrs = True
     category = "AWACS"  #{D2BC159C-5B7D-40cf-92CD-44DF3E99FAA9}
 
     class Liveries:
@@ -6069,6 +6076,7 @@ class F_16C_bl_50(PlaneType):
     charge_total = 180
     chaff_charge_size = 1
     flare_charge_size = 2
+    eplrs = True
     category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
 
     class Liveries:
@@ -10202,8 +10210,8 @@ class KC130(PlaneType):
     task_default = task.Refueling
 
 
-class KC135BDA(PlaneType):
-    id = "KC135BDA"
+class KC135MPRS(PlaneType):
+    id = "KC135MPRS"
     group_size_max = 1
     height = 12.93
     width = 40
@@ -10217,6 +10225,12 @@ class KC135BDA(PlaneType):
     flare_charge_size = 2
     tacan = True
     category = "Tankers"  #{8A302789-A55D-4897-B647-66493FA6826F}
+
+    class Liveries:
+
+        class USA(Enum):
+            _100th_ARW = "100th ARW"
+            _22nd_ARW = "22nd ARW"
 
     pylons = {}
 
@@ -10325,6 +10339,10 @@ class C_101EB(PlaneType):
             AGA__Spanish_Air_School__1980 = "AGA (Spanish Air School) 1980"
             AGA__Spanish_Air_School__1985 = "AGA (Spanish Air School) 1985"
             default = "default"
+            CLAEX___Centro_Logístico_de_Armamento_y_Experimentación = "CLAEX - Centro Logístico de Armamento y Experimentación"
+            _74_squadron_Matacan = "74 squadron Matacan"
+            Patrulla_Aguila_25_Aniversario = "Patrulla Aguila 25 Aniversario"
+            Patrulla_Aguila_30_Aniversario = "Patrulla Aguila 30 Aniversario"
             Patrulla_Aguila_Spanish_AGA = "Patrulla Aguila Spanish AGA"
 
         class Ukraine(Enum):
@@ -10341,6 +10359,7 @@ class C_101EB(PlaneType):
 
         class UK(Enum):
             default = "default"
+            UK_Trainer_Fictional = "UK Trainer Fictional"
 
         class Insurgents(Enum):
             default = "default"
@@ -10350,12 +10369,14 @@ class C_101EB(PlaneType):
 
         class France(Enum):
             default = "default"
+            France_Trainer_Fictional = "France Trainer Fictional"
 
         class Abkhazia(Enum):
             default = "default"
 
         class Russia(Enum):
             default = "default"
+            Russia_Trainer_Fictional = "Russia Trainer Fictional"
 
         class Sweden(Enum):
             default = "default"
@@ -10410,6 +10431,7 @@ class C_101EB(PlaneType):
 
         class USA(Enum):
             default = "default"
+            USAF_Trainer_Fictional = "USAF Trainer Fictional"
 
         class Denmark(Enum):
             default = "default"
@@ -10583,6 +10605,7 @@ class C_101CC(PlaneType):
 
         class Russia(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
+            Russia_Combat_Fictional = "Russia Combat Fictional"
 
         class Sweden(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
@@ -10634,9 +10657,11 @@ class C_101CC(PlaneType):
 
         class USAFAggressors(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
+            USAF_Agressor_Fictional = "USAF Agressor Fictional"
 
         class USA(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
+            USAF_Agressor_Fictional = "USAF Agressor Fictional"
 
         class Denmark(Enum):
             AVIODEV_Skin = "AVIODEV Skin"
@@ -13423,6 +13448,1453 @@ class F_86F_Sabre(PlaneType):
     task_default = task.CAP
 
 
+class F_14B(PlaneType):
+    id = "F-14B"
+    flyable = True
+    height = 4.8
+    width = 10.15
+    length = 16.6
+    fuel_max = 7348
+    max_speed = 2520
+    chaff = 140
+    flare = 60
+    charge_total = 200
+    chaff_charge_size = 1
+    flare_charge_size = 1
+    radio_frequency = 124
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 225,
+                2: 258,
+                4: 270,
+                8: 257,
+                16: 252,
+                17: 268,
+                9: 253,
+                18: 269,
+                5: 255,
+                10: 263,
+                20: 269,
+                11: 267,
+                3: 260,
+                6: 259,
+                12: 254,
+                13: 264,
+                7: 262,
+                14: 266,
+                19: 268,
+                15: 265
+            },
+        },
+        2: {
+            "channels": {
+                1: 225,
+                2: 258,
+                4: 270,
+                8: 257,
+                16: 252,
+                17: 268,
+                9: 253,
+                18: 269,
+                5: 255,
+                10: 263,
+                20: 269,
+                30: 263,
+                21: 225,
+                11: 267,
+                22: 258,
+                3: 260,
+                6: 259,
+                12: 254,
+                24: 270,
+                19: 268,
+                25: 255,
+                13: 264,
+                26: 259,
+                27: 262,
+                7: 262,
+                14: 266,
+                28: 257,
+                23: 260,
+                29: 253,
+                15: 265
+            },
+        },
+    }
+
+    property_defaults = {
+        "M61BURST": 0,
+        "ALE39Loadout": 0,
+        "UseLAU138": True,
+        "INSAlignmentStored": False,
+        "TacanChannel": 0,
+        "TacanBand": 0,
+        "IlsChannel": 1,
+        "KY28Key": 1,
+        "LGB1000": 1,
+        "LGB100": 6,
+        "LGB10": 8,
+        "LGB1": 8,
+    }
+
+    class Properties:
+
+        class M61BURST:
+            id = "M61BURST"
+
+            class Values:
+                Burst_200 = 0
+                Burst_100 = 1
+                Burst_50 = 2
+                Manual = 3
+
+        class ALE39Loadout:
+            id = "ALE39Loadout"
+
+            class Values:
+                _60_Flares___0_Chaff = 0
+                _50_Flares___10_Chaff = 1
+                _40_Flares___20_Chaff = 2
+                _30_Flares___30_Chaff = 3
+                _20_Flares___40_Chaff = 4
+                _10_Flares___50_Chaff = 5
+                _0_Flares___60_Chaff = 6
+
+        class UseLAU138:
+            id = "UseLAU138"
+
+        class INSAlignmentStored:
+            id = "INSAlignmentStored"
+
+        class TacanChannel:
+            id = "TacanChannel"
+
+        class TacanBand:
+            id = "TacanBand"
+
+            class Values:
+                X = 0
+                Y = 1
+
+        class IlsChannel:
+            id = "IlsChannel"
+
+        class KY28Key:
+            id = "KY28Key"
+
+        class LGB1000:
+            id = "LGB1000"
+
+        class LGB100:
+            id = "LGB100"
+
+        class LGB10:
+            id = "LGB10"
+
+        class LGB1:
+            id = "LGB1"
+
+    class Liveries:
+
+        class Georgia(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Syria(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Finland(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Australia(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Germany(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class SaudiArabia(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Israel(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Croatia(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class CzechRepublic(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Norway(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Romania(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Spain(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Ukraine(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Belgium(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Slovakia(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Greece(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class UK(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Insurgents(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Hungary(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class France(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Abkhazia(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Russia(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Sweden(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Austria(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Switzerland(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Italy(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class SouthOssetia(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class SouthKorea(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Iran(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class China(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Pakistan(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Belarus(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class NorthKorea(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Iraq(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Kazakhstan(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Bulgaria(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Serbia(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class India(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class USAFAggressors(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class USA(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Denmark(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Egypt(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Canada(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class TheNetherlands(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Turkey(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Japan(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+        class Poland(Enum):
+            VF_102_Diamondbacks = "VF-102 Diamondbacks"
+            Santa = "Santa"
+            VF_101_Dark = "VF-101 Dark"
+            VF_101_Grim_Reapers_Low_Vis = "VF-101 Grim Reapers Low Vis"
+            VF_101_Red = "VF-101 Red"
+            VF_102_Diamondbacks_102 = "VF-102 Diamondbacks 102"
+            VF_103_Jolly_Rogers_Hi_Viz = "VF-103 Jolly Rogers Hi Viz"
+            VF_103_Last_Ride = "VF-103 Last Ride"
+            VF_103_Sluggers_206__1995 = "VF-103 Sluggers 206 (1995)"
+            VF_103_Sluggers_207__1991 = "VF-103 Sluggers 207 (1991)"
+            VF_11_Red_Rippers__1997 = "VF-11 Red Rippers (1997)"
+            VF_142_Ghostriders = "VF-142 Ghostriders"
+            VF_143_Pukin_Dogs_Low_Vis__1995 = "VF-143 Pukin Dogs Low Vis (1995)"
+            VF_143_Pukin_Dogs_Low_Vis = "VF-143 Pukin Dogs Low Vis"
+            VF_143_Pukin_Dogs_CAG = "VF-143 Pukin Dogs CAG"
+            VF_211_Fighting_Checkmates = "VF-211 Fighting Checkmates"
+            VF_24_Renegades = "VF-24 Renegades"
+            VF_32_Fighting_Swordsmen_101 = "VF-32 Fighting Swordsmen 101"
+            VF_32_Fighting_Swordsmen_102 = "VF-32 Fighting Swordsmen 102"
+            VF_32_Fighting_Swordsmen_103 = "VF-32 Fighting Swordsmen 103"
+            VF_74_Adversary = "VF-74 Adversary"
+            VF_74_BeDevilers_1991 = "VF-74 BeDevilers 1991"
+
+    class Pylon1:
+        LAU_138_AIM_9M = (1, Weapons.LAU_138_AIM_9M)
+        LAU_138_AIM_9L = (1, Weapons.LAU_138_AIM_9L)
+        AN_ASQ_T50_TCTS_Pod = (1, Weapons.AN_ASQ_T50_TCTS_Pod)
+        Smokewinder___red = (1, Weapons.Smokewinder___red)
+        Smokewinder___green = (1, Weapons.Smokewinder___green)
+        Smokewinder___blue = (1, Weapons.Smokewinder___blue)
+        Smokewinder___white = (1, Weapons.Smokewinder___white)
+        Smokewinder___yellow = (1, Weapons.Smokewinder___yellow)
+        Smokewinder___orange = (1, Weapons.Smokewinder___orange)
+
+    class Pylon2:
+        AIM_54C_Mk47_ = (2, Weapons.AIM_54C_Mk47_)
+        AIM_54A_Mk47_ = (2, Weapons.AIM_54A_Mk47_)
+        AIM_54A_Mk60_ = (2, Weapons.AIM_54A_Mk60_)
+        AIM_7M_ = (2, Weapons.AIM_7M_)
+        LAU_7_AIM_9M_ = (2, Weapons.LAU_7_AIM_9M_)
+        LAU_7_AIM_9L = (2, Weapons.LAU_7_AIM_9L)
+        _2_LAU_10___4_ZUNI_MK_71_________ = (2, Weapons._2_LAU_10___4_ZUNI_MK_71_________)
+        _2_Mk_81_____ = (2, Weapons._2_Mk_81_____)
+        _2_Mk_82_____ = (2, Weapons._2_Mk_82_____)
+        _2_Mk_82AIR_____ = (2, Weapons._2_Mk_82AIR_____)
+        _2_Mk_82_SnakeEye_____ = (2, Weapons._2_Mk_82_SnakeEye_____)
+        _2_MK_20_____ = (2, Weapons._2_MK_20_____)
+        Mk_83_______ = (2, Weapons.Mk_83_______)
+        _3_BDU_33____ = (2, Weapons._3_BDU_33____)
+
+    class Pylon3:
+        Fuel_tank_300_gal_ = (3, Weapons.Fuel_tank_300_gal_)
+        Fuel_tank_300_gal__empty_ = (3, Weapons.Fuel_tank_300_gal__empty_)
+
+    class Pylon4:
+        AIM_54A_Mk47 = (4, Weapons.AIM_54A_Mk47)
+        AIM_54A_Mk60 = (4, Weapons.AIM_54A_Mk60)
+        AIM_54C_Mk47 = (4, Weapons.AIM_54C_Mk47)
+        AIM_7M__ = (4, Weapons.AIM_7M__)
+#ERRR <CLEAN>
+        Mk_82_ = (4, Weapons.Mk_82_)
+        Mk_82AIR_ = (4, Weapons.Mk_82AIR_)
+        Mk_82_SnakeEye_ = (4, Weapons.Mk_82_SnakeEye_)
+        MAK79_4_Mk_81 = (4, Weapons.MAK79_4_Mk_81)
+        MAK79_4_Mk_82 = (4, Weapons.MAK79_4_Mk_82)
+        MAK79_4_BDU_33 = (4, Weapons.MAK79_4_BDU_33)
+        _3_BDU_33_ = (4, Weapons._3_BDU_33_)
+        MAK79_4_Mk_82AIR = (4, Weapons.MAK79_4_Mk_82AIR)
+        MAK79_4_Mk_82_SnakeEye = (4, Weapons.MAK79_4_Mk_82_SnakeEye)
+        MAK79_3_Mk_83 = (4, Weapons.MAK79_3_Mk_83)
+        Mk_83_ = (4, Weapons.Mk_83_)
+        GBU_12_ = (4, Weapons.GBU_12_)
+        GBU_16_ = (4, Weapons.GBU_16_)
+        _2_LAU_10___4_ZUNI_MK_71___ = (4, Weapons._2_LAU_10___4_ZUNI_MK_71___)
+        Mk_20_ = (4, Weapons.Mk_20_)
+        ADM_141A__ = (4, Weapons.ADM_141A__)
+        Mk_84_ = (4, Weapons.Mk_84_)
+        GBU_10_ = (4, Weapons.GBU_10_)
+        GBU_24_ = (4, Weapons.GBU_24_)
+
+    class Pylon5:
+        AIM_54A_Mk47 = (5, Weapons.AIM_54A_Mk47)
+        AIM_54A_Mk60 = (5, Weapons.AIM_54A_Mk60)
+        AIM_54C_Mk47 = (5, Weapons.AIM_54C_Mk47)
+        AIM_7M__ = (5, Weapons.AIM_7M__)
+#ERRR <CLEAN>
+        Mk_82_ = (5, Weapons.Mk_82_)
+        Mk_82AIR_ = (5, Weapons.Mk_82AIR_)
+        Mk_82_SnakeEye_ = (5, Weapons.Mk_82_SnakeEye_)
+        MAK79_3_Mk_81 = (5, Weapons.MAK79_3_Mk_81)
+        MAK79_3_Mk_82 = (5, Weapons.MAK79_3_Mk_82)
+        MAK79_3_BDU_33 = (5, Weapons.MAK79_3_BDU_33)
+        _3_BDU_33_ = (5, Weapons._3_BDU_33_)
+        MAK79_3_Mk_82AIR = (5, Weapons.MAK79_3_Mk_82AIR)
+        MAK79_3_Mk_82_SnakeEye = (5, Weapons.MAK79_3_Mk_82_SnakeEye)
+        MAK79_Mk_83_ = (5, Weapons.MAK79_Mk_83_)
+        Mk_83_ = (5, Weapons.Mk_83_)
+        GBU_12_ = (5, Weapons.GBU_12_)
+        GBU_16_ = (5, Weapons.GBU_16_)
+        _2_SUU_25___8_LUU_2___ = (5, Weapons._2_SUU_25___8_LUU_2___)
+        Mk_20_ = (5, Weapons.Mk_20_)
+        ADM_141A__ = (5, Weapons.ADM_141A__)
+        Mk_84_ = (5, Weapons.Mk_84_)
+
+    class Pylon6:
+        AIM_54A_Mk47 = (6, Weapons.AIM_54A_Mk47)
+        AIM_54A_Mk60 = (6, Weapons.AIM_54A_Mk60)
+        AIM_54C_Mk47 = (6, Weapons.AIM_54C_Mk47)
+        AIM_7M__ = (6, Weapons.AIM_7M__)
+#ERRR <CLEAN>
+        Mk_82_ = (6, Weapons.Mk_82_)
+        Mk_82AIR_ = (6, Weapons.Mk_82AIR_)
+        Mk_82_SnakeEye_ = (6, Weapons.Mk_82_SnakeEye_)
+        MAK79_3_Mk_81_ = (6, Weapons.MAK79_3_Mk_81_)
+        MAK79_3_Mk_82_ = (6, Weapons.MAK79_3_Mk_82_)
+        MAK79_3_BDU_33_ = (6, Weapons.MAK79_3_BDU_33_)
+        _3_BDU_33_ = (6, Weapons._3_BDU_33_)
+        MAK79_3_Mk_82AIR_ = (6, Weapons.MAK79_3_Mk_82AIR_)
+        MAK79_3_Mk_82_SnakeEye_ = (6, Weapons.MAK79_3_Mk_82_SnakeEye_)
+        MAK79_Mk_83_ = (6, Weapons.MAK79_Mk_83_)
+        Mk_83_ = (6, Weapons.Mk_83_)
+        GBU_12_ = (6, Weapons.GBU_12_)
+        GBU_16_ = (6, Weapons.GBU_16_)
+        SUU_25___8_LUU_2__ = (6, Weapons.SUU_25___8_LUU_2__)
+        Mk_20_ = (6, Weapons.Mk_20_)
+        ADM_141A__ = (6, Weapons.ADM_141A__)
+        Mk_84_ = (6, Weapons.Mk_84_)
+        GBU_24_ = (6, Weapons.GBU_24_)
+
+    class Pylon7:
+        AIM_54A_Mk47 = (7, Weapons.AIM_54A_Mk47)
+        AIM_54A_Mk60 = (7, Weapons.AIM_54A_Mk60)
+        AIM_54C_Mk47 = (7, Weapons.AIM_54C_Mk47)
+        AIM_7M__ = (7, Weapons.AIM_7M__)
+#ERRR <CLEAN>
+        Mk_82_ = (7, Weapons.Mk_82_)
+        Mk_82AIR_ = (7, Weapons.Mk_82AIR_)
+        Mk_82_SnakeEye_ = (7, Weapons.Mk_82_SnakeEye_)
+        MAK79_4_Mk_81 = (7, Weapons.MAK79_4_Mk_81)
+        MAK79_4_Mk_82 = (7, Weapons.MAK79_4_Mk_82)
+        MAK79_4_BDU_33 = (7, Weapons.MAK79_4_BDU_33)
+        _3_BDU_33_ = (7, Weapons._3_BDU_33_)
+        MAK79_4_Mk_82AIR = (7, Weapons.MAK79_4_Mk_82AIR)
+        MAK79_4_Mk_82_SnakeEye = (7, Weapons.MAK79_4_Mk_82_SnakeEye)
+        MAK79_3_Mk_83_ = (7, Weapons.MAK79_3_Mk_83_)
+        Mk_83_ = (7, Weapons.Mk_83_)
+        GBU_12_ = (7, Weapons.GBU_12_)
+        GBU_16_ = (7, Weapons.GBU_16_)
+        LAU_10___4_ZUNI_MK_71__ = (7, Weapons.LAU_10___4_ZUNI_MK_71__)
+        Mk_20_ = (7, Weapons.Mk_20_)
+        ADM_141A__ = (7, Weapons.ADM_141A__)
+        Mk_84_ = (7, Weapons.Mk_84_)
+        GBU_10_ = (7, Weapons.GBU_10_)
+
+    class Pylon8:
+        Fuel_tank_300_gal_ = (8, Weapons.Fuel_tank_300_gal_)
+        Fuel_tank_300_gal__empty_ = (8, Weapons.Fuel_tank_300_gal__empty_)
+
+    class Pylon9:
+        AIM_54C_Mk47__ = (9, Weapons.AIM_54C_Mk47__)
+        AIM_54A_Mk47__ = (9, Weapons.AIM_54A_Mk47__)
+        AIM_54A_Mk60__ = (9, Weapons.AIM_54A_Mk60__)
+        AIM_7M_ = (9, Weapons.AIM_7M_)
+        LAU_7_AIM_9M_ = (9, Weapons.LAU_7_AIM_9M_)
+        LAU_7_AIM_9L = (9, Weapons.LAU_7_AIM_9L)
+        LANTIRN_Targeting_Pod = (9, Weapons.LANTIRN_Targeting_Pod)
+        _2_LAU_10___4_ZUNI_MK_71______ = (9, Weapons._2_LAU_10___4_ZUNI_MK_71______)
+        _2_Mk_81__ = (9, Weapons._2_Mk_81__)
+        _2_Mk_82__ = (9, Weapons._2_Mk_82__)
+        _2_Mk_82AIR__ = (9, Weapons._2_Mk_82AIR__)
+        _2_Mk_82_SnakeEye__ = (9, Weapons._2_Mk_82_SnakeEye__)
+        _2_MK_20__ = (9, Weapons._2_MK_20__)
+        Mk_83____ = (9, Weapons.Mk_83____)
+        _3_BDU_33____ = (9, Weapons._3_BDU_33____)
+
+    class Pylon10:
+        LAU_138_AIM_9M = (10, Weapons.LAU_138_AIM_9M)
+        LAU_138_AIM_9L = (10, Weapons.LAU_138_AIM_9L)
+        AN_ASQ_T50_TCTS_Pod = (10, Weapons.AN_ASQ_T50_TCTS_Pod)
+        Smokewinder___red = (10, Weapons.Smokewinder___red)
+        Smokewinder___green = (10, Weapons.Smokewinder___green)
+        Smokewinder___blue = (10, Weapons.Smokewinder___blue)
+        Smokewinder___white = (10, Weapons.Smokewinder___white)
+        Smokewinder___yellow = (10, Weapons.Smokewinder___yellow)
+        Smokewinder___orange = (10, Weapons.Smokewinder___orange)
+
+    pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+    tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.Reconnaissance, task.GroundAttack, task.RunwayAttack, task.PinpointStrike, task.AntishipStrike, task.CAS]
+    task_default = task.Intercept
+
+
 class FA_18C_hornet(PlaneType):
     id = "FA-18C_hornet"
     flyable = True
@@ -13560,15 +15032,18 @@ class FA_18C_hornet(PlaneType):
             NAWDC_blue = "NAWDC blue"
             NAWDC_brown = "NAWDC brown"
             NSAWC_brown_splinter = "NSAWC brown splinter"
+            NSAWC_blue = "NSAWC blue"
 
         class USA(Enum):
             VFA_37 = "VFA-37"
             VFA_113 = "VFA-113"
             VFA_122 = "VFA-122"
             VFA_131 = "VFA-131"
+            VFA_192 = "VFA-192"
             VFA_34 = "VFA-34"
             VFA_83 = "VFA-83"
             VFA_87 = "VFA-87"
+            VFA_97 = "VFA-97"
             VFC_12 = "VFC-12"
             VMFA_122 = "VMFA-122"
             VMFA_122_high_visibility = "VMFA-122 high visibility"
@@ -13588,6 +15063,7 @@ class FA_18C_hornet(PlaneType):
             NAWDC_blue = "NAWDC blue"
             NAWDC_brown = "NAWDC brown"
             NSAWC_brown_splinter = "NSAWC brown splinter"
+            NSAWC_blue = "NSAWC blue"
             NSAWC_gray = "NSAWC gray"
             Blue_Angels_Jet_Team = "Blue Angels Jet Team"
 
@@ -15020,20 +16496,412 @@ class MiG_15bis(PlaneType):
             Polish_Air_Force = "Polish_Air Force"
 
     class Pylon1:
-        FAB_50 = (1, Weapons.FAB_50)
-        FAB_100M = (1, Weapons.FAB_100M)
+        FAB_50_ = (1, Weapons.FAB_50_)
+        FAB_100M_ = (1, Weapons.FAB_100M_)
         PTB400_MIG15 = (1, Weapons.PTB400_MIG15)
         PTB600_MIG15 = (1, Weapons.PTB600_MIG15)
         PTB300_MIG15 = (1, Weapons.PTB300_MIG15)
 
     class Pylon2:
-        FAB_50 = (2, Weapons.FAB_50)
-        FAB_100M = (2, Weapons.FAB_100M)
+        FAB_50_ = (2, Weapons.FAB_50_)
+        FAB_100M_ = (2, Weapons.FAB_100M_)
         PTB400_MIG15 = (2, Weapons.PTB400_MIG15)
         PTB600_MIG15 = (2, Weapons.PTB600_MIG15)
         PTB300_MIG15 = (2, Weapons.PTB300_MIG15)
 
     pylons = {1, 2}
+
+    tasks = [task.CAP, task.CAS, task.Escort, task.FighterSweep, task.GroundAttack, task.Intercept]
+    task_default = task.CAP
+
+
+class MiG_19P(PlaneType):
+    id = "MiG-19P"
+    height = 3.8885
+    width = 9
+    length = 13.025
+    fuel_max = 1800
+    max_speed = 992
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
+    radio_frequency = 124
+
+    panel_radio = {
+        1: {
+            "channels": {
+                6: 135,
+                2: 124,
+                3: 122,
+                1: 121,
+                4: 125,
+                5: 127
+            },
+        },
+    }
+
+    property_defaults = {
+        "MountSIRENA": False,
+        "MissileToneVolume": 5,
+        "NAV_Initial_Hdg": 0,
+        "ADF_FAR_Frequency": 625,
+        "ADF_NEAR_Frequency": 303,
+        "ADF_Selected_Frequency": 1,
+    }
+
+    class Properties:
+
+        class MountSIRENA:
+            id = "MountSIRENA"
+
+        class MissileToneVolume:
+            id = "MissileToneVolume"
+
+        class NAV_Initial_Hdg:
+            id = "NAV_Initial_Hdg"
+
+        class ADF_FAR_Frequency:
+            id = "ADF_FAR_Frequency"
+
+        class ADF_NEAR_Frequency:
+            id = "ADF_NEAR_Frequency"
+
+        class ADF_Selected_Frequency:
+            id = "ADF_Selected_Frequency"
+
+            class Values:
+                FAR = 1
+                NEAR = 2
+
+    class Liveries:
+
+        class Georgia(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Syria(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Finland(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Australia(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Germany(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class SaudiArabia(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Israel(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Croatia(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class CzechRepublic(Enum):
+            IAP = "IAP"
+            CZechoslovakia = "CZechoslovakia"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Norway(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Romania(Enum):
+            IAP = "IAP"
+            Romania___66th_Fighter_Division = "Romania - 66th Fighter Division"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Spain(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Ukraine(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Belgium(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Slovakia(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Greece(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class UK(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Insurgents(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Hungary(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class France(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Abkhazia(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Russia(Enum):
+            IAP = "IAP"
+            USSR_2 = "USSR_2"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Sweden(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Austria(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Switzerland(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Italy(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class SouthOssetia(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class SouthKorea(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Iran(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class China(Enum):
+            PLAAF = "PLAAF"
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            PLAAF_CAMO = "PLAAF CAMO"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Pakistan(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Belarus(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class NorthKorea(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Iraq(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Kazakhstan(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Bulgaria(Enum):
+            Bulgaria = "Bulgaria"
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Serbia(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class India(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class USAFAggressors(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class USA(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Denmark(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Egypt(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Canada(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class TheNetherlands(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Turkey(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Japan(Enum):
+            IAP = "IAP"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+        class Poland(Enum):
+            IAP = "IAP"
+            Poland_39_PLM = "Poland 39 PLM"
+            Poland_62_PLM = "Poland 62 PLM"
+            default = "default"
+            DDR___Fictional = "DDR - Fictional"
+            Snow___Fictional = "Snow - Fictional"
+
+    class Pylon1:
+        K_13A = (1, Weapons.K_13A)
+        Smoke_Generator___red = (1, Weapons.Smoke_Generator___red)
+        Smoke_Generator___green = (1, Weapons.Smoke_Generator___green)
+        Smoke_Generator___blue = (1, Weapons.Smoke_Generator___blue)
+        Smoke_Generator___white = (1, Weapons.Smoke_Generator___white)
+        Smoke_Generator___yellow = (1, Weapons.Smoke_Generator___yellow)
+        Smoke_Generator___orange = (1, Weapons.Smoke_Generator___orange)
+
+    class Pylon2:
+        FAB_50_ = (2, Weapons.FAB_50_)
+        FAB_100M_ = (2, Weapons.FAB_100M_)
+        FAB_250 = (2, Weapons.FAB_250)
+        ORO_57K___S_5M_x_8 = (2, Weapons.ORO_57K___S_5M_x_8)
+        PTB760_MIG19 = (2, Weapons.PTB760_MIG19)
+
+    class Pylon3:
+        ORO_57K___S_5M_x_8 = (3, Weapons.ORO_57K___S_5M_x_8)
+
+    class Pylon4:
+        ORO_57K___S_5M_x_8 = (4, Weapons.ORO_57K___S_5M_x_8)
+
+    class Pylon5:
+        FAB_50_ = (5, Weapons.FAB_50_)
+        FAB_100M_ = (5, Weapons.FAB_100M_)
+        FAB_250 = (5, Weapons.FAB_250)
+        ORO_57K___S_5M_x_8 = (5, Weapons.ORO_57K___S_5M_x_8)
+        PTB760_MIG19 = (5, Weapons.PTB760_MIG19)
+
+    class Pylon6:
+        K_13A = (6, Weapons.K_13A)
+        Smoke_Generator___red = (6, Weapons.Smoke_Generator___red)
+        Smoke_Generator___green = (6, Weapons.Smoke_Generator___green)
+        Smoke_Generator___blue = (6, Weapons.Smoke_Generator___blue)
+        Smoke_Generator___white = (6, Weapons.Smoke_Generator___white)
+        Smoke_Generator___yellow = (6, Weapons.Smoke_Generator___yellow)
+        Smoke_Generator___orange = (6, Weapons.Smoke_Generator___orange)
+
+    pylons = {1, 2, 3, 4, 5, 6}
 
     tasks = [task.CAP, task.CAS, task.Escort, task.FighterSweep, task.GroundAttack, task.Intercept]
     task_default = task.CAP
@@ -17382,7 +19250,7 @@ plane_map = {
     "AJS37": AJS37,
     "AV8BNA": AV8BNA,
     "KC130": KC130,
-    "KC135BDA": KC135BDA,
+    "KC135MPRS": KC135MPRS,
     "C-101EB": C_101EB,
     "C-101CC": C_101CC,
     "J-11A": J_11A,
@@ -17391,6 +19259,7 @@ plane_map = {
     "F-5E": F_5E,
     "F-5E-3": F_5E_3,
     "F-86F Sabre": F_86F_Sabre,
+    "F-14B": F_14B,
     "FA-18C_hornet": FA_18C_hornet,
     "Hawk": Hawk,
     "L-39C": L_39C,
@@ -17398,6 +19267,7 @@ plane_map = {
     "M-2000C": M_2000C,
     "MQ-9 Reaper": MQ_9_Reaper,
     "MiG-15bis": MiG_15bis,
+    "MiG-19P": MiG_19P,
     "MiG-21Bis": MiG_21Bis,
     "Su-34": Su_34,
     "Yak-52": Yak_52,

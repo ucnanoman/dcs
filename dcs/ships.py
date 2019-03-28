@@ -22,9 +22,9 @@ class CVN_70_Carl_Vinson(unittype.ShipType):
     air_weapon_dist = 15000
 
 
-class FFG_7CL_Oliver_Hazzard_Perry(unittype.ShipType):
+class Oliver_Hazzard_Perry_class(unittype.ShipType):
     id = "PERRY"
-    name = "FFG-7CL Oliver Hazzard Perry"
+    name = "Oliver Hazzard Perry class"
     helicopter_num = 2
     parking = 1
     detection_range = 150000
@@ -32,9 +32,9 @@ class FFG_7CL_Oliver_Hazzard_Perry(unittype.ShipType):
     air_weapon_dist = 100000
 
 
-class CG_60_Normandy(unittype.ShipType):
+class Ticonderoga_class(unittype.ShipType):
     id = "TICONDEROG"
-    name = "CG-60 Normandy"
+    name = "Ticonderoga class"
     helicopter_num = 2
     parking = 1
     detection_range = 150000
@@ -236,8 +236,8 @@ class LCVP__Higgins_boat(unittype.ShipType):
 ship_map = {
     "speedboat": Armed_speedboat,
     "VINSON": CVN_70_Carl_Vinson,
-    "PERRY": FFG_7CL_Oliver_Hazzard_Perry,
-    "TICONDEROG": CG_60_Normandy,
+    "PERRY": Oliver_Hazzard_Perry_class,
+    "TICONDEROG": Ticonderoga_class,
     "ALBATROS": FFL_1124_4_Grisha,
     "KUZNECOW": CV_1143_5_Admiral_Kuznetsov,
     "MOLNIYA": FSG_1241_1MP_Molniya,
