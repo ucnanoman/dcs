@@ -630,6 +630,20 @@ class AirDefence:
         threat_range = 0
         air_weapon_dist = 0
 
+    class HQ_7_Self_Propelled_LN(unittype.VehicleType):
+        id = "HQ-7_LN_SP"
+        name = "HQ-7 Self-Propelled LN"
+        detection_range = 20000
+        threat_range = 12000
+        air_weapon_dist = 12000
+
+    class HQ_7_Self_Propelled_STR(unittype.VehicleType):
+        id = "HQ-7_STR_SP"
+        name = "HQ-7 Self-Propelled STR"
+        detection_range = 30000
+        threat_range = 0
+        air_weapon_dist = 0
+
     class AAA_Flak_18(unittype.VehicleType):
         id = "flak18"
         name = "AAA Flak 18"
@@ -637,9 +651,9 @@ class AirDefence:
         threat_range = 15000
         air_weapon_dist = 15000
 
-    class AAA_Flak_30(unittype.VehicleType):
+    class AAA_Flak_38(unittype.VehicleType):
         id = "flak30"
-        name = "AAA Flak 30"
+        name = "AAA Flak 38"
         detection_range = 0
         threat_range = 2500
         air_weapon_dist = 2500
@@ -1296,8 +1310,8 @@ class Armor:
         id = "ZBD04A"
         name = "ZBD-04A"
         detection_range = 0
-        threat_range = None
-        air_weapon_dist = 1000
+        threat_range = 4800
+        air_weapon_dist = 0
         eprls = True
 
     class HT_Pz_Kpfw_VI_Tiger_I(unittype.VehicleType):
@@ -1705,6 +1719,8 @@ vehicle_map = {
     "Tankcartrinity": Carriage.Tankcartrinity,
     "Wellcarnsc": Carriage.Wellcarnsc,
     "ZBD04A": Armor.ZBD_04A,
+    "HQ-7_LN_SP": AirDefence.HQ_7_Self_Propelled_LN,
+    "HQ-7_STR_SP": AirDefence.HQ_7_Self_Propelled_STR,
     "warning_board_a": Unarmed.Warning_Board_A,
     "Kubelwagen_82": Unarmed.Kübelwagen_82,
     "Blitz_36-6700A": Unarmed.Blitz_3_6_6700A,
@@ -1722,7 +1738,7 @@ vehicle_map = {
     "Sd_Kfz_234_2_Puma": Armor.IFV_Sd_Kfz_234_2_Puma,
     "Sd_Kfz_251": Armor.APC_Sd_Kfz_251,
     "flak18": AirDefence.AAA_Flak_18,
-    "flak30": AirDefence.AAA_Flak_30,
+    "flak30": AirDefence.AAA_Flak_38,
     "flak36": AirDefence.AAA_Flak_36,
     "flak37": AirDefence.AAA_Flak_37,
     "flak38": AirDefence.AAA_Flak_Vierling_38,

@@ -734,7 +734,6 @@ class USA(Country):
         S_3B_Tanker = planes.S_3B_Tanker
         S_3B = planes.S_3B
         P_51D_30_NA = planes.P_51D_30_NA
-        A_10C = planes.A_10C
         An_26B = planes.An_26B
         B_17G = planes.B_17G
         F_16A_MLU = planes.F_16A_MLU
@@ -745,7 +744,6 @@ class USA(Country):
         F_86F_Sabre = planes.F_86F_Sabre
         F_A_18A = planes.F_A_18A
         FA_18C_hornet = planes.FA_18C_hornet
-        IL_78M = planes.IL_78M
         KC135MPRS = planes.KC135MPRS
         L_39C = planes.L_39C
         SpitfireLFMkIX = planes.SpitfireLFMkIX
@@ -794,7 +792,6 @@ class USA(Country):
         Plane.S_3B_Tanker,
         Plane.S_3B,
         Plane.P_51D_30_NA,
-        Plane.A_10C,
         Plane.An_26B,
         Plane.B_17G,
         Plane.F_16A_MLU,
@@ -805,7 +802,6 @@ class USA(Country):
         Plane.F_86F_Sabre,
         Plane.F_A_18A,
         Plane.FA_18C_hornet,
-        Plane.IL_78M,
         Plane.KC135MPRS,
         Plane.L_39C,
         Plane.SpitfireLFMkIX,
@@ -1632,7 +1628,7 @@ class Germany(Country):
             Rapier_FSA_Blindfire_Tracker = vehicles.AirDefence.Rapier_FSA_Blindfire_Tracker
             SPAAA_ZSU_23_4_Shilka = vehicles.AirDefence.SPAAA_ZSU_23_4_Shilka
             AAA_Flak_18 = vehicles.AirDefence.AAA_Flak_18
-            AAA_Flak_30 = vehicles.AirDefence.AAA_Flak_30
+            AAA_Flak_38 = vehicles.AirDefence.AAA_Flak_38
             AAA_Flak_36 = vehicles.AirDefence.AAA_Flak_36
             AAA_Flak_37 = vehicles.AirDefence.AAA_Flak_37
             AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
@@ -1856,7 +1852,7 @@ class USAFAggressors(Country):
 
         class AirDefence:
             AAA_Flak_18 = vehicles.AirDefence.AAA_Flak_18
-            AAA_Flak_30 = vehicles.AirDefence.AAA_Flak_30
+            AAA_Flak_38 = vehicles.AirDefence.AAA_Flak_38
             AAA_Flak_36 = vehicles.AirDefence.AAA_Flak_36
             AAA_Flak_37 = vehicles.AirDefence.AAA_Flak_37
             AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
@@ -1920,6 +1916,8 @@ class USAFAggressors(Country):
             SAM_Patriot_ICC = vehicles.AirDefence.SAM_Patriot_ICC
             SAM_Patriot_STR_AN_MPQ_53 = vehicles.AirDefence.SAM_Patriot_STR_AN_MPQ_53
             SPAAA_Gepard = vehicles.AirDefence.SPAAA_Gepard
+            HQ_7_Self_Propelled_LN = vehicles.AirDefence.HQ_7_Self_Propelled_LN
+            HQ_7_Self_Propelled_STR = vehicles.AirDefence.HQ_7_Self_Propelled_STR
             SAM_SA_18_Igla_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_MANPADS
             SAM_Linebacker_M6 = vehicles.AirDefence.SAM_Linebacker_M6
 
@@ -5092,7 +5090,7 @@ class Bulgaria(Country):
 
         class AirDefence:
             SAM_SR_P_19 = vehicles.AirDefence.SAM_SR_P_19
-            AAA_Flak_30 = vehicles.AirDefence.AAA_Flak_30
+            AAA_Flak_38 = vehicles.AirDefence.AAA_Flak_38
             SAM_SA_2_TR_SNR_75_Fan_Song = vehicles.AirDefence.SAM_SA_2_TR_SNR_75_Fan_Song
             SAM_SA_2_LN_SM_90 = vehicles.AirDefence.SAM_SA_2_LN_SM_90
             SAM_SA_3_S_125_LN_5P73 = vehicles.AirDefence.SAM_SA_3_S_125_LN_5P73
@@ -5474,6 +5472,8 @@ class China(Country):
             AAA_ZU_23_on_Ural_375 = vehicles.AirDefence.AAA_ZU_23_on_Ural_375
             SAM_SA_2_TR_SNR_75_Fan_Song = vehicles.AirDefence.SAM_SA_2_TR_SNR_75_Fan_Song
             SAM_SA_2_LN_SM_90 = vehicles.AirDefence.SAM_SA_2_LN_SM_90
+            HQ_7_Self_Propelled_LN = vehicles.AirDefence.HQ_7_Self_Propelled_LN
+            HQ_7_Self_Propelled_STR = vehicles.AirDefence.HQ_7_Self_Propelled_STR
 
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
@@ -5980,7 +5980,7 @@ class Finland(Country):
         class AirDefence:
             AAA_Bofors_40mm = vehicles.AirDefence.AAA_Bofors_40mm
             AAA_Flak_37 = vehicles.AirDefence.AAA_Flak_37
-            AAA_Flak_30 = vehicles.AirDefence.AAA_Flak_30
+            AAA_Flak_38 = vehicles.AirDefence.AAA_Flak_38
             AAA_ZU_23_Closed = vehicles.AirDefence.AAA_ZU_23_Closed
             AAA_ZU_23_Emplacement = vehicles.AirDefence.AAA_ZU_23_Emplacement
             AAA_ZU_23_on_Ural_375 = vehicles.AirDefence.AAA_ZU_23_on_Ural_375
@@ -6365,7 +6365,7 @@ class Hungary(Country):
             SAM_SA_18_Igla_comm = vehicles.AirDefence.SAM_SA_18_Igla_comm
             SPAAA_ZSU_23_4_Shilka = vehicles.AirDefence.SPAAA_ZSU_23_4_Shilka
             AAA_Flak_18 = vehicles.AirDefence.AAA_Flak_18
-            AAA_Flak_30 = vehicles.AirDefence.AAA_Flak_30
+            AAA_Flak_38 = vehicles.AirDefence.AAA_Flak_38
             AAA_Flak_36 = vehicles.AirDefence.AAA_Flak_36
             AAA_Flak_37 = vehicles.AirDefence.AAA_Flak_37
             AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
@@ -7116,7 +7116,7 @@ class Japan(Country):
             Stinger_MANPADS = vehicles.AirDefence.Stinger_MANPADS
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
             AAA_Flak_18 = vehicles.AirDefence.AAA_Flak_18
-            AAA_Flak_30 = vehicles.AirDefence.AAA_Flak_30
+            AAA_Flak_38 = vehicles.AirDefence.AAA_Flak_38
             AAA_Flak_36 = vehicles.AirDefence.AAA_Flak_36
             AAA_Flak_37 = vehicles.AirDefence.AAA_Flak_37
             AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
@@ -7664,6 +7664,8 @@ class Pakistan(Country):
             Stinger_MANPADS = vehicles.AirDefence.Stinger_MANPADS
             SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
             SPAAA_ZSU_23_4_Shilka = vehicles.AirDefence.SPAAA_ZSU_23_4_Shilka
+            HQ_7_Self_Propelled_LN = vehicles.AirDefence.HQ_7_Self_Propelled_LN
+            HQ_7_Self_Propelled_STR = vehicles.AirDefence.HQ_7_Self_Propelled_STR
 
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2
@@ -8007,7 +8009,7 @@ class Romania(Country):
             SAM_SA_9_Strela_1_9P31 = vehicles.AirDefence.SAM_SA_9_Strela_1_9P31
             SPAAA_Gepard = vehicles.AirDefence.SPAAA_Gepard
             AAA_Flak_18 = vehicles.AirDefence.AAA_Flak_18
-            AAA_Flak_30 = vehicles.AirDefence.AAA_Flak_30
+            AAA_Flak_38 = vehicles.AirDefence.AAA_Flak_38
             AAA_Flak_36 = vehicles.AirDefence.AAA_Flak_36
             AAA_Flak_37 = vehicles.AirDefence.AAA_Flak_37
             AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
@@ -11773,7 +11775,7 @@ class ThirdReich(Country):
 
         class AirDefence:
             AAA_Flak_18 = vehicles.AirDefence.AAA_Flak_18
-            AAA_Flak_30 = vehicles.AirDefence.AAA_Flak_30
+            AAA_Flak_38 = vehicles.AirDefence.AAA_Flak_38
             AAA_Flak_36 = vehicles.AirDefence.AAA_Flak_36
             AAA_Flak_37 = vehicles.AirDefence.AAA_Flak_37
             AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
@@ -12352,7 +12354,7 @@ class ItalianSocialRepublic(Country):
 
         class AirDefence:
             AAA_Flak_18 = vehicles.AirDefence.AAA_Flak_18
-            AAA_Flak_30 = vehicles.AirDefence.AAA_Flak_30
+            AAA_Flak_38 = vehicles.AirDefence.AAA_Flak_38
             AAA_Flak_36 = vehicles.AirDefence.AAA_Flak_36
             AAA_Flak_37 = vehicles.AirDefence.AAA_Flak_37
             AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
@@ -12529,6 +12531,8 @@ class Algeria(Country):
             AAA_Bofors_40mm = vehicles.AirDefence.AAA_Bofors_40mm
             SAM_SA_2_TR_SNR_75_Fan_Song = vehicles.AirDefence.SAM_SA_2_TR_SNR_75_Fan_Song
             SAM_SA_2_LN_SM_90 = vehicles.AirDefence.SAM_SA_2_LN_SM_90
+            HQ_7_Self_Propelled_LN = vehicles.AirDefence.HQ_7_Self_Propelled_LN
+            HQ_7_Self_Propelled_STR = vehicles.AirDefence.HQ_7_Self_Propelled_STR
 
         class Fortification:
             Bunker_2 = vehicles.Fortification.Bunker_2

@@ -12635,8 +12635,271 @@ class Christen_Eagle_II(PlaneType):
 
     pylons = {1}
 
-    tasks = [task.Nothing, task.Transport, task.Reconnaissance]
+    tasks = [task.Transport, task.Reconnaissance]
     task_default = task.Nothing
+
+
+class F_16C_50(PlaneType):
+    id = "F-16C_50"
+    flyable = True
+    height = 5.02
+    width = 9.45
+    length = 14.52
+    fuel_max = 3249
+    max_speed = 2120.04
+    chaff = 60
+    flare = 60
+    charge_total = 120
+    chaff_charge_size = 1
+    flare_charge_size = 1
+    eplrs = True
+    category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
+    radio_frequency = 305
+
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 305,
+                2: 264,
+                4: 256,
+                8: 257,
+                16: 261,
+                17: 267,
+                9: 255,
+                18: 251,
+                5: 254,
+                10: 262,
+                20: 266,
+                11: 259,
+                3: 265,
+                6: 250,
+                12: 268,
+                13: 269,
+                7: 270,
+                14: 260,
+                19: 253,
+                15: 263
+            },
+        },
+        2: {
+            "channels": {
+                1: 127,
+                2: 135,
+                4: 127,
+                8: 128,
+                16: 132,
+                17: 138,
+                9: 126,
+                18: 122,
+                5: 125,
+                10: 133,
+                20: 137,
+                11: 130,
+                3: 136,
+                6: 121,
+                12: 139,
+                13: 140,
+                7: 141,
+                14: 131,
+                19: 124,
+                15: 134
+            },
+        },
+    }
+
+    property_defaults = {
+        "LAU3ROF": 0,
+        "LaserCode100": 6,
+        "LaserCode10": 8,
+        "LaserCode1": 8,
+    }
+
+    class Properties:
+
+        class LAU3ROF:
+            id = "LAU3ROF"
+
+            class Values:
+                Single = 0
+                Ripple = 1
+
+        class LaserCode100:
+            id = "LaserCode100"
+
+        class LaserCode10:
+            id = "LaserCode10"
+
+        class LaserCode1:
+            id = "LaserCode1"
+
+    class Pylon1:
+        AIM_9M_Sidewinder_IR_AAM = (1, Weapons.AIM_9M_Sidewinder_IR_AAM)
+        AIM_9L_Sidewinder_IR_AAM = (1, Weapons.AIM_9L_Sidewinder_IR_AAM)
+        AIM_9X_Sidewinder_IR_AAM = (1, Weapons.AIM_9X_Sidewinder_IR_AAM)
+        AIM_120B = (1, Weapons.AIM_120B)
+        AIM_120C = (1, Weapons.AIM_120C)
+        CATM_9M = (1, Weapons.CATM_9M)
+        AN_ASQ_T50_TCTS_Pod = (1, Weapons.AN_ASQ_T50_TCTS_Pod)
+
+    class Pylon2:
+        AIM_9M_Sidewinder_IR_AAM = (2, Weapons.AIM_9M_Sidewinder_IR_AAM)
+        AIM_9L_Sidewinder_IR_AAM = (2, Weapons.AIM_9L_Sidewinder_IR_AAM)
+        AIM_9X_Sidewinder_IR_AAM = (2, Weapons.AIM_9X_Sidewinder_IR_AAM)
+        AIM_120B = (2, Weapons.AIM_120B)
+        AIM_120C = (2, Weapons.AIM_120C)
+        CATM_9M = (2, Weapons.CATM_9M)
+        AN_ASQ_T50_TCTS_Pod = (2, Weapons.AN_ASQ_T50_TCTS_Pod)
+#ERRR <CLEAN>
+
+    class Pylon3:
+        AIM_9M_Sidewinder_IR_AAM = (3, Weapons.AIM_9M_Sidewinder_IR_AAM)
+        AIM_9L_Sidewinder_IR_AAM = (3, Weapons.AIM_9L_Sidewinder_IR_AAM)
+        AIM_9X_Sidewinder_IR_AAM = (3, Weapons.AIM_9X_Sidewinder_IR_AAM)
+        AIM_120B = (3, Weapons.AIM_120B)
+        AIM_120C = (3, Weapons.AIM_120C)
+        CATM_9M = (3, Weapons.CATM_9M)
+        AN_ASQ_T50_TCTS_Pod = (3, Weapons.AN_ASQ_T50_TCTS_Pod)
+        LAU3_WP156 = (3, Weapons.LAU3_WP156)
+        LAU3_WP1B = (3, Weapons.LAU3_WP1B)
+        LAU3_WP61 = (3, Weapons.LAU3_WP61)
+        LAU3_HE5 = (3, Weapons.LAU3_HE5)
+        LAU3_HE151 = (3, Weapons.LAU3_HE151)
+        Mk_82 = (3, Weapons.Mk_82)
+        Mk_82_SnakeEye = (3, Weapons.Mk_82_SnakeEye)
+        Mk_82AIR = (3, Weapons.Mk_82AIR)
+        TER_9A___3_x_Mk_82 = (3, Weapons.TER_9A___3_x_Mk_82)
+        TER_9A___3_x_Mk_82_SnakeEye = (3, Weapons.TER_9A___3_x_Mk_82_SnakeEye)
+        TER_9A___3_x_Mk_82AIR = (3, Weapons.TER_9A___3_x_Mk_82AIR)
+        Mk_84 = (3, Weapons.Mk_84)
+        GBU_10 = (3, Weapons.GBU_10)
+        GBU_12 = (3, Weapons.GBU_12)
+        CBU_87 = (3, Weapons.CBU_87)
+        CBU_97 = (3, Weapons.CBU_97)
+        TER_9A___3_x_BDU_33 = (3, Weapons.TER_9A___3_x_BDU_33)
+#ERRR <CLEAN>
+        TER_9A___2_x_Mk_82 = (3, Weapons.TER_9A___2_x_Mk_82)
+        TER_9A___2_x_Mk_82_SnakeEye = (3, Weapons.TER_9A___2_x_Mk_82_SnakeEye)
+        TER_9A___2_x_Mk_82AIR = (3, Weapons.TER_9A___2_x_Mk_82AIR)
+        TER_9A___2_x_GBU_12 = (3, Weapons.TER_9A___2_x_GBU_12)
+        TER_9A___2_x_CBU_87 = (3, Weapons.TER_9A___2_x_CBU_87)
+        TER_9A___2_x_CBU_97 = (3, Weapons.TER_9A___2_x_CBU_97)
+
+    class Pylon4:
+        LAU3_WP156 = (4, Weapons.LAU3_WP156)
+        LAU3_WP1B = (4, Weapons.LAU3_WP1B)
+        LAU3_WP61 = (4, Weapons.LAU3_WP61)
+        LAU3_HE5 = (4, Weapons.LAU3_HE5)
+        LAU3_HE151 = (4, Weapons.LAU3_HE151)
+        Mk_82 = (4, Weapons.Mk_82)
+        Mk_82_SnakeEye = (4, Weapons.Mk_82_SnakeEye)
+        Mk_82AIR = (4, Weapons.Mk_82AIR)
+        TER_9A___3_x_Mk_82 = (4, Weapons.TER_9A___3_x_Mk_82)
+        TER_9A___3_x_Mk_82_SnakeEye = (4, Weapons.TER_9A___3_x_Mk_82_SnakeEye)
+        TER_9A___3_x_Mk_82AIR = (4, Weapons.TER_9A___3_x_Mk_82AIR)
+        Mk_84 = (4, Weapons.Mk_84)
+        GBU_10 = (4, Weapons.GBU_10)
+        GBU_12 = (4, Weapons.GBU_12)
+        CBU_87 = (4, Weapons.CBU_87)
+        CBU_97 = (4, Weapons.CBU_97)
+        TER_9A___3_x_CBU_87 = (4, Weapons.TER_9A___3_x_CBU_87)
+        TER_9A___3_x_CBU_97 = (4, Weapons.TER_9A___3_x_CBU_97)
+        TER_9A___3_x_BDU_33 = (4, Weapons.TER_9A___3_x_BDU_33)
+        Fuel_tank_370_gal = (4, Weapons.Fuel_tank_370_gal)
+#ERRR <CLEAN>
+        TER_9A___2_x_Mk_82 = (4, Weapons.TER_9A___2_x_Mk_82)
+        TER_9A___2_x_Mk_82_SnakeEye = (4, Weapons.TER_9A___2_x_Mk_82_SnakeEye)
+        TER_9A___2_x_Mk_82AIR = (4, Weapons.TER_9A___2_x_Mk_82AIR)
+        TER_9A___2_x_CBU_87 = (4, Weapons.TER_9A___2_x_CBU_87)
+        TER_9A___2_x_CBU_97 = (4, Weapons.TER_9A___2_x_CBU_97)
+#ERRR <CLEAN>
+
+    class Pylon6:
+        LAU3_WP156 = (6, Weapons.LAU3_WP156)
+        LAU3_WP1B = (6, Weapons.LAU3_WP1B)
+        LAU3_WP61 = (6, Weapons.LAU3_WP61)
+        LAU3_HE5 = (6, Weapons.LAU3_HE5)
+        LAU3_HE151 = (6, Weapons.LAU3_HE151)
+        Mk_82 = (6, Weapons.Mk_82)
+        Mk_82_SnakeEye = (6, Weapons.Mk_82_SnakeEye)
+        Mk_82AIR = (6, Weapons.Mk_82AIR)
+        TER_9A___3_x_Mk_82 = (6, Weapons.TER_9A___3_x_Mk_82)
+        TER_9A___3_x_Mk_82_SnakeEye = (6, Weapons.TER_9A___3_x_Mk_82_SnakeEye)
+        TER_9A___3_x_Mk_82AIR = (6, Weapons.TER_9A___3_x_Mk_82AIR)
+        Mk_84 = (6, Weapons.Mk_84)
+        GBU_10 = (6, Weapons.GBU_10)
+        GBU_12 = (6, Weapons.GBU_12)
+        CBU_87 = (6, Weapons.CBU_87)
+        CBU_97 = (6, Weapons.CBU_97)
+        TER_9A___3_x_CBU_87 = (6, Weapons.TER_9A___3_x_CBU_87)
+        TER_9A___3_x_CBU_97 = (6, Weapons.TER_9A___3_x_CBU_97)
+        TER_9A___3_x_BDU_33 = (6, Weapons.TER_9A___3_x_BDU_33)
+        Fuel_tank_370_gal = (6, Weapons.Fuel_tank_370_gal)
+#ERRR <CLEAN>
+        TER_9A___2_x_Mk_82_ = (6, Weapons.TER_9A___2_x_Mk_82_)
+        TER_9A___2_x_Mk_82_SnakeEye_ = (6, Weapons.TER_9A___2_x_Mk_82_SnakeEye_)
+        TER_9A___2_x_Mk_82AIR_ = (6, Weapons.TER_9A___2_x_Mk_82AIR_)
+        TER_9A___2_x_CBU_87_ = (6, Weapons.TER_9A___2_x_CBU_87_)
+        TER_9A___2_x_CBU_97_ = (6, Weapons.TER_9A___2_x_CBU_97_)
+
+    class Pylon7:
+        AIM_9M_Sidewinder_IR_AAM = (7, Weapons.AIM_9M_Sidewinder_IR_AAM)
+        AIM_9L_Sidewinder_IR_AAM = (7, Weapons.AIM_9L_Sidewinder_IR_AAM)
+        AIM_9X_Sidewinder_IR_AAM = (7, Weapons.AIM_9X_Sidewinder_IR_AAM)
+        AIM_120B = (7, Weapons.AIM_120B)
+        AIM_120C = (7, Weapons.AIM_120C)
+        CATM_9M = (7, Weapons.CATM_9M)
+        AN_ASQ_T50_TCTS_Pod = (7, Weapons.AN_ASQ_T50_TCTS_Pod)
+        LAU3_WP156 = (7, Weapons.LAU3_WP156)
+        LAU3_WP1B = (7, Weapons.LAU3_WP1B)
+        LAU3_WP61 = (7, Weapons.LAU3_WP61)
+        LAU3_HE5 = (7, Weapons.LAU3_HE5)
+        LAU3_HE151 = (7, Weapons.LAU3_HE151)
+        Mk_82 = (7, Weapons.Mk_82)
+        Mk_82_SnakeEye = (7, Weapons.Mk_82_SnakeEye)
+        Mk_82AIR = (7, Weapons.Mk_82AIR)
+        TER_9A___3_x_Mk_82 = (7, Weapons.TER_9A___3_x_Mk_82)
+        TER_9A___3_x_Mk_82_SnakeEye = (7, Weapons.TER_9A___3_x_Mk_82_SnakeEye)
+        TER_9A___3_x_Mk_82AIR = (7, Weapons.TER_9A___3_x_Mk_82AIR)
+        Mk_84 = (7, Weapons.Mk_84)
+        GBU_10 = (7, Weapons.GBU_10)
+        GBU_12 = (7, Weapons.GBU_12)
+        CBU_87 = (7, Weapons.CBU_87)
+        CBU_97 = (7, Weapons.CBU_97)
+        TER_9A___3_x_BDU_33 = (7, Weapons.TER_9A___3_x_BDU_33)
+#ERRR <CLEAN>
+        TER_9A___2_x_Mk_82_ = (7, Weapons.TER_9A___2_x_Mk_82_)
+        TER_9A___2_x_Mk_82_SnakeEye_ = (7, Weapons.TER_9A___2_x_Mk_82_SnakeEye_)
+        TER_9A___2_x_Mk_82AIR_ = (7, Weapons.TER_9A___2_x_Mk_82AIR_)
+        TER_9A___2_x_GBU_12_ = (7, Weapons.TER_9A___2_x_GBU_12_)
+        TER_9A___2_x_CBU_87_ = (7, Weapons.TER_9A___2_x_CBU_87_)
+        TER_9A___2_x_CBU_97_ = (7, Weapons.TER_9A___2_x_CBU_97_)
+
+    class Pylon8:
+        AIM_9M_Sidewinder_IR_AAM = (8, Weapons.AIM_9M_Sidewinder_IR_AAM)
+        AIM_9L_Sidewinder_IR_AAM = (8, Weapons.AIM_9L_Sidewinder_IR_AAM)
+        AIM_9X_Sidewinder_IR_AAM = (8, Weapons.AIM_9X_Sidewinder_IR_AAM)
+        AIM_120B = (8, Weapons.AIM_120B)
+        AIM_120C = (8, Weapons.AIM_120C)
+        CATM_9M = (8, Weapons.CATM_9M)
+        AN_ASQ_T50_TCTS_Pod = (8, Weapons.AN_ASQ_T50_TCTS_Pod)
+#ERRR <CLEAN>
+
+    class Pylon9:
+        AIM_9M_Sidewinder_IR_AAM = (9, Weapons.AIM_9M_Sidewinder_IR_AAM)
+        AIM_9L_Sidewinder_IR_AAM = (9, Weapons.AIM_9L_Sidewinder_IR_AAM)
+        AIM_9X_Sidewinder_IR_AAM = (9, Weapons.AIM_9X_Sidewinder_IR_AAM)
+        AIM_120B = (9, Weapons.AIM_120B)
+        AIM_120C = (9, Weapons.AIM_120C)
+        CATM_9M = (9, Weapons.CATM_9M)
+        AN_ASQ_T50_TCTS_Pod = (9, Weapons.AN_ASQ_T50_TCTS_Pod)
+
+    class Pylon11:
+        AN_AAQ_28_LITENING = (11, Weapons.AN_AAQ_28_LITENING)
+
+    pylons = {1, 2, 3, 4, 5, 6, 7, 8, 9, 11}
+
+    tasks = [task.CAP, task.Escort, task.FighterSweep, task.Intercept, task.PinpointStrike, task.CAS, task.GroundAttack, task.RunwayAttack, task.SEAD, task.AFAC, task.AntishipStrike, task.Reconnaissance]
+    task_default = task.CAP
 
 
 class F_5E(PlaneType):
@@ -15096,6 +15359,7 @@ class F_14B(PlaneType):
         LAU_138_AIM_9M = (1, Weapons.LAU_138_AIM_9M)
         LAU_138_AIM_9L = (1, Weapons.LAU_138_AIM_9L)
         AN_ASQ_T50_TCTS_Pod = (1, Weapons.AN_ASQ_T50_TCTS_Pod)
+        CATM_9M = (1, Weapons.CATM_9M)
         Smokewinder___red = (1, Weapons.Smokewinder___red)
         Smokewinder___green = (1, Weapons.Smokewinder___green)
         Smokewinder___blue = (1, Weapons.Smokewinder___blue)
@@ -15248,6 +15512,7 @@ class F_14B(PlaneType):
         LAU_138_AIM_9M = (10, Weapons.LAU_138_AIM_9M)
         LAU_138_AIM_9L = (10, Weapons.LAU_138_AIM_9L)
         AN_ASQ_T50_TCTS_Pod = (10, Weapons.AN_ASQ_T50_TCTS_Pod)
+        CATM_9M = (10, Weapons.CATM_9M)
         Smokewinder___red = (10, Weapons.Smokewinder___red)
         Smokewinder___green = (10, Weapons.Smokewinder___green)
         Smokewinder___blue = (10, Weapons.Smokewinder___blue)
@@ -15627,6 +15892,7 @@ class FA_18C_hornet(PlaneType):
         GBU_31_V_3_B = (2, Weapons.GBU_31_V_3_B)
         GBU_38 = (2, Weapons.GBU_38)
         BRU_55___2_x_GBU_38 = (2, Weapons.BRU_55___2_x_GBU_38)
+        AGM_84D = (2, Weapons.AGM_84D)
 
     class Pylon3:
         LAU_115___AIM_7M = (3, Weapons.LAU_115___AIM_7M)
@@ -15673,6 +15939,7 @@ class FA_18C_hornet(PlaneType):
         GBU_31_V_3_B = (3, Weapons.GBU_31_V_3_B)
         GBU_38 = (3, Weapons.GBU_38)
         BRU_55___2_x_GBU_38 = (3, Weapons.BRU_55___2_x_GBU_38)
+        AGM_84D = (3, Weapons.AGM_84D)
 
     class Pylon4:
         AIM_7M = (4, Weapons.AIM_7M)
@@ -15695,6 +15962,7 @@ class FA_18C_hornet(PlaneType):
         CBU_99 = (5, Weapons.CBU_99)
         BRU_33___2_x_CBU_99 = (5, Weapons.BRU_33___2_x_CBU_99)
         Mk_20 = (5, Weapons.Mk_20)
+        AN_AAQ_28_LITENING = (5, Weapons.AN_AAQ_28_LITENING)
 #ERRR <CLEAN>
 
     class Pylon6:
@@ -15749,6 +16017,7 @@ class FA_18C_hornet(PlaneType):
         GBU_31_V_3_B = (7, Weapons.GBU_31_V_3_B)
         GBU_38 = (7, Weapons.GBU_38)
         BRU_55___2_x_GBU_38 = (7, Weapons.BRU_55___2_x_GBU_38)
+        AGM_84D = (7, Weapons.AGM_84D)
 
     class Pylon8:
         LAU_115_2_LAU_127_AIM_9M = (8, Weapons.LAU_115_2_LAU_127_AIM_9M)
@@ -15804,6 +16073,7 @@ class FA_18C_hornet(PlaneType):
         GBU_31_V_3_B = (8, Weapons.GBU_31_V_3_B)
         GBU_38 = (8, Weapons.GBU_38)
         BRU_55___2_x_GBU_38 = (8, Weapons.BRU_55___2_x_GBU_38)
+        AGM_84D = (8, Weapons.AGM_84D)
 
     class Pylon9:
         AIM_9M_Sidewinder_IR_AAM = (9, Weapons.AIM_9M_Sidewinder_IR_AAM)
@@ -19610,6 +19880,7 @@ class Su_34(PlaneType):
             Russian_Air_Force_Old = "Russian Air Force Old"
 
     class Pylon1:
+        R_73 = (1, Weapons.R_73)
         L005_Sorbtsiya_ECM_pod__left_ = (1, Weapons.L005_Sorbtsiya_ECM_pod__left_)
         L175V_Khibiny_ECM_pod = (1, Weapons.L175V_Khibiny_ECM_pod)
 
@@ -19687,6 +19958,7 @@ class Su_34(PlaneType):
         KAB_1500L = (4, Weapons.KAB_1500L)
         KAB_1500LG_Pr = (4, Weapons.KAB_1500LG_Pr)
         KAB_1500Kr = (4, Weapons.KAB_1500Kr)
+        Kh_59M = (4, Weapons.Kh_59M)
 
     class Pylon5:
         R_77 = (5, Weapons.R_77)
@@ -19813,6 +20085,7 @@ class Su_34(PlaneType):
         KAB_1500L = (9, Weapons.KAB_1500L)
         KAB_1500LG_Pr = (9, Weapons.KAB_1500LG_Pr)
         KAB_1500Kr = (9, Weapons.KAB_1500Kr)
+        Kh_59M = (9, Weapons.Kh_59M)
 
     class Pylon10:
         Kh_29T__ = (10, Weapons.Kh_29T__)
@@ -19853,6 +20126,7 @@ class Su_34(PlaneType):
         R_77 = (11, Weapons.R_77)
 
     class Pylon12:
+        R_73 = (12, Weapons.R_73)
         L005_Sorbtsiya_ECM_pod__right_ = (12, Weapons.L005_Sorbtsiya_ECM_pod__right_)
         L175V_Khibiny_ECM_pod = (12, Weapons.L175V_Khibiny_ECM_pod)
 
@@ -20345,6 +20619,7 @@ plane_map = {
     "J-11A": J_11A,
     "KJ-2000": KJ_2000,
     "Christen Eagle II": Christen_Eagle_II,
+    "F-16C_50": F_16C_50,
     "F-5E": F_5E,
     "F-5E-3": F_5E_3,
     "F-86F Sabre": F_86F_Sabre,
