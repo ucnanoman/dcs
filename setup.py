@@ -13,7 +13,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name="pydcs",
-    version='0.9.4',
+    version='0.9.5',
     description="A Digital Combat Simulator mission builder framework",
     long_description=long_description,
     url='https://github.com/pydcs/dcs',
@@ -28,6 +28,9 @@ setup(
         'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3 :: Only'
     ],
     keywords='dcs digital combat simulator eagle dynamics mission framework',
