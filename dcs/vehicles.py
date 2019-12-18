@@ -1306,6 +1306,14 @@ class Armor:
         threat_range = 3500
         air_weapon_dist = 1200
 
+    class ZTZ_96B(unittype.VehicleType):
+        id = "ZTZ96B"
+        name = "ZTZ-96B"
+        detection_range = 0
+        threat_range = 5000
+        air_weapon_dist = 3500
+        eprls = True
+
     class ZBD_04A(unittype.VehicleType):
         id = "ZBD04A"
         name = "ZBD-04A"
@@ -1718,6 +1726,7 @@ vehicle_map = {
     "Boxcartrinity": Carriage.Boxcartrinity,
     "Tankcartrinity": Carriage.Tankcartrinity,
     "Wellcarnsc": Carriage.Wellcarnsc,
+    "ZTZ96B": Armor.ZTZ_96B,
     "ZBD04A": Armor.ZBD_04A,
     "HQ-7_LN_SP": AirDefence.HQ_7_Self_Propelled_LN,
     "HQ-7_STR_SP": AirDefence.HQ_7_Self_Propelled_STR,

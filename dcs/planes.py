@@ -10162,6 +10162,7 @@ class AV8BNA(PlaneType):
         Mk_20 = (2, Weapons.Mk_20)
         GBU_12 = (2, Weapons.GBU_12)
         GBU_16 = (2, Weapons.GBU_16)
+        GBU_38 = (2, Weapons.GBU_38)
         _3_MK_81_LD = (2, Weapons._3_MK_81_LD)
         _2_MK_82 = (2, Weapons._2_MK_82)
         _3_MK_82_LD = (2, Weapons._3_MK_82_LD)
@@ -10172,6 +10173,8 @@ class AV8BNA(PlaneType):
         _3_Mk_82AIR = (2, Weapons._3_Mk_82AIR)
         _2_MK_82_SNAKEYE = (2, Weapons._2_MK_82_SNAKEYE)
         _3_MK_82_SNAKEYE = (2, Weapons._3_MK_82_SNAKEYE)
+        _2_GBU_38 = (2, Weapons._2_GBU_38)
+        _3_GBU_38 = (2, Weapons._3_GBU_38)
         BDU_33 = (2, Weapons.BDU_33)
         BRU_42_3_BDU_33 = (2, Weapons.BRU_42_3_BDU_33)
         LAU_117_AGM_65E = (2, Weapons.LAU_117_AGM_65E)
@@ -10207,6 +10210,7 @@ class AV8BNA(PlaneType):
         Mk_20 = (3, Weapons.Mk_20)
         GBU_12 = (3, Weapons.GBU_12)
         GBU_16 = (3, Weapons.GBU_16)
+        GBU_38 = (3, Weapons.GBU_38)
         _3_MK_81_LD = (3, Weapons._3_MK_81_LD)
         _2_MK_82 = (3, Weapons._2_MK_82)
         _3_MK_82_LD = (3, Weapons._3_MK_82_LD)
@@ -10221,6 +10225,7 @@ class AV8BNA(PlaneType):
         _3_Mk_82AIR = (3, Weapons._3_Mk_82AIR)
         _2_MK_82_SNAKEYE = (3, Weapons._2_MK_82_SNAKEYE)
         _3_MK_82_SNAKEYE = (3, Weapons._3_MK_82_SNAKEYE)
+        _2_GBU_38 = (3, Weapons._2_GBU_38)
         BDU_33 = (3, Weapons.BDU_33)
         BRU_42_3_BDU_33 = (3, Weapons.BRU_42_3_BDU_33)
         LAU_117_AGM_65E = (3, Weapons.LAU_117_AGM_65E)
@@ -10262,6 +10267,7 @@ class AV8BNA(PlaneType):
         Mk_20 = (6, Weapons.Mk_20)
         GBU_12 = (6, Weapons.GBU_12)
         GBU_16 = (6, Weapons.GBU_16)
+        GBU_38 = (6, Weapons.GBU_38)
         _3_MK_81_LD = (6, Weapons._3_MK_81_LD)
         _2_MK_82_ = (6, Weapons._2_MK_82_)
         _3_MK_82_LD = (6, Weapons._3_MK_82_LD)
@@ -10276,6 +10282,7 @@ class AV8BNA(PlaneType):
         _3_Mk_82AIR = (6, Weapons._3_Mk_82AIR)
         _2_MK_82_SNAKEYE_ = (6, Weapons._2_MK_82_SNAKEYE_)
         _3_MK_82_SNAKEYE = (6, Weapons._3_MK_82_SNAKEYE)
+        _2_GBU_38_ = (6, Weapons._2_GBU_38_)
         BDU_33 = (6, Weapons.BDU_33)
         BRU_42_3_BDU_33 = (6, Weapons.BRU_42_3_BDU_33)
         LAU_117_AGM_65E = (6, Weapons.LAU_117_AGM_65E)
@@ -10312,6 +10319,7 @@ class AV8BNA(PlaneType):
         Mk_20 = (7, Weapons.Mk_20)
         GBU_12 = (7, Weapons.GBU_12)
         GBU_16 = (7, Weapons.GBU_16)
+        GBU_38 = (7, Weapons.GBU_38)
         _3_MK_81_LD = (7, Weapons._3_MK_81_LD)
         _2_MK_82_ = (7, Weapons._2_MK_82_)
         _3_MK_82_LD = (7, Weapons._3_MK_82_LD)
@@ -10322,6 +10330,8 @@ class AV8BNA(PlaneType):
         _3_Mk_82AIR = (7, Weapons._3_Mk_82AIR)
         _2_MK_82_SNAKEYE_ = (7, Weapons._2_MK_82_SNAKEYE_)
         _3_MK_82_SNAKEYE = (7, Weapons._3_MK_82_SNAKEYE)
+        _2_GBU_38_ = (7, Weapons._2_GBU_38_)
+        _3_GBU_38 = (7, Weapons._3_GBU_38)
         BDU_33 = (7, Weapons.BDU_33)
         BRU_42_3_BDU_33 = (7, Weapons.BRU_42_3_BDU_33)
         LAU_117_AGM_65E = (7, Weapons.LAU_117_AGM_65E)
@@ -11209,14 +11219,178 @@ class JF_17(PlaneType):
     category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 243
 
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 108,
+                2: 108.5,
+                4: 109.5,
+                8: 111.5,
+                16: 115.5,
+                17: 116,
+                9: 112,
+                18: 116.5,
+                5: 110,
+                10: 112.5,
+                20: 117.5,
+                11: 113,
+                3: 109,
+                6: 110.5,
+                12: 113.5,
+                13: 114,
+                7: 111,
+                14: 114.5,
+                19: 117,
+                15: 115
+            },
+        },
+    }
+
     class Liveries:
 
+        class Georgia(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Syria(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Finland(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Australia(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Germany(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class SaudiArabia(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Israel(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Croatia(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class CzechRepublic(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Norway(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Romania(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Spain(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Ukraine(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Belgium(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Slovakia(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Greece(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class UK(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Insurgents(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Hungary(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class France(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Abkhazia(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Russia(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Sweden(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Austria(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Switzerland(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Italy(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class SouthOssetia(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class SouthKorea(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Iran(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
         class China(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
             Proto_06 = "Proto 06"
             PLAAF_125th_AB__Fictional = "PLAAF 125th AB (Fictional)"
 
         class Pakistan(Enum):
-            PAKAF_Spider = "PAKAF Spider"
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+            PAKAF_Black_Spider__default = "PAKAF Black Spider (default)"
+
+        class Belarus(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class NorthKorea(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Iraq(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Kazakhstan(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Bulgaria(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Serbia(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class India(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class USAFAggressors(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class USA(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Denmark(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Egypt(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Canada(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class TheNetherlands(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Turkey(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Japan(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
+
+        class Poland(Enum):
+            _Splinter__Camo_for_Blue_Side__Fictional = "'Splinter' Camo for Blue Side (Fictional)"
 
     class Pylon1:
         DIS_PL_5EII = (1, Weapons.DIS_PL_5EII)
@@ -12865,6 +13039,11 @@ class F_16C_50(PlaneType):
 
         class LaserCode1:
             id = "LaserCode1"
+
+    class Liveries:
+
+        class USA(Enum):
+            default = "default"
 
     class Pylon1:
         AIM_9M_Sidewinder_IR_AAM = (1, Weapons.AIM_9M_Sidewinder_IR_AAM)
@@ -15767,56 +15946,44 @@ class FA_18C_hornet(PlaneType):
     class Liveries:
 
         class Georgia(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Syria(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Finland(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
-            Finland_21 = "Finland 21"
             Finland_31 = "Finland 31"
+            Finland_21 = "Finland 21"
             default_livery = "default livery"
 
         class Australia(Enum):
             Australian_75th_Squadron = "Australian 75th Squadron"
             Australian_77th_Squadron = "Australian 77th Squadron"
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Germany(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class SaudiArabia(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Israel(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             Fictional_Israel_Air_Force = "Fictional Israel Air Force"
             default_livery = "default livery"
 
         class Croatia(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class CzechRepublic(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Norway(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Romania(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Spain(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             Spain_111th_Escuadron_C_15_73 = "Spain 111th Escuadron C.15-73"
             Spain_111th_Escuadron_C_15_88 = "Spain 111th Escuadron C.15-88"
             Spain_121th_Escuadron_C_15_45 = "Spain 121th Escuadron C.15-45"
@@ -15835,115 +16002,88 @@ class FA_18C_hornet(PlaneType):
             default_livery = "default livery"
 
         class Ukraine(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             Fictional_Ukraine_Air_Force = "Fictional Ukraine Air Force"
             default_livery = "default livery"
 
         class Belgium(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Slovakia(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Greece(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class UK(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             Fictional_UK_Air_Force = "Fictional UK Air Force"
             default_livery = "default livery"
 
         class Insurgents(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Hungary(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class France(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Abkhazia(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Russia(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             Fictional_Russia_Air_Force = "Fictional Russia Air Force"
             default_livery = "default livery"
 
         class Sweden(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Austria(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Switzerland(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             Switzerland = "Switzerland"
             default_livery = "default livery"
 
         class Italy(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class SouthOssetia(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class SouthKorea(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Iran(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class China(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Pakistan(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Belarus(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class NorthKorea(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Iraq(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Kazakhstan(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Bulgaria(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Serbia(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class India(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class USAFAggressors(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             Fictional_Russia_Air_Force = "Fictional Russia Air Force"
             VFC_12 = "VFC-12"
             NAWDC_blue = "NAWDC blue"
@@ -15955,7 +16095,6 @@ class FA_18C_hornet(PlaneType):
 
         class USA(Enum):
             VFA_37 = "VFA-37"
-            F_18_IRIAF = "F-18 IRIAF"
             VFA_106 = "VFA-106"
             VFA_106_high_visibility = "VFA-106 high visibility"
             VFA_113 = "VFA-113"
@@ -15995,11 +16134,9 @@ class FA_18C_hornet(PlaneType):
             Blue_Angels_Jet_Team = "Blue Angels Jet Team"
 
         class Denmark(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Egypt(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Canada(Enum):
@@ -16007,24 +16144,19 @@ class FA_18C_hornet(PlaneType):
             Canada_409th_Squadron = "Canada 409th Squadron"
             Canada_425th_Squadron = "Canada 425th Squadron"
             Canada_NORAD_60_Demo_Jet = "Canada NORAD 60 Demo Jet"
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class TheNetherlands(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Turkey(Enum):
             Fictional_Turkey_162nd_Sq = "Fictional Turkey 162nd Sq"
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Japan(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
         class Poland(Enum):
-            F_18_IRIAF = "F-18 IRIAF"
             default_livery = "default livery"
 
     class Pylon1:

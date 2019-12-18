@@ -2033,6 +2033,7 @@ class USAFAggressors(Country):
             MBT_Merkava_Mk__4 = vehicles.Armor.MBT_Merkava_Mk__4
             IFV_Marder = vehicles.Armor.IFV_Marder
             MBT_Leclerc = vehicles.Armor.MBT_Leclerc
+            ZTZ_96B = vehicles.Armor.ZTZ_96B
             ZBD_04A = vehicles.Armor.ZBD_04A
             MBT_Challenger_II = vehicles.Armor.MBT_Challenger_II
             APC_M1126_Stryker_ICV = vehicles.Armor.APC_M1126_Stryker_ICV
@@ -5546,6 +5547,7 @@ class China(Country):
             IFV_BMP_1 = vehicles.Armor.IFV_BMP_1
             MBT_T_55 = vehicles.Armor.MBT_T_55
             MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
+            ZTZ_96B = vehicles.Armor.ZTZ_96B
             ZBD_04A = vehicles.Armor.ZBD_04A
 
         class MissilesSS:
