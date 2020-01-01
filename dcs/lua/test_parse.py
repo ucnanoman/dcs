@@ -2,7 +2,7 @@ import unittest
 from dcs.lua.parse import loads
 
 
-class TestNumber(unittest.TestCase):
+class TestLuaParse(unittest.TestCase):
 
     def test_integer(self):
         r = loads("int = 3")
@@ -45,7 +45,8 @@ mission =
         r = loads(s)
 
         r = loads('x = "a_do_script_file(getValueResourceByKey(\\"ResKey_Action_62\\")); mission.trig.func[1]=nil;"')
-        self.assertEqual(r, {"x": "a_do_script_file(getValueResourceByKey(\"ResKey_Action_62\")); mission.trig.func[1]=nil;"})
+        self.assertEqual(r, {
+            "x": "a_do_script_file(getValueResourceByKey(\"ResKey_Action_62\")); mission.trig.func[1]=nil;"})
 
     def test_object(self):
         luas = """
@@ -106,6 +107,62 @@ o =
             {
                 ["x"] 12
             }""")
+
+    def test_missing_curly(self):
+        with self.assertRaises(SyntaxError):
+            loads("""t=
+            {
+                ["payload"] = {
+                    ["num"] = 1
+            }
+            """)
+
+    def test_object_without_keys(self):
+        luas = """
+local unitPayloads = {
+    ["name"] = "JF-17",
+    ["payloads"] = {
+        {
+            ["name"] = "PL-5Ex2, C802AKx2, 800L Tank",
+            ["pylons"] = {
+                [1] = {
+                    ["CLSID"] = "DIS_C-802AK",
+                    ["num"] = 5
+                }
+            }
+        }
+    }
+}
+        """
+        ref = {'unitPayloads': {
+            'name': "JF-17",
+            'payloads': {
+                1: {
+                    'name': "PL-5Ex2, C802AKx2, 800L Tank",
+                    'pylons': {
+                        1: {
+                            'CLSID': "DIS_C-802AK",
+                            'num': 5
+                        }
+                    }
+                }
+            }
+        }}
+        r = loads(luas)
+        self.assertEqual(r, ref)
+
+    def test_mixed_objects(self):
+        luas = """
+o = {
+    "x",
+    ["a"]=2,
+    "y"
+}
+"""
+
+        ref = {'o': {1: "x", "a": 2, 2: "y"}}
+        r = loads(luas)
+        self.assertEqual(r, ref)
 
 
 if __name__ == '__main__':
