@@ -181,7 +181,7 @@ class Weather:
 
         center = self.terrain.bounds.center()  # type: mapping.Point
         self.atmosphere_type = 1
-        self.type_weather = system.value
+        self.type_weather = system
 
         params = {
             'initangle': 2 * math.pi * random.random(),
