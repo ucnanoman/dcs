@@ -136,11 +136,11 @@ def main():
 
     # place farp for helis
     zugdidi_ne = city_graph.node('Zugidi NE')
-    farp = m.farp(usa, "FARP Zugdidi", zugdidi_ne.position + dcs.mapping.Point(0, 500))
+    farp = m.farp(usa, "FARP Zugdidi", zugdidi_ne.position + dcs.mapping.Point(0, 500), callsign_id=1)
     fg = m.flight_group_from_unit(usa, dcs.helicopters.Ka_50.id + " Client", dcs.helicopters.Ka_50, farp, dcs.task.CAS, group_size=2)
     fg.set_client()
 
-    farp = m.farp(usa, "FARP Kvemo", zugdidi_ne.position + dcs.mapping.Point(0, -22 * 1000))
+    farp = m.farp(usa, "FARP Kvemo", zugdidi_ne.position + dcs.mapping.Point(0, -22 * 1000), callsign_id=2)
     fg = m.flight_group_from_unit(usa, dcs.helicopters.UH_1H.id + " Client", dcs.helicopters.UH_1H, farp, dcs.task.CAS, group_size=2)
     fg.set_client()
 
