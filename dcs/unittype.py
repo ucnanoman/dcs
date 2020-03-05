@@ -1,8 +1,11 @@
 from . import lua
 from . import installation
+from . import task
 import os
 import re
 from typing import Optional, Type, Any
+
+_UnitPayloadGlobals = {v.internal_name: v.id for k, v in task.MainTask.map.items()}
 
 
 class UnitType:
@@ -116,7 +119,7 @@ class FlyingType(UnitType):
                 payload_filename = os.path.join(payload_dir, file)
                 if FlyingType._payload_cache[payload_filename] == cls.id and os.path.exists(payload_filename):
                     with open(payload_filename, 'r') as payload:
-                        payload_main = lua.loads(payload.read())
+                        payload_main = lua.loads(payload.read(), _globals=_UnitPayloadGlobals)
                         pays = payload_main[list(payload_main.keys())[0]]
                         if pays["unitType"] == cls.id:
                             if cls.payloads:
