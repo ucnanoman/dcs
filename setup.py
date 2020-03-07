@@ -21,20 +21,17 @@ setup(
     author_email="peinthor@gmail.com",
     license="LGPLv3",
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Topic :: Games/Entertainment :: Simulation',
         'Intended Audience :: Developers',
         'Intended Audience :: End Users/Desktop',
         'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3 :: Only'
     ],
     keywords='dcs digital combat simulator eagle dynamics mission framework',
-#    install_requires=['typing'],
     packages=['dcs', 'dcs/terrain', 'dcs/lua', 'dcs/scripts'],
     package_data={
         'dcs/terrain': ['caucasus.p', 'nevada.p']
