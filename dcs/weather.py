@@ -180,7 +180,7 @@ class Weather:
 
         center = self.terrain.bounds.center()  # type: mapping.Point
         self.atmosphere_type = 1
-        self.type_weather = system
+        self.type_weather = system.value
 
         params = {
             'initangle': 2 * math.pi * random.random(),
@@ -289,6 +289,7 @@ class Weather:
         d["enable_fog"] = self.enable_fog
         d["groundTurbulence"] = self.turbulence_at_ground
         d["season"] = {"temperature": self.season_temperature}
+        assert isinstance(self.type_weather, int)
         d["type_weather"] = self.type_weather
         d["qnh"] = self.qnh
         d["cyclones"] = {x+1: self.cyclones[x].dict() for x in range(0, len(self.cyclones))}
