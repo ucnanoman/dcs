@@ -9,7 +9,7 @@ import zipfile
 import random
 from datetime import datetime, timezone, timedelta
 from enum import Enum
-from typing import List, Dict, Union, Optional
+from typing import List, Dict, Union, Optional, Type
 
 from dcs.coalition import Coalition
 from dcs.terrain.terrain import Warehouses
@@ -515,7 +515,7 @@ class Mission:
         """
         return self.translation.create_string(s, lang)
 
-    def static(self, name, _type: unittype.UnitType) -> Static:
+    def static(self, name, _type: Type[unittype.UnitType]) -> Static:
         """Creates a plain static object to be added to a group
 
         Args:
@@ -527,7 +527,7 @@ class Mission:
         """
         return Static(self.next_unit_id(), self.string(name), _type)
 
-    def static_group(self, country, name, _type: unittype.UnitType, position: mapping.Point,
+    def static_group(self, country, name, _type: Type[unittype.UnitType], position: mapping.Point,
                      heading=0, hidden=False, dead=False):
         """Add a static group with 1 static object.
 
@@ -603,7 +603,7 @@ class Mission:
         country.add_static_group(sg)
         return sg
 
-    def vehicle(self, name, _type: unittype.VehicleType) -> Vehicle:
+    def vehicle(self, name, _type: Type[unittype.VehicleType]) -> Vehicle:
         """Creates a plain vehicle unit to be added to a group
 
         Args:
@@ -617,7 +617,7 @@ class Mission:
             raise TypeError("_type not a unittype.VehicleType class: " + repr(_type))
         return Vehicle(self.next_unit_id(), self.string(name), _type.id)
 
-    def vehicle_group(self, country, name, _type: unittype.VehicleType, position: mapping.Point,
+    def vehicle_group(self, country, name, _type: Type[unittype.VehicleType], position: mapping.Point,
                       heading=0, group_size=1,
                       formation=unitgroup.VehicleGroup.Formation.Line,
                       move_formation: PointAction=PointAction.OffRoad) -> unitgroup.VehicleGroup:
@@ -656,7 +656,7 @@ class Mission:
         return vg
 
     def vehicle_group_platoon(self, country, name,
-                              types: List[unittype.VehicleType],
+                              types: List[Type[unittype.VehicleType]],
                               position: mapping.Point,
                               heading=0,
                               formation=unitgroup.VehicleGroup.Formation.Line,
@@ -698,7 +698,7 @@ class Mission:
         country.add_vehicle_group(vg)
         return vg
 
-    def ship(self, name, _type: unittype.ShipType) -> Ship:
+    def ship(self, name, _type: Type[unittype.ShipType]) -> Ship:
         """Creates a plain ship unit to be added to a group
 
         Args:
@@ -710,7 +710,7 @@ class Mission:
         """
         return Ship(self.next_unit_id(), self.string(name), _type)
 
-    def ship_group(self, country, name, _type: unittype.ShipType,
+    def ship_group(self, country, name, _type: Type[unittype.ShipType],
                    position: mapping.Point, heading=0, group_size=1) -> unitgroup.ShipGroup:
         """Adds a ship group to the given country.
 
@@ -859,7 +859,7 @@ class Mission:
         return unitgroup.HelicopterGroup(self.next_group_id(), self.string(name))
 
     @classmethod
-    def _assign_callsign(cls, _country, group: unitgroup.FlyingGroup):
+    def _assign_callsign(cls, _country, group: Type[unitgroup.FlyingGroup]):
         callsign_name = None
         category = "Air" if group.units[0].unit_type.category == "Interceptor" else group.units[0].unit_type.category
         if category in _country.callsign:
@@ -882,7 +882,7 @@ class Mission:
             mp.tasks.append(ptask)
         return mp
 
-    def _flying_group_from_airport(self, _country, group: unitgroup.FlyingGroup,
+    def _flying_group_from_airport(self, _country, group: Type[unitgroup.FlyingGroup],
                                    maintask: task.MainTask,
                                    airport: terrain_.Airport,
                                    start_type: StartType=StartType.Cold,
@@ -930,7 +930,7 @@ class Mission:
 
         return group
 
-    def _flying_group_inflight(self, _country, group: unitgroup.FlyingGroup,
+    def _flying_group_inflight(self, _country, group: Type[unitgroup.FlyingGroup],
                                maintask: task.MainTask, altitude, speed) -> unitgroup.FlyingGroup:
 
         i = 0
@@ -964,12 +964,12 @@ class Mission:
     def flight_group_inflight(self,
                               country,
                               name: str,
-                              aircraft_type: unittype.FlyingType,
+                              aircraft_type: Type[unittype.FlyingType],
                               position: mapping.Point,
                               altitude: int,
                               speed=None,
                               maintask: Optional[task.MainTask] = None,
-                              group_size: int=1
+                              group_size: int = 1
                               ) -> Union[unitgroup.PlaneGroup, unitgroup.HelicopterGroup]:
         """Add a new Plane/Helicopter group inflight.
 
@@ -1012,10 +1012,10 @@ class Mission:
     def flight_group_from_airport(self,
                                   country: Country,
                                   name,
-                                  aircraft_type: unittype.FlyingType,
+                                  aircraft_type: Type[unittype.FlyingType],
                                   airport: terrain_.Airport,
                                   maintask: task.MainTask = None,
-                                  start_type: StartType=StartType.Cold,
+                                  start_type: StartType = StartType.Cold,
                                   group_size=1,
                                   parking_slots: List[terrain_.ParkingSlot] = None) -> \
             Union[unitgroup.PlaneGroup, unitgroup.HelicopterGroup]:
@@ -1054,7 +1054,7 @@ class Mission:
     def flight_group_from_unit(self,
                                country: Country,
                                name,
-                               aircraft_type: unittype.FlyingType,
+                               aircraft_type: Type[unittype.FlyingType],
                                pad_group: Union[unitgroup.ShipGroup, unitgroup.StaticGroup],
                                maintask: task.MainTask = None,
                                start_type: StartType = StartType.Cold,
@@ -1117,7 +1117,7 @@ class Mission:
     def flight_group(self,
                      country: Country,
                      name: str,
-                     aircraft_type: unittype.FlyingType,
+                     aircraft_type: Type[unittype.FlyingType],
                      airport: Optional[terrain_.Airport],
                      position: Optional[mapping.Point],
                      altitude=3000,
@@ -1157,7 +1157,7 @@ class Mission:
     def awacs_flight(self,
                      country: Country,
                      name: str,
-                     plane_type: planes.PlaneType,
+                     plane_type: Type[planes.PlaneType],
                      airport: Optional[terrain_.Airport],
                      position: mapping.Point,
                      race_distance=30 * 1000,
@@ -1212,7 +1212,7 @@ class Mission:
     def refuel_flight(self,
                       country,
                       name: str,
-                      plane_type: planes.PlaneType,
+                      plane_type: Type[planes.PlaneType],
                       airport: Optional[terrain_.Airport],
                       position: mapping.Point,
                       race_distance=30 * 1000,
