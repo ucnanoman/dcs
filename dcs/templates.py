@@ -176,6 +176,36 @@ class VehicleTemplate:
 
         return vg
 
+    @staticmethod
+    def sa6_site(mission, country, position, heading, prefix="", skill=unit.Skill.Average):
+        vg = mission.vehicle_group(
+            country,
+            prefix + "SA6 site",
+            dcs.vehicles.AirDefence.SAM_SA_6_Kub_STR_9S91,
+            position,
+            heading
+        )
+
+        u = mission.vehicle("Launcher 1", dcs.vehicles.AirDefence.SAM_SA_6_Kub_LN_2P25)
+        u.position = position.point_from_heading(heading + 140, 30)
+        u.heading = heading
+        vg.add_unit(u)
+
+        u = mission.vehicle("Launcher 2", dcs.vehicles.AirDefence.SAM_SA_6_Kub_LN_2P25)
+        u.position = position.point_from_heading(heading + 210, 30)
+        u.heading = heading
+        vg.add_unit(u)
+
+        u = mission.vehicle("Rearm Truck", dcs.vehicles.Unarmed.Transport_Ural_375)
+        u.position = position.point_from_heading(heading + 0, 40)
+        u.heading = heading
+        vg.add_unit(u)
+
+        for u in vg.units:
+            u.skill = skill
+
+        return vg
+
 
 class ShipTemplate:
     @staticmethod
