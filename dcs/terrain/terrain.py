@@ -2,7 +2,7 @@
 from typing import List, Dict, Optional, Tuple, Set
 from collections import defaultdict, deque
 from dcs import mapping, lua, point
-from dcs import unittype
+from dcs import unittype, weather
 import random
 import pickle
 import sys
@@ -434,6 +434,16 @@ class Terrain:
         self.bullseye_blue = {"x": 0, "y": 0}
         self.bullseye_red = {"x": 0, "y": 0}
         self.airports = {}  # type: Dict[str,Airport]
+
+    def weather(self, dt: datetime, weather_: weather.Weather):
+        # check if there might be the season for thunderstorms
+        if 4 < dt.month < 11:
+            if random.random() > 0.9:
+                weather_.random_thunderstorm()
+                return self.random_season_temperature(dt)
+
+        weather_.dynamic_weather(random.choice(list(weather.Weather.BaricSystem)), random.randint(1, 4))
+        return self.random_season_temperature(dt)
 
     def airport_by_id(self, _id: int) -> Optional[Airport]:
         for x in self.airports:

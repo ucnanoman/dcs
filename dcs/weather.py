@@ -1,10 +1,9 @@
-from datetime import datetime, timezone
+from datetime import datetime
 import random
 import math
 from enum import Enum
 from typing import List
 from . import mapping
-from .terrain import Terrain
 
 
 class Wind:
@@ -271,18 +270,15 @@ class Weather:
         self.fog_thickness = int(700 * fog_base)
         self.fog_visibility = int(5500 - (4000 * fog_base))
 
-    def random(self, dt: datetime=None, terrain: Terrain=None):
-        self.season_temperature = terrain.random_season_temperature(dt)
-        if terrain:
-            self.dynamic_weather(random.choice(list(Weather.BaricSystem)), random.randrange(1, 4))
-        else:
-            # check if there might be the season for thunderstorms
-            if 4 < dt.month < 11:
-                if random.random() > 0.9:
-                    self.random_thunderstorm()
-                    return
+    def random(self, dt: datetime, terrain: 'dcs.terrain.Terrain'):
+        """
+        Creates a random weather from terrain values.
 
-            self.dynamic_weather(random.choice(list(Weather.BaricSystem)), random.randrange(1, 4))
+        :param dt: Datetime of the mission
+        :param terrain: Terrain of the mission
+        :return: None
+        """
+        self.season_temperature = terrain.weather(dt, self)
 
     def dict(self):
         d = {}
