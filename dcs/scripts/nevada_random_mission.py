@@ -9,6 +9,8 @@ from typing import List, Tuple
 class TrainingScenario:
     def __init__(self, aircraft_types: List[Tuple[str, str]], playercount: int, start: str, unhide):
         self.m = dcs.Mission(terrain=dcs.terrain.Nevada())
+        self.m.groundControl.pilot_can_control_vehicles = True
+        self.m.groundControl.blue_jtac = 1
 
         self.red_airports = []  # type: List[dcs.terrain.Airport]
         self.blue_airports = []  # type: List[dcs.terrain.Airport]
@@ -86,7 +88,7 @@ class TrainingScenario:
         if start == "inflight":
             fuel_percent = 0.2
         else:
-            fuel_percent = 0.3
+            fuel_percent = 0.5
 
         airport = None  # type: dcs.terrain.Airport
         pg = None  # type: dcs.unitgroup.FlyingGroup
@@ -339,9 +341,13 @@ KC-135 Tanker has TACAN 12X and KC-130 has TACAN 10X.""".format(
 
         return aircraft_groups
 
+    def add_sa6_site(self, country, position):
+        dcs.templates.VehicleTemplate.sa6_site(self.m, country, position, 180, "site 1 ")
+        dcs.templates.VehicleTemplate.sa6_site(self.m, country, position.point_from_heading(45, 400), 180, "site 2 ")
+
     def add_ground_targets(self):
         russia = self.m.country(dcs.countries.Russia.name)
-        pos = self.m.terrain.groom_lake_afb().position.point_from_heading(5, 60 * 1000)
+        pos1 = self.m.terrain.groom_lake_afb().position.point_from_heading(5, 60 * 1000)
         rus_vehicles = dcs.countries.Russia.Vehicle
         vtypes = [
             rus_vehicles.Armor.MBT_T_72B,
@@ -349,13 +355,13 @@ KC-135 Tanker has TACAN 12X and KC-130 has TACAN 10X.""".format(
             rus_vehicles.Artillery.SPH_2S3_Akatsia,
             rus_vehicles.Unarmed.Transport_GAZ_3308,
             rus_vehicles.Armor.MBT_T_80U]
-        self.m.vehicle_group(russia, "ref", dcs.countries.Russia.Vehicle.Infantry.Infantry_Soldier_Rus, pos)
+        self.m.vehicle_group(russia, "ref", dcs.countries.Russia.Vehicle.Infantry.Infantry_Soldier_Rus, pos1)
         for i in range(1, 9):
             self.m.vehicle_group(
                 russia,
                 "ground target " + str(i),
                 random.choice(vtypes),
-                pos.random_point_within(5000, 500),
+                pos1.random_point_within(5000, 500),
                 random.randint(0, 359),
                 random.randint(2, 6),
                 dcs.unitgroup.VehicleGroup.Formation.Scattered
@@ -369,6 +375,16 @@ KC-135 Tanker has TACAN 12X and KC-130 has TACAN 10X.""".format(
             #                              ],
             #                              pos.random_point_within(5000, 500),
             #                              90, dcs.unitgroup.VehicleGroup.Formation.Rectangle)
+
+        # add jtac humwv
+        jtac1 = self.m.vehicle_group(
+            self.m.country(dcs.countries.USA.name),
+            "jtac1",
+            dcs.countries.USA.Vehicle.Unarmed.APC_M1025_HMMWV,
+            pos1.point_from_heading(45, 5.5*1000),
+            200
+        )
+        jtac1.units[0].player_can_drive = True
 
         # these are targets with light air defense in sector 74C
         pos = self.m.terrain.groom_lake_afb().position.point_from_heading(320, 53 * 1000)
@@ -395,6 +411,19 @@ KC-135 Tanker has TACAN 12X and KC-130 has TACAN 10X.""".format(
                 dcs.unitgroup.VehicleGroup.Formation.Scattered
             )
 
+        # add jtac humwv
+        jtac1 = self.m.vehicle_group(
+            self.m.country(dcs.countries.USA.name),
+            "jtac2",
+            dcs.countries.USA.Vehicle.Unarmed.APC_M1025_HMMWV,
+            pos.point_from_heading(45, 8*1000),
+            200
+        )
+        jtac1.units[0].player_can_drive = True
+
+        pos = pos1.point_from_heading(80, 35 * 1000)
+        self.add_sa6_site(russia, pos)
+
     def save(self, filename, stats):
         self.m.save(filename)
         if stats:
@@ -417,7 +446,8 @@ def main():
         (dcs.countries.USA.name, dcs.planes.A_10C.id),
         (dcs.countries.France.name, dcs.planes.M_2000C.id),
         (dcs.countries.USA.name, dcs.helicopters.Ka_50.id),
-        (dcs.countries.USA.name, dcs.planes.AV8BNA.id)
+        (dcs.countries.USA.name, dcs.planes.AV8BNA.id),
+        (dcs.countries.USA.name, dcs.planes.FA_18C_hornet.id)
     ]
     aircraft_types = [x[1] for x in types]
     parser = argparse.ArgumentParser(description="Nevada random training mission generator")

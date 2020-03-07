@@ -2,7 +2,7 @@ import math
 import random
 import copy
 from enum import Enum
-from typing import List, Union
+from typing import List, Union, Optional
 from .unit import Unit, Skill, FlyingUnit, Plane, PlaneType, Helicopter, HelicopterType, FlyingType
 from .point import StaticPoint, MovingPoint, PointAction, PointProperties
 from .translation import String
@@ -220,7 +220,7 @@ class MovingGroup(Group):
     def add_trigger_action(self, action: task.Task):
         self.tasks.append(action)
 
-    def waypoint(self, name) -> MovingPoint:
+    def waypoint(self, name) -> Optional[MovingPoint]:
         for p in self.points:
             if p.name and str(p.name) == name:
                 return p
@@ -292,6 +292,7 @@ class VehicleGroup(MovingGroup):
 
 
 class FlyingGroup(MovingGroup):
+
     def __init__(self, _id, name=None, start_time=0):
         super(FlyingGroup, self).__init__(_id, name, start_time)
         self.modulation = 0

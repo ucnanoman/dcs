@@ -1,7 +1,7 @@
 from .translation import String
 from . import task
 from . import mapping
-from typing import List
+from typing import List, Optional
 from enum import Enum
 
 
@@ -111,13 +111,13 @@ class MovingPoint(StaticPoint):
     def __init__(self):
         super(MovingPoint, self).__init__()
         self.type = "Turning Point"
-        self.action = PointAction.TurningPoint  # type: PointAction
+        self.action: PointAction = PointAction.TurningPoint
         self.alt_type = "BARO"
         self.ETA = 0
         self.ETA_locked = True
         self.speed_locked = True
-        self.tasks = []  # type: List[task.Task]
-        self.properties = None  # type: PointProperties
+        self.tasks: List[task.Task] = []
+        self.properties: Optional[PointProperties] = None
         self.airdrome_id = None
         self.helipad_id = None
         self.link_unit = None

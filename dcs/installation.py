@@ -12,6 +12,7 @@ try:
     import winreg
 except ImportError:
     is_windows_os = False
+    winreg = None
     print("WARNING : Trying to run pydcs on non Windows machine")
 
 

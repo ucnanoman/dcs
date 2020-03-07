@@ -2,6 +2,7 @@ from . import lua
 from . import installation
 import os
 import re
+from typing import Optional, Type, Any
 
 
 class UnitType:
@@ -61,6 +62,7 @@ class FlyingType(UnitType):
     property_defaults = None
 
     pylons = {}
+    Liveries: Optional[Type[Any]] = None
     payloads = None
     dcs_dir = installation.get_dcs_install_directory()
     payload_dirs = []

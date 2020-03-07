@@ -778,7 +778,7 @@ class Mission:
 
         return False
 
-    def plane(self, name, _type: planes.PlaneType, country: Country):
+    def plane(self, name, _type: Type[planes.PlaneType], country: Country):
         """Creates a new plane unit.
 
         This method is a advanced interface method not intended for simple usage.
@@ -798,7 +798,7 @@ class Mission:
         """
         return Plane(self.next_unit_id(), self.string(name), _type, country)
 
-    def helicopter(self, name, _type: helicopters.HelicopterType, country: Country):
+    def helicopter(self, name, _type: Type[helicopters.HelicopterType], country: Country):
         """Creates a new helicopter unit.
 
         This method is a advanced interface method not intended for simple usage.
@@ -818,7 +818,7 @@ class Mission:
         """
         return Helicopter(self.next_unit_id(), self.string(name), _type, country)
 
-    def aircraft(self, name, _type: unittype.FlyingType, country: Country) -> Union[Plane, Helicopter]:
+    def aircraft(self, name, _type: Type[unittype.FlyingType], country: Country) -> Union[Plane, Helicopter]:
         """Creates a new plane or helicopter unit, depending on the _type.
 
         This method is a advanced interface method not intended for simple usage.
@@ -859,7 +859,7 @@ class Mission:
         return unitgroup.HelicopterGroup(self.next_group_id(), self.string(name))
 
     @classmethod
-    def _assign_callsign(cls, _country, group: Type[unitgroup.FlyingGroup]):
+    def _assign_callsign(cls, _country, group: unitgroup.FlyingGroup):
         callsign_name = None
         category = "Air" if group.units[0].unit_type.category == "Interceptor" else group.units[0].unit_type.category
         if category in _country.callsign:
@@ -882,7 +882,7 @@ class Mission:
             mp.tasks.append(ptask)
         return mp
 
-    def _flying_group_from_airport(self, _country, group: Type[unitgroup.FlyingGroup],
+    def _flying_group_from_airport(self, _country, group: unitgroup.FlyingGroup,
                                    maintask: task.MainTask,
                                    airport: terrain_.Airport,
                                    start_type: StartType=StartType.Cold,
@@ -930,7 +930,7 @@ class Mission:
 
         return group
 
-    def _flying_group_inflight(self, _country, group: Type[unitgroup.FlyingGroup],
+    def _flying_group_inflight(self, _country, group: unitgroup.FlyingGroup,
                                maintask: task.MainTask, altitude, speed) -> unitgroup.FlyingGroup:
 
         i = 0
@@ -968,7 +968,7 @@ class Mission:
                               position: mapping.Point,
                               altitude: int,
                               speed=None,
-                              maintask: Optional[task.MainTask] = None,
+                              maintask: Optional[Type[task.MainTask]] = None,
                               group_size: int = 1
                               ) -> Union[unitgroup.PlaneGroup, unitgroup.HelicopterGroup]:
         """Add a new Plane/Helicopter group inflight.
@@ -1014,7 +1014,7 @@ class Mission:
                                   name,
                                   aircraft_type: Type[unittype.FlyingType],
                                   airport: terrain_.Airport,
-                                  maintask: task.MainTask = None,
+                                  maintask: Type[task.MainTask] = None,
                                   start_type: StartType = StartType.Cold,
                                   group_size=1,
                                   parking_slots: List[terrain_.ParkingSlot] = None) -> \
@@ -1056,7 +1056,7 @@ class Mission:
                                name,
                                aircraft_type: Type[unittype.FlyingType],
                                pad_group: Union[unitgroup.ShipGroup, unitgroup.StaticGroup],
-                               maintask: task.MainTask = None,
+                               maintask: Type[task.MainTask] = None,
                                start_type: StartType = StartType.Cold,
                                group_size=1) -> Union[unitgroup.PlaneGroup, unitgroup.HelicopterGroup]:
         """Add a new Plane/Helicopter group at the given FARP or carrier unit.
@@ -1122,8 +1122,8 @@ class Mission:
                      position: Optional[mapping.Point],
                      altitude=3000,
                      speed=500,
-                     maintask: Optional[task.MainTask]=None,
-                     start_type: StartType=StartType.Runway,
+                     maintask: Optional[Type[task.MainTask]] = None,
+                     start_type: StartType = StartType.Runway,
                      group_size=1
                      ) -> unitgroup.FlyingGroup:
         """This is wrapper around flight_group_inflight and flight_group_from_airport.
@@ -1164,7 +1164,7 @@ class Mission:
                      heading=90,
                      altitude=4500,
                      speed=550,
-                     start_type: StartType=StartType.Cold,
+                     start_type: StartType = StartType.Cold,
                      frequency=140) -> unitgroup.PlaneGroup:
         """Add an AWACS flight group.
 
@@ -1219,7 +1219,7 @@ class Mission:
                       heading=90,
                       altitude=4500,
                       speed=407,
-                      start_type: StartType=StartType.Cold,
+                      start_type: StartType = StartType.Cold,
                       frequency=140,
                       tacanchannel="10X") -> unitgroup.PlaneGroup:
         """Add an refuel flight group.
@@ -1275,10 +1275,10 @@ class Mission:
     def escort_flight(self,
                       country,
                       name: str,
-                      escort_type: planes.PlaneType,
+                      escort_type: Type[planes.PlaneType],
                       airport: Optional[terrain_.Airport],
                       group_to_escort: unitgroup.FlyingGroup,
-                      start_type: StartType=StartType.Cold,
+                      start_type: StartType = StartType.Cold,
                       group_size=2) -> unitgroup.PlaneGroup:
         """Add an escort flight group to the mission.
 
@@ -1322,11 +1322,11 @@ class Mission:
     def patrol_flight(self,
                       country,
                       name: str,
-                      patrol_type: planes.PlaneType,
+                      patrol_type: Type[planes.PlaneType],
                       airport: Optional[terrain_.Airport],
                       pos1,
                       pos2,
-                      start_type: StartType=StartType.Cold,
+                      start_type: StartType = StartType.Cold,
                       speed=600,
                       altitude=4000,
                       max_engage_distance=60*1000,
@@ -1370,7 +1370,7 @@ class Mission:
         return self.patrol_flight_to_group(eg, pos1, pos2, speed, altitude, max_engage_distance)
 
     def patrol_flight_to_group(self,
-                               pg: unitgroup.FlyingGroup,
+                               pg: unitgroup.PlaneGroup,
                                pos1,
                                pos2,
                                speed=600,
@@ -1404,7 +1404,7 @@ class Mission:
     def intercept_flight(self,
                          country,
                          name: str,
-                         patrol_type: planes.PlaneType,
+                         patrol_type: Type[planes.PlaneType],
                          airport: terrain_.Airport,
                          zone: triggers.TriggerZone,
                          late_activation=True,
@@ -1460,10 +1460,10 @@ class Mission:
     def sead_flight(self,
                     country,
                     name: str,
-                    plane_type: planes.PlaneType,
+                    plane_type: Type[planes.PlaneType],
                     target_pos: mapping.Point,
                     airport: Optional[terrain_.Airport],
-                    start_type: StartType=StartType.Cold,
+                    start_type: StartType = StartType.Cold,
                     max_engage_distance=20 * 1000,
                     group_size=2) -> unitgroup.PlaneGroup:
         """Plans a sead mission at the given target position.
@@ -1500,7 +1500,7 @@ class Mission:
         return self.sead_flight_to_group(eg, target_pos, max_engage_distance)
 
     def sead_flight_to_group(self,
-                             sg: unitgroup.FlyingGroup,
+                             sg: unitgroup.PlaneGroup,
                              target_pos: mapping.Point,
                              max_engage_distance=20 * 1000) -> unitgroup.PlaneGroup:
         """Plans a sead mission at the given target position.
@@ -1536,10 +1536,10 @@ class Mission:
     def strike_flight(self,
                       country,
                       name: str,
-                      _type: planes.FlyingType,
+                      _type: Type[planes.FlyingType],
                       target: Unit,
                       airport: Optional[terrain_.Airport],
-                      start_type: StartType=StartType.Cold,
+                      start_type: StartType = StartType.Cold,
                       group_size=2) -> unitgroup.FlyingGroup:
         """Plans a strike mission at the given target.
 
@@ -1569,16 +1569,17 @@ class Mission:
             eg = self.flight_group_inflight(
                 country, name, _type,
                 mapping.Point(target.position.x - 10 * 1000, target.position.y),
-                altitude / 2,
+                int(altitude / 2),
                 maintask=task.GroundAttack,
                 group_size=group_size
             )
 
         return self.strike_flight_to_group(eg, target)
 
-    def strike_flight_to_group(self,
-                      sf: unitgroup.FlyingGroup,
-                      target: Unit) -> unitgroup.FlyingGroup:
+    def strike_flight_to_group(
+            self,
+            sf: unitgroup.FlyingGroup,
+            target: Unit) -> unitgroup.FlyingGroup:
         """Plans a strike mission at the given target.
 
         If no airport is given, the patrol flight will spawn near the first patrol point(pos1).
@@ -1802,7 +1803,6 @@ class Mission:
 
         Args:
             filename: filepath to save the Mission object
-            show_stats(bool): if True print mission stats to standard out.
         """
         filename = self.filename if filename is None else filename
         if not filename:

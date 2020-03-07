@@ -8,6 +8,7 @@ import json
 import copy
 import math
 from enum import Enum
+from typing import Type, Union
 
 
 class Skill(Enum):
@@ -69,7 +70,7 @@ class Unit:
 
 
 class FlyingUnit(Unit):
-    def __init__(self, _id=None, name=None, _type: FlyingType=None, _country=None):
+    def __init__(self, _id=None, name=None, _type: Type[FlyingType] = None, _country=None):
         super(FlyingUnit, self).__init__(_id, name, _type.id)
         self.unit_type = _type  # for loadout validation
         self.unit_type.load_payloads()
@@ -214,12 +215,12 @@ class FlyingUnit(Unit):
 
 
 class Plane(FlyingUnit):
-    def __init__(self, _id=None, name=None, _type: PlaneType=A_10C, _country=None):
+    def __init__(self, _id=None, name=None, _type: Type[PlaneType] = A_10C, _country=None):
         super(Plane, self).__init__(_id, name, _type, _country)
 
 
 class Helicopter(FlyingUnit):
-    def __init__(self, _id=None, name=None, _type: HelicopterType=Ka_50, _country=None):
+    def __init__(self, _id=None, name=None, _type: Type[HelicopterType] = Ka_50, _country=None):
         super(Helicopter, self).__init__(_id, name, _type, _country)
         self.rope_length = 15
 
@@ -267,7 +268,7 @@ class Ship(Unit):
 
 
 class Static(Unit):
-    def __init__(self, unit_id=None, name=None, _type: UnitType=None):
+    def __init__(self, unit_id=None, name=None, _type: Union[str,Type[UnitType]] = None):
         if not isinstance(_type, str):
             _id = _type.id
             _class = _type

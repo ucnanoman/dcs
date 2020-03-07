@@ -21,7 +21,7 @@ def main():
     aircraft_types = [x[1] for x in types]
 
     parser = argparse.ArgumentParser(description="DCS WWII dogfight generator")
-    parser.add_argument("-a", "--aircrafttype", default=dcs.planes.Bf_109_K_4.id,
+    parser.add_argument("-a", "--aircrafttype", default=dcs.planes.Bf_109K_4.id,
                         choices=aircraft_types,
                         help="Player aircraft type")
     parser.add_argument("-p", "--playercount", default=1, type=int)

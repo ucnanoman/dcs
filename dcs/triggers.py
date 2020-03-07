@@ -89,17 +89,15 @@ class Event(Enum):
 class TriggerRule:
     predicate = None
 
-    def __init__(self, event, comment):
-        self.comment = comment
-        self.eventlist = event
-        self.rules = []  # type: List[condition.Condition]
-        self.actions = []  # type: List[action.Action]
+    def __init__(self, event: Event, comment: str):
+        self.comment: str = comment
+        self.eventlist: Event = event
+        self.rules: List[condition.Condition] = []
+        self.actions: List[action.Action] = []
 
     @classmethod
-    def create_from_dict(cls, mission, d):
-        trig = cls()
-        trig.comment = d["comment"]
-        trig.event = Event(d["eventlist"])
+    def create_from_dict(cls, mission, d) -> 'TriggerRule':
+        trig = cls(Event(d["eventlist"]), d["comment"])
         actions = d["actions"]
         for a in actions:
             action_ = action.actions_map[actions[a]["predicate"]].create_from_dict(actions[a], mission)
@@ -124,7 +122,7 @@ class TriggerRule:
     def action_str(self, idx):
         actionstr = "; ".join([repr(x) for x in self.actions])
         if self.eventlist != Event.NoEvent:
-            actionstr += '; mission.trig.events["' + self.eventlist.value + '"][' + str(idx) + ']=nil;'
+            actionstr += '; mission.trig.events["' + str(self.eventlist.value) + '"][' + str(idx) + ']=nil;'
         else:
             actionstr += '; mission.trig.func[' + str(idx) + ']=nil;'
         return actionstr

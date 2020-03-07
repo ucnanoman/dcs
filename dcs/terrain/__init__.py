@@ -1,4 +1,5 @@
-from .terrain import ParkingSlot, Airport, Runway, Terrain, RunwayOccupiedError, NoParkingSlotError, Graph, Node
+from .terrain import ParkingSlot, Airport, Runway, Terrain
+from .terrain import RunwayOccupiedError, NoParkingSlotError, Graph, Node, MapView
 from .caucasus import Caucasus
 from .nevada import Nevada
 from .normandy import Normandy

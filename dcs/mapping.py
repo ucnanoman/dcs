@@ -238,6 +238,7 @@ class Polygon:
             if point.y > min(p1y, p2y):
                 if point.y <= max(p1y, p2y):
                     if point.x <= max(p1x, p2x):
+                        xints = 0
                         if p1y != p2y:
                             xints = (point.y-p1y)*(p2x-p1x)/(p2y-p1y)+p1x
                         if p1x == p2x or point.x <= xints:

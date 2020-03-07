@@ -1,9 +1,8 @@
+import os
+from typing import List
+
 from .terrain import Terrain, Airport, Runway, ParkingSlot, MapView, Graph
 from .. import mapping
-from typing import List
-import os
-import random
-from datetime import datetime
 
 
 class Anapa_Vityazevo(Airport):

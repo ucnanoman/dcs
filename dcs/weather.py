@@ -3,7 +3,7 @@ import random
 import math
 from enum import Enum
 from typing import List
-from . import mapping
+from . import mapping, terrain
 
 
 class Wind:
@@ -270,7 +270,7 @@ class Weather:
         self.fog_thickness = int(700 * fog_base)
         self.fog_visibility = int(5500 - (4000 * fog_base))
 
-    def random(self, dt: datetime, terrain: 'dcs.terrain.Terrain'):
+    def random(self, dt: datetime, terrain: 'terrain.Terrain'):
         """
         Creates a random weather from terrain values.
 

@@ -7,7 +7,7 @@ There are 2 type of tasks, a MainTask and a Task action.
 
 Also options and commands are task actions.
 """
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Type
 from enum import Enum
 from .mapping import Point
 
@@ -43,8 +43,8 @@ class Modulation(Enum):
 class Task:
     """Base class for task actions."""
 
-    def __init__(self, _id):
-        self.id = _id
+    def __init__(self, _id: str = ''):
+        self.id: str = _id
         self.params = {}
         self.auto = False
         self.number = 1
@@ -162,76 +162,76 @@ class TargetType(type):
 
 
 class Targets(metaclass=TargetType):
-    class All(metaclass=TargetType):
+    class All(TargetType, metaclass=TargetType):
         id = "All"
-        class Air(metaclass=TargetType):
+        class Air(TargetType, metaclass=TargetType):
             id = "Air"
-            class Planes(metaclass=TargetType):
+            class Planes(TargetType, metaclass=TargetType):
                 id = "Planes"
-                class Fighters(metaclass=TargetType):
+                class Fighters(TargetType, metaclass=TargetType):
                     id = "Fighters"
-                class Bombers(metaclass=TargetType):
+                class Bombers(TargetType, metaclass=TargetType):
                     id = "Bombers"
-            class Helicopters(metaclass=TargetType):
+            class Helicopters(TargetType, metaclass=TargetType):
                 id = "Helicopters"
 
-        class GroundUnits(metaclass=TargetType):
+        class GroundUnits(TargetType, metaclass=TargetType):
             id = "Ground Units"
-            class Infantry(metaclass=TargetType):
+            class Infantry(TargetType, metaclass=TargetType):
                 id = "Infantry"
-            class Fortifications(metaclass=TargetType):
+            class Fortifications(TargetType, metaclass=TargetType):
                 id = "Fortifications"
-            class GroundVehicles(metaclass=TargetType):
+            class GroundVehicles(TargetType, metaclass=TargetType):
                 id = "Ground vehicles"
 
-                class ArmoredVehicles(metaclass=TargetType):
+                class ArmoredVehicles(TargetType, metaclass=TargetType):
                     id = "Armored vehicles"
-                    class Tanks(metaclass=TargetType):
+                    class Tanks(TargetType, metaclass=TargetType):
                         id = "Tanks"
-                    class IFV(metaclass=TargetType):
+                    class IFV(TargetType, metaclass=TargetType):
                         id = "IFV"
-                    class APC(metaclass=TargetType):
+                    class APC(TargetType, metaclass=TargetType):
                         id = "APC"
-                class Artillery(metaclass=TargetType):
+                class Artillery(TargetType, metaclass=TargetType):
                     id = "Artillery"
-                class UnarmedVehicles(metaclass=TargetType):
+                class UnarmedVehicles(TargetType, metaclass=TargetType):
                     id = "Unarmed vehicles"
-            class AirDefence(metaclass=TargetType):
+            class AirDefence(TargetType, metaclass=TargetType):
                 id = "Air Defence"
-                class AAA(metaclass=TargetType):
+                class AAA(TargetType, metaclass=TargetType):
                     id = "AAA"
-                    class SAMRelated(metaclass=TargetType):
+                    class SAMRelated(TargetType, metaclass=TargetType):
                         id = "SAM related"
-                        class SRSAM(metaclass=TargetType):
+                        class SRSAM(TargetType, metaclass=TargetType):
                             id = "SR SAM"
-                        class MRSAM(metaclass=TargetType):
+                        class MRSAM(TargetType, metaclass=TargetType):
                             id = "MR SAM"
-                        class LRSAM(metaclass=TargetType):
+                        class LRSAM(TargetType, metaclass=TargetType):
                             id = "LR SAM"
 
-        class Naval(metaclass=TargetType):
+        class Naval(TargetType, metaclass=TargetType):
             id = "Naval"
-            class Ships(metaclass=TargetType):
+            class Ships(TargetType, metaclass=TargetType):
                 id = "Ships"
-                class ArmedShips(metaclass=TargetType):
+                class ArmedShips(TargetType, metaclass=TargetType):
                     id = "Armed ships"
-                    class HeavyArmedShips(metaclass=TargetType):
+                    class HeavyArmedShips(TargetType, metaclass=TargetType):
                         id = "Heavy armed ships"
-                        class AircraftCarriers(metaclass=TargetType):
+                        class AircraftCarriers(TargetType, metaclass=TargetType):
                             id = "Aircraft Carriers"
-                        class Cruisers(metaclass=TargetType):
+                        class Cruisers(TargetType, metaclass=TargetType):
                             id = "Cruisers"
-                        class Destroyers(metaclass=TargetType):
+                        class Destroyers(TargetType, metaclass=TargetType):
                             id = "Destroyers"
-                        class Frigates(metaclass=TargetType):
+                        class Frigates(TargetType, metaclass=TargetType):
                             id = "Frigates"
-                        class Corvettes(metaclass=TargetType):
+                        class Corvettes(TargetType, metaclass=TargetType):
                             id = "Corvettes"
-                    class LightArmedShips(metaclass=TargetType):
+                    class LightArmedShips(TargetType, metaclass=TargetType):
                         id = "Light armed ships"
-                class UnarmedShips(metaclass=TargetType):
+                class UnarmedShips(TargetType, metaclass=TargetType):
                     id = "Unarmed ships"
-            class Submarines(metaclass=TargetType):
+            class Submarines(TargetType, metaclass=TargetType):
                 id = "Submarines"
 
 
@@ -479,7 +479,7 @@ class BombingRunway(Task):
 class EngageTargets(Task):
     Id = "EngageTargets"
 
-    def __init__(self, max_distance=None, targets: List[str]=None):
+    def __init__(self, max_distance=None, targets: List[Type[TargetType]] = None):
         super(EngageTargets, self).__init__(EngageTargets.Id)
         if targets is None:
             targets = [Targets.All]
@@ -1070,8 +1070,8 @@ wrappedactions = {
 class MainTask:
     name = None
     sub_tasks = []
-    perform_task = []  # type: List[Task]
-    map = {}  # type: Dict[str, MainTask]
+    perform_task: List[Type[Task]] = []
+    map: Dict[str, Type['MainTask']] = {}
 
 
 class Nothing(MainTask):

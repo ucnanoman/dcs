@@ -12,8 +12,7 @@ from dcs.countries import USA, Russia
 import random
 import argparse
 import os
-import datetime
-from typing import List, Dict, Tuple
+from typing import List, Tuple, Type
 
 
 class BasicScenario:
@@ -215,7 +214,7 @@ class BasicScenario:
             self.setup_airport(a, "blue", [dcs.vehicles.AirDefence.SAM_Avenger_M1097,
                                                 dcs.vehicles.AirDefence.AAA_Vulcan_M163])
 
-    def setup_airport(self, airport: dcs.terrain.Airport, side: str, air_def_units: List[dcs.unittype.VehicleType]):
+    def setup_airport(self, airport: dcs.terrain.Airport, side: str, air_def_units: List[Type[dcs.unittype.VehicleType]]):
         airport.set_coalition(side)
 
         if not airport.civilian:
@@ -358,7 +357,7 @@ class BasicScenario:
             c_count += 1
 
     def add_uncontrolled_military_planes(self, airports: List[dcs.terrain.Airport],
-                                         planes: List[Tuple[str, dcs.unittype.FlyingType, int]], hidden=True):
+                                         planes: List[Tuple[str, Type[dcs.unittype.FlyingType], int]], hidden=True):
 
         g_idx = 1
         while planes:
@@ -809,7 +808,8 @@ class CAP(BasicScenario):
             race_distance=race_dist, heading=p1.heading_between_point(p2),
             altitude=random.randrange(4000, 5500, 100), frequency=vhf_am)
 
-        self.m.escort_flight(usa, "AWACS Escort", dcs.countries.USA.Plane.F_15E, None, awacs, 2)
+        self.m.escort_flight(usa, "AWACS Escort", dcs.countries.USA.Plane.F_15E,
+                             None, awacs, dcs.mission.StartType.Warm)
 
         race_dist = random.randrange(80*1000, 120*1000, 1000)
         p1, p2 = patrol_zone.random_distant_points(race_dist)

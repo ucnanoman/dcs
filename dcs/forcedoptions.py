@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Optional
 
 
 class ForcedOptions:
@@ -26,7 +27,7 @@ class ForcedOptions:
         self.easy_radar = None
         self.mini_hud = None
         self.accidental_failures = None
-        self.options_view = None  # type: ForcedOptions.Views
+        self.options_view: Optional[ForcedOptions.Views] = None
         self.permit_crash = None
         self.immportal = None
         self.easy_communication = None
@@ -37,7 +38,7 @@ class ForcedOptions:
         self.geffect = None
         self.external_views = None
         self.birds = None
-        self.civil_traffic = None  # type: ForcedOptions.CivilTraffic
+        self.civil_traffic: Optional[ForcedOptions.CivilTraffic] = None
         self.weapons = None
         self.padlock = None
         self.scenes = None
