@@ -3,6 +3,7 @@ from . import installation
 from . import task
 import os
 import re
+import sys
 from typing import Optional, Type, Any
 
 _UnitPayloadGlobals = {v.internal_name: v.id for k, v in task.MainTask.map.items()}
@@ -86,6 +87,8 @@ class FlyingType(UnitType):
 
     _payload_cache = None
 
+    _UnitPayloadGlobals = {v.internal_name: v.id for k, v in task.MainTask.map.items()}
+
     @classmethod
     def scan_payload_dir(cls):
         if FlyingType._payload_cache:
@@ -119,21 +122,25 @@ class FlyingType(UnitType):
                 payload_filename = os.path.join(payload_dir, file)
                 if FlyingType._payload_cache[payload_filename] == cls.id and os.path.exists(payload_filename):
                     with open(payload_filename, 'r') as payload:
-                        payload_main = lua.loads(payload.read(), _globals=_UnitPayloadGlobals)
-                        pays = payload_main[list(payload_main.keys())[0]]
-                        if pays["unitType"] == cls.id:
-                            if cls.payloads:
-                                highestkey = max(pays["payloads"].keys()) + 1
-                                for load in pays["payloads"]:
-                                    x = [x for x in cls.payloads["payloads"]
-                                         if cls.payloads["payloads"][x]["name"] == pays["payloads"][load]["name"]]
-                                    if x:
-                                        cls.payloads["payloads"][x[0]] = pays["payloads"][load]
-                                    else:
-                                        cls.payloads["payloads"][highestkey] = pays["payloads"][load]
-                                        highestkey += 1
-                            else:
-                                cls.payloads = pays
+                        try:
+                            payload_main = lua.loads(payload.read(), _globals=_UnitPayloadGlobals)
+                            pays = payload_main["unitPayloads"]
+                            if pays["unitType"] == cls.id:
+                                if cls.payloads:
+                                    highestkey = max(pays["payloads"].keys()) + 1
+                                    for load in pays["payloads"]:
+                                        x = [x for x in cls.payloads["payloads"]
+                                             if cls.payloads["payloads"][x]["name"] == pays["payloads"][load]["name"]]
+                                        if x:
+                                            cls.payloads["payloads"][x[0]] = pays["payloads"][load]
+                                        else:
+                                            cls.payloads["payloads"][highestkey] = pays["payloads"][load]
+                                            highestkey += 1
+                                else:
+                                    cls.payloads = pays
+                        except SyntaxError as se:
+                            print("Error parsing lua file '{f}'".format(f=payload_filename), file=sys.stderr)
+                            raise se
 
         return cls.payloads
 

@@ -164,6 +164,83 @@ o = {
         r = loads(luas)
         self.assertEqual(r, ref)
 
+    def test_payload_var_ref(self):
+        luas = """
+local pylon_1A,pylon_1B,pylon_2,pylon_3,pylon_4,pylon_5,pylon_6,pylon_7,pylon_8B,pylon_8A = 1,2,3,4,5,6,7,8,9,10
+
+local unitPayloads = {
+  ["name"] = "F-14B",
+  ["payloads"] = {
+    {
+      ["name"] = "XT*2",
+      ["pylons"] = {
+        [1] = {
+          ["CLSID"] = "{F14-300gal}", ["num"] = pylon_7,
+        },
+        [2] = {
+          ["CLSID"] = "{F14-300gal}", ["num"] = pylon_2,
+        },
+      },
+      ["tasks"] = {
+        [1] = Intercept,
+        [2] = CAP,
+        [3] = Escort,
+        [4] = FighterSweep,
+      },
+    },
+    {
+      ["name"] = "AIM-54A-MK47*6, AIM-9M*2, XT*2",
+      ["pylons"] = {
+        [1] = {
+          ["CLSID"] = "{LAU-138 wtip - AIM-9M}", ["num"] = pylon_8A,
+        },
+        [2] = {
+          ["CLSID"] = "{SHOULDER AIM_54A_Mk47 R}", ["num"] = pylon_8B,
+        },
+        [3] = {
+          ["CLSID"] = "{F14-300gal}", ["num"] = pylon_7,
+        },
+        [4] = {
+          ["CLSID"] = "{AIM_54A_Mk47}", ["num"] = pylon_6,
+        },
+        [5] = {
+          ["CLSID"] = "{AIM_54A_Mk47}", ["num"] = pylon_5,
+        },
+        [6] = {
+          ["CLSID"] = "{AIM_54A_Mk47}", ["num"] = pylon_4,
+        },
+        [7] = {
+          ["CLSID"] = "{AIM_54A_Mk47}", ["num"] = pylon_3,
+        },
+        [8] = {
+          ["CLSID"] = "{F14-300gal}", ["num"] = pylon_2,
+        },
+        [9] = {
+          ["CLSID"] = "{SHOULDER AIM_54A_Mk47 L}", ["num"] = pylon_1B,
+        },
+        [10] = {
+          ["CLSID"] = "{LAU-138 wtip - AIM-9M}", ["num"] = pylon_1A,
+        },
+      },
+      ["tasks"] = {
+        [1] = Intercept,
+        [2] = CAP,
+        [3] = Escort,
+        [4] = FighterSweep,
+      },
+    },
+  },
+  ["unitType"] = "F-14B",
+}
+return unitPayloads
+"""
+        r = loads(luas, {'Intercept': 'Intercept', 'CAP': 'CAP', 'Escort': 'Escort', 'FighterSweep': 'FighterSweep'})
+        self.assertEqual(r['unitPayloads']['name'], 'F-14B')
+        self.assertEqual(r['unitPayloads']['payloads'][1]['name'], "XT*2")
+        self.assertEqual(r['unitPayloads']['payloads'][1]['pylons'][1]['num'], 8)
+        self.assertEqual(r['unitPayloads']['payloads'][2]['name'], "AIM-54A-MK47*6, AIM-9M*2, XT*2")
+        self.assertEqual(r['unitPayloads']['payloads'][2]['tasks'][1], "Intercept")
+
 
 if __name__ == '__main__':
     unittest.main()

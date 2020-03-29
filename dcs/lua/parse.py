@@ -1,19 +1,21 @@
-def loads(tablestr, _globals: dict = None):
+from typing import Dict, Any, Optional, List, Union
+
+
+def loads(tablestr, _globals: Optional[Dict[str, Any]] = None):
 
     class Parser:
         def __init__(self, buffer: str, _globals: dict = None):
-            self.buffer = buffer
+            self.buffer: str = buffer
             if _globals:
                 self.variables = _globals.copy()
             else:
                 self.variables = {}
 
-            self.returned_values = None
-            self._variable_assignment_queue = []
+            self._variable_assignment_queue: List[str] = []
 
-            self.buflen = len(buffer)
-            self.pos = 0  # type: int
-            self.lineno = 1  # type: int
+            self.buflen: int = len(buffer)
+            self.pos: int = 0
+            self.lineno: int = 1
 
         def parse(self):
             self.eat_ws()
@@ -41,10 +43,8 @@ def loads(tablestr, _globals: dict = None):
                 elif varname == 'return':
                     self.eat_ws()
 
-                    # setup returned values dict
                     name = self.eatvarname()
-                    self.returned_values = {name: self.variables[name]}
-                    return None
+                    return {name: self.variables[name]}
                 elif varname in self.variables:
                     # substitute value from variables
                     return self.variables[varname]
@@ -60,6 +60,10 @@ def loads(tablestr, _globals: dict = None):
 
                         self.eat_ws()
                         self.assign_local_variable(self.parse())
+
+                        if self.eob():
+                            return None
+
                         self.eat_ws()
 
                         if self.eob():
@@ -77,7 +81,7 @@ def loads(tablestr, _globals: dict = None):
                     se.offset = self.pos
                     raise se
 
-        def str_function(self):
+        def str_function(self) -> str:
             if self.buffer[self.pos] != '_':
                 se = SyntaxError()
                 se.lineno = self.lineno
@@ -114,7 +118,7 @@ def loads(tablestr, _globals: dict = None):
             self.pos += 1
             return s
 
-        def string(self):
+        def string(self) -> str:
             if self.buffer[self.pos] != '"':
                 se = SyntaxError()
                 se.lineno = self.lineno
@@ -142,7 +146,7 @@ def loads(tablestr, _globals: dict = None):
                     state = 0
             return s
 
-        def number(self):
+        def number(self) -> Union[int, float]:
             n = ''
             sign = 1
             if self.buffer[self.pos] == '-':
@@ -180,7 +184,7 @@ def loads(tablestr, _globals: dict = None):
                 return int(num)
             return num
 
-        def object(self):
+        def object(self) -> Dict[Union[int, str], Any]:
             d = {}
             if self.buffer[self.pos] != '{':
                 se = SyntaxError()
@@ -267,13 +271,13 @@ def loads(tablestr, _globals: dict = None):
 
             return d
 
-        def push_assigned_variable_names(self, variable_names):
+        def push_assigned_variable_names(self, variable_names: List[str]):
             self._variable_assignment_queue += variable_names
 
         def assign_local_variable(self, value):
             self.variables[self._variable_assignment_queue.pop(0)] = value
 
-        def eatvarname(self):
+        def eatvarname(self) -> str:
             varname = ''
             while (not self.eob()) and (self.buffer[self.pos].isalnum() or self.buffer[self.pos] == '_'):
                 varname += self.buffer[self.pos]
@@ -281,7 +285,7 @@ def loads(tablestr, _globals: dict = None):
 
             return varname
 
-        def eatvarnamelist(self):
+        def eatvarnamelist(self) -> List[str]:
             varnames = []
             while not self.eob():
                 self.eat_ws()
@@ -305,11 +309,15 @@ def loads(tablestr, _globals: dict = None):
                     self.pos += 1
 
         def eat_ws(self):
+            """
+            Advances the internal buffer until it reaches a non comment or whitespace.
+            :return: None
+            """
             self.eat_comment()
             while True:
                 if self.pos >= self.buflen:
                     return
-                c = self.buffer[self.pos]  # type: str
+                c: str = self.buffer[self.pos]
                 if c == '\n':
                     self.lineno += 1
                 if c == '-':
@@ -320,7 +328,12 @@ def loads(tablestr, _globals: dict = None):
 
                 self.pos += 1
 
-        def eob(self):
+        def eob(self) -> bool:
+            """
+            Checks if we are at the end of buffer.
+
+            :return: True if end of buffer is reached, else False.
+            """
             return self.pos >= self.buflen
 
         def eob_exception(self):
@@ -333,10 +346,14 @@ def loads(tablestr, _globals: dict = None):
         def char(self):
             return self.buffer[self.pos]
 
-        def advance(self):
+        def advance(self) -> bool:
+            """
+            Advances the internal buffer position by 1 and checks if we are at the end of buffer.
+            :return: True if end of buffer is reached, else False.
+            """
             self.pos += 1
             return self.eob()
 
     p = Parser(tablestr, _globals)
     p.parse()
-    return p.returned_values or p.variables
+    return p.variables
