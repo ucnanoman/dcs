@@ -7,12 +7,12 @@ There are 2 type of tasks, a MainTask and a Task action.
 
 Also options and commands are task actions.
 """
-from typing import List, Dict, Optional, Type
+from typing import List, Dict, Optional, Type, Any
 from enum import Enum
 from .mapping import Point
 
 
-def _create_from_dict(d):
+def _create_from_dict(d) -> 'Task':
     _id = d["id"]
     if _id == "WrappedAction":
         actionid = d["params"]["action"]["id"]
@@ -45,10 +45,10 @@ class Task:
 
     def __init__(self, _id: str = ''):
         self.id: str = _id
-        self.params = {}
-        self.auto = False
-        self.number = 1
-        self.enabled = True
+        self.params: Dict[str, Any] = {}
+        self.auto: bool = False
+        self.number: int = 1
+        self.enabled: bool = True
 
     @classmethod
     def create_from_dict(cls, d):
@@ -554,7 +554,7 @@ class EngageUnit(Task):
 class FireAtPoint(Task):
     Id = "FireAtPoint"
 
-    def __init__(self, position: Point=Point(0, 0), rounds=None, radius=0):
+    def __init__(self, position: Point = Point(0, 0), rounds: Optional[int] = None, radius: int = 0):
         super(FireAtPoint, self).__init__(FireAtPoint.Id)
         self.auto = False
         self.params = {
@@ -850,6 +850,7 @@ tasks_map = {
     CargoTransportation.Id: CargoTransportation,
     EWR.Id: EWR,
     GoToWaypoint.Id: GoToWaypoint,
+    FireAtPoint.Id: FireAtPoint
 }
 
 

@@ -152,6 +152,9 @@ class MovingPoint(StaticPoint):
                 return t
         return None
 
+    def add_task(self, task_: task.Task):
+        self.tasks.append(task_)
+
     def dict(self):
         d = super(MovingPoint, self).dict()
         d["alt_type"] = self.alt_type

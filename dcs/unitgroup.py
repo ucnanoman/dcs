@@ -222,7 +222,7 @@ class MovingGroup(Group):
     def add_trigger_action(self, action: task.Task):
         self.tasks.append(action)
 
-    def waypoint(self, name) -> Optional[MovingPoint]:
+    def waypoint(self, name: str) -> Optional[MovingPoint]:
         for p in self.points:
             if p.name and str(p.name) == name:
                 return p
