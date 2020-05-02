@@ -519,14 +519,18 @@ class StaticGroup(Group):
         super(StaticGroup, self).__init__(_id, name)
         self.dead = False
         self.heading = 0
+        self.link_offset: Optional[bool] = False
 
     def load_from_dict(self, d):
         super(StaticGroup, self).load_from_dict(d)
         self.heading = math.degrees(d["heading"])
         self.dead = d["dead"]
+        self.link_offset = d.get("linkOffset")
 
     def dict(self):
         d = super(StaticGroup, self).dict()
         d["dead"] = self.dead
         d["heading"] = round(math.radians(self.heading), 13)
+        if self.link_offset is not None:
+            d["linkOffset"] = self.link_offset
         return d

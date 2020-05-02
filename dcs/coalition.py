@@ -4,7 +4,7 @@ from . import unitgroup
 from . import planes
 from . import helicopters
 from . import ships
-from dcs.unit import Vehicle, Plane, Helicopter, Static, Ship, FARP
+from dcs.unit import Vehicle, Plane, Helicopter, Static, Ship, FARP, SingleHeliPad
 from dcs.point import MovingPoint, StaticPoint
 from dcs.country import Country
 
@@ -171,6 +171,10 @@ class Coalition:
                         imp_unit = sgroup["units"][imp_unit_idx]
                         if imp_unit["type"] == "FARP":
                             static = FARP(
+                                unit_id=imp_unit["unitId"],
+                                name=mission.translation.get_string(imp_unit["name"]))
+                        elif imp_unit["type"] == "SINGLE_HELIPAD":
+                            static = SingleHeliPad(
                                 unit_id=imp_unit["unitId"],
                                 name=mission.translation.get_string(imp_unit["name"]))
                         else:

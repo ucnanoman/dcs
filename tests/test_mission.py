@@ -170,4 +170,23 @@ class BasicTests(unittest.TestCase):
         m = dcs.mission.Mission()
         self.assertTrue(m.load_file('tests/loadtest.miz'))
 
+        usa = m.country(dcs.countries.USA.name)
+
+        # find single heli pad
+        single_farp_group = usa.find_static_group("HeliSingle")
+        single_farp: dcs.unit.SingleHeliPad = single_farp_group.units[0]
+        self.assertIsNotNone(single_farp)
+        self.assertEqual(single_farp_group.heading, 0)
+        self.assertEqual(single_farp.heading, 0)
+        self.assertEqual(single_farp.heliport_callsign_id, 1)
+        self.assertEqual(single_farp.heliport_frequency, 127.5)
+
+        # check blue farp
+        blue_farp_group = usa.find_static_group("FARP")
+        blue_farp: dcs.unit.FARP = blue_farp_group.units[0]
+        self.assertIsNotNone(blue_farp)
+        self.assertEqual(int(blue_farp.heading), 62)
+        self.assertEqual(blue_farp.heliport_callsign_id, 2)
+        self.assertEqual(blue_farp.heliport_frequency, 128.5)
+
         m.save('missions/loadtest.miz')

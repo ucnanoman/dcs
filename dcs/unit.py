@@ -268,7 +268,7 @@ class Ship(Unit):
 
 
 class Static(Unit):
-    def __init__(self, unit_id=None, name=None, _type: Union[str,Type[UnitType]] = None):
+    def __init__(self, unit_id=None, name=None, _type: Union[str, Type[UnitType]] = None):
         if not isinstance(_type, str):
             _id = _type.id
             _class = _type
@@ -326,19 +326,44 @@ class FARP(Static):
         super(FARP, self).__init__(unit_id, name, "FARP")
         self.category = "Heliports"
         self.shape_name = "FARPS"
-        self.heliport_frequency = frequency
+        self.heliport_frequency: float = frequency
         self.heliport_modulation = modulation
-        self.heliport_callsign_id = callsign_id
+        self.heliport_callsign_id: int = callsign_id
         self.can_cargo = False
 
     def load_from_dict(self, d):
         super(FARP, self).load_from_dict(d)
-        self.heliport_frequency = d.get("heliport_frequency")
+        self.heliport_frequency = float(d.get("heliport_frequency", 127.5))
         self.heliport_modulation = d.get("heliport_modulation")
         self.heliport_callsign_id = d.get("heliport_callsign_id", 0)
 
     def dict(self):
         d = super(FARP, self).dict()
+        d["heliport_frequency"] = self.heliport_frequency
+        d["heliport_modulation"] = self.heliport_modulation
+        d["heliport_callsign_id"] = self.heliport_callsign_id
+
+        return d
+
+
+class SingleHeliPad(Static):
+    def __init__(self, unit_id=None, name=None, frequency=127.5, modulation=0, callsign_id=1):
+        super(SingleHeliPad, self).__init__(unit_id, name, "SINGLE_HELIPAD")
+        self.category = "Heliports"
+        self.shape_name = "FARP"
+        self.heliport_frequency: float = frequency
+        self.heliport_modulation = modulation
+        self.heliport_callsign_id: int = callsign_id
+        self.can_cargo = False
+
+    def load_from_dict(self, d):
+        super(SingleHeliPad, self).load_from_dict(d)
+        self.heliport_frequency = float(d.get("heliport_frequency", 127.5))
+        self.heliport_modulation = d.get("heliport_modulation")
+        self.heliport_callsign_id = d.get("heliport_callsign_id", 0)
+
+    def dict(self):
+        d = super(SingleHeliPad, self).dict()
         d["heliport_frequency"] = self.heliport_frequency
         d["heliport_modulation"] = self.heliport_modulation
         d["heliport_callsign_id"] = self.heliport_callsign_id
