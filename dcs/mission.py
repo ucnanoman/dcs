@@ -33,7 +33,7 @@ from .forcedoptions import ForcedOptions
 from .goals import Goals
 from .groundcontrol import GroundControl
 from .point import StaticPoint, MovingPoint, PointAction, PointProperties
-from .translation import Translation
+from .translation import Translation, String
 from .unit import Unit, Plane, Helicopter, Ship, Vehicle, Static
 
 
@@ -514,7 +514,7 @@ class Mission:
             eplrs_id += 1
         return eplrs_id
 
-    def string(self, s, lang='DEFAULT'):
+    def string(self, s: str, lang: str = 'DEFAULT') -> String:
         """Create a new String() object for translation
 
         Args:

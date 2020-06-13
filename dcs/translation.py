@@ -41,7 +41,7 @@ class Translation:
     def get_string(self, _id):
         return String(_id, self)
 
-    def create_string(self, s, lang='DEFAULT'):
+    def create_string(self, s: str, lang: str = 'DEFAULT'):
         _id = 'DictKey_Translation_{dict_id}'.format(dict_id=self.mission.next_dict_id())
         self.set_string(_id, s, lang)
         return String(_id, self)
