@@ -348,7 +348,7 @@ class DecreaseFlag(Action):
 class DoScript(Action):
     predicate = "a_do_script"
 
-    def __init__(self, text=String()):
+    def __init__(self, text: String = String()):
         super(DoScript, self).__init__(DoScript.predicate)
         self.text = text
         self.params.append(self.text)
