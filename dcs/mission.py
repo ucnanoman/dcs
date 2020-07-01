@@ -1960,10 +1960,7 @@ class MapResource:
         resource_key = key if key else "ResKey_" + str(self.mission.next_dict_id())
         if lang not in self.files:
             self.files[lang] = {}
-        self.files[lang][abspath] = {
-            "path": abspath,
-            "reskey": resource_key
-        }
+        self.files[lang][resource_key] = abspath
         return resource_key
 
     def store(self, zipf: zipfile.ZipFile, lang='DEFAULT'):
@@ -1973,13 +1970,17 @@ class MapResource:
             zipf.write(file["path"], file["respath"])
 
         if lang in self.files:
-            for x in self.files[lang]:
-                mr = self.files[lang][x]
-                filepath = mr["path"]
+            for reskey in self.files[lang]:
+                filepath = self.files[lang][reskey]
                 if os.path.isabs(filepath):
                     nameinzip = os.path.basename(filepath)
-                    zipf.write(filepath, "l10n/{lang}/{name}".format(lang=lang, name=nameinzip))
-                    d[mr["reskey"]] = nameinzip
+                    zippath = "l10n/{lang}/{name}".format(lang=lang, name=nameinzip)
+                    # do not write files twice
+                    # if a script is called multiple times, a resource key is duplicated for the same file
+                    has_file = [x for x in zipf.filelist if x.filename == zippath]
+                    if not has_file:
+                        zipf.write(filepath, zippath)
+                    d[reskey] = nameinzip
 
         return d
 

@@ -343,4 +343,12 @@ class BasicTests(unittest.TestCase):
         self.assertEqual(blue_farp.heliport_callsign_id, 2)
         self.assertEqual(blue_farp.heliport_frequency, 128.5)
 
+        # check map resources
+        self.assertEqual(2, len(m.map_resource.files['DEFAULT']))
+
+        # check triggers
+        self.assertEqual(3, len(m.triggerrules.triggers))
+        self.assertEqual("1", m.triggerrules.triggers[0].comment)
+        self.assertEqual("2", m.triggerrules.triggers[1].comment)
+
         m.save('missions/loadtest.miz')
