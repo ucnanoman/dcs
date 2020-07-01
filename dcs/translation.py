@@ -27,6 +27,18 @@ class String:
         return self.id + ":" + str(self)
 
 
+class ResourceKey:
+    def __init__(self, res_key: str):
+        self.res_key = res_key
+
+    @property
+    def key(self) -> str:
+        return self.res_key
+
+    def __str__(self):
+        return self.res_key
+
+
 class Translation:
     def __init__(self, _mission):
         self.strings = {}  # type: Dict[str,Dict[str,str]]

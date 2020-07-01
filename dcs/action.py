@@ -1,5 +1,5 @@
 from .lua.serialize import dumps
-from .translation import String
+from .translation import String, ResourceKey
 from enum import Enum
 
 
@@ -366,18 +366,19 @@ class DoScript(Action):
 class DoScriptFile(Action):
     predicate = "a_do_script_file"
 
-    def __init__(self, file=""):
+    def __init__(self, file_res_key: ResourceKey = None):
         super(DoScriptFile, self).__init__(DoScriptFile.predicate)
-        self.file = file
-        self.params.append(self.file)
+        if file_res_key:
+            self.file_res_key = file_res_key
+            self.params.append(self.file_res_key)
 
     @classmethod
     def create_from_dict(cls, d, mission):
-        return cls(d["file"])
+        return cls(ResourceKey(d["file"]))
 
     def dict(self):
         d = super(DoScriptFile, self).dict()
-        d["file"] = self.file
+        d["file"] = self.file_res_key.key
         return d
 
 

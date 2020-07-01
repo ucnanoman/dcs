@@ -345,6 +345,8 @@ class BasicTests(unittest.TestCase):
 
         # check map resources
         self.assertEqual(2, len(m.map_resource.files['DEFAULT']))
+        self.assertEqual("sample.lua", m.map_resource.get_file_path((m.map_resource.get_resource_keys()[0])))
+        self.assertEqual("sample.lua", m.map_resource.get_file_path((m.map_resource.get_resource_keys()[1])))
 
         # check triggers
         self.assertEqual(3, len(m.triggerrules.triggers))

@@ -33,7 +33,7 @@ from .forcedoptions import ForcedOptions
 from .goals import Goals
 from .groundcontrol import GroundControl
 from .point import StaticPoint, MovingPoint, PointAction, PointProperties
-from .translation import Translation, String
+from .translation import Translation, String, ResourceKey
 from .unit import Unit, Plane, Helicopter, Ship, Vehicle, Static
 
 
@@ -418,7 +418,7 @@ class Mission:
         """
         self._description_redtask.set(text)
 
-    def add_picture_red(self, filepath: str) -> str:
+    def add_picture_red(self, filepath: str) -> ResourceKey:
         """Adds a new briefing picture to the red coalition.
 
         Args:
@@ -431,7 +431,7 @@ class Mission:
         self.pictureFileNameR.append(reskey)
         return reskey
 
-    def add_picture_blue(self, filepath: str) -> str:
+    def add_picture_blue(self, filepath: str) -> ResourceKey:
         """Adds a new briefing picture to the blue coalition.
 
         Args:
@@ -1912,7 +1912,7 @@ class Mission:
 class MapResource:
     """MapResource is responsibly to manage all additional mission resource files.
 
-    Mission resource files are briefing images, lua scripts, sounds files.
+    Mission resource files are briefing images, lua scripts, sound files.
 
     Args:
         mission(Mission): the mission this MapResource belongs too, needed for dictionary ids
@@ -1945,23 +1945,41 @@ class MapResource:
                 "respath": filepath,
             })
 
-    def add_resource_file(self, extracted_path, lang='DEFAULT', key=None):
+    def add_resource_file(self, extracted_path: str, lang: str = 'DEFAULT', key=None) -> ResourceKey:
         """Adds a file to the mission resource depot.
 
         Args:
             extracted_path: path to the file to add
             lang: language this file belongs too.
-            key: should None, needed for loading
+            key: should be None, needed for loading
 
         Returns:
             resource key to use in scripts
         """
         abspath = os.path.abspath(extracted_path)
-        resource_key = key if key else "ResKey_" + str(self.mission.next_dict_id())
+        resource_key = ResourceKey(key) if key else ResourceKey("ResKey_" + str(self.mission.next_dict_id()))
         if lang not in self.files:
             self.files[lang] = {}
-        self.files[lang][resource_key] = abspath
+        self.files[lang][resource_key.key] = abspath
         return resource_key
+
+    def get_resource_keys(self, lang: str = 'DEFAULT') -> List[ResourceKey]:
+        """
+        Get a list of all used resource keys
+
+        :param lang: language used for resource
+        :return: List of resource keys
+        """
+        return [ResourceKey(x) for x in self.files[lang]]
+
+    def get_file_path(self, resource_key: ResourceKey, lang: str = 'DEFAULT'):
+        """
+        Get the relative dcs filepath for a resource key and given language
+        :param resource_key:
+        :param lang:
+        :return:
+        """
+        return self.files[lang][resource_key.key][len(tempfile.gettempdir()) + len('/l10n//') + len(lang):]
 
     def store(self, zipf: zipfile.ZipFile, lang='DEFAULT'):
         d = {}
