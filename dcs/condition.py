@@ -1135,7 +1135,12 @@ class UnitPitchWithin(Condition):
 class UnitSpeedHigher(Condition):
     predicate = "c_unit_speed_higher"
 
-    def __init__(self, unit, speed=100):
+    def __init__(self, unit: int, speed: float = 100):
+        """
+
+        :param unit: unit id
+        :param speed: in m/s
+        """
         super(UnitSpeedHigher, self).__init__(UnitSpeedHigher.predicate)
         self.unit = unit
         self.params.append(self.unit)
@@ -1144,19 +1149,24 @@ class UnitSpeedHigher(Condition):
 
     @classmethod
     def create_from_dict(cls, d):
-        return cls(d["unit"], d["speed"])
+        return cls(d["unit"], d["speedU"])
 
     def dict(self):
         d = super(UnitSpeedHigher, self).dict()
         d["unit"] = self.unit
-        d["speed"] = self.speed
+        d["speedU"] = self.speed
         return d
 
 
 class UnitSpeedLower(Condition):
     predicate = "c_unit_speed_lower"
 
-    def __init__(self, unit, speed=100):
+    def __init__(self, unit: int, speed: float = 100):
+        """
+
+        :param unit: unit id
+        :param speed: in m/s
+        """
         super(UnitSpeedLower, self).__init__(UnitSpeedLower.predicate)
         self.unit = unit
         self.params.append(self.unit)
@@ -1165,12 +1175,12 @@ class UnitSpeedLower(Condition):
 
     @classmethod
     def create_from_dict(cls, d):
-        return cls(d["unit"], d["speed"])
+        return cls(d["unit"], d["speedU"])
 
     def dict(self):
         d = super(UnitSpeedLower, self).dict()
         d["unit"] = self.unit
-        d["speed"] = self.speed
+        d["speedU"] = self.speed
         return d
 
 
