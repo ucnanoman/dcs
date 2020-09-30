@@ -456,6 +456,18 @@ class Fortification:
         shape_name = "H-Windsock_RW"
         rate = 3
 
+    class Warning_Board_A(unittype.StaticType):
+        id = "warning_board_a"
+        name = "Warning Board A"
+        shape_name = None
+        rate = 1
+
+    class Warning_Board_B(unittype.StaticType):
+        id = "warning_board_b"
+        name = "Warning Board B"
+        shape_name = None
+        rate = 1
+
     class Belgian_gate(unittype.StaticType):
         id = "Belgian gate"
         name = "Belgian gate"
@@ -670,6 +682,8 @@ fortification_map = {
     "Black_Tyre_RF": Fortification.Mark_Tyre_with_Red_Flag,
     "Black_Tyre_WF": Fortification.Mark_Tyre_with_White_Flag,
     "Windsock": Fortification.Windsock,
+    "warning_board_a": Fortification.Warning_Board_A,
+    "warning_board_b": Fortification.Warning_Board_B,
     "Belgian gate": Fortification.Belgian_gate,
     "Concertina wire": Fortification.Concertina_wire,
     "Tetrahydra": Fortification.Tetrahydra,

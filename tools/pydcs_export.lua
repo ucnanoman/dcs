@@ -90,6 +90,42 @@ countries["Slovakia"] = "SVK"
 countries["SouthKorea"] = "KOR"
 countries["Sweden"] = "SWE"
 countries["Syria"] = "SYR"
+countries["Yemen"] = "YEM"
+countries["Vietnam"] = "VNM"
+countries["Venezuela"] = "VEN"
+countries["Tunisia"] = "TUN"
+countries["Thailand"] = "THA"
+countries["Sudan"] = "SDN"
+countries["Philippines"] = "PHL"
+countries["Morocco"] = "MAR"
+countries["Mexico"] = "MEX"
+countries["Malaysia"] = "MYS"
+countries["Libya"] = "LBY"
+countries["Jordan"] = "JOR"
+countries["Indonesia"] = "IDN"
+countries["Honduras"] = "HND"
+countries["Ethiopia"] = "ETH"
+countries["Chile"] = "CHL"
+countries["Brazil"] = "BRA"
+countries["Bahrain"] = "BHR"
+countries["Third Reich"] = "NZG"
+countries["Yugoslavia"] = "YUG"
+countries["USSR"] = "SUN"
+countries["Italian Social Republi"] = "RSI"
+countries["Algeria"] = "DZA"
+countries["Kuwait"] = "KWT"
+countries["Qatar"] = "QAT"
+countries["Oman"] = "OMN"
+countries["United Arab Emirates"] = "ARE"
+countries["South Africa"] = "RSA"
+countries["Cuba"] = "CUB"
+countries["Portugal"] = "PRT"
+countries["GDR"] = "GDR"
+countries["Lebanon"] = "LBN"
+countries["Combined Joint Task Forces Blue"] = "BLUE"
+countries["Combined Joint Task Forces Red"] = "RED"
+countries["United Nations Peacekeepers"] = "UN"
+
 
 -------------------------------------------------------------------------------
 -- prepare and export weapons data
@@ -230,6 +266,8 @@ flyable["F-5E-3"] = true
 flyable["Yak-52"] = true
 flyable["FW-190A8"] = true
 flyable["P-47D-30"] = true
+flyable["JF-17"] = true
+flyable["MiG-19P"] = true
 
 
 local function export_aircraft(file, aircrafts, export_type, exportplane)
@@ -355,7 +393,7 @@ from enum import Enum
             writeln(file, '')
             writeln(file, '    callnames = {')
             for c in pairs(plane.SpecificCallnames) do
-                writeln(file, '        "'..country.by_idx[c].Name..'": [')
+                writeln(file, '        "'..country.by_country[c].Name..'": [')
                 for n in pairs(plane.SpecificCallnames[c]) do
                     writeln(file, '            "'..plane.SpecificCallnames[c][n][1]..'",')
                 end
@@ -412,7 +450,7 @@ from enum import Enum
                 end
 
                 writeln(file, '')
-                writeln(file, '        class '..j..'(Enum):')
+                writeln(file, '        class '..safe_name(j)..'(Enum):')
                 local dupcheck = {}
                 for k in pairs(schemes) do
                     local liv_safe = safe_name(schemes[k].itemId)
@@ -614,7 +652,11 @@ for i in pairs(db.Units.Fortifications.Fortification) do
     writeln(file, '    class '..safename..'(unittype.StaticType):')
     writeln(file, '        id = "'..unit.type..'"')
     writeln(file, '        name = "'..unit.DisplayName..'"')
-    writeln(file, '        shape_name = "'..unit.ShapeName..'"')
+    if unit.ShapeName ~= nil then
+        writeln(file, '        shape_name = "'..unit.ShapeName..'"')
+    else
+        writeln(file, '        shape_name = None')
+    end
     writeln(file, '        rate = '..unit.Rate)
     if unit.SeaObject ~= nil and unit.SeaObject then
         writeln(file, '        sea_object = True')
@@ -752,7 +794,7 @@ writeln(file, 'import dcs.planes as planes')
 writeln(file, 'import dcs.helicopters as helicopters')
 writeln(file, 'import dcs.ships as ships')
 local countryPlaneIgnore = { "Su_30MK", "F_86F", "F_16C_50", "F_5E_MAC", "F_86F_MAC", "TF_51", "MiG_15bis_MAC",
-                             "L_39_MAC" }
+                             "L_39_MAC", "F_4E_new" }
 local countryHeliIgnore = { "Mi_24P" }
 local i = 0
 while i <= country.maxIndex do

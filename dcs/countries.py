@@ -177,6 +177,9 @@ class Russia(Country):
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_51D_30_NA = planes.P_51D_30_NA
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -239,6 +242,9 @@ class Russia(Country):
         Plane.SpitfireLFMkIXCW,
         Plane.P_51D_30_NA,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -506,6 +512,9 @@ class Ukraine(Country):
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_51D_30_NA = planes.P_51D_30_NA
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -560,6 +569,9 @@ class Ukraine(Country):
         Plane.SpitfireLFMkIXCW,
         Plane.P_51D_30_NA,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -786,6 +798,9 @@ class USA(Country):
         FW_190A8 = planes.FW_190A8
         Bf_109K_4 = planes.Bf_109K_4
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10C_2 = planes.A_10C_2
         AJS37 = planes.AJS37
         C_101EB = planes.C_101EB
         C_101CC = planes.C_101CC
@@ -847,6 +862,9 @@ class USA(Country):
         Plane.FW_190A8,
         Plane.Bf_109K_4,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10C_2,
         Plane.AJS37,
         Plane.C_101EB,
         Plane.C_101CC,
@@ -911,6 +929,7 @@ class USA(Country):
         CVN_71_Theodore_Roosevelt = ships.CVN_71_Theodore_Roosevelt
         CVN_72_Abraham_Lincoln = ships.CVN_72_Abraham_Lincoln
         CVN_73_George_Washington = ships.CVN_73_George_Washington
+        CVN_75_Harry_S__Truman = ships.CVN_75_Harry_S__Truman
 
     class CallsignAWACS:
         Overlord = "Overlord"
@@ -1132,6 +1151,9 @@ class Turkey(Country):
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_51D_30_NA = planes.P_51D_30_NA
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -1174,6 +1196,9 @@ class Turkey(Country):
         Plane.SpitfireLFMkIXCW,
         Plane.P_51D_30_NA,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -1330,6 +1355,9 @@ class UK(Country):
         FW_190A8 = planes.FW_190A8
         Bf_109K_4 = planes.Bf_109K_4
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         KC130 = planes.KC130
         KC135MPRS = planes.KC135MPRS
@@ -1370,6 +1398,9 @@ class UK(Country):
         Plane.FW_190A8,
         Plane.Bf_109K_4,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.KC130,
         Plane.KC135MPRS,
@@ -1536,6 +1567,9 @@ class France(Country):
         Bf_109K_4 = planes.Bf_109K_4
         P_51D_30_NA = planes.P_51D_30_NA
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         C_101EB = planes.C_101EB
@@ -1576,6 +1610,9 @@ class France(Country):
         Plane.Bf_109K_4,
         Plane.P_51D_30_NA,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.C_101EB,
@@ -1809,6 +1846,9 @@ class Germany(Country):
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_51D_30_NA = planes.P_51D_30_NA
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -1851,6 +1891,9 @@ class Germany(Country):
         Plane.SpitfireLFMkIXCW,
         Plane.P_51D_30_NA,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -1932,9 +1975,9 @@ class USAFAggressors(Country):
             Infantry_Soldier_Insurgents = vehicles.Infantry.Infantry_Soldier_Insurgents
             Soldier_AK = vehicles.Infantry.Soldier_AK
             Soldier_RPG = vehicles.Infantry.Soldier_RPG
-            Georgian_soldier_with_M4 = vehicles.Infantry.Georgian_soldier_with_M4
             Soldier_M249 = vehicles.Infantry.Soldier_M249
             Infantry_M4 = vehicles.Infantry.Infantry_M4
+            Georgian_soldier_with_M4 = vehicles.Infantry.Georgian_soldier_with_M4
             Infantry_M1_Garand = vehicles.Infantry.Infantry_M1_Garand
             Infantry_SMLE_No_4_Mk_1 = vehicles.Infantry.Infantry_SMLE_No_4_Mk_1
 
@@ -2065,7 +2108,6 @@ class USAFAggressors(Country):
             CP_Predator_GCS = vehicles.Unarmed.CP_Predator_GCS
             CP_Predator_TrojanSpirit = vehicles.Unarmed.CP_Predator_TrojanSpirit
             APC_Tigr_233036 = vehicles.Unarmed.APC_Tigr_233036
-            Warning_Board_A = vehicles.Unarmed.Warning_Board_A
 
         class Armor:
             HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
@@ -2166,6 +2208,9 @@ class USAFAggressors(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -2238,18 +2283,18 @@ class USAFAggressors(Country):
         F_15C = planes.F_15C
         F_15E = planes.F_15E
         KC_135 = planes.KC_135
+        Mirage_2000_5 = planes.Mirage_2000_5
         E_2C = planes.E_2C
         MiG_29G = planes.MiG_29G
-        Mirage_2000_5 = planes.Mirage_2000_5
         F_A_18A = planes.F_A_18A
         KJ_2000 = planes.KJ_2000
-        A_10A = planes.A_10A
         B_1B = planes.B_1B
         B_52H = planes.B_52H
         F_117A = planes.F_117A
         F_14A = planes.F_14A
         S_3B_Tanker = planes.S_3B_Tanker
         S_3B = planes.S_3B
+        A_10C_2 = planes.A_10C_2
         F_14B = planes.F_14B
         Tornado_GR4 = planes.Tornado_GR4
 
@@ -2260,6 +2305,9 @@ class USAFAggressors(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -2332,18 +2380,18 @@ class USAFAggressors(Country):
         Plane.F_15C,
         Plane.F_15E,
         Plane.KC_135,
+        Plane.Mirage_2000_5,
         Plane.E_2C,
         Plane.MiG_29G,
-        Plane.Mirage_2000_5,
         Plane.F_A_18A,
         Plane.KJ_2000,
-        Plane.A_10A,
         Plane.B_1B,
         Plane.B_52H,
         Plane.F_117A,
         Plane.F_14A,
         Plane.S_3B_Tanker,
         Plane.S_3B,
+        Plane.A_10C_2,
         Plane.F_14B,
         Plane.Tornado_GR4,
     ]
@@ -2426,6 +2474,7 @@ class USAFAggressors(Country):
         CVN_71_Theodore_Roosevelt = ships.CVN_71_Theodore_Roosevelt
         CVN_72_Abraham_Lincoln = ships.CVN_72_Abraham_Lincoln
         CVN_73_George_Washington = ships.CVN_73_George_Washington
+        CVN_75_Harry_S__Truman = ships.CVN_75_Harry_S__Truman
 
     def __init__(self):
         super(USAFAggressors, self).__init__(USAFAggressors.id, USAFAggressors.name)
@@ -2519,6 +2568,9 @@ class Canada(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC135MPRS = planes.KC135MPRS
@@ -2556,6 +2608,9 @@ class Canada(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC135MPRS,
@@ -2703,6 +2758,9 @@ class Spain(Country):
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_51D_30_NA = planes.P_51D_30_NA
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         KC135MPRS = planes.KC135MPRS
         JF_17 = planes.JF_17
@@ -2742,6 +2800,9 @@ class Spain(Country):
         Plane.SpitfireLFMkIXCW,
         Plane.P_51D_30_NA,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.KC135MPRS,
         Plane.JF_17,
@@ -2897,6 +2958,9 @@ class TheNetherlands(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -2937,6 +3001,9 @@ class TheNetherlands(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -3083,6 +3150,9 @@ class Belgium(Country):
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_51D_30_NA = planes.P_51D_30_NA
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -3121,6 +3191,9 @@ class Belgium(Country):
         Plane.SpitfireLFMkIXCW,
         Plane.P_51D_30_NA,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -3253,6 +3326,9 @@ class Norway(Country):
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_51D_30_NA = planes.P_51D_30_NA
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -3291,6 +3367,9 @@ class Norway(Country):
         Plane.SpitfireLFMkIXCW,
         Plane.P_51D_30_NA,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -3421,6 +3500,9 @@ class Denmark(Country):
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_51D_30_NA = planes.P_51D_30_NA
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -3459,6 +3541,9 @@ class Denmark(Country):
         Plane.SpitfireLFMkIXCW,
         Plane.P_51D_30_NA,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -3613,6 +3698,9 @@ class Israel(Country):
         FW_190A8 = planes.FW_190A8
         Bf_109K_4 = planes.Bf_109K_4
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC135MPRS = planes.KC135MPRS
@@ -3655,6 +3743,9 @@ class Israel(Country):
         Plane.FW_190A8,
         Plane.Bf_109K_4,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC135MPRS,
@@ -3839,6 +3930,9 @@ class Georgia(Country):
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_51D_30_NA = planes.P_51D_30_NA
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -3877,6 +3971,9 @@ class Georgia(Country):
         Plane.SpitfireLFMkIXCW,
         Plane.P_51D_30_NA,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -4028,6 +4125,10 @@ class Insurgents(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
+        A_10C = planes.A_10C
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -4058,6 +4159,10 @@ class Insurgents(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
+        Plane.A_10C,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -4225,6 +4330,10 @@ class Abkhazia(Country):
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_51D_30_NA = planes.P_51D_30_NA
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
+        A_10C = planes.A_10C
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -4260,6 +4369,10 @@ class Abkhazia(Country):
         Plane.SpitfireLFMkIXCW,
         Plane.P_51D_30_NA,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
+        Plane.A_10C,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -4414,6 +4527,10 @@ class SouthOssetia(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
+        A_10C = planes.A_10C
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -4443,6 +4560,10 @@ class SouthOssetia(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
+        Plane.A_10C,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -4581,6 +4702,9 @@ class Italy(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
@@ -4623,6 +4747,9 @@ class Italy(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.KC135MPRS,
         Plane.C_101EB,
@@ -4761,6 +4888,9 @@ class Australia(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -4800,6 +4930,9 @@ class Australia(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -4924,6 +5057,9 @@ class Switzerland(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -4958,6 +5094,9 @@ class Switzerland(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -5060,6 +5199,9 @@ class Austria(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -5091,6 +5233,9 @@ class Austria(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -5281,6 +5426,9 @@ class Belarus(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -5323,6 +5471,9 @@ class Belarus(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -5509,6 +5660,9 @@ class Bulgaria(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -5548,6 +5702,9 @@ class Bulgaria(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -5693,6 +5850,9 @@ class CzechRepublic(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -5729,6 +5889,9 @@ class CzechRepublic(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -5822,7 +5985,6 @@ class China(Country):
         class Unarmed:
             Transport_Ural_375 = vehicles.Unarmed.Transport_Ural_375
             APC_Tigr_233036 = vehicles.Unarmed.APC_Tigr_233036
-            Warning_Board_A = vehicles.Unarmed.Warning_Board_A
 
         class Armor:
             IFV_BMP_1 = vehicles.Armor.IFV_BMP_1
@@ -5876,6 +6038,9 @@ class China(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -5918,6 +6083,9 @@ class China(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -6035,6 +6203,9 @@ class Croatia(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -6066,6 +6237,9 @@ class Croatia(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -6238,6 +6412,9 @@ class Egypt(Country):
         FW_190A8 = planes.FW_190A8
         Bf_109K_4 = planes.Bf_109K_4
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -6273,6 +6450,9 @@ class Egypt(Country):
         Plane.FW_190A8,
         Plane.Bf_109K_4,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -6447,6 +6627,9 @@ class Finland(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -6478,6 +6661,9 @@ class Finland(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -6633,6 +6819,9 @@ class Greece(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -6671,6 +6860,9 @@ class Greece(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -6853,6 +7045,9 @@ class Hungary(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -6888,6 +7083,9 @@ class Hungary(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -7031,6 +7229,9 @@ class India(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -7070,6 +7271,9 @@ class India(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -7242,6 +7446,9 @@ class Iran(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -7282,6 +7489,9 @@ class Iran(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -7451,6 +7661,9 @@ class Iraq(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -7489,6 +7702,9 @@ class Iraq(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -7643,6 +7859,9 @@ class Japan(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC135MPRS = planes.KC135MPRS
@@ -7676,6 +7895,9 @@ class Japan(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC135MPRS,
@@ -7881,6 +8103,9 @@ class Kazakhstan(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -7924,6 +8149,9 @@ class Kazakhstan(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -8055,6 +8283,9 @@ class NorthKorea(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -8088,6 +8319,9 @@ class NorthKorea(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -8217,6 +8451,9 @@ class Pakistan(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -8255,6 +8492,9 @@ class Pakistan(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -8420,6 +8660,9 @@ class Poland(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -8462,6 +8705,9 @@ class Poland(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -8632,6 +8878,9 @@ class Romania(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -8668,6 +8917,9 @@ class Romania(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -8811,6 +9063,9 @@ class SaudiArabia(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC135MPRS = planes.KC135MPRS
@@ -8848,6 +9103,9 @@ class SaudiArabia(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC135MPRS,
@@ -9009,6 +9267,9 @@ class Serbia(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -9044,6 +9305,9 @@ class Serbia(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -9184,6 +9448,9 @@ class Slovakia(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -9219,6 +9486,9 @@ class Slovakia(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -9356,6 +9626,9 @@ class SouthKorea(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -9394,6 +9667,9 @@ class SouthKorea(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -9507,6 +9783,9 @@ class Sweden(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AV8BNA = planes.AV8BNA
         KC135MPRS = planes.KC135MPRS
         C_101EB = planes.C_101EB
@@ -9542,6 +9821,9 @@ class Sweden(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AV8BNA,
         Plane.KC135MPRS,
         Plane.C_101EB,
@@ -9687,6 +9969,9 @@ class Syria(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -9723,6 +10008,9 @@ class Syria(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -9857,6 +10145,9 @@ class Yemen(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -9891,6 +10182,9 @@ class Yemen(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -10038,6 +10332,9 @@ class Vietnam(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -10074,6 +10371,9 @@ class Vietnam(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -10204,6 +10504,9 @@ class Venezuela(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -10237,6 +10540,9 @@ class Venezuela(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -10345,6 +10651,9 @@ class Tunisia(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -10376,6 +10685,9 @@ class Tunisia(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -10488,6 +10800,9 @@ class Thailand(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -10522,6 +10837,9 @@ class Thailand(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -10647,6 +10965,9 @@ class Sudan(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -10682,6 +11003,9 @@ class Sudan(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -10792,6 +11116,9 @@ class Philippines(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -10826,6 +11153,9 @@ class Philippines(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -10956,6 +11286,9 @@ class Morocco(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC135MPRS = planes.KC135MPRS
@@ -10989,6 +11322,9 @@ class Morocco(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC135MPRS,
@@ -11098,6 +11434,9 @@ class Mexico(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -11130,6 +11469,9 @@ class Mexico(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -11242,6 +11584,9 @@ class Malaysia(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC135MPRS = planes.KC135MPRS
@@ -11274,6 +11619,9 @@ class Malaysia(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC135MPRS,
@@ -11406,6 +11754,9 @@ class Libya(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC135MPRS = planes.KC135MPRS
@@ -11439,6 +11790,9 @@ class Libya(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC135MPRS,
@@ -11564,6 +11918,9 @@ class Jordan(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -11597,6 +11954,9 @@ class Jordan(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -11730,6 +12090,9 @@ class Indonesia(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC135MPRS = planes.KC135MPRS
@@ -11769,6 +12132,9 @@ class Indonesia(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC135MPRS,
@@ -11867,6 +12233,9 @@ class Honduras(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -11898,6 +12267,9 @@ class Honduras(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -12029,6 +12401,9 @@ class Ethiopia(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -12063,6 +12438,9 @@ class Ethiopia(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -12186,6 +12564,9 @@ class Chile(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -12223,6 +12604,9 @@ class Chile(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -12351,6 +12735,9 @@ class Brazil(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC135MPRS = planes.KC135MPRS
@@ -12383,6 +12770,9 @@ class Brazil(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC135MPRS,
@@ -12506,6 +12896,9 @@ class Bahrain(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -12536,6 +12929,9 @@ class Bahrain(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -12668,6 +13064,9 @@ class ThirdReich(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -12699,6 +13098,9 @@ class ThirdReich(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -12833,6 +13235,9 @@ class Yugoslavia(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -12866,6 +13271,9 @@ class Yugoslavia(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -13095,6 +13503,9 @@ class USSR(Country):
         FW_190A8 = planes.FW_190A8
         Bf_109K_4 = planes.Bf_109K_4
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -13151,6 +13562,9 @@ class USSR(Country):
         Plane.FW_190A8,
         Plane.Bf_109K_4,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -13299,6 +13713,9 @@ class ItalianSocialRepublic(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -13329,6 +13746,9 @@ class ItalianSocialRepublic(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -13523,6 +13943,9 @@ class Algeria(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -13570,6 +13993,9 @@ class Algeria(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -13718,6 +14144,9 @@ class Kuwait(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC135MPRS = planes.KC135MPRS
@@ -13751,6 +14180,9 @@ class Kuwait(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC135MPRS,
@@ -13867,6 +14299,9 @@ class Qatar(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -13899,6 +14334,9 @@ class Qatar(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -14032,6 +14470,9 @@ class Oman(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -14065,6 +14506,9 @@ class Oman(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -14203,6 +14647,9 @@ class UnitedArabEmirates(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -14238,6 +14685,9 @@ class UnitedArabEmirates(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -14355,6 +14805,9 @@ class SouthAfrica(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -14389,6 +14842,9 @@ class SouthAfrica(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -14551,6 +15007,9 @@ class Cuba(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -14593,6 +15052,9 @@ class Cuba(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -14717,6 +15179,9 @@ class Portugal(Country):
         FW_190A8 = planes.FW_190A8
         Bf_109K_4 = planes.Bf_109K_4
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -14753,6 +15218,9 @@ class Portugal(Country):
         Plane.FW_190A8,
         Plane.Bf_109K_4,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -14903,6 +15371,9 @@ class GDR(Country):
         SpitfireLFMkIX = planes.SpitfireLFMkIX
         SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
         P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
         AJS37 = planes.AJS37
         AV8BNA = planes.AV8BNA
         KC130 = planes.KC130
@@ -14937,6 +15408,9 @@ class GDR(Country):
         Plane.SpitfireLFMkIX,
         Plane.SpitfireLFMkIXCW,
         Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
         Plane.AJS37,
         Plane.AV8BNA,
         Plane.KC130,
@@ -14979,6 +15453,1784 @@ class GDR(Country):
 
     def __init__(self):
         super(GDR, self).__init__(GDR.id, GDR.name)
+
+
+class Lebanon(Country):
+    id = 79
+    name = "Lebanon"
+
+    class Vehicle:
+
+        class Artillery:
+            MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
+            SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
+
+        class Infantry:
+            Infantry_Soldier_Rus = vehicles.Infantry.Infantry_Soldier_Rus
+            Paratrooper_AKS = vehicles.Infantry.Paratrooper_AKS
+            Paratrooper_RPG_16 = vehicles.Infantry.Paratrooper_RPG_16
+            Soldier_M249 = vehicles.Infantry.Soldier_M249
+            Infantry_M4 = vehicles.Infantry.Infantry_M4
+
+        class AirDefence:
+            AAA_ZU_23_Closed = vehicles.AirDefence.AAA_ZU_23_Closed
+            AAA_ZU_23_Emplacement = vehicles.AirDefence.AAA_ZU_23_Emplacement
+            AAA_ZU_23_on_Ural_375 = vehicles.AirDefence.AAA_ZU_23_on_Ural_375
+            SAM_SA_9_Strela_1_9P31 = vehicles.AirDefence.SAM_SA_9_Strela_1_9P31
+            SAM_SA_13_Strela_10M3_9A35M3 = vehicles.AirDefence.SAM_SA_13_Strela_10M3_9A35M3
+            SPAAA_ZSU_23_4_Shilka = vehicles.AirDefence.SPAAA_ZSU_23_4_Shilka
+            AAA_Bofors_40mm = vehicles.AirDefence.AAA_Bofors_40mm
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+            TACAN_Beacon__Man_Portable__TTS_3030 = vehicles.Fortification.TACAN_Beacon__Man_Portable__TTS_3030
+
+        class Unarmed:
+            Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
+            Transport_KAMAZ_43101 = vehicles.Unarmed.Transport_KAMAZ_43101
+            Land_Rover_101_FC = vehicles.Unarmed.Land_Rover_101_FC
+            Land_Rover_109_S3 = vehicles.Unarmed.Land_Rover_109_S3
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+
+        class Armor:
+            TPz_Fuchs = vehicles.Armor.TPz_Fuchs
+            IFV_M2A2_Bradley = vehicles.Armor.IFV_M2A2_Bradley
+            MBT_M60A3_Patton = vehicles.Armor.MBT_M60A3_Patton
+            APC_M113 = vehicles.Armor.APC_M113
+            APC_M1043_HMMWV_Armament = vehicles.Armor.APC_M1043_HMMWV_Armament
+            ATGM_M1045_HMMWV_TOW = vehicles.Armor.ATGM_M1045_HMMWV_TOW
+            MBT_T_55 = vehicles.Armor.MBT_T_55
+            MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
+            MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
+
+        class Locomotive:
+            Electric_locomotive_VL80 = vehicles.Locomotive.Electric_locomotive_VL80
+            Locomotive_CHME3T = vehicles.Locomotive.Locomotive_CHME3T
+            ES44AH = vehicles.Locomotive.ES44AH
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            Coach_for_cargo = vehicles.Carriage.Coach_for_cargo
+            Coach_for_open_cargo = vehicles.Carriage.Coach_for_open_cargo
+            Coach_a_tank_blue = vehicles.Carriage.Coach_a_tank_blue
+            Coach_a_tank_yellow = vehicles.Carriage.Coach_a_tank_yellow
+            Coach_for_passengers = vehicles.Carriage.Coach_for_passengers
+            Coach_flatbed = vehicles.Carriage.Coach_flatbed
+            Boxcartrinity = vehicles.Carriage.Boxcartrinity
+            Tankcartrinity = vehicles.Carriage.Tankcartrinity
+            Wellcarnsc = vehicles.Carriage.Wellcarnsc
+            DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+    class Plane:
+        A_10C = planes.A_10C
+        Mirage_2000_5 = planes.Mirage_2000_5
+        M_2000C = planes.M_2000C
+        RQ_1A_Predator = planes.RQ_1A_Predator
+        FW_190A8 = planes.FW_190A8
+        Bf_109K_4 = planes.Bf_109K_4
+        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
+        P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
+        AJS37 = planes.AJS37
+        AV8BNA = planes.AV8BNA
+        KC130 = planes.KC130
+        KC135MPRS = planes.KC135MPRS
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        JF_17 = planes.JF_17
+        Christen_Eagle_II = planes.Christen_Eagle_II
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F_Sabre
+        FA_18C_hornet = planes.FA_18C_hornet
+        Hawk = planes.Hawk
+        I_16 = planes.I_16
+        L_39C = planes.L_39C
+        MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
+        MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
+        A_20G = planes.A_20G
+        Ju_88A4 = planes.Ju_88A4
+
+    planes = [
+        Plane.A_10C,
+        Plane.Mirage_2000_5,
+        Plane.M_2000C,
+        Plane.RQ_1A_Predator,
+        Plane.FW_190A8,
+        Plane.Bf_109K_4,
+        Plane.SpitfireLFMkIX,
+        Plane.SpitfireLFMkIXCW,
+        Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
+        Plane.AJS37,
+        Plane.AV8BNA,
+        Plane.KC130,
+        Plane.KC135MPRS,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.JF_17,
+        Plane.Christen_Eagle_II,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.FA_18C_hornet,
+        Plane.Hawk,
+        Plane.I_16,
+        Plane.L_39C,
+        Plane.MiG_15bis,
+        Plane.MiG_19P,
+        Plane.MiG_21Bis,
+        Plane.Yak_52,
+        Plane.A_20G,
+        Plane.Ju_88A4,
+    ]
+
+    class Helicopter:
+        Ka_50 = helicopters.Ka_50
+        UH_1H = helicopters.UH_1H
+        SA342M = helicopters.SA342M
+        SA342L = helicopters.SA342L
+        SA342Mistral = helicopters.SA342Mistral
+        SA342Minigun = helicopters.SA342Minigun
+
+    helicopters = [
+        Helicopter.Ka_50,
+        Helicopter.UH_1H,
+        Helicopter.SA342M,
+        Helicopter.SA342L,
+        Helicopter.SA342Mistral,
+        Helicopter.SA342Minigun,
+    ]
+
+    class Ship:
+        Armed_speedboat = ships.Armed_speedboat
+
+    def __init__(self):
+        super(Lebanon, self).__init__(Lebanon.id, Lebanon.name)
+
+
+class CombinedJointTaskForcesBlue(Country):
+    id = 80
+    name = "Combined Joint Task Forces Blue"
+
+    class Vehicle:
+
+        class Artillery:
+            Sturmpanzer_IV_Brummbär = vehicles.Artillery.Sturmpanzer_IV_Brummbär
+            _2B11_mortar = vehicles.Artillery._2B11_mortar
+            MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
+            SPH_2S9_Nona = vehicles.Artillery.SPH_2S9_Nona
+            SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
+            SPH_2S1_Gvozdika = vehicles.Artillery.SPH_2S1_Gvozdika
+            SPH_2S19_Msta = vehicles.Artillery.SPH_2S19_Msta
+            MLRS_9A52_Smerch = vehicles.Artillery.MLRS_9A52_Smerch
+            MLRS_9A52_Smerch_HE = vehicles.Artillery.MLRS_9A52_Smerch_HE
+            MLRS_9K57_Uragan_BM_27 = vehicles.Artillery.MLRS_9K57_Uragan_BM_27
+            SpGH_Dana = vehicles.Artillery.SpGH_Dana
+            M12_GMC = vehicles.Artillery.M12_GMC
+            SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
+            MLRS_M270 = vehicles.Artillery.MLRS_M270
+            MLRS_FDDM = vehicles.Artillery.MLRS_FDDM
+
+        class Infantry:
+            Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
+            Infantry_Soldier_Rus = vehicles.Infantry.Infantry_Soldier_Rus
+            Paratrooper_AKS = vehicles.Infantry.Paratrooper_AKS
+            Paratrooper_RPG_16 = vehicles.Infantry.Paratrooper_RPG_16
+            Infantry_Soldier_Insurgents = vehicles.Infantry.Infantry_Soldier_Insurgents
+            Soldier_AK = vehicles.Infantry.Soldier_AK
+            Soldier_RPG = vehicles.Infantry.Soldier_RPG
+            Soldier_M249 = vehicles.Infantry.Soldier_M249
+            Infantry_M4 = vehicles.Infantry.Infantry_M4
+            Georgian_soldier_with_M4 = vehicles.Infantry.Georgian_soldier_with_M4
+            Infantry_M1_Garand = vehicles.Infantry.Infantry_M1_Garand
+            Infantry_SMLE_No_4_Mk_1 = vehicles.Infantry.Infantry_SMLE_No_4_Mk_1
+
+        class AirDefence:
+            AAA_8_8cm_Flak_18 = vehicles.AirDefence.AAA_8_8cm_Flak_18
+            AAA_Flak_38 = vehicles.AirDefence.AAA_Flak_38
+            AAA_8_8cm_Flak_36 = vehicles.AirDefence.AAA_8_8cm_Flak_36
+            AAA_8_8cm_Flak_37 = vehicles.AirDefence.AAA_8_8cm_Flak_37
+            AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
+            AAA_Kdo_G_40 = vehicles.AirDefence.AAA_Kdo_G_40
+            Flak_Searchlight_37 = vehicles.AirDefence.Flak_Searchlight_37
+            Maschinensatz_33 = vehicles.AirDefence.Maschinensatz_33
+            AAA_8_8cm_Flak_41 = vehicles.AirDefence.AAA_8_8cm_Flak_41
+            EWR_1L13 = vehicles.AirDefence.EWR_1L13
+            SAM_SA_19_Tunguska_2S6 = vehicles.AirDefence.SAM_SA_19_Tunguska_2S6
+            EWR_55G6 = vehicles.AirDefence.EWR_55G6
+            SAM_SA_3_S_125_LN_5P73 = vehicles.AirDefence.SAM_SA_3_S_125_LN_5P73
+            CP_9S80M1_Sborka = vehicles.AirDefence.CP_9S80M1_Sborka
+            SAM_SA_6_Kub_STR_9S91 = vehicles.AirDefence.SAM_SA_6_Kub_STR_9S91
+            SAM_SA_6_Kub_LN_2P25 = vehicles.AirDefence.SAM_SA_6_Kub_LN_2P25
+            SAM_SA_8_Osa_9A33 = vehicles.AirDefence.SAM_SA_8_Osa_9A33
+            SAM_SR_P_19 = vehicles.AirDefence.SAM_SR_P_19
+            SAM_SA_2_LN_SM_90 = vehicles.AirDefence.SAM_SA_2_LN_SM_90
+            SAM_SA_10_S_300PS_TR_30N6 = vehicles.AirDefence.SAM_SA_10_S_300PS_TR_30N6
+            SAM_SA_10_S_300PS_SR_5N66M = vehicles.AirDefence.SAM_SA_10_S_300PS_SR_5N66M
+            SAM_SA_10_S_300PS_CP_54K6 = vehicles.AirDefence.SAM_SA_10_S_300PS_CP_54K6
+            SAM_SA_10_S_300PS_LN_5P85C = vehicles.AirDefence.SAM_SA_10_S_300PS_LN_5P85C
+            SAM_SA_10_S_300PS_LN_5P85D = vehicles.AirDefence.SAM_SA_10_S_300PS_LN_5P85D
+            SAM_SA_10_S_300PS_SR_64H6E = vehicles.AirDefence.SAM_SA_10_S_300PS_SR_64H6E
+            SAM_SA_11_Buk_CC_9S470M1 = vehicles.AirDefence.SAM_SA_11_Buk_CC_9S470M1
+            SAM_SA_11_Buk_LN_9A310M1 = vehicles.AirDefence.SAM_SA_11_Buk_LN_9A310M1
+            SAM_SA_11_Buk_SR_9S18M1 = vehicles.AirDefence.SAM_SA_11_Buk_SR_9S18M1
+            SAM_SA_18_Igla_comm = vehicles.AirDefence.SAM_SA_18_Igla_comm
+            SAM_SA_18_Igla_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_MANPADS
+            SAM_SA_3_S_125_TR_SNR = vehicles.AirDefence.SAM_SA_3_S_125_TR_SNR
+            SAM_SA_2_TR_SNR_75_Fan_Song = vehicles.AirDefence.SAM_SA_2_TR_SNR_75_Fan_Song
+            SAM_SA_9_Strela_1_9P31 = vehicles.AirDefence.SAM_SA_9_Strela_1_9P31
+            SAM_SA_13_Strela_10M3_9A35M3 = vehicles.AirDefence.SAM_SA_13_Strela_10M3_9A35M3
+            SAM_SA_15_Tor_9A331 = vehicles.AirDefence.SAM_SA_15_Tor_9A331
+            AAA_ZU_23_on_Ural_375 = vehicles.AirDefence.AAA_ZU_23_on_Ural_375
+            SPAAA_ZSU_23_4_Shilka = vehicles.AirDefence.SPAAA_ZSU_23_4_Shilka
+            AAA_ZU_23_Closed = vehicles.AirDefence.AAA_ZU_23_Closed
+            AAA_ZU_23_Emplacement = vehicles.AirDefence.AAA_ZU_23_Emplacement
+            AAA_Bofors_40mm = vehicles.AirDefence.AAA_Bofors_40mm
+            AAA_Vulcan_M163 = vehicles.AirDefence.AAA_Vulcan_M163
+            SAM_Hawk_TR_AN_MPQ_46 = vehicles.AirDefence.SAM_Hawk_TR_AN_MPQ_46
+            SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
+            SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
+            SAM_Hawk_CWAR_AN_MPQ_55 = vehicles.AirDefence.SAM_Hawk_CWAR_AN_MPQ_55
+            SAM_Hawk_PCP = vehicles.AirDefence.SAM_Hawk_PCP
+            SAM_Chaparral_M48 = vehicles.AirDefence.SAM_Chaparral_M48
+            SAM_SA_18_Igla_S_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_S_MANPADS
+            SAM_SA_18_Igla_S_comm = vehicles.AirDefence.SAM_SA_18_Igla_S_comm
+            AAA_ZU_23_Insurgent_Closed = vehicles.AirDefence.AAA_ZU_23_Insurgent_Closed
+            AAA_ZU_23_Insurgent = vehicles.AirDefence.AAA_ZU_23_Insurgent
+            AAA_ZU_23_Insurgent_on_Ural_375 = vehicles.AirDefence.AAA_ZU_23_Insurgent_on_Ural_375
+            SAM_Avenger_M1097 = vehicles.AirDefence.SAM_Avenger_M1097
+            SAM_Roland_ADS = vehicles.AirDefence.SAM_Roland_ADS
+            SAM_Roland_EWR = vehicles.AirDefence.SAM_Roland_EWR
+            Stinger_MANPADS = vehicles.AirDefence.Stinger_MANPADS
+            SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
+            SAM_Stinger_comm_dsr = vehicles.AirDefence.SAM_Stinger_comm_dsr
+            Rapier_FSA_Launcher = vehicles.AirDefence.Rapier_FSA_Launcher
+            Rapier_FSA_Optical_Tracker = vehicles.AirDefence.Rapier_FSA_Optical_Tracker
+            Rapier_FSA_Blindfire_Tracker = vehicles.AirDefence.Rapier_FSA_Blindfire_Tracker
+            SAM_Patriot_AMG_AN_MRC_137 = vehicles.AirDefence.SAM_Patriot_AMG_AN_MRC_137
+            SAM_Patriot_ECS_AN_MSQ_104 = vehicles.AirDefence.SAM_Patriot_ECS_AN_MSQ_104
+            SAM_Patriot_LN_M901 = vehicles.AirDefence.SAM_Patriot_LN_M901
+            SAM_Patriot_EPP_III = vehicles.AirDefence.SAM_Patriot_EPP_III
+            SAM_Patriot_ICC = vehicles.AirDefence.SAM_Patriot_ICC
+            SAM_Patriot_STR_AN_MPQ_53 = vehicles.AirDefence.SAM_Patriot_STR_AN_MPQ_53
+            SPAAA_Gepard = vehicles.AirDefence.SPAAA_Gepard
+            HQ_7_Self_Propelled_LN = vehicles.AirDefence.HQ_7_Self_Propelled_LN
+            HQ_7_Self_Propelled_STR = vehicles.AirDefence.HQ_7_Self_Propelled_STR
+            SAM_SA_18_Igla_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_MANPADS
+            SAM_Linebacker_M6 = vehicles.AirDefence.SAM_Linebacker_M6
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+            TACAN_Beacon__Man_Portable__TTS_3030 = vehicles.Fortification.TACAN_Beacon__Man_Portable__TTS_3030
+            Bunker_with_SK_C_28_15cm_naval_gun = vehicles.Fortification.Bunker_with_SK_C_28_15cm_naval_gun
+            Fire_control_bunker = vehicles.Fortification.Fire_control_bunker
+
+        class Unarmed:
+            Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
+            Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+            Sd_Kfz_2 = vehicles.Unarmed.Sd_Kfz_2
+            Sd_Kfz_7 = vehicles.Unarmed.Sd_Kfz_7
+            Horch_901_typ_40 = vehicles.Unarmed.Horch_901_typ_40
+            Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
+            Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
+            Transport_GAZ_3307 = vehicles.Unarmed.Transport_GAZ_3307
+            Transport_GAZ_66 = vehicles.Unarmed.Transport_GAZ_66
+            Transport_IKARUS_280 = vehicles.Unarmed.Transport_IKARUS_280
+            Transport_KAMAZ_43101 = vehicles.Unarmed.Transport_KAMAZ_43101
+            Transport_LAZ_695 = vehicles.Unarmed.Transport_LAZ_695
+            CP_SKP_11_ATC_Mobile_Command_Post = vehicles.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
+            Transport_ZIU_9 = vehicles.Unarmed.Transport_ZIU_9
+            Transport_UAZ_469 = vehicles.Unarmed.Transport_UAZ_469
+            Transport_fire_engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_engine_Ural_ATsP_6
+            CP_Ural_375_PBU = vehicles.Unarmed.CP_Ural_375_PBU
+            Transport_Ural_375 = vehicles.Unarmed.Transport_Ural_375
+            GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
+            Transport_Ural_4320_31_Armored = vehicles.Unarmed.Transport_Ural_4320_31_Armored
+            Transport_Ural_4320T = vehicles.Unarmed.Transport_Ural_4320T
+            Transport_VAZ_2109 = vehicles.Unarmed.Transport_VAZ_2109
+            GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
+            Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
+            Transport_ZIL_4331 = vehicles.Unarmed.Transport_ZIL_4331
+            Willys_MB = vehicles.Unarmed.Willys_MB
+            Bedford_MWD = vehicles.Unarmed.Bedford_MWD
+            CCKW_353 = vehicles.Unarmed.CCKW_353
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+            Transport_KrAZ_6322 = vehicles.Unarmed.Transport_KrAZ_6322
+            Transport_GAZ_3308 = vehicles.Unarmed.Transport_GAZ_3308
+            Transport_MAZ_6303 = vehicles.Unarmed.Transport_MAZ_6303
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+            HEMTT_TFFT = vehicles.Unarmed.HEMTT_TFFT
+            Tanker_M978_HEMTT = vehicles.Unarmed.Tanker_M978_HEMTT
+            Land_Rover_101_FC = vehicles.Unarmed.Land_Rover_101_FC
+            Land_Rover_109_S3 = vehicles.Unarmed.Land_Rover_109_S3
+            CP_Predator_GCS = vehicles.Unarmed.CP_Predator_GCS
+            CP_Predator_TrojanSpirit = vehicles.Unarmed.CP_Predator_TrojanSpirit
+            APC_Tigr_233036 = vehicles.Unarmed.APC_Tigr_233036
+
+        class Armor:
+            HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
+            HT_Pz_Kpfw_VI_Ausf__B__Tiger_II = vehicles.Armor.HT_Pz_Kpfw_VI_Ausf__B__Tiger_II
+            MT_Pz_Kpfw_V_Panther_Ausf_G = vehicles.Armor.MT_Pz_Kpfw_V_Panther_Ausf_G
+            MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
+            TD_Jagdpanther_G1 = vehicles.Armor.TD_Jagdpanther_G1
+            TD_Jagdpanzer_IV = vehicles.Armor.TD_Jagdpanzer_IV
+            StuG_IV = vehicles.Armor.StuG_IV
+            IFV_Sd_Kfz_234_2_Puma = vehicles.Armor.IFV_Sd_Kfz_234_2_Puma
+            APC_Sd_Kfz_251 = vehicles.Armor.APC_Sd_Kfz_251
+            StuG_III_Ausf__G = vehicles.Armor.StuG_III_Ausf__G
+            Sd_Kfz_184_Elefant = vehicles.Armor.Sd_Kfz_184_Elefant
+            IFV_BMD_1 = vehicles.Armor.IFV_BMD_1
+            IFV_BMP_1 = vehicles.Armor.IFV_BMP_1
+            IFV_BMP_2 = vehicles.Armor.IFV_BMP_2
+            IFV_BMP_3 = vehicles.Armor.IFV_BMP_3
+            FDDM_Grad = vehicles.Armor.FDDM_Grad
+            ARV_BRDM_2 = vehicles.Armor.ARV_BRDM_2
+            ARV_BTR_RD = vehicles.Armor.ARV_BTR_RD
+            APC_BTR_80 = vehicles.Armor.APC_BTR_80
+            APC_MTLB = vehicles.Armor.APC_MTLB
+            MBT_T_55 = vehicles.Armor.MBT_T_55
+            MBT_T_72B = vehicles.Armor.MBT_T_72B
+            MBT_T_80U = vehicles.Armor.MBT_T_80U
+            APC_M2A1 = vehicles.Armor.APC_M2A1
+            CT_Cromwell_IV = vehicles.Armor.CT_Cromwell_IV
+            ST_Centaur_IV = vehicles.Armor.ST_Centaur_IV
+            MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
+            TD_M10_GMC = vehicles.Armor.TD_M10_GMC
+            MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
+            HIT_Churchill_VII = vehicles.Armor.HIT_Churchill_VII
+            M30_Cargo_Carrier = vehicles.Armor.M30_Cargo_Carrier
+            LAC_M8_Greyhound = vehicles.Armor.LAC_M8_Greyhound
+            APC_M1043_HMMWV_Armament = vehicles.Armor.APC_M1043_HMMWV_Armament
+            APC_M113 = vehicles.Armor.APC_M113
+            MBT_M60A3_Patton = vehicles.Armor.MBT_M60A3_Patton
+            MBT_M1A2_Abrams = vehicles.Armor.MBT_M1A2_Abrams
+            ATGM_M1045_HMMWV_TOW = vehicles.Armor.ATGM_M1045_HMMWV_TOW
+            MBT_T_90 = vehicles.Armor.MBT_T_90
+            APC_AAV_7 = vehicles.Armor.APC_AAV_7
+            MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
+            MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
+            IFV_M2A2_Bradley = vehicles.Armor.IFV_M2A2_Bradley
+            TPz_Fuchs = vehicles.Armor.TPz_Fuchs
+            APC_Cobra = vehicles.Armor.APC_Cobra
+            IFV_LAV_25 = vehicles.Armor.IFV_LAV_25
+            MBT_Merkava_Mk__4 = vehicles.Armor.MBT_Merkava_Mk__4
+            IFV_Marder = vehicles.Armor.IFV_Marder
+            MBT_Leclerc = vehicles.Armor.MBT_Leclerc
+            ZBD_04A = vehicles.Armor.ZBD_04A
+            ZTZ_96B = vehicles.Armor.ZTZ_96B
+            MBT_Challenger_II = vehicles.Armor.MBT_Challenger_II
+            APC_M1126_Stryker_ICV = vehicles.Armor.APC_M1126_Stryker_ICV
+            SPG_M1128_Stryker_MGS = vehicles.Armor.SPG_M1128_Stryker_MGS
+            ATGM_M1134_Stryker = vehicles.Armor.ATGM_M1134_Stryker
+            IFV_MCV_80 = vehicles.Armor.IFV_MCV_80
+
+        class MissilesSS:
+            V_1_ramp = vehicles.MissilesSS.V_1_ramp
+            SRBM_SS_1C_Scud_B_9K72_LN_9P117M = vehicles.MissilesSS.SRBM_SS_1C_Scud_B_9K72_LN_9P117M
+            SS_N_2_Silkworm = vehicles.MissilesSS.SS_N_2_Silkworm
+            Silkworm_Radar = vehicles.MissilesSS.Silkworm_Radar
+
+        class Locomotive:
+            Electric_locomotive_VL80 = vehicles.Locomotive.Electric_locomotive_VL80
+            Locomotive_CHME3T = vehicles.Locomotive.Locomotive_CHME3T
+            ES44AH = vehicles.Locomotive.ES44AH
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            Coach_for_cargo = vehicles.Carriage.Coach_for_cargo
+            Coach_for_open_cargo = vehicles.Carriage.Coach_for_open_cargo
+            Coach_a_tank_blue = vehicles.Carriage.Coach_a_tank_blue
+            Coach_a_tank_yellow = vehicles.Carriage.Coach_a_tank_yellow
+            Coach_for_passengers = vehicles.Carriage.Coach_for_passengers
+            Coach_flatbed = vehicles.Carriage.Coach_flatbed
+            Boxcartrinity = vehicles.Carriage.Boxcartrinity
+            Tankcartrinity = vehicles.Carriage.Tankcartrinity
+            Wellcarnsc = vehicles.Carriage.Wellcarnsc
+            DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+    class Plane:
+        A_10C = planes.A_10C
+        FW_190A8 = planes.FW_190A8
+        Bf_109K_4 = planes.Bf_109K_4
+        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
+        P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
+        AJS37 = planes.AJS37
+        AV8BNA = planes.AV8BNA
+        KC130 = planes.KC130
+        KC135MPRS = planes.KC135MPRS
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        JF_17 = planes.JF_17
+        Christen_Eagle_II = planes.Christen_Eagle_II
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F_Sabre
+        FA_18C_hornet = planes.FA_18C_hornet
+        Hawk = planes.Hawk
+        I_16 = planes.I_16
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
+        MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
+        A_20G = planes.A_20G
+        Ju_88A4 = planes.Ju_88A4
+        A_50 = planes.A_50
+        An_26B = planes.An_26B
+        An_30M = planes.An_30M
+        B_17G = planes.B_17G
+        FW_190D9 = planes.FW_190D9
+        IL_76MD = planes.IL_76MD
+        IL_78M = planes.IL_78M
+        MiG_23MLD = planes.MiG_23MLD
+        MiG_25PD = planes.MiG_25PD
+        MiG_25RBT = planes.MiG_25RBT
+        MiG_27K = planes.MiG_27K
+        MiG_29A = planes.MiG_29A
+        MiG_31 = planes.MiG_31
+        P_51D = planes.P_51D
+        TF_51D = planes.TF_51D
+        Su_17M4 = planes.Su_17M4
+        Su_24M = planes.Su_24M
+        Su_24MR = planes.Su_24MR
+        Su_25 = planes.Su_25
+        Su_25T = planes.Su_25T
+        Su_27 = planes.Su_27
+        Tu_142 = planes.Tu_142
+        Tu_160 = planes.Tu_160
+        Tu_22M3 = planes.Tu_22M3
+        Tu_95MS = planes.Tu_95MS
+        Yak_40 = planes.Yak_40
+        C_130 = planes.C_130
+        MiG_29S = planes.MiG_29S
+        F_16C_bl_50 = planes.F_16C_bl_50
+        F_16C_bl_52d = planes.F_16C_bl_52d
+        F_16A_MLU = planes.F_16A_MLU
+        Tornado_IDS = planes.Tornado_IDS
+        P_51D_30_NA = planes.P_51D_30_NA
+        C_17A = planes.C_17A
+        E_3A = planes.E_3A
+        F_16A = planes.F_16A
+        MQ_9_Reaper = planes.MQ_9_Reaper
+        RQ_1A_Predator = planes.RQ_1A_Predator
+        F_A_18C = planes.F_A_18C
+        F_4E = planes.F_4E
+        WingLoong_I = planes.WingLoong_I
+        Su_33 = planes.Su_33
+        Su_25TM = planes.Su_25TM
+        Su_30 = planes.Su_30
+        Su_34 = planes.Su_34
+        L_39ZA = planes.L_39ZA
+        F_15C = planes.F_15C
+        F_15E = planes.F_15E
+        KC_135 = planes.KC_135
+        Mirage_2000_5 = planes.Mirage_2000_5
+        E_2C = planes.E_2C
+        MiG_29G = planes.MiG_29G
+        F_A_18A = planes.F_A_18A
+        J_11A = planes.J_11A
+        KJ_2000 = planes.KJ_2000
+        B_1B = planes.B_1B
+        B_52H = planes.B_52H
+        F_117A = planes.F_117A
+        F_14A = planes.F_14A
+        S_3B_Tanker = planes.S_3B_Tanker
+        S_3B = planes.S_3B
+        A_10C_2 = planes.A_10C_2
+        F_14B = planes.F_14B
+        Tornado_GR4 = planes.Tornado_GR4
+
+    planes = [
+        Plane.A_10C,
+        Plane.FW_190A8,
+        Plane.Bf_109K_4,
+        Plane.SpitfireLFMkIX,
+        Plane.SpitfireLFMkIXCW,
+        Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
+        Plane.AJS37,
+        Plane.AV8BNA,
+        Plane.KC130,
+        Plane.KC135MPRS,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.JF_17,
+        Plane.Christen_Eagle_II,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.FA_18C_hornet,
+        Plane.Hawk,
+        Plane.I_16,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_19P,
+        Plane.MiG_21Bis,
+        Plane.Yak_52,
+        Plane.A_20G,
+        Plane.Ju_88A4,
+        Plane.A_50,
+        Plane.An_26B,
+        Plane.An_30M,
+        Plane.B_17G,
+        Plane.FW_190D9,
+        Plane.IL_76MD,
+        Plane.IL_78M,
+        Plane.MiG_23MLD,
+        Plane.MiG_25PD,
+        Plane.MiG_25RBT,
+        Plane.MiG_27K,
+        Plane.MiG_29A,
+        Plane.MiG_31,
+        Plane.P_51D,
+        Plane.TF_51D,
+        Plane.Su_17M4,
+        Plane.Su_24M,
+        Plane.Su_24MR,
+        Plane.Su_25,
+        Plane.Su_25T,
+        Plane.Su_27,
+        Plane.Tu_142,
+        Plane.Tu_160,
+        Plane.Tu_22M3,
+        Plane.Tu_95MS,
+        Plane.Yak_40,
+        Plane.C_130,
+        Plane.MiG_29S,
+        Plane.F_16C_bl_50,
+        Plane.F_16C_bl_52d,
+        Plane.F_16A_MLU,
+        Plane.Tornado_IDS,
+        Plane.P_51D_30_NA,
+        Plane.C_17A,
+        Plane.E_3A,
+        Plane.F_16A,
+        Plane.MQ_9_Reaper,
+        Plane.RQ_1A_Predator,
+        Plane.F_A_18C,
+        Plane.F_4E,
+        Plane.WingLoong_I,
+        Plane.Su_33,
+        Plane.Su_25TM,
+        Plane.Su_30,
+        Plane.Su_34,
+        Plane.L_39ZA,
+        Plane.F_15C,
+        Plane.F_15E,
+        Plane.KC_135,
+        Plane.Mirage_2000_5,
+        Plane.E_2C,
+        Plane.MiG_29G,
+        Plane.F_A_18A,
+        Plane.J_11A,
+        Plane.KJ_2000,
+        Plane.B_1B,
+        Plane.B_52H,
+        Plane.F_117A,
+        Plane.F_14A,
+        Plane.S_3B_Tanker,
+        Plane.S_3B,
+        Plane.A_10C_2,
+        Plane.F_14B,
+        Plane.Tornado_GR4,
+    ]
+
+    class Helicopter:
+        Ka_50 = helicopters.Ka_50
+        SA342M = helicopters.SA342M
+        SA342L = helicopters.SA342L
+        SA342Mistral = helicopters.SA342Mistral
+        SA342Minigun = helicopters.SA342Minigun
+        Ka_27 = helicopters.Ka_27
+        Mi_24V = helicopters.Mi_24V
+        Mi_26 = helicopters.Mi_26
+        Mi_8MT = helicopters.Mi_8MT
+        UH_1H = helicopters.UH_1H
+        CH_47D = helicopters.CH_47D
+        UH_60A = helicopters.UH_60A
+        Mi_28N = helicopters.Mi_28N
+        AH_64D = helicopters.AH_64D
+        OH_58D = helicopters.OH_58D
+        AH_64A = helicopters.AH_64A
+        AH_1W = helicopters.AH_1W
+        SH_60B = helicopters.SH_60B
+        CH_53E = helicopters.CH_53E
+
+    helicopters = [
+        Helicopter.Ka_50,
+        Helicopter.SA342M,
+        Helicopter.SA342L,
+        Helicopter.SA342Mistral,
+        Helicopter.SA342Minigun,
+        Helicopter.Ka_27,
+        Helicopter.Mi_24V,
+        Helicopter.Mi_26,
+        Helicopter.Mi_8MT,
+        Helicopter.UH_1H,
+        Helicopter.CH_47D,
+        Helicopter.UH_60A,
+        Helicopter.Mi_28N,
+        Helicopter.AH_64D,
+        Helicopter.OH_58D,
+        Helicopter.AH_64A,
+        Helicopter.AH_1W,
+        Helicopter.SH_60B,
+        Helicopter.CH_53E,
+    ]
+
+    class Ship:
+        Armed_speedboat = ships.Armed_speedboat
+        Uboat_VIIC_U_flak = ships.Uboat_VIIC_U_flak
+        Schnellboot_type_S130 = ships.Schnellboot_type_S130
+        FFL_1124_4_Grisha = ships.FFL_1124_4_Grisha
+        SSK_877 = ships.SSK_877
+        Bulk_cargo_ship_Yakushev = ships.Bulk_cargo_ship_Yakushev
+        Dry_cargo_ship_Ivanov = ships.Dry_cargo_ship_Ivanov
+        Tanker_Elnya_160 = ships.Tanker_Elnya_160
+        CV_1143_5_Admiral_Kuznetsov = ships.CV_1143_5_Admiral_Kuznetsov
+        FSG_1241_1MP_Molniya = ships.FSG_1241_1MP_Molniya
+        CG_1164_Moskva = ships.CG_1164_Moskva
+        FFG_11540_Neustrashimy = ships.FFG_11540_Neustrashimy
+        FF_1135M_Rezky = ships.FF_1135M_Rezky
+        SSK_641B = ships.SSK_641B
+        Civil_boat_Zvezdny = ships.Civil_boat_Zvezdny
+        LST_Mk_II = ships.LST_Mk_II
+        LS_Samuel_Chase = ships.LS_Samuel_Chase
+        LCVP__Higgins_boat = ships.LCVP__Higgins_boat
+        Oliver_Hazzard_Perry_class = ships.Oliver_Hazzard_Perry_class
+        CGN_1144_2_Pyotr_Velikiy = ships.CGN_1144_2_Pyotr_Velikiy
+        CV_1143_5_Admiral_Kuznetsov_2017 = ships.CV_1143_5_Admiral_Kuznetsov_2017
+        Type_052B_Destroyer = ships.Type_052B_Destroyer
+        Type_054A_Frigate = ships.Type_054A_Frigate
+        Type_052C_Destroyer = ships.Type_052C_Destroyer
+        Type_093_Attack_Submarine = ships.Type_093_Attack_Submarine
+        Type_071_Amphibious_Transport_Dock = ships.Type_071_Amphibious_Transport_Dock
+        CVN_70_Carl_Vinson = ships.CVN_70_Carl_Vinson
+        Ticonderoga_class = ships.Ticonderoga_class
+        CVN_74_John_C__Stennis = ships.CVN_74_John_C__Stennis
+        LHA_1_Tarawa = ships.LHA_1_Tarawa
+        USS_Arleigh_Burke_IIa = ships.USS_Arleigh_Burke_IIa
+        CVN_71_Theodore_Roosevelt = ships.CVN_71_Theodore_Roosevelt
+        CVN_72_Abraham_Lincoln = ships.CVN_72_Abraham_Lincoln
+        CVN_73_George_Washington = ships.CVN_73_George_Washington
+        CVN_75_Harry_S__Truman = ships.CVN_75_Harry_S__Truman
+
+    def __init__(self):
+        super(CombinedJointTaskForcesBlue, self).__init__(CombinedJointTaskForcesBlue.id, CombinedJointTaskForcesBlue.name)
+
+
+class CombinedJointTaskForcesRed(Country):
+    id = 81
+    name = "Combined Joint Task Forces Red"
+
+    class Vehicle:
+
+        class Artillery:
+            Sturmpanzer_IV_Brummbär = vehicles.Artillery.Sturmpanzer_IV_Brummbär
+            _2B11_mortar = vehicles.Artillery._2B11_mortar
+            MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
+            SPH_2S9_Nona = vehicles.Artillery.SPH_2S9_Nona
+            SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
+            SPH_2S1_Gvozdika = vehicles.Artillery.SPH_2S1_Gvozdika
+            SPH_2S19_Msta = vehicles.Artillery.SPH_2S19_Msta
+            MLRS_9A52_Smerch = vehicles.Artillery.MLRS_9A52_Smerch
+            MLRS_9A52_Smerch_HE = vehicles.Artillery.MLRS_9A52_Smerch_HE
+            MLRS_9K57_Uragan_BM_27 = vehicles.Artillery.MLRS_9K57_Uragan_BM_27
+            SpGH_Dana = vehicles.Artillery.SpGH_Dana
+            M12_GMC = vehicles.Artillery.M12_GMC
+            SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
+            MLRS_M270 = vehicles.Artillery.MLRS_M270
+            MLRS_FDDM = vehicles.Artillery.MLRS_FDDM
+
+        class Infantry:
+            Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
+            Infantry_Soldier_Rus = vehicles.Infantry.Infantry_Soldier_Rus
+            Paratrooper_AKS = vehicles.Infantry.Paratrooper_AKS
+            Paratrooper_RPG_16 = vehicles.Infantry.Paratrooper_RPG_16
+            Infantry_Soldier_Insurgents = vehicles.Infantry.Infantry_Soldier_Insurgents
+            Soldier_AK = vehicles.Infantry.Soldier_AK
+            Soldier_RPG = vehicles.Infantry.Soldier_RPG
+            Soldier_M249 = vehicles.Infantry.Soldier_M249
+            Infantry_M4 = vehicles.Infantry.Infantry_M4
+            Georgian_soldier_with_M4 = vehicles.Infantry.Georgian_soldier_with_M4
+            Infantry_M1_Garand = vehicles.Infantry.Infantry_M1_Garand
+            Infantry_SMLE_No_4_Mk_1 = vehicles.Infantry.Infantry_SMLE_No_4_Mk_1
+
+        class AirDefence:
+            AAA_8_8cm_Flak_18 = vehicles.AirDefence.AAA_8_8cm_Flak_18
+            AAA_Flak_38 = vehicles.AirDefence.AAA_Flak_38
+            AAA_8_8cm_Flak_36 = vehicles.AirDefence.AAA_8_8cm_Flak_36
+            AAA_8_8cm_Flak_37 = vehicles.AirDefence.AAA_8_8cm_Flak_37
+            AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
+            AAA_Kdo_G_40 = vehicles.AirDefence.AAA_Kdo_G_40
+            Flak_Searchlight_37 = vehicles.AirDefence.Flak_Searchlight_37
+            Maschinensatz_33 = vehicles.AirDefence.Maschinensatz_33
+            AAA_8_8cm_Flak_41 = vehicles.AirDefence.AAA_8_8cm_Flak_41
+            EWR_1L13 = vehicles.AirDefence.EWR_1L13
+            SAM_SA_19_Tunguska_2S6 = vehicles.AirDefence.SAM_SA_19_Tunguska_2S6
+            EWR_55G6 = vehicles.AirDefence.EWR_55G6
+            SAM_SA_3_S_125_LN_5P73 = vehicles.AirDefence.SAM_SA_3_S_125_LN_5P73
+            CP_9S80M1_Sborka = vehicles.AirDefence.CP_9S80M1_Sborka
+            SAM_SA_6_Kub_STR_9S91 = vehicles.AirDefence.SAM_SA_6_Kub_STR_9S91
+            SAM_SA_6_Kub_LN_2P25 = vehicles.AirDefence.SAM_SA_6_Kub_LN_2P25
+            SAM_SA_8_Osa_9A33 = vehicles.AirDefence.SAM_SA_8_Osa_9A33
+            SAM_SR_P_19 = vehicles.AirDefence.SAM_SR_P_19
+            SAM_SA_2_LN_SM_90 = vehicles.AirDefence.SAM_SA_2_LN_SM_90
+            SAM_SA_10_S_300PS_TR_30N6 = vehicles.AirDefence.SAM_SA_10_S_300PS_TR_30N6
+            SAM_SA_10_S_300PS_SR_5N66M = vehicles.AirDefence.SAM_SA_10_S_300PS_SR_5N66M
+            SAM_SA_10_S_300PS_CP_54K6 = vehicles.AirDefence.SAM_SA_10_S_300PS_CP_54K6
+            SAM_SA_10_S_300PS_LN_5P85C = vehicles.AirDefence.SAM_SA_10_S_300PS_LN_5P85C
+            SAM_SA_10_S_300PS_LN_5P85D = vehicles.AirDefence.SAM_SA_10_S_300PS_LN_5P85D
+            SAM_SA_10_S_300PS_SR_64H6E = vehicles.AirDefence.SAM_SA_10_S_300PS_SR_64H6E
+            SAM_SA_11_Buk_CC_9S470M1 = vehicles.AirDefence.SAM_SA_11_Buk_CC_9S470M1
+            SAM_SA_11_Buk_LN_9A310M1 = vehicles.AirDefence.SAM_SA_11_Buk_LN_9A310M1
+            SAM_SA_11_Buk_SR_9S18M1 = vehicles.AirDefence.SAM_SA_11_Buk_SR_9S18M1
+            SAM_SA_18_Igla_comm = vehicles.AirDefence.SAM_SA_18_Igla_comm
+            SAM_SA_18_Igla_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_MANPADS
+            SAM_SA_3_S_125_TR_SNR = vehicles.AirDefence.SAM_SA_3_S_125_TR_SNR
+            SAM_SA_2_TR_SNR_75_Fan_Song = vehicles.AirDefence.SAM_SA_2_TR_SNR_75_Fan_Song
+            SAM_SA_9_Strela_1_9P31 = vehicles.AirDefence.SAM_SA_9_Strela_1_9P31
+            SAM_SA_13_Strela_10M3_9A35M3 = vehicles.AirDefence.SAM_SA_13_Strela_10M3_9A35M3
+            SAM_SA_15_Tor_9A331 = vehicles.AirDefence.SAM_SA_15_Tor_9A331
+            AAA_ZU_23_on_Ural_375 = vehicles.AirDefence.AAA_ZU_23_on_Ural_375
+            SPAAA_ZSU_23_4_Shilka = vehicles.AirDefence.SPAAA_ZSU_23_4_Shilka
+            AAA_ZU_23_Closed = vehicles.AirDefence.AAA_ZU_23_Closed
+            AAA_ZU_23_Emplacement = vehicles.AirDefence.AAA_ZU_23_Emplacement
+            AAA_Bofors_40mm = vehicles.AirDefence.AAA_Bofors_40mm
+            AAA_Vulcan_M163 = vehicles.AirDefence.AAA_Vulcan_M163
+            SAM_Hawk_TR_AN_MPQ_46 = vehicles.AirDefence.SAM_Hawk_TR_AN_MPQ_46
+            SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
+            SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
+            SAM_Hawk_CWAR_AN_MPQ_55 = vehicles.AirDefence.SAM_Hawk_CWAR_AN_MPQ_55
+            SAM_Hawk_PCP = vehicles.AirDefence.SAM_Hawk_PCP
+            SAM_Chaparral_M48 = vehicles.AirDefence.SAM_Chaparral_M48
+            SAM_SA_18_Igla_S_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_S_MANPADS
+            SAM_SA_18_Igla_S_comm = vehicles.AirDefence.SAM_SA_18_Igla_S_comm
+            AAA_ZU_23_Insurgent_Closed = vehicles.AirDefence.AAA_ZU_23_Insurgent_Closed
+            AAA_ZU_23_Insurgent = vehicles.AirDefence.AAA_ZU_23_Insurgent
+            AAA_ZU_23_Insurgent_on_Ural_375 = vehicles.AirDefence.AAA_ZU_23_Insurgent_on_Ural_375
+            SAM_Avenger_M1097 = vehicles.AirDefence.SAM_Avenger_M1097
+            SAM_Roland_ADS = vehicles.AirDefence.SAM_Roland_ADS
+            SAM_Roland_EWR = vehicles.AirDefence.SAM_Roland_EWR
+            Stinger_MANPADS = vehicles.AirDefence.Stinger_MANPADS
+            SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
+            SAM_Stinger_comm_dsr = vehicles.AirDefence.SAM_Stinger_comm_dsr
+            Rapier_FSA_Launcher = vehicles.AirDefence.Rapier_FSA_Launcher
+            Rapier_FSA_Optical_Tracker = vehicles.AirDefence.Rapier_FSA_Optical_Tracker
+            Rapier_FSA_Blindfire_Tracker = vehicles.AirDefence.Rapier_FSA_Blindfire_Tracker
+            SAM_Patriot_AMG_AN_MRC_137 = vehicles.AirDefence.SAM_Patriot_AMG_AN_MRC_137
+            SAM_Patriot_ECS_AN_MSQ_104 = vehicles.AirDefence.SAM_Patriot_ECS_AN_MSQ_104
+            SAM_Patriot_LN_M901 = vehicles.AirDefence.SAM_Patriot_LN_M901
+            SAM_Patriot_EPP_III = vehicles.AirDefence.SAM_Patriot_EPP_III
+            SAM_Patriot_ICC = vehicles.AirDefence.SAM_Patriot_ICC
+            SAM_Patriot_STR_AN_MPQ_53 = vehicles.AirDefence.SAM_Patriot_STR_AN_MPQ_53
+            SPAAA_Gepard = vehicles.AirDefence.SPAAA_Gepard
+            HQ_7_Self_Propelled_LN = vehicles.AirDefence.HQ_7_Self_Propelled_LN
+            HQ_7_Self_Propelled_STR = vehicles.AirDefence.HQ_7_Self_Propelled_STR
+            SAM_SA_18_Igla_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_MANPADS
+            SAM_Linebacker_M6 = vehicles.AirDefence.SAM_Linebacker_M6
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+            TACAN_Beacon__Man_Portable__TTS_3030 = vehicles.Fortification.TACAN_Beacon__Man_Portable__TTS_3030
+            Bunker_with_SK_C_28_15cm_naval_gun = vehicles.Fortification.Bunker_with_SK_C_28_15cm_naval_gun
+            Fire_control_bunker = vehicles.Fortification.Fire_control_bunker
+
+        class Unarmed:
+            Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
+            Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+            Sd_Kfz_2 = vehicles.Unarmed.Sd_Kfz_2
+            Sd_Kfz_7 = vehicles.Unarmed.Sd_Kfz_7
+            Horch_901_typ_40 = vehicles.Unarmed.Horch_901_typ_40
+            Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
+            Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
+            Transport_GAZ_3307 = vehicles.Unarmed.Transport_GAZ_3307
+            Transport_GAZ_66 = vehicles.Unarmed.Transport_GAZ_66
+            Transport_IKARUS_280 = vehicles.Unarmed.Transport_IKARUS_280
+            Transport_KAMAZ_43101 = vehicles.Unarmed.Transport_KAMAZ_43101
+            Transport_LAZ_695 = vehicles.Unarmed.Transport_LAZ_695
+            CP_SKP_11_ATC_Mobile_Command_Post = vehicles.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
+            Transport_ZIU_9 = vehicles.Unarmed.Transport_ZIU_9
+            Transport_UAZ_469 = vehicles.Unarmed.Transport_UAZ_469
+            Transport_fire_engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_engine_Ural_ATsP_6
+            CP_Ural_375_PBU = vehicles.Unarmed.CP_Ural_375_PBU
+            Transport_Ural_375 = vehicles.Unarmed.Transport_Ural_375
+            GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
+            Transport_Ural_4320_31_Armored = vehicles.Unarmed.Transport_Ural_4320_31_Armored
+            Transport_Ural_4320T = vehicles.Unarmed.Transport_Ural_4320T
+            Transport_VAZ_2109 = vehicles.Unarmed.Transport_VAZ_2109
+            GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
+            Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
+            Transport_ZIL_4331 = vehicles.Unarmed.Transport_ZIL_4331
+            Willys_MB = vehicles.Unarmed.Willys_MB
+            Bedford_MWD = vehicles.Unarmed.Bedford_MWD
+            CCKW_353 = vehicles.Unarmed.CCKW_353
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+            Transport_KrAZ_6322 = vehicles.Unarmed.Transport_KrAZ_6322
+            Transport_GAZ_3308 = vehicles.Unarmed.Transport_GAZ_3308
+            Transport_MAZ_6303 = vehicles.Unarmed.Transport_MAZ_6303
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+            HEMTT_TFFT = vehicles.Unarmed.HEMTT_TFFT
+            Tanker_M978_HEMTT = vehicles.Unarmed.Tanker_M978_HEMTT
+            Land_Rover_101_FC = vehicles.Unarmed.Land_Rover_101_FC
+            Land_Rover_109_S3 = vehicles.Unarmed.Land_Rover_109_S3
+            CP_Predator_GCS = vehicles.Unarmed.CP_Predator_GCS
+            CP_Predator_TrojanSpirit = vehicles.Unarmed.CP_Predator_TrojanSpirit
+            APC_Tigr_233036 = vehicles.Unarmed.APC_Tigr_233036
+
+        class Armor:
+            HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
+            HT_Pz_Kpfw_VI_Ausf__B__Tiger_II = vehicles.Armor.HT_Pz_Kpfw_VI_Ausf__B__Tiger_II
+            MT_Pz_Kpfw_V_Panther_Ausf_G = vehicles.Armor.MT_Pz_Kpfw_V_Panther_Ausf_G
+            MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
+            TD_Jagdpanther_G1 = vehicles.Armor.TD_Jagdpanther_G1
+            TD_Jagdpanzer_IV = vehicles.Armor.TD_Jagdpanzer_IV
+            StuG_IV = vehicles.Armor.StuG_IV
+            IFV_Sd_Kfz_234_2_Puma = vehicles.Armor.IFV_Sd_Kfz_234_2_Puma
+            APC_Sd_Kfz_251 = vehicles.Armor.APC_Sd_Kfz_251
+            StuG_III_Ausf__G = vehicles.Armor.StuG_III_Ausf__G
+            Sd_Kfz_184_Elefant = vehicles.Armor.Sd_Kfz_184_Elefant
+            IFV_BMD_1 = vehicles.Armor.IFV_BMD_1
+            IFV_BMP_1 = vehicles.Armor.IFV_BMP_1
+            IFV_BMP_2 = vehicles.Armor.IFV_BMP_2
+            IFV_BMP_3 = vehicles.Armor.IFV_BMP_3
+            FDDM_Grad = vehicles.Armor.FDDM_Grad
+            ARV_BRDM_2 = vehicles.Armor.ARV_BRDM_2
+            ARV_BTR_RD = vehicles.Armor.ARV_BTR_RD
+            APC_BTR_80 = vehicles.Armor.APC_BTR_80
+            APC_MTLB = vehicles.Armor.APC_MTLB
+            MBT_T_55 = vehicles.Armor.MBT_T_55
+            MBT_T_72B = vehicles.Armor.MBT_T_72B
+            MBT_T_80U = vehicles.Armor.MBT_T_80U
+            APC_M2A1 = vehicles.Armor.APC_M2A1
+            CT_Cromwell_IV = vehicles.Armor.CT_Cromwell_IV
+            ST_Centaur_IV = vehicles.Armor.ST_Centaur_IV
+            MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
+            TD_M10_GMC = vehicles.Armor.TD_M10_GMC
+            MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
+            HIT_Churchill_VII = vehicles.Armor.HIT_Churchill_VII
+            M30_Cargo_Carrier = vehicles.Armor.M30_Cargo_Carrier
+            LAC_M8_Greyhound = vehicles.Armor.LAC_M8_Greyhound
+            APC_M1043_HMMWV_Armament = vehicles.Armor.APC_M1043_HMMWV_Armament
+            APC_M113 = vehicles.Armor.APC_M113
+            MBT_M60A3_Patton = vehicles.Armor.MBT_M60A3_Patton
+            MBT_M1A2_Abrams = vehicles.Armor.MBT_M1A2_Abrams
+            ATGM_M1045_HMMWV_TOW = vehicles.Armor.ATGM_M1045_HMMWV_TOW
+            MBT_T_90 = vehicles.Armor.MBT_T_90
+            APC_AAV_7 = vehicles.Armor.APC_AAV_7
+            MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
+            MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
+            IFV_M2A2_Bradley = vehicles.Armor.IFV_M2A2_Bradley
+            TPz_Fuchs = vehicles.Armor.TPz_Fuchs
+            APC_Cobra = vehicles.Armor.APC_Cobra
+            IFV_LAV_25 = vehicles.Armor.IFV_LAV_25
+            MBT_Merkava_Mk__4 = vehicles.Armor.MBT_Merkava_Mk__4
+            IFV_Marder = vehicles.Armor.IFV_Marder
+            MBT_Leclerc = vehicles.Armor.MBT_Leclerc
+            ZBD_04A = vehicles.Armor.ZBD_04A
+            ZTZ_96B = vehicles.Armor.ZTZ_96B
+            MBT_Challenger_II = vehicles.Armor.MBT_Challenger_II
+            APC_M1126_Stryker_ICV = vehicles.Armor.APC_M1126_Stryker_ICV
+            SPG_M1128_Stryker_MGS = vehicles.Armor.SPG_M1128_Stryker_MGS
+            ATGM_M1134_Stryker = vehicles.Armor.ATGM_M1134_Stryker
+            IFV_MCV_80 = vehicles.Armor.IFV_MCV_80
+
+        class MissilesSS:
+            V_1_ramp = vehicles.MissilesSS.V_1_ramp
+            SRBM_SS_1C_Scud_B_9K72_LN_9P117M = vehicles.MissilesSS.SRBM_SS_1C_Scud_B_9K72_LN_9P117M
+            SS_N_2_Silkworm = vehicles.MissilesSS.SS_N_2_Silkworm
+            Silkworm_Radar = vehicles.MissilesSS.Silkworm_Radar
+
+        class Locomotive:
+            Electric_locomotive_VL80 = vehicles.Locomotive.Electric_locomotive_VL80
+            Locomotive_CHME3T = vehicles.Locomotive.Locomotive_CHME3T
+            ES44AH = vehicles.Locomotive.ES44AH
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            Coach_for_cargo = vehicles.Carriage.Coach_for_cargo
+            Coach_for_open_cargo = vehicles.Carriage.Coach_for_open_cargo
+            Coach_a_tank_blue = vehicles.Carriage.Coach_a_tank_blue
+            Coach_a_tank_yellow = vehicles.Carriage.Coach_a_tank_yellow
+            Coach_for_passengers = vehicles.Carriage.Coach_for_passengers
+            Coach_flatbed = vehicles.Carriage.Coach_flatbed
+            Boxcartrinity = vehicles.Carriage.Boxcartrinity
+            Tankcartrinity = vehicles.Carriage.Tankcartrinity
+            Wellcarnsc = vehicles.Carriage.Wellcarnsc
+            DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+    class Plane:
+        A_10C = planes.A_10C
+        FW_190A8 = planes.FW_190A8
+        Bf_109K_4 = planes.Bf_109K_4
+        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
+        P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
+        AJS37 = planes.AJS37
+        AV8BNA = planes.AV8BNA
+        KC130 = planes.KC130
+        KC135MPRS = planes.KC135MPRS
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        JF_17 = planes.JF_17
+        Christen_Eagle_II = planes.Christen_Eagle_II
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F_Sabre
+        FA_18C_hornet = planes.FA_18C_hornet
+        Hawk = planes.Hawk
+        I_16 = planes.I_16
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
+        MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
+        A_20G = planes.A_20G
+        Ju_88A4 = planes.Ju_88A4
+        A_50 = planes.A_50
+        An_26B = planes.An_26B
+        An_30M = planes.An_30M
+        B_17G = planes.B_17G
+        FW_190D9 = planes.FW_190D9
+        IL_76MD = planes.IL_76MD
+        IL_78M = planes.IL_78M
+        MiG_23MLD = planes.MiG_23MLD
+        MiG_25PD = planes.MiG_25PD
+        MiG_25RBT = planes.MiG_25RBT
+        MiG_27K = planes.MiG_27K
+        MiG_29A = planes.MiG_29A
+        MiG_31 = planes.MiG_31
+        P_51D = planes.P_51D
+        TF_51D = planes.TF_51D
+        Su_17M4 = planes.Su_17M4
+        Su_24M = planes.Su_24M
+        Su_24MR = planes.Su_24MR
+        Su_25 = planes.Su_25
+        Su_25T = planes.Su_25T
+        Su_27 = planes.Su_27
+        Tu_142 = planes.Tu_142
+        Tu_160 = planes.Tu_160
+        Tu_22M3 = planes.Tu_22M3
+        Tu_95MS = planes.Tu_95MS
+        Yak_40 = planes.Yak_40
+        C_130 = planes.C_130
+        MiG_29S = planes.MiG_29S
+        F_16C_bl_50 = planes.F_16C_bl_50
+        F_16C_bl_52d = planes.F_16C_bl_52d
+        F_16A_MLU = planes.F_16A_MLU
+        Tornado_IDS = planes.Tornado_IDS
+        P_51D_30_NA = planes.P_51D_30_NA
+        C_17A = planes.C_17A
+        E_3A = planes.E_3A
+        F_16A = planes.F_16A
+        MQ_9_Reaper = planes.MQ_9_Reaper
+        RQ_1A_Predator = planes.RQ_1A_Predator
+        F_A_18C = planes.F_A_18C
+        F_4E = planes.F_4E
+        WingLoong_I = planes.WingLoong_I
+        Su_33 = planes.Su_33
+        Su_25TM = planes.Su_25TM
+        Su_30 = planes.Su_30
+        Su_34 = planes.Su_34
+        L_39ZA = planes.L_39ZA
+        F_15C = planes.F_15C
+        F_15E = planes.F_15E
+        KC_135 = planes.KC_135
+        Mirage_2000_5 = planes.Mirage_2000_5
+        E_2C = planes.E_2C
+        MiG_29G = planes.MiG_29G
+        F_A_18A = planes.F_A_18A
+        J_11A = planes.J_11A
+        KJ_2000 = planes.KJ_2000
+        B_1B = planes.B_1B
+        B_52H = planes.B_52H
+        F_117A = planes.F_117A
+        F_14A = planes.F_14A
+        S_3B_Tanker = planes.S_3B_Tanker
+        S_3B = planes.S_3B
+        A_10C_2 = planes.A_10C_2
+        F_14B = planes.F_14B
+        Tornado_GR4 = planes.Tornado_GR4
+
+    planes = [
+        Plane.A_10C,
+        Plane.FW_190A8,
+        Plane.Bf_109K_4,
+        Plane.SpitfireLFMkIX,
+        Plane.SpitfireLFMkIXCW,
+        Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
+        Plane.AJS37,
+        Plane.AV8BNA,
+        Plane.KC130,
+        Plane.KC135MPRS,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.JF_17,
+        Plane.Christen_Eagle_II,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.FA_18C_hornet,
+        Plane.Hawk,
+        Plane.I_16,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_19P,
+        Plane.MiG_21Bis,
+        Plane.Yak_52,
+        Plane.A_20G,
+        Plane.Ju_88A4,
+        Plane.A_50,
+        Plane.An_26B,
+        Plane.An_30M,
+        Plane.B_17G,
+        Plane.FW_190D9,
+        Plane.IL_76MD,
+        Plane.IL_78M,
+        Plane.MiG_23MLD,
+        Plane.MiG_25PD,
+        Plane.MiG_25RBT,
+        Plane.MiG_27K,
+        Plane.MiG_29A,
+        Plane.MiG_31,
+        Plane.P_51D,
+        Plane.TF_51D,
+        Plane.Su_17M4,
+        Plane.Su_24M,
+        Plane.Su_24MR,
+        Plane.Su_25,
+        Plane.Su_25T,
+        Plane.Su_27,
+        Plane.Tu_142,
+        Plane.Tu_160,
+        Plane.Tu_22M3,
+        Plane.Tu_95MS,
+        Plane.Yak_40,
+        Plane.C_130,
+        Plane.MiG_29S,
+        Plane.F_16C_bl_50,
+        Plane.F_16C_bl_52d,
+        Plane.F_16A_MLU,
+        Plane.Tornado_IDS,
+        Plane.P_51D_30_NA,
+        Plane.C_17A,
+        Plane.E_3A,
+        Plane.F_16A,
+        Plane.MQ_9_Reaper,
+        Plane.RQ_1A_Predator,
+        Plane.F_A_18C,
+        Plane.F_4E,
+        Plane.WingLoong_I,
+        Plane.Su_33,
+        Plane.Su_25TM,
+        Plane.Su_30,
+        Plane.Su_34,
+        Plane.L_39ZA,
+        Plane.F_15C,
+        Plane.F_15E,
+        Plane.KC_135,
+        Plane.Mirage_2000_5,
+        Plane.E_2C,
+        Plane.MiG_29G,
+        Plane.F_A_18A,
+        Plane.J_11A,
+        Plane.KJ_2000,
+        Plane.B_1B,
+        Plane.B_52H,
+        Plane.F_117A,
+        Plane.F_14A,
+        Plane.S_3B_Tanker,
+        Plane.S_3B,
+        Plane.A_10C_2,
+        Plane.F_14B,
+        Plane.Tornado_GR4,
+    ]
+
+    class Helicopter:
+        Ka_50 = helicopters.Ka_50
+        SA342M = helicopters.SA342M
+        SA342L = helicopters.SA342L
+        SA342Mistral = helicopters.SA342Mistral
+        SA342Minigun = helicopters.SA342Minigun
+        Ka_27 = helicopters.Ka_27
+        Mi_24V = helicopters.Mi_24V
+        Mi_26 = helicopters.Mi_26
+        Mi_8MT = helicopters.Mi_8MT
+        UH_1H = helicopters.UH_1H
+        CH_47D = helicopters.CH_47D
+        UH_60A = helicopters.UH_60A
+        Mi_28N = helicopters.Mi_28N
+        AH_64D = helicopters.AH_64D
+        OH_58D = helicopters.OH_58D
+        AH_64A = helicopters.AH_64A
+        AH_1W = helicopters.AH_1W
+        SH_60B = helicopters.SH_60B
+        CH_53E = helicopters.CH_53E
+
+    helicopters = [
+        Helicopter.Ka_50,
+        Helicopter.SA342M,
+        Helicopter.SA342L,
+        Helicopter.SA342Mistral,
+        Helicopter.SA342Minigun,
+        Helicopter.Ka_27,
+        Helicopter.Mi_24V,
+        Helicopter.Mi_26,
+        Helicopter.Mi_8MT,
+        Helicopter.UH_1H,
+        Helicopter.CH_47D,
+        Helicopter.UH_60A,
+        Helicopter.Mi_28N,
+        Helicopter.AH_64D,
+        Helicopter.OH_58D,
+        Helicopter.AH_64A,
+        Helicopter.AH_1W,
+        Helicopter.SH_60B,
+        Helicopter.CH_53E,
+    ]
+
+    class Ship:
+        Armed_speedboat = ships.Armed_speedboat
+        Uboat_VIIC_U_flak = ships.Uboat_VIIC_U_flak
+        Schnellboot_type_S130 = ships.Schnellboot_type_S130
+        FFL_1124_4_Grisha = ships.FFL_1124_4_Grisha
+        SSK_877 = ships.SSK_877
+        Bulk_cargo_ship_Yakushev = ships.Bulk_cargo_ship_Yakushev
+        Dry_cargo_ship_Ivanov = ships.Dry_cargo_ship_Ivanov
+        Tanker_Elnya_160 = ships.Tanker_Elnya_160
+        CV_1143_5_Admiral_Kuznetsov = ships.CV_1143_5_Admiral_Kuznetsov
+        FSG_1241_1MP_Molniya = ships.FSG_1241_1MP_Molniya
+        CG_1164_Moskva = ships.CG_1164_Moskva
+        FFG_11540_Neustrashimy = ships.FFG_11540_Neustrashimy
+        FF_1135M_Rezky = ships.FF_1135M_Rezky
+        SSK_641B = ships.SSK_641B
+        Civil_boat_Zvezdny = ships.Civil_boat_Zvezdny
+        LST_Mk_II = ships.LST_Mk_II
+        LS_Samuel_Chase = ships.LS_Samuel_Chase
+        LCVP__Higgins_boat = ships.LCVP__Higgins_boat
+        Oliver_Hazzard_Perry_class = ships.Oliver_Hazzard_Perry_class
+        CGN_1144_2_Pyotr_Velikiy = ships.CGN_1144_2_Pyotr_Velikiy
+        CV_1143_5_Admiral_Kuznetsov_2017 = ships.CV_1143_5_Admiral_Kuznetsov_2017
+        Type_052B_Destroyer = ships.Type_052B_Destroyer
+        Type_054A_Frigate = ships.Type_054A_Frigate
+        Type_052C_Destroyer = ships.Type_052C_Destroyer
+        Type_093_Attack_Submarine = ships.Type_093_Attack_Submarine
+        Type_071_Amphibious_Transport_Dock = ships.Type_071_Amphibious_Transport_Dock
+        CVN_70_Carl_Vinson = ships.CVN_70_Carl_Vinson
+        Ticonderoga_class = ships.Ticonderoga_class
+        CVN_74_John_C__Stennis = ships.CVN_74_John_C__Stennis
+        LHA_1_Tarawa = ships.LHA_1_Tarawa
+        USS_Arleigh_Burke_IIa = ships.USS_Arleigh_Burke_IIa
+        CVN_71_Theodore_Roosevelt = ships.CVN_71_Theodore_Roosevelt
+        CVN_72_Abraham_Lincoln = ships.CVN_72_Abraham_Lincoln
+        CVN_73_George_Washington = ships.CVN_73_George_Washington
+        CVN_75_Harry_S__Truman = ships.CVN_75_Harry_S__Truman
+
+    def __init__(self):
+        super(CombinedJointTaskForcesRed, self).__init__(CombinedJointTaskForcesRed.id, CombinedJointTaskForcesRed.name)
+
+
+class UnitedNationsPeacekeepers(Country):
+    id = 82
+    name = "United Nations Peacekeepers"
+
+    class Vehicle:
+
+        class Artillery:
+            Sturmpanzer_IV_Brummbär = vehicles.Artillery.Sturmpanzer_IV_Brummbär
+            _2B11_mortar = vehicles.Artillery._2B11_mortar
+            MLRS_BM_21_Grad = vehicles.Artillery.MLRS_BM_21_Grad
+            SPH_2S9_Nona = vehicles.Artillery.SPH_2S9_Nona
+            SPH_2S3_Akatsia = vehicles.Artillery.SPH_2S3_Akatsia
+            SPH_2S1_Gvozdika = vehicles.Artillery.SPH_2S1_Gvozdika
+            SPH_2S19_Msta = vehicles.Artillery.SPH_2S19_Msta
+            MLRS_9A52_Smerch = vehicles.Artillery.MLRS_9A52_Smerch
+            MLRS_9A52_Smerch_HE = vehicles.Artillery.MLRS_9A52_Smerch_HE
+            MLRS_9K57_Uragan_BM_27 = vehicles.Artillery.MLRS_9K57_Uragan_BM_27
+            SpGH_Dana = vehicles.Artillery.SpGH_Dana
+            M12_GMC = vehicles.Artillery.M12_GMC
+            SPH_M109_Paladin = vehicles.Artillery.SPH_M109_Paladin
+            MLRS_M270 = vehicles.Artillery.MLRS_M270
+            MLRS_FDDM = vehicles.Artillery.MLRS_FDDM
+
+        class Infantry:
+            Infantry_Mauser_98 = vehicles.Infantry.Infantry_Mauser_98
+            Infantry_Soldier_Rus = vehicles.Infantry.Infantry_Soldier_Rus
+            Paratrooper_AKS = vehicles.Infantry.Paratrooper_AKS
+            Paratrooper_RPG_16 = vehicles.Infantry.Paratrooper_RPG_16
+            Infantry_Soldier_Insurgents = vehicles.Infantry.Infantry_Soldier_Insurgents
+            Soldier_AK = vehicles.Infantry.Soldier_AK
+            Soldier_RPG = vehicles.Infantry.Soldier_RPG
+            Soldier_M249 = vehicles.Infantry.Soldier_M249
+            Infantry_M4 = vehicles.Infantry.Infantry_M4
+            Georgian_soldier_with_M4 = vehicles.Infantry.Georgian_soldier_with_M4
+            Infantry_M1_Garand = vehicles.Infantry.Infantry_M1_Garand
+            Infantry_SMLE_No_4_Mk_1 = vehicles.Infantry.Infantry_SMLE_No_4_Mk_1
+
+        class AirDefence:
+            AAA_8_8cm_Flak_18 = vehicles.AirDefence.AAA_8_8cm_Flak_18
+            AAA_Flak_38 = vehicles.AirDefence.AAA_Flak_38
+            AAA_8_8cm_Flak_36 = vehicles.AirDefence.AAA_8_8cm_Flak_36
+            AAA_8_8cm_Flak_37 = vehicles.AirDefence.AAA_8_8cm_Flak_37
+            AAA_Flak_Vierling_38 = vehicles.AirDefence.AAA_Flak_Vierling_38
+            AAA_Kdo_G_40 = vehicles.AirDefence.AAA_Kdo_G_40
+            Flak_Searchlight_37 = vehicles.AirDefence.Flak_Searchlight_37
+            Maschinensatz_33 = vehicles.AirDefence.Maschinensatz_33
+            AAA_8_8cm_Flak_41 = vehicles.AirDefence.AAA_8_8cm_Flak_41
+            EWR_1L13 = vehicles.AirDefence.EWR_1L13
+            SAM_SA_19_Tunguska_2S6 = vehicles.AirDefence.SAM_SA_19_Tunguska_2S6
+            EWR_55G6 = vehicles.AirDefence.EWR_55G6
+            SAM_SA_3_S_125_LN_5P73 = vehicles.AirDefence.SAM_SA_3_S_125_LN_5P73
+            CP_9S80M1_Sborka = vehicles.AirDefence.CP_9S80M1_Sborka
+            SAM_SA_6_Kub_STR_9S91 = vehicles.AirDefence.SAM_SA_6_Kub_STR_9S91
+            SAM_SA_6_Kub_LN_2P25 = vehicles.AirDefence.SAM_SA_6_Kub_LN_2P25
+            SAM_SA_8_Osa_9A33 = vehicles.AirDefence.SAM_SA_8_Osa_9A33
+            SAM_SR_P_19 = vehicles.AirDefence.SAM_SR_P_19
+            SAM_SA_2_LN_SM_90 = vehicles.AirDefence.SAM_SA_2_LN_SM_90
+            SAM_SA_10_S_300PS_TR_30N6 = vehicles.AirDefence.SAM_SA_10_S_300PS_TR_30N6
+            SAM_SA_10_S_300PS_SR_5N66M = vehicles.AirDefence.SAM_SA_10_S_300PS_SR_5N66M
+            SAM_SA_10_S_300PS_CP_54K6 = vehicles.AirDefence.SAM_SA_10_S_300PS_CP_54K6
+            SAM_SA_10_S_300PS_LN_5P85C = vehicles.AirDefence.SAM_SA_10_S_300PS_LN_5P85C
+            SAM_SA_10_S_300PS_LN_5P85D = vehicles.AirDefence.SAM_SA_10_S_300PS_LN_5P85D
+            SAM_SA_10_S_300PS_SR_64H6E = vehicles.AirDefence.SAM_SA_10_S_300PS_SR_64H6E
+            SAM_SA_11_Buk_CC_9S470M1 = vehicles.AirDefence.SAM_SA_11_Buk_CC_9S470M1
+            SAM_SA_11_Buk_LN_9A310M1 = vehicles.AirDefence.SAM_SA_11_Buk_LN_9A310M1
+            SAM_SA_11_Buk_SR_9S18M1 = vehicles.AirDefence.SAM_SA_11_Buk_SR_9S18M1
+            SAM_SA_18_Igla_comm = vehicles.AirDefence.SAM_SA_18_Igla_comm
+            SAM_SA_18_Igla_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_MANPADS
+            SAM_SA_3_S_125_TR_SNR = vehicles.AirDefence.SAM_SA_3_S_125_TR_SNR
+            SAM_SA_2_TR_SNR_75_Fan_Song = vehicles.AirDefence.SAM_SA_2_TR_SNR_75_Fan_Song
+            SAM_SA_9_Strela_1_9P31 = vehicles.AirDefence.SAM_SA_9_Strela_1_9P31
+            SAM_SA_13_Strela_10M3_9A35M3 = vehicles.AirDefence.SAM_SA_13_Strela_10M3_9A35M3
+            SAM_SA_15_Tor_9A331 = vehicles.AirDefence.SAM_SA_15_Tor_9A331
+            AAA_ZU_23_on_Ural_375 = vehicles.AirDefence.AAA_ZU_23_on_Ural_375
+            SPAAA_ZSU_23_4_Shilka = vehicles.AirDefence.SPAAA_ZSU_23_4_Shilka
+            AAA_ZU_23_Closed = vehicles.AirDefence.AAA_ZU_23_Closed
+            AAA_ZU_23_Emplacement = vehicles.AirDefence.AAA_ZU_23_Emplacement
+            AAA_Bofors_40mm = vehicles.AirDefence.AAA_Bofors_40mm
+            AAA_Vulcan_M163 = vehicles.AirDefence.AAA_Vulcan_M163
+            SAM_Hawk_TR_AN_MPQ_46 = vehicles.AirDefence.SAM_Hawk_TR_AN_MPQ_46
+            SAM_Hawk_SR_AN_MPQ_50 = vehicles.AirDefence.SAM_Hawk_SR_AN_MPQ_50
+            SAM_Hawk_LN_M192 = vehicles.AirDefence.SAM_Hawk_LN_M192
+            SAM_Hawk_CWAR_AN_MPQ_55 = vehicles.AirDefence.SAM_Hawk_CWAR_AN_MPQ_55
+            SAM_Hawk_PCP = vehicles.AirDefence.SAM_Hawk_PCP
+            SAM_Chaparral_M48 = vehicles.AirDefence.SAM_Chaparral_M48
+            SAM_SA_18_Igla_S_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_S_MANPADS
+            SAM_SA_18_Igla_S_comm = vehicles.AirDefence.SAM_SA_18_Igla_S_comm
+            AAA_ZU_23_Insurgent_Closed = vehicles.AirDefence.AAA_ZU_23_Insurgent_Closed
+            AAA_ZU_23_Insurgent = vehicles.AirDefence.AAA_ZU_23_Insurgent
+            AAA_ZU_23_Insurgent_on_Ural_375 = vehicles.AirDefence.AAA_ZU_23_Insurgent_on_Ural_375
+            SAM_Avenger_M1097 = vehicles.AirDefence.SAM_Avenger_M1097
+            SAM_Roland_ADS = vehicles.AirDefence.SAM_Roland_ADS
+            SAM_Roland_EWR = vehicles.AirDefence.SAM_Roland_EWR
+            Stinger_MANPADS = vehicles.AirDefence.Stinger_MANPADS
+            SAM_Stinger_comm = vehicles.AirDefence.SAM_Stinger_comm
+            SAM_Stinger_comm_dsr = vehicles.AirDefence.SAM_Stinger_comm_dsr
+            Rapier_FSA_Launcher = vehicles.AirDefence.Rapier_FSA_Launcher
+            Rapier_FSA_Optical_Tracker = vehicles.AirDefence.Rapier_FSA_Optical_Tracker
+            Rapier_FSA_Blindfire_Tracker = vehicles.AirDefence.Rapier_FSA_Blindfire_Tracker
+            SAM_Patriot_AMG_AN_MRC_137 = vehicles.AirDefence.SAM_Patriot_AMG_AN_MRC_137
+            SAM_Patriot_ECS_AN_MSQ_104 = vehicles.AirDefence.SAM_Patriot_ECS_AN_MSQ_104
+            SAM_Patriot_LN_M901 = vehicles.AirDefence.SAM_Patriot_LN_M901
+            SAM_Patriot_EPP_III = vehicles.AirDefence.SAM_Patriot_EPP_III
+            SAM_Patriot_ICC = vehicles.AirDefence.SAM_Patriot_ICC
+            SAM_Patriot_STR_AN_MPQ_53 = vehicles.AirDefence.SAM_Patriot_STR_AN_MPQ_53
+            SPAAA_Gepard = vehicles.AirDefence.SPAAA_Gepard
+            HQ_7_Self_Propelled_LN = vehicles.AirDefence.HQ_7_Self_Propelled_LN
+            HQ_7_Self_Propelled_STR = vehicles.AirDefence.HQ_7_Self_Propelled_STR
+            SAM_SA_18_Igla_MANPADS = vehicles.AirDefence.SAM_SA_18_Igla_MANPADS
+            SAM_Linebacker_M6 = vehicles.AirDefence.SAM_Linebacker_M6
+
+        class Fortification:
+            Bunker_2 = vehicles.Fortification.Bunker_2
+            Bunker_1 = vehicles.Fortification.Bunker_1
+            Barracks_armed = vehicles.Fortification.Barracks_armed
+            Watch_tower_armed = vehicles.Fortification.Watch_tower_armed
+            Road_outpost = vehicles.Fortification.Road_outpost
+            Outpost = vehicles.Fortification.Outpost
+            Armed_house = vehicles.Fortification.Armed_house
+            TACAN_Beacon__Man_Portable__TTS_3030 = vehicles.Fortification.TACAN_Beacon__Man_Portable__TTS_3030
+            Bunker_with_SK_C_28_15cm_naval_gun = vehicles.Fortification.Bunker_with_SK_C_28_15cm_naval_gun
+            Fire_control_bunker = vehicles.Fortification.Fire_control_bunker
+
+        class Unarmed:
+            Kübelwagen_82 = vehicles.Unarmed.Kübelwagen_82
+            Blitz_3_6_6700A = vehicles.Unarmed.Blitz_3_6_6700A
+            Sd_Kfz_2 = vehicles.Unarmed.Sd_Kfz_2
+            Sd_Kfz_7 = vehicles.Unarmed.Sd_Kfz_7
+            Horch_901_typ_40 = vehicles.Unarmed.Horch_901_typ_40
+            Fuel_Truck_ATMZ_5 = vehicles.Unarmed.Fuel_Truck_ATMZ_5
+            Fuel_Truck_ATZ_10 = vehicles.Unarmed.Fuel_Truck_ATZ_10
+            Transport_GAZ_3307 = vehicles.Unarmed.Transport_GAZ_3307
+            Transport_GAZ_66 = vehicles.Unarmed.Transport_GAZ_66
+            Transport_IKARUS_280 = vehicles.Unarmed.Transport_IKARUS_280
+            Transport_KAMAZ_43101 = vehicles.Unarmed.Transport_KAMAZ_43101
+            Transport_LAZ_695 = vehicles.Unarmed.Transport_LAZ_695
+            CP_SKP_11_ATC_Mobile_Command_Post = vehicles.Unarmed.CP_SKP_11_ATC_Mobile_Command_Post
+            Transport_ZIU_9 = vehicles.Unarmed.Transport_ZIU_9
+            Transport_UAZ_469 = vehicles.Unarmed.Transport_UAZ_469
+            Transport_fire_engine_Ural_ATsP_6 = vehicles.Unarmed.Transport_fire_engine_Ural_ATsP_6
+            CP_Ural_375_PBU = vehicles.Unarmed.CP_Ural_375_PBU
+            Transport_Ural_375 = vehicles.Unarmed.Transport_Ural_375
+            GPU_APA_5D_on_Ural_4320 = vehicles.Unarmed.GPU_APA_5D_on_Ural_4320
+            Transport_Ural_4320_31_Armored = vehicles.Unarmed.Transport_Ural_4320_31_Armored
+            Transport_Ural_4320T = vehicles.Unarmed.Transport_Ural_4320T
+            Transport_VAZ_2109 = vehicles.Unarmed.Transport_VAZ_2109
+            GPU_APA_80_on_ZiL_131 = vehicles.Unarmed.GPU_APA_80_on_ZiL_131
+            Transport_ZIL_131_KUNG = vehicles.Unarmed.Transport_ZIL_131_KUNG
+            Transport_ZIL_4331 = vehicles.Unarmed.Transport_ZIL_4331
+            Willys_MB = vehicles.Unarmed.Willys_MB
+            Bedford_MWD = vehicles.Unarmed.Bedford_MWD
+            CCKW_353 = vehicles.Unarmed.CCKW_353
+            APC_M1025_HMMWV = vehicles.Unarmed.APC_M1025_HMMWV
+            Transport_KrAZ_6322 = vehicles.Unarmed.Transport_KrAZ_6322
+            Transport_GAZ_3308 = vehicles.Unarmed.Transport_GAZ_3308
+            Transport_MAZ_6303 = vehicles.Unarmed.Transport_MAZ_6303
+            Transport_M818 = vehicles.Unarmed.Transport_M818
+            HEMTT_TFFT = vehicles.Unarmed.HEMTT_TFFT
+            Tanker_M978_HEMTT = vehicles.Unarmed.Tanker_M978_HEMTT
+            Land_Rover_101_FC = vehicles.Unarmed.Land_Rover_101_FC
+            Land_Rover_109_S3 = vehicles.Unarmed.Land_Rover_109_S3
+            CP_Predator_GCS = vehicles.Unarmed.CP_Predator_GCS
+            CP_Predator_TrojanSpirit = vehicles.Unarmed.CP_Predator_TrojanSpirit
+            APC_Tigr_233036 = vehicles.Unarmed.APC_Tigr_233036
+
+        class Armor:
+            HT_Pz_Kpfw_VI_Tiger_I = vehicles.Armor.HT_Pz_Kpfw_VI_Tiger_I
+            HT_Pz_Kpfw_VI_Ausf__B__Tiger_II = vehicles.Armor.HT_Pz_Kpfw_VI_Ausf__B__Tiger_II
+            MT_Pz_Kpfw_V_Panther_Ausf_G = vehicles.Armor.MT_Pz_Kpfw_V_Panther_Ausf_G
+            MT_Pz_Kpfw_IV_Ausf_H = vehicles.Armor.MT_Pz_Kpfw_IV_Ausf_H
+            TD_Jagdpanther_G1 = vehicles.Armor.TD_Jagdpanther_G1
+            TD_Jagdpanzer_IV = vehicles.Armor.TD_Jagdpanzer_IV
+            StuG_IV = vehicles.Armor.StuG_IV
+            IFV_Sd_Kfz_234_2_Puma = vehicles.Armor.IFV_Sd_Kfz_234_2_Puma
+            APC_Sd_Kfz_251 = vehicles.Armor.APC_Sd_Kfz_251
+            StuG_III_Ausf__G = vehicles.Armor.StuG_III_Ausf__G
+            Sd_Kfz_184_Elefant = vehicles.Armor.Sd_Kfz_184_Elefant
+            IFV_BMD_1 = vehicles.Armor.IFV_BMD_1
+            IFV_BMP_1 = vehicles.Armor.IFV_BMP_1
+            IFV_BMP_2 = vehicles.Armor.IFV_BMP_2
+            IFV_BMP_3 = vehicles.Armor.IFV_BMP_3
+            FDDM_Grad = vehicles.Armor.FDDM_Grad
+            ARV_BRDM_2 = vehicles.Armor.ARV_BRDM_2
+            ARV_BTR_RD = vehicles.Armor.ARV_BTR_RD
+            APC_BTR_80 = vehicles.Armor.APC_BTR_80
+            APC_MTLB = vehicles.Armor.APC_MTLB
+            MBT_T_55 = vehicles.Armor.MBT_T_55
+            MBT_T_72B = vehicles.Armor.MBT_T_72B
+            MBT_T_80U = vehicles.Armor.MBT_T_80U
+            APC_M2A1 = vehicles.Armor.APC_M2A1
+            CT_Cromwell_IV = vehicles.Armor.CT_Cromwell_IV
+            ST_Centaur_IV = vehicles.Armor.ST_Centaur_IV
+            MT_M4_Sherman = vehicles.Armor.MT_M4_Sherman
+            TD_M10_GMC = vehicles.Armor.TD_M10_GMC
+            MT_M4A4_Sherman_Firefly = vehicles.Armor.MT_M4A4_Sherman_Firefly
+            HIT_Churchill_VII = vehicles.Armor.HIT_Churchill_VII
+            M30_Cargo_Carrier = vehicles.Armor.M30_Cargo_Carrier
+            LAC_M8_Greyhound = vehicles.Armor.LAC_M8_Greyhound
+            APC_M1043_HMMWV_Armament = vehicles.Armor.APC_M1043_HMMWV_Armament
+            APC_M113 = vehicles.Armor.APC_M113
+            MBT_M60A3_Patton = vehicles.Armor.MBT_M60A3_Patton
+            MBT_M1A2_Abrams = vehicles.Armor.MBT_M1A2_Abrams
+            ATGM_M1045_HMMWV_TOW = vehicles.Armor.ATGM_M1045_HMMWV_TOW
+            MBT_T_90 = vehicles.Armor.MBT_T_90
+            APC_AAV_7 = vehicles.Armor.APC_AAV_7
+            MBT_Leopard_1A3 = vehicles.Armor.MBT_Leopard_1A3
+            MBT_Leopard_2 = vehicles.Armor.MBT_Leopard_2
+            IFV_M2A2_Bradley = vehicles.Armor.IFV_M2A2_Bradley
+            TPz_Fuchs = vehicles.Armor.TPz_Fuchs
+            APC_Cobra = vehicles.Armor.APC_Cobra
+            IFV_LAV_25 = vehicles.Armor.IFV_LAV_25
+            MBT_Merkava_Mk__4 = vehicles.Armor.MBT_Merkava_Mk__4
+            IFV_Marder = vehicles.Armor.IFV_Marder
+            MBT_Leclerc = vehicles.Armor.MBT_Leclerc
+            ZBD_04A = vehicles.Armor.ZBD_04A
+            ZTZ_96B = vehicles.Armor.ZTZ_96B
+            MBT_Challenger_II = vehicles.Armor.MBT_Challenger_II
+            APC_M1126_Stryker_ICV = vehicles.Armor.APC_M1126_Stryker_ICV
+            SPG_M1128_Stryker_MGS = vehicles.Armor.SPG_M1128_Stryker_MGS
+            ATGM_M1134_Stryker = vehicles.Armor.ATGM_M1134_Stryker
+            IFV_MCV_80 = vehicles.Armor.IFV_MCV_80
+
+        class MissilesSS:
+            V_1_ramp = vehicles.MissilesSS.V_1_ramp
+            SRBM_SS_1C_Scud_B_9K72_LN_9P117M = vehicles.MissilesSS.SRBM_SS_1C_Scud_B_9K72_LN_9P117M
+            SS_N_2_Silkworm = vehicles.MissilesSS.SS_N_2_Silkworm
+            Silkworm_Radar = vehicles.MissilesSS.Silkworm_Radar
+
+        class Locomotive:
+            Electric_locomotive_VL80 = vehicles.Locomotive.Electric_locomotive_VL80
+            Locomotive_CHME3T = vehicles.Locomotive.Locomotive_CHME3T
+            ES44AH = vehicles.Locomotive.ES44AH
+            DRG_Class_86 = vehicles.Locomotive.DRG_Class_86
+
+        class Carriage:
+            Coach_for_cargo = vehicles.Carriage.Coach_for_cargo
+            Coach_for_open_cargo = vehicles.Carriage.Coach_for_open_cargo
+            Coach_a_tank_blue = vehicles.Carriage.Coach_a_tank_blue
+            Coach_a_tank_yellow = vehicles.Carriage.Coach_a_tank_yellow
+            Coach_for_passengers = vehicles.Carriage.Coach_for_passengers
+            Coach_flatbed = vehicles.Carriage.Coach_flatbed
+            Boxcartrinity = vehicles.Carriage.Boxcartrinity
+            Tankcartrinity = vehicles.Carriage.Tankcartrinity
+            Wellcarnsc = vehicles.Carriage.Wellcarnsc
+            DR_50_ton_flat_wagon = vehicles.Carriage.DR_50_ton_flat_wagon
+            German_covered_wagon_G10 = vehicles.Carriage.German_covered_wagon_G10
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+            German_tank_wagon = vehicles.Carriage.German_tank_wagon
+
+    class Plane:
+        A_10C = planes.A_10C
+        FW_190A8 = planes.FW_190A8
+        Bf_109K_4 = planes.Bf_109K_4
+        SpitfireLFMkIX = planes.SpitfireLFMkIX
+        SpitfireLFMkIXCW = planes.SpitfireLFMkIXCW
+        P_47D_30 = planes.P_47D_30
+        P_47D_30bl1 = planes.P_47D_30bl1
+        P_47D_40 = planes.P_47D_40
+        A_10A = planes.A_10A
+        AJS37 = planes.AJS37
+        AV8BNA = planes.AV8BNA
+        KC130 = planes.KC130
+        KC135MPRS = planes.KC135MPRS
+        C_101EB = planes.C_101EB
+        C_101CC = planes.C_101CC
+        JF_17 = planes.JF_17
+        Christen_Eagle_II = planes.Christen_Eagle_II
+        F_5E = planes.F_5E
+        F_5E_3 = planes.F_5E_3
+        F_86F_Sabre = planes.F_86F_Sabre
+        FA_18C_hornet = planes.FA_18C_hornet
+        Hawk = planes.Hawk
+        I_16 = planes.I_16
+        L_39C = planes.L_39C
+        M_2000C = planes.M_2000C
+        MiG_15bis = planes.MiG_15bis
+        MiG_19P = planes.MiG_19P
+        MiG_21Bis = planes.MiG_21Bis
+        Yak_52 = planes.Yak_52
+        A_20G = planes.A_20G
+        Ju_88A4 = planes.Ju_88A4
+        A_50 = planes.A_50
+        An_26B = planes.An_26B
+        An_30M = planes.An_30M
+        B_17G = planes.B_17G
+        FW_190D9 = planes.FW_190D9
+        IL_76MD = planes.IL_76MD
+        IL_78M = planes.IL_78M
+        MiG_23MLD = planes.MiG_23MLD
+        MiG_25PD = planes.MiG_25PD
+        MiG_25RBT = planes.MiG_25RBT
+        MiG_27K = planes.MiG_27K
+        MiG_29A = planes.MiG_29A
+        MiG_31 = planes.MiG_31
+        P_51D = planes.P_51D
+        TF_51D = planes.TF_51D
+        Su_17M4 = planes.Su_17M4
+        Su_24M = planes.Su_24M
+        Su_24MR = planes.Su_24MR
+        Su_25 = planes.Su_25
+        Su_25T = planes.Su_25T
+        Su_27 = planes.Su_27
+        Tu_142 = planes.Tu_142
+        Tu_160 = planes.Tu_160
+        Tu_22M3 = planes.Tu_22M3
+        Tu_95MS = planes.Tu_95MS
+        Yak_40 = planes.Yak_40
+        C_130 = planes.C_130
+        MiG_29S = planes.MiG_29S
+        F_16C_bl_50 = planes.F_16C_bl_50
+        F_16C_bl_52d = planes.F_16C_bl_52d
+        F_16A_MLU = planes.F_16A_MLU
+        Tornado_IDS = planes.Tornado_IDS
+        P_51D_30_NA = planes.P_51D_30_NA
+        C_17A = planes.C_17A
+        E_3A = planes.E_3A
+        F_16A = planes.F_16A
+        MQ_9_Reaper = planes.MQ_9_Reaper
+        RQ_1A_Predator = planes.RQ_1A_Predator
+        F_A_18C = planes.F_A_18C
+        F_4E = planes.F_4E
+        WingLoong_I = planes.WingLoong_I
+        Su_33 = planes.Su_33
+        Su_25TM = planes.Su_25TM
+        Su_30 = planes.Su_30
+        Su_34 = planes.Su_34
+        L_39ZA = planes.L_39ZA
+        F_15C = planes.F_15C
+        F_15E = planes.F_15E
+        KC_135 = planes.KC_135
+        Mirage_2000_5 = planes.Mirage_2000_5
+        E_2C = planes.E_2C
+        MiG_29G = planes.MiG_29G
+        F_A_18A = planes.F_A_18A
+        J_11A = planes.J_11A
+        KJ_2000 = planes.KJ_2000
+        B_1B = planes.B_1B
+        B_52H = planes.B_52H
+        F_117A = planes.F_117A
+        F_14A = planes.F_14A
+        S_3B_Tanker = planes.S_3B_Tanker
+        S_3B = planes.S_3B
+        A_10C_2 = planes.A_10C_2
+        F_14B = planes.F_14B
+        Tornado_GR4 = planes.Tornado_GR4
+
+    planes = [
+        Plane.A_10C,
+        Plane.FW_190A8,
+        Plane.Bf_109K_4,
+        Plane.SpitfireLFMkIX,
+        Plane.SpitfireLFMkIXCW,
+        Plane.P_47D_30,
+        Plane.P_47D_30bl1,
+        Plane.P_47D_40,
+        Plane.A_10A,
+        Plane.AJS37,
+        Plane.AV8BNA,
+        Plane.KC130,
+        Plane.KC135MPRS,
+        Plane.C_101EB,
+        Plane.C_101CC,
+        Plane.JF_17,
+        Plane.Christen_Eagle_II,
+        Plane.F_5E,
+        Plane.F_5E_3,
+        Plane.F_86F_Sabre,
+        Plane.FA_18C_hornet,
+        Plane.Hawk,
+        Plane.I_16,
+        Plane.L_39C,
+        Plane.M_2000C,
+        Plane.MiG_15bis,
+        Plane.MiG_19P,
+        Plane.MiG_21Bis,
+        Plane.Yak_52,
+        Plane.A_20G,
+        Plane.Ju_88A4,
+        Plane.A_50,
+        Plane.An_26B,
+        Plane.An_30M,
+        Plane.B_17G,
+        Plane.FW_190D9,
+        Plane.IL_76MD,
+        Plane.IL_78M,
+        Plane.MiG_23MLD,
+        Plane.MiG_25PD,
+        Plane.MiG_25RBT,
+        Plane.MiG_27K,
+        Plane.MiG_29A,
+        Plane.MiG_31,
+        Plane.P_51D,
+        Plane.TF_51D,
+        Plane.Su_17M4,
+        Plane.Su_24M,
+        Plane.Su_24MR,
+        Plane.Su_25,
+        Plane.Su_25T,
+        Plane.Su_27,
+        Plane.Tu_142,
+        Plane.Tu_160,
+        Plane.Tu_22M3,
+        Plane.Tu_95MS,
+        Plane.Yak_40,
+        Plane.C_130,
+        Plane.MiG_29S,
+        Plane.F_16C_bl_50,
+        Plane.F_16C_bl_52d,
+        Plane.F_16A_MLU,
+        Plane.Tornado_IDS,
+        Plane.P_51D_30_NA,
+        Plane.C_17A,
+        Plane.E_3A,
+        Plane.F_16A,
+        Plane.MQ_9_Reaper,
+        Plane.RQ_1A_Predator,
+        Plane.F_A_18C,
+        Plane.F_4E,
+        Plane.WingLoong_I,
+        Plane.Su_33,
+        Plane.Su_25TM,
+        Plane.Su_30,
+        Plane.Su_34,
+        Plane.L_39ZA,
+        Plane.F_15C,
+        Plane.F_15E,
+        Plane.KC_135,
+        Plane.Mirage_2000_5,
+        Plane.E_2C,
+        Plane.MiG_29G,
+        Plane.F_A_18A,
+        Plane.J_11A,
+        Plane.KJ_2000,
+        Plane.B_1B,
+        Plane.B_52H,
+        Plane.F_117A,
+        Plane.F_14A,
+        Plane.S_3B_Tanker,
+        Plane.S_3B,
+        Plane.A_10C_2,
+        Plane.F_14B,
+        Plane.Tornado_GR4,
+    ]
+
+    class Helicopter:
+        Ka_50 = helicopters.Ka_50
+        SA342M = helicopters.SA342M
+        SA342L = helicopters.SA342L
+        SA342Mistral = helicopters.SA342Mistral
+        SA342Minigun = helicopters.SA342Minigun
+        Ka_27 = helicopters.Ka_27
+        Mi_24V = helicopters.Mi_24V
+        Mi_26 = helicopters.Mi_26
+        Mi_8MT = helicopters.Mi_8MT
+        UH_1H = helicopters.UH_1H
+        CH_47D = helicopters.CH_47D
+        UH_60A = helicopters.UH_60A
+        Mi_28N = helicopters.Mi_28N
+        AH_64D = helicopters.AH_64D
+        OH_58D = helicopters.OH_58D
+        AH_64A = helicopters.AH_64A
+        AH_1W = helicopters.AH_1W
+        SH_60B = helicopters.SH_60B
+        CH_53E = helicopters.CH_53E
+
+    helicopters = [
+        Helicopter.Ka_50,
+        Helicopter.SA342M,
+        Helicopter.SA342L,
+        Helicopter.SA342Mistral,
+        Helicopter.SA342Minigun,
+        Helicopter.Ka_27,
+        Helicopter.Mi_24V,
+        Helicopter.Mi_26,
+        Helicopter.Mi_8MT,
+        Helicopter.UH_1H,
+        Helicopter.CH_47D,
+        Helicopter.UH_60A,
+        Helicopter.Mi_28N,
+        Helicopter.AH_64D,
+        Helicopter.OH_58D,
+        Helicopter.AH_64A,
+        Helicopter.AH_1W,
+        Helicopter.SH_60B,
+        Helicopter.CH_53E,
+    ]
+
+    class Ship:
+        Armed_speedboat = ships.Armed_speedboat
+        Uboat_VIIC_U_flak = ships.Uboat_VIIC_U_flak
+        Schnellboot_type_S130 = ships.Schnellboot_type_S130
+        FFL_1124_4_Grisha = ships.FFL_1124_4_Grisha
+        SSK_877 = ships.SSK_877
+        Bulk_cargo_ship_Yakushev = ships.Bulk_cargo_ship_Yakushev
+        Dry_cargo_ship_Ivanov = ships.Dry_cargo_ship_Ivanov
+        Tanker_Elnya_160 = ships.Tanker_Elnya_160
+        CV_1143_5_Admiral_Kuznetsov = ships.CV_1143_5_Admiral_Kuznetsov
+        FSG_1241_1MP_Molniya = ships.FSG_1241_1MP_Molniya
+        CG_1164_Moskva = ships.CG_1164_Moskva
+        FFG_11540_Neustrashimy = ships.FFG_11540_Neustrashimy
+        FF_1135M_Rezky = ships.FF_1135M_Rezky
+        SSK_641B = ships.SSK_641B
+        Civil_boat_Zvezdny = ships.Civil_boat_Zvezdny
+        LST_Mk_II = ships.LST_Mk_II
+        LS_Samuel_Chase = ships.LS_Samuel_Chase
+        LCVP__Higgins_boat = ships.LCVP__Higgins_boat
+        Oliver_Hazzard_Perry_class = ships.Oliver_Hazzard_Perry_class
+        CGN_1144_2_Pyotr_Velikiy = ships.CGN_1144_2_Pyotr_Velikiy
+        CV_1143_5_Admiral_Kuznetsov_2017 = ships.CV_1143_5_Admiral_Kuznetsov_2017
+        Type_052B_Destroyer = ships.Type_052B_Destroyer
+        Type_054A_Frigate = ships.Type_054A_Frigate
+        Type_052C_Destroyer = ships.Type_052C_Destroyer
+        Type_093_Attack_Submarine = ships.Type_093_Attack_Submarine
+        Type_071_Amphibious_Transport_Dock = ships.Type_071_Amphibious_Transport_Dock
+        CVN_70_Carl_Vinson = ships.CVN_70_Carl_Vinson
+        Ticonderoga_class = ships.Ticonderoga_class
+        CVN_74_John_C__Stennis = ships.CVN_74_John_C__Stennis
+        LHA_1_Tarawa = ships.LHA_1_Tarawa
+        USS_Arleigh_Burke_IIa = ships.USS_Arleigh_Burke_IIa
+        CVN_71_Theodore_Roosevelt = ships.CVN_71_Theodore_Roosevelt
+        CVN_72_Abraham_Lincoln = ships.CVN_72_Abraham_Lincoln
+        CVN_73_George_Washington = ships.CVN_73_George_Washington
+        CVN_75_Harry_S__Truman = ships.CVN_75_Harry_S__Truman
+
+    def __init__(self):
+        super(UnitedNationsPeacekeepers, self).__init__(UnitedNationsPeacekeepers.id, UnitedNationsPeacekeepers.name)
 
 country_dict = {
     Russia.id: Russia,
@@ -15059,6 +17311,10 @@ country_dict = {
     Cuba.id: Cuba,
     Portugal.id: Portugal,
     GDR.id: GDR,
+    Lebanon.id: Lebanon,
+    CombinedJointTaskForcesBlue.id: CombinedJointTaskForcesBlue,
+    CombinedJointTaskForcesRed.id: CombinedJointTaskForcesRed,
+    UnitedNationsPeacekeepers.id: UnitedNationsPeacekeepers,
 }
 
 

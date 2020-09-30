@@ -70,10 +70,6 @@ class Ka_50(HelicopterType):
         class Australia(Enum):
             Russia_Worn_Black = "Russia Worn Black"
 
-        class Germany(Enum):
-            german_8320 = "german 8320"
-            german_8332 = "german 8332"
-
         class Israel(Enum):
             Israel_IAF_camo_1 = "Israel IAF camo 1"
             Israel_IAF_camo_2 = "Israel IAF camo 2"
@@ -81,11 +77,6 @@ class Ka_50(HelicopterType):
 
         class Norway(Enum):
             norway_camo = "norway camo"
-
-        class Spain(Enum):
-            Spain_SAA_Arido = "Spain SAA Arido"
-            Spain_SAA_Boscoso = "Spain SAA Boscoso"
-            Spain_SAA_Standard = "Spain SAA Standard"
 
         class Ukraine(Enum):
             Ukraine_Demo = "Ukraine Demo"
@@ -105,13 +96,29 @@ class Ka_50(HelicopterType):
         class UK(Enum):
             uk_camo = "uk camo"
 
+        class Abkhazia(Enum):
+            Abkhazia_1 = "Abkhazia 1"
+
+        class SouthOssetia(Enum):
+            South_Ossetia_1 = "South Ossetia 1"
+
+        class TheNetherlands(Enum):
+            Netherlands_RNAF = "Netherlands RNAF"
+            Netherlands_RNAF_wooded = "Netherlands RNAF wooded"
+
+        class Denmark(Enum):
+            denmark_camo = "denmark camo"
+            Denmark_navy_trainer = "Denmark navy trainer"
+
         class France(Enum):
             France_Armee_de_Terre_1 = "France Armee de Terre 1"
             France_Armee_de_Terre_2 = "France Armee de Terre 2"
             France_Armee_de_Terre_Desert = "France Armee de Terre Desert"
 
-        class Abkhazia(Enum):
-            Abkhazia_1 = "Abkhazia 1"
+        class USA(Enum):
+            us_army = "us army"
+            us_marines_1 = "us marines 1"
+            us_marines_2 = "us marines 2"
 
         class Russia(Enum):
             Russia_Standard_Army = "Russia Standard Army"
@@ -132,30 +139,26 @@ class Ka_50(HelicopterType):
             Italy_Aeronautica_Militare = "Italy Aeronautica Militare"
             Italy_Esercito_Italiano = "Italy Esercito Italiano"
 
-        class SouthOssetia(Enum):
-            South_Ossetia_1 = "South Ossetia 1"
-
-        class USA(Enum):
-            us_army = "us army"
-            us_marines_1 = "us marines 1"
-            us_marines_2 = "us marines 2"
-
-        class Denmark(Enum):
-            denmark_camo = "denmark camo"
-            Denmark_navy_trainer = "Denmark navy trainer"
-
-        class Canada(Enum):
-            canadian_forces = "canadian forces"
-
-        class TheNetherlands(Enum):
-            Netherlands_RNAF = "Netherlands RNAF"
-            Netherlands_RNAF_wooded = "Netherlands RNAF wooded"
-
         class Turkey(Enum):
             Turkey_Fictional_Light_Gray = "Turkey Fictional Light Gray"
             Turkey_Fictional_1 = "Turkey Fictional 1"
             Turkey_Fictional = "Turkey Fictional"
             Turkey_fictional_desert_scheme = "Turkey fictional desert scheme"
+
+        class Algeria(Enum):
+            Algerian_AF_Desert = "Algerian AF Desert"
+
+        class Germany(Enum):
+            german_8320 = "german 8320"
+            german_8332 = "german 8332"
+
+        class Spain(Enum):
+            Spain_SAA_Arido = "Spain SAA Arido"
+            Spain_SAA_Boscoso = "Spain SAA Boscoso"
+            Spain_SAA_Standard = "Spain SAA Standard"
+
+        class Canada(Enum):
+            canadian_forces = "canadian forces"
 
     class Pylon1:
         B_8V20A_CM = (1, Weapons.B_8V20A_CM)
@@ -234,31 +237,25 @@ class Ka_52(HelicopterType):
 
     class Liveries:
 
+        class USSR(Enum):
+            standard = "standard"
+
         class Georgia(Enum):
             standard = "standard"
 
-        class Syria(Enum):
-            standard = "standard"
-
-        class Finland(Enum):
+        class Venezuela(Enum):
             standard = "standard"
 
         class Australia(Enum):
             standard = "standard"
 
-        class Germany(Enum):
-            standard = "standard"
-
-        class SaudiArabia(Enum):
-            standard = "standard"
-
         class Israel(Enum):
             standard = "standard"
 
-        class Croatia(Enum):
+        class Combined_Joint_Task_Forces_Blue(Enum):
             standard = "standard"
 
-        class CzechRepublic(Enum):
+        class Sudan(Enum):
             standard = "standard"
 
         class Norway(Enum):
@@ -267,10 +264,13 @@ class Ka_52(HelicopterType):
         class Romania(Enum):
             standard = "standard"
 
-        class Spain(Enum):
+        class Iran(Enum):
             standard = "standard"
 
         class Ukraine(Enum):
+            standard = "standard"
+
+        class Libya(Enum):
             standard = "standard"
 
         class Belgium(Enum):
@@ -285,94 +285,202 @@ class Ka_52(HelicopterType):
         class UK(Enum):
             standard = "standard"
 
-        class Insurgents(Enum):
+        class Third_Reich(Enum):
             standard = "standard"
 
         class Hungary(Enum):
             standard = "standard"
 
-        class France(Enum):
-            standard = "standard"
-
         class Abkhazia(Enum):
             standard = "standard"
 
-        class Russia(Enum):
+        class Morocco(Enum):
             standard = "standard"
 
-        class Sweden(Enum):
-            standard = "standard"
-
-        class Austria(Enum):
+        class United_Nations_Peacekeepers(Enum):
             standard = "standard"
 
         class Switzerland(Enum):
             standard = "standard"
 
-        class Italy(Enum):
-            standard = "standard"
-
         class SouthOssetia(Enum):
             standard = "standard"
 
-        class SouthKorea(Enum):
-            standard = "standard"
-
-        class Iran(Enum):
+        class Vietnam(Enum):
             standard = "standard"
 
         class China(Enum):
             standard = "standard"
 
-        class Pakistan(Enum):
+        class Yemen(Enum):
             standard = "standard"
 
-        class Belarus(Enum):
-            standard = "standard"
-
-        class NorthKorea(Enum):
-            standard = "standard"
-
-        class Iraq(Enum):
-            standard = "standard"
-
-        class Kazakhstan(Enum):
-            standard = "standard"
-
-        class Bulgaria(Enum):
+        class Kuwait(Enum):
             standard = "standard"
 
         class Serbia(Enum):
             standard = "standard"
 
+        class Oman(Enum):
+            standard = "standard"
+
         class India(Enum):
-            standard = "standard"
-
-        class USAFAggressors(Enum):
-            standard = "standard"
-
-        class USA(Enum):
-            standard = "standard"
-
-        class Denmark(Enum):
             standard = "standard"
 
         class Egypt(Enum):
             standard = "standard"
 
-        class Canada(Enum):
+        class TheNetherlands(Enum):
             standard = "standard"
 
-        class TheNetherlands(Enum):
+        class Poland(Enum):
+            standard = "standard"
+
+        class Syria(Enum):
+            standard = "standard"
+
+        class Finland(Enum):
+            standard = "standard"
+
+        class Kazakhstan(Enum):
+            standard = "standard"
+
+        class Denmark(Enum):
+            standard = "standard"
+
+        class Sweden(Enum):
+            standard = "standard"
+
+        class Croatia(Enum):
+            standard = "standard"
+
+        class CzechRepublic(Enum):
+            standard = "standard"
+
+        class GDR(Enum):
+            standard = "standard"
+
+        class Yugoslavia(Enum):
+            standard = "standard"
+
+        class Bulgaria(Enum):
+            standard = "standard"
+
+        class SouthKorea(Enum):
+            standard = "standard"
+
+        class Tunisia(Enum):
+            standard = "standard"
+
+        class Combined_Joint_Task_Forces_Red(Enum):
+            standard = "standard"
+
+        class Lebanon(Enum):
+            standard = "standard"
+
+        class Portugal(Enum):
+            standard = "standard"
+
+        class Cuba(Enum):
+            standard = "standard"
+
+        class Insurgents(Enum):
+            standard = "standard"
+
+        class SaudiArabia(Enum):
+            standard = "standard"
+
+        class France(Enum):
+            standard = "standard"
+
+        class USA(Enum):
+            standard = "standard"
+
+        class Honduras(Enum):
+            standard = "standard"
+
+        class Qatar(Enum):
+            standard = "standard"
+
+        class Russia(Enum):
+            standard = "standard"
+
+        class United_Arab_Emirates(Enum):
+            standard = "standard"
+
+        class Italian_Social_Republi(Enum):
+            standard = "standard"
+
+        class Austria(Enum):
+            standard = "standard"
+
+        class Bahrain(Enum):
+            standard = "standard"
+
+        class Italy(Enum):
+            standard = "standard"
+
+        class Chile(Enum):
             standard = "standard"
 
         class Turkey(Enum):
             standard = "standard"
 
+        class Philippines(Enum):
+            standard = "standard"
+
+        class Algeria(Enum):
+            standard = "standard"
+
+        class Pakistan(Enum):
+            standard = "standard"
+
+        class Malaysia(Enum):
+            standard = "standard"
+
+        class Indonesia(Enum):
+            standard = "standard"
+
+        class Iraq(Enum):
+            standard = "standard"
+
+        class Germany(Enum):
+            standard = "standard"
+
+        class South_Africa(Enum):
+            standard = "standard"
+
+        class Jordan(Enum):
+            standard = "standard"
+
+        class Mexico(Enum):
+            standard = "standard"
+
+        class USAFAggressors(Enum):
+            standard = "standard"
+
+        class Brazil(Enum):
+            standard = "standard"
+
+        class Spain(Enum):
+            standard = "standard"
+
+        class Belarus(Enum):
+            standard = "standard"
+
+        class Canada(Enum):
+            standard = "standard"
+
+        class NorthKorea(Enum):
+            standard = "standard"
+
+        class Ethiopia(Enum):
+            standard = "standard"
+
         class Japan(Enum):
             standard = "standard"
 
-        class Poland(Enum):
+        class Thailand(Enum):
             standard = "standard"
 
     class Pylon1:
@@ -452,14 +560,19 @@ class Mi_24V(HelicopterType):
         class Abkhazia(Enum):
             Abkhazia = "Abkhazia"
 
+        class SouthOssetia(Enum):
+            South_Ossetia = "South Ossetia"
+
         class Russia(Enum):
             standard_1 = "standard 1"
             standard_2__faded_and_sun_bleached = "standard 2 (faded and sun-bleached)"
             Russia_FSB = "Russia_FSB"
             Russia_MVD = "Russia_MVD"
 
-        class SouthOssetia(Enum):
-            South_Ossetia = "South Ossetia"
+        class Algeria(Enum):
+            Algerian_AF_Black = "Algerian AF Black"
+            Algerian_AF_New_Desert = "Algerian AF New Desert"
+            Algerian_AF_Old_Desert = "Algerian AF Old Desert"
 
     class Pylon1:
         _9M114_Shturm_V___2 = (1, Weapons._9M114_Shturm_V___2)
@@ -632,15 +745,15 @@ class Mi_8MT(HelicopterType):
 
     class Liveries:
 
+        class USSR(Enum):
+            Russia_Aeroflot = "Russia_Aeroflot"
+            Russia_Army_Weather = "Russia_Army_Weather"
+
         class Georgia(Enum):
             Georgia = "Georgia"
 
         class Australia(Enum):
             Australia = "Australia"
-            Standard = "Standard"
-
-        class Germany(Enum):
-            Germany = "Germany"
             Standard = "Standard"
 
         class Israel(Enum):
@@ -651,9 +764,10 @@ class Mi_8MT(HelicopterType):
             Norway = "Norway"
             Standard = "Standard"
 
-        class Spain(Enum):
-            Spain = "Spain"
-            Standard = "Standard"
+        class Iran(Enum):
+            IR_AFAGIR_Blue = "IR AFAGIR Blue"
+            IR_AFAGIR_Sand = "IR AFAGIR Sand"
+            IR_Iranian_Special_Police_Forces = "IR Iranian Special Police Forces"
 
         class Ukraine(Enum):
             Ukraine = "Ukraine"
@@ -669,6 +783,25 @@ class Mi_8MT(HelicopterType):
             United_Kingdom = "United Kingdom"
             Standard = "Standard"
 
+        class Abkhazia(Enum):
+            Abkhazia = "Abkhazia"
+
+        class SouthOssetia(Enum):
+            South_Ossetia = "South Ossetia"
+
+        class China(Enum):
+            China_PLAAA_Camo = "China PLAAA Camo"
+            China_UN = "China UN"
+            China_PLAAA_White = "China PLAAA White"
+
+        class TheNetherlands(Enum):
+            Netherlands_ARMY = "Netherlands ARMY"
+            Netherlands_NAVY = "Netherlands NAVY"
+            Standard = "Standard"
+
+        class Denmark(Enum):
+            Denmark = "Denmark"
+
         class Insurgents(Enum):
             Insurgents = "Insurgents"
             Standard = "Standard"
@@ -678,8 +811,9 @@ class Mi_8MT(HelicopterType):
             France_NAVY = "France NAVY"
             Standard = "Standard"
 
-        class Abkhazia(Enum):
-            Abkhazia = "Abkhazia"
+        class USA(Enum):
+            USA_AFG = "USA_AFG"
+            Standard = "Standard"
 
         class Russia(Enum):
             Russia_VVS_Standard = "Russia_VVS_Standard"
@@ -707,37 +841,27 @@ class Mi_8MT(HelicopterType):
             Italy_NAVY = "Italy NAVY"
             Standard = "Standard"
 
-        class SouthOssetia(Enum):
-            South_Ossetia = "South Ossetia"
-
-        class Iran(Enum):
-            IR_AFAGIR_Blue = "IR AFAGIR Blue"
-            IR_AFAGIR_Sand = "IR AFAGIR Sand"
-            IR_Iranian_Special_Police_Forces = "IR Iranian Special Police Forces"
-
-        class China(Enum):
-            China_PLAAA_Camo = "China PLAAA Camo"
-            China_UN = "China UN"
-            China_PLAAA_White = "China PLAAA White"
-
-        class USA(Enum):
-            USA_AFG = "USA_AFG"
+        class Turkey(Enum):
+            Turkey = "Turkey"
             Standard = "Standard"
 
-        class Denmark(Enum):
-            Denmark = "Denmark"
+        class Algeria(Enum):
+            Algerian_AF_Green = "Algerian AF Green"
+            Algerian_AF_Green_EVSAN = "Algerian AF Green EVSAN"
+            Algerian_AF_New_Desert = "Algerian AF New Desert"
+            Algerian_AF_Old_Desert = "Algerian AF Old Desert"
+            Algerian_AF_VIP = "Algerian AF VIP"
+
+        class Germany(Enum):
+            Germany = "Germany"
+            Standard = "Standard"
+
+        class Spain(Enum):
+            Spain = "Spain"
+            Standard = "Standard"
 
         class Canada(Enum):
             Canada = "Canada"
-            Standard = "Standard"
-
-        class TheNetherlands(Enum):
-            Netherlands_ARMY = "Netherlands ARMY"
-            Netherlands_NAVY = "Netherlands NAVY"
-            Standard = "Standard"
-
-        class Turkey(Enum):
-            Turkey = "Turkey"
             Standard = "Standard"
 
     class Pylon1:
@@ -839,31 +963,26 @@ class Mi_26(HelicopterType):
 
     class Liveries:
 
+        class USSR(Enum):
+            RF_Air_Force = "RF Air Force"
+            United_Nations = "United Nations"
+
         class Georgia(Enum):
             United_Nations = "United Nations"
 
-        class Syria(Enum):
-            United_Nations = "United Nations"
-
-        class Finland(Enum):
+        class Venezuela(Enum):
             United_Nations = "United Nations"
 
         class Australia(Enum):
             United_Nations = "United Nations"
 
-        class Germany(Enum):
-            United_Nations = "United Nations"
-
-        class SaudiArabia(Enum):
-            United_Nations = "United Nations"
-
         class Israel(Enum):
             United_Nations = "United Nations"
 
-        class Croatia(Enum):
+        class Combined_Joint_Task_Forces_Blue(Enum):
             United_Nations = "United Nations"
 
-        class CzechRepublic(Enum):
+        class Sudan(Enum):
             United_Nations = "United Nations"
 
         class Norway(Enum):
@@ -872,11 +991,14 @@ class Mi_26(HelicopterType):
         class Romania(Enum):
             United_Nations = "United Nations"
 
-        class Spain(Enum):
+        class Iran(Enum):
             United_Nations = "United Nations"
 
         class Ukraine(Enum):
             _7th_Separate_Brigade_of_AA__Kalinov = "7th Separate Brigade of AA (Kalinov)"
+            United_Nations = "United Nations"
+
+        class Libya(Enum):
             United_Nations = "United Nations"
 
         class Belgium(Enum):
@@ -891,16 +1013,122 @@ class Mi_26(HelicopterType):
         class UK(Enum):
             United_Nations = "United Nations"
 
-        class Insurgents(Enum):
+        class Third_Reich(Enum):
             United_Nations = "United Nations"
 
         class Hungary(Enum):
             United_Nations = "United Nations"
 
+        class Abkhazia(Enum):
+            United_Nations = "United Nations"
+
+        class Morocco(Enum):
+            United_Nations = "United Nations"
+
+        class United_Nations_Peacekeepers(Enum):
+            United_Nations = "United Nations"
+
+        class Switzerland(Enum):
+            United_Nations = "United Nations"
+
+        class SouthOssetia(Enum):
+            United_Nations = "United Nations"
+
+        class Vietnam(Enum):
+            United_Nations = "United Nations"
+
+        class China(Enum):
+            China_Flying_Dragon_Aviation = "China Flying Dragon Aviation"
+            United_Nations = "United Nations"
+
+        class Yemen(Enum):
+            United_Nations = "United Nations"
+
+        class Kuwait(Enum):
+            United_Nations = "United Nations"
+
+        class Serbia(Enum):
+            United_Nations = "United Nations"
+
+        class Oman(Enum):
+            United_Nations = "United Nations"
+
+        class India(Enum):
+            United_Nations = "United Nations"
+
+        class Egypt(Enum):
+            United_Nations = "United Nations"
+
+        class TheNetherlands(Enum):
+            United_Nations = "United Nations"
+
+        class Poland(Enum):
+            United_Nations = "United Nations"
+
+        class Syria(Enum):
+            United_Nations = "United Nations"
+
+        class Finland(Enum):
+            United_Nations = "United Nations"
+
+        class Kazakhstan(Enum):
+            United_Nations = "United Nations"
+
+        class Denmark(Enum):
+            United_Nations = "United Nations"
+
+        class Sweden(Enum):
+            United_Nations = "United Nations"
+
+        class Croatia(Enum):
+            United_Nations = "United Nations"
+
+        class CzechRepublic(Enum):
+            United_Nations = "United Nations"
+
+        class GDR(Enum):
+            United_Nations = "United Nations"
+
+        class Yugoslavia(Enum):
+            United_Nations = "United Nations"
+
+        class Bulgaria(Enum):
+            United_Nations = "United Nations"
+
+        class SouthKorea(Enum):
+            United_Nations = "United Nations"
+
+        class Tunisia(Enum):
+            United_Nations = "United Nations"
+
+        class Combined_Joint_Task_Forces_Red(Enum):
+            United_Nations = "United Nations"
+
+        class Lebanon(Enum):
+            United_Nations = "United Nations"
+
+        class Portugal(Enum):
+            United_Nations = "United Nations"
+
+        class Cuba(Enum):
+            United_Nations = "United Nations"
+
+        class Insurgents(Enum):
+            United_Nations = "United Nations"
+
+        class SaudiArabia(Enum):
+            United_Nations = "United Nations"
+
         class France(Enum):
             United_Nations = "United Nations"
 
-        class Abkhazia(Enum):
+        class USA(Enum):
+            United_Nations = "United Nations"
+
+        class Honduras(Enum):
+            United_Nations = "United Nations"
+
+        class Qatar(Enum):
             United_Nations = "United Nations"
 
         class Russia(Enum):
@@ -909,80 +1137,83 @@ class Mi_26(HelicopterType):
             Russia_MVD = "Russia_MVD"
             United_Nations = "United Nations"
 
-        class Sweden(Enum):
+        class United_Arab_Emirates(Enum):
+            United_Nations = "United Nations"
+
+        class Italian_Social_Republi(Enum):
             United_Nations = "United Nations"
 
         class Austria(Enum):
             United_Nations = "United Nations"
 
-        class Switzerland(Enum):
+        class Bahrain(Enum):
             United_Nations = "United Nations"
 
         class Italy(Enum):
             United_Nations = "United Nations"
 
-        class SouthOssetia(Enum):
-            United_Nations = "United Nations"
-
-        class SouthKorea(Enum):
-            United_Nations = "United Nations"
-
-        class Iran(Enum):
-            United_Nations = "United Nations"
-
-        class China(Enum):
-            China_Flying_Dragon_Aviation = "China Flying Dragon Aviation"
-            United_Nations = "United Nations"
-
-        class Pakistan(Enum):
-            United_Nations = "United Nations"
-
-        class Belarus(Enum):
-            United_Nations = "United Nations"
-
-        class NorthKorea(Enum):
-            United_Nations = "United Nations"
-
-        class Iraq(Enum):
-            United_Nations = "United Nations"
-
-        class Kazakhstan(Enum):
-            United_Nations = "United Nations"
-
-        class Bulgaria(Enum):
-            United_Nations = "United Nations"
-
-        class Serbia(Enum):
-            United_Nations = "United Nations"
-
-        class India(Enum):
-            United_Nations = "United Nations"
-
-        class USAFAggressors(Enum):
-            United_Nations = "United Nations"
-
-        class USA(Enum):
-            United_Nations = "United Nations"
-
-        class Denmark(Enum):
-            United_Nations = "United Nations"
-
-        class Egypt(Enum):
-            United_Nations = "United Nations"
-
-        class Canada(Enum):
-            United_Nations = "United Nations"
-
-        class TheNetherlands(Enum):
+        class Chile(Enum):
             United_Nations = "United Nations"
 
         class Turkey(Enum):
             United_Nations = "United Nations"
 
+        class Philippines(Enum):
+            United_Nations = "United Nations"
+
+        class Algeria(Enum):
+            Algerian_Air_Force_SL_22 = "Algerian Air Force SL-22"
+            United_Nations = "United Nations"
+
+        class Pakistan(Enum):
+            United_Nations = "United Nations"
+
+        class Malaysia(Enum):
+            United_Nations = "United Nations"
+
+        class Indonesia(Enum):
+            United_Nations = "United Nations"
+
+        class Iraq(Enum):
+            United_Nations = "United Nations"
+
+        class Germany(Enum):
+            United_Nations = "United Nations"
+
+        class South_Africa(Enum):
+            United_Nations = "United Nations"
+
+        class Jordan(Enum):
+            United_Nations = "United Nations"
+
+        class Mexico(Enum):
+            United_Nations = "United Nations"
+
+        class USAFAggressors(Enum):
+            United_Nations = "United Nations"
+
+        class Brazil(Enum):
+            United_Nations = "United Nations"
+
+        class Spain(Enum):
+            United_Nations = "United Nations"
+
+        class Belarus(Enum):
+            United_Nations = "United Nations"
+
+        class Canada(Enum):
+            United_Nations = "United Nations"
+
+        class NorthKorea(Enum):
+            United_Nations = "United Nations"
+
+        class Ethiopia(Enum):
+            United_Nations = "United Nations"
+
         class Japan(Enum):
             United_Nations = "United Nations"
 
-        class Poland(Enum):
+        class Thailand(Enum):
             United_Nations = "United Nations"
 
     pylons = {}
@@ -1004,11 +1235,14 @@ class Ka_27(HelicopterType):
         class Ukraine(Enum):
             ukraine_camo_1 = "ukraine camo 1"
 
+        class China(Enum):
+            China_PLANAF = "China PLANAF"
+
         class Russia(Enum):
             standard = "standard"
 
-        class China(Enum):
-            China_PLANAF = "China PLANAF"
+        class Algeria(Enum):
+            standard = "standard"
 
     pylons = {}
 
@@ -1034,17 +1268,11 @@ class UH_60A(HelicopterType):
         class Georgia(Enum):
             standard = "standard"
 
-        class Germany(Enum):
-            standard = "standard"
-
         class Israel(Enum):
             ISRAIL_UN = "ISRAIL_UN"
             standard = "standard"
 
         class Norway(Enum):
-            standard = "standard"
-
-        class Spain(Enum):
             standard = "standard"
 
         class Ukraine(Enum):
@@ -1056,10 +1284,22 @@ class UH_60A(HelicopterType):
         class UK(Enum):
             standard = "standard"
 
+        class Abkhazia(Enum):
+            standard = "standard"
+
+        class SouthOssetia(Enum):
+            standard = "standard"
+
+        class TheNetherlands(Enum):
+            standard = "standard"
+
+        class Denmark(Enum):
+            standard = "standard"
+
         class France(Enum):
             standard = "standard"
 
-        class Abkhazia(Enum):
+        class USA(Enum):
             standard = "standard"
 
         class Russia(Enum):
@@ -1068,22 +1308,16 @@ class UH_60A(HelicopterType):
         class Italy(Enum):
             standard = "standard"
 
-        class SouthOssetia(Enum):
+        class Turkey(Enum):
             standard = "standard"
 
-        class USA(Enum):
+        class Germany(Enum):
             standard = "standard"
 
-        class Denmark(Enum):
+        class Spain(Enum):
             standard = "standard"
 
         class Canada(Enum):
-            standard = "standard"
-
-        class TheNetherlands(Enum):
-            standard = "standard"
-
-        class Turkey(Enum):
             standard = "standard"
 
     pylons = {}
@@ -1136,20 +1370,20 @@ class CH_47D(HelicopterType):
         class Australia(Enum):
             Australia_RAAF = "Australia RAAF"
 
-        class Spain(Enum):
-            ch_47_green_spain = "ch-47_green spain"
-
         class Greece(Enum):
             Greek_Army = "Greek Army"
 
         class UK(Enum):
             ch_47_green_uk = "ch-47_green uk"
 
+        class TheNetherlands(Enum):
+            ch_47_green_neth = "ch-47_green neth"
+
         class USA(Enum):
             standard = "standard"
 
-        class TheNetherlands(Enum):
-            ch_47_green_neth = "ch-47_green neth"
+        class Spain(Enum):
+            ch_47_green_spain = "ch-47_green spain"
 
     pylons = {}
 
@@ -1173,31 +1407,25 @@ class SH_3W(HelicopterType):
 
     class Liveries:
 
+        class USSR(Enum):
+            standard = "standard"
+
         class Georgia(Enum):
             standard = "standard"
 
-        class Syria(Enum):
-            standard = "standard"
-
-        class Finland(Enum):
+        class Venezuela(Enum):
             standard = "standard"
 
         class Australia(Enum):
             standard = "standard"
 
-        class Germany(Enum):
-            standard = "standard"
-
-        class SaudiArabia(Enum):
-            standard = "standard"
-
         class Israel(Enum):
             standard = "standard"
 
-        class Croatia(Enum):
+        class Combined_Joint_Task_Forces_Blue(Enum):
             standard = "standard"
 
-        class CzechRepublic(Enum):
+        class Sudan(Enum):
             standard = "standard"
 
         class Norway(Enum):
@@ -1206,10 +1434,13 @@ class SH_3W(HelicopterType):
         class Romania(Enum):
             standard = "standard"
 
-        class Spain(Enum):
+        class Iran(Enum):
             standard = "standard"
 
         class Ukraine(Enum):
+            standard = "standard"
+
+        class Libya(Enum):
             standard = "standard"
 
         class Belgium(Enum):
@@ -1224,94 +1455,202 @@ class SH_3W(HelicopterType):
         class UK(Enum):
             standard = "standard"
 
-        class Insurgents(Enum):
+        class Third_Reich(Enum):
             standard = "standard"
 
         class Hungary(Enum):
             standard = "standard"
 
-        class France(Enum):
-            standard = "standard"
-
         class Abkhazia(Enum):
             standard = "standard"
 
-        class Russia(Enum):
+        class Morocco(Enum):
             standard = "standard"
 
-        class Sweden(Enum):
-            standard = "standard"
-
-        class Austria(Enum):
+        class United_Nations_Peacekeepers(Enum):
             standard = "standard"
 
         class Switzerland(Enum):
             standard = "standard"
 
-        class Italy(Enum):
-            standard = "standard"
-
         class SouthOssetia(Enum):
             standard = "standard"
 
-        class SouthKorea(Enum):
-            standard = "standard"
-
-        class Iran(Enum):
+        class Vietnam(Enum):
             standard = "standard"
 
         class China(Enum):
             standard = "standard"
 
-        class Pakistan(Enum):
+        class Yemen(Enum):
             standard = "standard"
 
-        class Belarus(Enum):
-            standard = "standard"
-
-        class NorthKorea(Enum):
-            standard = "standard"
-
-        class Iraq(Enum):
-            standard = "standard"
-
-        class Kazakhstan(Enum):
-            standard = "standard"
-
-        class Bulgaria(Enum):
+        class Kuwait(Enum):
             standard = "standard"
 
         class Serbia(Enum):
             standard = "standard"
 
+        class Oman(Enum):
+            standard = "standard"
+
         class India(Enum):
-            standard = "standard"
-
-        class USAFAggressors(Enum):
-            standard = "standard"
-
-        class USA(Enum):
-            standard = "standard"
-
-        class Denmark(Enum):
             standard = "standard"
 
         class Egypt(Enum):
             standard = "standard"
 
-        class Canada(Enum):
+        class TheNetherlands(Enum):
             standard = "standard"
 
-        class TheNetherlands(Enum):
+        class Poland(Enum):
+            standard = "standard"
+
+        class Syria(Enum):
+            standard = "standard"
+
+        class Finland(Enum):
+            standard = "standard"
+
+        class Kazakhstan(Enum):
+            standard = "standard"
+
+        class Denmark(Enum):
+            standard = "standard"
+
+        class Sweden(Enum):
+            standard = "standard"
+
+        class Croatia(Enum):
+            standard = "standard"
+
+        class CzechRepublic(Enum):
+            standard = "standard"
+
+        class GDR(Enum):
+            standard = "standard"
+
+        class Yugoslavia(Enum):
+            standard = "standard"
+
+        class Bulgaria(Enum):
+            standard = "standard"
+
+        class SouthKorea(Enum):
+            standard = "standard"
+
+        class Tunisia(Enum):
+            standard = "standard"
+
+        class Combined_Joint_Task_Forces_Red(Enum):
+            standard = "standard"
+
+        class Lebanon(Enum):
+            standard = "standard"
+
+        class Portugal(Enum):
+            standard = "standard"
+
+        class Cuba(Enum):
+            standard = "standard"
+
+        class Insurgents(Enum):
+            standard = "standard"
+
+        class SaudiArabia(Enum):
+            standard = "standard"
+
+        class France(Enum):
+            standard = "standard"
+
+        class USA(Enum):
+            standard = "standard"
+
+        class Honduras(Enum):
+            standard = "standard"
+
+        class Qatar(Enum):
+            standard = "standard"
+
+        class Russia(Enum):
+            standard = "standard"
+
+        class United_Arab_Emirates(Enum):
+            standard = "standard"
+
+        class Italian_Social_Republi(Enum):
+            standard = "standard"
+
+        class Austria(Enum):
+            standard = "standard"
+
+        class Bahrain(Enum):
+            standard = "standard"
+
+        class Italy(Enum):
+            standard = "standard"
+
+        class Chile(Enum):
             standard = "standard"
 
         class Turkey(Enum):
             standard = "standard"
 
+        class Philippines(Enum):
+            standard = "standard"
+
+        class Algeria(Enum):
+            standard = "standard"
+
+        class Pakistan(Enum):
+            standard = "standard"
+
+        class Malaysia(Enum):
+            standard = "standard"
+
+        class Indonesia(Enum):
+            standard = "standard"
+
+        class Iraq(Enum):
+            standard = "standard"
+
+        class Germany(Enum):
+            standard = "standard"
+
+        class South_Africa(Enum):
+            standard = "standard"
+
+        class Jordan(Enum):
+            standard = "standard"
+
+        class Mexico(Enum):
+            standard = "standard"
+
+        class USAFAggressors(Enum):
+            standard = "standard"
+
+        class Brazil(Enum):
+            standard = "standard"
+
+        class Spain(Enum):
+            standard = "standard"
+
+        class Belarus(Enum):
+            standard = "standard"
+
+        class Canada(Enum):
+            standard = "standard"
+
+        class NorthKorea(Enum):
+            standard = "standard"
+
+        class Ethiopia(Enum):
+            standard = "standard"
+
         class Japan(Enum):
             standard = "standard"
 
-        class Poland(Enum):
+        class Thailand(Enum):
             standard = "standard"
 
     pylons = {}
@@ -1344,12 +1683,12 @@ class AH_64A(HelicopterType):
         class UK(Enum):
             ah_64_a_green_uk = "ah-64_a_green uk"
 
+        class TheNetherlands(Enum):
+            ah_64_a_green_neth = "ah-64_a_green neth"
+
         class USA(Enum):
             standard = "standard"
             standard_dirty = "standard dirty"
-
-        class TheNetherlands(Enum):
-            ah_64_a_green_neth = "ah-64_a_green neth"
 
     class Pylon1:
         LAU_61___19_2_75__rockets_MK151_HE = (1, Weapons.LAU_61___19_2_75__rockets_MK151_HE)
@@ -1403,11 +1742,11 @@ class AH_64D(HelicopterType):
         class UK(Enum):
             ah_64_d_green_uk = "ah-64_d_green uk"
 
-        class USA(Enum):
-            standard = "standard"
-
         class TheNetherlands(Enum):
             ah_64_d_green_neth = "ah-64_d_green neth"
+
+        class USA(Enum):
+            standard = "standard"
 
     class Pylon1:
         AGM_114K___4 = (1, Weapons.AGM_114K___4)
@@ -1604,9 +1943,6 @@ class UH_1H(HelicopterType):
             Australia_RAAF_1968 = "Australia RAAF 1968"
             Australia_Royal_Navy = "Australia Royal Navy"
 
-        class Germany(Enum):
-            Luftwaffe = "Luftwaffe"
-
         class Israel(Enum):
             Israel_Army = "Israel Army"
 
@@ -1614,10 +1950,6 @@ class UH_1H(HelicopterType):
             Norwegian_Coast_Guard__235 = "Norwegian Coast Guard (235)"
             Norwegian_UN = "Norwegian UN"
             _Civilian__Standard = "[Civilian] Standard"
-
-        class Spain(Enum):
-            Spanish_Army = "Spanish Army"
-            Spanish_UN = "Spanish UN"
 
         class Ukraine(Enum):
             Ukrainian_Army = "Ukrainian Army"
@@ -1633,26 +1965,23 @@ class UH_1H(HelicopterType):
         class UK(Enum):
             _Civilian__Standard = "[Civilian] Standard"
 
+        class Abkhazia(Enum):
+            _Civilian__Standard = "[Civilian] Standard"
+
+        class SouthOssetia(Enum):
+            _Civilian__Standard = "[Civilian] Standard"
+
+        class TheNetherlands(Enum):
+            Royal_Netherlands_AF = "Royal Netherlands AF"
+
+        class Denmark(Enum):
+            _Civilian__Standard = "[Civilian] Standard"
+
         class Insurgents(Enum):
             _Civilian__Standard = "[Civilian] Standard"
 
         class France(Enum):
             French_Army = "French Army"
-
-        class Abkhazia(Enum):
-            _Civilian__Standard = "[Civilian] Standard"
-
-        class Russia(Enum):
-            RF_Air_Force_Broken = "RF Air Force Broken"
-            RF_Air_Force_Grey = "RF Air Force Grey"
-
-        class Italy(Enum):
-            Italy_15B_Stormo_S_A_R__Soccorso = "Italy 15B Stormo S.A.R -Soccorso"
-            Italy_E_I__4B_Regg__ALTAIR = "Italy E.I. 4B Regg. ALTAIR"
-            Italy_Marina_Militare_s_n__80951_7_20 = "Italy Marina Militare s.n. 80951 7-20"
-
-        class SouthOssetia(Enum):
-            _Civilian__Standard = "[Civilian] Standard"
 
         class USA(Enum):
             Army_Standard = "Army Standard"
@@ -1668,17 +1997,30 @@ class UH_1H(HelicopterType):
             _Civilian__NASA = "[Civilian] NASA"
             _Civilian__VIP = "[Civilian] VIP"
 
-        class Denmark(Enum):
-            _Civilian__Standard = "[Civilian] Standard"
+        class Russia(Enum):
+            RF_Air_Force_Broken = "RF Air Force Broken"
+            RF_Air_Force_Grey = "RF Air Force Grey"
 
-        class Canada(Enum):
-            Canadian_Force = "Canadian Force"
-
-        class TheNetherlands(Enum):
-            Royal_Netherlands_AF = "Royal Netherlands AF"
+        class Italy(Enum):
+            Italy_15B_Stormo_S_A_R__Soccorso = "Italy 15B Stormo S.A.R -Soccorso"
+            Italy_E_I__4B_Regg__ALTAIR = "Italy E.I. 4B Regg. ALTAIR"
+            Italy_Marina_Militare_s_n__80951_7_20 = "Italy Marina Militare s.n. 80951 7-20"
 
         class Turkey(Enum):
             Turkish_Air_Force = "Turkish Air Force"
+
+        class Algeria(Enum):
+            Algerian_AF_BV_32 = "Algerian AF BV-32"
+
+        class Germany(Enum):
+            Luftwaffe = "Luftwaffe"
+
+        class Spain(Enum):
+            Spanish_Army = "Spanish Army"
+            Spanish_UN = "Spanish UN"
+
+        class Canada(Enum):
+            Canadian_Force = "Canadian Force"
 
     class Pylon1:
         M134_L = (1, Weapons.M134_L)
@@ -1738,6 +2080,10 @@ class Mi_28N(HelicopterType):
         class Russia(Enum):
             night = "night"
             standard = "standard"
+
+        class Algeria(Enum):
+            AAF_SC_11 = "AAF SC-11"
+            AAF_SC_12 = "AAF SC-12"
 
     class Pylon1:
         B_8V20A_CM = (1, Weapons.B_8V20A_CM)
@@ -1866,36 +2212,36 @@ class SA342M(HelicopterType):
 
     class Liveries:
 
-        class Syria(Enum):
-            Syria_Fictional = "Syria Fictional"
-
-        class Germany(Enum):
-            Germany_Fictional = "Germany Fictional"
-
         class Israel(Enum):
-            Israel_Fictional = "Israel Fictional"
+            israel_fictional = "israel fictional"
 
         class Greece(Enum):
-            Greece_Cyprus_Fictional_Desert = "Greece Cyprus Fictional Desert"
+            greece_cyprus_fictional_desert = "greece cyprus fictional desert"
 
         class UK(Enum):
-            UK_Fictional = "UK Fictional"
-
-        class France(Enum):
-            Combat = "Combat"
-            Tiger_Meet = "Tiger Meet"
-            Tiger_Meet_2 = "Tiger Meet 2"
-            Training = "Training"
-
-        class Russia(Enum):
-            Russia_Fictional = "Russia Fictional"
+            uk_fictional = "uk fictional"
 
         class Serbia(Enum):
-            Serbia_Fictional = "Serbia Fictional"
-            Yugoslav_Fictional = "Yugoslav Fictional"
+            serbia_fictional = "serbia fictional"
+            yugoslav_fictional = "yugoslav fictional"
+
+        class Syria(Enum):
+            syria_fictional = "syria fictional"
+
+        class France(Enum):
+            combat = "combat"
+            tiger_meet = "tiger meet"
+            tiger_meet_2 = "tiger meet 2"
+            training = "training"
 
         class USA(Enum):
-            US_Marines_Fictional = "US Marines Fictional"
+            us_marines_fictional = "us marines fictional"
+
+        class Russia(Enum):
+            russia_fictional = "russia fictional"
+
+        class Germany(Enum):
+            germany_fictional = "germany fictional"
 
     class Pylon1:
         HOT3_ = (1, Weapons.HOT3_)
@@ -1923,7 +2269,6 @@ class SA342M(HelicopterType):
 
 class SA342L(HelicopterType):
     id = "SA342L"
-    flyable = True
     height = 3.192
     width = 10.5
     length = 11.97
@@ -1954,36 +2299,36 @@ class SA342L(HelicopterType):
 
     class Liveries:
 
-        class Syria(Enum):
-            Syria_Fictional = "Syria Fictional"
-
-        class Germany(Enum):
-            Germany_Fictional = "Germany Fictional"
-
         class Israel(Enum):
-            Israel_Fictional = "Israel Fictional"
+            israel_fictional = "israel fictional"
 
         class Greece(Enum):
-            Greece_Cyprus_Fictional_Desert = "Greece Cyprus Fictional Desert"
+            greece_cyprus_fictional_desert = "greece cyprus fictional desert"
 
         class UK(Enum):
-            UK_Fictional = "UK Fictional"
-
-        class France(Enum):
-            Combat = "Combat"
-            Tiger_Meet = "Tiger Meet"
-            Tiger_Meet_2 = "Tiger Meet 2"
-            Training = "Training"
-
-        class Russia(Enum):
-            Russia_Fictional = "Russia Fictional"
+            uk_fictional = "uk fictional"
 
         class Serbia(Enum):
-            Serbia_Fictional = "Serbia Fictional"
-            Yugoslav_Fictional = "Yugoslav Fictional"
+            serbia_fictional = "serbia fictional"
+            yugoslav_fictional = "yugoslav fictional"
+
+        class Syria(Enum):
+            syria_fictional = "syria fictional"
+
+        class France(Enum):
+            combat = "combat"
+            tiger_meet = "tiger meet"
+            tiger_meet_2 = "tiger meet 2"
+            training = "training"
 
         class USA(Enum):
-            US_Marines_Fictional = "US Marines Fictional"
+            us_marines_fictional = "us marines fictional"
+
+        class Russia(Enum):
+            russia_fictional = "russia fictional"
+
+        class Germany(Enum):
+            germany_fictional = "germany fictional"
 #ERRR {GIAT_M621G}
 
     class Pylon2:
@@ -2004,7 +2349,6 @@ class SA342L(HelicopterType):
 
 class SA342Mistral(HelicopterType):
     id = "SA342Mistral"
-    flyable = True
     height = 3.192
     width = 10.5
     length = 11.97
@@ -2035,36 +2379,36 @@ class SA342Mistral(HelicopterType):
 
     class Liveries:
 
-        class Syria(Enum):
-            Syria_Fictional = "Syria Fictional"
-
-        class Germany(Enum):
-            Germany_Fictional = "Germany Fictional"
-
         class Israel(Enum):
-            Israel_Fictional = "Israel Fictional"
+            israel_fictional = "israel fictional"
 
         class Greece(Enum):
-            Greece_Cyprus_Fictional_Desert = "Greece Cyprus Fictional Desert"
+            greece_cyprus_fictional_desert = "greece cyprus fictional desert"
 
         class UK(Enum):
-            UK_Fictional = "UK Fictional"
-
-        class France(Enum):
-            Combat = "Combat"
-            Tiger_Meet = "Tiger Meet"
-            Tiger_Meet_2 = "Tiger Meet 2"
-            Training = "Training"
-
-        class Russia(Enum):
-            Russia_Fictional = "Russia Fictional"
+            uk_fictional = "uk fictional"
 
         class Serbia(Enum):
-            Serbia_Fictional = "Serbia Fictional"
-            Yugoslav_Fictional = "Yugoslav Fictional"
+            serbia_fictional = "serbia fictional"
+            yugoslav_fictional = "yugoslav fictional"
+
+        class Syria(Enum):
+            syria_fictional = "syria fictional"
+
+        class France(Enum):
+            combat = "combat"
+            tiger_meet = "tiger meet"
+            tiger_meet_2 = "tiger meet 2"
+            training = "training"
 
         class USA(Enum):
-            US_Marines_Fictional = "US Marines Fictional"
+            us_marines_fictional = "us marines fictional"
+
+        class Russia(Enum):
+            russia_fictional = "russia fictional"
+
+        class Germany(Enum):
+            germany_fictional = "germany fictional"
 
     class Pylon1:
         Mistral_ = (1, Weapons.Mistral_)
@@ -2092,7 +2436,6 @@ class SA342Mistral(HelicopterType):
 
 class SA342Minigun(HelicopterType):
     id = "SA342Minigun"
-    flyable = True
     height = 3.192
     width = 10.5
     length = 11.97
@@ -2123,36 +2466,36 @@ class SA342Minigun(HelicopterType):
 
     class Liveries:
 
-        class Syria(Enum):
-            Syria_Fictional = "Syria Fictional"
-
-        class Germany(Enum):
-            Germany_Fictional = "Germany Fictional"
-
         class Israel(Enum):
-            Israel_Fictional = "Israel Fictional"
+            israel_fictional = "israel fictional"
 
         class Greece(Enum):
-            Greece_Cyprus_Fictional_Desert = "Greece Cyprus Fictional Desert"
+            greece_cyprus_fictional_desert = "greece cyprus fictional desert"
 
         class UK(Enum):
-            UK_Fictional = "UK Fictional"
-
-        class France(Enum):
-            Combat = "Combat"
-            Tiger_Meet = "Tiger Meet"
-            Tiger_Meet_2 = "Tiger Meet 2"
-            Training = "Training"
-
-        class Russia(Enum):
-            Russia_Fictional = "Russia Fictional"
+            uk_fictional = "uk fictional"
 
         class Serbia(Enum):
-            Serbia_Fictional = "Serbia Fictional"
-            Yugoslav_Fictional = "Yugoslav Fictional"
+            serbia_fictional = "serbia fictional"
+            yugoslav_fictional = "yugoslav fictional"
+
+        class Syria(Enum):
+            syria_fictional = "syria fictional"
+
+        class France(Enum):
+            combat = "combat"
+            tiger_meet = "tiger meet"
+            tiger_meet_2 = "tiger meet 2"
+            training = "training"
 
         class USA(Enum):
-            US_Marines_Fictional = "US Marines Fictional"
+            us_marines_fictional = "us marines fictional"
+
+        class Russia(Enum):
+            russia_fictional = "russia fictional"
+
+        class Germany(Enum):
+            germany_fictional = "germany fictional"
 #ERRR {MINIGUN}
 
     class Pylon5:

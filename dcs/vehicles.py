@@ -183,22 +183,22 @@ class Infantry:
         id = "soldier_mauser98"
         name = "Infantry Mauser 98"
         detection_range = 0
-        threat_range = 1100
-        air_weapon_dist = 1100
+        threat_range = 500
+        air_weapon_dist = 500
 
     class Infantry_SMLE_No_4_Mk_1(unittype.VehicleType):
         id = "soldier_wwii_br_01"
         name = "Infantry SMLE No.4 Mk-1"
         detection_range = 0
-        threat_range = 1100
-        air_weapon_dist = 1100
+        threat_range = 500
+        air_weapon_dist = 500
 
     class Infantry_M1_Garand(unittype.VehicleType):
         id = "soldier_wwii_us"
         name = "Infantry M1 Garand"
         detection_range = 0
-        threat_range = 1100
-        air_weapon_dist = 1100
+        threat_range = 500
+        air_weapon_dist = 500
 
 
 class AirDefence:
@@ -1029,13 +1029,6 @@ class Unarmed:
         threat_range = 0
         air_weapon_dist = 0
 
-    class Warning_Board_A(unittype.VehicleType):
-        id = "warning_board_a"
-        name = "Warning Board A"
-        detection_range = 0
-        threat_range = 0
-        air_weapon_dist = 0
-
     class Kübelwagen_82(unittype.VehicleType):
         id = "Kubelwagen_82"
         name = "Kübelwagen 82"
@@ -1816,7 +1809,6 @@ vehicle_map = {
     "ZBD04A": Armor.ZBD_04A,
     "HQ-7_LN_SP": AirDefence.HQ_7_Self_Propelled_LN,
     "HQ-7_STR_SP": AirDefence.HQ_7_Self_Propelled_STR,
-    "warning_board_a": Unarmed.Warning_Board_A,
     "Kubelwagen_82": Unarmed.Kübelwagen_82,
     "Blitz_36-6700A": Unarmed.Blitz_3_6_6700A,
     "Sd_Kfz_2": Unarmed.Sd_Kfz_2,
