@@ -644,3 +644,19 @@ class BasicTests(unittest.TestCase):
         self.assertEqual(m2.triggerrules.triggers[0].actions[0].objects_mask, dcs.action.RemoveSceneObjectsMask.ALL)
         self.assertEqual(m2.triggerrules.triggers[0].actions[0].meters, 1000)
         self.assertEqual(m2.triggerrules.triggers[0].actions[0].zone, removal_zone.id)
+
+    def test_bypass_triggers(self):
+
+        m = dcs.mission.Mission()
+        m.load_file('tests/bypass_triggers.miz', True)
+
+        saved_mission = 'missions/test_bypass_triggers.miz'
+        m.save(saved_mission)
+
+        # Test reload the mission
+        with zipfile.ZipFile(saved_mission, 'r') as miz:
+            with miz.open('mission', 'r') as mission:
+                content = mission.read().decode('utf-8')
+                result = content.find('["unknown_test_key"]')
+
+        self.assertNotEqual(result, -1)
