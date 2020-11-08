@@ -1082,14 +1082,14 @@ class Unarmed:
         id = "Sd_Kfz_2"
         name = "Sd.Kfz.2"
         detection_range = 0
-        threat_range = None
+        threat_range = 0
         air_weapon_dist = 0
 
     class Sd_Kfz_7(unittype.VehicleType):
         id = "Sd_Kfz_7"
         name = "Sd.Kfz.7"
         detection_range = 0
-        threat_range = None
+        threat_range = 0
         air_weapon_dist = 0
 
     class Horch_901_typ_40(unittype.VehicleType):

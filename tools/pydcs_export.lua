@@ -590,7 +590,7 @@ for i in pairs(unit_categories) do
         local unit = unit_categories[i][j]
         local safename = safe_name(unit.DisplayName)
         local safeDisplayName = safe_display_name(unit.DisplayName)
-        local threat_range = 'None'
+        local threat_range = '0'
         if unit.ThreatRange ~= nil then
             threat_range = unit.ThreatRange
         end
