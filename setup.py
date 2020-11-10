@@ -13,7 +13,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name="pydcs",
-    version='0.11.0',
+    version='0.12.0',
     description="A Digital Combat Simulator mission builder framework",
     long_description=long_description,
     url='https://github.com/pydcs/dcs',
