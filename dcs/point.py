@@ -45,7 +45,8 @@ class StaticPoint:
         self.action = PointAction(d["action"])
         self.formation_template = d["formation_template"]
         self.speed = d["speed"]
-        self.name = translation.get_string(d["name"])
+        if "name" in d:
+            self.name = translation.get_string(d["name"])
 
     def dict(self):
         return {
