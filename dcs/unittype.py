@@ -3,7 +3,7 @@ import dcs.installation as installation
 import os
 import re
 import sys
-from typing import Optional, Type, Any
+from typing import Any, Dict, Optional, Type
 
 
 class UnitType:
@@ -64,7 +64,8 @@ class FlyingType(UnitType):
 
     pylons = {}
     Liveries: Optional[Type[Any]] = None
-    payloads = None
+    # Dict from payload name to the DCS payload structure. None if not yet initialized.
+    payloads: Optional[Dict[str, Dict[str, Any]]] = None
     dcs_dir = installation.get_dcs_install_directory()
     payload_dirs = []
     dcs_aircraft_dir = os.path.join(dcs_dir, "CoreMods", "aircraft")
@@ -112,8 +113,9 @@ class FlyingType(UnitType):
             FlyingType._UnitPayloadGlobals = {v.internal_name: v.id for k, v in task.MainTask.map.items()}
 
         FlyingType.scan_payload_dir()
-        if cls.payloads:
+        if cls.payloads is not None:
             return cls.payloads
+        cls.payloads = {}
 
         for payload_dir in FlyingType.payload_dirs:
             if not os.path.exists(payload_dir):
@@ -127,18 +129,8 @@ class FlyingType(UnitType):
                             payload_main = lua.loads(payload.read(), _globals=FlyingType._UnitPayloadGlobals)
                             pays = payload_main["unitPayloads"]
                             if pays["unitType"] == cls.id:
-                                if cls.payloads:
-                                    highestkey = max(pays["payloads"].keys()) + 1
-                                    for load in pays["payloads"]:
-                                        x = [x for x in cls.payloads["payloads"]
-                                             if cls.payloads["payloads"][x]["name"] == pays["payloads"][load]["name"]]
-                                        if x:
-                                            cls.payloads["payloads"][x[0]] = pays["payloads"][load]
-                                        else:
-                                            cls.payloads["payloads"][highestkey] = pays["payloads"][load]
-                                            highestkey += 1
-                                else:
-                                    cls.payloads = pays
+                                for load in pays["payloads"].values():
+                                    cls.payloads[load["name"]] = load
                         except SyntaxError as se:
                             print("Error parsing lua file '{f}'".format(f=payload_filename), file=sys.stderr)
                             raise se
@@ -147,9 +139,8 @@ class FlyingType(UnitType):
 
     @classmethod
     def loadout(cls, _task):
-        if cls.payloads:
-            for p in cls.payloads["payloads"]:
-                payload = cls.payloads["payloads"][p]
+        if cls.payloads is not None:
+            for payload in cls.payloads.values():
                 tasks = [payload["tasks"][x] for x in payload["tasks"]]
                 if _task.id in tasks:
                     pylons = payload["pylons"]
@@ -159,13 +150,13 @@ class FlyingType(UnitType):
 
     @classmethod
     def loadout_by_name(cls, loadout_name):
-        if cls.payloads:
-            for p in cls.payloads["payloads"]:
-                payload = cls.payloads["payloads"][p]
-                if payload["name"] == loadout_name:
-                    pylons = payload["pylons"]
-                    r = [(pylons[x]["num"], {"clsid": pylons[x]["CLSID"]}) for x in pylons]
-                    return r
+        if cls.payloads is not None:
+            payload = cls.payloads.get(loadout_name)
+            if payload is None:
+                return None
+            pylons = payload["pylons"]
+            r = [(pylons[x]["num"], {"clsid": pylons[x]["CLSID"]}) for x in pylons]
+            return r
         return None
 
     @classmethod
