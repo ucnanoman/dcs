@@ -844,6 +844,28 @@ class Embarking(Task):
         }
 
 
+class Disembarking(Task):
+    """Unload task for helicopters.
+
+    Helicopter group will land at the given coordinates and will unload the given groups.
+
+    :param position: :py:class:`dcs.mapping.Point` where to land and unload
+    :param groupids: list of groups to unload
+    """
+    Id = "Disembarking"
+
+    def __init__(self, position: Point = Point(0, 0), groupids: Optional[List[int]] = None):
+        super(Disembarking, self).__init__(self.Id)
+
+        groupids = [] if groupids is None else groupids
+
+        self.params = {
+            "x": position.x,
+            "y": position.y,
+            "groupsForEmbarking": {x: x for x in groupids}
+        }
+
+
 class EmbarkToTransport(Task):
     """Task for ground units that will get picked up by a helicopter
 
@@ -943,6 +965,7 @@ tasks_map: Dict[str, Type[Task]] = {
     Hold.Id: Hold,
     Land.Id: Land,
     Embarking.Id: Embarking,
+    Disembarking.Id: Disembarking,
     EmbarkToTransport.Id: EmbarkToTransport,
     DisembarkFromTransport.Id: DisembarkFromTransport,
     CargoTransportation.Id: CargoTransportation,
