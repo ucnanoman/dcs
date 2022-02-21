@@ -49,7 +49,6 @@ class FlyingUnit(Unit):
 
     def load_from_dict(self, d):
         super(FlyingUnit, self).load_from_dict(d)
-        self.livery_id = d.get("livery_id")
         self.alt_type = d["alt_type"]
         self.alt = d["alt"]
         self.psi = d["psi"]
@@ -206,8 +205,6 @@ class FlyingUnit(Unit):
             d["parking"] = self.parking
         if self.parking_id is not None:
             d["parking_id"] = self.parking_id
-        if self.livery_id:
-            d["livery_id"] = self.livery_id
         d["psi"] = self.psi
         d["onboard_num"] = self.onboard_num
         d["speed"] = round(self.speed, 13)
