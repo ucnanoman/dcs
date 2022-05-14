@@ -1336,81 +1336,85 @@ class SignalFlareOnUnit(Action):
 class SoundToAll(Action):
     predicate = "a_out_sound"
 
-    def __init__(self, file=""):
+    def __init__(self, file_res_key: ResourceKey = None):
         super(SoundToAll, self).__init__(SoundToAll.predicate)
-        self.file = file
-        self.params.append(self.file)
+        if file_res_key:
+            self.file_res_key = file_res_key
+            self.params.append(self.file_res_key)
 
     @classmethod
     def create_from_dict(cls, d, mission):
-        return cls(d["file"])
+        return cls(ResourceKey(d["file"]))
 
     def dict(self):
         d = super(SoundToAll, self).dict()
-        d["file"] = self.file
+        d["file"] = self.file_res_key.key
         return d
 
 
 class SoundToCoalition(Action):
     predicate = "a_out_sound_s"
 
-    def __init__(self, coalitionlist="", file=""):
+    def __init__(self, coalitionlist="", file_res_key: ResourceKey = None):
         super(SoundToCoalition, self).__init__(SoundToCoalition.predicate)
         self.coalitionlist = coalitionlist
-        self.params.append(self.coalitionlist)
-        self.file = file
-        self.params.append(self.file)
+        if file_res_key:
+            self.params.append(self.coalitionlist)
+            self.file_res_key = file_res_key
+            self.params.append(self.file_res_key)
 
     @classmethod
     def create_from_dict(cls, d, mission):
-        return cls(d["coalitionlist"], d["file"])
+        return cls(d["coalitionlist"], ResourceKey(d["file"]))
 
     def dict(self):
         d = super(SoundToCoalition, self).dict()
         d["coalitionlist"] = self.coalitionlist
-        d["file"] = self.file
+        d["file"] = self.file_res_key.key
         return d
 
 
 class SoundToCountry(Action):
     predicate = "a_out_sound_c"
 
-    def __init__(self, countrylist="", file=""):
+    def __init__(self, countrylist="", file_res_key: ResourceKey = None):
         super(SoundToCountry, self).__init__(SoundToCountry.predicate)
         self.countrylist = countrylist
-        self.params.append(self.countrylist)
-        self.file = file
-        self.params.append(self.file)
+        if file_res_key:
+            self.params.append(self.countrylist)
+            self.file_res_key = file_res_key
+            self.params.append(self.file_res_key)
 
     @classmethod
     def create_from_dict(cls, d, mission):
-        return cls(d["countrylist"], d["file"])
+        return cls(d["countrylist"], ResourceKey(d["file"]))
 
     def dict(self):
         d = super(SoundToCountry, self).dict()
         d["countrylist"] = self.countrylist
-        d["file"] = self.file
+        d["file"] = self.file_res_key.key
         return d
 
 
 class SoundToGroup(Action):
     predicate = "a_out_sound_g"
 
-    def __init__(self, group=0, file=""):
+    def __init__(self, group=0, file_res_key: ResourceKey = None):
         super(SoundToGroup, self).__init__(SoundToGroup.predicate)
         self.group = group
-        self.params.append(self.group)
-        self.file = file
-        self.params.append(self.file)
+        if file_res_key:
+            self.params.append(self.group)
+            self.file_res_key = file_res_key
+            self.params.append(self.file_res_key)
 
     @classmethod
     def create_from_dict(cls, d, mission):
-        return cls(d["group"], d["file"])
+        return cls(d["group"], ResourceKey(d["file"]))
 
     def dict(self):
         d = super(SoundToGroup, self).dict()
         d["group"] = self.group
-        d["file"] = self.file
+        d["file"] = self.file_res_key.key
         return d
 
 

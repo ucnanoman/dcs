@@ -1,5 +1,6 @@
 from typing import Dict, Type
 from dcs.lua.serialize import dumps
+from dcs.translation import String
 
 
 class Condition:
@@ -8,7 +9,13 @@ class Condition:
         self.params = []
 
     def __repr__(self):
-        return self.predicate + "(" + ", ".join(map(dumps, self.params)) + ")"
+        s = []
+        for x in self.params:
+            if isinstance(x, String):
+                s.append("getValueDictByKey({})".format(dumps(x.id)))
+            else:
+                s.append(dumps(x))
+        return self.predicate + "(" + ", ".join(s) + ")"
 
     @classmethod
     def condition_str(cls, rules):
@@ -30,7 +37,7 @@ class Condition:
         return "return(true)"
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         raise NotImplementedError
 
     def dict(self):
@@ -51,7 +58,7 @@ class AllOfCoalitionInZone(Condition):
         self.params.append(self.zone)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["coalitionlist"], d["zone"])
 
     def dict(self):
@@ -72,7 +79,7 @@ class AllOfCoalitionOutsideZone(Condition):
         self.params.append(self.zone)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["coalitionlist"], d["zone"])
 
     def dict(self):
@@ -93,7 +100,7 @@ class AllOfGroupInZone(Condition):
         self.params.append(self.zone)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["group"], d["zone"])
 
     def dict(self):
@@ -114,7 +121,7 @@ class AllOfGroupOutsideZone(Condition):
         self.params.append(self.zone)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["group"], d["zone"])
 
     def dict(self):
@@ -137,7 +144,7 @@ class ArgumentInRange(Condition):
         self.params.append(self._max)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["argument"], d["_min"], d["_max"])
 
     def dict(self):
@@ -161,7 +168,7 @@ class BombInZone(Condition):
         self.params.append(self.zone)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["typebomb"], d["numbombs"], d["zone"])
 
     def dict(self):
@@ -183,7 +190,7 @@ class CargoUnhookedInZone(Condition):
         self.params.append(self.zone)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["cargo"], d["zone"])
 
     def dict(self):
@@ -204,7 +211,7 @@ class CoalitionHasAirdrome(Condition):
         self.params.append(self.airdromelist)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["coalitionlist"], d["airdromelist"])
 
     def dict(self):
@@ -225,7 +232,7 @@ class CoalitionHasHelipad(Condition):
         self.params.append(self.helipadlist)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["coalitionlist"], d["helipadlist"])
 
     def dict(self):
@@ -244,7 +251,7 @@ class CockpitHighlightVisible(Condition):
         self.params.append(self.highlight_id)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["highlight_id"])
 
     def dict(self):
@@ -264,7 +271,7 @@ class CockpitParamEqual(Condition):
         self.params.append(self.value_text)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["cockpit_param"], d["value_text"])
 
     def dict(self):
@@ -285,7 +292,7 @@ class CockpitParamEqualToAnother(Condition):
         self.params.append(self.cockpit_param2)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["cockpit_param"], d["cockpit_param2"])
 
     def dict(self):
@@ -308,7 +315,7 @@ class CockpitParamInRange(Condition):
         self.params.append(self._max2)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["cockpit_param"], d["_min2"], d["_max2"])
 
     def dict(self):
@@ -330,7 +337,7 @@ class FlagEquals(Condition):
         self.params.append(self.value)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["flag"], d["value"])
 
     def dict(self):
@@ -351,7 +358,7 @@ class FlagEqualsFlag(Condition):
         self.params.append(self.flag2)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["flag"], d["flag2"])
 
     def dict(self):
@@ -370,7 +377,7 @@ class FlagIsFalse(Condition):
         self.params.append(self.flag)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["flag"])
 
     def dict(self):
@@ -390,7 +397,7 @@ class FlagIsLess(Condition):
         self.params.append(self.value)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["flag"], d["value"])
 
     def dict(self):
@@ -411,7 +418,7 @@ class FlagIsLessThanFlag(Condition):
         self.params.append(self.flag2)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["flag"], d["flag2"])
 
     def dict(self):
@@ -432,7 +439,7 @@ class FlagIsMore(Condition):
         self.params.append(self.value)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["flag"], d["value"])
 
     def dict(self):
@@ -451,7 +458,7 @@ class FlagIsTrue(Condition):
         self.params.append(self.flag)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["flag"])
 
     def dict(self):
@@ -469,7 +476,7 @@ class GroupAlive(Condition):
         self.params.append(self.group)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["group"])
 
     def dict(self):
@@ -487,7 +494,7 @@ class GroupDead(Condition):
         self.params.append(self.group)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["group"])
 
     def dict(self):
@@ -507,7 +514,7 @@ class GroupLifeLess(Condition):
         self.params.append(self.percent)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["group"], d["percent"])
 
     def dict(self):
@@ -530,7 +537,7 @@ class IndicationTextEqual(Condition):
         self.params.append(self.element_value)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["indicator_id"], d["element_name"], d["element_value"])
 
     def dict(self):
@@ -552,7 +559,7 @@ class MapObjectIsDead(Condition):
         self.params.append(self.altitude)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["zone"], d["altitude"])
 
     def dict(self):
@@ -575,7 +582,7 @@ class MissileInZone(Condition):
         self.params.append(self.zone)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["typemissile"], d["nummissiles"], d["zone"])
 
     def dict(self):
@@ -597,7 +604,7 @@ class MissionScoreHigher(Condition):
         self.params.append(self.score)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["coalitionlist"], d["score"])
 
     def dict(self):
@@ -618,7 +625,7 @@ class MissionScoreLower(Condition):
         self.params.append(self.score)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["coalitionlist"], d["score"])
 
     def dict(self):
@@ -635,7 +642,7 @@ class Or(Condition):
         super(Or, self).__init__(Or.predicate)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls()
 
     def dict(self):
@@ -657,7 +664,7 @@ class PartOfCoalitionInZone(Condition):
         self.params.append(self.unitType)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["coalitionlist"], d["zone"], d["unitType"] if "unitType" in d.keys() else "ALL")
 
     def dict(self):
@@ -681,7 +688,7 @@ class PartOfCoalitionOutsideZone(Condition):
         self.params.append(self.unitType)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["coalitionlist"], d["zone"], d["unitType"] if "unitType" in d.keys() else "ALL")
 
     def dict(self):
@@ -703,7 +710,7 @@ class PartOfGroupInZone(Condition):
         self.params.append(self.zone)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["group"], d["zone"])
 
     def dict(self):
@@ -724,7 +731,7 @@ class PartOfGroupOutsideZone(Condition):
         self.params.append(self.zone)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["group"], d["zone"])
 
     def dict(self):
@@ -743,7 +750,7 @@ class PlayerScoreLess(Condition):
         self.params.append(self.scores)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["scores"])
 
     def dict(self):
@@ -761,7 +768,7 @@ class PlayerScoreMore(Condition):
         self.params.append(self.scores)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["scores"])
 
     def dict(self):
@@ -773,18 +780,19 @@ class PlayerScoreMore(Condition):
 class Predicate(Condition):
     predicate = "c_predicate"
 
-    def __init__(self, text):
+    def __init__(self, text: String = String()) -> None:
         super(Predicate, self).__init__(Predicate.predicate)
         self.text = text
         self.params.append(self.text)
 
     @classmethod
-    def create_from_dict(cls, d):
-        return cls(d["text"])
+    def create_from_dict(cls, d, mission):
+        return cls(mission.translation.get_string(d["text"]))
 
     def dict(self):
         d = super(Predicate, self).dict()
-        d["text"] = self.text
+        d["text"] = self.text.id
+        d["KeyDict_text"] = self.text.id
         return d
 
 
@@ -797,7 +805,7 @@ class Random(Condition):
         self.params.append(self.percent)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["percent"])
 
     def dict(self):
@@ -819,7 +827,7 @@ class SignalFlareInZone(Condition):
         self.params.append(self.zone)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["flare_color"], d["numflares"], d["zone"])
 
     def dict(self):
@@ -839,7 +847,7 @@ class TimeAfter(Condition):
         self.params.append(self.seconds)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["seconds"])
 
     def dict(self):
@@ -857,7 +865,7 @@ class TimeBefore(Condition):
         self.params.append(self.seconds)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["seconds"])
 
     def dict(self):
@@ -877,7 +885,7 @@ class TimeSinceFlag(Condition):
         self.params.append(self.seconds)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["flag"], d["seconds"])
 
     def dict(self):
@@ -896,7 +904,7 @@ class UnitAlive(Condition):
         self.params.append(self.unit)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"])
 
     def dict(self):
@@ -916,7 +924,7 @@ class UnitAltitudeHigher(Condition):
         self.params.append(self.altitude)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["altitude"])
 
     def dict(self):
@@ -937,7 +945,7 @@ class UnitAltitudeLower(Condition):
         self.params.append(self.altitude)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["altitude"])
 
     def dict(self):
@@ -958,7 +966,7 @@ class UnitAltitudeHigherAGL(Condition):
         self.params.append(self.altitude)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["altitude"])
 
     def dict(self):
@@ -979,7 +987,7 @@ class UnitAltitudeLowerAGL(Condition):
         self.params.append(self.altitude)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["altitude"])
 
     def dict(self):
@@ -1002,7 +1010,7 @@ class UnitBankWithin(Condition):
         self.params.append(self.max_unit_bank)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["min_unit_bank"], d["max_unit_bank"])
 
     def dict(self):
@@ -1022,7 +1030,7 @@ class UnitDamaged(Condition):
         self.params.append(self.unit)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"])
 
     def dict(self):
@@ -1040,7 +1048,7 @@ class UnitDead(Condition):
         self.params.append(self.unit)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"])
 
     def dict(self):
@@ -1062,7 +1070,7 @@ class UnitHeadingWithin(Condition):
         self.params.append(self.max_unit_heading)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["min_unit_heading"], d["max_unit_heading"])
 
     def dict(self):
@@ -1086,7 +1094,7 @@ class UnitInMovingZone(Condition):
         self.params.append(self.zoneunit)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["zone"], d["zoneunit"])
 
     def dict(self):
@@ -1108,7 +1116,7 @@ class UnitInZone(Condition):
         self.params.append(self.zone)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["zone"])
 
     def dict(self):
@@ -1129,7 +1137,7 @@ class UnitLifeLess(Condition):
         self.params.append(self.percent)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["percent"])
 
     def dict(self):
@@ -1152,7 +1160,7 @@ class UnitOutsideMovingZone(Condition):
         self.params.append(self.zoneunit)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["zone"], d["zoneunit"])
 
     def dict(self):
@@ -1174,7 +1182,7 @@ class UnitOutsideZone(Condition):
         self.params.append(self.zone)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["zone"])
 
     def dict(self):
@@ -1197,7 +1205,7 @@ class UnitPitchWithin(Condition):
         self.params.append(self.max_unit_pitch)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["min_unit_pitch"], d["max_unit_pitch"])
 
     def dict(self):
@@ -1224,7 +1232,7 @@ class UnitSpeedHigher(Condition):
         self.params.append(self.speed)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["speedU"])
 
     def dict(self):
@@ -1250,7 +1258,7 @@ class UnitSpeedLower(Condition):
         self.params.append(self.speed)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["speedU"])
 
     def dict(self):
@@ -1273,7 +1281,7 @@ class UnitVerticalSpeedWithin(Condition):
         self.params.append(self.max_unit_vertical_speed)
 
     @classmethod
-    def create_from_dict(cls, d):
+    def create_from_dict(cls, d, mission):
         return cls(d["unit"], d["min_unit_vertical_speed"], d["max_unit_vertical_speed"])
 
     def dict(self):

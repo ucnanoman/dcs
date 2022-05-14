@@ -10,7 +10,7 @@ class Goal:
         self.predicate = "score"
         self.comment = comment
 
-    def load_from_dict(self, data):
+    def load_from_dict(self, data, mission):
         self.side = data["side"]
         self.score = data["score"]
         self.predicate = data["predicate"]
@@ -18,7 +18,7 @@ class Goal:
         self.rules = []
         rules = data["rules"]
         for x in rules:
-            gr = condition.condition_map[rules[x]["predicate"]].create_from_dict(rules[x])
+            gr = condition.condition_map[rules[x]["predicate"]].create_from_dict(rules[x], mission)
             self.rules.append(gr)
 
     def dict(self):
@@ -39,10 +39,10 @@ class Goals:
             "offline": []  # type list[Goal]
         }
 
-    def load_from_dict(self, data):
+    def load_from_dict(self, data, mission):
         for x in data:
             g = Goal()
-            g.load_from_dict(data[x])
+            g.load_from_dict(data[x], mission)
             self.goals[data[x]["side"].lower()].append(g)
 
     def add_red(self, g: Goal):

@@ -123,7 +123,7 @@ class TriggerRule:
             trig.actions.append(action_)
         rules = d["rules"]
         for r in rules:
-            rule = condition.condition_map[rules[r]["predicate"]].create_from_dict(rules[r])
+            rule = condition.condition_map[rules[r]["predicate"]].create_from_dict(rules[r], mission)
             trig.rules.append(rule)
         return trig
 

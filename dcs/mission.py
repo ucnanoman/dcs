@@ -330,7 +330,7 @@ class Mission:
 
         # goals
         self.goals = Goals()
-        self.goals.load_from_dict(imp_mission["goals"])
+        self.goals.load_from_dict(imp_mission["goals"], self)
 
         self.drawings = Drawings(self.terrain)
         if imp_mission.get("drawings") is not None:
