@@ -211,10 +211,16 @@ end
 -------------------------------------------------------------------------------
 -- prepare and export weapons data
 -------------------------------------------------------------------------------
+
 local weapons = {}
 local keys = {}
-for j in pairs({CAT_BOMBS,CAT_MISSILES,CAT_ROCKETS,CAT_AIR_TO_AIR,CAT_FUEL_TANKS,CAT_PODS}) do
-    for i, v in ipairs(db.Weapons.Categories[j].Launchers) do
+-- The categories are not enumerated anywhere visible, but uses can be found in various lua files in the CoreMods directory.
+-- At time of writing this list only omits the CAT_SHELLS and CAT_CLUSTER_DESC categories. CAT_SHELLS we probably don't need,
+-- but CAT_CLUSTER_DESC doesn't have a Launchers entry. It's not clear if we need that category or not.
+-- See https://github.com/pydcs/dcs/issues/227 for debugging help.
+-- TODO: Figure out why we can't include CAT_CLUSTER_DESC.
+for _, category in ipairs({CAT_BOMBS,CAT_MISSILES,CAT_ROCKETS,CAT_AIR_TO_AIR,CAT_FUEL_TANKS,CAT_PODS,CAT_TORPEDOES}) do
+    for i, v in ipairs(db.Weapons.Categories[category].Launchers) do
         handle_weapon(v, keys, weapons)
 	end
 end

@@ -41232,9 +41232,9 @@ class Ju_88A4(PlaneType):
 
     property_defaults: Dict[str, Any] = {
     }
-#ERRR {LTF_5B}
 
     class Pylon1:
+        LTF_5b_Aerial_Torpedo = (1, Weapons.LTF_5b_Aerial_Torpedo)
         SC_250_Type_1_L2___250kg_GP_Bomb_LD = (1, Weapons.SC_250_Type_1_L2___250kg_GP_Bomb_LD)
         SC_501_SC250 = (1, Weapons.SC_501_SC250)
         SC_501_SC500 = (1, Weapons.SC_501_SC500)
@@ -41244,9 +41244,9 @@ class Ju_88A4(PlaneType):
         AB_250_2___144_x_SD_2__250kg_CBU_with_HE_submunitions = (1, Weapons.AB_250_2___144_x_SD_2__250kg_CBU_with_HE_submunitions)
         AB_250_2___17_x_SD_10A__250kg_CBU_with_10kg_Frag_HE_submunitions = (1, Weapons.AB_250_2___17_x_SD_10A__250kg_CBU_with_10kg_Frag_HE_submunitions)
         AB_500_1___34_x_SD_10A__500kg_CBU_with_10kg_Frag_HE_submunitions = (1, Weapons.AB_500_1___34_x_SD_10A__500kg_CBU_with_10kg_Frag_HE_submunitions)
-#ERRR {LTF_5B}
 
     class Pylon3:
+        LTF_5b_Aerial_Torpedo = (3, Weapons.LTF_5b_Aerial_Torpedo)
         SC_250_Type_1_L2___250kg_GP_Bomb_LD = (3, Weapons.SC_250_Type_1_L2___250kg_GP_Bomb_LD)
         SC_501_SC250 = (3, Weapons.SC_501_SC250)
         SC_501_SC500 = (3, Weapons.SC_501_SC500)

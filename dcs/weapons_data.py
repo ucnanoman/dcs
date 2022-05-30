@@ -295,6 +295,7 @@ class Weapons:
     DIS_WMD7 = {"clsid": "DIS_WMD7", "name": "WMD7 POD", "weight": 295}
     DIS_YJ12 = {"clsid": "DIS_YJ12", "name": "YJ-12", "weight": 1750}
     DIS_YJ83K = {"clsid": "DIS_YJ83K", "name": "YJ-83K", "weight": 715}
+    DIS_YU_6 = {"clsid": "DIS_YU_6", "name": "YU-6", "weight": 1558}
     Dipole_Antanna__aesthetic_ = {"clsid": "{SA342_Dipole}", "name": "Dipole Antanna (aesthetic)", "weight": 5}
     DWS39_MJ1 = {"clsid": "{DWS39_MJ1}", "name": "DWS39 MJ1", "weight": 605}
     DWS39_MJ1_MJ2 = {"clsid": "{DWS39_MJ1_MJ2}", "name": "DWS39 MJ1-MJ2", "weight": 605}
@@ -358,6 +359,7 @@ class Weapons:
     F_4_Fuel_tank_W = {"clsid": "{7B4B122D-C12C-4DB4-834E-4D8BB4D863A8}", "name": "F-4 Fuel tank-W", "weight": 1420}
     F_5_150Gal_Fuel_tank = {"clsid": "{PTB-150GAL}", "name": "F-5 150Gal Fuel tank", "weight": 509}
     F_5_275Gal_Fuel_tank = {"clsid": "{0395076D-2F77-4420-9D33-087A4398130B}", "name": "F-5 275Gal Fuel tank", "weight": 909}
+    G7A_T1 = {"clsid": "{G7A_T1}", "name": "G7A_T1", "weight": 1528}
     GAU_12_Gunpod_w_AP_M79 = {"clsid": "{GAU_12_Equalizer_AP}", "name": "GAU 12 Gunpod w/AP M79", "weight": 283.9}
     GAU_12_Gunpod_w_HE_M792 = {"clsid": "{GAU_12_Equalizer_HE}", "name": "GAU 12 Gunpod w/HE M792", "weight": 283.9}
     GAU_12_Gunpod_w_SAPHEI_T = {"clsid": "{GAU_12_Equalizer}", "name": "GAU 12 Gunpod w/SAPHEI-T", "weight": 283.9}
@@ -579,6 +581,7 @@ class Weapons:
     LR_25___25_x_ARF_8_M3_API = {"clsid": "{LR25_ARF8M3_API}", "name": "LR-25 - 25 x ARF-8/M3 API", "weight": 141}
     LR_25___25_x_ARF_8_M3_HEI = {"clsid": "{LR25_ARF8M3_HEI}", "name": "LR-25 - 25 x ARF-8/M3 HEI", "weight": 161}
     LR_25___25_x_ARF_8_M3_TP_SM = {"clsid": "{LR25_ARF8M3_TPSM}", "name": "LR-25 - 25 x ARF-8/M3 TP-SM", "weight": 141}
+    LTF_5b_Aerial_Torpedo = {"clsid": "{LTF_5B}", "name": "LTF 5b Aerial Torpedo", "weight": 765}
     L_081_Fantasmagoria_ELINT_pod = {"clsid": "{0519A264-0AB6-11d6-9193-00A0249B6F00}", "name": "L-081 Fantasmagoria ELINT pod", "weight": 300}
     M10_Smoke_Tank___blue = {"clsid": "{US_M10_SMOKE_TANK_BLUE}", "name": "M10 Smoke Tank - blue", "weight": 266.7}
     M10_Smoke_Tank___green = {"clsid": "{US_M10_SMOKE_TANK_GREEN}", "name": "M10 Smoke Tank - green", "weight": 266.7}
@@ -1460,6 +1463,7 @@ weapon_ids = {
     "DIS_WMD7": Weapons.DIS_WMD7,
     "DIS_YJ12": Weapons.DIS_YJ12,
     "DIS_YJ83K": Weapons.DIS_YJ83K,
+    "DIS_YU_6": Weapons.DIS_YU_6,
     "{SA342_Dipole}": Weapons.Dipole_Antanna__aesthetic_,
     "{DWS39_MJ1}": Weapons.DWS39_MJ1,
     "{DWS39_MJ1_MJ2}": Weapons.DWS39_MJ1_MJ2,
@@ -1523,6 +1527,7 @@ weapon_ids = {
     "{7B4B122D-C12C-4DB4-834E-4D8BB4D863A8}": Weapons.F_4_Fuel_tank_W,
     "{PTB-150GAL}": Weapons.F_5_150Gal_Fuel_tank,
     "{0395076D-2F77-4420-9D33-087A4398130B}": Weapons.F_5_275Gal_Fuel_tank,
+    "{G7A_T1}": Weapons.G7A_T1,
     "{GAU_12_Equalizer_AP}": Weapons.GAU_12_Gunpod_w_AP_M79,
     "{GAU_12_Equalizer_HE}": Weapons.GAU_12_Gunpod_w_HE_M792,
     "{GAU_12_Equalizer}": Weapons.GAU_12_Gunpod_w_SAPHEI_T,
@@ -1744,6 +1749,7 @@ weapon_ids = {
     "{LR25_ARF8M3_API}": Weapons.LR_25___25_x_ARF_8_M3_API,
     "{LR25_ARF8M3_HEI}": Weapons.LR_25___25_x_ARF_8_M3_HEI,
     "{LR25_ARF8M3_TPSM}": Weapons.LR_25___25_x_ARF_8_M3_TP_SM,
+    "{LTF_5B}": Weapons.LTF_5b_Aerial_Torpedo,
     "{0519A264-0AB6-11d6-9193-00A0249B6F00}": Weapons.L_081_Fantasmagoria_ELINT_pod,
     "{US_M10_SMOKE_TANK_BLUE}": Weapons.M10_Smoke_Tank___blue,
     "{US_M10_SMOKE_TANK_GREEN}": Weapons.M10_Smoke_Tank___green,
