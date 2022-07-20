@@ -73,6 +73,10 @@ local function has_value (tab, val)
     return false
 end
 
+function ternary ( cond , T , F )
+    if cond then return T else return F end
+end
+
 -------------------------------------------------------------------------------
 -- country to shortname mapping
 -------------------------------------------------------------------------------
@@ -841,14 +845,19 @@ for i in pairs(db.Units.Ships.Ship) do
     if unit.airWeaponDist then
         air_weapon_dist = unit.airWeaponDist
     end
-    writeln(file, '    detection_range = '..unit.DetectionRange)
-    writeln(file, '    threat_range = '..unit.ThreatRange)
+    local detection_range = ternary((unit.DetectionRange ~= nil), unit.DetectionRange, 0)
+    local threat_range = ternary((unit.ThreatRange ~= nil), unit.ThreatRange, 0)
+    air_weapon_dist = ternary((air_weapon_dist ~= nil), air_weapon_dist, 0)
+    writeln(file, '    detection_range = '..detection_range)
+    writeln(file, '    threat_range = '..threat_range)
     writeln(file, '    air_weapon_dist = '..air_weapon_dist)
     --    writeln(file, '    shape_name = "'..unit.ShapeName..'"')
     --    writeln(file, '    rate = '..unit.Rate)
 end
 
 lookup_map(file, "ship", db.Units.Ships.Ship, false)
+
+file:close()
 
 -------------------------------------------------------------------------------
 -- export country data
