@@ -71,21 +71,24 @@ class AllOfCoalitionInZone(Condition):
 class AllOfCoalitionOutsideZone(Condition):
     predicate = "c_all_of_coalition_out_zone"
 
-    def __init__(self, coalitionlist, zone):
+    def __init__(self, coalitionlist, zone, unit_type="ALL"):
         super(AllOfCoalitionOutsideZone, self).__init__(AllOfCoalitionOutsideZone.predicate)
         self.coalitionlist = coalitionlist
         self.params.append(self.coalitionlist)
         self.zone = zone
         self.params.append(self.zone)
+        self.unitType = unit_type
+        self.params.append(self.unitType)
 
     @classmethod
     def create_from_dict(cls, d, mission):
-        return cls(d["coalitionlist"], d["zone"])
+        return cls(d["coalitionlist"], d["zone"], d["unitType"] if "unitType" in d.keys() else "ALL")
 
     def dict(self):
         d = super(AllOfCoalitionOutsideZone, self).dict()
         d["coalitionlist"] = self.coalitionlist
         d["zone"] = self.zone
+        d["unitType"] = self.unitType
         return d
 
 

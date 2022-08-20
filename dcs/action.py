@@ -819,18 +819,20 @@ class MessageToAll(TextAction):
     predicate = "a_out_text_delay"
 
     def __init__(self, text: String = String(), seconds: int = 10,
-                 clearview: bool = False) -> None:
+                 clearview: bool = False, start_delay: int = 0) -> None:
         super().__init__(MessageToAll.predicate, text)
         self.params.append(self.text)
         self.seconds = seconds
         self.params.append(self.seconds)
         self.clearview = clearview
         self.params.append(self.clearview)
+        self.start_delay = start_delay
+        self.params.append(self.start_delay) 
 
     @classmethod
     def create_from_dict(cls, d: Dict[Any, Any], mission) -> "MessageToAll":
         return cls(mission.translation.get_string(d["text"]), d["seconds"],
-                   d["clearview"])
+                   d["clearview"], d["start_delay"],)
 
     def dict(self) -> Dict[Any, Any]:
         d = super().dict()
