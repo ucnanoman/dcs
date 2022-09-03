@@ -52,6 +52,7 @@ def generate_stub() -> None:
     if __name__ != "__main__":
         print("Stub should not be generated externally!")
         return
+    Liveries()  # initialize in case that hasn't happened yet.
     with open("liveries_scanner.pyi", 'w', encoding="utf8") as file:
         with open("stub templates/liveries_scanner.pyi", 'r', encoding="utf8") as template:
             file.write(template.read())
@@ -61,6 +62,17 @@ def generate_stub() -> None:
             file.write(f"        unit_livery_id = '{safe_value}'\n\n")
             for livery in sorted(Liveries.map[unit]):
                 file.write(f"        {safe_name(livery.id)}: Livery\n")
+
+
+def _attempt_read_from_filestream(filestream: bytes) -> Optional[str]:
+    encodes = ["utf-8", "ansi"]
+    for enc in encodes:
+        try:
+            code = filestream.decode(enc)
+        except UnicodeDecodeError:
+            continue
+        return code
+    return None
 
 
 class Livery:
@@ -236,20 +248,12 @@ class Liveries:
         description_path = os.path.join(path, "description.lua")
         if os.path.exists(description_path):
             # Known encodings used for description.lua files
-            encodes = ["utf-8", "ansi"]
-            scanned = False
-            for enc in encodes:
-                with open(description_path, "r", encoding=enc) as file:
-                    try:
-                        code = file.read()
-                    except UnicodeDecodeError:
-                        file.close()
-                        continue
-                    Liveries.scan_lua_code(code, path, unit)
-                    scanned = True
-                break
-            if not scanned:
-                logging.warning(f" Unknown encoding found in '{description_path}'")
+            with open(description_path, "rb") as file:
+                code = _attempt_read_from_filestream(file.read())
+                if code is None:
+                    logging.warning(f" Unknown encoding found in '{description_path}'")
+                    return
+                Liveries.scan_lua_code(code, path, unit)
 
     @staticmethod
     def scan_zip_file(path: str, unit: str) -> None:
@@ -265,7 +269,10 @@ class Liveries:
             with zipfile.ZipFile(path, 'r') as zf:
                 if "description.lua" in zf.namelist():
                     with zf.open("description.lua", "r") as file:
-                        code = file.read().decode("utf-8")
+                        code = _attempt_read_from_filestream(file.read())
+                        if code is None:
+                            logging.warning(f" Unknown encoding found in '{path}/description.lua'")
+                            return
                         Liveries.scan_lua_code(code, path, unit)
 
     @staticmethod
