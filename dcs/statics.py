@@ -462,6 +462,12 @@ class Fortification:
         shape_name = "barrelofbeer_support"
         rate = 5
 
+    class Orca(unittype.StaticType):
+        id = "Orca"
+        name = "Orca Whale"
+        shape_name = "Orca"
+        rate = 3
+
     class WindTurbine(unittype.StaticType):
         id = "WindTurbine"
         name = "Wind Turbine"
@@ -470,26 +476,8 @@ class Fortification:
 
     class WindTurbine_11(unittype.StaticType):
         id = "WindTurbine_11"
-        name = "Wind Turbine 11"
+        name = "Wind Turbine 2"
         shape_name = "WindTurbine_11"
-        rate = 3
-
-    class Offshore_WindTurbine(unittype.StaticType):
-        id = "offshore WindTurbine"
-        name = "offshore Wind Turbine"
-        shape_name = "offshore_windturbine"
-        rate = 3
-
-    class Offshore_WindTurbine2(unittype.StaticType):
-        id = "offshore WindTurbine2"
-        name = "offshore Wind Turbine2"
-        shape_name = "offshore_windturbine2"
-        rate = 3
-
-    class Orca(unittype.StaticType):
-        id = "Orca"
-        name = "Orca Whale"
-        shape_name = "Orca"
         rate = 3
 
     class Billboard_motorized(unittype.StaticType):
@@ -502,12 +490,6 @@ class Fortification:
         id = "Stanley_LightHouse"
         name = "Stanley LightHouse"
         shape_name = "ST_LightHouse"
-        rate = 3
-
-    class Nodding_Donkey(unittype.StaticType):
-        id = "Nodding_Donkey"
-        name = "Nodding Donkey"
-        shape_name = "Nodding_Donkey"
         rate = 3
 
     class X_345_Excavator(unittype.StaticType):
@@ -528,11 +510,35 @@ class Fortification:
         shape_name = "Small_LightHouse"
         rate = 3
 
-    class Ski_Ramp(unittype.StaticType):
-        id = "Ski Ramp"
-        name = "Skiramp"
-        shape_name = "SkiRamp_01"
+    class Nodding_Donkey_Pump(unittype.StaticType):
+        id = "Nodding_Donkey_Pump"
+        name = "Nodding Donkey Pump"
+        shape_name = "Nodding_Donkey"
         rate = 3
+
+    class Offshore_WindTurbine(unittype.StaticType):
+        id = "offshore WindTurbine"
+        name = "Offshore Wind Turbine"
+        shape_name = "offshore_windturbine"
+        rate = 3
+
+    class Offshore_WindTurbine2(unittype.StaticType):
+        id = "offshore WindTurbine2"
+        name = "Offshore Wind Turbine 2"
+        shape_name = "offshore_windturbine2"
+        rate = 3
+
+    class Container_40ft(unittype.StaticType):
+        id = "container_40ft"
+        name = "Container 40ft"
+        shape_name = "container_40ft"
+        rate = 1
+
+    class Container_20ft(unittype.StaticType):
+        id = "container_20ft"
+        name = "Container 20ft"
+        shape_name = "container_20ft"
+        rate = 1
 
     class Warning_board_a(unittype.StaticType):
         id = "warning_board_a"
@@ -773,18 +779,19 @@ fortification_map = {
     "Black_Tyre_WF": Fortification.Black_Tyre_WF,
     "Windsock": Fortification.Windsock,
     "Beer Bomb": Fortification.Beer_Bomb,
+    "Orca": Fortification.Orca,
     "WindTurbine": Fortification.WindTurbine,
     "WindTurbine_11": Fortification.WindTurbine_11,
-    "offshore WindTurbine": Fortification.Offshore_WindTurbine,
-    "offshore WindTurbine2": Fortification.Offshore_WindTurbine2,
-    "Orca": Fortification.Orca,
     "billboard_motorized": Fortification.Billboard_motorized,
     "Stanley_LightHouse": Fortification.Stanley_LightHouse,
-    "Nodding_Donkey": Fortification.Nodding_Donkey,
     "345 Excavator": Fortification.X_345_Excavator,
     "Tower Crane": Fortification.Tower_Crane,
     "Small_LightHouse": Fortification.Small_LightHouse,
-    "Ski Ramp": Fortification.Ski_Ramp,
+    "Nodding_Donkey_Pump": Fortification.Nodding_Donkey_Pump,
+    "offshore WindTurbine": Fortification.Offshore_WindTurbine,
+    "offshore WindTurbine2": Fortification.Offshore_WindTurbine2,
+    "container_40ft": Fortification.Container_40ft,
+    "container_20ft": Fortification.Container_20ft,
     "warning_board_a": Fortification.Warning_board_a,
     "warning_board_b": Fortification.Warning_board_b,
     "Belgian gate": Fortification.Belgian_gate,

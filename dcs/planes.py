@@ -2392,21 +2392,21 @@ class MiG_25PD(PlaneType):
     Liveries = Liveries()[livery_name]
 
     class Pylon1:
-        R_40R__AA_6_Acrid____Semi_Act_Rdr = (1, Weapons.R_40R__AA_6_Acrid____Semi_Act_Rdr)
-        R_40T__AA_6_Acrid____Infra_Red = (1, Weapons.R_40T__AA_6_Acrid____Infra_Red)
+        R_40RD__AA_6_Acrid____Semi_Act_Rdr = (1, Weapons.R_40RD__AA_6_Acrid____Semi_Act_Rdr)
+        R_40TD__AA_6_Acrid____Infra_Red = (1, Weapons.R_40TD__AA_6_Acrid____Infra_Red)
         APU_60_1M_with_R_60M__AA_8_Aphid____Infra_Red = (1, Weapons.APU_60_1M_with_R_60M__AA_8_Aphid____Infra_Red)
 
     class Pylon2:
-        R_40R__AA_6_Acrid____Semi_Act_Rdr = (2, Weapons.R_40R__AA_6_Acrid____Semi_Act_Rdr)
-        R_40T__AA_6_Acrid____Infra_Red = (2, Weapons.R_40T__AA_6_Acrid____Infra_Red)
+        R_40RD__AA_6_Acrid____Semi_Act_Rdr = (2, Weapons.R_40RD__AA_6_Acrid____Semi_Act_Rdr)
+        R_40TD__AA_6_Acrid____Infra_Red = (2, Weapons.R_40TD__AA_6_Acrid____Infra_Red)
 
     class Pylon3:
-        R_40R__AA_6_Acrid____Semi_Act_Rdr = (3, Weapons.R_40R__AA_6_Acrid____Semi_Act_Rdr)
-        R_40T__AA_6_Acrid____Infra_Red = (3, Weapons.R_40T__AA_6_Acrid____Infra_Red)
+        R_40RD__AA_6_Acrid____Semi_Act_Rdr = (3, Weapons.R_40RD__AA_6_Acrid____Semi_Act_Rdr)
+        R_40TD__AA_6_Acrid____Infra_Red = (3, Weapons.R_40TD__AA_6_Acrid____Infra_Red)
 
     class Pylon4:
-        R_40R__AA_6_Acrid____Semi_Act_Rdr = (4, Weapons.R_40R__AA_6_Acrid____Semi_Act_Rdr)
-        R_40T__AA_6_Acrid____Infra_Red = (4, Weapons.R_40T__AA_6_Acrid____Infra_Red)
+        R_40RD__AA_6_Acrid____Semi_Act_Rdr = (4, Weapons.R_40RD__AA_6_Acrid____Semi_Act_Rdr)
+        R_40TD__AA_6_Acrid____Infra_Red = (4, Weapons.R_40TD__AA_6_Acrid____Infra_Red)
         APU_60_1M_with_R_60M__AA_8_Aphid____Infra_Red = (4, Weapons.APU_60_1M_with_R_60M__AA_8_Aphid____Infra_Red)
 
     pylons: Set[int] = {1, 2, 3, 4}
@@ -2900,8 +2900,8 @@ class MiG_31(PlaneType):
     Liveries = Liveries()[livery_name]
 
     class Pylon1:
-        R_40R__AA_6_Acrid____Semi_Act_Rdr = (1, Weapons.R_40R__AA_6_Acrid____Semi_Act_Rdr)
-        R_40T__AA_6_Acrid____Infra_Red = (1, Weapons.R_40T__AA_6_Acrid____Infra_Red)
+        R_40RD__AA_6_Acrid____Semi_Act_Rdr = (1, Weapons.R_40RD__AA_6_Acrid____Semi_Act_Rdr)
+        R_40TD__AA_6_Acrid____Infra_Red = (1, Weapons.R_40TD__AA_6_Acrid____Infra_Red)
         APU_60_2M_with_2_x_R_60M__AA_8_Aphid____Infra_Red = (1, Weapons.APU_60_2M_with_2_x_R_60M__AA_8_Aphid____Infra_Red)
 
     class Pylon2:
@@ -2917,8 +2917,8 @@ class MiG_31(PlaneType):
         R_33__AA_9_Amos____Semi_Act_Rdr = (5, Weapons.R_33__AA_9_Amos____Semi_Act_Rdr)
 
     class Pylon6:
-        R_40R__AA_6_Acrid____Semi_Act_Rdr = (6, Weapons.R_40R__AA_6_Acrid____Semi_Act_Rdr)
-        R_40T__AA_6_Acrid____Infra_Red = (6, Weapons.R_40T__AA_6_Acrid____Infra_Red)
+        R_40RD__AA_6_Acrid____Semi_Act_Rdr = (6, Weapons.R_40RD__AA_6_Acrid____Semi_Act_Rdr)
+        R_40TD__AA_6_Acrid____Infra_Red = (6, Weapons.R_40TD__AA_6_Acrid____Infra_Red)
         APU_60_2M_with_2_x_R_60M__AA_8_Aphid____Infra_Red_ = (6, Weapons.APU_60_2M_with_2_x_R_60M__AA_8_Aphid____Infra_Red_)
 
     pylons: Set[int] = {1, 2, 3, 4, 5, 6}
@@ -5695,7 +5695,7 @@ class P_51D(PlaneType):
 
     pylons: Set[int] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
-    tasks = [task.CAP, task.Escort, task.FighterSweep, task.GroundAttack, task.CAS, task.AFAC, task.RunwayAttack, task.AntishipStrike]
+    tasks = [task.CAP, task.Escort, task.Intercept, task.FighterSweep, task.GroundAttack, task.CAS, task.AFAC, task.RunwayAttack, task.AntishipStrike]
     task_default = task.CAS
 
 
@@ -5766,7 +5766,7 @@ class P_51D_30_NA(PlaneType):
 
     pylons: Set[int] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
-    tasks = [task.CAP, task.Escort, task.FighterSweep, task.GroundAttack, task.CAS, task.AFAC, task.RunwayAttack, task.AntishipStrike]
+    tasks = [task.CAP, task.Escort, task.Intercept, task.FighterSweep, task.GroundAttack, task.CAS, task.AFAC, task.RunwayAttack, task.AntishipStrike]
     task_default = task.CAS
 
 
@@ -9319,6 +9319,7 @@ class F_16C_50(PlaneType):
         MXU_648_TP = (3, Weapons.MXU_648_TP)
         ALQ_184 = (3, Weapons.ALQ_184)
         ALQ_184_Long = (3, Weapons.ALQ_184_Long)
+        ALQ_131___ECM_Pod = (3, Weapons.ALQ_131___ECM_Pod)
 #ERRR <CLEAN>
         TER_9A_with_2_x_Mk_82___500lb_GP_Bomb_LD = (3, Weapons.TER_9A_with_2_x_Mk_82___500lb_GP_Bomb_LD)
         TER_9A_with_2_x_Mk_82_Snakeye___500lb_GP_Bomb_HD = (3, Weapons.TER_9A_with_2_x_Mk_82_Snakeye___500lb_GP_Bomb_HD)
@@ -9368,6 +9369,7 @@ class F_16C_50(PlaneType):
         MXU_648_TP = (5, Weapons.MXU_648_TP)
         ALQ_184 = (5, Weapons.ALQ_184)
         ALQ_184_Long = (5, Weapons.ALQ_184_Long)
+        ALQ_131___ECM_Pod = (5, Weapons.ALQ_131___ECM_Pod)
 #ERRR <CLEAN>
 
     class Pylon6:
@@ -9455,6 +9457,7 @@ class F_16C_50(PlaneType):
         MXU_648_TP = (7, Weapons.MXU_648_TP)
         ALQ_184 = (7, Weapons.ALQ_184)
         ALQ_184_Long = (7, Weapons.ALQ_184_Long)
+        ALQ_131___ECM_Pod = (7, Weapons.ALQ_131___ECM_Pod)
 #ERRR <CLEAN>
         TER_9A_with_2_x_Mk_82___500lb_GP_Bomb_LD_ = (7, Weapons.TER_9A_with_2_x_Mk_82___500lb_GP_Bomb_LD_)
         TER_9A_with_2_x_Mk_82_Snakeye___500lb_GP_Bomb_HD_ = (7, Weapons.TER_9A_with_2_x_Mk_82_Snakeye___500lb_GP_Bomb_HD_)
@@ -10285,6 +10288,7 @@ class F_14B(PlaneType):
 
     class Pylon2:
         AIM_54C_Mk47_ = (2, Weapons.AIM_54C_Mk47_)
+        AIM_54C_Mk60_ = (2, Weapons.AIM_54C_Mk60_)
         AIM_54A_Mk47_ = (2, Weapons.AIM_54A_Mk47_)
         AIM_54A_Mk60_ = (2, Weapons.AIM_54A_Mk60_)
         AIM_7M = (2, Weapons.AIM_7M)
@@ -10313,6 +10317,7 @@ class F_14B(PlaneType):
         AIM_54A_Mk47 = (4, Weapons.AIM_54A_Mk47)
         AIM_54A_Mk60 = (4, Weapons.AIM_54A_Mk60)
         AIM_54C_Mk47 = (4, Weapons.AIM_54C_Mk47)
+        AIM_54C_Mk60 = (4, Weapons.AIM_54C_Mk60)
         AIM_7M_ = (4, Weapons.AIM_7M_)
         AIM_7F_ = (4, Weapons.AIM_7F_)
         AIM_7MH_ = (4, Weapons.AIM_7MH_)
@@ -10347,6 +10352,7 @@ class F_14B(PlaneType):
         AIM_54A_Mk47 = (5, Weapons.AIM_54A_Mk47)
         AIM_54A_Mk60 = (5, Weapons.AIM_54A_Mk60)
         AIM_54C_Mk47 = (5, Weapons.AIM_54C_Mk47)
+        AIM_54C_Mk60 = (5, Weapons.AIM_54C_Mk60)
         AIM_7M_ = (5, Weapons.AIM_7M_)
         AIM_7F_ = (5, Weapons.AIM_7F_)
         AIM_7MH_ = (5, Weapons.AIM_7MH_)
@@ -10379,6 +10385,7 @@ class F_14B(PlaneType):
         AIM_54A_Mk47 = (6, Weapons.AIM_54A_Mk47)
         AIM_54A_Mk60 = (6, Weapons.AIM_54A_Mk60)
         AIM_54C_Mk47 = (6, Weapons.AIM_54C_Mk47)
+        AIM_54C_Mk60 = (6, Weapons.AIM_54C_Mk60)
         AIM_7M_ = (6, Weapons.AIM_7M_)
         AIM_7F_ = (6, Weapons.AIM_7F_)
         AIM_7MH_ = (6, Weapons.AIM_7MH_)
@@ -10412,6 +10419,7 @@ class F_14B(PlaneType):
         AIM_54A_Mk47 = (7, Weapons.AIM_54A_Mk47)
         AIM_54A_Mk60 = (7, Weapons.AIM_54A_Mk60)
         AIM_54C_Mk47 = (7, Weapons.AIM_54C_Mk47)
+        AIM_54C_Mk60 = (7, Weapons.AIM_54C_Mk60)
         AIM_7M_ = (7, Weapons.AIM_7M_)
         AIM_7F_ = (7, Weapons.AIM_7F_)
         AIM_7MH_ = (7, Weapons.AIM_7MH_)
@@ -10447,6 +10455,7 @@ class F_14B(PlaneType):
 
     class Pylon9:
         AIM_54C_Mk47__ = (9, Weapons.AIM_54C_Mk47__)
+        AIM_54C_Mk60__ = (9, Weapons.AIM_54C_Mk60__)
         AIM_54A_Mk47__ = (9, Weapons.AIM_54A_Mk47__)
         AIM_54A_Mk60__ = (9, Weapons.AIM_54A_Mk60__)
         AIM_7M = (9, Weapons.AIM_7M)
@@ -10651,6 +10660,7 @@ class F_14A_135_GR(PlaneType):
 
     class Pylon2:
         AIM_54C_Mk47_ = (2, Weapons.AIM_54C_Mk47_)
+        AIM_54C_Mk60_ = (2, Weapons.AIM_54C_Mk60_)
         AIM_54A_Mk47_ = (2, Weapons.AIM_54A_Mk47_)
         AIM_54A_Mk60_ = (2, Weapons.AIM_54A_Mk60_)
         AIM_7M = (2, Weapons.AIM_7M)
@@ -10679,6 +10689,7 @@ class F_14A_135_GR(PlaneType):
         AIM_54A_Mk47 = (4, Weapons.AIM_54A_Mk47)
         AIM_54A_Mk60 = (4, Weapons.AIM_54A_Mk60)
         AIM_54C_Mk47 = (4, Weapons.AIM_54C_Mk47)
+        AIM_54C_Mk60 = (4, Weapons.AIM_54C_Mk60)
         AIM_7M_ = (4, Weapons.AIM_7M_)
         AIM_7F_ = (4, Weapons.AIM_7F_)
         AIM_7MH_ = (4, Weapons.AIM_7MH_)
@@ -10713,6 +10724,7 @@ class F_14A_135_GR(PlaneType):
         AIM_54A_Mk47 = (5, Weapons.AIM_54A_Mk47)
         AIM_54A_Mk60 = (5, Weapons.AIM_54A_Mk60)
         AIM_54C_Mk47 = (5, Weapons.AIM_54C_Mk47)
+        AIM_54C_Mk60 = (5, Weapons.AIM_54C_Mk60)
         AIM_7M_ = (5, Weapons.AIM_7M_)
         AIM_7F_ = (5, Weapons.AIM_7F_)
         AIM_7MH_ = (5, Weapons.AIM_7MH_)
@@ -10745,6 +10757,7 @@ class F_14A_135_GR(PlaneType):
         AIM_54A_Mk47 = (6, Weapons.AIM_54A_Mk47)
         AIM_54A_Mk60 = (6, Weapons.AIM_54A_Mk60)
         AIM_54C_Mk47 = (6, Weapons.AIM_54C_Mk47)
+        AIM_54C_Mk60 = (6, Weapons.AIM_54C_Mk60)
         AIM_7M_ = (6, Weapons.AIM_7M_)
         AIM_7F_ = (6, Weapons.AIM_7F_)
         AIM_7MH_ = (6, Weapons.AIM_7MH_)
@@ -10778,6 +10791,7 @@ class F_14A_135_GR(PlaneType):
         AIM_54A_Mk47 = (7, Weapons.AIM_54A_Mk47)
         AIM_54A_Mk60 = (7, Weapons.AIM_54A_Mk60)
         AIM_54C_Mk47 = (7, Weapons.AIM_54C_Mk47)
+        AIM_54C_Mk60 = (7, Weapons.AIM_54C_Mk60)
         AIM_7M_ = (7, Weapons.AIM_7M_)
         AIM_7F_ = (7, Weapons.AIM_7F_)
         AIM_7MH_ = (7, Weapons.AIM_7MH_)
@@ -10813,6 +10827,7 @@ class F_14A_135_GR(PlaneType):
 
     class Pylon9:
         AIM_54C_Mk47__ = (9, Weapons.AIM_54C_Mk47__)
+        AIM_54C_Mk60__ = (9, Weapons.AIM_54C_Mk60__)
         AIM_54A_Mk47__ = (9, Weapons.AIM_54A_Mk47__)
         AIM_54A_Mk60__ = (9, Weapons.AIM_54A_Mk60__)
         AIM_7M = (9, Weapons.AIM_7M)
@@ -12414,8 +12429,9 @@ class Mirage_F1C(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -12764,8 +12780,9 @@ class Mirage_F1CE(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -12878,7 +12895,7 @@ class Mirage_F1CE(PlaneType):
 
     class Pylon2:
         Mk_82___500lb_GP_Bomb_LD = (2, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (2, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (2, Weapons.BR_250)
         BR_500 = (2, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (2, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -12911,7 +12928,7 @@ class Mirage_F1CE(PlaneType):
 
     class Pylon3:
         Mk_82___500lb_GP_Bomb_LD = (3, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (3, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (3, Weapons.BR_250)
         BR_500 = (3, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (3, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -12949,7 +12966,7 @@ class Mirage_F1CE(PlaneType):
 
     class Pylon4:
         Mk_82___500lb_GP_Bomb_LD = (4, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (4, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         GBU_10___2000lb_Laser_Guided_Bomb = (4, Weapons.GBU_10___2000lb_Laser_Guided_Bomb)
         GBU_12___500lb_Laser_Guided_Bomb = (4, Weapons.GBU_12___500lb_Laser_Guided_Bomb)
         Belouga = (4, Weapons.Belouga)
@@ -12972,7 +12989,7 @@ class Mirage_F1CE(PlaneType):
 
     class Pylon5:
         Mk_82___500lb_GP_Bomb_LD = (5, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (5, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (5, Weapons.BR_250)
         BR_500 = (5, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (5, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -13010,7 +13027,7 @@ class Mirage_F1CE(PlaneType):
 
     class Pylon6:
         Mk_82___500lb_GP_Bomb_LD = (6, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (6, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (6, Weapons.BR_250)
         BR_500 = (6, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (6, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -13142,8 +13159,9 @@ class Mirage_F1EE(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -13256,7 +13274,7 @@ class Mirage_F1EE(PlaneType):
 
     class Pylon2:
         Mk_82___500lb_GP_Bomb_LD = (2, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (2, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (2, Weapons.BR_250)
         BR_500 = (2, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (2, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -13289,7 +13307,7 @@ class Mirage_F1EE(PlaneType):
 
     class Pylon3:
         Mk_82___500lb_GP_Bomb_LD = (3, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (3, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (3, Weapons.BR_250)
         BR_500 = (3, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (3, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -13327,7 +13345,7 @@ class Mirage_F1EE(PlaneType):
 
     class Pylon4:
         Mk_82___500lb_GP_Bomb_LD = (4, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (4, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         GBU_10___2000lb_Laser_Guided_Bomb = (4, Weapons.GBU_10___2000lb_Laser_Guided_Bomb)
         GBU_12___500lb_Laser_Guided_Bomb = (4, Weapons.GBU_12___500lb_Laser_Guided_Bomb)
         Belouga = (4, Weapons.Belouga)
@@ -13350,7 +13368,7 @@ class Mirage_F1EE(PlaneType):
 
     class Pylon5:
         Mk_82___500lb_GP_Bomb_LD = (5, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (5, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (5, Weapons.BR_250)
         BR_500 = (5, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (5, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -13388,7 +13406,7 @@ class Mirage_F1EE(PlaneType):
 
     class Pylon6:
         Mk_82___500lb_GP_Bomb_LD = (6, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (6, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (6, Weapons.BR_250)
         BR_500 = (6, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (6, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -13520,8 +13538,9 @@ class Mirage_F1M_EE(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -13869,8 +13888,9 @@ class Mirage_F1M_CE(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -14218,8 +14238,9 @@ class Mirage_F1C_200(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -14567,8 +14588,9 @@ class Mirage_F1EH(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -14916,8 +14938,9 @@ class Mirage_F1CH(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -15265,8 +15288,9 @@ class Mirage_F1JA(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -15614,8 +15638,9 @@ class Mirage_F1CG(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -15973,8 +15998,9 @@ class Mirage_F1CZ(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -16322,8 +16348,9 @@ class Mirage_F1CJ(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -16671,8 +16698,9 @@ class Mirage_F1CK(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -17020,8 +17048,9 @@ class Mirage_F1EQ(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -17131,7 +17160,7 @@ class Mirage_F1EQ(PlaneType):
 
     class Pylon2:
         Mk_82___500lb_GP_Bomb_LD = (2, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (2, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (2, Weapons.BR_250)
         BR_500 = (2, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (2, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -17164,7 +17193,7 @@ class Mirage_F1EQ(PlaneType):
 
     class Pylon3:
         Mk_82___500lb_GP_Bomb_LD = (3, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (3, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (3, Weapons.BR_250)
         BR_500 = (3, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (3, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -17201,7 +17230,7 @@ class Mirage_F1EQ(PlaneType):
 
     class Pylon4:
         Mk_82___500lb_GP_Bomb_LD = (4, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (4, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         GBU_10___2000lb_Laser_Guided_Bomb = (4, Weapons.GBU_10___2000lb_Laser_Guided_Bomb)
         GBU_12___500lb_Laser_Guided_Bomb = (4, Weapons.GBU_12___500lb_Laser_Guided_Bomb)
         Belouga = (4, Weapons.Belouga)
@@ -17222,7 +17251,7 @@ class Mirage_F1EQ(PlaneType):
 
     class Pylon5:
         Mk_82___500lb_GP_Bomb_LD = (5, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (5, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (5, Weapons.BR_250)
         BR_500 = (5, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (5, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -17259,7 +17288,7 @@ class Mirage_F1EQ(PlaneType):
 
     class Pylon6:
         Mk_82___500lb_GP_Bomb_LD = (6, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (6, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (6, Weapons.BR_250)
         BR_500 = (6, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (6, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -17388,8 +17417,9 @@ class Mirage_F1ED(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -17499,7 +17529,7 @@ class Mirage_F1ED(PlaneType):
 
     class Pylon2:
         Mk_82___500lb_GP_Bomb_LD = (2, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (2, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (2, Weapons.BR_250)
         BR_500 = (2, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (2, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -17532,7 +17562,7 @@ class Mirage_F1ED(PlaneType):
 
     class Pylon3:
         Mk_82___500lb_GP_Bomb_LD = (3, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (3, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (3, Weapons.BR_250)
         BR_500 = (3, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (3, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -17569,7 +17599,7 @@ class Mirage_F1ED(PlaneType):
 
     class Pylon4:
         Mk_82___500lb_GP_Bomb_LD = (4, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (4, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         GBU_10___2000lb_Laser_Guided_Bomb = (4, Weapons.GBU_10___2000lb_Laser_Guided_Bomb)
         GBU_12___500lb_Laser_Guided_Bomb = (4, Weapons.GBU_12___500lb_Laser_Guided_Bomb)
         Belouga = (4, Weapons.Belouga)
@@ -17590,7 +17620,7 @@ class Mirage_F1ED(PlaneType):
 
     class Pylon5:
         Mk_82___500lb_GP_Bomb_LD = (5, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (5, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (5, Weapons.BR_250)
         BR_500 = (5, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (5, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -17627,7 +17657,7 @@ class Mirage_F1ED(PlaneType):
 
     class Pylon6:
         Mk_82___500lb_GP_Bomb_LD = (6, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (6, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (6, Weapons.BR_250)
         BR_500 = (6, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (6, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -17756,8 +17786,9 @@ class Mirage_F1EDA(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -17866,7 +17897,7 @@ class Mirage_F1EDA(PlaneType):
 
     class Pylon2:
         Mk_82___500lb_GP_Bomb_LD = (2, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (2, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (2, Weapons.BR_250)
         BR_500 = (2, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (2, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -17899,7 +17930,7 @@ class Mirage_F1EDA(PlaneType):
 
     class Pylon3:
         Mk_82___500lb_GP_Bomb_LD = (3, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (3, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (3, Weapons.BR_250)
         BR_500 = (3, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (3, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -17935,7 +17966,7 @@ class Mirage_F1EDA(PlaneType):
 
     class Pylon4:
         Mk_82___500lb_GP_Bomb_LD = (4, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (4, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         GBU_10___2000lb_Laser_Guided_Bomb = (4, Weapons.GBU_10___2000lb_Laser_Guided_Bomb)
         GBU_12___500lb_Laser_Guided_Bomb = (4, Weapons.GBU_12___500lb_Laser_Guided_Bomb)
         Belouga = (4, Weapons.Belouga)
@@ -17956,7 +17987,7 @@ class Mirage_F1EDA(PlaneType):
 
     class Pylon5:
         Mk_82___500lb_GP_Bomb_LD = (5, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (5, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (5, Weapons.BR_250)
         BR_500 = (5, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (5, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -17993,7 +18024,7 @@ class Mirage_F1EDA(PlaneType):
 
     class Pylon6:
         Mk_82___500lb_GP_Bomb_LD = (6, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (6, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (6, Weapons.BR_250)
         BR_500 = (6, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (6, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -18121,8 +18152,9 @@ class Mirage_F1CR(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -18472,8 +18504,9 @@ class Mirage_F1CT(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -18742,6 +18775,57 @@ class Mirage_F1B(PlaneType):
     category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 127.5
 
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 118,
+                2: 119.25,
+                4: 126.5,
+                8: 133,
+                16: 261,
+                17: 262,
+                9: 141,
+                18: 263,
+                5: 127,
+                10: 250.5,
+                20: 270,
+                11: 251,
+                3: 122,
+                6: 129,
+                12: 253,
+                13: 254,
+                7: 131,
+                14: 257,
+                19: 267,
+                15: 260
+            },
+        },
+        2: {
+            "channels": {
+                1: 225,
+                2: 230,
+                4: 250.5,
+                8: 262,
+                16: 252,
+                17: 268,
+                9: 263,
+                18: 271,
+                5: 251,
+                10: 267,
+                20: 360,
+                11: 270,
+                3: 240,
+                6: 256,
+                12: 254,
+                13: 264,
+                7: 257,
+                14: 266,
+                19: 275,
+                15: 265
+            },
+        },
+    }
+
     property_defaults: Dict[str, Any] = {
         "RadarCoverSettings": 1,
         "ChaffMultiNumber": 1,
@@ -18765,8 +18849,9 @@ class Mirage_F1B(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -18878,7 +18963,7 @@ class Mirage_F1B(PlaneType):
 
     class Pylon2:
         Mk_82___500lb_GP_Bomb_LD = (2, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (2, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (2, Weapons.BR_250)
         BR_500 = (2, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (2, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -18911,7 +18996,7 @@ class Mirage_F1B(PlaneType):
 
     class Pylon3:
         Mk_82___500lb_GP_Bomb_LD = (3, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (3, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (3, Weapons.BR_250)
         BR_500 = (3, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (3, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -18950,7 +19035,7 @@ class Mirage_F1B(PlaneType):
 
     class Pylon4:
         Mk_82___500lb_GP_Bomb_LD = (4, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (4, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         GBU_10___2000lb_Laser_Guided_Bomb = (4, Weapons.GBU_10___2000lb_Laser_Guided_Bomb)
         GBU_12___500lb_Laser_Guided_Bomb = (4, Weapons.GBU_12___500lb_Laser_Guided_Bomb)
         Belouga = (4, Weapons.Belouga)
@@ -18973,7 +19058,7 @@ class Mirage_F1B(PlaneType):
 
     class Pylon5:
         Mk_82___500lb_GP_Bomb_LD = (5, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (5, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (5, Weapons.BR_250)
         BR_500 = (5, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (5, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -19012,7 +19097,7 @@ class Mirage_F1B(PlaneType):
 
     class Pylon6:
         Mk_82___500lb_GP_Bomb_LD = (6, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (6, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (6, Weapons.BR_250)
         BR_500 = (6, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (6, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -19067,6 +19152,57 @@ class Mirage_F1BE(PlaneType):
     category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 127.5
 
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 118,
+                2: 119.25,
+                4: 126.5,
+                8: 133,
+                16: 261,
+                17: 262,
+                9: 141,
+                18: 263,
+                5: 127,
+                10: 250.5,
+                20: 270,
+                11: 251,
+                3: 122,
+                6: 129,
+                12: 253,
+                13: 254,
+                7: 131,
+                14: 257,
+                19: 267,
+                15: 260
+            },
+        },
+        2: {
+            "channels": {
+                1: 225,
+                2: 230,
+                4: 250.5,
+                8: 262,
+                16: 252,
+                17: 268,
+                9: 263,
+                18: 271,
+                5: 251,
+                10: 267,
+                20: 360,
+                11: 270,
+                3: 240,
+                6: 256,
+                12: 254,
+                13: 264,
+                7: 257,
+                14: 266,
+                19: 275,
+                15: 265
+            },
+        },
+    }
+
     property_defaults: Dict[str, Any] = {
         "RadarCoverSettings": 1,
         "ChaffMultiNumber": 1,
@@ -19090,8 +19226,9 @@ class Mirage_F1BE(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -19207,7 +19344,7 @@ class Mirage_F1BE(PlaneType):
 
     class Pylon2:
         Mk_82___500lb_GP_Bomb_LD = (2, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (2, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (2, Weapons.BR_250)
         BR_500 = (2, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (2, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -19240,7 +19377,7 @@ class Mirage_F1BE(PlaneType):
 
     class Pylon3:
         Mk_82___500lb_GP_Bomb_LD = (3, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (3, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (3, Weapons.BR_250)
         BR_500 = (3, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (3, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -19278,7 +19415,7 @@ class Mirage_F1BE(PlaneType):
 
     class Pylon4:
         Mk_82___500lb_GP_Bomb_LD = (4, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (4, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         GBU_10___2000lb_Laser_Guided_Bomb = (4, Weapons.GBU_10___2000lb_Laser_Guided_Bomb)
         GBU_12___500lb_Laser_Guided_Bomb = (4, Weapons.GBU_12___500lb_Laser_Guided_Bomb)
         Belouga = (4, Weapons.Belouga)
@@ -19301,7 +19438,7 @@ class Mirage_F1BE(PlaneType):
 
     class Pylon5:
         Mk_82___500lb_GP_Bomb_LD = (5, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (5, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (5, Weapons.BR_250)
         BR_500 = (5, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (5, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -19339,7 +19476,7 @@ class Mirage_F1BE(PlaneType):
 
     class Pylon6:
         Mk_82___500lb_GP_Bomb_LD = (6, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (6, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (6, Weapons.BR_250)
         BR_500 = (6, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (6, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -19398,6 +19535,57 @@ class Mirage_F1BQ(PlaneType):
     category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 127.5
 
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 118,
+                2: 119.25,
+                4: 126.5,
+                8: 133,
+                16: 261,
+                17: 262,
+                9: 141,
+                18: 263,
+                5: 127,
+                10: 250.5,
+                20: 270,
+                11: 251,
+                3: 122,
+                6: 129,
+                12: 253,
+                13: 254,
+                7: 131,
+                14: 257,
+                19: 267,
+                15: 260
+            },
+        },
+        2: {
+            "channels": {
+                1: 225,
+                2: 230,
+                4: 250.5,
+                8: 262,
+                16: 252,
+                17: 268,
+                9: 263,
+                18: 271,
+                5: 251,
+                10: 267,
+                20: 360,
+                11: 270,
+                3: 240,
+                6: 256,
+                12: 254,
+                13: 264,
+                7: 257,
+                14: 266,
+                19: 275,
+                15: 265
+            },
+        },
+    }
+
     property_defaults: Dict[str, Any] = {
         "RadarCoverSettings": 1,
         "ChaffMultiNumber": 1,
@@ -19421,8 +19609,9 @@ class Mirage_F1BQ(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -19535,7 +19724,7 @@ class Mirage_F1BQ(PlaneType):
 
     class Pylon2:
         Mk_82___500lb_GP_Bomb_LD = (2, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (2, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (2, Weapons.BR_250)
         BR_500 = (2, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (2, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -19568,7 +19757,7 @@ class Mirage_F1BQ(PlaneType):
 
     class Pylon3:
         Mk_82___500lb_GP_Bomb_LD = (3, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (3, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (3, Weapons.BR_250)
         BR_500 = (3, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (3, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -19605,7 +19794,7 @@ class Mirage_F1BQ(PlaneType):
 
     class Pylon4:
         Mk_82___500lb_GP_Bomb_LD = (4, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (4, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         GBU_10___2000lb_Laser_Guided_Bomb = (4, Weapons.GBU_10___2000lb_Laser_Guided_Bomb)
         GBU_12___500lb_Laser_Guided_Bomb = (4, Weapons.GBU_12___500lb_Laser_Guided_Bomb)
         Belouga = (4, Weapons.Belouga)
@@ -19626,7 +19815,7 @@ class Mirage_F1BQ(PlaneType):
 
     class Pylon5:
         Mk_82___500lb_GP_Bomb_LD = (5, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (5, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (5, Weapons.BR_250)
         BR_500 = (5, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (5, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -19663,7 +19852,7 @@ class Mirage_F1BQ(PlaneType):
 
     class Pylon6:
         Mk_82___500lb_GP_Bomb_LD = (6, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (6, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (6, Weapons.BR_250)
         BR_500 = (6, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (6, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -19719,6 +19908,57 @@ class Mirage_F1BD(PlaneType):
     category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 127.5
 
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 118,
+                2: 119.25,
+                4: 126.5,
+                8: 133,
+                16: 261,
+                17: 262,
+                9: 141,
+                18: 263,
+                5: 127,
+                10: 250.5,
+                20: 270,
+                11: 251,
+                3: 122,
+                6: 129,
+                12: 253,
+                13: 254,
+                7: 131,
+                14: 257,
+                19: 267,
+                15: 260
+            },
+        },
+        2: {
+            "channels": {
+                1: 225,
+                2: 230,
+                4: 250.5,
+                8: 262,
+                16: 252,
+                17: 268,
+                9: 263,
+                18: 271,
+                5: 251,
+                10: 267,
+                20: 360,
+                11: 270,
+                3: 240,
+                6: 256,
+                12: 254,
+                13: 264,
+                7: 257,
+                14: 266,
+                19: 275,
+                15: 265
+            },
+        },
+    }
+
     property_defaults: Dict[str, Any] = {
         "RadarCoverSettings": 1,
         "ChaffMultiNumber": 1,
@@ -19742,8 +19982,9 @@ class Mirage_F1BD(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -19856,7 +20097,7 @@ class Mirage_F1BD(PlaneType):
 
     class Pylon2:
         Mk_82___500lb_GP_Bomb_LD = (2, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (2, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (2, Weapons.BR_250)
         BR_500 = (2, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (2, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -19889,7 +20130,7 @@ class Mirage_F1BD(PlaneType):
 
     class Pylon3:
         Mk_82___500lb_GP_Bomb_LD = (3, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (3, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (3, Weapons.BR_250)
         BR_500 = (3, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (3, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -19926,7 +20167,7 @@ class Mirage_F1BD(PlaneType):
 
     class Pylon4:
         Mk_82___500lb_GP_Bomb_LD = (4, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (4, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         GBU_10___2000lb_Laser_Guided_Bomb = (4, Weapons.GBU_10___2000lb_Laser_Guided_Bomb)
         GBU_12___500lb_Laser_Guided_Bomb = (4, Weapons.GBU_12___500lb_Laser_Guided_Bomb)
         Belouga = (4, Weapons.Belouga)
@@ -19947,7 +20188,7 @@ class Mirage_F1BD(PlaneType):
 
     class Pylon5:
         Mk_82___500lb_GP_Bomb_LD = (5, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (5, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (5, Weapons.BR_250)
         BR_500 = (5, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (5, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -19984,7 +20225,7 @@ class Mirage_F1BD(PlaneType):
 
     class Pylon6:
         Mk_82___500lb_GP_Bomb_LD = (6, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (6, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (6, Weapons.BR_250)
         BR_500 = (6, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (6, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -20040,6 +20281,57 @@ class Mirage_F1DDA(PlaneType):
     category = "Interceptor"  #{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 127.5
 
+    panel_radio = {
+        1: {
+            "channels": {
+                1: 118,
+                2: 119.25,
+                4: 126.5,
+                8: 133,
+                16: 261,
+                17: 262,
+                9: 141,
+                18: 263,
+                5: 127,
+                10: 250.5,
+                20: 270,
+                11: 251,
+                3: 122,
+                6: 129,
+                12: 253,
+                13: 254,
+                7: 131,
+                14: 257,
+                19: 267,
+                15: 260
+            },
+        },
+        2: {
+            "channels": {
+                1: 225,
+                2: 230,
+                4: 250.5,
+                8: 262,
+                16: 252,
+                17: 268,
+                9: 263,
+                18: 271,
+                5: 251,
+                10: 267,
+                20: 360,
+                11: 270,
+                3: 240,
+                6: 256,
+                12: 254,
+                13: 264,
+                7: 257,
+                14: 266,
+                19: 275,
+                15: 265
+            },
+        },
+    }
+
     property_defaults: Dict[str, Any] = {
         "RadarCoverSettings": 1,
         "ChaffMultiNumber": 1,
@@ -20063,8 +20355,9 @@ class Mirage_F1DDA(PlaneType):
             id = "RadarCoverSettings"
 
             class Values:
-                YES = 1
-                NO = 2
+                NO = 1
+                FORCE_ON = 2
+                FORCE_OFF = 3
 
         class ChaffMultiNumber:
             id = "ChaffMultiNumber"
@@ -20176,7 +20469,7 @@ class Mirage_F1DDA(PlaneType):
 
     class Pylon2:
         Mk_82___500lb_GP_Bomb_LD = (2, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (2, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (2, Weapons.BR_250)
         BR_500 = (2, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (2, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -20209,7 +20502,7 @@ class Mirage_F1DDA(PlaneType):
 
     class Pylon3:
         Mk_82___500lb_GP_Bomb_LD = (3, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (3, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (3, Weapons.BR_250)
         BR_500 = (3, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (3, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -20245,7 +20538,7 @@ class Mirage_F1DDA(PlaneType):
 
     class Pylon4:
         Mk_82___500lb_GP_Bomb_LD = (4, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (4, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         GBU_10___2000lb_Laser_Guided_Bomb = (4, Weapons.GBU_10___2000lb_Laser_Guided_Bomb)
         GBU_12___500lb_Laser_Guided_Bomb = (4, Weapons.GBU_12___500lb_Laser_Guided_Bomb)
         Belouga = (4, Weapons.Belouga)
@@ -20266,7 +20559,7 @@ class Mirage_F1DDA(PlaneType):
 
     class Pylon5:
         Mk_82___500lb_GP_Bomb_LD = (5, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (5, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (5, Weapons.BR_250)
         BR_500 = (5, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (5, Weapons.SAMP_125___125_kg_GP_Bomb_LD)
@@ -20303,7 +20596,7 @@ class Mirage_F1DDA(PlaneType):
 
     class Pylon6:
         Mk_82___500lb_GP_Bomb_LD = (6, Weapons.Mk_82___500lb_GP_Bomb_LD)
-#ERRR {B{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}}
+        Mk_83___1000lb_GP_Bomb_LD = (6, Weapons.Mk_83___1000lb_GP_Bomb_LD)
         BR_250 = (6, Weapons.BR_250)
         BR_500 = (6, Weapons.BR_500)
         SAMP_125___125_kg_GP_Bomb_LD = (6, Weapons.SAMP_125___125_kg_GP_Bomb_LD)

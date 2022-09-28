@@ -42,13 +42,16 @@ class Weapons:
     AIM_54A_Mk47 = {"clsid": "{AIM_54A_Mk47}", "name": "AIM-54A-Mk47", "weight": 444}
     AIM_54A_Mk47_ = {"clsid": "{SHOULDER AIM_54A_Mk47 L}", "name": "AIM-54A-Mk47", "weight": 489.36}
     AIM_54A_Mk47__ = {"clsid": "{SHOULDER AIM_54A_Mk47 R}", "name": "AIM-54A-Mk47", "weight": 489.36}
-    AIM_54A_Mk60 = {"clsid": "{AIM_54A_Mk60}", "name": "AIM-54A-Mk60", "weight": 471.7}
-    AIM_54A_Mk60_ = {"clsid": "{SHOULDER AIM_54A_Mk60 L}", "name": "AIM-54A-Mk60", "weight": 517.06}
-    AIM_54A_Mk60__ = {"clsid": "{SHOULDER AIM_54A_Mk60 R}", "name": "AIM-54A-Mk60", "weight": 517.06}
-    AIM_54C_Mk47 = {"clsid": "{AIM_54C_Mk47}", "name": "AIM-54C-Mk47", "weight": 465.6}
-    AIM_54C_Mk47_ = {"clsid": "{SHOULDER AIM_54C_Mk47 L}", "name": "AIM-54C-Mk47", "weight": 510.96}
+    AIM_54A_Mk60 = {"clsid": "{AIM_54A_Mk60}", "name": "AIM-54A-Mk60", "weight": 444}
+    AIM_54A_Mk60_ = {"clsid": "{SHOULDER AIM_54A_Mk60 L}", "name": "AIM-54A-Mk60", "weight": 489.36}
+    AIM_54A_Mk60__ = {"clsid": "{SHOULDER AIM_54A_Mk60 R}", "name": "AIM-54A-Mk60", "weight": 489.36}
+    AIM_54C_Mk47 = {"clsid": "{AIM_54C_Mk47}", "name": "AIM-54C-Mk47", "weight": 454}
+    AIM_54C_Mk47_ = {"clsid": "{SHOULDER AIM_54C_Mk47 L}", "name": "AIM-54C-Mk47", "weight": 499.36}
     AIM_54C_Mk47_Phoenix_IN__Semi_Active_Radar = {"clsid": "{7575BA0B-7294-4844-857B-031A144B2595}", "name": "AIM-54C-Mk47 Phoenix IN & Semi-Active Radar", "weight": 463}
-    AIM_54C_Mk47__ = {"clsid": "{SHOULDER AIM_54C_Mk47 R}", "name": "AIM-54C-Mk47", "weight": 510.96}
+    AIM_54C_Mk47__ = {"clsid": "{SHOULDER AIM_54C_Mk47 R}", "name": "AIM-54C-Mk47", "weight": 499.36}
+    AIM_54C_Mk60 = {"clsid": "{AIM_54C_Mk60}", "name": "AIM-54C-Mk60", "weight": 454}
+    AIM_54C_Mk60_ = {"clsid": "{SHOULDER AIM_54C_Mk60 L}", "name": "AIM-54C-Mk60", "weight": 499.36}
+    AIM_54C_Mk60__ = {"clsid": "{SHOULDER AIM_54C_Mk60 R}", "name": "AIM-54C-Mk60", "weight": 499.36}
     AIM_7E = {"clsid": "{SHOULDER AIM-7E}", "name": "AIM-7E", "weight": 284.4}
     AIM_7E_ = {"clsid": "{BELLY AIM-7E}", "name": "AIM-7E", "weight": 230}
     AIM_7E_Sparrow_Semi_Active_Radar = {"clsid": "{AIM-7E}", "name": "AIM-7E Sparrow Semi-Active Radar", "weight": 230}
@@ -254,11 +257,11 @@ class Weapons:
     DIS_BOMB_250_2 = {"clsid": "DIS_BOMB_250_2", "name": "250-2 - 250kg GP Bombs HD", "weight": 250}
     DIS_BOMB_250_3 = {"clsid": "DIS_BOMB_250_3", "name": "250-3 - 250kg GP Bombs LD", "weight": 250}
     DIS_BRM1_90 = {"clsid": "DIS_BRM1_90", "name": "BRM-1_90MM", "weight": 462.5}
-    DIS_CM_802AKG = {"clsid": "DIS_CM-802AKG", "name": "CM-802AKG", "weight": 765}
+    DIS_CM_802AKG = {"clsid": "DIS_CM-802AKG", "name": "CM802AKG", "weight": 765}
     DIS_CM_802AKG_AI = {"clsid": "DIS_CM-802AKG_AI", "name": "CM-802AKG (AI Only)", "weight": 765}
     DIS_C_701IR = {"clsid": "DIS_C-701IR", "name": "C-701IR", "weight": 170}
     DIS_C_701T = {"clsid": "DIS_C-701T", "name": "C-701T", "weight": 170}
-    DIS_C_802AK = {"clsid": "DIS_C-802AK", "name": "C-802AK", "weight": 765}
+    DIS_C_802AK = {"clsid": "DIS_C-802AK", "name": "C802AK", "weight": 765}
     DIS_DF4A_KD20 = {"clsid": "DIS_DF4A_KD20", "name": "KD-20", "weight": 1750}
     DIS_DF4B_YJ12 = {"clsid": "DIS_DF4B_YJ12", "name": "YJ-12", "weight": 1800}
     DIS_GB6 = {"clsid": "DIS_GB6", "name": "GB-6", "weight": 672}
@@ -282,6 +285,12 @@ class Weapons:
     DIS_LD_10 = {"clsid": "DIS_LD-10", "name": "LD-10", "weight": 289}
     DIS_LD_10_DUAL_L = {"clsid": "DIS_LD-10_DUAL_L", "name": "LD-10 x 2", "weight": 558}
     DIS_LD_10_DUAL_R = {"clsid": "DIS_LD-10_DUAL_R", "name": "LD-10 x 2", "weight": 558}
+    DIS_LS_6_100 = {"clsid": "DIS_LS_6_100", "name": "LS-6-100", "weight": 133}
+    DIS_LS_6_100_DUAL_L = {"clsid": "DIS_LS_6_100_DUAL_L", "name": "LS-6-100 Dual", "weight": 221}
+    DIS_LS_6_100_DUAL_R = {"clsid": "DIS_LS_6_100_DUAL_R", "name": "LS-6-100 Dual", "weight": 221}
+    DIS_LS_6_250 = {"clsid": "DIS_LS_6_250", "name": "LS-6-250", "weight": 320}
+    DIS_LS_6_250_DUAL_L = {"clsid": "DIS_LS_6_250_DUAL_L", "name": "LS-6-250 Dual", "weight": 595}
+    DIS_LS_6_250_DUAL_R = {"clsid": "DIS_LS_6_250_DUAL_R", "name": "LS-6-250 Dual", "weight": 595}
     DIS_LS_6_500 = {"clsid": "DIS_LS_6_500", "name": "LS-6-500", "weight": 570}
     DIS_MER6_250_2_N6 = {"clsid": "DIS_MER6_250_2_N6", "name": "MER6 - 6 x 250-2 - 250kg GP Bombs HD", "weight": 1550}
     DIS_MER6_250_3_N6 = {"clsid": "DIS_MER6_250_3_N6", "name": "MER6 - 6 x 250-3 - 250kg GP Bombs LD", "weight": 1550}
@@ -440,24 +449,24 @@ class Weapons:
     Kh_25MR__AS_10_Karen____300kg__ASM__10km__RC_Guided = {"clsid": "{292960BB-6518-41AC-BADA-210D65D5073C}", "name": "Kh-25MR (AS-10 Karen) - 300kg, ASM, 10km, RC Guided", "weight": 360}
     Kh_25MR__AS_10_Karen____300kg__ASM__RC_Guided = {"clsid": "{X-25MR}", "name": "Kh-25MR (AS-10 Karen) - 300kg, ASM, RC Guided", "weight": 360}
     Kh_28__AS_9_Kyle____720kg__ARM__Pas_Rdr = {"clsid": "{Kh-28}", "name": "Kh-28 (AS-9 Kyle) - 720kg, ARM, Pas Rdr", "weight": 715}
-    Kh_29L__AS_14_Kedge____657kg__ASM__Semi_Act_Laser = {"clsid": "{3468C652-E830-4E73-AFA9-B5F260AB7C3D}", "name": "Kh-29L (AS-14 Kedge) - 657kg, ASM, Semi-Act Laser", "weight": 747}
-    Kh_29L__AS_14_Kedge____657kg__ASM__Semi_Act_Laser_ = {"clsid": "{D4A8D9B9-5C45-42e7-BBD2-0E54F8308432}", "name": "Kh-29L (AS-14 Kedge) - 657kg, ASM, Semi-Act Laser", "weight": 747}
-    Kh_29L__AS_14_Kedge____657kg__ASM__Semi_Act_Laser__ = {"clsid": "{X-29L}", "name": "Kh-29L (AS-14 Kedge) - 657kg, ASM, Semi-Act Laser", "weight": 747}
-    Kh_29T__AS_14_Kedge____670kg__ASM__TV_Guided = {"clsid": "{B4FC81C9-B861-4E87-BBDC-A1158E648EBF}", "name": "Kh-29T (AS-14 Kedge) - 670kg, ASM, TV Guided", "weight": 760}
-    Kh_29T__AS_14_Kedge____670kg__ASM__TV_Guided_ = {"clsid": "{601C99F7-9AF3-4ed7-A565-F8B8EC0D7AAC}", "name": "Kh-29T (AS-14 Kedge) - 670kg, ASM, TV Guided", "weight": 760}
-    Kh_29T__AS_14_Kedge____670kg__ASM__TV_Guided__ = {"clsid": "{X-29T}", "name": "Kh-29T (AS-14 Kedge) - 670kg, ASM, TV Guided", "weight": 760}
-    Kh_31A__AS_17_Krypton____610kg__AShM__IN__Act_Rdr = {"clsid": "{4D13E282-DF46-4B23-864A-A9423DFDE504}", "name": "Kh-31A (AS-17 Krypton) - 610kg, AShM, IN & Act Rdr", "weight": 690}
-    Kh_31A__AS_17_Krypton____610kg__AShM__IN__Act_Rdr_ = {"clsid": "{4D13E282-DF46-4B23-864A-A9423DFDE50A}", "name": "Kh-31A (AS-17 Krypton) - 610kg, AShM, IN & Act Rdr", "weight": 690}
-    Kh_31A__AS_17_Krypton____610kg__AShM__IN__Act_Rdr__ = {"clsid": "{X-31A}", "name": "Kh-31A (AS-17 Krypton) - 610kg, AShM, IN & Act Rdr", "weight": 690}
-    Kh_31P__AS_17_Krypton____600kg__ARM__IN__Pas_Rdr = {"clsid": "{D8F2C90B-887B-4B9E-9FE2-996BC9E9AF03}", "name": "Kh-31P (AS-17 Krypton) - 600kg, ARM, IN & Pas Rdr", "weight": 690}
-    Kh_31P__AS_17_Krypton____600kg__ARM__IN__Pas_Rdr_ = {"clsid": "{D8F2C90B-887B-4B9E-9FE2-996BC9E9AF0A}", "name": "Kh-31P (AS-17 Krypton) - 600kg, ARM, IN & Pas Rdr", "weight": 690}
-    Kh_31P__AS_17_Krypton____600kg__ARM__IN__Pas_Rdr__ = {"clsid": "{X-31P}", "name": "Kh-31P (AS-17 Krypton) - 600kg, ARM, IN & Pas Rdr", "weight": 690}
+    Kh_29L__AS_14_Kedge____657kg__ASM__Semi_Act_Laser = {"clsid": "{3468C652-E830-4E73-AFA9-B5F260AB7C3D}", "name": "Kh-29L (AS-14 Kedge) - 657kg, ASM, Semi-Act Laser", "weight": 846}
+    Kh_29L__AS_14_Kedge____657kg__ASM__Semi_Act_Laser_ = {"clsid": "{D4A8D9B9-5C45-42e7-BBD2-0E54F8308432}", "name": "Kh-29L (AS-14 Kedge) - 657kg, ASM, Semi-Act Laser", "weight": 846}
+    Kh_29L__AS_14_Kedge____657kg__ASM__Semi_Act_Laser__ = {"clsid": "{X-29L}", "name": "Kh-29L (AS-14 Kedge) - 657kg, ASM, Semi-Act Laser", "weight": 660}
+    Kh_29T__AS_14_Kedge____670kg__ASM__TV_Guided = {"clsid": "{B4FC81C9-B861-4E87-BBDC-A1158E648EBF}", "name": "Kh-29T (AS-14 Kedge) - 670kg, ASM, TV Guided", "weight": 876}
+    Kh_29T__AS_14_Kedge____670kg__ASM__TV_Guided_ = {"clsid": "{601C99F7-9AF3-4ed7-A565-F8B8EC0D7AAC}", "name": "Kh-29T (AS-14 Kedge) - 670kg, ASM, TV Guided", "weight": 876}
+    Kh_29T__AS_14_Kedge____670kg__ASM__TV_Guided__ = {"clsid": "{X-29T}", "name": "Kh-29T (AS-14 Kedge) - 670kg, ASM, TV Guided", "weight": 690}
+    Kh_31A__AS_17_Krypton____610kg__AShM__IN__Act_Rdr = {"clsid": "{4D13E282-DF46-4B23-864A-A9423DFDE504}", "name": "Kh-31A (AS-17 Krypton) - 610kg, AShM, IN & Act Rdr", "weight": 796}
+    Kh_31A__AS_17_Krypton____610kg__AShM__IN__Act_Rdr_ = {"clsid": "{4D13E282-DF46-4B23-864A-A9423DFDE50A}", "name": "Kh-31A (AS-17 Krypton) - 610kg, AShM, IN & Act Rdr", "weight": 796}
+    Kh_31A__AS_17_Krypton____610kg__AShM__IN__Act_Rdr__ = {"clsid": "{X-31A}", "name": "Kh-31A (AS-17 Krypton) - 610kg, AShM, IN & Act Rdr", "weight": 610}
+    Kh_31P__AS_17_Krypton____600kg__ARM__IN__Pas_Rdr = {"clsid": "{D8F2C90B-887B-4B9E-9FE2-996BC9E9AF03}", "name": "Kh-31P (AS-17 Krypton) - 600kg, ARM, IN & Pas Rdr", "weight": 786}
+    Kh_31P__AS_17_Krypton____600kg__ARM__IN__Pas_Rdr_ = {"clsid": "{D8F2C90B-887B-4B9E-9FE2-996BC9E9AF0A}", "name": "Kh-31P (AS-17 Krypton) - 600kg, ARM, IN & Pas Rdr", "weight": 786}
+    Kh_31P__AS_17_Krypton____600kg__ARM__IN__Pas_Rdr__ = {"clsid": "{X-31P}", "name": "Kh-31P (AS-17 Krypton) - 600kg, ARM, IN & Pas Rdr", "weight": 600}
     Kh_35__AS_20_Kayak____520kg__AShM__IN__Act_Rdr = {"clsid": "{2234F529-1D57-4496-8BB0-0150F9BDBBD2}", "name": "Kh-35 (AS-20 Kayak) - 520kg, AShM, IN & Act Rdr", "weight": 520}
-    Kh_35__AS_20_Kayak____520kg__AShM__IN__Act_Rdr_ = {"clsid": "{2234F529-1D57-4496-8BB0-0150F9BDBBD3}", "name": "Kh-35 (AS-20 Kayak) - 520kg, AShM, IN & Act Rdr", "weight": 570}
+    Kh_35__AS_20_Kayak____520kg__AShM__IN__Act_Rdr_ = {"clsid": "{2234F529-1D57-4496-8BB0-0150F9BDBBD3}", "name": "Kh-35 (AS-20 Kayak) - 520kg, AShM, IN & Act Rdr", "weight": 706}
     Kh_41__SS_N_22_Sunburn____4500kg__AShM__IN__Act_Rdr = {"clsid": "{3F26D9C5-5CC3-4E42-BC79-82FAA54E9F26}", "name": "Kh-41 (SS-N-22-Sunburn) - 4500kg, AShM, IN & Act Rdr", "weight": 4500}
-    Kh_58U__AS_11_Kilter____640kg__ARM__IN__Pas_Rdr = {"clsid": "{FE382A68-8620-4AC0-BDF5-709BFE3977D7}", "name": "Kh-58U (AS-11 Kilter) - 640kg, ARM, IN & Pas Rdr", "weight": 730}
-    Kh_58U__AS_11_Kilter____640kg__ARM__IN__Pas_Rdr_ = {"clsid": "{B5CA9846-776E-4230-B4FD-8BCC9BFB1676}", "name": "Kh-58U (AS-11 Kilter) - 640kg, ARM, IN & Pas Rdr", "weight": 730}
-    Kh_59M__AS_18_Kazoo____930kg__ASM__IN = {"clsid": "{40AB87E8-BEFB-4D85-90D9-B2753ACF9514}", "name": "Kh-59M (AS-18 Kazoo) - 930kg, ASM, IN", "weight": 1115}
+    Kh_58U__AS_11_Kilter____640kg__ARM__IN__Pas_Rdr = {"clsid": "{FE382A68-8620-4AC0-BDF5-709BFE3977D7}", "name": "Kh-58U (AS-11 Kilter) - 640kg, ARM, IN & Pas Rdr", "weight": 836}
+    Kh_58U__AS_11_Kilter____640kg__ARM__IN__Pas_Rdr_ = {"clsid": "{B5CA9846-776E-4230-B4FD-8BCC9BFB1676}", "name": "Kh-58U (AS-11 Kilter) - 640kg, ARM, IN & Pas Rdr", "weight": 836}
+    Kh_59M__AS_18_Kazoo____930kg__ASM__IN = {"clsid": "{40AB87E8-BEFB-4D85-90D9-B2753ACF9514}", "name": "Kh-59M (AS-18 Kazoo) - 930kg, ASM, IN", "weight": 1116}
     Kh_65__AS_15B_Kent____1250kg__ASM__IN__MCC = {"clsid": "{BADAF2DE-68B5-472A-8AAC-35BAEFF6B4A1}", "name": "Kh-65 (AS-15B Kent) - 1250kg, ASM, IN & MCC", "weight": 1250}
     Kh_66_Grom__21____AGM__radar_guided_APU_68 = {"clsid": "{Kh-66_Grom}", "name": "Kh-66 Grom (21) - AGM, radar guided APU-68", "weight": 300}
     KMGU_2___96_x_AO_2_5RT_Dispenser__CBU__HE_Frag = {"clsid": "{96A7F676-F956-404A-AD04-F33FB2C74884}", "name": "KMGU-2 - 96 x AO-2.5RT Dispenser (CBU) HE/Frag", "weight": 778}
@@ -836,8 +845,8 @@ class Weapons:
     R_33__AA_9_Amos____Semi_Act_Rdr = {"clsid": "{F1243568-8EF0-49D4-9CB5-4DA90D92BC1D}", "name": "R-33 (AA-9 Amos) - Semi-Act Rdr", "weight": 490}
     R_3R___AAM__radar_guided = {"clsid": "{R-3R}", "name": "R-3R - AAM, radar guided", "weight": 111.5}
     R_3S___AAM__IR_guided = {"clsid": "{R-3S}", "name": "R-3S - AAM, IR guided", "weight": 103.3}
-    R_40R__AA_6_Acrid____Semi_Act_Rdr = {"clsid": "{4EDBA993-2E34-444C-95FB-549300BF7CAF}", "name": "R-40R (AA-6 Acrid) - Semi-Act Rdr", "weight": 475}
-    R_40T__AA_6_Acrid____Infra_Red = {"clsid": "{5F26DBC2-FB43-4153-92DE-6BBCE26CB0FF}", "name": "R-40T (AA-6 Acrid) - Infra Red", "weight": 475}
+    R_40RD__AA_6_Acrid____Semi_Act_Rdr = {"clsid": "{4EDBA993-2E34-444C-95FB-549300BF7CAF}", "name": "R-40RD (AA-6 Acrid) - Semi-Act Rdr", "weight": 465}
+    R_40TD__AA_6_Acrid____Infra_Red = {"clsid": "{5F26DBC2-FB43-4153-92DE-6BBCE26CB0FF}", "name": "R-40TD (AA-6 Acrid) - Infra Red", "weight": 463}
     R_55___AAM__IR_guided = {"clsid": "{R-55}", "name": "R-55 - AAM, IR guided", "weight": 113}
     R_60 = {"clsid": "{R-60}", "name": "R-60", "weight": 58.5}
     R_60M = {"clsid": "{R-60M}", "name": "R-60M", "weight": 58.5}
@@ -1246,6 +1255,9 @@ weapon_ids = {
     "{SHOULDER AIM_54C_Mk47 L}": Weapons.AIM_54C_Mk47_,
     "{7575BA0B-7294-4844-857B-031A144B2595}": Weapons.AIM_54C_Mk47_Phoenix_IN__Semi_Active_Radar,
     "{SHOULDER AIM_54C_Mk47 R}": Weapons.AIM_54C_Mk47__,
+    "{AIM_54C_Mk60}": Weapons.AIM_54C_Mk60,
+    "{SHOULDER AIM_54C_Mk60 L}": Weapons.AIM_54C_Mk60_,
+    "{SHOULDER AIM_54C_Mk60 R}": Weapons.AIM_54C_Mk60__,
     "{SHOULDER AIM-7E}": Weapons.AIM_7E,
     "{BELLY AIM-7E}": Weapons.AIM_7E_,
     "{AIM-7E}": Weapons.AIM_7E_Sparrow_Semi_Active_Radar,
@@ -1479,6 +1491,12 @@ weapon_ids = {
     "DIS_LD-10": Weapons.DIS_LD_10,
     "DIS_LD-10_DUAL_L": Weapons.DIS_LD_10_DUAL_L,
     "DIS_LD-10_DUAL_R": Weapons.DIS_LD_10_DUAL_R,
+    "DIS_LS_6_100": Weapons.DIS_LS_6_100,
+    "DIS_LS_6_100_DUAL_L": Weapons.DIS_LS_6_100_DUAL_L,
+    "DIS_LS_6_100_DUAL_R": Weapons.DIS_LS_6_100_DUAL_R,
+    "DIS_LS_6_250": Weapons.DIS_LS_6_250,
+    "DIS_LS_6_250_DUAL_L": Weapons.DIS_LS_6_250_DUAL_L,
+    "DIS_LS_6_250_DUAL_R": Weapons.DIS_LS_6_250_DUAL_R,
     "DIS_LS_6_500": Weapons.DIS_LS_6_500,
     "DIS_MER6_250_2_N6": Weapons.DIS_MER6_250_2_N6,
     "DIS_MER6_250_3_N6": Weapons.DIS_MER6_250_3_N6,
@@ -2033,8 +2051,8 @@ weapon_ids = {
     "{F1243568-8EF0-49D4-9CB5-4DA90D92BC1D}": Weapons.R_33__AA_9_Amos____Semi_Act_Rdr,
     "{R-3R}": Weapons.R_3R___AAM__radar_guided,
     "{R-3S}": Weapons.R_3S___AAM__IR_guided,
-    "{4EDBA993-2E34-444C-95FB-549300BF7CAF}": Weapons.R_40R__AA_6_Acrid____Semi_Act_Rdr,
-    "{5F26DBC2-FB43-4153-92DE-6BBCE26CB0FF}": Weapons.R_40T__AA_6_Acrid____Infra_Red,
+    "{4EDBA993-2E34-444C-95FB-549300BF7CAF}": Weapons.R_40RD__AA_6_Acrid____Semi_Act_Rdr,
+    "{5F26DBC2-FB43-4153-92DE-6BBCE26CB0FF}": Weapons.R_40TD__AA_6_Acrid____Infra_Red,
     "{R-55}": Weapons.R_55___AAM__IR_guided,
     "{R-60}": Weapons.R_60,
     "{R-60M}": Weapons.R_60M,

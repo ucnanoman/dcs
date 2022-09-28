@@ -2262,6 +2262,8 @@ class France(Country):
         HandyWind = ships.HandyWind
         Seawise_Giant = ships.Seawise_Giant
         HarborTug = ships.HarborTug
+        Leander_gun_condell = ships.Leander_gun_condell
+        Leander_gun_lynch = ships.Leander_gun_lynch
         LST_Mk2 = ships.LST_Mk2
         USS_Samuel_Chase = ships.USS_Samuel_Chase
         Higgins_boat = ships.Higgins_boat
@@ -3457,6 +3459,8 @@ class USAFAggressors(Country):
         CV_1143_5 = ships.CV_1143_5
         Santafe = ships.Santafe
         La_Combattante_II = ships.La_Combattante_II
+        Leander_gun_condell = ships.Leander_gun_condell
+        Leander_gun_lynch = ships.Leander_gun_lynch
         Type_052B = ships.Type_052B
         Type_052C = ships.Type_052C
         Type_054A = ships.Type_054A
@@ -3476,8 +3480,6 @@ class USAFAggressors(Country):
         Leander_gun_achilles = ships.Leander_gun_achilles
         Leander_gun_andromeda = ships.Leander_gun_andromeda
         Leander_gun_ariadne = ships.Leander_gun_ariadne
-        Leander_gun_condell = ships.Leander_gun_condell
-        Leander_gun_lynch = ships.Leander_gun_lynch
 
     class CallsignAWACS:
         Overlord = "Overlord"
@@ -6061,6 +6063,7 @@ class Georgia(Country):
             RLS_19J6 = vehicles.AirDefence.RLS_19J6
             Tt_ZU_23 = vehicles.AirDefence.Tt_ZU_23
             HL_ZU_23 = vehicles.AirDefence.HL_ZU_23
+            SON_9 = vehicles.AirDefence.SON_9
 
         class Fortification:
             Bunker = vehicles.Fortification.Bunker
@@ -8804,6 +8807,7 @@ class Bulgaria(Country):
             RLS_19J6 = vehicles.AirDefence.RLS_19J6
             Tt_ZU_23 = vehicles.AirDefence.Tt_ZU_23
             HL_ZU_23 = vehicles.AirDefence.HL_ZU_23
+            SON_9 = vehicles.AirDefence.SON_9
             Flak18 = vehicles.AirDefence.Flak18
             Flak30 = vehicles.AirDefence.Flak30
             Flak36 = vehicles.AirDefence.Flak36
@@ -8994,6 +8998,7 @@ class Bulgaria(Country):
     class Helicopter:
         Ka_50 = helicopters.Ka_50
         Mi_24V = helicopters.Mi_24V
+        Mi_8MT = helicopters.Mi_8MT
         AH_64D_BLK_II = helicopters.AH_64D_BLK_II
         SA342M = helicopters.SA342M
         SA342L = helicopters.SA342L
@@ -9003,6 +9008,7 @@ class Bulgaria(Country):
     helicopters = [
         Helicopter.Ka_50,
         Helicopter.Mi_24V,
+        Helicopter.Mi_8MT,
         Helicopter.AH_64D_BLK_II,
         Helicopter.SA342M,
         Helicopter.SA342L,
@@ -9340,6 +9346,7 @@ class CzechRepublic(Country):
     class Helicopter:
         Ka_50 = helicopters.Ka_50
         Mi_24V = helicopters.Mi_24V
+        Mi_8MT = helicopters.Mi_8MT
         AH_64D_BLK_II = helicopters.AH_64D_BLK_II
         SA342M = helicopters.SA342M
         SA342L = helicopters.SA342L
@@ -9349,6 +9356,7 @@ class CzechRepublic(Country):
     helicopters = [
         Helicopter.Ka_50,
         Helicopter.Mi_24V,
+        Helicopter.Mi_8MT,
         Helicopter.AH_64D_BLK_II,
         Helicopter.SA342M,
         Helicopter.SA342L,
@@ -9528,6 +9536,7 @@ class China(Country):
             RLS_19J6 = vehicles.AirDefence.RLS_19J6
             Tt_ZU_23 = vehicles.AirDefence.Tt_ZU_23
             HL_ZU_23 = vehicles.AirDefence.HL_ZU_23
+            SON_9 = vehicles.AirDefence.SON_9
             HQ_7_LN_EO = vehicles.AirDefence.HQ_7_LN_EO
 
         class Fortification:
@@ -10114,6 +10123,7 @@ class Egypt(Country):
             KS_19 = vehicles.AirDefence.KS_19
             Tt_ZU_23 = vehicles.AirDefence.Tt_ZU_23
             HL_ZU_23 = vehicles.AirDefence.HL_ZU_23
+            SON_9 = vehicles.AirDefence.SON_9
 
         class Fortification:
             Bunker = vehicles.Fortification.Bunker
@@ -11187,6 +11197,7 @@ class Hungary(Country):
             RLS_19J6 = vehicles.AirDefence.RLS_19J6
             Tt_ZU_23 = vehicles.AirDefence.Tt_ZU_23
             HL_ZU_23 = vehicles.AirDefence.HL_ZU_23
+            SON_9 = vehicles.AirDefence.SON_9
             Flak18 = vehicles.AirDefence.Flak18
             Flak30 = vehicles.AirDefence.Flak30
             Flak36 = vehicles.AirDefence.Flak36
@@ -11919,6 +11930,7 @@ class Iran(Country):
             KS_19 = vehicles.AirDefence.KS_19
             Tt_ZU_23 = vehicles.AirDefence.Tt_ZU_23
             HL_ZU_23 = vehicles.AirDefence.HL_ZU_23
+            SON_9 = vehicles.AirDefence.SON_9
 
         class Fortification:
             Bunker = vehicles.Fortification.Bunker
@@ -12289,6 +12301,7 @@ class Iraq(Country):
             KS_19 = vehicles.AirDefence.KS_19
             Tt_ZU_23 = vehicles.AirDefence.Tt_ZU_23
             HL_ZU_23 = vehicles.AirDefence.HL_ZU_23
+            SON_9 = vehicles.AirDefence.SON_9
 
         class Fortification:
             Bunker = vehicles.Fortification.Bunker
@@ -13017,6 +13030,7 @@ class Kazakhstan(Country):
             KS_19 = vehicles.AirDefence.KS_19
             Tt_ZU_23 = vehicles.AirDefence.Tt_ZU_23
             HL_ZU_23 = vehicles.AirDefence.HL_ZU_23
+            SON_9 = vehicles.AirDefence.SON_9
             S_75M_Volhov = vehicles.AirDefence.S_75M_Volhov
             SNR_75V = vehicles.AirDefence.SNR_75V
 
@@ -13391,6 +13405,7 @@ class NorthKorea(Country):
             RLS_19J6 = vehicles.AirDefence.RLS_19J6
             Tt_ZU_23 = vehicles.AirDefence.Tt_ZU_23
             HL_ZU_23 = vehicles.AirDefence.HL_ZU_23
+            SON_9 = vehicles.AirDefence.SON_9
 
         class Fortification:
             Bunker = vehicles.Fortification.Bunker
@@ -14040,6 +14055,7 @@ class Poland(Country):
             KS_19 = vehicles.AirDefence.KS_19
             Tt_ZU_23 = vehicles.AirDefence.Tt_ZU_23
             HL_ZU_23 = vehicles.AirDefence.HL_ZU_23
+            SON_9 = vehicles.AirDefence.SON_9
             Allies_Director = vehicles.AirDefence.Allies_Director
             M45_Quadmount = vehicles.AirDefence.M45_Quadmount
             M1_37mm = vehicles.AirDefence.M1_37mm
@@ -14416,6 +14432,7 @@ class Romania(Country):
             FPS_117_Dome = vehicles.AirDefence.FPS_117_Dome
             Tt_ZU_23 = vehicles.AirDefence.Tt_ZU_23
             HL_ZU_23 = vehicles.AirDefence.HL_ZU_23
+            SON_9 = vehicles.AirDefence.SON_9
             Flak18 = vehicles.AirDefence.Flak18
             Flak30 = vehicles.AirDefence.Flak30
             Flak36 = vehicles.AirDefence.Flak36
@@ -16783,6 +16800,7 @@ class Yemen(Country):
             KS_19 = vehicles.AirDefence.KS_19
             Tt_ZU_23 = vehicles.AirDefence.Tt_ZU_23
             HL_ZU_23 = vehicles.AirDefence.HL_ZU_23
+            SON_9 = vehicles.AirDefence.SON_9
 
         class Fortification:
             Bunker = vehicles.Fortification.Bunker
@@ -17118,6 +17136,7 @@ class Vietnam(Country):
             RLS_19J6 = vehicles.AirDefence.RLS_19J6
             Tt_ZU_23 = vehicles.AirDefence.Tt_ZU_23
             HL_ZU_23 = vehicles.AirDefence.HL_ZU_23
+            SON_9 = vehicles.AirDefence.SON_9
 
         class Fortification:
             Bunker = vehicles.Fortification.Bunker
@@ -18352,6 +18371,7 @@ class Sudan(Country):
             KS_19 = vehicles.AirDefence.KS_19
             Tt_ZU_23 = vehicles.AirDefence.Tt_ZU_23
             HL_ZU_23 = vehicles.AirDefence.HL_ZU_23
+            SON_9 = vehicles.AirDefence.SON_9
 
         class Fortification:
             Bunker = vehicles.Fortification.Bunker
@@ -18956,6 +18976,7 @@ class Morocco(Country):
             KS_19 = vehicles.AirDefence.KS_19
             Tt_ZU_23 = vehicles.AirDefence.Tt_ZU_23
             HL_ZU_23 = vehicles.AirDefence.HL_ZU_23
+            SON_9 = vehicles.AirDefence.SON_9
 
         class Fortification:
             Bunker = vehicles.Fortification.Bunker
@@ -19880,6 +19901,7 @@ class Libya(Country):
             KS_19 = vehicles.AirDefence.KS_19
             Tt_ZU_23 = vehicles.AirDefence.Tt_ZU_23
             HL_ZU_23 = vehicles.AirDefence.HL_ZU_23
+            SON_9 = vehicles.AirDefence.SON_9
             Rapier_fsa_launcher = vehicles.AirDefence.Rapier_fsa_launcher
             Rapier_fsa_optical_tracker_unit = vehicles.AirDefence.Rapier_fsa_optical_tracker_unit
             Rapier_fsa_blindfire_radar = vehicles.AirDefence.Rapier_fsa_blindfire_radar
@@ -23687,6 +23709,7 @@ class Algeria(Country):
             KS_19 = vehicles.AirDefence.KS_19
             Tt_ZU_23 = vehicles.AirDefence.Tt_ZU_23
             HL_ZU_23 = vehicles.AirDefence.HL_ZU_23
+            SON_9 = vehicles.AirDefence.SON_9
             HQ_7_LN_SP = vehicles.AirDefence.HQ_7_LN_SP
             HQ_7_LN_EO = vehicles.AirDefence.HQ_7_LN_EO
             HQ_7_STR_SP = vehicles.AirDefence.HQ_7_STR_SP
@@ -25668,6 +25691,7 @@ class Cuba(Country):
             KS_19 = vehicles.AirDefence.KS_19
             Tt_ZU_23 = vehicles.AirDefence.Tt_ZU_23
             HL_ZU_23 = vehicles.AirDefence.HL_ZU_23
+            SON_9 = vehicles.AirDefence.SON_9
 
         class Fortification:
             Bunker = vehicles.Fortification.Bunker
@@ -26338,6 +26362,7 @@ class GDR(Country):
             Generator_5i57 = vehicles.AirDefence.Generator_5i57
             KS_19 = vehicles.AirDefence.KS_19
             RLS_19J6 = vehicles.AirDefence.RLS_19J6
+            SON_9 = vehicles.AirDefence.SON_9
 
         class Fortification:
             Bunker = vehicles.Fortification.Bunker
@@ -27591,6 +27616,8 @@ class CombinedJointTaskForcesBlue(Country):
         CV_1143_5 = ships.CV_1143_5
         Santafe = ships.Santafe
         La_Combattante_II = ships.La_Combattante_II
+        Leander_gun_condell = ships.Leander_gun_condell
+        Leander_gun_lynch = ships.Leander_gun_lynch
         Type_052B = ships.Type_052B
         Type_052C = ships.Type_052C
         Type_054A = ships.Type_054A
@@ -27610,8 +27637,6 @@ class CombinedJointTaskForcesBlue(Country):
         Leander_gun_achilles = ships.Leander_gun_achilles
         Leander_gun_andromeda = ships.Leander_gun_andromeda
         Leander_gun_ariadne = ships.Leander_gun_ariadne
-        Leander_gun_condell = ships.Leander_gun_condell
-        Leander_gun_lynch = ships.Leander_gun_lynch
 
     class CallsignAWACS:
         Overlord = "Overlord"
@@ -28380,6 +28405,8 @@ class CombinedJointTaskForcesRed(Country):
         CV_1143_5 = ships.CV_1143_5
         Santafe = ships.Santafe
         La_Combattante_II = ships.La_Combattante_II
+        Leander_gun_condell = ships.Leander_gun_condell
+        Leander_gun_lynch = ships.Leander_gun_lynch
         Type_052B = ships.Type_052B
         Type_052C = ships.Type_052C
         Type_054A = ships.Type_054A
@@ -28399,8 +28426,6 @@ class CombinedJointTaskForcesRed(Country):
         Leander_gun_achilles = ships.Leander_gun_achilles
         Leander_gun_andromeda = ships.Leander_gun_andromeda
         Leander_gun_ariadne = ships.Leander_gun_ariadne
-        Leander_gun_condell = ships.Leander_gun_condell
-        Leander_gun_lynch = ships.Leander_gun_lynch
 
     class CallsignAWACS:
         Overlord = "Overlord"
@@ -29169,6 +29194,8 @@ class UnitedNationsPeacekeepers(Country):
         CV_1143_5 = ships.CV_1143_5
         Santafe = ships.Santafe
         La_Combattante_II = ships.La_Combattante_II
+        Leander_gun_condell = ships.Leander_gun_condell
+        Leander_gun_lynch = ships.Leander_gun_lynch
         Type_052B = ships.Type_052B
         Type_052C = ships.Type_052C
         Type_054A = ships.Type_054A
@@ -29188,8 +29215,6 @@ class UnitedNationsPeacekeepers(Country):
         Leander_gun_achilles = ships.Leander_gun_achilles
         Leander_gun_andromeda = ships.Leander_gun_andromeda
         Leander_gun_ariadne = ships.Leander_gun_ariadne
-        Leander_gun_condell = ships.Leander_gun_condell
-        Leander_gun_lynch = ships.Leander_gun_lynch
 
     class CallsignAWACS:
         Overlord = "Overlord"
