@@ -418,6 +418,8 @@ from dcs.liveries_scanner import Liveries
                     defval = 'True'
                 elseif defval == false then
                     defval = 'False'
+                elseif defval == nil then
+                    defval = 'None'
                 else
                     defval = tostring(defval)
                 end
