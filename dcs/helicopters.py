@@ -1172,9 +1172,6 @@ class AH_64D_BLK_II(HelicopterType):
         class TrackAirTargets:
             id = "TrackAirTargets"
 
-        class mul_Label:
-            id = "mul_Label"
-
         class NetCrewControlPriority:
             id = "NetCrewControlPriority"
 
@@ -1383,9 +1380,6 @@ class Mi_24P(HelicopterType):
 
         class TrackAirTargets:
             id = "TrackAirTargets"
-
-        class mul_Label:
-            id = "mul_Label"
 
         class NetCrewControlPriority:
             id = "NetCrewControlPriority"
