@@ -418,6 +418,8 @@ from dcs.liveries_scanner import Liveries
                     defval = 'True'
                 elseif defval == false then
                     defval = 'False'
+                elseif defval == nil then
+                    defval = 'None'
                 else
                     defval = tostring(defval)
                 end
@@ -428,16 +430,21 @@ from dcs.liveries_scanner import Liveries
             if plane.AddPropAircraft ~= nil and #plane.AddPropAircraft > 0 then
                 writeln(file, '')
                 writeln(file, '    class Properties:')
+                local seen_props = {}
                 for j in pairs(plane.AddPropAircraft) do
                     local prop = plane.AddPropAircraft[j]
-                    writeln(file, '')
-                    writeln(file, '        class '..safe_name(prop.id)..':')
-                    writeln(file, '            id = "'..prop.id..'"')
-                    if prop.values then
+                    prop_class_name = safe_name(prop.id)
+                    if not seen_props[prop_class_name] then
+                        seen_props[prop_class_name] = true
                         writeln(file, '')
-                        writeln(file, '            class Values:')
-                        for k, val in pairs(prop.values) do
-                            writeln(file, '                '..safe_name(val.dispName)..' = '..tostring(val.id))
+                        writeln(file, '        class '..prop_class_name..':')
+                        writeln(file, '            id = "'..prop.id..'"')
+                        if prop.values then
+                            writeln(file, '')
+                            writeln(file, '            class Values:')
+                            for k, val in pairs(prop.values) do
+                                writeln(file, '                '..safe_name(val.dispName)..' = '..tostring(val.id))
+                            end
                         end
                     end
                 end

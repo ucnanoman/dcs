@@ -1,13 +1,11 @@
 """
 This script imports airport data, that was previously exported by a lua function.
 
-The lua function to export is just beneath this comment block, insert it somewhere in the mission editor
-and call it somewhere
+Copy the following lua function into me_map_window.lua and call the function in the
+createAircraft() function. Then open DCS, create a new mission in the editor for the map
+you want to export, and place an aircraft (any aircraft will do, the code will run when
+the aircraft is placed).
 
-See https://github.com/pydcs/dcs/issues/36
-"""
-
-"""
 function dumpairportdata()
     local S	= require('Serializer')
     local airdromedump = {}
@@ -17,6 +15,7 @@ function dumpairportdata()
         info = {}
         info["airport"] = v
         info["standlist"] = sList
+        info["frequencies"] = AirdromeData.getAirdrome(AirdromeData.getAirdromeId(k))
         airdromedump[k] = info
     end
     local f = base.io.open("C:\\standlist.lua", 'w')
@@ -28,22 +27,71 @@ function dumpairportdata()
         showWarningMessageBox(_('Error saving standlist'))
     end
 end
+
+If you are unable to place aircraft in the ME (clicking does nothing), there is probably
+something wrong with the script. Check the DCS log for info.
+
+Once you've done that, C:\standlist.lua will have been written. Run the following to
+generate the data for pydcs:
+
+    .\tools\airport_import.py -t $TERRAIN_NAME C:\standlist.lua
+
+This will generate the airport list to the source directory.
+
+See https://github.com/pydcs/dcs/issues/36
 """
 
 import argparse
-import dcs.lua
 import codecs
+from collections import defaultdict
+from pathlib import Path
+from typing import Any, Dict, Iterable, List, Set, Tuple
+
+import dcs.lua
+from dcs.atcradio import AtcRadio
+from dcs.beacons import AirportBeacon, RunwayBeacon
+from dcs.terrain.terrain import Runway, RunwayBeaconMapping
 
 
-def safename(name):
-    return name.replace(' ', '_').replace('-', '_')
+THIS_DIR = Path(__file__).parent.resolve()
+TERRAINS_DIR = THIS_DIR.parent / "dcs/terrain"
+
+
+def safename(name: str) -> str:
+    return name.replace(' ', '_').replace('-', '_').replace('.', '_').replace("'", '_')
+
+
+def parse_beacons(
+    each_beacon: Iterable[Dict[str, Any]]
+) -> Tuple[List[AirportBeacon], RunwayBeaconMapping]:
+    airport_beacons = []
+    runway_beacons: RunwayBeaconMapping = defaultdict(lambda: defaultdict(list))
+    for data in each_beacon:
+        # Example data:
+        #
+        # {
+        #     ["runwayName"] = "04-22",
+        #     ["runwayId"] = 1,
+        #     ["runwaySide"] = "22",
+        #     ["beaconId"] = "airfield12_1",
+        # }
+        #
+        # Some beacons have only a beaconId.
+        if "runwayId" in data:
+            beacon = RunwayBeacon.from_lua(data)
+            # -1 shows up for some runway IDs in the runways section. I assume those
+            # will never have beacons. If this assertion fails, we may need to fall back
+            # to name indexing.
+            assert beacon.runway_id != -1
+            runway_beacons[beacon.runway_id][beacon.runway_side].append(beacon)
+        else:
+            airport_beacons.append(AirportBeacon.from_lua(data))
+    return airport_beacons, runway_beacons
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-t", "--terrain",
-                        choices=["caucasus", "falklands", "nevada", "normandy", "persiangulf", "thechannel", "syria", "marianaislands"],
-                        default="caucasus")
+    parser.add_argument("-t", "--terrain", required=True, help="Name of the terrain.")
     parser.add_argument("airportinfofile")
 
     args = parser.parse_args()
@@ -51,41 +99,66 @@ def main():
     with codecs.open(args.airportinfofile, "r", "utf-8") as f:
         data = dcs.lua.loads(f.read())
 
+    output_path = TERRAINS_DIR / args.terrain.lower() / "airports.py"
+    with output_path.open("w") as output:
+        print("# flake8: noqa", file=output)
+        print("from typing import List, Type", file=output)
+        print(file=output)
+        print("from dcs import mapping", file=output)
+        print("from dcs.atcradio import AtcRadio", file=output)
+        print("from dcs.beacons import AirportBeacon, RunwayBeacon", file=output)
+        print("from dcs.terrain import Airport, ParkingSlot, Runway, RunwayApproach, Terrain", file=output)
+
+        airport_class_names: list[str] = []
         for id_ in sorted(data["airports"]):
             airport = data["airports"][id_]
             tacan = airport.get("tacan", None)
             tacan = '"' + tacan + '"' if tacan else None
-            print("""
+            sname = safename(airport['airport']['display_name'])
+            name = airport['airport']['display_name']
+            civ = airport["airport"].get("civilian", True)
+            x = airport["airport"]["reference_point"]["x"]
+            y = airport["airport"]["reference_point"]["y"]
+
+            atc_freqs = list(airport["frequencies"]["frequencyList"].values())
+            if atc_freqs:
+                hf, vhf_low, vhf_high, uhf = sorted(atc_freqs)
+                atc_radio = AtcRadio(
+                    hf_hz=hf,
+                    vhf_low_hz=vhf_low,
+                    vhf_high_hz=vhf_high,
+                    uhf_hz=uhf,
+                )
+            else:
+                atc_radio = None
+
+            airport_class_names.append(sname)
+
+            airport_beacons, runway_beacons = parse_beacons(
+                airport["airport"]["beacons"].values()
+            )
+            runways = [Runway.from_lua(data, runway_beacons)
+                       for data in airport["airport"]["runways"].values()]
+
+            print(f"""
 
 class {sname}(Airport):
-    id = {id}
+    id = {id_}
     name = "{name}"
     tacan = {tacan}
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = {civ}
-    slot_version = {slot_version}
+    slot_version = 2
+    atc_radio = {repr(atc_radio)}
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point({x}, {y}, terrain), terrain)
-"""
-                  .format(sname=safename(airport['airport']['display_name']),
-                          name=airport['airport']['display_name'],
-                          id=id_,
-                          x=airport["airport"]["reference_point"]["x"],
-                          y=airport["airport"]["reference_point"]["y"],
-                          tacan=tacan,
-                          # freq=", ".join(map(str, airport["airport"]["frequency"].values())),
-                          civ=airport["airport"].get("civilian", True),
-                          slot_version=2))
+""", file=output)
 
-            i = 0
-            for runway in airport['airport']["runwayName"]:
-                i += 1
-                if not i % 2:
-                    continue  # pydcs code only needs one direction runway
-                runway = airport['airport']["runwayName"][runway]
-                hdg = int(runway) * 10 if runway[-1].isdigit() else int(runway[:-1]) * 10
-                print("        self.runways.append(Runway({hdg}))".format(hdg=hdg))
+            for beacon in airport_beacons:
+                print(f"        self.beacons.append({repr(beacon)})", file=output)
+            for runway in runways:
+                print(f"        self.runways.append({repr(runway)})", file=output)
 
             for standid in sorted(airport["standlist"]):
                 slot = airport["standlist"][standid]
@@ -102,25 +175,14 @@ class {sname}(Airport):
                     name=slot["name"],
                     length=float(slot["params"]["LENGTH"]), width=float(slot["params"]["WIDTH"]), height=height,
                     shelter=slot["params"]["SHELTER"] == "1"
-                ))
+                ), file=output)
 
-        print()
-        print("# The following section belongs in the Terrain subclass, not in the Airport")
-        print()
-
-        for id_ in sorted(data["airports"]):
-            airport = data["airports"][id_]
-            sname = safename(airport['airport']['display_name'])
-            keyname = airport['airport']['display_name']
-            print("        self.airports['{keyname}'] = {name}(self)".format(keyname=keyname, name=sname))
-
-        for id_ in sorted(data["airports"]):
-            airport = data["airports"][id_]
-            sname = safename(airport['airport']['display_name']).lower()
-            keyname = airport['airport']['display_name']
-            print("""
-    def {name}(self) -> Airport:
-        return self.airports["{keyname}"]""".format(keyname=keyname, name=sname))
+        print(file=output)
+        print(file=output)
+        print("ALL_AIRPORTS: List[Type[Airport]] = [", file=output)
+        print("\n".join(f"    {n}," for n in airport_class_names), file=output)
+        print("]", file=output)
+        print(file=output)
 
 
 if __name__ == "__main__":

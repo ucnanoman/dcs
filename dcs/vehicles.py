@@ -937,7 +937,7 @@ class AirDefence:
 
     class Allies_Director(unittype.VehicleType):
         id = "Allies_Director"
-        name = "Allies_Director"
+        name = "Allies Rangefinder (DRT)"
         detection_range = 30000
         threat_range = 0
         air_weapon_dist = 0

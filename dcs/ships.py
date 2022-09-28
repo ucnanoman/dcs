@@ -199,9 +199,9 @@ class Hms_invincible(unittype.ShipType):
     plane_num = 7
     helicopter_num = 9
     parking = 4
-    detection_range = 416000
-    threat_range = 80000
-    air_weapon_dist = 80000
+    detection_range = 100000
+    threat_range = 74000
+    air_weapon_dist = 74000
 
 
 class Leander_gun_achilles(unittype.ShipType):
@@ -210,8 +210,8 @@ class Leander_gun_achilles(unittype.ShipType):
     helicopter_num = 1
     parking = 1
     detection_range = 180000
-    threat_range = 140000
-    air_weapon_dist = 140000
+    threat_range = 8000
+    air_weapon_dist = 8000
 
 
 class Leander_gun_andromeda(unittype.ShipType):
@@ -229,9 +229,9 @@ class Leander_gun_ariadne(unittype.ShipType):
     name = "HMS Ariadne (F72)"
     helicopter_num = 1
     parking = 1
-    detection_range = 180000
-    threat_range = 140000
-    air_weapon_dist = 140000
+    detection_range = 150000
+    threat_range = 100000
+    air_weapon_dist = 100000
 
 
 class Leander_gun_condell(unittype.ShipType):
@@ -239,9 +239,9 @@ class Leander_gun_condell(unittype.ShipType):
     name = "CNS Almirante Condell (PFG-06)"
     helicopter_num = 1
     parking = 1
-    detection_range = 180000
-    threat_range = 140000
-    air_weapon_dist = 140000
+    detection_range = 150000
+    threat_range = 100000
+    air_weapon_dist = 100000
 
 
 class Leander_gun_lynch(unittype.ShipType):

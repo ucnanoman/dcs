@@ -1079,17 +1079,20 @@ class AH_64D_BLK_II(HelicopterType):
 
     property_defaults: Dict[str, Any] = {
         "FCR_RFI_removed": True,
-        "NetCrewControlPriority": 0,
-        "AIDisabled": False,
-        "TrackAirTargets": True,
-        "OverrideIFF": 0,
+        "PltNVG": True,
+        "CpgNVG": True,
         "FlareBurstCount": 0,
         "FlareBurstInterval": 0,
         "FlareSalvoCount": 0,
         "FlareSalvoInterval": 0,
         "FlareProgramDelay": 0,
-        "PltNVG": True,
-        "CpgNVG": True,
+        "mul_Label": None,
+        "OverrideIFF": 0,
+        "TrackAirTargets": True,
+        "mul_Label": None,
+        "NetCrewControlPriority": 0,
+        "AIDisabled": False,
+        "HumanOrchestra": False,
     }
 
     class Properties:
@@ -1097,29 +1100,11 @@ class AH_64D_BLK_II(HelicopterType):
         class FCR_RFI_removed:
             id = "FCR_RFI_removed"
 
-        class NetCrewControlPriority:
-            id = "NetCrewControlPriority"
+        class PltNVG:
+            id = "PltNVG"
 
-            class Values:
-                Pilot = 0
-                CPG = 1
-                Ask_Always = -1
-                Equally_Responsible = -2
-
-        class AIDisabled:
-            id = "AIDisabled"
-
-        class TrackAirTargets:
-            id = "TrackAirTargets"
-
-        class OverrideIFF:
-            id = "OverrideIFF"
-
-            class Values:
-                Auto = 0
-                Simple = 1
-                Label_Only = 2
-                Realistic = 3
+        class CpgNVG:
+            id = "CpgNVG"
 
         class FlareBurstCount:
             id = "FlareBurstCount"
@@ -1172,11 +1157,35 @@ class AH_64D_BLK_II(HelicopterType):
                 x_3 = 2
                 x_4 = 3
 
-        class PltNVG:
-            id = "PltNVG"
+        class mul_Label:
+            id = "mul_Label"
 
-        class CpgNVG:
-            id = "CpgNVG"
+        class OverrideIFF:
+            id = "OverrideIFF"
+
+            class Values:
+                Auto = 0
+                Simple = 1
+                Label_Only = 2
+                Realistic = 3
+
+        class TrackAirTargets:
+            id = "TrackAirTargets"
+
+        class NetCrewControlPriority:
+            id = "NetCrewControlPriority"
+
+            class Values:
+                Pilot = 0
+                CPG = 1
+                Ask_Always = -1
+                Equally_Responsible = -2
+
+        class AIDisabled:
+            id = "AIDisabled"
+
+        class HumanOrchestra:
+            id = "HumanOrchestra"
 
     livery_name = "AH-64D_BLK_II"  # from type
     Liveries = Liveries()[livery_name]
@@ -1307,25 +1316,25 @@ class Mi_24P(HelicopterType):
     }
 
     property_defaults: Dict[str, Any] = {
-        "ExhaustScreen": True,
         "LeftEngineResource": 90,
         "RightEngineResource": 90,
-        "GunnersAISkill": 90,
-        "NetCrewControlPriority": 0,
+        "ExhaustScreen": True,
         "NS430allow": True,
-        "SimplifiedAI": False,
-        "HideAngleBoxes": False,
-        "TrackAirTargets": True,
         "PilotNVG": True,
         "OperatorNVG": True,
         "R60equipment": True,
+        "mul_Label": None,
         "OverrideIFF": 0,
+        "GunnersAISkill": 90,
+        "SimplifiedAI": False,
+        "HideAngleBoxes": False,
+        "TrackAirTargets": True,
+        "mul_Label": None,
+        "NetCrewControlPriority": 0,
+        "HumanOrchestra": False,
     }
 
     class Properties:
-
-        class ExhaustScreen:
-            id = "ExhaustScreen"
 
         class LeftEngineResource:
             id = "LeftEngineResource"
@@ -1333,29 +1342,11 @@ class Mi_24P(HelicopterType):
         class RightEngineResource:
             id = "RightEngineResource"
 
-        class GunnersAISkill:
-            id = "GunnersAISkill"
-
-        class NetCrewControlPriority:
-            id = "NetCrewControlPriority"
-
-            class Values:
-                Pilot = 0
-                Copilot_gunner = 1
-                Ask_Always = -1
-                Equally_Responsible = -2
+        class ExhaustScreen:
+            id = "ExhaustScreen"
 
         class NS430allow:
             id = "NS430allow"
-
-        class SimplifiedAI:
-            id = "SimplifiedAI"
-
-        class HideAngleBoxes:
-            id = "HideAngleBoxes"
-
-        class TrackAirTargets:
-            id = "TrackAirTargets"
 
         class PilotNVG:
             id = "PilotNVG"
@@ -1366,6 +1357,9 @@ class Mi_24P(HelicopterType):
         class R60equipment:
             id = "R60equipment"
 
+        class mul_Label:
+            id = "mul_Label"
+
         class OverrideIFF:
             id = "OverrideIFF"
 
@@ -1374,6 +1368,30 @@ class Mi_24P(HelicopterType):
                 Simple = 1
                 Label_Only = 2
                 Realistic = 3
+
+        class GunnersAISkill:
+            id = "GunnersAISkill"
+
+        class SimplifiedAI:
+            id = "SimplifiedAI"
+
+        class HideAngleBoxes:
+            id = "HideAngleBoxes"
+
+        class TrackAirTargets:
+            id = "TrackAirTargets"
+
+        class NetCrewControlPriority:
+            id = "NetCrewControlPriority"
+
+            class Values:
+                Pilot = 0
+                Copilot_gunner = 1
+                Ask_Always = -1
+                Equally_Responsible = -2
+
+        class HumanOrchestra:
+            id = "HumanOrchestra"
 
     livery_name = "MI-24P"  # from type
     Liveries = Liveries()[livery_name]

@@ -1,24 +1,25 @@
 # flake8: noqa
-import os
-from typing import List
+from typing import List, Type
 
-from dcs.terrain.terrain import Terrain, Airport, Runway, ParkingSlot, MapView, Graph
-import dcs.mapping as mapping
-from .projections.caucasus import PARAMETERS
+from dcs import mapping
+from dcs.atcradio import AtcRadio
+from dcs.beacons import AirportBeacon, RunwayBeacon
+from dcs.terrain import Airport, ParkingSlot, Runway, RunwayApproach, Terrain
 
 
 class Anapa_Vityazevo(Airport):
     id = 12
     name = "Anapa-Vityazevo"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = True
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=3750000, vhf_low_hz=38400000, vhf_high_hz=121000000, uhf_hz=250000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-5412.409668, 243128.820313, terrain), terrain)
 
-        self.runways.append(Runway(40))
+        self.runways.append(Runway(id=1, name='22-04', main=RunwayApproach(name='22', heading=220, beacons=[RunwayBeacon(id='airfield12_1', runway_name='04-22', runway_id=1, runway_side='22'), RunwayBeacon(id='airfield12_0', runway_name='04-22', runway_id=1, runway_side='22')]), opposite=RunwayApproach(name='04', heading=40, beacons=[RunwayBeacon(id='airfield12_2', runway_name='04-22', runway_id=1, runway_side='04'), RunwayBeacon(id='airfield12_3', runway_name='04-22', runway_id=1, runway_side='04')])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=1, position=mapping.Point(-4829.5249882422, 244622.06661236, self._terrain), large=False, heli=True,
                 airplanes=True, slot_name='40', length=78.722809, width=67.096466, height=18.0, shelter=False))
@@ -301,14 +302,16 @@ class Krasnodar_Center(Airport):
     id = 13
     name = "Krasnodar-Center"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = False
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=3800000, vhf_low_hz=38600000, vhf_high_hz=122000000, uhf_hz=251000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(11685.205078, 367933.515625, terrain), terrain)
 
-        self.runways.append(Runway(270))
+        self.beacons.append(AirportBeacon(id='airfield13_6'))
+        self.runways.append(Runway(id=1, name='09-27', main=RunwayApproach(name='09', heading=90, beacons=[RunwayBeacon(id='airfield13_2', runway_name='09-27', runway_id=1, runway_side='09'), RunwayBeacon(id='airfield13_3', runway_name='09-27', runway_id=1, runway_side='09'), RunwayBeacon(id='airfield13_4', runway_name='09-27', runway_id=1, runway_side='09'), RunwayBeacon(id='airfield13_5', runway_name='09-27', runway_id=1, runway_side='09')]), opposite=RunwayApproach(name='27', heading=270, beacons=[RunwayBeacon(id='airfield13_1', runway_name='09-27', runway_id=1, runway_side='27'), RunwayBeacon(id='airfield13_0', runway_name='09-27', runway_id=1, runway_side='27')])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=0, position=mapping.Point(10890.094726563, 368483.28125, self._terrain), large=False, heli=False,
                 airplanes=True, slot_name='54', length=26.0, width=22.0, height=8.0, shelter=False))
@@ -483,14 +486,15 @@ class Novorossiysk(Airport):
     id = 14
     name = "Novorossiysk"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = False
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=3850000, vhf_low_hz=38800000, vhf_high_hz=123000000, uhf_hz=252000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-40917.535156, 279256.0625, terrain), terrain)
 
-        self.runways.append(Runway(40))
+        self.runways.append(Runway(id=1, name='22-04', main=RunwayApproach(name='22', heading=220, beacons=[]), opposite=RunwayApproach(name='04', heading=40, beacons=[])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=2, position=mapping.Point(-40106.0234375, 279575.75, self._terrain), large=False, heli=True,
                 airplanes=True, slot_name='09', length=26.0, width=24.0, height=11.0, shelter=False))
@@ -611,14 +615,16 @@ class Krymsk(Airport):
     id = 15
     name = "Krymsk"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = False
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=3900000, vhf_low_hz=39000000, vhf_high_hz=124000000, uhf_hz=253000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-6576.524658, 294388.125, terrain), terrain)
 
-        self.runways.append(Runway(220))
+        self.beacons.append(AirportBeacon(id='airfield15_8'))
+        self.runways.append(Runway(id=1, name='04-22', main=RunwayApproach(name='04', heading=40, beacons=[RunwayBeacon(id='airfield15_2', runway_name='04-22', runway_id=1, runway_side='04'), RunwayBeacon(id='airfield15_3', runway_name='04-22', runway_id=1, runway_side='04'), RunwayBeacon(id='airfield15_4', runway_name='04-22', runway_id=1, runway_side='04'), RunwayBeacon(id='airfield15_7', runway_name='04-22', runway_id=1, runway_side='04')]), opposite=RunwayApproach(name='22', heading=220, beacons=[RunwayBeacon(id='airfield15_1', runway_name='04-22', runway_id=1, runway_side='22'), RunwayBeacon(id='airfield15_5', runway_name='04-22', runway_id=1, runway_side='22'), RunwayBeacon(id='airfield15_6', runway_name='04-22', runway_id=1, runway_side='22'), RunwayBeacon(id='airfield15_0', runway_name='04-22', runway_id=1, runway_side='22')])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=0, position=mapping.Point(-6138.9926757813, 295188.6875, self._terrain), large=False, heli=False,
                 airplanes=True, slot_name='53', length=26.0, width=22.0, height=8.0, shelter=False))
@@ -796,14 +802,16 @@ class Maykop_Khanskaya(Airport):
     id = 16
     name = "Maykop-Khanskaya"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = False
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=3950000, vhf_low_hz=39200000, vhf_high_hz=125000000, uhf_hz=254000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-26437.275391, 458048.84375, terrain), terrain)
 
-        self.runways.append(Runway(220))
+        self.beacons.append(AirportBeacon(id='airfield16_6'))
+        self.runways.append(Runway(id=1, name='04-22', main=RunwayApproach(name='04', heading=40, beacons=[RunwayBeacon(id='airfield16_2', runway_name='04-22', runway_id=1, runway_side='04'), RunwayBeacon(id='airfield16_3', runway_name='04-22', runway_id=1, runway_side='04'), RunwayBeacon(id='airfield16_4', runway_name='04-22', runway_id=1, runway_side='04'), RunwayBeacon(id='airfield16_5', runway_name='04-22', runway_id=1, runway_side='04')]), opposite=RunwayApproach(name='22', heading=220, beacons=[RunwayBeacon(id='airfield16_1', runway_name='04-22', runway_id=1, runway_side='22'), RunwayBeacon(id='airfield16_0', runway_name='04-22', runway_id=1, runway_side='22')])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=0, position=mapping.Point(-26260.4609375, 459009.125, self._terrain), large=False, heli=True,
                 airplanes=True, slot_name='53', length=78.722809, width=67.096466, height=18.0, shelter=False))
@@ -981,14 +989,17 @@ class Gelendzhik(Airport):
     id = 17
     name = "Gelendzhik"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = True
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=4000000, vhf_low_hz=39400000, vhf_high_hz=126000000, uhf_hz=255000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-50378.611328, 298406.15625, terrain), terrain)
 
-        self.runways.append(Runway(190))
+        self.beacons.append(AirportBeacon(id='airfield17_1'))
+        self.beacons.append(AirportBeacon(id='airfield17_0'))
+        self.runways.append(Runway(id=1, name='01-19', main=RunwayApproach(name='01', heading=10, beacons=[]), opposite=RunwayApproach(name='19', heading=190, beacons=[])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=0, position=mapping.Point(-50574.20703125, 298005.59375, self._terrain), large=False, heli=True,
                 airplanes=True, slot_name='01', length=20.5, width=18.0, height=11.0, shelter=False))
@@ -1034,14 +1045,15 @@ class Sochi_Adler(Airport):
     id = 18
     name = "Sochi-Adler"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = True
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=4050000, vhf_low_hz=39600000, vhf_high_hz=127000000, uhf_hz=256000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-164496.46875, 462218.921875, terrain), terrain)
 
-        self.runways.append(Runway(240))
+        self.runways.append(Runway(id=1, name='06-24', main=RunwayApproach(name='06', heading=60, beacons=[RunwayBeacon(id='airfield18_1', runway_name='06-24', runway_id=1, runway_side='06'), RunwayBeacon(id='airfield18_2', runway_name='06-24', runway_id=1, runway_side='06'), RunwayBeacon(id='airfield18_0', runway_name='06-24', runway_id=1, runway_side='06')]), opposite=RunwayApproach(name='24', heading=240, beacons=[])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=0, position=mapping.Point(-164362.125, 463237.3125, self._terrain), large=False, heli=False,
                 airplanes=True, slot_name='55', length=26.0, width=22.0, height=8.0, shelter=False))
@@ -1252,14 +1264,16 @@ class Krasnodar_Pashkovsky(Airport):
     id = 19
     name = "Krasnodar-Pashkovsky"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = True
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=4100000, vhf_low_hz=39800000, vhf_high_hz=128000000, uhf_hz=257000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(7717.637452, 387878.803876, terrain), terrain)
 
-        self.runways.append(Runway(50))
+        self.beacons.append(AirportBeacon(id='airfield19_4'))
+        self.runways.append(Runway(id=1, name='23L-05R', main=RunwayApproach(name='23L', heading=230, beacons=[]), opposite=RunwayApproach(name='05R', heading=50, beacons=[])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=0, position=mapping.Point(8852.1181640625, 388779.3125, self._terrain), large=False, heli=True,
                 airplanes=True, slot_name='19', length=43.057953, width=40.0, height=None, shelter=False))
@@ -1323,14 +1337,15 @@ class Sukhumi_Babushara(Airport):
     id = 20
     name = "Sukhumi-Babushara"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = True
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=4150000, vhf_low_hz=40000000, vhf_high_hz=129000000, uhf_hz=258000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-220592.328125, 564391.96875, terrain), terrain)
 
-        self.runways.append(Runway(120))
+        self.runways.append(Runway(id=1, name='30-12', main=RunwayApproach(name='30', heading=300, beacons=[RunwayBeacon(id='airfield20_1', runway_name='12-30', runway_id=1, runway_side='30'), RunwayBeacon(id='airfield20_0', runway_name='12-30', runway_id=1, runway_side='30')]), opposite=RunwayApproach(name='12', heading=120, beacons=[])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=2, position=mapping.Point(-219883.625, 563502.8125, self._terrain), large=False, heli=True,
                 airplanes=True, slot_name='23', length=78.722809, width=67.096466, height=18.0, shelter=False))
@@ -1406,14 +1421,15 @@ class Gudauta(Airport):
     id = 21
     name = "Gudauta"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = False
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=4200000, vhf_low_hz=40200000, vhf_high_hz=130000000, uhf_hz=259000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-196710.085938, 516451.6875, terrain), terrain)
 
-        self.runways.append(Runway(330))
+        self.runways.append(Runway(id=1, name='15-33', main=RunwayApproach(name='15', heading=150, beacons=[]), opposite=RunwayApproach(name='33', heading=330, beacons=[RunwayBeacon(id='airfield21_0', runway_name='15-33', runway_id=1, runway_side='33')])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=0, position=mapping.Point(-196497.375, 515476.09375, self._terrain), large=False, heli=False,
                 airplanes=True, slot_name='11', length=26.0, width=22.0, height=8.0, shelter=False))
@@ -1513,14 +1529,17 @@ class Batumi(Airport):
     id = 22
     name = "Batumi"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = True
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=4250000, vhf_low_hz=40400000, vhf_high_hz=131000000, uhf_hz=260000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-355810.6875, 617386.1875, terrain), terrain)
 
-        self.runways.append(Runway(130))
+        self.beacons.append(AirportBeacon(id='airfield22_2'))
+        self.beacons.append(AirportBeacon(id='airfield22_3'))
+        self.runways.append(Runway(id=1, name='31-13', main=RunwayApproach(name='31', heading=310, beacons=[]), opposite=RunwayApproach(name='13', heading=130, beacons=[RunwayBeacon(id='airfield22_1', runway_name='13-31', runway_id=1, runway_side='13'), RunwayBeacon(id='airfield22_0', runway_name='13-31', runway_id=1, runway_side='13')])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=2, position=mapping.Point(-356069.625, 618234.9375, self._terrain), large=False, heli=True,
                 airplanes=True, slot_name='06', length=78.722809, width=67.096466, height=18.0, shelter=False))
@@ -1557,14 +1576,16 @@ class Senaki_Kolkhi(Airport):
     id = 23
     name = "Senaki-Kolkhi"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = False
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=4300000, vhf_low_hz=40600000, vhf_high_hz=132000000, uhf_hz=261000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-281782.46875, 647279.46875, terrain), terrain)
 
-        self.runways.append(Runway(90))
+        self.beacons.append(AirportBeacon(id='airfield23_4'))
+        self.runways.append(Runway(id=1, name='27-09', main=RunwayApproach(name='27', heading=270, beacons=[]), opposite=RunwayApproach(name='09', heading=90, beacons=[RunwayBeacon(id='airfield23_1', runway_name='09-27', runway_id=1, runway_side='09'), RunwayBeacon(id='airfield23_2', runway_name='09-27', runway_id=1, runway_side='09'), RunwayBeacon(id='airfield23_3', runway_name='09-27', runway_id=1, runway_side='09'), RunwayBeacon(id='airfield23_0', runway_name='09-27', runway_id=1, runway_side='09')])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=2, position=mapping.Point(-281607.28417614, 646373.17498617, self._terrain), large=False, heli=True,
                 airplanes=True, slot_name='01', length=78.722809, width=67.096466, height=18.0, shelter=False))
@@ -1775,14 +1796,16 @@ class Kobuleti(Airport):
     id = 24
     name = "Kobuleti"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = True
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=4350000, vhf_low_hz=40800000, vhf_high_hz=133000000, uhf_hz=262000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-317962.296875, 635632.96875, terrain), terrain)
 
-        self.runways.append(Runway(70))
+        self.beacons.append(AirportBeacon(id='airfield24_4'))
+        self.runways.append(Runway(id=1, name='25-07', main=RunwayApproach(name='25', heading=250, beacons=[]), opposite=RunwayApproach(name='07', heading=70, beacons=[RunwayBeacon(id='airfield24_1', runway_name='07-25', runway_id=1, runway_side='07'), RunwayBeacon(id='airfield24_2', runway_name='07-25', runway_id=1, runway_side='07'), RunwayBeacon(id='airfield24_3', runway_name='07-25', runway_id=1, runway_side='07'), RunwayBeacon(id='airfield24_0', runway_name='07-25', runway_id=1, runway_side='07')])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=2, position=mapping.Point(-317882.375, 635012.9375, self._terrain), large=False, heli=True,
                 airplanes=True, slot_name='42', length=78.722809, width=67.096466, height=18.0, shelter=False))
@@ -1915,14 +1938,18 @@ class Kutaisi(Airport):
     id = 25
     name = "Kutaisi"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = True
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=4400000, vhf_low_hz=41000000, vhf_high_hz=134000000, uhf_hz=263000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-284887.375, 683858.71875, terrain), terrain)
 
-        self.runways.append(Runway(70))
+        self.beacons.append(AirportBeacon(id='airfield25_2'))
+        self.beacons.append(AirportBeacon(id='airfield25_3'))
+        self.beacons.append(AirportBeacon(id='airfield25_4'))
+        self.runways.append(Runway(id=1, name='25-07', main=RunwayApproach(name='25', heading=250, beacons=[]), opposite=RunwayApproach(name='07', heading=70, beacons=[RunwayBeacon(id='airfield25_1', runway_name='07-25', runway_id=1, runway_side='07'), RunwayBeacon(id='airfield25_0', runway_name='07-25', runway_id=1, runway_side='07')])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=0, position=mapping.Point(-284604.8125, 682356.25, self._terrain), large=False, heli=True,
                 airplanes=True, slot_name='16', length=78.722809, width=67.096466, height=18.0, shelter=False))
@@ -2103,14 +2130,16 @@ class Mineralnye_Vody(Airport):
     id = 26
     name = "Mineralnye Vody"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = True
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=4450000, vhf_low_hz=41200000, vhf_high_hz=135000000, uhf_hz=264000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-51259.983985, 705734.026899, terrain), terrain)
 
-        self.runways.append(Runway(120))
+        self.beacons.append(AirportBeacon(id='airfield26_8'))
+        self.runways.append(Runway(id=1, name='30-12', main=RunwayApproach(name='30', heading=300, beacons=[RunwayBeacon(id='airfield26_1', runway_name='12-30', runway_id=1, runway_side='30'), RunwayBeacon(id='airfield26_2', runway_name='12-30', runway_id=1, runway_side='30'), RunwayBeacon(id='airfield26_3', runway_name='12-30', runway_id=1, runway_side='30'), RunwayBeacon(id='airfield26_0', runway_name='12-30', runway_id=1, runway_side='30')]), opposite=RunwayApproach(name='12', heading=120, beacons=[RunwayBeacon(id='airfield26_4', runway_name='12-30', runway_id=1, runway_side='12'), RunwayBeacon(id='airfield26_5', runway_name='12-30', runway_id=1, runway_side='12'), RunwayBeacon(id='airfield26_6', runway_name='12-30', runway_id=1, runway_side='12'), RunwayBeacon(id='airfield26_7', runway_name='12-30', runway_id=1, runway_side='12')])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=0, position=mapping.Point(-52132.26171875, 706676.875, self._terrain), large=False, heli=True,
                 airplanes=True, slot_name='28', length=78.722809, width=67.096466, height=18.0, shelter=False))
@@ -2201,14 +2230,15 @@ class Nalchik(Airport):
     id = 27
     name = "Nalchik"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = True
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=4500000, vhf_low_hz=41400000, vhf_high_hz=136000000, uhf_hz=265000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-124932.167279, 760421.182617, terrain), terrain)
 
-        self.runways.append(Runway(240))
+        self.runways.append(Runway(id=1, name='06-24', main=RunwayApproach(name='06', heading=60, beacons=[]), opposite=RunwayApproach(name='24', heading=240, beacons=[RunwayBeacon(id='airfield27_1', runway_name='06-24', runway_id=1, runway_side='24'), RunwayBeacon(id='airfield27_2', runway_name='06-24', runway_id=1, runway_side='24'), RunwayBeacon(id='airfield27_3', runway_name='06-24', runway_id=1, runway_side='24'), RunwayBeacon(id='airfield27_0', runway_name='06-24', runway_id=1, runway_side='24')])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=1, position=mapping.Point(-125485.39736555, 760349.87924914, self._terrain), large=False, heli=True,
                 airplanes=True, slot_name='14', length=26.0, width=24.0, height=11.0, shelter=False))
@@ -2260,14 +2290,16 @@ class Mozdok(Airport):
     id = 28
     name = "Mozdok"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = False
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=4550000, vhf_low_hz=41600000, vhf_high_hz=137000000, uhf_hz=266000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-83450.417969, 834461.78125, terrain), terrain)
 
-        self.runways.append(Runway(80))
+        self.beacons.append(AirportBeacon(id='airfield28_8'))
+        self.runways.append(Runway(id=1, name='26-08', main=RunwayApproach(name='26', heading=260, beacons=[RunwayBeacon(id='airfield28_2', runway_name='08-26', runway_id=1, runway_side='26'), RunwayBeacon(id='airfield28_3', runway_name='08-26', runway_id=1, runway_side='26'), RunwayBeacon(id='airfield28_6', runway_name='08-26', runway_id=1, runway_side='26'), RunwayBeacon(id='airfield28_7', runway_name='08-26', runway_id=1, runway_side='26')]), opposite=RunwayApproach(name='08', heading=80, beacons=[RunwayBeacon(id='airfield28_1', runway_name='08-26', runway_id=1, runway_side='08'), RunwayBeacon(id='airfield28_4', runway_name='08-26', runway_id=1, runway_side='08'), RunwayBeacon(id='airfield28_5', runway_name='08-26', runway_id=1, runway_side='08'), RunwayBeacon(id='airfield28_0', runway_name='08-26', runway_id=1, runway_side='08')])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=0, position=mapping.Point(-84047.34375, 833973.125, self._terrain), large=False, heli=True,
                 airplanes=True, slot_name='02', length=78.722809, width=67.096466, height=18.0, shelter=False))
@@ -2391,14 +2423,17 @@ class Tbilisi_Lochini(Airport):
     id = 29
     name = "Tbilisi-Lochini"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = True
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=4600000, vhf_low_hz=41800000, vhf_high_hz=138000000, uhf_hz=267000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-315671.078125, 896629.78125, terrain), terrain)
 
-        self.runways.append(Runway(310))
+        self.beacons.append(AirportBeacon(id='airfield29_8'))
+        self.beacons.append(AirportBeacon(id='airfield29_9'))
+        self.runways.append(Runway(id=1, name='13R-31L', main=RunwayApproach(name='13R', heading=130, beacons=[]), opposite=RunwayApproach(name='31L', heading=310, beacons=[])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=0, position=mapping.Point(-315166.34375, 897212.5, self._terrain), large=False, heli=True,
                 airplanes=True, slot_name='36', length=26.0, width=24.0, height=11.0, shelter=False))
@@ -2627,14 +2662,15 @@ class Soganlug(Airport):
     id = 30
     name = "Soganlug"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = True
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=4650000, vhf_low_hz=42000000, vhf_high_hz=139000000, uhf_hz=268000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-317828.046875, 895407.1875, terrain), terrain)
 
-        self.runways.append(Runway(320))
+        self.runways.append(Runway(id=1, name='14-32', main=RunwayApproach(name='14', heading=140, beacons=[]), opposite=RunwayApproach(name='32', heading=320, beacons=[])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=0, position=mapping.Point(-318023.51732654, 895394.57452592, self._terrain), large=False, heli=True,
                 airplanes=True, slot_name='03', length=26.0, width=24.0, height=11.0, shelter=False))
@@ -2656,14 +2692,16 @@ class Vaziani(Airport):
     id = 31
     name = "Vaziani"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = False
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=4700000, vhf_low_hz=42200000, vhf_high_hz=140000000, uhf_hz=269000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-319064.875, 903148.53125, terrain), terrain)
 
-        self.runways.append(Runway(310))
+        self.beacons.append(AirportBeacon(id='airfield31_4'))
+        self.runways.append(Runway(id=1, name='13R-31L', main=RunwayApproach(name='13R', heading=130, beacons=[]), opposite=RunwayApproach(name='31L', heading=310, beacons=[])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=0, position=mapping.Point(-318059.6875, 902639.0625, self._terrain), large=False, heli=False,
                 airplanes=True, slot_name='10', length=26.0, width=22.0, height=8.0, shelter=False))
@@ -2946,14 +2984,15 @@ class Beslan(Airport):
     id = 32
     name = "Beslan"
     tacan = None
-    unit_zones = []
+    unit_zones: List[mapping.Rectangle] = []
     civilian = True
     slot_version = 2
+    atc_radio = AtcRadio(hf_hz=4750000, vhf_low_hz=42400000, vhf_high_hz=141000000, uhf_hz=270000000)
 
     def __init__(self, terrain: Terrain) -> None:
         super().__init__(mapping.Point(-148590.171875, 843668.625, terrain), terrain)
 
-        self.runways.append(Runway(280))
+        self.runways.append(Runway(id=1, name='10-28', main=RunwayApproach(name='10', heading=100, beacons=[RunwayBeacon(id='airfield32_1', runway_name='10-28', runway_id=1, runway_side='10'), RunwayBeacon(id='airfield32_2', runway_name='10-28', runway_id=1, runway_side='10'), RunwayBeacon(id='airfield32_3', runway_name='10-28', runway_id=1, runway_side='10'), RunwayBeacon(id='airfield32_0', runway_name='10-28', runway_id=1, runway_side='10')]), opposite=RunwayApproach(name='28', heading=280, beacons=[])))
         self.parking_slots.append(ParkingSlot(
                 crossroad_idx=0, position=mapping.Point(-148875.828125, 844108.375, self._terrain), large=False, heli=True,
                 airplanes=True, slot_name='15', length=43.057953, width=40.0, height=None, shelter=False))
@@ -3001,308 +3040,27 @@ class Beslan(Airport):
                 airplanes=True, slot_name='05', length=20.5, width=18.0, height=11.0, shelter=False))
 
 
-class Caucasus(Terrain):
-    center = {"lat": 43.69666, "long": 32.96}
-    city_graph = None
-    temperature = [
-        (-4, 14),
-        (-8, 14),
-        (-6, 16),
-        (0, 19),
-        (1, 24),
-        (8, 30),
-        (12, 33),
-        (12, 32),
-        (10, 28),
-        (2, 22),
-        (-2, 14),
-        (-4, 12)
-    ]
-    assert(len(temperature) == 12)
+ALL_AIRPORTS: List[Type[Airport]] = [
+    Anapa_Vityazevo,
+    Krasnodar_Center,
+    Novorossiysk,
+    Krymsk,
+    Maykop_Khanskaya,
+    Gelendzhik,
+    Sochi_Adler,
+    Krasnodar_Pashkovsky,
+    Sukhumi_Babushara,
+    Gudauta,
+    Batumi,
+    Senaki_Kolkhi,
+    Kobuleti,
+    Kutaisi,
+    Mineralnye_Vody,
+    Nalchik,
+    Mozdok,
+    Tbilisi_Lochini,
+    Soganlug,
+    Vaziani,
+    Beslan,
+]
 
-    def __init__(self):
-        super().__init__(
-            "Caucasus",
-            PARAMETERS,
-            bounds=mapping.Rectangle(380 * 1000, -560 * 1000, -600 * 1000, 1130 * 1000, self),
-            map_view_default=MapView(mapping.Point(-255714.28571428, 680571.42857143, self), self, 1000000)
-        )
-        # caucasus center MGRS
-        # 36TWQ9949898109
-        self.bullseye_blue = {"x": -291014, "y": 617414}
-        self.bullseye_red = {"x": 11557, "y": 371700}
-
-        try:
-            self.city_graph = Graph.from_pickle(os.path.join(os.path.dirname(__file__), 'caucasus.p'))  # type: Graph
-        except FileNotFoundError:
-            pass
-
-        self.airports['Anapa-Vityazevo'] = Anapa_Vityazevo(self)
-        self.airports['Krasnodar-Center'] = Krasnodar_Center(self)
-        self.airports['Novorossiysk'] = Novorossiysk(self)
-        self.airports['Krymsk'] = Krymsk(self)
-        self.airports['Maykop-Khanskaya'] = Maykop_Khanskaya(self)
-        self.airports['Gelendzhik'] = Gelendzhik(self)
-        self.airports['Sochi-Adler'] = Sochi_Adler(self)
-        self.airports['Krasnodar-Pashkovsky'] = Krasnodar_Pashkovsky(self)
-        self.airports['Sukhumi-Babushara'] = Sukhumi_Babushara(self)
-        self.airports['Gudauta'] = Gudauta(self)
-        self.airports['Batumi'] = Batumi(self)
-        self.airports['Senaki-Kolkhi'] = Senaki_Kolkhi(self)
-        self.airports['Kobuleti'] = Kobuleti(self)
-        self.airports['Kutaisi'] = Kutaisi(self)
-        self.airports['Mineralnye Vody'] = Mineralnye_Vody(self)
-        self.airports['Nalchik'] = Nalchik(self)
-        self.airports['Mozdok'] = Mozdok(self)
-        self.airports['Tbilisi-Lochini'] = Tbilisi_Lochini(self)
-        self.airports['Soganlug'] = Soganlug(self)
-        self.airports['Vaziani'] = Vaziani(self)
-        self.airports['Beslan'] = Beslan(self)
-
-        self.anapa_vityazevo().unit_zones.append(mapping.Rectangle(-5802.857142854, 242768.57142857,
-                                                                   -7402.857142854, 244368.57142857, self))
-        self.anapa_vityazevo().unit_zones.append(mapping.Rectangle(-4217.1428571397, 239325.71428572,
-                                                                   -5417.1428571397, 240525.71428572, self))
-        self.anapa_vityazevo().unit_zones.append(mapping.Rectangle(-5759.9999999969, 239132.85714286,
-                                                                   -7159.9999999969, 240532.85714286, self))
-        self.anapa_vityazevo().unit_zones.append(mapping.Rectangle(-3967.1428571397, 245318.57142857,
-                                                                   -6767.1428571397, 248118.57142857, self))
-
-        self.krasnodar_center().unit_zones.append(mapping.Rectangle(13360.857142856, 366714.28571429,
-                                                                    12360.857142856, 367714.28571429, self))
-        self.krasnodar_center().unit_zones.append(mapping.Rectangle(13375.142857142, 367717.14285714,
-                                                                    12375.142857142, 368717.14285714, self))
-        self.krasnodar_center().unit_zones.append(mapping.Rectangle(11072.285714285, 366687.14285714,
-                                                                    10372.285714285, 367387.14285714, self))
-        self.krasnodar_center().unit_zones.append(mapping.Rectangle(15490.857142856, 361865.71428571,
-                                                                    12490.857142856, 364865.71428571, self))
-
-        self.novorossiysk().unit_zones.append(mapping.Rectangle(-39022.285714285, 277836.85714285,
-                                                                -40122.285714285, 278936.85714285, self))
-        self.novorossiysk().unit_zones.append(mapping.Rectangle(-40290.857142857, 279953.99999999,
-                                                                -40790.857142857, 280453.99999999, self))
-        self.novorossiysk().unit_zones.append(mapping.Rectangle(-40255.142857142, 276589.71428571,
-                                                                -41155.142857142, 277489.71428571, self))
-
-        self.krymsk().unit_zones.append(mapping.Rectangle(-6292.8571428566, 295422.85714286,
-                                                          -7292.8571428566, 296422.85714286, self))
-        self.krymsk().unit_zones.append(mapping.Rectangle(-5878.5714285709, 292315.71428571,
-                                                          -6878.5714285709, 293315.71428571, self))
-        self.krymsk().unit_zones.append(mapping.Rectangle(-4885.7142857137, 293180,
-                                                          -5885.7142857137, 294180, self))
-        self.krymsk().unit_zones.append(mapping.Rectangle(-5414.2857142852, 295651.42857143,
-                                                          -6214.2857142852, 296451.42857143, self))
-
-        self.maykop_khanskaya().unit_zones.append(mapping.Rectangle(-24574.285714285, 455938.57142857,
-                                                                    -26574.285714285, 457938.57142857, self))
-        self.maykop_khanskaya().unit_zones.append(mapping.Rectangle(-26888.571428571, 459010,
-                                                                    -29088.571428571, 461210, self))
-        self.maykop_khanskaya().unit_zones.append(mapping.Rectangle(-24917.142857142, 459945.71428572,
-                                                                    -26717.142857142, 461745.71428572, self))
-        self.maykop_khanskaya().unit_zones.append(mapping.Rectangle(-29138.57142857, 457451.42857144,
-                                                                    -30738.57142857, 459051.42857144, self))
-
-        self.gelendzhik().unit_zones.append(mapping.Rectangle(-50072.857142857, 296894.28571429,
-                                                              -50972.857142857, 297794.28571429, self))
-        self.gelendzhik().unit_zones.append(mapping.Rectangle(-49435.714285714, 296528.57142857,
-                                                              -50135.714285714, 297228.57142857, self))
-        self.gelendzhik().unit_zones.append(mapping.Rectangle(-50470, 298271.42857143,
-                                                              -51170, 298971.42857143, self))
-        self.gelendzhik().unit_zones.append(mapping.Rectangle(-48665.714285714, 297704.28571428,
-                                                              -49265.714285714, 298304.28571428, self))
-
-        self.krasnodar_pashkovsky().unit_zones.append(mapping.Rectangle(8105.7142857243, 388292.85714286,
-                                                                        6705.7142857243, 389692.85714286, self))
-        self.krasnodar_pashkovsky().unit_zones.append(mapping.Rectangle(7184.2857142957, 384857.14285715,
-                                                                        6184.2857142957, 385857.14285715, self))
-        self.krasnodar_pashkovsky().unit_zones.append(mapping.Rectangle(8848.5714285814, 386628.57142858,
-                                                                        7948.571428581399, 387528.57142858, self))
-        self.krasnodar_pashkovsky().unit_zones.append(mapping.Rectangle(9570.0000000098, 383164.28571429,
-                                                                        8570.0000000098, 384164.28571429, self))
-
-        self.sukhumi_babushara().unit_zones.append(mapping.Rectangle(-220484.28571428, 563282.85714286,
-                                                                     -221084.28571428, 563882.85714286, self))
-        self.sukhumi_babushara().unit_zones.append(mapping.Rectangle(-220081.42857143, 562380.00000001,
-                                                                     -220681.42857143, 562980.00000001, self))
-        self.sukhumi_babushara().unit_zones.append(mapping.Rectangle(-218804.28571429, 564057.14285715,
-                                                                     -219404.28571429, 564657.14285715, self))
-        self.sukhumi_babushara().unit_zones.append(mapping.Rectangle(-218895.71428571, 563268.57142858,
-                                                                     -219495.71428571, 563868.57142858, self))
-        self.sukhumi_babushara().unit_zones.append(mapping.Rectangle(-221415.71428571, 565074.28571429,
-                                                                     -222015.71428571, 565674.28571429, self))
-
-        self.gudauta().unit_zones.append(mapping.Rectangle(-196705.71428572, 516900,
-                                                           -197405.71428572, 517600, self))
-        self.gudauta().unit_zones.append(mapping.Rectangle(-195732.85714286, 514945.71428571,
-                                                           -196332.85714286, 515545.71428571, self))
-        self.gudauta().unit_zones.append(mapping.Rectangle(-195075.71428572, 516880,
-                                                           -195875.71428572, 517680, self))
-
-        self.batumi().unit_zones.append(mapping.Rectangle(-356160, 616688.00000003,
-                                                          -356960, 617488.00000003, self))
-        self.batumi().unit_zones.append(mapping.Rectangle(-357551.42857143, 614990.85714289,
-                                                          -358551.42857143, 615990.85714289, self))
-        self.batumi().unit_zones.append(mapping.Rectangle(-355574.28571429, 615740.85714289,
-                                                          -356474.28571429, 616640.85714289, self))
-
-        self.senaki_kolkhi().unit_zones.append(mapping.Rectangle(-281829.99999999, 646374.2857143,
-                                                                 -282629.99999999, 647174.2857143, self))
-        self.senaki_kolkhi().unit_zones.append(mapping.Rectangle(-280231.42857142, 645832.85714287,
-                                                                 -280931.42857142, 646532.85714287, self))
-        self.senaki_kolkhi().unit_zones.append(mapping.Rectangle(-282110, 645288.57142859,
-                                                                 -282910, 646088.57142859, self))
-        self.senaki_kolkhi().unit_zones.append(mapping.Rectangle(-281052.85714285, 648450.00000002,
-                                                                 -281452.85714285, 648850.00000002, self))
-
-        self.kobuleti().unit_zones.append(mapping.Rectangle(-319184.85714285, 636121.14285715,
-                                                            -320584.85714285, 637521.14285715, self))
-        self.kobuleti().unit_zones.append(mapping.Rectangle(-317053.42857142, 634509.71428572,
-                                                            -317553.42857142, 635009.71428572, self))
-        self.kobuleti().unit_zones.append(mapping.Rectangle(-317776.28571428, 634158.28571429,
-                                                            -318276.28571428, 634658.28571429, self))
-
-        self.kutaisi().unit_zones.append(mapping.Rectangle(-285691.42857142, 683870.00000001,
-                                                           -286691.42857142, 684870.00000001, self))
-        self.kutaisi().unit_zones.append(mapping.Rectangle(-285131.42857142, 685257.14285716,
-                                                           -286131.42857142, 686257.14285716, self))
-        self.kutaisi().unit_zones.append(mapping.Rectangle(-283062.85714285, 682065.71428573,
-                                                           -283762.85714285, 682765.71428573, self))
-        self.kutaisi().unit_zones.append(mapping.Rectangle(-283252.85714285, 685130.00000001,
-                                                           -283752.85714285, 685630.00000001, self))
-
-        self.mineralnye_vody().unit_zones.append(mapping.Rectangle(-50675.714285712, 706205.71428572,
-                                                                   -51275.714285712, 706805.71428572, self))
-        self.mineralnye_vody().unit_zones.append(mapping.Rectangle(-52302.857142855, 704720,
-                                                                   -53002.857142855, 705420, self))
-        self.mineralnye_vody().unit_zones.append(mapping.Rectangle(-51194.285714284, 701500,
-                                                                   -52594.285714284, 702900, self))
-        self.mineralnye_vody().unit_zones.append(mapping.Rectangle(-48049.999999998, 706642.85714286,
-                                                                   -48849.999999998, 707442.85714286, self))
-
-        self.tbilisi_lochini().unit_zones.append(mapping.Rectangle(-315025.71428571, 894574.28571429,
-                                                                   -316225.71428571, 895774.28571429, self))
-        self.tbilisi_lochini().unit_zones.append(mapping.Rectangle(-316225.71428571, 896138.57142857,
-                                                                   -317425.71428571, 897338.57142857, self))
-        self.tbilisi_lochini().unit_zones.append(mapping.Rectangle(-314582.85714286, 897795.71428571,
-                                                                   -315982.85714286, 899195.71428571, self))
-
-        self.soganlug().unit_zones.append(mapping.Rectangle(-318431.42857142, 894650.00000001,
-                                                            -318931.42857142, 895150.00000001, self))
-        self.soganlug().unit_zones.append(mapping.Rectangle(-318949.99999999, 894894.28571429,
-                                                            -319549.99999999, 895494.28571429, self))
-        self.soganlug().unit_zones.append(mapping.Rectangle(-318215.7142857, 897200.00000001,
-                                                            -319215.7142857, 898200.00000001, self))
-
-        self.vaziani().unit_zones.append(mapping.Rectangle(-318605.71428571, 901664.28571429,
-                                                           -319605.71428571, 902664.28571429, self))
-        self.vaziani().unit_zones.append(mapping.Rectangle(-319434.28571428, 902484.28571429,
-                                                           -320434.28571428, 903484.28571429, self))
-        self.vaziani().unit_zones.append(mapping.Rectangle(-318435.71428571, 904565.71428572,
-                                                           -319435.71428571, 905565.71428572, self))
-        self.vaziani().unit_zones.append(mapping.Rectangle(-316582.85714285, 903304.28571429,
-                                                           -317582.85714285, 904304.28571429, self))
-
-        self.sochi_adler().unit_zones.append(mapping.Rectangle(-164637.14285714, 461964.28571428,
-                                                               -165237.14285714, 462564.28571428, self))
-        self.sochi_adler().unit_zones.append(mapping.Rectangle(-162801.42857142, 460978.57142857,
-                                                               -163601.42857142, 461778.57142857, self))
-        self.sochi_adler().unit_zones.append(mapping.Rectangle(-165514.28571428, 461815.71428571,
-                                                               -165914.28571428, 462215.71428571, self))
-
-        # for x in sorted(self.airports, key=lambda x: self.airports[x].id):
-        #     airport = self.airports[x]
-        #     print("airports[{id}] = {{'id': {id}, 'name': '{name}', 'tacan':{tacan}, 'runways': []}}".format(
-        #         id=airport.id, name=x, tacan=airport.tacan if airport.tacan else None
-        #     ))
-        #     for r in self.airports[x].runways:
-        #         print("airports[{id}]['runways'].append({hdg})".format(id=airport.id, hdg=r.heading))
-        
-    def anapa_vityazevo(self) -> Airport:
-        return self.airports["Anapa-Vityazevo"]
-
-    def krasnodar_center(self) -> Airport:
-        return self.airports["Krasnodar-Center"]
-
-    def novorossiysk(self) -> Airport:
-        return self.airports["Novorossiysk"]
-
-    def krymsk(self) -> Airport:
-        return self.airports["Krymsk"]
-
-    def maykop_khanskaya(self) -> Airport:
-        return self.airports["Maykop-Khanskaya"]
-
-    def gelendzhik(self) -> Airport:
-        return self.airports["Gelendzhik"]
-
-    def sochi_adler(self) -> Airport:
-        return self.airports["Sochi-Adler"]
-
-    def krasnodar_pashkovsky(self) -> Airport:
-        return self.airports["Krasnodar-Pashkovsky"]
-
-    def sukhumi_babushara(self) -> Airport:
-        return self.airports["Sukhumi-Babushara"]
-
-    def gudauta(self) -> Airport:
-        return self.airports["Gudauta"]
-
-    def batumi(self) -> Airport:
-        return self.airports["Batumi"]
-
-    def senaki_kolkhi(self) -> Airport:
-        return self.airports["Senaki-Kolkhi"]
-
-    def kobuleti(self) -> Airport:
-        return self.airports["Kobuleti"]
-
-    def kutaisi(self) -> Airport:
-        return self.airports["Kutaisi"]
-
-    def mineralnye_vody(self) -> Airport:
-        return self.airports["Mineralnye Vody"]
-
-    def nalchik(self) -> Airport:
-        return self.airports["Nalchik"]
-
-    def mozdok(self) -> Airport:
-        return self.airports["Mozdok"]
-
-    def tbilisi_lochini(self) -> Airport:
-        return self.airports["Tbilisi-Lochini"]
-
-    def soganlug(self) -> Airport:
-        return self.airports["Soganlug"]
-
-    def vaziani(self) -> Airport:
-        return self.airports["Vaziani"]
-
-    def beslan(self) -> Airport:
-        return self.airports["Beslan"]
-
-    def default_red_airports(self) -> List[Airport]:
-        return [
-            self.anapa_vityazevo(),
-            self.krymsk(),
-            self.novorossiysk(),
-            self.krasnodar_center(),
-            self.krasnodar_pashkovsky(),
-            self.maykop_khanskaya(),
-            self.gelendzhik(),
-            self.mineralnye_vody(),
-            self.mozdok(),
-            self.beslan(),
-            self.nalchik(),
-            self.sochi_adler()
-        ]
-
-    def default_blue_airports(self) -> List[Airport]:
-        return [
-            self.batumi(),
-            self.vaziani(),
-            self.soganlug(),
-            self.kobuleti(),
-            self.senaki_kolkhi(),
-            self.tbilisi_lochini(),
-            self.kutaisi()
-        ]

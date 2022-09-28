@@ -1,11 +1,14 @@
 # terrain module
 from __future__ import annotations
+from dataclasses import dataclass
 
 from pyproj import CRS, Transformer
 
+from dcs.atcradio import AtcRadio
 import dcs.mapping as mapping
 import dcs.lua as lua
 import dcs.point as point
+from dcs.beacons import AirportBeacon, RunwayBeacon
 from dcs.terrain.projections.transversemercator import TransverseMercator
 import dcs.unittype as unittype
 import dcs.weather as weather
@@ -48,20 +51,61 @@ class ParkingSlot:
         )
 
 
-class Runway:
-    def __init__(self, heading, ils=None, leftright=0):
-        """
+RunwayBeaconMapping = Dict[int, Dict[str, List[RunwayBeacon]]]
 
-        :param heading: Compass direction of runway
-        :param ils:
-        :param leftright: 0 only 1 runway
-                          1 left runway
-                          2 right runway
-        :return: None
+
+@dataclass(frozen=True)
+class RunwayApproach:
+    name: str
+    heading: int
+    beacons: List[RunwayBeacon]
+
+    @staticmethod
+    def from_lua(name: str, beacons: Dict[str, List[RunwayBeacon]]) -> RunwayApproach:
+        return RunwayApproach(name, int(name.rstrip("LR")) * 10, beacons.get(name, []))
+
+
+@dataclass(frozen=True)
+class Runway:
+    id: Optional[int]
+    name: str
+    main: RunwayApproach
+    opposite: RunwayApproach
+
+    @property
+    def heading(self) -> int:
+        """Returns the heading of the main runway.
+
+        This property is deprecated in favor of `Runway.main.heading`. This property is
+        provided for backwards compatibility.
         """
-        self.heading = heading
-        self.ils = ils
-        self.leftright = leftright
+        return self.main.heading
+
+    @staticmethod
+    def from_lua(data: Dict[str, Any], runway_beacons: RunwayBeaconMapping) -> Runway:
+        # Example data:
+        # {
+        #     ["start"] = "13R",
+        #     ["id"] = 2,
+        #     ["name"] = "13R-31L",
+        #     ["end"] = "31L",
+        # }
+
+        # For some airfields (Sir Abu Nuayr in the gulf, for example), the runway ID is
+        # -1. I have no idea what that means, but since it certainly isn't a valid
+        # index, we translate that to None.
+        runway_id: Optional[int] = data["id"]
+        if runway_id == -1:
+            runway_id = None
+            beacons = {}
+        if runway_id is not None:
+            beacons = runway_beacons.get(runway_id, {})
+        return Runway(
+            id=runway_id,
+            name=data["name"],
+            main=RunwayApproach.from_lua(data["start"], beacons),
+            opposite=RunwayApproach.from_lua(data["end"], beacons),
+        )
 
 
 class RunwayOccupiedError(RuntimeError):
@@ -80,6 +124,7 @@ class Airport:
     unit_zones: List[mapping.Rectangle] = []
     civilian = True
     slot_version = 1
+    atc_radio: Optional[AtcRadio]
 
     def __init__(self, position: mapping.Point, terrain: Terrain) -> None:
         self.position = position
@@ -87,6 +132,11 @@ class Airport:
         self.runway_used = None
         self.runways = []  # type: List[Runway]
         self.parking_slots = []  # type: List[ParkingSlot]
+        # This is currently the raw data from DCS, not a useful API. We don't (yet) have
+        # the info for the beacons themselves, so the beacon associations are not useful
+        # unless that information is available elsewhere. This data contained in this
+        # field will change once pydcs has more data for beacons.
+        self.beacons: list[AirportBeacon] = []
 
         # warehouse values
         self.coalition = "NEUTRAL"
@@ -450,8 +500,8 @@ class Terrain:
         self.bounds = bounds
         self.map_view_default = map_view_default
         self.center = {"lat": 0.0, "long": 0.0}  # WGS84 decimal
-        self.bullseye_blue = {"x": 0, "y": 0}
-        self.bullseye_red = {"x": 0, "y": 0}
+        self.bullseye_blue = {"x": 0.0, "y": 0.0}
+        self.bullseye_red = {"x": 0.0, "y": 0.0}
         self.airports = {}  # type: Dict[str,Airport]
 
         self._point_to_ll_transformer = Transformer.from_crs(
